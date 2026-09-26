@@ -22,6 +22,10 @@ export class Sidebar implements OnInit {
     });
   }
 
+  toggleSection(section: SideBar): void {
+    section.showSubRoute = !section.showSubRoute;
+  }
+
   toggleMenu(menu: SideBarMenu): void {
     menu.showSubRoute = !menu.showSubRoute;
   }

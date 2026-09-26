@@ -59,6 +59,10 @@ export interface SideBarMenu {
 
 export interface SideBar {
   tittle: string;
+  icon?: string;
+  desc?: string;
+  base?: string;
+  showSubRoute?: boolean;
   menu: SideBarMenu[];
 }
 

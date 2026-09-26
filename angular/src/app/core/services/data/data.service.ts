@@ -11,6 +11,8 @@ export class DataService {
   private readonly initialSidebarData: SideBar[] = [
     {
       tittle: 'Overview',
+      icon: 'layout-dashboard',
+      showSubRoute: true,
       menu: [
         {
           menuValue: 'Dashboard',
@@ -25,6 +27,7 @@ export class DataService {
     },
     {
       tittle: 'Applications',
+      icon: 'layout-grid',
       menu: [
         {
           menuValue: 'Applications',
@@ -56,6 +59,7 @@ export class DataService {
     },
     {
       tittle: 'Layouts',
+      icon: 'cuboid',
       menu: [
         {
           menuValue: 'Layouts',
@@ -76,6 +80,8 @@ export class DataService {
     },
     {
       tittle: 'Main Menu',
+      icon: 'layout-list',
+      desc: 'Patients · doctors · appointments',
       menu: [
         {
           menuValue: 'Dashboards',
@@ -158,6 +164,8 @@ export class DataService {
     },
     {
       tittle: 'Clinical',
+      icon: 'building-2',
+      desc: 'Pharmacy · lab · ICU · wards',
       menu: [
         {
           menuValue: 'Pharmacy',
@@ -308,6 +316,8 @@ export class DataService {
     },
     {
       tittle: 'Patient Care',
+      icon: 'users',
+      desc: 'Records · telemedicine · diet',
       menu: [
         {
           menuValue: 'Medical Records',
@@ -358,6 +368,8 @@ export class DataService {
     },
     {
       tittle: 'Management',
+      icon: 'shield-check',
+      desc: 'Billing · HR · inventory · finance',
       menu: [
         {
           menuValue: 'Billing',
@@ -497,6 +509,8 @@ export class DataService {
     },
     {
       tittle: 'System',
+      icon: 'folder-open-dot',
+      desc: 'Reports · users · audit · settings',
       menu: [
         {
           menuValue: 'Reports',
@@ -532,6 +546,8 @@ export class DataService {
     },
     {
       tittle: 'Authentication',
+      icon: 'folder-open-dot',
+      desc: 'Login · register · security',
       menu: [
         { menuValue: 'Login', route: All_Routes.login, hasSubRoute: false, showSubRoute: false, icon: 'log-in', base: 'login', subMenus: [] },
         { menuValue: 'Register', route: All_Routes.register, hasSubRoute: false, showSubRoute: false, icon: 'user-plus', base: 'register', subMenus: [] },
@@ -545,6 +561,8 @@ export class DataService {
     },
     {
       tittle: 'Error Pages',
+      icon: 'badge-info',
+      desc: '401 · 404 · 500 · maintenance',
       menu: [
         { menuValue: 'Error 401', route: All_Routes.error401, hasSubRoute: false, showSubRoute: false, icon: 'badge-info', base: 'error-401', subMenus: [] },
         { menuValue: 'Error 403', route: All_Routes.error403Page, hasSubRoute: false, showSubRoute: false, icon: 'badge-info', base: 'error-403', subMenus: [] },
@@ -559,6 +577,8 @@ export class DataService {
     },
     {
       tittle: 'General Pages',
+      icon: 'layers',
+      desc: 'Profile · help · pricing · legal',
       menu: [
         { menuValue: 'Profile', route: All_Routes.profile, hasSubRoute: false, showSubRoute: false, icon: 'user', base: 'profile', subMenus: [] },
         { menuValue: 'My Account', route: All_Routes.myAccount, hasSubRoute: false, showSubRoute: false, icon: 'user-circle', base: 'my-account', subMenus: [] },
@@ -646,6 +666,8 @@ export class DataService {
     // },
     {
       tittle: 'UI Interface',
+      icon: 'gallery-vertical-end',
+      desc: 'Components · forms · tables · charts',
       menu: [
         {
           menuValue: 'Base UI',

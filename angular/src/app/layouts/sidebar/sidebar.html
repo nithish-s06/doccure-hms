@@ -83,40 +83,46 @@
 
         <div id="sidebar-menu" class="sidebar-menu">
             <ul role="menu" aria-label="Main navigation menu">
-                <ng-container *ngFor="let section of sidebarData">
-                    <li class="menu-title"><span>{{ section.tittle }}</span></li>
-                    <li class="submenu" *ngFor="let menu of section.menu" [class.active]="isMenuActive(menu)">
-                        <a *ngIf="menu.hasSubRoute" href="javascript:void(0);" (click)="toggleMenu(menu)" [class.subdrop]="menu.showSubRoute">
-                            <i class="icon-{{ menu.icon }}"></i>
-                            <span>{{ menu.menuValue }}</span>
-                            <span *ngIf="menu.badgeText" class="badge {{ menu.badgeClass }}">{{ menu.badgeText }}</span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <a *ngIf="!menu.hasSubRoute" [routerLink]="menu.route" routerLinkActive="active">
-                            <i class="icon-{{ menu.icon }}"></i>
-                            <span>{{ menu.menuValue }}</span>
-                            <span *ngIf="menu.badgeText" class="badge {{ menu.badgeClass }}">{{ menu.badgeText }}</span>
-                        </a>
-                        <ul *ngIf="menu.hasSubRoute" [style.display]="menu.showSubRoute ? 'block' : 'none'">
-                            <li class="submenu" *ngFor="let subMenu of menu.subMenus" [class.active]="isSubMenuActive(subMenu)">
-                                <ng-container *ngIf="subMenu.subMenusTwo && subMenu.subMenusTwo.length; else plainSubMenu">
-                                    <a href="javascript:void(0);">
-                                        <span>{{ subMenu.menuValue }}</span>
-                                        <span class="menu-arrow"></span>
-                                    </a>
-                                    <ul>
-                                        <li *ngFor="let subMenuTwo of subMenu.subMenusTwo">
-                                            <a [routerLink]="subMenuTwo.route" routerLinkActive="active"><span>{{ subMenuTwo.menuValue }}</span></a>
-                                        </li>
-                                    </ul>
-                                </ng-container>
-                                <ng-template #plainSubMenu>
-                                    <a [routerLink]="subMenu.route" routerLinkActive="active"><span>{{ subMenu.menuValue }}</span></a>
-                                </ng-template>
-                            </li>
-                        </ul>
-                    </li>
-                </ng-container>
+                <li class="submenu" *ngFor="let section of sidebarData" [attr.data-desc]="section.desc || null">
+                    <a href="javascript:void(0);" (click)="toggleSection(section)" [class.subdrop]="section.showSubRoute">
+                        <i *ngIf="section.icon" class="icon-{{ section.icon }}"></i>
+                        <span>{{ section.tittle }}</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul [style.display]="section.showSubRoute ? 'block' : 'none'">
+                        <li class="submenu" *ngFor="let menu of section.menu" [class.active]="isMenuActive(menu)">
+                            <a *ngIf="menu.hasSubRoute" href="javascript:void(0);" (click)="toggleMenu(menu)" [class.subdrop]="menu.showSubRoute">
+                                <i *ngIf="menu.icon" class="icon-{{ menu.icon }}"></i>
+                                <span>{{ menu.menuValue }}</span>
+                                <span *ngIf="menu.badgeText" class="badge {{ menu.badgeClass }}">{{ menu.badgeText }}</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <a *ngIf="!menu.hasSubRoute" [routerLink]="menu.route" routerLinkActive="active">
+                                <i *ngIf="menu.icon" class="icon-{{ menu.icon }}"></i>
+                                <span>{{ menu.menuValue }}</span>
+                                <span *ngIf="menu.badgeText" class="badge {{ menu.badgeClass }}">{{ menu.badgeText }}</span>
+                            </a>
+                            <ul *ngIf="menu.hasSubRoute" [style.display]="menu.showSubRoute ? 'block' : 'none'">
+                                <li class="submenu" *ngFor="let subMenu of menu.subMenus" [class.active]="isSubMenuActive(subMenu)">
+                                    <ng-container *ngIf="subMenu.subMenusTwo && subMenu.subMenusTwo.length; else plainSubMenu">
+                                        <a href="javascript:void(0);">
+                                            <span>{{ subMenu.menuValue }}</span>
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <ul>
+                                            <li *ngFor="let subMenuTwo of subMenu.subMenusTwo">
+                                                <a [routerLink]="subMenuTwo.route" routerLinkActive="active"><span>{{ subMenuTwo.menuValue }}</span></a>
+                                            </li>
+                                        </ul>
+                                    </ng-container>
+                                    <ng-template #plainSubMenu>
+                                        <a [routerLink]="subMenu.route" routerLinkActive="active"><span>{{ subMenu.menuValue }}</span></a>
+                                    </ng-template>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
         </ng-scrollbar>
