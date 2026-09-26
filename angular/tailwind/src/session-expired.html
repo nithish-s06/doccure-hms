@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Session Expired — Dreams HMS"}) @@include('partials/header.html', {"page": "session-expired"})
+    </head>
+    <body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 min-h-screen flex">
+        @@include('partials/auth-aside.html')
+
+        <!-- Right Panel — Authentication -->
+        <div class="flex-1 flex items-center justify-center p-5 sm:p-8 relative">
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute -top-24 -right-24 size-80 rounded-full bg-amber-500/10 lg-aurora"></div>
+            </div>
+
+            <div class="relative w-full max-w-md lg-in [animation-delay:.1s]">
+                <!-- Top bar -->
+                <div class="flex items-center justify-between mb-6">
+                    <img src="assets/img/logo-white.svg" alt="logo" class="h-7 lg:hidden max-lg:dark:hidden max-lg:block">
+                    <img src="assets/img/logo.svg" alt="logo" class="h-7 lg:hidden max-lg:dark:block max-lg:hidden">
+                    <span class="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 px-2.5 py-1 text-[11px] font-bold text-amber-600 dark:text-amber-400 shadow-sm">
+                        <i class="icon-clock-alert text-xs"></i>Session Timed Out
+                    </span>
+                    <div class="flex items-center gap-2">
+                        <details class="relative group">
+                            <summary class="list-none flex items-center gap-1.5 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 px-2.5 h-9 text-xs font-bold text-gray-600 dark:text-gray-300 cursor-pointer hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                                <img src="assets/img/icons/us.svg" class="size-4 rounded-full" alt=""><span>EN</span><i class="icon-chevron-down text-[10px]"></i>
+                            </summary>
+                            <div class="absolute right-0 mt-2 w-36 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 shadow-xl p-1.5 z-20">
+                                <button type="button" class="w-full flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10"><img src="assets/img/icons/us.svg" class="size-4 rounded-full" alt="">English</button>
+                                <button type="button" class="w-full flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10"><img src="assets/img/icons/arab.svg" class="size-4 rounded-full" alt="">العربية</button>
+                                <button type="button" class="w-full flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10"><img src="assets/img/icons/germany.svg" class="size-4 rounded-full" alt="">Deutsch</button>
+                            </div>
+                        </details>
+                        <button type="button" aria-label="Toggle theme" class="light-dark-mode grid size-9 place-items-center rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                            <i class="icon-moon text-xl!"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card -->
+                <div class="relative rounded-3xl">
+                    <div class="absolute -inset-0.5 rounded-3xl bg-gradient-to-br from-amber-500/25 via-transparent to-fuchsia-500/25 opacity-70 blur-[2px]"></div>
+                    <div class="relative rounded-3xl bg-white dark:bg-slate-900 border border-gray-200/70 dark:border-white/10 p-6 sm:p-8 lg-card-shadow">
+                        <div class="mb-6 text-center">
+                            <span class="lg-pop inline-grid size-14 place-items-center rounded-2xl text-white text-2xl mb-4 badge-icon-amber"><i class="icon-timer-off"></i></span>
+                            <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-gray-900 dark:text-white">Session expired</h2>
+                            <p class="text-gray-500 dark:text-gray-400 mt-1.5 text-sm">You were signed out after 15 minutes of inactivity — this protects patient data on shared workstations.</p>
+                        </div>
+
+                        <!-- Session summary -->
+                        <div class="rounded-2xl border border-gray-200 dark:border-white/10 divide-y divide-gray-100 dark:divide-white/10 mb-5 overflow-hidden">
+                            <div class="flex items-center gap-3 p-3.5">
+                                <img src="assets/img/avatar/avatar-01.jpg" alt="" class="size-10 rounded-xl object-cover">
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-bold text-gray-900 dark:text-white">Dr. Sarah Chen</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 truncate">sarah.chen@hospital.com</p>
+                                </div>
+                                <span class="badge badge-amber">Expired</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3.5">
+                                <span class="grid size-9 place-items-center rounded-lg bg-gray-50 dark:bg-white/5 text-gray-400 shrink-0"><i class="icon-clock-alert"></i></span>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-semibold text-gray-900 dark:text-white">Last activity</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Today at 10:42 AM · Patients module</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3.5">
+                                <span class="grid size-9 place-items-center rounded-lg bg-gray-50 dark:bg-white/5 text-gray-400 shrink-0"><i class="icon-monitor-smartphone"></i></span>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-semibold text-gray-900 dark:text-white">Workstation</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Reception Desk 02 · Chrome on Windows</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <a href="login.html" class="lg-cta w-full rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3.5 font-bold text-[15px] shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2">
+                                <i class="icon-log-in"></i>Sign In Again
+                            </a>
+                            <a href="lock-screen.html" class="lg-social w-full rounded-xl bg-white dark:bg-slate-800 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white py-3.5 font-bold text-[15px] flex items-center justify-center gap-2 hover:bg-gray-50 dark:hover:bg-slate-700">
+                                <i class="icon-lock"></i>Unlock This Session
+                            </a>
+                        </div>
+
+                        <div class="mt-5 flex items-center gap-3 rounded-xl border border-emerald-100 dark:border-emerald-500/20 bg-emerald-50/70 dark:bg-emerald-500/10 px-3.5 py-3">
+                            <span class="grid size-8 shrink-0 place-items-center rounded-lg bg-emerald-600/10 text-emerald-600 dark:text-emerald-400"><i class="icon-shield-check text-sm"></i></span>
+                            <div class="min-w-0">
+                                <p class="text-[11px] font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wide">Your work is safe</p>
+                                <p class="text-[11px] text-emerald-600/80 dark:text-emerald-300/70">Records saved before the timeout were stored. Unsaved drafts may need re-entry.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
+                    Not Dr. Chen? <a href="login.html" class="font-bold text-blue-600 dark:text-blue-400 hover:underline">Sign in with a different account</a>
+                </p>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "session-expired"})
+    </body>
+</html>

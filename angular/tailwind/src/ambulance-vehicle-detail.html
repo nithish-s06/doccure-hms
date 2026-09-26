@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Vehicle Details — Dreams HMS"}) @@include('partials/header.html', {"page": "ambulance-vehicle-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="ambulance-vehicle-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="avd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Vehicle Details", "parentUrl": "ambulance-vehicles.html", "parent": "Vehicles"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="avd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="avd-hero-ico"><i class="icon-truck"></i></div>
+                                    <div class="min-w-0">
+                                        <p class="avd-kicker">Ambulance Vehicle</p>
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="avd-hero-number" class="text-2xl lg:text-3xl font-extrabold tracking-tight">AMB-101</h1>
+                                            <span class="avd-hbadge"><span class="avd-dot"></span><span id="avd-hero-status">Available</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="avd-hmeta"><i class="icon-activity text-[13px] text-sky-300"></i><span id="avd-hero-type">ALS</span> Unit</span>
+                                            <span class="avd-hmeta"><i class="icon-user text-[13px] text-indigo-300"></i><span id="avd-hero-driver">Mark Reynolds</span></span>
+                                            <span class="avd-hmeta"><i class="icon-hash text-[13px] text-violet-300"></i>Fleet ID #1</span>
+                                            <span class="avd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Last Service <span id="avd-hero-date">20 Nov 2024</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 avd-actions-print-hide">
+                                    <button type="button" class="avd-btn avd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="ambulance-vehicles.html" class="avd-btn avd-btn-primary"><i class="icon-arrow-left"></i>Back to Vehicles</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="avd-grid">
+                            <div class="avd-vital avd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-activity"></i></span>
+                                    <span class="avd-chip">Type</span>
+                                </div>
+                                <p id="avd-stat-type" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">ALS</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Advanced Life Support</p>
+                            </div>
+                            <div class="avd-vital avd-c-indigo">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-user"></i></span>
+                                    <span class="avd-chip">Driver</span>
+                                </div>
+                                <p id="avd-stat-driver" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Mark Reynolds</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Driver Assigned</p>
+                            </div>
+                            <div class="avd-vital avd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-route"></i></span>
+                                    <span class="avd-chip">This Month</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">186.4 km</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Distance Covered</p>
+                            </div>
+                            <div class="avd-vital avd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-check-circle"></i></span>
+                                    <span class="avd-chip">Status</span>
+                                </div>
+                                <span id="avd-stat-status" class="mt-3 inline-flex w-fit items-center px-3 py-1.5 rounded-lg text-sm font-extrabold text-success bg-success/10">Available</span>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Current Status</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="avd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Utilization -->
+                                <div class="avd-surface">
+                                    <div class="avd-head">
+                                        <span class="ico"><i class="icon-bar-chart-2"></i></span>
+                                        <h2 class="avd-title">Utilization Overview</h2>
+                                    </div>
+                                    <div class="p-5 grid grid-cols-1 sm:grid-cols-3 gap-5">
+                                        <div>
+                                            <div class="flex items-center justify-between mb-1.5">
+                                                <span class="text-xs font-semibold text-gray-500">Trips This Month</span>
+                                                <span class="text-xs font-extrabold text-gray-900 dark:text-white">27</span>
+                                            </div>
+                                            <div class="avd-meter"><span class="w-[68%]"></span></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex items-center justify-between mb-1.5">
+                                                <span class="text-xs font-semibold text-gray-500">Fuel Level</span>
+                                                <span class="text-xs font-extrabold text-gray-900 dark:text-white">82%</span>
+                                            </div>
+                                            <div class="avd-meter"><span class="w-[82%]"></span></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex items-center justify-between mb-1.5">
+                                                <span class="text-xs font-semibold text-gray-500">Service Interval Used</span>
+                                                <span class="text-xs font-extrabold text-gray-900 dark:text-white">41%</span>
+                                            </div>
+                                            <div class="avd-meter"><span class="w-[41%]"></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Service & Maintenance timeline -->
+                                <div class="avd-surface">
+                                    <div class="avd-head">
+                                        <span class="ico"><i class="icon-tool"></i></span>
+                                        <h2 class="avd-title">Service &amp; Maintenance Timeline</h2>
+                                    </div>
+                                    <div class="avd-tl p-5">
+                                        <div class="avd-tl-item done">
+                                            <span class="avd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="avd-tl-title">Routine Service Completed</p>
+                                            <p class="avd-tl-meta">20 Nov 2024 · Oil change, brake inspection, tyre rotation — Downtown Fleet Garage</p>
+                                        </div>
+                                        <div class="avd-tl-item done">
+                                            <span class="avd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="avd-tl-title">Equipment Calibration</p>
+                                            <p class="avd-tl-meta">02 Oct 2024 · Defibrillator &amp; oxygen system checked and certified</p>
+                                        </div>
+                                        <div class="avd-tl-item current">
+                                            <span class="avd-tl-node"><i class="icon-clock"></i></span>
+                                            <p class="avd-tl-title">Next Service Due</p>
+                                            <p class="avd-tl-meta">18 Feb 2025 · Scheduled 90-day preventive maintenance</p>
+                                        </div>
+                                        <div class="avd-tl-item">
+                                            <span class="avd-tl-node"><i class="icon-file-text"></i></span>
+                                            <p class="avd-tl-title">Insurance &amp; Registration Renewal</p>
+                                            <p class="avd-tl-meta">30 Apr 2025 · Annual policy renewal due</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 avd-sidebar">
+                                <!-- Driver -->
+                                <div class="avd-surface avd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Assigned Driver</p>
+                                    <h3 class="mt-1 text-lg font-extrabold" id="avd-side-driver">Mark Reynolds</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Senior Ambulance Driver</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="avd-hmeta"><i class="icon-phone-call text-[12px]"></i>Contact Driver</span>
+                                    </div>
+                                </div>
+
+                                <!-- Vehicle details -->
+                                <div class="avd-surface p-5">
+                                    <h3 class="avd-title mb-3">Vehicle Details</h3>
+                                    <div class="avd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Vehicle Number</span><span class="v" id="avd-kv-number">AMB-101</span></div>
+                                    <div class="avd-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Type</span><span class="v" id="avd-kv-type">ALS</span></div>
+                                    <div class="avd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Driver Assigned</span><span class="v" id="avd-kv-driver">Mark Reynolds</span></div>
+                                    <div class="avd-kv"><span class="k"><i class="icon-check-circle text-[13px]"></i>Status</span><span class="v" id="avd-kv-status">Available</span></div>
+                                    <div class="avd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Last Service</span><span class="v" id="avd-kv-lastservice">20 Nov 2024</span></div>
+                                    <div class="avd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Next Service Due</span><span class="v">18 Feb 2025</span></div>
+                                    <div class="avd-kv"><span class="k"><i class="icon-gauge text-[13px]"></i>Odometer</span><span class="v">42,180 km</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "ambulance-vehicle-detail"})
+    </body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Surgeon Profile — Dreams HMS"}) @@include('partials/header.html', {"page": "surgeon-profile"})
+    </head>
+
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="sup-page" data-page="surgeon-profile" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="sup-skeleton" class="space-y-5">
+                            <div class="sup-sk h-[210px] radius-override-150"></div>
+                            <div class="sup-grid sup-g6">
+                                <div class="sup-sk h-[110px]"></div><div class="sup-sk h-[110px]"></div><div class="sup-sk h-[110px]"></div>
+                                <div class="sup-sk h-[110px]"></div><div class="sup-sk h-[110px]"></div><div class="sup-sk h-[110px]"></div>
+                            </div>
+                            <div class="sup-layout">
+                                <div class="sup-sk h-[520px]"></div>
+                                <div class="sup-sk h-[520px]"></div>
+                            </div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="sup-content" class="hidden space-y-5">
+
+                            <!-- ---------- HERO ---------- -->
+                            <section class="sup-hero p-5 lg:p-7">
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                                    <nav class="flex items-center gap-1.5 text-xs font-semibold text-white/70">
+                                        <a href="surgeons.html" class="hover:text-white transition">Surgeons</a>
+                                        <i class="ti ti-chevron-right text-[13px]"></i>
+                                        <span class="text-white">Profile</span>
+                                    </nav>
+                                    <div class="flex items-center gap-2">
+                                        <span class="sup-hbadge"><span class="sup-dot"></span> <span id="sup-status-text">In Surgery Today</span></span>
+                                        <span class="sup-hbadge"><i class="ti ti-rosette-discount-check text-emerald-300"></i> Verified</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col lg:flex-row lg:items-end gap-5">
+                                    <div class="relative flex-none">
+                                        <div class="sup-avatar" id="sup-avatar">AM</div>
+                                        <span class="sup-online"></span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2 mb-1">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold" id="sup-name">Dr. Arjun Mehta</h1>
+                                            <span class="sup-hbadge">MBBS, MS, MCh (Ortho)</span>
+                                        </div>
+                                        <p class="text-white/80 font-semibold" id="sup-spec">Senior Orthopedic Surgeon · Orthopedics Department</p>
+                                        <div class="flex flex-wrap items-center gap-2.5 mt-3">
+                                            <span class="sup-hmeta"><i class="ti ti-star text-amber-300"></i> 4.8 <span class="text-white/60 font-medium">(356 reviews)</span></span>
+                                            <span class="sup-hmeta"><i class="ti ti-briefcase"></i> 16 yrs experience</span>
+                                            <span class="sup-hmeta"><i class="ti ti-cut"></i> 2,140 surgeries performed</span>
+                                            <span class="sup-hmeta"><i class="ti ti-map-pin"></i> Block C · OT-02</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap items-center gap-2">
+                                        <button class="sup-btn sup-btn-success" data-book data-hs-overlay="#sup-bookmodal"><i class="ti ti-calendar-plus"></i> Assign Surgery</button>
+                                        <button class="sup-btn sup-btn-glass" data-msg data-hs-overlay="#sup-msgmodal"><i class="ti ti-message-2"></i> Message</button>
+                                        <button class="sup-btn sup-btn-glass" data-href="surgeons.html"><i class="ti ti-edit"></i> Edit</button>
+                                        <button class="sup-btn sup-btn-glass" data-menu><i class="ti ti-dots-vertical"></i></button>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ---------- KPI STRIP ---------- -->
+                            <section class="sup-grid sup-g6" id="sup-kpis"><div class="sup-kpi"><div class="flex items-center justify-between mb-2.5"><div class="sup-kpi-ic [background:color-mix(in_srgb,#0ea5e9_15%,transparent)] [color:#0ea5e9]"><i class="ti ti-cut text-lg"></i></div><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-trending-up"></i>+8%</span></div><div class="sup-kpi-v">2,140</div><div class="text-xs sup-muted font-semibold mt-1">Total Surgeries</div></div><div class="sup-kpi"><div class="flex items-center justify-between mb-2.5"><div class="sup-kpi-ic [background:color-mix(in_srgb,#6366f1_15%,transparent)] [color:#6366f1]"><i class="ti ti-calendar text-lg"></i></div><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-trending-up"></i>2 pending</span></div><div class="sup-kpi-v">6 <span class="text-sm sup-muted font-semibold">today</span></div><div class="text-xs sup-muted font-semibold mt-1">Upcoming Surgeries</div></div><div class="sup-kpi"><div class="flex items-center justify-between mb-2.5"><div class="sup-kpi-ic [background:color-mix(in_srgb,#f59e0b_15%,transparent)] [color:#f59e0b]"><i class="ti ti-star text-lg"></i></div><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-trending-up"></i>356 reviews</span></div><div class="sup-kpi-v">4.8</div><div class="text-xs sup-muted font-semibold mt-1">Avg Rating</div></div><div class="sup-kpi"><div class="flex items-center justify-between mb-2.5"><div class="sup-kpi-ic [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#10b981]"><i class="ti ti-currency-rupee text-lg"></i></div><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-trending-up"></i>per procedure</span></div><div class="sup-kpi-v">₹45,000</div><div class="text-xs sup-muted font-semibold mt-1">Surgery Fee</div></div><div class="sup-kpi"><div class="flex items-center justify-between mb-2.5"><div class="sup-kpi-ic [background:color-mix(in_srgb,#ec4899_15%,transparent)] [color:#ec4899]"><i class="ti ti-heart-rate-monitor text-lg"></i></div><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-trending-up"></i>+1%</span></div><div class="sup-kpi-v">97%</div><div class="text-xs sup-muted font-semibold mt-1">Success Rate</div></div><div class="sup-kpi"><div class="flex items-center justify-between mb-2.5"><div class="sup-kpi-ic [background:color-mix(in_srgb,#8b5cf6_15%,transparent)] [color:#8b5cf6]"><i class="ti ti-briefcase text-lg"></i></div><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-trending-up"></i>since 2009</span></div><div class="sup-kpi-v">16y</div><div class="text-xs sup-muted font-semibold mt-1">Experience</div></div></section>
+
+                            <!-- ---------- TABS + LAYOUT ---------- -->
+                            <div class="sup-layout">
+                                <div class="space-y-5">
+                                    <div class="sup-tabs" id="sup-tabs" role="tablist" data-hs-tab-role="tablist">
+                                        <button type="button" class="sup-tab active" id="sup-tab-item-overview" data-hs-tab="#sup-panel-overview" aria-controls="sup-panel-overview" aria-selected="true" role="tab"><i class="ti ti-layout-grid"></i> Overview</button>
+                                        <button type="button" class="sup-tab" id="sup-tab-item-schedule" data-hs-tab="#sup-panel-schedule" aria-controls="sup-panel-schedule" aria-selected="false" role="tab"><i class="ti ti-calendar-week"></i> Schedule</button>
+                                        <button type="button" class="sup-tab" id="sup-tab-item-patients" data-hs-tab="#sup-panel-patients" aria-controls="sup-panel-patients" aria-selected="false" role="tab"><i class="ti ti-users"></i> Patients</button>
+                                        <button type="button" class="sup-tab" id="sup-tab-item-surgeries" data-hs-tab="#sup-panel-surgeries" aria-controls="sup-panel-surgeries" aria-selected="false" role="tab"><i class="ti ti-clipboard-list"></i> Surgeries</button>
+                                        <button type="button" class="sup-tab" id="sup-tab-item-reviews" data-hs-tab="#sup-panel-reviews" aria-controls="sup-panel-reviews" aria-selected="false" role="tab"><i class="ti ti-star"></i> Reviews</button>
+                                        <button type="button" class="sup-tab" id="sup-tab-item-documents" data-hs-tab="#sup-panel-documents" aria-controls="sup-panel-documents" aria-selected="false" role="tab"><i class="ti ti-file-text"></i> Documents</button>
+                                    </div>
+
+                                    <!-- OVERVIEW -->
+                                    <section id="sup-panel-overview" class="sup-panel" role="tabpanel" aria-labelledby="sup-tab-item-overview">
+                                        <div class="sup-surface p-5">
+                                            <h3 class="font-bold text-[var(--color-gray-900)] mb-2 flex items-center gap-2"><i class="ti ti-user-circle text-[var(--color-primary)]"></i> About</h3>
+                                            <p class="text-sm leading-relaxed sup-muted">Dr. Arjun Mehta is a board-certified senior orthopedic surgeon with over 16 years of experience in joint replacement, trauma reconstruction, and minimally invasive arthroscopic surgery. He has performed 2,140+ successful procedures and is renowned for his precision technique and low-complication outcomes.</p>
+                                            <div class="sup-grid sup-g3 mt-4">
+                                                <div><div class="text-xs sup-muted font-semibold mb-1">Languages</div><div class="flex flex-wrap gap-1.5"><span class="sup-tag">English</span><span class="sup-tag">Hindi</span><span class="sup-tag">Marathi</span></div></div>
+                                                <div><div class="text-xs sup-muted font-semibold mb-1">Focus Areas</div><div class="flex flex-wrap gap-1.5"><span class="sup-tag">Joint Replacement</span><span class="sup-tag">Arthroscopy</span></div></div>
+                                                <div><div class="text-xs sup-muted font-semibold mb-1">OT Preference</div><div class="flex flex-wrap gap-1.5"><span class="sup-tag">OT-02</span><span class="sup-tag">Cardiac OT (backup)</span></div></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="sup-grid sup-g2 mt-5">
+                                            <div class="sup-surface p-5">
+                                                <h3 class="font-bold text-[var(--color-gray-900)] mb-3 flex items-center gap-2"><i class="ti ti-award text-amber-500"></i> Specializations</h3>
+                                                <div id="sup-specs" class="space-y-3"><div><div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold text-[var(--color-gray-900)]">Joint Replacement Surgery</span><span class="text-xs font-bold sup-muted">96%</span></div><div class="sup-bar"><span class="[width:96%]"></span></div></div><div><div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold text-[var(--color-gray-900)]">Arthroscopy</span><span class="text-xs font-bold sup-muted">90%</span></div><div class="sup-bar"><span class="[width:90%]"></span></div></div><div><div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold text-[var(--color-gray-900)]">Trauma &amp; Fracture Surgery</span><span class="text-xs font-bold sup-muted">93%</span></div><div class="sup-bar"><span class="[width:93%]"></span></div></div><div><div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold text-[var(--color-gray-900)]">Spine Surgery</span><span class="text-xs font-bold sup-muted">82%</span></div><div class="sup-bar"><span class="[width:82%]"></span></div></div></div>
+                                            </div>
+                                            <div class="sup-surface p-5">
+                                                <h3 class="font-bold text-[var(--color-gray-900)] mb-3 flex items-center gap-2"><i class="ti ti-school text-[var(--color-primary)]"></i> Education & Career</h3>
+                                                <div id="sup-edu" class="pt-1"><div class="sup-timeitem"><span class="sup-timedot"></span><div class="text-sm font-bold text-[var(--color-gray-900)]">MCh, Orthopedics</div><div class="text-xs sup-muted">AIIMS, New Delhi</div><div class="text-[11px] font-semibold text-[var(--color-primary)] mt-.5">2009</div></div><div class="sup-timeitem"><span class="sup-timedot"></span><div class="text-sm font-bold text-[var(--color-gray-900)]">MS, Orthopedic Surgery</div><div class="text-xs sup-muted">King George Medical College</div><div class="text-[11px] font-semibold text-[var(--color-primary)] mt-.5">2005</div></div><div class="sup-timeitem"><span class="sup-timedot"></span><div class="text-sm font-bold text-[var(--color-gray-900)]">MBBS</div><div class="text-xs sup-muted">King George Medical College</div><div class="text-[11px] font-semibold text-[var(--color-primary)] mt-.5">2001</div></div></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="sup-surface p-5 mt-5">
+                                            <h3 class="font-bold text-[var(--color-gray-900)] mb-4 flex items-center gap-2"><i class="ti ti-trophy text-amber-500"></i> Awards & Recognition</h3>
+                                            <div class="sup-grid sup-g3" id="sup-awards"><div class="p-4 rounded-xl border border-[var(--color-border-color)] text-center"><div class="w-11 h-11 rounded-xl mx-auto flex items-center justify-center mb-2 [background:color-mix(in_srgb,#f59e0b_15%,transparent)] [color:#f59e0b]"><i class="ti ti-trophy text-xl"></i></div><div class="text-sm font-bold text-[var(--color-gray-900)]">Best Orthopedic Surgeon 2023</div><div class="text-xs sup-muted mt-.5">State Medical Council</div></div><div class="p-4 rounded-xl border border-[var(--color-border-color)] text-center"><div class="w-11 h-11 rounded-xl mx-auto flex items-center justify-center mb-2 [background:color-mix(in_srgb,#ec4899_15%,transparent)] [color:#ec4899]"><i class="ti ti-heart text-xl"></i></div><div class="text-sm font-bold text-[var(--color-gray-900)]">Excellence in Surgical Care</div><div class="text-xs sup-muted mt-.5">Dreams HMS</div></div><div class="p-4 rounded-xl border border-[var(--color-border-color)] text-center"><div class="w-11 h-11 rounded-xl mx-auto flex items-center justify-center mb-2 [background:color-mix(in_srgb,#6366f1_15%,transparent)] [color:#6366f1]"><i class="ti ti-notebook text-xl"></i></div><div class="text-sm font-bold text-[var(--color-gray-900)]">Research Publication Award</div><div class="text-xs sup-muted mt-.5">Intl. Orthopedic Journal</div></div></div>
+                                        </div>
+                                    </section>
+
+                                    <!-- SCHEDULE -->
+                                    <section id="sup-panel-schedule" class="sup-panel hidden" role="tabpanel" aria-labelledby="sup-tab-item-schedule">
+                                        <div class="sup-surface p-5">
+                                            <div class="flex items-center justify-between mb-4">
+                                                <h3 class="font-bold text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-calendar-week text-[var(--color-primary)]"></i> Weekly OT Availability</h3>
+                                                <span class="sup-chip [background:color-mix(in_srgb,#34d399_18%,transparent)] [color:#059669]"><i class="ti ti-clock"></i> 08:00 – 16:00</span>
+                                            </div>
+                                            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2" id="sup-week"><div class="sup-daycol"><div class="sup-dayhd">Mon</div><div class="p-2.5 text-center"><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-check"></i> Open</span><div class="text-[11px] font-semibold sup-muted mt-1.5">08:00–16:00</div></div></div><div class="sup-daycol"><div class="sup-dayhd">Tue</div><div class="p-2.5 text-center"><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-check"></i> Open</span><div class="text-[11px] font-semibold sup-muted mt-1.5">08:00–16:00</div></div></div><div class="sup-daycol"><div class="sup-dayhd">Wed</div><div class="p-2.5 text-center"><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-check"></i> Open</span><div class="text-[11px] font-semibold sup-muted mt-1.5">09:00–14:00</div></div></div><div class="sup-daycol"><div class="sup-dayhd">Thu</div><div class="p-2.5 text-center"><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-check"></i> Open</span><div class="text-[11px] font-semibold sup-muted mt-1.5">08:00–16:00</div></div></div><div class="sup-daycol"><div class="sup-dayhd">Fri</div><div class="p-2.5 text-center"><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-check"></i> Open</span><div class="text-[11px] font-semibold sup-muted mt-1.5">08:00–13:00</div></div></div><div class="sup-daycol"><div class="sup-dayhd">Sat</div><div class="p-2.5 text-center"><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#059669]"><i class="ti ti-check"></i> Open</span><div class="text-[11px] font-semibold sup-muted mt-1.5">09:00–12:00</div></div></div><div class="sup-daycol"><div class="sup-dayhd">Sun</div><div class="p-2.5 text-center"><span class="sup-chip [background:color-mix(in_srgb,#94a3b8_15%,transparent)] [color:#64748b]">Off</span></div></div></div>
+                                        </div>
+                                        <div class="sup-surface p-5 mt-5">
+                                            <h3 class="font-bold text-[var(--color-gray-900)] mb-1 flex items-center gap-2"><i class="ti ti-calendar-plus text-[var(--color-primary)]"></i> Book an OT Slot Today</h3>
+                                            <p class="text-xs sup-muted mb-4">Select an available operating theatre slot for today's procedure.</p>
+                                            <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2" id="sup-slots"><div class="sup-slot taken" data-slot="0">08:00</div><div class="sup-slot taken" data-slot="1">08:30</div><div class="sup-slot" data-slot="2">09:00</div><div class="sup-slot" data-slot="3">09:30</div><div class="sup-slot taken" data-slot="4">10:00</div><div class="sup-slot" data-slot="5">10:30</div><div class="sup-slot" data-slot="6">13:00</div><div class="sup-slot taken" data-slot="7">13:30</div><div class="sup-slot" data-slot="8">14:00</div><div class="sup-slot" data-slot="9">14:30</div><div class="sup-slot" data-slot="10">15:00</div><div class="sup-slot taken" data-slot="11">15:30</div></div>
+                                            <div class="flex justify-end mt-4"><button class="sup-btn sup-btn-primary [opacity:.5]" id="sup-slotbook" disabled><i class="ti ti-check"></i> Confirm Booking</button></div>
+                                        </div>
+                                    </section>
+
+                                    <!-- PATIENTS -->
+                                    <section id="sup-panel-patients" class="sup-panel hidden" role="tabpanel" aria-labelledby="sup-tab-item-patients">
+                                        <div class="sup-surface p-5">
+                                            <h3 class="font-bold text-[var(--color-gray-900)] mb-4 flex items-center gap-2"><i class="ti ti-users text-[var(--color-primary)]"></i> Recent Surgical Patients</h3>
+                                            <div class="space-y-2.5" id="sup-patients"><div class="sup-row"><div class="sup-av [background:linear-gradient(135deg,#0ea5e9,#10b981)]">RK</div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Ravi Kumar</div><div class="text-xs sup-muted truncate">Pre-op · Knee Replacement</div></div><div class="text-right flex-none"><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#10b981]">Stable</span><div class="text-[11px] sup-muted mt-1">2h ago</div></div></div><div class="sup-row"><div class="sup-av [background:linear-gradient(135deg,#6366f1,#f59e0b)]">AD</div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Anita Desai</div><div class="text-xs sup-muted truncate">Post-op review · Hip Replacement</div></div><div class="text-right flex-none"><span class="sup-chip [background:color-mix(in_srgb,#0ea5e9_15%,transparent)] [color:#0ea5e9]">Recovering</span><div class="text-[11px] sup-muted mt-1">5h ago</div></div></div><div class="sup-row"><div class="sup-av [background:linear-gradient(135deg,#10b981,#ec4899)]">MA</div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Mohammed Ali</div><div class="text-xs sup-muted truncate">Fracture assessment</div></div><div class="text-right flex-none"><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#10b981]">Stable</span><div class="text-[11px] sup-muted mt-1">Yesterday</div></div></div><div class="sup-row"><div class="sup-av [background:linear-gradient(135deg,#f59e0b,#8b5cf6)]">PS</div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Priya Sharma</div><div class="text-xs sup-muted truncate">New patient · ACL tear</div></div><div class="text-right flex-none"><span class="sup-chip [background:color-mix(in_srgb,#f59e0b_15%,transparent)] [color:#f59e0b]">Monitoring</span><div class="text-[11px] sup-muted mt-1">Yesterday</div></div></div><div class="sup-row"><div class="sup-av [background:linear-gradient(135deg,#ec4899,#0ea5e9)]">JM</div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">John Mathew</div><div class="text-xs sup-muted truncate">Post-op checkup · Spine Surgery</div></div><div class="text-right flex-none"><span class="sup-chip [background:color-mix(in_srgb,#0ea5e9_15%,transparent)] [color:#0ea5e9]">Recovering</span><div class="text-[11px] sup-muted mt-1">2 days ago</div></div></div></div>
+                                        </div>
+                                    </section>
+
+                                    <!-- SURGERIES -->
+                                    <section id="sup-panel-surgeries" class="sup-panel hidden" role="tabpanel" aria-labelledby="sup-tab-item-surgeries">
+                                        <div class="sup-surface p-5">
+                                            <h3 class="font-bold text-[var(--color-gray-900)] mb-4 flex items-center gap-2"><i class="ti ti-clipboard-list text-[var(--color-primary)]"></i> Upcoming Surgeries</h3>
+                                            <div class="space-y-2.5" id="sup-appts"><div class="sup-row"><div class="sup-av [background:linear-gradient(135deg,#6366f1,#f59e0b)]">DN</div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Deepak Nair</div><div class="text-xs sup-muted truncate"><i class="ti ti-door"></i> OT-02 · Knee Replacement</div></div><div class="text-right flex-none"><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#10b981]">Confirmed</span><div class="text-[11px] sup-muted mt-1 font-semibold">Today · 3:30 PM</div></div></div><div class="sup-row"><div class="sup-av [background:linear-gradient(135deg,#10b981,#ec4899)]">SR</div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Sunita Rao</div><div class="text-xs sup-muted truncate"><i class="ti ti-door"></i> OT-02 · Arthroscopy</div></div><div class="text-right flex-none"><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#10b981]">Confirmed</span><div class="text-[11px] sup-muted mt-1 font-semibold">Today · 5:00 PM</div></div></div><div class="sup-row"><div class="sup-av [background:linear-gradient(135deg,#f59e0b,#8b5cf6)]">AM</div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Arjun Menon</div><div class="text-xs sup-muted truncate"><i class="ti ti-door"></i> Cardiac OT · Hip Replacement</div></div><div class="text-right flex-none"><span class="sup-chip [background:color-mix(in_srgb,#f59e0b_15%,transparent)] [color:#f59e0b]">Pending</span><div class="text-[11px] sup-muted mt-1 font-semibold">Tomorrow · 09:00 AM</div></div></div><div class="sup-row"><div class="sup-av [background:linear-gradient(135deg,#ec4899,#0ea5e9)]">MI</div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Meera Iyer</div><div class="text-xs sup-muted truncate"><i class="ti ti-door"></i> OT-02 · Fracture Fixation</div></div><div class="text-right flex-none"><span class="sup-chip [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#10b981]">Confirmed</span><div class="text-[11px] sup-muted mt-1 font-semibold">Tomorrow · 11:30 AM</div></div></div><div class="sup-row"><div class="sup-av [background:linear-gradient(135deg,#8b5cf6,#6366f1)]">KM</div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Karan Malhotra</div><div class="text-xs sup-muted truncate"><i class="ti ti-door"></i> OT-02 · Spine Surgery</div></div><div class="text-right flex-none"><span class="sup-chip [background:color-mix(in_srgb,#f59e0b_15%,transparent)] [color:#f59e0b]">Pending</span><div class="text-[11px] sup-muted mt-1 font-semibold">Jul 21 · 2:00 PM</div></div></div></div>
+                                        </div>
+                                    </section>
+
+                                    <!-- REVIEWS -->
+                                    <section id="sup-panel-reviews" class="sup-panel hidden" role="tabpanel" aria-labelledby="sup-tab-item-reviews">
+                                        <div class="sup-surface p-5 mb-5">
+                                            <div class="flex flex-col sm:flex-row items-center gap-6">
+                                                <div class="text-center flex-none">
+                                                    <div class="text-5xl font-extrabold text-[var(--color-gray-900)]">4.8</div>
+                                                    <div class="sup-star text-lg mt-1"><i class="ti ti-star"></i><i class="ti ti-star"></i><i class="ti ti-star"></i><i class="ti ti-star"></i><i class="ti ti-star"></i></div>
+                                                    <div class="text-xs sup-muted mt-1">356 reviews</div>
+                                                </div>
+                                                <div class="flex-1 w-full space-y-1.5" id="sup-rbars"><div class="flex items-center gap-2"><span class="text-xs font-bold sup-muted w-3">5</span><i class="ti ti-star sup-star text-xs"></i><div class="sup-bar flex-1"><span class="[width:82%]"></span></div><span class="text-xs sup-muted w-8 text-right">82%</span></div><div class="flex items-center gap-2"><span class="text-xs font-bold sup-muted w-3">4</span><i class="ti ti-star sup-star text-xs"></i><div class="sup-bar flex-1"><span class="[width:12%]"></span></div><span class="text-xs sup-muted w-8 text-right">12%</span></div><div class="flex items-center gap-2"><span class="text-xs font-bold sup-muted w-3">3</span><i class="ti ti-star sup-star text-xs"></i><div class="sup-bar flex-1"><span class="[width:4%]"></span></div><span class="text-xs sup-muted w-8 text-right">4%</span></div><div class="flex items-center gap-2"><span class="text-xs font-bold sup-muted w-3">2</span><i class="ti ti-star sup-star text-xs"></i><div class="sup-bar flex-1"><span class="[width:1%]"></span></div><span class="text-xs sup-muted w-8 text-right">1%</span></div><div class="flex items-center gap-2"><span class="text-xs font-bold sup-muted w-3">1</span><i class="ti ti-star sup-star text-xs"></i><div class="sup-bar flex-1"><span class="[width:1%]"></span></div><span class="text-xs sup-muted w-8 text-right">1%</span></div></div>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-3" id="sup-reviews"><div class="sup-surface p-4"><div class="flex items-start gap-3"><div class="sup-av [background:linear-gradient(135deg,#0ea5e9,#10b981)]">RG</div><div class="flex-1 min-w-0"><div class="flex items-center justify-between flex-wrap gap-1"><span class="text-sm font-bold text-[var(--color-gray-900)]">Ramesh G.</span><span class="text-xs sup-muted">2 days ago</span></div><div class="my-1"><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i></div><p class="text-sm sup-muted leading-relaxed">Excellent surgeon! Dr. Mehta explained the procedure clearly and my knee replacement recovery has been smooth. Highly recommend.</p></div></div></div><div class="sup-surface p-4"><div class="flex items-start gap-3"><div class="sup-av [background:linear-gradient(135deg,#6366f1,#f59e0b)]">FS</div><div class="flex-1 min-w-0"><div class="flex items-center justify-between flex-wrap gap-1"><span class="text-sm font-bold text-[var(--color-gray-900)]">Fatima S.</span><span class="text-xs sup-muted">1 week ago</span></div><div class="my-1"><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i></div><p class="text-sm sup-muted leading-relaxed">Very patient and thorough. He took time to answer all my questions before the surgery. The best orthopedic surgeon I&#39;ve consulted.</p></div></div></div><div class="sup-surface p-4"><div class="flex items-start gap-3"><div class="sup-av [background:linear-gradient(135deg,#10b981,#ec4899)]">DL</div><div class="flex-1 min-w-0"><div class="flex items-center justify-between flex-wrap gap-1"><span class="text-sm font-bold text-[var(--color-gray-900)]">David L.</span><span class="text-xs sup-muted">2 weeks ago</span></div><div class="my-1"><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star sup-muted text-sm"></i></div><p class="text-sm sup-muted leading-relaxed">Great expertise and professionalism. Pre-op wait was a bit long but the surgery outcome was worth it.</p></div></div></div><div class="sup-surface p-4"><div class="flex items-start gap-3"><div class="sup-av [background:linear-gradient(135deg,#f59e0b,#8b5cf6)]">NK</div><div class="flex-1 min-w-0"><div class="flex items-center justify-between flex-wrap gap-1"><span class="text-sm font-bold text-[var(--color-gray-900)]">Neha K.</span><span class="text-xs sup-muted">3 weeks ago</span></div><div class="my-1"><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i><i class="ti ti-star-filled sup-star text-sm"></i></div><p class="text-sm sup-muted leading-relaxed">Saved my father&#39;s mobility with a timely hip replacement. Forever grateful for his skill and dedication.</p></div></div></div></div>
+                                    </section>
+
+                                    <!-- DOCUMENTS -->
+                                    <section id="sup-panel-documents" class="sup-panel hidden" role="tabpanel" aria-labelledby="sup-tab-item-documents">
+                                        <div class="sup-surface p-5">
+                                            <h3 class="font-bold text-[var(--color-gray-900)] mb-4 flex items-center gap-2"><i class="ti ti-file-text text-[var(--color-primary)]"></i> Credentials & Documents</h3>
+                                            <div class="sup-grid sup-g2" id="sup-docs"><div class="sup-row"><div class="sup-av [background:color-mix(in_srgb,#ef4444_15%,transparent)] [color:#ef4444]"><i class="ti ti-certificate text-xl"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Medical License</div><div class="text-xs sup-muted">PDF · 2.1 MB</div></div><button class="sup-btn sup-btn-soft !p-2" title="Download" onclick="return false"><i class="ti ti-download"></i></button></div><div class="sup-row"><div class="sup-av [background:color-mix(in_srgb,#6366f1_15%,transparent)] [color:#6366f1]"><i class="ti ti-school text-xl"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">MCh Degree Certificate</div><div class="text-xs sup-muted">PDF · 1.4 MB</div></div><button class="sup-btn sup-btn-soft !p-2" title="Download" onclick="return false"><i class="ti ti-download"></i></button></div><div class="sup-row"><div class="sup-av [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#10b981]"><i class="ti ti-rosette-discount-check text-xl"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Board Certification</div><div class="text-xs sup-muted">PDF · 890 KB</div></div><button class="sup-btn sup-btn-soft !p-2" title="Download" onclick="return false"><i class="ti ti-download"></i></button></div><div class="sup-row"><div class="sup-av [background:color-mix(in_srgb,#f59e0b_15%,transparent)] [color:#f59e0b]"><i class="ti ti-award text-xl"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Fellowship Certificate</div><div class="text-xs sup-muted">PDF · 1.1 MB</div></div><button class="sup-btn sup-btn-soft !p-2" title="Download" onclick="return false"><i class="ti ti-download"></i></button></div></div>
+                                        </div>
+                                    </section>
+                                </div>
+
+                                <!-- ---------- SIDEBAR ---------- -->
+                                <aside class="space-y-5">
+                                    <div class="sup-surface p-5">
+                                        <h3 class="font-bold text-[var(--color-gray-900)] mb-3 flex items-center gap-2"><i class="ti ti-address-book text-[var(--color-primary)]"></i> Contact</h3>
+                                        <div class="space-y-2.5 text-sm">
+                                            <div class="flex items-center gap-2.5"><i class="ti ti-mail sup-muted"></i><a href="mailto:arjun.mehta@dreamshms.com" class="font-semibold text-[var(--color-gray-900)] hover:text-[var(--color-primary)]">arjun.mehta@dreamshms.com</a></div>
+                                            <div class="flex items-center gap-2.5"><i class="ti ti-phone sup-muted"></i><span class="font-semibold text-[var(--color-gray-900)]">+91 98450 12234</span></div>
+                                            <div class="flex items-center gap-2.5"><i class="ti ti-building-hospital sup-muted"></i><span class="font-semibold text-[var(--color-gray-900)]">Block C · OT-02</span></div>
+                                            <div class="flex items-center gap-2.5"><i class="ti ti-id sup-muted"></i><span class="font-semibold text-[var(--color-gray-900)]">Reg. MCI-2009-7731</span></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="sup-surface p-5">
+                                        <h3 class="font-bold text-[var(--color-gray-900)] mb-4 flex items-center gap-2"><i class="ti ti-chart-donut text-[var(--color-primary)]"></i> Performance</h3>
+                                        <div class="grid grid-cols-3 gap-2 text-center" id="sup-rings"><div><svg viewBox="0 0 36 36" class="sup-ring w-16 h-16 mx-auto"><circle cx="18" cy="18" r="15.9155" fill="none" stroke="var(--color-gray-200)" stroke-width="3.4"/><circle class="bar [--p:97]" cx="18" cy="18" r="15.9155" fill="none" stroke="#10b981" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><div class="text-lg font-extrabold text-[var(--color-gray-900)] -mt-11 mb-6">97%</div><div class="text-[11px] sup-muted font-semibold">Success</div></div><div><svg viewBox="0 0 36 36" class="sup-ring w-16 h-16 mx-auto"><circle cx="18" cy="18" r="15.9155" fill="none" stroke="var(--color-gray-200)" stroke-width="3.4"/><circle class="bar [--p:93]" cx="18" cy="18" r="15.9155" fill="none" stroke="#0ea5e9" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><div class="text-lg font-extrabold text-[var(--color-gray-900)] -mt-11 mb-6">93%</div><div class="text-[11px] sup-muted font-semibold">Punctual</div></div><div><svg viewBox="0 0 36 36" class="sup-ring w-16 h-16 mx-auto"><circle cx="18" cy="18" r="15.9155" fill="none" stroke="var(--color-gray-200)" stroke-width="3.4"/><circle class="bar [--p:96]" cx="18" cy="18" r="15.9155" fill="none" stroke="#6366f1" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><div class="text-lg font-extrabold text-[var(--color-gray-900)] -mt-11 mb-6">96%</div><div class="text-[11px] sup-muted font-semibold">Recovery</div></div></div>
+                                    </div>
+
+                                    <div class="sup-surface p-5">
+                                        <h3 class="font-bold text-[var(--color-gray-900)] mb-3 flex items-center gap-2"><i class="ti ti-bolt text-amber-500"></i> Today at a Glance</h3>
+                                        <div class="space-y-2" id="sup-today"><div class="flex items-center gap-2.5 p-2.5 rounded-lg border border-[var(--color-border-color)]"><div class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#0ea5e9_15%,transparent)] [color:#0ea5e9]"><i class="ti ti-calendar"></i></div><span class="text-sm sup-muted font-semibold flex-1">Surgeries</span><span class="text-sm font-extrabold text-[var(--color-gray-900)]">6</span></div><div class="flex items-center gap-2.5 p-2.5 rounded-lg border border-[var(--color-border-color)]"><div class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#10b981_15%,transparent)] [color:#10b981]"><i class="ti ti-circle-check"></i></div><span class="text-sm sup-muted font-semibold flex-1">Completed</span><span class="text-sm font-extrabold text-[var(--color-gray-900)]">3</span></div><div class="flex items-center gap-2.5 p-2.5 rounded-lg border border-[var(--color-border-color)]"><div class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#f59e0b_15%,transparent)] [color:#f59e0b]"><i class="ti ti-clock"></i></div><span class="text-sm sup-muted font-semibold flex-1">In Prep</span><span class="text-sm font-extrabold text-[var(--color-gray-900)]">2</span></div><div class="flex items-center gap-2.5 p-2.5 rounded-lg border border-[var(--color-border-color)]"><div class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#6366f1_15%,transparent)] [color:#6366f1]"><i class="ti ti-hourglass"></i></div><span class="text-sm sup-muted font-semibold flex-1">Avg. duration</span><span class="text-sm font-extrabold text-[var(--color-gray-900)]">105 min</span></div></div>
+                                    </div>
+
+                                    <div class="sup-surface p-5 [background:linear-gradient(135deg,color-mix(in_srgb,var(--color-primary)_8%,var(--color-white)),var(--color-white))]">
+                                        <h3 class="font-bold text-[var(--color-gray-900)] mb-1 flex items-center gap-2"><i class="ti ti-calendar-heart text-[var(--color-primary)]"></i> Quick Book</h3>
+                                        <p class="text-xs sup-muted mb-3">Next available OT slot: <span class="font-bold text-[var(--color-gray-900)]">Today, 3:30 PM · OT-02</span></p>
+                                        <button class="sup-btn sup-btn-primary w-full" data-book data-hs-overlay="#sup-bookmodal"><i class="ti ti-calendar-plus"></i> Book Now</button>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- ==================== BOOK MODAL ==================== -->
+        <div id="sup-bookmodal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sup-dialog p-5 pointer-events-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-calendar-plus text-[var(--color-primary)]"></i> Assign Surgery</h3>
+                    <button class="sup-btn sup-btn-soft btn-icon-sq" data-hs-overlay="#sup-bookmodal"><i class="ti ti-x"></i></button>
+                </div>
+                <div class="space-y-3">
+                    <div><label for="sup-bk-name" class="sup-lbl">Patient Name</label><input class="sup-inp" id="sup-bk-name" placeholder="Enter patient name"></div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><label for="sup-bk-date" class="sup-lbl">Date</label><input class="sup-inp" type="text" id="sup-bk-date" data-provider="flatpickr" data-date-format="d M Y" placeholder="Select date"></div>
+                        <div><label for="sup-bk-type" class="sup-lbl">OT Room</label><select class="sup-inp" id="sup-bk-type"><option>OT-02</option><option>Cardiac OT</option></select></div>
+                    </div>
+                    <div><label for="sup-bk-reason" class="sup-lbl">Procedure</label><textarea class="sup-inp" rows="2" id="sup-bk-reason" placeholder="Procedure / reason for surgery"></textarea></div>
+                </div>
+                <div class="flex justify-end gap-2 mt-5">
+                    <button class="sup-btn sup-btn-soft" data-hs-overlay="#sup-bookmodal">Cancel</button>
+                    <button class="sup-btn sup-btn-primary" id="sup-bk-submit"><i class="ti ti-check"></i> Confirm</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== MESSAGE MODAL ==================== -->
+        <div id="sup-msgmodal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sup-dialog p-5 pointer-events-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-message-2 text-[var(--color-primary)]"></i> Message Dr. Mehta</h3>
+                    <button class="sup-btn sup-btn-soft btn-icon-sq" data-hs-overlay="#sup-msgmodal"><i class="ti ti-x"></i></button>
+                </div>
+                <div class="space-y-3">
+                    <div><label for="sup-mg-sub" class="sup-lbl">Subject</label><input class="sup-inp" id="sup-mg-sub" placeholder="Subject"></div>
+                    <div><label for="sup-mg-body" class="sup-lbl">Message</label><textarea class="sup-inp" rows="4" id="sup-mg-body" placeholder="Type your message..."></textarea></div>
+                </div>
+                <div class="flex justify-end gap-2 mt-5">
+                    <button class="sup-btn sup-btn-soft" data-hs-overlay="#sup-msgmodal">Cancel</button>
+                    <button class="sup-btn sup-btn-success" id="sup-mg-submit"><i class="ti ti-send"></i> Send</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="sup-toast"></div>
+
+
+        @@include('partials/script.html', {"page": "surgeon-profile"})
+    </body>
+</html>

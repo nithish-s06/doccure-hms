@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Estimates — Dreams HMS"}) @@include('partials/header.html', {"page": "estimates"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="estimates">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search estimates by patient, procedure..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Estimates", "parentUrl": "billing.html", "parent": "Billing"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Cost Estimates</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Estimated costs for procedures and services</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-calculator text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">7</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Estimates</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Accepted</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-send text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Sent</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-clock-alert text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">1</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Expired</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Estimates</span>
+                                <span class="text-xs text-gray-400 ml-auto">7 of 7</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Estimate ID</th>
+                                            <th>Patient</th>
+                                            <th>Procedure / Service</th>
+                                            <th>Estimated Amount</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-primary font-mono text-sm">#EST-30001</td><td class="font-medium text-gray-900">Priya Nair</td><td class="text-gray-600 dark:text-gray-300">Elective knee arthroscopy</td><td class="font-semibold text-gray-900">$7,500.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-25</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Accepted</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm">#EST-30002</td><td class="font-medium text-gray-900">Owen Fitzgerald</td><td class="text-gray-600 dark:text-gray-300">Bariatric surgery</td><td class="font-semibold text-gray-900">$22,000.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-20</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Sent</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm">#EST-30003</td><td class="font-medium text-gray-900">Grace Kimani</td><td class="text-gray-600 dark:text-gray-300">Cataract surgery — right eye</td><td class="font-semibold text-gray-900">$3,400.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Draft</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm">#EST-30004</td><td class="font-medium text-gray-900">Hana Suzuki</td><td class="text-gray-600 dark:text-gray-300">Coronary angiography</td><td class="font-semibold text-gray-900">$5,200.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-15</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Expired</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm">#EST-30005</td><td class="font-medium text-gray-900">Diego Fernandez</td><td class="text-gray-600 dark:text-gray-300">Physical therapy — 12 sessions</td><td class="font-semibold text-gray-900">$960.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Sent</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm">#EST-30006</td><td class="font-medium text-gray-900">Marcus Webb</td><td class="text-gray-600 dark:text-gray-300">MRI — lumbar spine</td><td class="font-semibold text-gray-900">$1,800.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Accepted</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm">#EST-30007</td><td class="font-medium text-gray-900">Fatima Al-Sayed</td><td class="text-gray-600 dark:text-gray-300">Cardiac catheterization</td><td class="font-semibold text-gray-900">$15,200.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Sent</span></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "estimates"})
+    </body>
+</html>

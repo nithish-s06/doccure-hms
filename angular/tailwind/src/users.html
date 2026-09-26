@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"User Management — Dreams HMS"}) @@include('partials/header.html', {"page": "users"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search users..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">User Management</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage system users, roles and access control</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-users text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-total">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Users</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-active">7</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-shield-check text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-admin">1</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Administrators</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-gray-50 dark:bg-gray-700/30 rounded-xl">
+                                    <i class="icon-user-x text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-inactive">1</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Inactive</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Users</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>User</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Department</th>
+                                            <th>Last Login</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr data-row-id="1"><td><div class="flex items-center gap-3"><div class="avatar [overflow:hidden]"><img class="[width:100%] [height:100%] [object-fit:cover]" src="assets/img/avatar/avatar-27.jpg" alt=""></div><p class="font-medium text-gray-900">Admin User</p></div></td><td class="text-gray-500 dark:text-gray-400 text-sm">admin@example.com</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Administrator</span></td><td class="text-gray-600 dark:text-gray-300">Administration</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 09:15</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr><tr data-row-id="2"><td><div class="flex items-center gap-3"><div class="avatar [overflow:hidden]"><img class="[width:100%] [height:100%] [object-fit:cover]" src="assets/img/avatar/avatar-24.jpg" alt=""></div><p class="font-medium text-gray-900">Dr. Sarah Chen</p></div></td><td class="text-gray-500 dark:text-gray-400 text-sm">schen@example.com</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Doctor</span></td><td class="text-gray-600 dark:text-gray-300">Clinical</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 08:00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr><tr data-row-id="3"><td><div class="flex items-center gap-3"><div class="avatar [overflow:hidden]"><img class="[width:100%] [height:100%] [object-fit:cover]" src="assets/img/avatar/avatar-17.jpg" alt=""></div><p class="font-medium text-gray-900">Maria Santos</p></div></td><td class="text-gray-500 dark:text-gray-400 text-sm">msantos@example.com</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Nurse</span></td><td class="text-gray-600 dark:text-gray-300">Clinical</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 06:30</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr><tr data-row-id="4"><td><div class="flex items-center gap-3"><div class="avatar [overflow:hidden]"><img class="[width:100%] [height:100%] [object-fit:cover]" src="assets/img/avatar/avatar-18.jpg" alt=""></div><p class="font-medium text-gray-900">Priya Sharma</p></div></td><td class="text-gray-500 dark:text-gray-400 text-sm">psharma@example.com</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Pharmacist</span></td><td class="text-gray-600 dark:text-gray-300">Pharmacy</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-09 17:45</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr><tr data-row-id="5"><td><div class="flex items-center gap-3"><div class="avatar [overflow:hidden]"><img class="[width:100%] [height:100%] [object-fit:cover]" src="assets/img/avatar/avatar-11.jpg" alt=""></div><p class="font-medium text-gray-900">Kevin Wright</p></div></td><td class="text-gray-500 dark:text-gray-400 text-sm">kwright@example.com</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Lab Tech</span></td><td class="text-gray-600 dark:text-gray-300">Laboratory</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 07:00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr><tr data-row-id="6"><td><div class="flex items-center gap-3"><div class="avatar [overflow:hidden]"><img class="[width:100%] [height:100%] [object-fit:cover]" src="assets/img/avatar/avatar-23.jpg" alt=""></div><p class="font-medium text-gray-900">Lily Chen</p></div></td><td class="text-gray-500 dark:text-gray-400 text-sm">lchen@example.com</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Receptionist</span></td><td class="text-gray-600 dark:text-gray-300">Administration</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 08:45</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr><tr data-row-id="7"><td><div class="flex items-center gap-3"><div class="avatar [overflow:hidden]"><img class="[width:100%] [height:100%] [object-fit:cover]" src="assets/img/avatar/avatar-07.jpg" alt=""></div><p class="font-medium text-gray-900">James Obi</p></div></td><td class="text-gray-500 dark:text-gray-400 text-sm">jobi@example.com</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Billing</span></td><td class="text-gray-600 dark:text-gray-300">Finance</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-09 16:00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr><tr data-row-id="8"><td><div class="flex items-center gap-3"><div class="avatar [overflow:hidden]"><img class="[width:100%] [height:100%] [object-fit:cover]" src="assets/img/avatar/avatar-11.jpg" alt=""></div><p class="font-medium text-gray-900">Old User</p></div></td><td class="text-gray-500 dark:text-gray-400 text-sm">olduser@example.com</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Doctor</span></td><td class="text-gray-600 dark:text-gray-300">Clinical</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-06-01 10:00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Inactive</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "users"})
+    </body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Bed Details — Dreams HMS"}) @@include('partials/header.html', {"page": "bed-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="bed-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="bdd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Bed Details", "parentUrl": "bed-status.html", "parent": "Bed Status"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="bdd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="bdd-hero-ico"><i class="icon-bed"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="bdd-hero-bed-id" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Bed B-204</h1>
+                                            <span class="bdd-hbadge"><span class="bdd-dot"></span><span id="bdd-hero-status-text">Occupied</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="bdd-hmeta"><i class="icon-building-2 text-[13px] text-sky-300"></i><span id="bdd-hero-ward-line">Surgical B · Level 3</span></span>
+                                            <span class="bdd-hmeta"><i class="icon-layout-grid text-[13px] text-violet-300"></i><span>Room 3B-204 · Semi-Private</span></span>
+                                            <span class="bdd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i><span>Since 12 Jul, 08:20 AM</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 bdd-actions-print-hide">
+                                    <button type="button" class="bdd-btn bdd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="bed-status.html" class="bdd-btn bdd-btn-primary"><i class="icon-arrow-left"></i>Back to Bed Status</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="bdd-grid">
+                            <div class="bdd-vital bdd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-bed"></i></span>
+                                    <span class="bdd-chip">Bed Type</span>
+                                </div>
+                                <p id="bdd-stat-type" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white truncate">Semi-Private</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">General surgical bay</p>
+                            </div>
+                            <div class="bdd-vital bdd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-dollar-sign"></i></span>
+                                    <span class="bdd-chip">Rate</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">$185.00</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Per day</p>
+                            </div>
+                            <div class="bdd-vital bdd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-calendar-clock"></i></span>
+                                    <span class="bdd-chip">Duration</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">5 days</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Current stay length</p>
+                            </div>
+                            <div class="bdd-vital bdd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-spray-can"></i></span>
+                                    <span class="bdd-chip">Readiness</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">In Use</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Last cleaned 12 Jul, 07:40 AM</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="bdd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Bed Details -->
+                                <div class="bdd-surface">
+                                    <div class="bdd-head">
+                                        <span class="ico"><i class="icon-bed"></i></span>
+                                        <h2 class="bdd-title">Bed Details</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="bdd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Bed Number</span><span id="bdd-detail-bed-number" class="v">B-204</span></div>
+                                        <div class="bdd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Ward / Department</span><span id="bdd-detail-ward" class="v">Surgical B</span></div>
+                                        <div class="bdd-kv"><span class="k"><i class="icon-layout-grid text-[13px]"></i>Room Number</span><span class="v">3B-204</span></div>
+                                        <div class="bdd-kv"><span class="k"><i class="icon-move-vertical text-[13px]"></i>Floor</span><span class="v">Level 3</span></div>
+                                        <div class="bdd-kv"><span class="k"><i class="icon-bed text-[13px]"></i>Bed Type</span><span id="bdd-detail-type" class="v">Semi-Private</span></div>
+                                        <div class="bdd-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Status</span><span id="bdd-detail-status" class="v">Occupied</span></div>
+                                        <div class="bdd-kv"><span class="k"><i class="icon-dollar-sign text-[13px]"></i>Daily Rate</span><span class="v">$185.00</span></div>
+                                        <div class="bdd-kv"><span class="k"><i class="icon-spray-can text-[13px]"></i>Last Cleaned</span><span class="v">12 Jul, 07:40 AM</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- Assigned Patient -->
+                                <div class="bdd-surface">
+                                    <div class="bdd-head">
+                                        <span class="ico"><i class="icon-user-round"></i></span>
+                                        <h2 class="bdd-title">Assigned Patient</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="bdd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient Name</span><span id="bdd-detail-patient" class="v">Terrence Whitfield</span></div>
+                                        <div class="bdd-kv"><span class="k"><i class="icon-cake text-[13px]"></i>Age / Gender</span><span class="v">45 · Male</span></div>
+                                        <div class="bdd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Attending Doctor</span><span id="bdd-detail-doctor" class="v">Dr. James Whitlock</span></div>
+                                        <div class="bdd-kv"><span class="k"><i class="icon-log-in text-[13px]"></i>Admission Date</span><span class="v">12 Jul, 08:20 AM</span></div>
+                                        <div class="bdd-kv"><span class="k"><i class="icon-log-out text-[13px]"></i>Expected Discharge</span><span class="v">16 Jul, 12:00 PM</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- Equipment & Amenities -->
+                                <div class="bdd-surface">
+                                    <div class="bdd-head">
+                                        <span class="ico"><i class="icon-heart-pulse"></i></span>
+                                        <h2 class="bdd-title">Equipment &amp; Amenities</h2>
+                                    </div>
+                                    <div class="p-5 flex flex-wrap gap-2">
+                                        <span class="bdd-amenity"><i class="icon-syringe"></i>PCA Pump</span>
+                                        <span class="bdd-amenity"><i class="icon-phone-call"></i>Call Bell</span>
+                                        <span class="bdd-amenity"><i class="icon-bed"></i>Profiling Bed</span>
+                                        <span class="bdd-amenity"><i class="icon-wind"></i>Oxygen Outlet</span>
+                                        <span class="bdd-amenity"><i class="icon-tv"></i>Bedside TV</span>
+                                    </div>
+                                </div>
+
+                                <!-- Notes -->
+                                <div class="bdd-surface">
+                                    <div class="bdd-head">
+                                        <span class="ico"><i class="icon-notebook-pen"></i></span>
+                                        <h2 class="bdd-title">Notes</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Patient recovering well post-surgery. PCA pump to be reviewed by anaesthetist during evening rounds. Bed profiling motor serviced 10 Jul — no further issues reported.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 bdd-sidebar">
+                                <!-- Bed hero -->
+                                <div class="bdd-surface bdd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Bed</p>
+                                    <h3 id="bdd-side-bed-id" class="mt-1 text-lg font-extrabold">B-204</h3>
+                                    <p id="bdd-side-bed-sub" class="text-sm text-white/80 mt-0.5">Surgical B · Room 3B-204</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="bdd-hmeta"><i class="icon-dollar-sign text-[12px]"></i><span>$185.00 / day</span></span>
+                                    </div>
+                                </div>
+
+                                <!-- Key value card -->
+                                <div class="bdd-surface p-5">
+                                    <h3 class="bdd-title mb-3">Summary</h3>
+                                    <div class="bdd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Bed #</span><span id="bdd-summary-bed-id" class="v">B-204</span></div>
+                                    <div class="bdd-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Status</span><span id="bdd-summary-status" class="v">Occupied</span></div>
+                                    <div class="bdd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span id="bdd-summary-patient" class="v">T. Whitfield</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="bdd-surface p-5 space-y-2.5">
+                                    <h3 class="bdd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="bdd-btn bdd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="bed-status.html" class="bdd-btn bdd-btn-solid w-full justify-start"><i class="icon-list"></i>All Beds</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "bed-detail"})
+    </body>
+</html>

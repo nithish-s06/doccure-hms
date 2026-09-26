@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Doctor Management Center — Dreams HMS"}) @@include('partials/header.html', {"page": "doctors"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="doctors">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search doctors..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="dr-page" class="w-full">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="dr-skeleton" class="space-y-5">
+                            <div class="dr-sk h-[170px] radius-override-150"></div>
+                            <div class="dr-grid dr-g6">
+                                <div class="dr-sk h-[130px]"></div><div class="dr-sk h-[130px]"></div><div class="dr-sk h-[130px]"></div>
+                                <div class="dr-sk h-[130px]"></div><div class="dr-sk h-[130px]"></div><div class="dr-sk h-[130px]"></div>
+                            </div>
+                            <div class="dr-grid dr-g3">
+                                <div class="dr-sk h-[160px]"></div><div class="dr-sk h-[160px]"></div><div class="dr-sk h-[160px]"></div>
+                            </div>
+                            <div class="dr-sk h-[64px] radius-override-125"></div>
+                            <div>
+                                <div class="dr-cards"><div class="dr-sk h-[250px]"></div><div class="dr-sk h-[250px]"></div><div class="dr-sk h-[250px]"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="dr-content" class="hidden space-y-5">
+                            @@include('partials/breadcrumb.html', {"current": "Doctors", "parentUrl": "hr.html", "parent": "Staff"})
+
+                            <!-- HERO -->
+                            <section class="dr-hero">
+                                <div class="flex flex-wrap items-start justify-between gap-6">
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2.5">
+                                            <span class="dr-hbadge"><span class="dr-dot"></span><span id="dr-total-badge">14</span> Doctors</span>
+                                            <span class="dr-hbadge dr-hbadge-emerald"><i class="icon-circle-check text-[11px]"></i><span id="dr-avail-badge">8</span> Available</span>
+                                            <span class="dr-hbadge dr-hbadge-amber"><i class="icon-users text-[11px]"></i><span id="dr-patients-badge">325</span> Patients Today</span>
+                                        </div>
+                                        <h1 class="mt-3 text-2xl lg:text-3xl font-extrabold tracking-tight">Doctor Management Center</h1>
+                                        <p class="mt-1.5 max-w-xl text-sm text-white/70">Manage your medical staff — profiles, specialties, schedules, availability, workload and performance in one place.</p>
+                                        <div class="mt-4 flex flex-wrap items-center gap-2.5 text-white/85">
+                                            <span class="dr-hmeta"><i class="icon-clock text-[13px] text-sky-300"></i>Last updated <span id="dr-updated">just now</span></span>
+                                            <span class="dr-hmeta"><i class="icon-star text-[13px] text-amber-300"></i>Avg rating <span id="dr-rating-badge">4.6</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2.5 w-full sm:w-auto dr-print-hide">
+                                        <button type="button" class="dr-btn dr-btn-success" data-open="new"><i class="icon-user-plus"></i>Add Doctor</button>
+                                        <button type="button" class="dr-btn dr-btn-primary" data-open="schedule"><i class="icon-calendar-clock"></i>Manage Schedule</button>
+                                        <button type="button" class="dr-btn dr-btn-glass" data-open="dept"><i class="icon-building-2"></i>Departments</button>
+                                        <button type="button" class="dr-btn dr-btn-glass" data-open="export"><i class="icon-download"></i>Export</button>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- KPI CARDS -->
+                            <section class="dr-grid dr-g6" id="dr-kpis"><div class="dr-stat dr-c-primary"><div class="flex items-start justify-between"><span class="dr-stat-ico"><i class="icon-stethoscope"></i></span><svg class="dr-ring [--p:82]" viewBox="0 0 36 36" data-p="82"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">14</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Total Doctors</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dr-chip">Staff</span><svg class="[color:var(--dr-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div><div class="dr-stat dr-c-emerald"><div class="flex items-start justify-between"><span class="dr-stat-ico"><i class="icon-circle-check"></i></span><svg class="dr-ring [--p:57]" viewBox="0 0 36 36" data-p="57"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">8</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Available Now</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dr-chip">On duty</span><svg class="[color:var(--dr-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div><div class="dr-stat dr-c-violet"><div class="flex items-start justify-between"><span class="dr-stat-ico"><i class="icon-building-2"></i></span><svg class="dr-ring [--p:60]" viewBox="0 0 36 36" data-p="60"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">8</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Departments</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dr-chip">Active</span><svg class="[color:var(--dr-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div><div class="dr-stat dr-c-amber"><div class="flex items-start justify-between"><span class="dr-stat-ico"><i class="icon-users"></i></span><svg class="dr-ring [--p:74]" viewBox="0 0 36 36" data-p="74"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">325</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Patients Today</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dr-chip">Seen</span><svg class="[color:var(--dr-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div><div class="dr-stat dr-c-teal"><div class="flex items-start justify-between"><span class="dr-stat-ico"><i class="icon-star"></i></span><svg class="dr-ring [--p:91]" viewBox="0 0 36 36" data-p="91"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">4.6</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Avg Rating</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dr-chip">of 5</span><svg class="[color:var(--dr-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div><div class="dr-stat dr-c-rose"><div class="flex items-start justify-between"><span class="dr-stat-ico"><i class="icon-calendar-x"></i></span><svg class="dr-ring [--p:25]" viewBox="0 0 36 36" data-p="25"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">3</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">On Leave</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dr-chip">Away</span><svg class="[color:var(--dr-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></section>
+
+
+                            <!-- TOOLBAR -->
+                            <section class="dr-surface dr-c-primary">
+                                <div class="p-3 lg:p-4 space-y-3">
+                                    <div class="flex flex-wrap items-center gap-2.5">
+                                        <div class="dr-search"><i class="ico icon-search"></i><input aria-label="Search name, specialty, department…" id="dr-search" type="text" placeholder="Search name, specialty, department…"></div>
+                                        <select aria-label="All Departments" id="dr-f-dept" class="dr-tool"><option value="">All Departments</option><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>General Medicine</option><option>Dermatology</option><option>ENT</option><option>Oncology</option></select>
+                                        <select aria-label="All Status" id="dr-f-status" class="dr-tool"><option value="">All Status</option><option>Available</option><option>Busy</option><option>On Leave</option><option>Off Duty</option></select>
+                                        <button type="button" id="dr-filters" class="dr-tool"><i class="icon-sliders-horizontal"></i>Filters<span id="dr-filter-badge" class="hidden ml-0.5 grid place-items-center size-4 rounded-full bg-primary text-white text-[9px]">0</span></button>
+                                        <select aria-label="Sort: Name A–Z" id="dr-sort" class="dr-tool ml-auto"><option value="name">Sort: Name A–Z</option><option value="rating">Rating</option><option value="exp">Experience</option><option value="patients">Patients</option><option value="dept">Department</option></select>
+                                        <button type="button" id="dr-import" class="dr-icobtn" title="Import"><i class="icon-upload"></i></button>
+                                        <button type="button" id="dr-export" class="dr-icobtn" title="Export"><i class="icon-download"></i></button>
+                                        <div class="dr-seg">
+                                            <button type="button" id="dr-view-grid" class="is-active"><i class="icon-layout-grid"></i>Cards</button>
+                                            <button type="button" id="dr-view-list"><i class="icon-list"></i>List</button>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <label class="flex items-center gap-2 text-gray-500 dark:text-gray-400 font-semibold cursor-pointer"><input type="checkbox" id="dr-select-all" class="dr-check"> Select all on page</label>
+                                        <span id="dr-count" class="text-gray-400 dark:text-gray-500 font-medium">14 of 14 doctors</span>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Bulk selection bar — appears under the toolbar once a row is checked -->
+                            <div id="dr-bulkbar" class="dr-bulk" hidden>
+                                <span class="flex items-center gap-2 pr-1 mr-auto"><span class="grid size-8 place-items-center rounded-lg bg-primary text-white text-xs font-extrabold" id="dr-bulk-count">0</span><span class="text-xs font-bold text-gray-900 dark:text-white">selected</span></span>
+                                <button class="dr-bulk-btn" data-bulk="status"><i class="icon-activity"></i>Status</button>
+                                <button class="dr-bulk-btn" data-bulk="dept"><i class="icon-building-2"></i>Department</button>
+                                <button class="dr-bulk-btn" data-bulk="message"><i class="icon-message-circle"></i>Message</button>
+                                <button class="dr-bulk-btn" data-bulk="export"><i class="icon-download"></i>Export</button>
+                                <button class="dr-bulk-btn" data-bulk="print"><i class="icon-printer"></i>Print</button>
+                                <button class="dr-bulk-btn danger" data-bulk="delete"><i class="icon-trash-2"></i>Delete</button>
+                                <button class="dr-bulk-btn" data-bulk="clear"><i class="icon-x"></i>Clear</button>
+                            </div>
+
+                            <!-- RESULTS + SIDE -->
+                            <div>
+                                <div class="min-w-0 space-y-4">
+                                    <div id="dr-gridview" class="dr-cards"><article class="dr-card dr-c-violet" data-id="10"><div class="dr-cardtop"><input aria-label="Select row" type="checkbox" class="dr-check dr-rowcheck [position:absolute] [top:.6rem] [left:.6rem] [z-index:2]" data-id="10"><button class="dr-mini dr-menu-btn [position:absolute] [top:.5rem] [right:.5rem] [z-index:2] [background:rgba(255,255,255,.2)] [border-color:rgba(255,255,255,.3)] [color:#fff]" data-id="10"><i class="icon-ellipsis-vertical"></i></button></div><div class="px-4 pb-4 -mt-7"><div class="flex items-end justify-between"><span class="dr-ava dr-ava-photo [--dr-ring:#10b981]"><img src="assets/img/avatar/avatar-10.jpg" alt="Dr. Aisha Khan" loading="lazy"></span><span class="mb-1"><span class="dr-badge available">Available</span></span></div><p class="mt-2 font-bold text-gray-900 dark:text-white truncate">Dr. Aisha Khan</p><p class="text-[12px] text-primary font-semibold">Neurologist</p><div class="flex items-center justify-between mt-1.5"><div class="flex items-center gap-1.5"><span class="dr-stars"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span><span class="text-[11px] text-gray-400">4.6 (157)</span></div><span class="dr-metarow"><i class="icon-building-2 text-xs"></i>Neurology</span></div><div class="grid grid-cols-3 gap-1.5 mt-3"><div class="dr-statbox"><b>8y</b><span>Experience</span></div><div class="dr-statbox"><b>26</b><span>Today</span></div><div class="dr-statbox"><b>₹800</b><span>Fee</span></div></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dr-tag dr-c-violet"><i class="icon-graduation-cap text-[10px]"></i>MD Neurology</span><span class="dr-tag dr-c-sky"><i class="icon-monitor-smartphone text-[10px]"></i>Both</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><a href="doctor-profile.html" class="text-[11px] font-mono text-gray-400 hover:text-primary hover:underline">DR-0010</a><div class="flex gap-1.5"><button class="dr-mini dr-view" data-id="10" title="Profile"><i class="icon-eye text-sm"></i></button><button class="dr-mini dr-book" data-id="10" title="Book"><i class="icon-calendar-plus text-sm"></i></button><button class="dr-mini dr-edit" data-id="10" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dr-card dr-c-amber" data-id="5"><div class="dr-cardtop"><input aria-label="Select row" type="checkbox" class="dr-check dr-rowcheck [position:absolute] [top:.6rem] [left:.6rem] [z-index:2]" data-id="5"><button class="dr-mini dr-menu-btn [position:absolute] [top:.5rem] [right:.5rem] [z-index:2] [background:rgba(255,255,255,.2)] [border-color:rgba(255,255,255,.3)] [color:#fff]" data-id="5"><i class="icon-ellipsis-vertical"></i></button></div><div class="px-4 pb-4 -mt-7"><div class="flex items-end justify-between"><span class="dr-ava dr-ava-photo [--dr-ring:#8b5cf6]"><img src="assets/img/avatar/avatar-05.jpg" alt="Dr. David Wang" loading="lazy"></span><span class="mb-1"><span class="dr-badge leave">On Leave</span></span></div><p class="mt-2 font-bold text-gray-900 dark:text-white truncate">Dr. David Wang</p><p class="text-[12px] text-primary font-semibold">Orthopedic Surgeon</p><div class="flex items-center justify-between mt-1.5"><div class="flex items-center gap-1.5"><span class="dr-stars"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span><span class="text-[11px] text-gray-400">4.6 (92)</span></div><span class="dr-metarow"><i class="icon-building-2 text-xs"></i>Orthopedics</span></div><div class="grid grid-cols-3 gap-1.5 mt-3"><div class="dr-statbox"><b>20y</b><span>Experience</span></div><div class="dr-statbox"><b>18</b><span>Today</span></div><div class="dr-statbox"><b>₹1,000</b><span>Fee</span></div></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dr-tag dr-c-amber"><i class="icon-graduation-cap text-[10px]"></i>MS Orthopedics</span><span class="dr-tag dr-c-sky"><i class="icon-user text-[10px]"></i>In-person</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><a href="doctor-profile.html" class="text-[11px] font-mono text-gray-400 hover:text-primary hover:underline">DR-0005</a><div class="flex gap-1.5"><button class="dr-mini dr-view" data-id="5" title="Profile"><i class="icon-eye text-sm"></i></button><button class="dr-mini dr-book" data-id="5" title="Book"><i class="icon-calendar-plus text-sm"></i></button><button class="dr-mini dr-edit" data-id="5" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dr-card dr-c-emerald" data-id="6"><div class="dr-cardtop"><input aria-label="Select row" type="checkbox" class="dr-check dr-rowcheck [position:absolute] [top:.6rem] [left:.6rem] [z-index:2]" data-id="6"><button class="dr-mini dr-menu-btn [position:absolute] [top:.5rem] [right:.5rem] [z-index:2] [background:rgba(255,255,255,.2)] [border-color:rgba(255,255,255,.3)] [color:#fff]" data-id="6"><i class="icon-ellipsis-vertical"></i></button></div><div class="px-4 pb-4 -mt-7"><div class="flex items-end justify-between"><span class="dr-ava dr-ava-photo [--dr-ring:#10b981]"><img src="assets/img/avatar/avatar-06.jpg" alt="Dr. Elena Rivas" loading="lazy"></span><span class="mb-1"><span class="dr-badge available">Available</span></span></div><p class="mt-2 font-bold text-gray-900 dark:text-white truncate">Dr. Elena Rivas</p><p class="text-[12px] text-primary font-semibold">Dermatologist</p><div class="flex items-center justify-between mt-1.5"><div class="flex items-center gap-1.5"><span class="dr-stars"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star off"></i></span><span class="text-[11px] text-gray-400">4.4 (105)</span></div><span class="dr-metarow"><i class="icon-building-2 text-xs"></i>Dermatology</span></div><div class="grid grid-cols-3 gap-1.5 mt-3"><div class="dr-statbox"><b>7y</b><span>Experience</span></div><div class="dr-statbox"><b>28</b><span>Today</span></div><div class="dr-statbox"><b>₹700</b><span>Fee</span></div></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dr-tag dr-c-emerald"><i class="icon-graduation-cap text-[10px]"></i>MD Dermatology</span><span class="dr-tag dr-c-sky"><i class="icon-video text-[10px]"></i>Telemedicine</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><a href="doctor-profile.html" class="text-[11px] font-mono text-gray-400 hover:text-primary hover:underline">DR-0006</a><div class="flex gap-1.5"><button class="dr-mini dr-view" data-id="6" title="Profile"><i class="icon-eye text-sm"></i></button><button class="dr-mini dr-book" data-id="6" title="Book"><i class="icon-calendar-plus text-sm"></i></button><button class="dr-mini dr-edit" data-id="6" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dr-card dr-c-rose" data-id="1"><div class="dr-cardtop"><input aria-label="Select row" type="checkbox" class="dr-check dr-rowcheck [position:absolute] [top:.6rem] [left:.6rem] [z-index:2]" data-id="1"><button class="dr-mini dr-menu-btn [position:absolute] [top:.5rem] [right:.5rem] [z-index:2] [background:rgba(255,255,255,.2)] [border-color:rgba(255,255,255,.3)] [color:#fff]" data-id="1"><i class="icon-ellipsis-vertical"></i></button></div><div class="px-4 pb-4 -mt-7"><div class="flex items-end justify-between"><span class="dr-ava dr-ava-photo [--dr-ring:#10b981]"><img src="assets/img/avatar/avatar-01.jpg" alt="Dr. Ethan Chen" loading="lazy"></span><span class="mb-1"><span class="dr-badge available">Available</span></span></div><p class="mt-2 font-bold text-gray-900 dark:text-white truncate">Dr. Ethan Chen</p><p class="text-[12px] text-primary font-semibold">Cardiologist</p><div class="flex items-center justify-between mt-1.5"><div class="flex items-center gap-1.5"><span class="dr-stars"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span><span class="text-[11px] text-gray-400">4.9 (40)</span></div><span class="dr-metarow"><i class="icon-building-2 text-xs"></i>Cardiology</span></div><div class="grid grid-cols-3 gap-1.5 mt-3"><div class="dr-statbox"><b>18y</b><span>Experience</span></div><div class="dr-statbox"><b>32</b><span>Today</span></div><div class="dr-statbox"><b>₹800</b><span>Fee</span></div></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dr-tag dr-c-rose"><i class="icon-graduation-cap text-[10px]"></i>MD, DM Cardiology</span><span class="dr-tag dr-c-sky"><i class="icon-user text-[10px]"></i>In-person</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><a href="doctor-profile.html" class="text-[11px] font-mono text-gray-400 hover:text-primary hover:underline">DR-0001</a><div class="flex gap-1.5"><button class="dr-mini dr-view" data-id="1" title="Profile"><i class="icon-eye text-sm"></i></button><button class="dr-mini dr-book" data-id="1" title="Book"><i class="icon-calendar-plus text-sm"></i></button><button class="dr-mini dr-edit" data-id="1" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dr-card dr-c-emerald" data-id="12"><div class="dr-cardtop"><input aria-label="Select row" type="checkbox" class="dr-check dr-rowcheck [position:absolute] [top:.6rem] [left:.6rem] [z-index:2]" data-id="12"><button class="dr-mini dr-menu-btn [position:absolute] [top:.5rem] [right:.5rem] [z-index:2] [background:rgba(255,255,255,.2)] [border-color:rgba(255,255,255,.3)] [color:#fff]" data-id="12"><i class="icon-ellipsis-vertical"></i></button></div><div class="px-4 pb-4 -mt-7"><div class="flex items-end justify-between"><span class="dr-ava dr-ava-photo [--dr-ring:#10b981]"><img src="assets/img/avatar/avatar-12.jpg" alt="Dr. Grace Kim" loading="lazy"></span><span class="mb-1"><span class="dr-badge available">Available</span></span></div><p class="mt-2 font-bold text-gray-900 dark:text-white truncate">Dr. Grace Kim</p><p class="text-[12px] text-primary font-semibold">Dermatologist</p><div class="flex items-center justify-between mt-1.5"><div class="flex items-center gap-1.5"><span class="dr-stars"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span><span class="text-[11px] text-gray-400">4.7 (183)</span></div><span class="dr-metarow"><i class="icon-building-2 text-xs"></i>Dermatology</span></div><div class="grid grid-cols-3 gap-1.5 mt-3"><div class="dr-statbox"><b>10y</b><span>Experience</span></div><div class="dr-statbox"><b>30</b><span>Today</span></div><div class="dr-statbox"><b>₹750</b><span>Fee</span></div></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dr-tag dr-c-emerald"><i class="icon-graduation-cap text-[10px]"></i>MD Dermatology</span><span class="dr-tag dr-c-sky"><i class="icon-video text-[10px]"></i>Telemedicine</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><a href="doctor-profile.html" class="text-[11px] font-mono text-gray-400 hover:text-primary hover:underline">DR-0012</a><div class="flex gap-1.5"><button class="dr-mini dr-view" data-id="12" title="Profile"><i class="icon-eye text-sm"></i></button><button class="dr-mini dr-book" data-id="12" title="Book"><i class="icon-calendar-plus text-sm"></i></button><button class="dr-mini dr-edit" data-id="12" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dr-card dr-c-blue" data-id="8"><div class="dr-cardtop"><input aria-label="Select row" type="checkbox" class="dr-check dr-rowcheck [position:absolute] [top:.6rem] [left:.6rem] [z-index:2]" data-id="8"><button class="dr-mini dr-menu-btn [position:absolute] [top:.5rem] [right:.5rem] [z-index:2] [background:rgba(255,255,255,.2)] [border-color:rgba(255,255,255,.3)] [color:#fff]" data-id="8"><i class="icon-ellipsis-vertical"></i></button></div><div class="px-4 pb-4 -mt-7"><div class="flex items-end justify-between"><span class="dr-ava dr-ava-photo [--dr-ring:#10b981]"><img src="assets/img/avatar/avatar-08.jpg" alt="Dr. Hannah Lee" loading="lazy"></span><span class="mb-1"><span class="dr-badge available">Available</span></span></div><p class="mt-2 font-bold text-gray-900 dark:text-white truncate">Dr. Hannah Lee</p><p class="text-[12px] text-primary font-semibold">Oncologist</p><div class="flex items-center justify-between mt-1.5"><div class="flex items-center gap-1.5"><span class="dr-stars"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span><span class="text-[11px] text-gray-400">4.9 (131)</span></div><span class="dr-metarow"><i class="icon-building-2 text-xs"></i>Oncology</span></div><div class="grid grid-cols-3 gap-1.5 mt-3"><div class="dr-statbox"><b>16y</b><span>Experience</span></div><div class="dr-statbox"><b>15</b><span>Today</span></div><div class="dr-statbox"><b>₹1,200</b><span>Fee</span></div></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dr-tag dr-c-blue"><i class="icon-graduation-cap text-[10px]"></i>MD, DM Oncology</span><span class="dr-tag dr-c-sky"><i class="icon-user text-[10px]"></i>In-person</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><a href="doctor-profile.html" class="text-[11px] font-mono text-gray-400 hover:text-primary hover:underline">DR-0008</a><div class="flex gap-1.5"><button class="dr-mini dr-view" data-id="8" title="Profile"><i class="icon-eye text-sm"></i></button><button class="dr-mini dr-book" data-id="8" title="Book"><i class="icon-calendar-plus text-sm"></i></button><button class="dr-mini dr-edit" data-id="8" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article></div>
+                                    <div id="dr-listview" class="hidden dr-surface overflow-hidden">
+                                        <div class="overflow-x-auto"><table class="dr-table">
+                                            <thead><tr>
+                                                <th class="w-10"><input aria-label="Select all" type="checkbox" id="dr-select-all-2" class="dr-check"></th>
+                                                <th data-col="name">Doctor</th><th data-col="spec">Specialty</th><th data-col="dept">Department</th><th data-col="exp">Exp</th><th data-col="patients">Patients</th><th data-col="rating">Rating</th><th data-col="fee">Fee</th><th data-col="status">Status</th><th class="text-right">Actions</th>
+                                            </tr></thead>
+                                            <tbody id="dr-tbody"></tbody>
+                                        </table></div>
+                                    </div>
+                                    <div id="dr-empty" class="hidden dr-surface py-16 flex flex-col items-center text-center">
+                                        <span class="grid size-16 place-items-center rounded-2xl bg-primary/10 text-primary mb-4"><i class="icon-stethoscope text-2xl"></i></span>
+                                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">No doctors found</h3>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-sm">Adjust your search or filters, or add a new doctor.</p>
+                                        <div class="mt-4 flex gap-2.5"><button id="dr-empty-clear" class="dr-btn dr-btn-solid"><i class="icon-x"></i>Clear filters</button><button data-open="new" class="dr-btn dr-btn-success"><i class="icon-user-plus"></i>Add Doctor</button></div>
+                                    </div>
+
+                                    <div id="dr-pager" class="dr-surface p-3 lg:p-4 flex flex-wrap items-center justify-between gap-3">
+                                        <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                                            <span>Rows</span><select aria-label="Rows per page" id="dr-size" class="dr-tool dr-tool-compact"><option>12</option><option>24</option><option>36</option><option>48</option></select>
+                                            <span id="dr-page-info" class="ml-1 font-medium">Showing 1–6 of 14</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <div class="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mr-1"><span>Jump</span><input aria-label="#" id="dr-jump" type="number" min="1" class="dr-tool w-16 text-center dr-tool-compact-sm" placeholder="#"></div>
+                                            <div id="dr-page-nav" class="flex items-center gap-1.5"><button class="dr-pg" data-pg="prev" disabled=""><i class="icon-chevron-left"></i></button><button class="dr-pg is-active" data-pg="1">1</button><button class="dr-pg" data-pg="2">2</button><button class="dr-pg" data-pg="3">3</button><button class="dr-pg" data-pg="next"><i class="icon-chevron-right"></i></button></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- ==================== OVERLAYS ==================== -->
+        <div id="dr-detail-drawer" class="dr-drawer" role="dialog" aria-modal="true" aria-label="Doctor profile">
+            <div class="dr-drawer-back" data-close></div>
+            <div class="dr-drawer-panel"><div id="dr-detail-body" class="flex flex-col h-full overflow-y-auto"></div></div>
+        </div>
+
+        <div id="dr-filter-drawer" class="dr-drawer" role="dialog" aria-modal="true" aria-label="Advanced filters">
+            <div class="dr-drawer-back" data-close></div>
+            <div class="dr-drawer-panel">
+                <div class="flex items-center justify-between border-b border-border-color p-4">
+                    <div class="flex items-center gap-2.5"><span class="dr-doc-ico dr-c-primary"><i class="icon-sliders-horizontal"></i></span><div><p class="dr-t">Advanced Filters</p><p class="text-[11px] text-gray-500 dark:text-gray-400">Refine doctors</p></div></div>
+                    <button class="dr-icobtn" data-close><i class="icon-x"></i></button>
+                </div>
+                <div class="flex-1 overflow-y-auto p-4 space-y-3">
+                    <div><label for="fd-spec" class="dr-lbl">Specialty</label><input class="dr-in" id="fd-spec" placeholder="e.g. Cardiologist"></div>
+                    <div><label for="fd-exp" class="dr-lbl">Experience</label><select class="dr-in" id="fd-exp"><option value="">Any</option><option>0-5 yrs</option><option>5-10 yrs</option><option>10-20 yrs</option><option>20+ yrs</option></select></div>
+                    <div><label for="fd-rating" class="dr-lbl">Min Rating</label><select class="dr-in" id="fd-rating"><option value="">Any</option><option>4.5+</option><option>4.0+</option><option>3.5+</option></select></div>
+                    <div><label for="fd-type" class="dr-lbl">Consultation Type</label><select class="dr-in" id="fd-type"><option value="">Any</option><option>In-person</option><option>Telemedicine</option><option>Both</option></select></div>
+                    <div><label for="fd-gender" class="dr-lbl">Gender</label><select class="dr-in" id="fd-gender"><option value="">Any</option><option>Male</option><option>Female</option></select></div>
+                </div>
+                <div class="border-t border-border-color p-4 flex gap-2.5">
+                    <button id="fd-reset" class="dr-btn dr-btn-solid flex-1"><i class="icon-rotate-ccw"></i>Reset</button>
+                    <button id="fd-apply" class="dr-btn dr-btn-primary flex-1"><i class="icon-check"></i>Apply</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="dr-modal" class="dr-modal" role="dialog" aria-modal="true">
+            <div class="dr-modal-back" data-close></div>
+            <div class="dr-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span id="dr-modal-ico" class="dr-doc-ico"><i class="icon-user-plus"></i></span>
+                    <div class="min-w-0"><h3 id="dr-modal-title" class="text-lg font-bold text-gray-900 dark:text-white">Action</h3><p id="dr-modal-sub" class="text-xs text-gray-500 dark:text-gray-400"></p></div>
+                    <button class="dr-icobtn ml-auto" data-close><i class="icon-x"></i></button>
+                </div>
+                <div id="dr-modal-body" class="p-5 space-y-3"></div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0"><button class="dr-btn dr-btn-solid" data-close>Cancel</button><button id="dr-modal-confirm" class="dr-btn dr-btn-primary">Confirm</button></div>
+            </div>
+        </div>
+
+
+        @@include('partials/script.html', {"page": "doctors"})
+
+    </body>
+</html>

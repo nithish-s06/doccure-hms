@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Employee Profile — Dreams HMS"}) @@include('partials/header.html', {"page": "employee-profile"})
+    </head>
+
+    <body class="bg-gray-50 overflow-x-hidden" data-page="employee-profile">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="emp-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Employee Profile", "parentUrl": "hr.html", "parent": "HR & Staff"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="emp-hero p-5 lg:p-7">
+                            <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                                <div class="flex items-center gap-2">
+                                    <span class="emp-hbadge"><span class="emp-dot"></span> Active</span>
+                                    <span class="emp-hbadge"><i class="icon-badge-check text-emerald-300"></i> Verified Staff</span>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 emp-actions-print-hide">
+                                    <button type="button" class="emp-btn emp-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="hr.html" class="emp-btn emp-btn-glass"><i class="icon-arrow-left"></i>Back to Staff</a>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col lg:flex-row lg:items-end gap-5">
+                                <div class="relative flex-none">
+                                    <div class="emp-avatar">MS</div>
+                                    <span class="emp-online"></span>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <h1 class="text-2xl lg:text-3xl font-extrabold">Maria Santos</h1>
+                                        <span class="emp-hbadge">RN, BSN</span>
+                                    </div>
+                                    <p class="text-white/80 font-semibold">Senior Staff Nurse · Nursing Department</p>
+                                    <div class="flex flex-wrap items-center gap-2.5 mt-3">
+                                        <span class="emp-hmeta"><i class="icon-hash text-[13px]"></i> #STF-0001</span>
+                                        <span class="emp-hmeta"><i class="icon-briefcase text-[13px]"></i> Since Mar 2022</span>
+                                        <span class="emp-hmeta"><i class="icon-sun text-[13px]"></i> Morning Shift (06:00–14:00)</span>
+                                        <span class="emp-hmeta"><i class="icon-phone text-[13px]"></i> +1 555 110 0011</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <button class="emp-btn emp-btn-success" data-msg><i class="icon-message-2"></i> Message</button>
+                                    <button class="emp-btn emp-btn-glass" data-href="hr.html"><i class="icon-edit"></i> Edit</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KPI STRIP ---------- -->
+                        <section class="emp-grid emp-g4">
+                            <div class="emp-kpi">
+                                <div class="flex items-center justify-between mb-2.5">
+                                    <div class="emp-kpi-ic bg-[color-mix(in_srgb,#10b981_15%,transparent)] text-[#10b981]"><i class="icon-calendar-check text-lg"></i></div>
+                                    <span class="emp-chip bg-[color-mix(in_srgb,#10b981_15%,transparent)] text-[#059669]">+1.2%</span>
+                                </div>
+                                <div class="emp-kpi-v">97%</div>
+                                <div class="text-xs emp-muted font-semibold mt-1">Attendance Rate</div>
+                            </div>
+                            <div class="emp-kpi">
+                                <div class="flex items-center justify-between mb-2.5">
+                                    <div class="emp-kpi-ic bg-[color-mix(in_srgb,#f59e0b_15%,transparent)] text-[#f59e0b]"><i class="icon-plane text-lg"></i></div>
+                                    <span class="emp-chip bg-[color-mix(in_srgb,#f59e0b_15%,transparent)] text-[#b45309]">2 left</span>
+                                </div>
+                                <div class="emp-kpi-v">6 <span class="text-sm emp-muted font-semibold">days</span></div>
+                                <div class="text-xs emp-muted font-semibold mt-1">Leaves Taken (YTD)</div>
+                            </div>
+                            <div class="emp-kpi">
+                                <div class="flex items-center justify-between mb-2.5">
+                                    <div class="emp-kpi-ic bg-[color-mix(in_srgb,#6366f1_15%,transparent)] text-[#6366f1]"><i class="icon-briefcase text-lg"></i></div>
+                                    <span class="emp-chip bg-[color-mix(in_srgb,#6366f1_15%,transparent)] text-[#4338ca]">since 2022</span>
+                                </div>
+                                <div class="emp-kpi-v">3.5y</div>
+                                <div class="text-xs emp-muted font-semibold mt-1">Years of Service</div>
+                            </div>
+                            <div class="emp-kpi">
+                                <div class="flex items-center justify-between mb-2.5">
+                                    <div class="emp-kpi-ic bg-[color-mix(in_srgb,#ec4899_15%,transparent)] text-[#ec4899]"><i class="icon-star text-lg"></i></div>
+                                    <span class="emp-chip bg-[color-mix(in_srgb,#ec4899_15%,transparent)] text-[#be185d]">Top rated</span>
+                                </div>
+                                <div class="emp-kpi-v">4.8</div>
+                                <div class="text-xs emp-muted font-semibold mt-1">Performance Score</div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- TABS + LAYOUT ---------- -->
+                        <div class="emp-layout">
+                            <div class="space-y-5">
+                                <div class="emp-tabs" id="emp-tabs" role="tablist" data-hs-tab-role="tablist">
+                                    <button type="button" class="emp-tab active" id="emp-tab-item-overview" data-hs-tab="#emp-panel-overview" aria-controls="emp-panel-overview" aria-selected="true" role="tab"><i class="icon-layout-grid"></i> Overview</button>
+                                    <button type="button" class="emp-tab" id="emp-tab-item-attendance" data-hs-tab="#emp-panel-attendance" aria-controls="emp-panel-attendance" aria-selected="false" role="tab"><i class="icon-calendar-week"></i> Attendance</button>
+                                    <button type="button" class="emp-tab" id="emp-tab-item-documents" data-hs-tab="#emp-panel-documents" aria-controls="emp-panel-documents" aria-selected="false" role="tab"><i class="icon-file-text"></i> Documents</button>
+                                    <button type="button" class="emp-tab" id="emp-tab-item-activity" data-hs-tab="#emp-panel-activity" aria-controls="emp-panel-activity" aria-selected="false" role="tab"><i class="icon-activity"></i> Activity</button>
+                                </div>
+
+                                <!-- OVERVIEW -->
+                                <section id="emp-panel-overview" class="emp-panel" role="tabpanel" aria-labelledby="emp-tab-item-overview">
+                                    <div class="emp-surface p-5">
+                                        <h3 class="font-bold text-[var(--color-gray-900)] mb-2 flex items-center gap-2"><i class="icon-user-circle text-[var(--color-primary)]"></i> About</h3>
+                                        <p class="text-sm leading-relaxed emp-muted">Maria Santos is a senior staff nurse with over 8 years of clinical experience, currently assigned to the Nursing department on the morning shift. She specializes in post-operative care and patient monitoring, and is known for her calm, detail-oriented approach on the ward floor.</p>
+                                        <div class="emp-grid emp-g2 mt-4">
+                                            <div><div class="text-xs emp-muted font-semibold mb-1">Certifications</div><div class="flex flex-wrap gap-1.5"><span class="emp-tag">BLS</span><span class="emp-tag">ACLS</span><span class="emp-tag">Wound Care</span></div></div>
+                                            <div><div class="text-xs emp-muted font-semibold mb-1">Skills</div><div class="flex flex-wrap gap-1.5"><span class="emp-tag">IV Therapy</span><span class="emp-tag">Patient Triage</span></div></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="emp-grid emp-g2 mt-5">
+                                        <div class="emp-surface p-5">
+                                            <h3 class="font-bold text-[var(--color-gray-900)] mb-3 flex items-center gap-2"><i class="icon-address-book text-[var(--color-primary)]"></i> Contact</h3>
+                                            <div class="space-y-2.5 text-sm">
+                                                <div class="flex items-center gap-2.5"><i class="icon-mail emp-muted"></i><a href="mailto:msantos@example.com" class="font-semibold text-[var(--color-gray-900)] hover:text-[var(--color-primary)]">msantos@example.com</a></div>
+                                                <div class="flex items-center gap-2.5"><i class="icon-phone emp-muted"></i><span class="font-semibold text-[var(--color-gray-900)]">+1 555 110 0011</span></div>
+                                                <div class="flex items-center gap-2.5"><i class="icon-building-2 emp-muted"></i><span class="font-semibold text-[var(--color-gray-900)]">Nursing Department, 2nd Floor</span></div>
+                                                <div class="flex items-center gap-2.5"><i class="icon-id emp-muted"></i><span class="font-semibold text-[var(--color-gray-900)]">Emp. ID #STF-0001</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="emp-surface p-5">
+                                            <h3 class="font-bold text-[var(--color-gray-900)] mb-3 flex items-center gap-2"><i class="icon-school text-[var(--color-primary)]"></i> Career Timeline</h3>
+                                            <div class="pt-1">
+                                                <div class="emp-timeitem"><span class="emp-timedot"></span><div class="text-sm font-bold text-[var(--color-gray-900)]">Senior Staff Nurse</div><div class="text-xs emp-muted">Dreams Multi-Specialty Hospital</div><div class="text-[11px] font-semibold text-[#10b981] mt-.5">2022 – Present</div></div>
+                                                <div class="emp-timeitem"><span class="emp-timedot"></span><div class="text-sm font-bold text-[var(--color-gray-900)]">Staff Nurse</div><div class="text-xs emp-muted">City General Hospital</div><div class="text-[11px] font-semibold text-[#10b981] mt-.5">2018 – 2022</div></div>
+                                                <div class="emp-timeitem"><span class="emp-timedot"></span><div class="text-sm font-bold text-[var(--color-gray-900)]">BSN, Nursing</div><div class="text-xs emp-muted">State University College of Nursing</div><div class="text-[11px] font-semibold text-[#10b981] mt-.5">2017</div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- ATTENDANCE -->
+                                <section id="emp-panel-attendance" class="emp-panel hidden" role="tabpanel" aria-labelledby="emp-tab-item-attendance">
+                                    <div class="emp-surface p-5">
+                                        <div class="flex items-center justify-between mb-4">
+                                            <h3 class="font-bold text-[var(--color-gray-900)] flex items-center gap-2"><i class="icon-calendar-week text-[var(--color-primary)]"></i> This Week's Schedule</h3>
+                                            <span class="emp-chip bg-[color-mix(in_srgb,#10b981_18%,transparent)] text-[#059669]"><i class="icon-clock"></i> 06:00 – 14:00</span>
+                                        </div>
+                                        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+                                            <div class="emp-daycol"><div class="emp-dayhd">Mon</div><div class="p-2.5 text-center"><span class="emp-chip bg-[color-mix(in_srgb,#10b981_18%,transparent)] text-[#059669]"><i class="icon-check"></i> On Duty</span></div></div>
+                                            <div class="emp-daycol"><div class="emp-dayhd">Tue</div><div class="p-2.5 text-center"><span class="emp-chip bg-[color-mix(in_srgb,#10b981_18%,transparent)] text-[#059669]"><i class="icon-check"></i> On Duty</span></div></div>
+                                            <div class="emp-daycol"><div class="emp-dayhd">Wed</div><div class="p-2.5 text-center"><span class="emp-chip bg-[color-mix(in_srgb,#10b981_18%,transparent)] text-[#059669]"><i class="icon-check"></i> On Duty</span></div></div>
+                                            <div class="emp-daycol"><div class="emp-dayhd">Thu</div><div class="p-2.5 text-center"><span class="emp-chip bg-[color-mix(in_srgb,#f59e0b_18%,transparent)] text-[#b45309]">On Leave</span></div></div>
+                                            <div class="emp-daycol"><div class="emp-dayhd">Fri</div><div class="p-2.5 text-center"><span class="emp-chip bg-[color-mix(in_srgb,#10b981_18%,transparent)] text-[#059669]"><i class="icon-check"></i> On Duty</span></div></div>
+                                            <div class="emp-daycol"><div class="emp-dayhd">Sat</div><div class="p-2.5 text-center"><span class="emp-chip bg-[color-mix(in_srgb,#10b981_18%,transparent)] text-[#059669]"><i class="icon-check"></i> On Duty</span></div></div>
+                                            <div class="emp-daycol"><div class="emp-dayhd">Sun</div><div class="p-2.5 text-center"><span class="emp-chip bg-[color-mix(in_srgb,#94a3b8_18%,transparent)] text-[#64748b]">Off</span></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="emp-surface p-5 mt-5">
+                                        <h3 class="font-bold text-[var(--color-gray-900)] mb-4 flex items-center gap-2"><i class="icon-clipboard-list text-[var(--color-primary)]"></i> Recent Attendance Log</h3>
+                                        <div class="space-y-2.5">
+                                            <div class="emp-row"><div class="emp-av bg-[#10b981]"><i class="icon-log-in"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)]">Checked In</div><div class="text-xs emp-muted">Dec 16, 2024 · 05:54 AM</div></div><span class="emp-chip bg-[color-mix(in_srgb,#10b981_15%,transparent)] text-[#059669]">On Time</span></div>
+                                            <div class="emp-row"><div class="emp-av bg-[#6366f1]"><i class="icon-log-out"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)]">Checked Out</div><div class="text-xs emp-muted">Dec 15, 2024 · 02:08 PM</div></div><span class="emp-chip bg-[color-mix(in_srgb,#10b981_15%,transparent)] text-[#059669]">Full Shift</span></div>
+                                            <div class="emp-row"><div class="emp-av bg-[#f59e0b]"><i class="icon-plane"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)]">Leave Approved</div><div class="text-xs emp-muted">Dec 14, 2024 · Sick leave</div></div><span class="emp-chip bg-[color-mix(in_srgb,#f59e0b_15%,transparent)] text-[#b45309]">1 day</span></div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- DOCUMENTS -->
+                                <section id="emp-panel-documents" class="emp-panel hidden" role="tabpanel" aria-labelledby="emp-tab-item-documents">
+                                    <div class="emp-surface p-5">
+                                        <h3 class="font-bold text-[var(--color-gray-900)] mb-4 flex items-center gap-2"><i class="icon-file-text text-[var(--color-primary)]"></i> Employment Documents</h3>
+                                        <div class="emp-grid emp-g2">
+                                            <div class="emp-row"><div class="emp-av bg-[color-mix(in_srgb,#ef4444_15%,transparent)] text-[#ef4444]"><i class="icon-id"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Nursing License</div><div class="text-xs emp-muted">PDF · 1.2 MB</div></div><button class="emp-btn emp-btn-soft btn-icon-sq" title="Download"><i class="icon-download"></i></button></div>
+                                            <div class="emp-row"><div class="emp-av bg-[color-mix(in_srgb,#6366f1_15%,transparent)] text-[#6366f1]"><i class="icon-school"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">BSN Degree Certificate</div><div class="text-xs emp-muted">PDF · 980 KB</div></div><button class="emp-btn emp-btn-soft btn-icon-sq" title="Download"><i class="icon-download"></i></button></div>
+                                            <div class="emp-row"><div class="emp-av bg-[color-mix(in_srgb,#10b981_15%,transparent)] text-[#10b981]"><i class="icon-file-signature"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">Employment Contract</div><div class="text-xs emp-muted">PDF · 640 KB</div></div><button class="emp-btn emp-btn-soft btn-icon-sq" title="Download"><i class="icon-download"></i></button></div>
+                                            <div class="emp-row"><div class="emp-av bg-[color-mix(in_srgb,#f59e0b_15%,transparent)] text-[#f59e0b]"><i class="icon-award"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)] truncate">BLS / ACLS Certificate</div><div class="text-xs emp-muted">PDF · 410 KB</div></div><button class="emp-btn emp-btn-soft btn-icon-sq" title="Download"><i class="icon-download"></i></button></div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- ACTIVITY -->
+                                <section id="emp-panel-activity" class="emp-panel hidden" role="tabpanel" aria-labelledby="emp-tab-item-activity">
+                                    <div class="emp-surface p-5">
+                                        <h3 class="font-bold text-[var(--color-gray-900)] mb-4 flex items-center gap-2"><i class="icon-activity text-[var(--color-primary)]"></i> Recent Activity</h3>
+                                        <div class="space-y-2.5">
+                                            <div class="emp-row"><div class="emp-av bg-[#10b981]"><i class="icon-check-circle"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)]">Completed shift handover</div><div class="text-xs emp-muted">Today, 2:10 PM · ICU Ward B</div></div></div>
+                                            <div class="emp-row"><div class="emp-av bg-[#6366f1]"><i class="icon-clipboard-list"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)]">Updated 6 patient charts</div><div class="text-xs emp-muted">Yesterday, 11:40 AM</div></div></div>
+                                            <div class="emp-row"><div class="emp-av bg-[#f59e0b]"><i class="icon-graduation-cap"></i></div><div class="flex-1 min-w-0"><div class="text-sm font-bold text-[var(--color-gray-900)]">Completed annual BLS recertification</div><div class="text-xs emp-muted">3 days ago</div></div></div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!-- ---------- SIDEBAR ---------- -->
+                            <aside class="space-y-5">
+                                <div class="emp-surface p-5">
+                                    <h3 class="font-bold text-[var(--color-gray-900)] mb-3 flex items-center gap-2"><i class="icon-info text-[var(--color-primary)]"></i> Employment Info</h3>
+                                    <div class="space-y-2.5 text-sm">
+                                        <div class="flex items-center justify-between"><span class="emp-muted">Role</span><span class="font-semibold text-[var(--color-gray-900)]">Nurse</span></div>
+                                        <div class="flex items-center justify-between"><span class="emp-muted">Department</span><span class="font-semibold text-[var(--color-gray-900)]">Nursing</span></div>
+                                        <div class="flex items-center justify-between"><span class="emp-muted">Shift</span><span class="font-semibold text-[var(--color-gray-900)]">Morning (06:00–14:00)</span></div>
+                                        <div class="flex items-center justify-between"><span class="emp-muted">Join Date</span><span class="font-semibold text-[var(--color-gray-900)]">2022-03-15</span></div>
+                                        <div class="flex items-center justify-between"><span class="emp-muted">Status</span><span class="emp-chip bg-[color-mix(in_srgb,#10b981_15%,transparent)] text-[#059669]">Active</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="emp-surface p-5">
+                                    <h3 class="font-bold text-[var(--color-gray-900)] mb-4 flex items-center gap-2"><i class="icon-pie-chart text-[var(--color-primary)]"></i> Performance</h3>
+                                    <div class="grid grid-cols-3 gap-2 text-center">
+                                        <div><svg viewBox="0 0 36 36" class="emp-ring w-16 h-16 mx-auto"><circle cx="18" cy="18" r="15.9155" fill="none" stroke="var(--color-gray-200)" stroke-width="3.4"/><circle class="bar [--p:97]" cx="18" cy="18" r="15.9155" fill="none" stroke="#10b981" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><div class="text-lg font-extrabold text-[var(--color-gray-900)] -mt-11 mb-6">97%</div><div class="text-[11px] emp-muted font-semibold">Attendance</div></div>
+                                        <div><svg viewBox="0 0 36 36" class="emp-ring w-16 h-16 mx-auto"><circle cx="18" cy="18" r="15.9155" fill="none" stroke="var(--color-gray-200)" stroke-width="3.4"/><circle class="bar [--p:94]" cx="18" cy="18" r="15.9155" fill="none" stroke="#0ea5e9" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><div class="text-lg font-extrabold text-[var(--color-gray-900)] -mt-11 mb-6">94%</div><div class="text-[11px] emp-muted font-semibold">Punctuality</div></div>
+                                        <div><svg viewBox="0 0 36 36" class="emp-ring w-16 h-16 mx-auto"><circle cx="18" cy="18" r="15.9155" fill="none" stroke="var(--color-gray-200)" stroke-width="3.4"/><circle class="bar [--p:96]" cx="18" cy="18" r="15.9155" fill="none" stroke="#6366f1" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><div class="text-lg font-extrabold text-[var(--color-gray-900)] -mt-11 mb-6">96%</div><div class="text-[11px] emp-muted font-semibold">Task Completion</div></div>
+                                    </div>
+                                </div>
+
+                                <div class="emp-surface p-5">
+                                    <h3 class="font-bold text-[var(--color-gray-900)] mb-3 flex items-center gap-2"><i class="icon-bolt text-amber-500"></i> Today at a Glance</h3>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center gap-2.5 p-2.5 rounded-lg border border-[var(--color-border-color)]"><div class="w-8 h-8 rounded-lg flex items-center justify-center bg-[color-mix(in_srgb,#10b981_15%,transparent)] text-[#10b981]"><i class="icon-clock"></i></div><span class="text-sm emp-muted font-semibold flex-1">Shift</span><span class="text-sm font-extrabold text-[var(--color-gray-900)]">06:00 – 14:00</span></div>
+                                        <div class="flex items-center gap-2.5 p-2.5 rounded-lg border border-[var(--color-border-color)]"><div class="w-8 h-8 rounded-lg flex items-center justify-center bg-[color-mix(in_srgb,#6366f1_15%,transparent)] text-[#6366f1]"><i class="icon-users"></i></div><span class="text-sm emp-muted font-semibold flex-1">Patients Assigned</span><span class="text-sm font-extrabold text-[var(--color-gray-900)]">9</span></div>
+                                        <div class="flex items-center gap-2.5 p-2.5 rounded-lg border border-[var(--color-border-color)]"><div class="w-8 h-8 rounded-lg flex items-center justify-center bg-[color-mix(in_srgb,#f59e0b_15%,transparent)] text-[#f59e0b]"><i class="icon-clipboard-list"></i></div><span class="text-sm emp-muted font-semibold flex-1">Tasks Pending</span><span class="text-sm font-extrabold text-[var(--color-gray-900)]">2</span></div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "employee-profile"})
+    </body>
+</html>

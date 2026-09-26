@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Consultation Details — Dreams HMS"}) @@include('partials/header.html', {"page": "telemedicine-session-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="telemedicine-session-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="tsd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Consultation Details", "parentUrl": "telemedicine.html", "parent": "Telemedicine"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="tsd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="tsd-hero-ico"><i class="icon-video"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="tsd-patient-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Ravi Kumar</h1>
+                                            <span class="tsd-hbadge"><span class="tsd-dot"></span><span id="tsd-hero-status-text">Live</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="tsd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="tsd-hero-id">#VC-9001</span></span>
+                                            <span class="tsd-hmeta"><i class="icon-stethoscope text-[13px] text-sky-300"></i><span id="tsd-hero-doctor">Dr. Sarah Roberts</span></span>
+                                            <span class="tsd-hmeta"><i class="icon-building-2 text-[13px] text-emerald-300"></i><span id="tsd-hero-dept">Cardiology</span></span>
+                                            <span class="tsd-hmeta"><i class="icon-calendar text-[13px] text-amber-300"></i><span id="tsd-hero-datetime">10:00 AM · Room-A1</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 tsd-actions-print-hide">
+                                    <button type="button" class="tsd-btn tsd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="telemedicine.html" class="tsd-btn tsd-btn-primary"><i class="icon-arrow-left"></i>Back to Sessions</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="tsd-grid">
+                            <div class="tsd-vital tsd-c-indigo">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-video"></i></span>
+                                    <span class="tsd-chip">Type</span>
+                                </div>
+                                <p id="tsd-stat-type" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Video</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Consultation Type</p>
+                            </div>
+                            <div class="tsd-vital tsd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-clock"></i></span>
+                                    <span class="tsd-chip">Duration</span>
+                                </div>
+                                <p id="tsd-stat-duration" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">18 min</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Elapsed Time</p>
+                            </div>
+                            <div class="tsd-vital tsd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-flag"></i></span>
+                                    <span class="tsd-chip">Priority</span>
+                                </div>
+                                <p id="tsd-stat-priority" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">High</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Session Priority</p>
+                            </div>
+                            <div class="tsd-vital tsd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-wifi"></i></span>
+                                    <span class="tsd-chip">Network</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Excellent</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Call Quality</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="tsd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Consultation workflow -->
+                                <div class="tsd-surface">
+                                    <div class="tsd-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="tsd-title">Appointment Workflow</h2>
+                                    </div>
+                                    <div class="tsd-tl p-5">
+                                        <div class="tsd-tl-item done">
+                                            <span class="tsd-tl-node"><i class="icon-calendar-plus"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Appointment scheduled</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Booked for 10:00 AM · Cardiology</p>
+                                        </div>
+                                        <div class="tsd-tl-item done">
+                                            <span class="tsd-tl-node"><i class="icon-users"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Joined virtual waiting room</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">09:56 AM · Device check passed</p>
+                                        </div>
+                                        <div class="tsd-tl-item done">
+                                            <span class="tsd-tl-node"><i class="icon-video"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Video call started</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">10:00 AM · Dr. Sarah Roberts joined</p>
+                                        </div>
+                                        <div class="tsd-tl-item current">
+                                            <span class="tsd-tl-node"><i class="icon-stethoscope"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Consultation in progress</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">18 minutes elapsed</p>
+                                        </div>
+                                        <div class="tsd-tl-item">
+                                            <span class="tsd-tl-node"><i class="icon-file-text"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Notes &amp; prescription</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Pending completion</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Chat transcript -->
+                                <div class="tsd-surface">
+                                    <div class="tsd-head">
+                                        <span class="ico"><i class="icon-message-circle"></i></span>
+                                        <h2 class="tsd-title">Session Chat</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="tsd-chatmsg">Hello Doctor, I've been having a persistent cough.</div>
+                                        <div class="tsd-chatmsg mine">Hi Ravi, thanks for joining. How many days now?</div>
+                                        <div class="tsd-chatmsg">About 5 days, worse at night.</div>
+                                    </div>
+                                </div>
+
+                                <!-- Clinical notes -->
+                                <div class="tsd-surface">
+                                    <div class="tsd-head">
+                                        <span class="ico"><i class="icon-notebook-pen"></i></span>
+                                        <h2 class="tsd-title">Clinical Notes</h2>
+                                    </div>
+                                    <div class="p-5 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                                        <p>Chief complaint: persistent nocturnal cough x5 days.</p>
+                                        <p>Vitals: within normal limits.</p>
+                                        <p>Plan: prescribe cough suppressant, review in 3 days.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 tsd-sidebar">
+                                <!-- Doctor -->
+                                <div class="tsd-surface tsd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Consulting Doctor</p>
+                                    <h3 id="tsd-side-doctor-name" class="mt-1 text-lg font-extrabold">Dr. Sarah Roberts</h3>
+                                    <p id="tsd-side-doctor-sub" class="text-sm text-white/80 mt-0.5">Cardiology · Interventional</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="tsd-hmeta"><i class="icon-star text-[12px]"></i><span id="tsd-side-doctor-rating">4.9</span> rating</span>
+                                    </div>
+                                </div>
+
+                                <!-- Session details -->
+                                <div class="tsd-surface p-5">
+                                    <h3 class="tsd-title mb-3">Session Details</h3>
+                                    <div class="tsd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span id="tsd-kv-patient" class="v">Ravi Kumar</span></div>
+                                    <div class="tsd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Session ID</span><span id="tsd-kv-id" class="v">VC-9001</span></div>
+                                    <div class="tsd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Time</span><span id="tsd-kv-time" class="v">10:00 AM</span></div>
+                                    <div class="tsd-kv"><span class="k"><i class="icon-door-open text-[13px]"></i>Room</span><span id="tsd-kv-room" class="v">Room-A1</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="tsd-surface p-5 space-y-2.5">
+                                    <h3 class="tsd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="tsd-btn tsd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Summary</button>
+                                    <a href="telemedicine.html" class="tsd-btn tsd-btn-solid w-full justify-start"><i class="icon-list"></i>All Consultations</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "telemedicine-session-detail"})
+    </body>
+</html>

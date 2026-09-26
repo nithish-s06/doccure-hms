@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Form Pickers — Dreams HMS"}) @@include('partials/header.html', {"page": "form-pickers"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <!-- Page Header -->
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Form Pickers</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Date, time and colour pickers powered by Flatpickr</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                            <!-- Date Pickers -->
+                            <div class="card p-5" data-aos="fade-up">
+                                <h2 class="font-semibold text-gray-900 mb-4">Date Pickers</h2>
+                                <div class="space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-basic">Basic Date</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-basic" class="form-input pr-10!" data-provider="flatpickr" data-date-format="d M Y" placeholder="Select admission date">
+                                            <i class="icon-calendar-days absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-range">Date Range</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-range" class="form-input pr-10!" data-provider="flatpickr" data-date-format="d M Y" data-range-date="true" placeholder="Select reporting period">
+                                            <i class="icon-calendar-days absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-multiple">Multiple Dates</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-multiple" class="form-input pr-10!" data-provider="flatpickr" data-date-format="d M Y" data-multiple-date="true" placeholder="Select follow-up dates">
+                                            <i class="icon-calendar-days absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-human">Human Friendly Format</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-human" class="form-input pr-10!" data-provider="flatpickr" data-altFormat="F j, Y" placeholder="Select date">
+                                            <i class="icon-calendar-days absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-week">With Week Numbers</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-week" class="form-input pr-10!" data-provider="flatpickr" data-date-format="d M Y" data-week-number="true" placeholder="Select date">
+                                            <i class="icon-calendar-days absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Time Pickers -->
+                            <div class="card p-5" data-aos="fade-up" data-aos-delay="50">
+                                <h2 class="font-semibold text-gray-900 mb-4">Time Pickers</h2>
+                                <div class="space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-time">Basic Time</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-time" class="form-input pr-10!" data-provider="timepickr" data-default-time="10:30" placeholder="Select time">
+                                            <i class="icon-clock absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-time-24">24 Hour Time</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-time-24" class="form-input pr-10!" data-provider="timepickr" data-time-hrs="true" data-default-time="14:45" placeholder="Select time">
+                                            <i class="icon-clock absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-time-limit">Time With Min &amp; Max</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-time-limit" class="form-input pr-10!" data-provider="timepickr" data-min-time="09:00" data-max-time="18:00" data-default-time="12:00" placeholder="Clinic hours only">
+                                            <i class="icon-clock absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                        <p class="text-xs text-gray-400 dark:text-gray-500">Restricted to clinic hours (09:00 — 18:00).</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-datetime">Date &amp; Time</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-datetime" class="form-input pr-10!" data-provider="flatpickr" data-date-format="d M Y" data-enable-time="true" placeholder="Select appointment slot">
+                                            <i class="icon-calendar-days absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Constrained Dates -->
+                            <div class="card p-5" data-aos="fade-up">
+                                <h2 class="font-semibold text-gray-900 mb-4">Constrained Dates</h2>
+                                <div class="space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-min">Minimum Date — Today Onwards</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-min" class="form-input pr-10!" data-provider="flatpickr" data-date-format="d M Y" data-minDate="today" placeholder="No past dates">
+                                            <i class="icon-calendar-days absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-max">Maximum Date — Today Backwards</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-max" class="form-input pr-10!" data-provider="flatpickr" data-date-format="d M Y" data-maxDate="today" placeholder="Date of birth">
+                                            <i class="icon-calendar-days absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-default">With Default Date</label>
+                                        <div class="relative">
+                                            <input type="text" id="fp-default" class="form-input pr-10!" data-provider="flatpickr" data-date-format="d M Y" data-default-date="2026-07-17" placeholder="Select date">
+                                            <i class="icon-calendar-days absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Colour Pickers -->
+                            <div class="card p-5" data-aos="fade-up" data-aos-delay="50">
+                                <h2 class="font-semibold text-gray-900 mb-4">Colour Pickers</h2>
+                                <div class="space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-color">Department Colour Tag</label>
+                                        <div class="flex items-center gap-3">
+                                            <input type="color" id="fp-color" value="#0371c6" class="w-14 h-10 p-1 rounded-lg border border-border-color bg-white dark:bg-slate-800 cursor-pointer">
+                                            <input type="text" value="#0371c6" class="form-input" aria-label="Colour hex value">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="form-label mb-2.5">Preset Swatches</p>
+                                        <div class="flex flex-wrap gap-2">
+                                            <button type="button" aria-label="Primary" class="w-9 h-9 rounded-lg bg-primary ring-2 ring-offset-2 ring-primary dark:ring-offset-slate-900 transition-transform hover:scale-110"></button>
+                                            <button type="button" aria-label="Success" class="w-9 h-9 rounded-lg bg-success transition-transform hover:scale-110"></button>
+                                            <button type="button" aria-label="Warning" class="w-9 h-9 rounded-lg bg-warning transition-transform hover:scale-110"></button>
+                                            <button type="button" aria-label="Danger" class="w-9 h-9 rounded-lg bg-danger transition-transform hover:scale-110"></button>
+                                            <button type="button" aria-label="Purple" class="w-9 h-9 rounded-lg bg-purple transition-transform hover:scale-110"></button>
+                                            <button type="button" aria-label="Pink" class="w-9 h-9 rounded-lg bg-pink transition-transform hover:scale-110"></button>
+                                            <button type="button" aria-label="Info" class="w-9 h-9 rounded-lg bg-info transition-transform hover:scale-110"></button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-native-date">Native Date Input</label>
+                                        <input type="date" id="fp-native-date" class="form-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fp-native-month">Native Month Input</label>
+                                        <input type="month" id="fp-native-month" class="form-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Inline Calendar -->
+                        <div class="card p-5" data-aos="fade-up">
+                            <h2 class="font-semibold text-gray-900 mb-1">Inline Calendar</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Always-visible calendar, useful for appointment scheduling screens.</p>
+                            <input type="text" id="fp-inline" data-provider="flatpickr" data-inline-date="2026-07-17" data-date-format="d M Y" aria-label="Inline calendar">
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "form-pickers"})
+    </body>
+</html>

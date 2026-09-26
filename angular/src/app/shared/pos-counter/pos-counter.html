@@ -1,0 +1,5 @@
+<div class="flex items-center gap-1 text-default">
+<i class="ph ph-minus-circle qty-btn qty-minus text-sm cursor-pointer hover:text-danger transition" (click)="decrement($event)"></i>
+<span class="qty-value text-sm font-medium text-gray-900 min-w-4 text-center">{{ quantity < 10 ? '0' + quantity : quantity }}</span>
+<i class="ph ph-plus-circle qty-btn qty-plus text-sm cursor-pointer hover:text-success transition" (click)="increment($event)"></i>
+</div>

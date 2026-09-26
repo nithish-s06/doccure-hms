@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Profit & Loss — Dreams HMS"}) @@include('partials/header.html', {"page": "profit-loss"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="profit-loss">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Profit & Loss", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Profit &amp; Loss Statement</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Revenue vs. expense summary and net profit for the selected period</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-trending-up text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$143,500.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Revenue</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-trending-down text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$87,100.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Expenses</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$56,400.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Net Profit</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-briefcase text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">39.3%</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Net Margin</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="p-4 border-b border-border-color">
+                                    <h3 class="font-semibold text-gray-900">Revenue by Category</h3>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="data-table">
+                                        <thead><tr><th>Category</th><th>Amount</th></tr></thead>
+                                        <tbody><tr><td class="text-gray-700 dark:text-gray-300">Patient Billing</td><td class="font-medium text-gray-900">$68,000.00</td></tr><tr><td class="text-gray-700 dark:text-gray-300">Insurance Payouts</td><td class="font-medium text-gray-900">$42,000.00</td></tr><tr><td class="text-gray-700 dark:text-gray-300">Pharmacy Sales</td><td class="font-medium text-gray-900">$21,000.00</td></tr><tr><td class="text-gray-700 dark:text-gray-300">Lab Services</td><td class="font-medium text-gray-900">$12,500.00</td></tr></tbody>
+                                        <tfoot>
+                                            <tr class="font-semibold"><td class="text-gray-900">Total Revenue</td><td class="text-emerald-600">$143,500.00</td></tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card" data-aos="fade-up" data-aos-delay="150">
+                                <div class="p-4 border-b border-border-color">
+                                    <h3 class="font-semibold text-gray-900">Expenses by Category</h3>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="data-table">
+                                        <thead><tr><th>Category</th><th>Amount</th></tr></thead>
+                                        <tbody><tr><td class="text-gray-700 dark:text-gray-300">Salaries</td><td class="font-medium text-gray-900">$58,000.00</td></tr><tr><td class="text-gray-700 dark:text-gray-300">Medical Supplies</td><td class="font-medium text-gray-900">$14,200.00</td></tr><tr><td class="text-gray-700 dark:text-gray-300">Utilities</td><td class="font-medium text-gray-900">$6,100.00</td></tr><tr><td class="text-gray-700 dark:text-gray-300">Equipment</td><td class="font-medium text-gray-900">$8,800.00</td></tr></tbody>
+                                        <tfoot>
+                                            <tr class="font-semibold"><td class="text-gray-900">Total Expenses</td><td class="text-red-600">$87,100.00</td></tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="p-4 border-b border-border-color flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Monthly Trend</h3>
+                                <span class="text-xs text-gray-400">3 months</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Month</th>
+                                            <th>Revenue</th>
+                                            <th>Expenses</th>
+                                            <th>Net Profit</th>
+                                            <th>Margin</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-medium text-gray-900">October 2024</td><td class="text-emerald-600">$93,500.00</td><td class="text-red-600">$65,200.00</td><td class="font-semibold text-gray-900">$28,300.00</td><td class="text-gray-500 dark:text-gray-400">30.3%</td></tr><tr><td class="font-medium text-gray-900">November 2024</td><td class="text-emerald-600">$118,500.00</td><td class="text-red-600">$74,100.00</td><td class="font-semibold text-gray-900">$44,400.00</td><td class="text-gray-500 dark:text-gray-400">37.5%</td></tr><tr><td class="font-medium text-gray-900">December 2024</td><td class="text-emerald-600">$143,500.00</td><td class="text-red-600">$87,100.00</td><td class="font-semibold text-gray-900">$56,400.00</td><td class="text-gray-500 dark:text-gray-400">39.3%</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "profit-loss"})
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Payments — Dreams HMS"}) @@include('partials/header.html', {"page": "payments"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="payments">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search payments by patient, invoice ref..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Payments", "parentUrl": "billing.html", "parent": "Billing"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Payments</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Payments received against patient invoices</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-credit-card text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">7</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Payments</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$18,740.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Collected</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-banknote text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Cash Payments</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-shield text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Insurance Payments</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Payments</span>
+                                <span class="text-xs text-gray-400 ml-auto">7 of 7</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Payment ID</th>
+                                            <th>Patient</th>
+                                            <th>Invoice Ref</th>
+                                            <th>Amount</th>
+                                            <th>Method</th>
+                                            <th>Date</th>
+                                            <th>Received By</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-primary font-mono text-sm"><a href="payment-detail.html">#PMT-20001</a></td><td class="font-medium text-gray-900">Anna Peterson</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10001</td><td class="font-semibold text-gray-900">$1,200.00</td><td class="text-gray-600 dark:text-gray-300">Card</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-29</td><td class="text-gray-600 dark:text-gray-300">Nina Patel</td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="payment-detail.html">#PMT-20002</a></td><td class="font-medium text-gray-900">James Morrison</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10006</td><td class="font-semibold text-gray-900">$3,200.00</td><td class="text-gray-600 dark:text-gray-300">Insurance</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-02</td><td class="text-gray-600 dark:text-gray-300">Front Desk</td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="payment-detail.html">#PMT-20003</a></td><td class="font-medium text-gray-900">Michael Harris</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10004</td><td class="font-semibold text-gray-900">$1,200.00</td><td class="text-gray-600 dark:text-gray-300">Cash</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-08</td><td class="text-gray-600 dark:text-gray-300">Nina Patel</td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="payment-detail.html">#PMT-20004</a></td><td class="font-medium text-gray-900">Robert Clark</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10007</td><td class="font-semibold text-gray-900">$8,000.00</td><td class="text-gray-600 dark:text-gray-300">Bank Transfer</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-03</td><td class="text-gray-600 dark:text-gray-300">Finance Desk</td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="payment-detail.html">#PMT-20005</a></td><td class="font-medium text-gray-900">Priya Nair</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10009</td><td class="font-semibold text-gray-900">$2,500.00</td><td class="text-gray-600 dark:text-gray-300">Card</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-07</td><td class="text-gray-600 dark:text-gray-300">Nina Patel</td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="payment-detail.html">#PMT-20006</a></td><td class="font-medium text-gray-900">David Torres</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10002</td><td class="font-semibold text-gray-900">$2,000.00</td><td class="text-gray-600 dark:text-gray-300">Cash</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td><td class="text-gray-600 dark:text-gray-300">Front Desk</td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="payment-detail.html">#PMT-20007</a></td><td class="font-medium text-gray-900">Sarah Adams</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10005</td><td class="font-semibold text-gray-900">$640.00</td><td class="text-gray-600 dark:text-gray-300">Insurance</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td><td class="text-gray-600 dark:text-gray-300">Finance Desk</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "payments"})
+    </body>
+</html>

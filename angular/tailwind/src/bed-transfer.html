@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Bed Transfer — Dreams HMS"}) @@include('partials/header.html', {"page": "bed-transfer"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search transfers, patients..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="wb-scope hms-scope flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-6">
+                        <!-- Breadcrumb -->
+                        @@include('partials/breadcrumb.html', {"current": "Bed Transfer", "parentUrl": "wards.html", "parent": "Wards & Beds"})
+
+                        <!-- ============================ HERO ============================ -->
+                        <section class="wb-hero" aria-labelledby="hero-title" data-aos="fade-up">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="min-w-0">
+                                    <div class="flex flex-wrap items-center gap-3">
+                                        <h1 id="hero-title" class="wb-hero-title">Bed Transfer</h1>
+                                        <span id="wb-flag" class="hms-chip tone-medium">
+                                            <i class="icon-arrow-right-left text-[9px]" aria-hidden="true"></i>
+                                            <span id="wb-flag-text">Watch Delays</span>
+                                        </span>
+                                    </div>
+
+                                    <p class="wb-hero-sub">
+                                        <span class="inline-flex items-center gap-1.5">
+                                            <i class="icon-truck text-[13px]" aria-hidden="true"></i>
+                                            <span id="hero-active">6 transfers in progress · 6 done today</span>
+                                        </span>
+                                        <span aria-hidden="true">•</span>
+                                        <span class="inline-flex items-center gap-1.5">
+                                            <i class="icon-user-round text-[13px]" aria-hidden="true"></i>
+                                            Flow coordinator: <span class="font-semibold text-gray-900">Gloria Tennant, RN</span>
+                                        </span>
+                                        <span aria-hidden="true">•</span>
+                                        <span class="inline-flex items-center gap-1.5">
+                                            <i class="icon-refresh-cw text-[13px]" aria-hidden="true"></i>
+                                            Synced
+                                            <time id="wb-synced" datetime="2026-07-17T09:42" class="font-semibold text-gray-900">09:42 AM</time>
+                                        </span>
+                                    </p>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Quick actions">
+                                    <button type="button" id="btn-new" class="wb-action is-primary">
+                                        <i class="icon-arrow-right-left" aria-hidden="true"></i>
+                                        New Transfer
+                                    </button>
+                                    <button type="button" id="btn-advance" class="wb-action">
+                                        <i class="icon-fast-forward" aria-hidden="true"></i>
+                                        Advance All
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ============================ KPIs ============================ -->
+                        <section aria-labelledby="kpi-title" data-aos="fade-up" data-aos-delay="50">
+                            <h2 id="kpi-title" class="sr-only">Transfer indicators</h2>
+                            <div id="kpi-row" class="wb-kpis"><article class="wb-kpi state-occupied"><div class="wb-kpi-head"><span class="wb-kpi-icon"><i class="icon-truck" aria-hidden="true"></i></span><span class="wb-kpi-label">In Progress</span></div><p class="wb-kpi-value"><span id="kpi-active">6</span></p><div class="wb-strip" role="img" aria-label="6 of 12"><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span></div><div class="wb-kpi-foot"><span class="wb-kpi-meta">moving now</span></div></article><article class="wb-kpi state-cleaning"><div class="wb-kpi-head"><span class="wb-kpi-icon"><i class="icon-clipboard-list" aria-hidden="true"></i></span><span class="wb-kpi-label">Awaiting Porter</span></div><p class="wb-kpi-value"><span id="kpi-requested">1</span></p><div class="wb-strip" role="img" aria-label="1 of 6"><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span></div><div class="wb-kpi-foot"><span class="wb-kpi-meta">not yet started</span></div></article><article class="wb-kpi state-reserved"><div class="wb-kpi-head"><span class="wb-kpi-icon"><i class="icon-route" aria-hidden="true"></i></span><span class="wb-kpi-label">In Transit</span></div><p class="wb-kpi-value"><span id="kpi-transit">2</span></p><div class="wb-strip" role="img" aria-label="2 of 6"><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span></div><div class="wb-kpi-foot"><span class="wb-kpi-meta">en route now</span></div></article><article class="wb-kpi move-stepup"><div class="wb-kpi-head"><span class="wb-kpi-icon"><i class="icon-trending-up" aria-hidden="true"></i></span><span class="wb-kpi-label">Step-ups</span></div><p class="wb-kpi-value"><span id="kpi-stepup">2</span></p><div class="wb-strip" role="img" aria-label="2 of 6"><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span></div><div class="wb-kpi-foot"><span class="wb-kpi-meta">escalations</span></div></article><article class="wb-kpi state-available"><div class="wb-kpi-head"><span class="wb-kpi-icon"><i class="icon-trending-down" aria-hidden="true"></i></span><span class="wb-kpi-label">Step-downs</span></div><p class="wb-kpi-value"><span id="kpi-stepdown">1</span></p><div class="wb-strip" role="img" aria-label="1 of 6"><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span></div><div class="wb-kpi-foot"><span class="wb-kpi-meta">de-escalations</span></div></article><article class="wb-kpi state-occupied"><div class="wb-kpi-head"><span class="wb-kpi-icon"><i class="icon-timer" aria-hidden="true"></i></span><span class="wb-kpi-label">Avg Duration</span></div><p class="wb-kpi-value"><span id="kpi-avg">28m</span></p><div class="wb-strip" role="img" aria-label="28 of 60"><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip is-on"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span><span class="wb-pip"></span></div><div class="wb-kpi-foot"><span class="wb-kpi-meta">completed today</span></div></article></div>
+                        </section>
+
+                        <!-- ====================== TRANSFER TRACKER ===================== -->
+                        <section aria-labelledby="track-title" data-aos="fade-up" data-aos-delay="100">
+                            <div class="flex flex-wrap items-center gap-3 mb-4">
+                                <span class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                    <i class="icon-route" aria-hidden="true"></i>
+                                </span>
+                                <div class="mr-auto">
+                                    <h2 id="track-title" class="text-base font-bold text-gray-900">Live Transfer Tracker</h2>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Each move advances Requested → Porter → In Transit → Settling</p>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                                    <span class="wb-legend move-stepup"><span class="wb-legend-dot" aria-hidden="true"></span>Step-up</span>
+                                    <span class="wb-legend move-stepdown"><span class="wb-legend-dot" aria-hidden="true"></span>Step-down</span>
+                                    <span class="wb-legend move-lateral"><span class="wb-legend-dot" aria-hidden="true"></span>Lateral</span>
+                                    <span class="wb-legend move-external"><span class="wb-legend-dot" aria-hidden="true"></span>External</span>
+                                </div>
+                            </div>
+                            <div id="tracker" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4"><div class="wb-lane move-stepup"><div class="wb-lane-head"><i class="icon-clipboard-list text-sm" aria-hidden="true"></i><h3 class="wb-lane-title">Requested</h3><span class="wb-lane-count">1</span></div><div class="wb-lane-body" data-stage="requested"><article class="wb-move move-stepup" draggable="true" data-open="TX-03" data-patient="Nathaniel Boone" data-age="33" data-from="MA-06" data-from-ward="Medical A" data-to="ICU-06" data-to-ward="Critical Care" data-type="Step-up" data-reason="Step-up — escalation of care" data-escort="Nurse + doctor" data-transport="Bed / trolley" data-porter="" data-started="4" data-elapsed="4" tabindex="0" role="button" aria-label="Transfer TX-03 for Nathaniel Boone"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-stepup"><img src="assets/img/avatar/avatar-04.jpg" alt="" loading="lazy"></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 truncate">Nathaniel Boone</p><p class="text-[10px] text-gray-400">33y · Medical A</p></div><span class="badge badge-red"><i class="icon-trending-up text-[9px]" aria-hidden="true"></i>Step-up</span></div><div class="mt-2"><span class="wb-route move-stepup"><span class="wb-route-node">MA-06</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">ICU-06</span></span></div><div class="mt-2 flex items-center gap-2 text-[10px] font-semibold text-gray-400"><span class="inline-flex items-center gap-1"><i class="icon-shield text-[10px]" aria-hidden="true"></i>Nurse + doctor</span><span class="inline-flex items-center gap-1 ml-auto "><i class="icon-clock text-[10px]" aria-hidden="true"></i>4m</span></div></article><div class="wb-lane-empty py-8 text-center" hidden><i class="icon-clipboard-list text-2xl text-gray-200 dark:text-slate-700" aria-hidden="true"></i><p class="mt-1.5 text-[10px] font-semibold text-gray-400">No transfers</p></div></div></div><div class="wb-lane move-external"><div class="wb-lane-head"><i class="icon-user-round text-sm" aria-hidden="true"></i><h3 class="wb-lane-title">Porter Assigned</h3><span class="wb-lane-count">2</span></div><div class="wb-lane-body" data-stage="porter"><article class="wb-move move-lateral" draggable="true" data-open="TX-01" data-patient="Marcus Holloway" data-age="58" data-from="ICU-01" data-from-ward="Critical Care" data-to="ICU-04" data-to-ward="Critical Care" data-type="Lateral" data-reason="Capacity / flow" data-escort="Critical care team" data-transport="Bed / trolley" data-porter="T. Boyd" data-started="18" data-elapsed="6" tabindex="0" role="button" aria-label="Transfer TX-01 for Marcus Holloway"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-lateral"><img src="assets/img/avatar/avatar-27.jpg" alt="" loading="lazy"></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 truncate">Marcus Holloway</p><p class="text-[10px] text-gray-400">58y · Critical Care</p></div><span class="badge badge-blue"><i class="icon-arrow-right-left text-[9px]" aria-hidden="true"></i>Lateral</span></div><div class="mt-2"><span class="wb-route move-lateral"><span class="wb-route-node">ICU-01</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">ICU-04</span></span></div><div class="mt-2 flex items-center gap-2 text-[10px] font-semibold text-gray-400"><span class="inline-flex items-center gap-1"><i class="icon-shield text-[10px]" aria-hidden="true"></i>Critical care team</span><span class="inline-flex items-center gap-1 ml-auto "><i class="icon-clock text-[10px]" aria-hidden="true"></i>6m</span></div></article><article class="wb-move move-external" draggable="true" data-open="TX-05" data-patient="Terrence Whitfield" data-age="45" data-from="SB-01" data-from-ward="Surgical B" data-to="Burn Center" data-to-ward="Regional (external)" data-type="External" data-reason="Specialty change" data-escort="Nurse + doctor" data-transport="Ambulance — external" data-porter="K. Duffy" data-started="22" data-elapsed="11" tabindex="0" role="button" aria-label="Transfer TX-05 for Terrence Whitfield"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-external"><img src="assets/img/avatar/avatar-01.jpg" alt="" loading="lazy"></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 truncate">Terrence Whitfield</p><p class="text-[10px] text-gray-400">45y · Surgical B</p></div><span class="badge badge-purple"><i class="icon-ambulance text-[9px]" aria-hidden="true"></i>External</span></div><div class="mt-2"><span class="wb-route move-external"><span class="wb-route-node">SB-01</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">Burn Center</span></span></div><div class="mt-2 flex items-center gap-2 text-[10px] font-semibold text-gray-400"><span class="inline-flex items-center gap-1"><i class="icon-shield text-[10px]" aria-hidden="true"></i>Nurse + doctor</span><span class="inline-flex items-center gap-1 ml-auto text-danger font-extrabold"><i class="icon-clock text-[10px]" aria-hidden="true"></i>11m · delayed</span></div></article><div class="wb-lane-empty py-8 text-center" hidden><i class="icon-user-round text-2xl text-gray-200 dark:text-slate-700" aria-hidden="true"></i><p class="mt-1.5 text-[10px] font-semibold text-gray-400">No transfers</p></div></div></div><div class="wb-lane move-lateral"><div class="wb-lane-head"><i class="icon-truck text-sm" aria-hidden="true"></i><h3 class="wb-lane-title">In Transit</h3><span class="wb-lane-count">2</span></div><div class="wb-lane-body" data-stage="transit"><article class="wb-move move-stepdown" draggable="true" data-open="TX-02" data-patient="Denise Okafor" data-age="34" data-from="ICU-02" data-from-ward="Critical Care" data-to="MA-04" data-to-ward="Medical A" data-type="Step-down" data-reason="Step-down — de-escalation" data-escort="Nurse escort" data-transport="Bed / trolley" data-porter="R. Santiago" data-started="35" data-elapsed="9" tabindex="0" role="button" aria-label="Transfer TX-02 for Denise Okafor"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-stepdown"><img src="assets/img/avatar/avatar-19.jpg" alt="" loading="lazy"></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 truncate">Denise Okafor</p><p class="text-[10px] text-gray-400">34y · Critical Care</p></div><span class="badge badge-green"><i class="icon-trending-down text-[9px]" aria-hidden="true"></i>Step-down</span></div><div class="mt-2"><span class="wb-route move-stepdown"><span class="wb-route-node">ICU-02</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">MA-04</span></span></div><div class="mt-2 flex items-center gap-2 text-[10px] font-semibold text-gray-400"><span class="inline-flex items-center gap-1"><i class="icon-shield text-[10px]" aria-hidden="true"></i>Nurse escort</span><span class="inline-flex items-center gap-1 ml-auto "><i class="icon-clock text-[10px]" aria-hidden="true"></i>9m</span></div></article><article class="wb-move move-stepup" draggable="true" data-open="TX-06" data-patient="Julian Alvarez" data-age="8" data-from="PD-01" data-from-ward="Pediatrics" data-to="HDU-01" data-to-ward="High Dependency" data-type="Step-up" data-reason="Step-up — escalation of care" data-escort="Critical care team" data-transport="Bed / trolley" data-porter="L. Moreau" data-started="14" data-elapsed="5" tabindex="0" role="button" aria-label="Transfer TX-06 for Julian Alvarez"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-stepup"><img src="assets/img/avatar/avatar-05.jpg" alt="" loading="lazy"></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 truncate">Julian Alvarez</p><p class="text-[10px] text-gray-400">8y · Pediatrics</p></div><span class="badge badge-red"><i class="icon-trending-up text-[9px]" aria-hidden="true"></i>Step-up</span></div><div class="mt-2"><span class="wb-route move-stepup"><span class="wb-route-node">PD-01</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">HDU-01</span></span></div><div class="mt-2 flex items-center gap-2 text-[10px] font-semibold text-gray-400"><span class="inline-flex items-center gap-1"><i class="icon-shield text-[10px]" aria-hidden="true"></i>Critical care team</span><span class="inline-flex items-center gap-1 ml-auto "><i class="icon-clock text-[10px]" aria-hidden="true"></i>5m</span></div></article><div class="wb-lane-empty py-8 text-center" hidden><i class="icon-truck text-2xl text-gray-200 dark:text-slate-700" aria-hidden="true"></i><p class="mt-1.5 text-[10px] font-semibold text-gray-400">No transfers</p></div></div></div><div class="wb-lane move-stepdown"><div class="wb-lane-head"><i class="icon-bed text-sm" aria-hidden="true"></i><h3 class="wb-lane-title">Settling In</h3><span class="wb-lane-count">1</span></div><div class="wb-lane-body" data-stage="settling"><article class="wb-move move-lateral" draggable="true" data-open="TX-04" data-patient="Emmett Sandoval" data-age="74" data-from="SB-07" data-from-ward="Surgical B" data-to="Rehab-02" data-to-ward="Rehabilitation" data-type="Lateral" data-reason="Specialty change" data-escort="Nurse escort" data-transport="Wheelchair" data-porter="M. Ansari" data-started="52" data-elapsed="7" tabindex="0" role="button" aria-label="Transfer TX-04 for Emmett Sandoval"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-lateral"><img src="assets/img/avatar/avatar-15.jpg" alt="" loading="lazy"></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 truncate">Emmett Sandoval</p><p class="text-[10px] text-gray-400">74y · Surgical B</p></div><span class="badge badge-blue"><i class="icon-arrow-right-left text-[9px]" aria-hidden="true"></i>Lateral</span></div><div class="mt-2"><span class="wb-route move-lateral"><span class="wb-route-node">SB-07</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">Rehab-02</span></span></div><div class="mt-2 flex items-center gap-2 text-[10px] font-semibold text-gray-400"><span class="inline-flex items-center gap-1"><i class="icon-shield text-[10px]" aria-hidden="true"></i>Nurse escort</span><span class="inline-flex items-center gap-1 ml-auto "><i class="icon-clock text-[10px]" aria-hidden="true"></i>7m</span></div></article><div class="wb-lane-empty py-8 text-center" hidden><i class="icon-bed text-2xl text-gray-200 dark:text-slate-700" aria-hidden="true"></i><p class="mt-1.5 text-[10px] font-semibold text-gray-400">No transfers</p></div></div></div></div>
+                        </section>
+
+                        <!-- ============== REASONS + RECENT COMPLETED ================== -->
+                        <section class="grid grid-cols-1 xl:grid-cols-12 gap-5 items-stretch" data-aos="fade-up" data-aos-delay="150">
+                            <!-- Recent completed -->
+                            <article class="hms-panel xl:col-span-12 flex flex-col" aria-labelledby="recent-title">
+                                <div class="hms-panel-head">
+                                    <span class="hms-panel-icon tone-stable"><i class="icon-clipboard-check" aria-hidden="true"></i></span>
+                                    <h3 id="recent-title" class="hms-panel-title mr-auto">Completed Today</h3>
+                                    <div class="relative min-w-40">
+                                        <label for="search" class="sr-only">Search completed transfers</label>
+                                        <i class="icon-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" aria-hidden="true"></i>
+                                        <input id="search" type="search" placeholder="Patient, ward..." class="form-input pl-9! py-1.5! text-xs!">
+                                    </div>
+                                    <span id="recent-count" class="hms-chip tone-stable">6 done</span>
+                                </div>
+                                <div class="overflow-x-auto flex-1">
+                                    <table class="w-full">
+                                        <caption class="sr-only">Transfers completed today</caption>
+                                        <thead class="bg-gray-50/80 dark:bg-slate-800/60">
+                                            <tr>
+                                                <th scope="col" class="hms-th">Patient</th>
+                                                <th scope="col" class="hms-th">Route</th>
+                                                <th scope="col" class="hms-th">Type</th>
+                                                <th scope="col" class="hms-th">Reason</th>
+                                                <th scope="col" class="hms-th">Duration</th>
+                                                <th scope="col" class="hms-th">Completed</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="recent-body"><tr class="hms-row move-stepdown"><td class="hms-cell"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-stepdown"><img src="assets/img/avatar/avatar-22.jpg" alt="" loading="lazy"></span><p class="text-xs font-bold text-gray-900 truncate">Kaitlyn Brewer</p><span class="sr-only">Surgical B Medical A</span></div></td><td class="hms-cell"><span class="wb-route move-stepdown"><span class="wb-route-node">SB-02</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">MA-02</span></span></td><td class="hms-cell"><span class="badge badge-green">Step-down</span></td><td class="hms-cell"><span class="text-xs text-gray-600 dark:text-gray-300">De-escalation</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">32m</span></td><td class="hms-cell"><span class="text-xs text-gray-500 dark:text-gray-400 tabular-nums">09:05 AM</span></td></tr><tr class="hms-row move-stepdown"><td class="hms-cell"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-stepdown"><img src="assets/img/avatar/avatar-29.jpg" alt="" loading="lazy"></span><p class="text-xs font-bold text-gray-900 truncate">Arthur Delgado</p><span class="sr-only">Critical Care Medical A</span></div></td><td class="hms-cell"><span class="wb-route move-stepdown"><span class="wb-route-node">ICU-03</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">MA-08</span></span></td><td class="hms-cell"><span class="badge badge-green">Step-down</span></td><td class="hms-cell"><span class="text-xs text-gray-600 dark:text-gray-300">De-escalation</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">41m</span></td><td class="hms-cell"><span class="text-xs text-gray-500 dark:text-gray-400 tabular-nums">08:40 AM</span></td></tr><tr class="hms-row move-stepup"><td class="hms-cell"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-stepup"><img src="assets/img/avatar/avatar-25.jpg" alt="" loading="lazy"></span><p class="text-xs font-bold text-gray-900 truncate">Harriet Nakashima</p><span class="sr-only">Theatre Critical Care</span></div></td><td class="hms-cell"><span class="wb-route move-stepup"><span class="wb-route-node">OR 5</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">ICU-05</span></span></td><td class="hms-cell"><span class="badge badge-red">Step-up</span></td><td class="hms-cell"><span class="text-xs text-gray-600 dark:text-gray-300">Post-op escalation</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">18m</span></td><td class="hms-cell"><span class="text-xs text-gray-500 dark:text-gray-400 tabular-nums">08:12 AM</span></td></tr><tr class="hms-row move-stepup"><td class="hms-cell"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-stepup"><img src="assets/img/avatar/avatar-14.jpg" alt="" loading="lazy"></span><p class="text-xs font-bold text-gray-900 truncate">Camila Restrepo</p><span class="sr-only">Emergency High Dependency</span></div></td><td class="hms-cell"><span class="wb-route move-stepup"><span class="wb-route-node">ED</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">HDU-02</span></span></td><td class="hms-cell"><span class="badge badge-red">Step-up</span></td><td class="hms-cell"><span class="text-xs text-gray-600 dark:text-gray-300">Escalation</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">27m</span></td><td class="hms-cell"><span class="text-xs text-gray-500 dark:text-gray-400 tabular-nums">07:55 AM</span></td></tr><tr class="hms-row move-lateral"><td class="hms-cell"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-lateral"><img src="assets/img/avatar/avatar-27.jpg" alt="" loading="lazy"></span><p class="text-xs font-bold text-gray-900 truncate">Cedric Lawson</p><span class="sr-only">Medical A Rehabilitation</span></div></td><td class="hms-cell"><span class="wb-route move-lateral"><span class="wb-route-node">MA-03</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">Rehab-01</span></span></td><td class="hms-cell"><span class="badge badge-blue">Lateral</span></td><td class="hms-cell"><span class="text-xs text-gray-600 dark:text-gray-300">Specialty change</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">36m</span></td><td class="hms-cell"><span class="text-xs text-gray-500 dark:text-gray-400 tabular-nums">07:30 AM</span></td></tr><tr class="hms-row move-lateral"><td class="hms-cell"><div class="flex items-center gap-2.5"><span class="hms-member-avatar size-8! text-[9px]! move-lateral"><img src="assets/img/avatar/avatar-01.jpg" alt="" loading="lazy"></span><p class="text-xs font-bold text-gray-900 truncate">Simone Ferraro</p><span class="sr-only">Surgical B</span></div></td><td class="hms-cell"><span class="wb-route move-lateral"><span class="wb-route-node">SB-04</span><i class="icon-arrow-right wb-route-arrow text-[10px]" aria-hidden="true"></i><span class="wb-route-node is-dest">SB-09</span></span></td><td class="hms-cell"><span class="badge badge-blue">Lateral</span></td><td class="hms-cell"><span class="text-xs text-gray-600 dark:text-gray-300">Bed management</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">15m</span></td><td class="hms-cell"><span class="text-xs text-gray-500 dark:text-gray-400 tabular-nums">07:12 AM</span></td></tr><tr id="recent-empty" hidden><td colspan="6" class="py-10 text-center"><i class="icon-search-x text-3xl text-gray-300 dark:text-slate-600" aria-hidden="true"></i><p class="mt-2 text-sm font-semibold text-gray-500 dark:text-gray-400">No completed transfers match</p></td></tr></tbody>
+                                    </table>
+                                </div>
+                            </article>
+                        </section>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- ======================= NEW TRANSFER MODAL ===================== -->
+        <div id="move-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none wb-scope" role="dialog" tabindex="-1" aria-labelledby="mv-title">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color rounded-lg pointer-events-auto max-h-[90vh] overflow-y-auto">
+                <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <span class="size-11 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                            <i class="icon-arrow-right-left text-xl" aria-hidden="true"></i>
+                        </span>
+                        <div>
+                            <h2 id="mv-title" class="text-lg font-bold text-gray-900">New Transfer</h2>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Move an inpatient to another bed or facility.</p>
+                        </div>
+                    </div>
+                    <button type="button" id="mv-close" data-hs-overlay="#move-modal" aria-label="Close transfer" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500">
+                        <i class="icon-x" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <form id="mv-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group col-span-2">
+                            <label for="mv-patient" class="form-label">Patient</label>
+                            <select id="mv-patient" class="form-select"><option value="Marcus Holloway">Marcus Holloway — ICU-01 (Critical Care)</option><option value="Denise Okafor">Denise Okafor — ICU-02 (Critical Care)</option><option value="Emmett Sandoval">Emmett Sandoval — SB-07 (Surgical B)</option><option value="Terrence Whitfield">Terrence Whitfield — SB-01 (Surgical B)</option><option value="Rosalind Pierce">Rosalind Pierce — MA-01 (Medical A)</option><option value="Nathaniel Boone">Nathaniel Boone — MA-06 (Medical A)</option><option value="Julian Alvarez">Julian Alvarez — PD-01 (Pediatrics)</option></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mv-dest" class="form-label">Destination</label>
+                            <select id="mv-dest" class="form-select"><option>ICU-04 · Critical Care</option><option>ICU-06 · Critical Care</option><option>HDU-01 · High Dependency</option><option>MA-04 · Medical A</option><option>MA-09 · Medical A</option><option>SB-05 · Surgical B</option><option>SB-09 · Surgical B</option><option>CA-03 · Cardiology</option><option>Rehab-02 · Rehabilitation</option><option>Burn Center · Regional (external)</option></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mv-reason" class="form-label">Reason</label>
+                            <select id="mv-reason" class="form-select">
+                                <option>Step-up — escalation of care</option>
+                                <option>Step-down — de-escalation</option>
+                                <option>Specialty change</option>
+                                <option>Isolation required</option>
+                                <option>Capacity / flow</option>
+                                <option>Patient request</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mv-escort" class="form-label">Clinical Escort</label>
+                            <select id="mv-escort" class="form-select">
+                                <option>None — porter only</option>
+                                <option>Nurse escort</option>
+                                <option>Nurse + doctor</option>
+                                <option>Critical care team</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mv-transport" class="form-label">Transport</label>
+                            <select id="mv-transport" class="form-select">
+                                <option>Bed / trolley</option>
+                                <option>Wheelchair</option>
+                                <option>Walking</option>
+                                <option>Ambulance — external</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-span-2">
+                            <div id="mv-advice" class="rounded-xl border border-border-color bg-gray-50 dark:bg-slate-800 p-3 flex items-center gap-2.5">
+                                <i id="mv-advice-icon" class="icon-info text-info shrink-0" aria-hidden="true"></i>
+                                <p id="mv-advice-text" class="text-xs text-gray-500 dark:text-gray-400"></p>
+                            </div>
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label for="mv-notes" class="form-label">Handover Notes</label>
+                            <textarea id="mv-notes" class="form-textarea" placeholder="On 2L oxygen, IV antibiotics due 12:00, mobilising with one assist..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-border-color flex gap-2 justify-end">
+                        <button type="button" id="mv-cancel" data-hs-overlay="#move-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button type="button" id="mv-save" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Request Transfer</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== TRANSFER DETAIL MODAL =================== -->
+        <div id="detail-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none wb-scope" role="dialog" tabindex="-1" aria-labelledby="dt-title">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color rounded-lg pointer-events-auto max-h-[90vh] overflow-y-auto">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="dt-avatar" class="hms-member-avatar size-11!">--</span>
+                        <div>
+                            <h2 id="dt-title" class="text-lg font-bold text-gray-900">Transfer</h2>
+                            <p id="dt-sub" class="text-xs text-gray-500 dark:text-gray-400"></p>
+                        </div>
+                    </div>
+                    <button type="button" id="dt-close" data-hs-overlay="#detail-modal" aria-label="Close detail" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500">
+                        <i class="icon-x" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <div id="dt-chips" class="flex flex-wrap gap-2 mb-4"></div>
+
+                <!-- Stage progress -->
+                <ul id="dt-stages" class="hms-tl mb-4"></ul>
+
+                <dl id="dt-body" class="grid grid-cols-2 gap-3 text-sm"></dl>
+
+                <div class="mt-5 pt-4 border-t border-border-color flex flex-wrap gap-2 justify-end">
+                    <button type="button" id="dt-cancel-move" class="px-4 py-2 rounded-lg border border-danger/40 text-sm font-medium text-danger hover:bg-danger/5 transition-colors">Cancel Transfer</button>
+                    <button type="button" id="dt-close2" data-hs-overlay="#detail-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Close</button>
+                    <button type="button" id="dt-advance" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Advance Stage</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "bed-transfer"})
+    </body>
+</html>

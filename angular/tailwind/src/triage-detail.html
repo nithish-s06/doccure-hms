@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Triage Assessment Details — Dreams HMS"}) @@include('partials/header.html', {"page": "triage-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="triage-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="tgd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Triage Assessment Details", "parentUrl": "triage.html", "parent": "Triage"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="tgd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="tgd-hero-ico"><i class="icon-heart-pulse"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Denise Okafor</h1>
+                                            <span class="tgd-hbadge"><span class="tgd-dot"></span><span>ESI 2 — Emergent</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="tgd-hmeta"><i class="icon-hash text-[13px] text-rose-300"></i>#ER-4822</span>
+                                            <span class="tgd-hmeta"><i class="icon-user-round text-[13px] text-amber-300"></i>Alicia Barnett, RN</span>
+                                            <span class="tgd-hmeta"><i class="icon-clipboard-check text-[13px] text-sky-300"></i>Acute Care</span>
+                                            <span class="tgd-hmeta"><i class="icon-clock text-[13px] text-emerald-300"></i>Triaged 09:31 AM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 tgd-actions-print-hide">
+                                    <button type="button" class="tgd-btn tgd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="triage.html" class="tgd-btn tgd-btn-primary"><i class="icon-arrow-left"></i>Back to Triage</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="tgd-grid">
+                            <div class="tgd-vital tgd-c-rose">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-siren"></i></span>
+                                    <span class="tgd-chip">ESI Level</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">ESI 2</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Emergent</p>
+                            </div>
+                            <div class="tgd-vital tgd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-heart-pulse"></i></span>
+                                    <span class="tgd-chip">Vitals</span>
+                                </div>
+                                <p class="mt-3 text-lg font-extrabold text-gray-900 dark:text-white">BP 132/86</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">HR 108 · SpO2 89%</p>
+                            </div>
+                            <div class="tgd-vital tgd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-timer"></i></span>
+                                    <span class="tgd-chip">Time</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">5 min</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Triage Duration</p>
+                            </div>
+                            <div class="tgd-vital tgd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-clipboard-check"></i></span>
+                                    <span class="tgd-chip">Disposition</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Acute Care</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Routed To</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="tgd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Assessment workflow -->
+                                <div class="tgd-surface">
+                                    <div class="tgd-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="tgd-title">Triage Timeline</h2>
+                                    </div>
+                                    <div class="tgd-tl p-5">
+                                        <div class="tgd-tl-item done">
+                                            <span class="tgd-tl-node"><i class="icon-door-open"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Arrival — Walk-in</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">09:26 AM · Registered at front desk</p>
+                                        </div>
+                                        <div class="tgd-tl-item done">
+                                            <span class="tgd-tl-node"><i class="icon-heart-pulse"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Vitals recorded</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">BP 132/86 · HR 108 · SpO2 89%</p>
+                                        </div>
+                                        <div class="tgd-tl-item done">
+                                            <span class="tgd-tl-node"><i class="icon-siren"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">ESI 2 assigned</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">SpO2 below 94% — emergent priority</p>
+                                        </div>
+                                        <div class="tgd-tl-item current">
+                                            <span class="tgd-tl-node"><i class="icon-clipboard-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Routed to Acute Care</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">09:31 AM · Awaiting bed assignment</p>
+                                        </div>
+                                        <div class="tgd-tl-item">
+                                            <span class="tgd-tl-node"><i class="icon-stethoscope"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Physician assessment</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Pending</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Chief complaint & notes -->
+                                <div class="tgd-surface">
+                                    <div class="tgd-head">
+                                        <span class="ico"><i class="icon-notebook-pen"></i></span>
+                                        <h2 class="tgd-title">Chief Complaint &amp; Notes</h2>
+                                    </div>
+                                    <div class="p-5 space-y-3">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Elevated heart rate with low oxygen saturation on presentation. Patient reports mild chest discomfort and shortness of breath over the last hour. No known drug allergies.</p>
+                                        <div class="flex items-center gap-2.5 p-3 rounded-xl [background:color-mix(in_oklab,var(--tgd-c)_8%,transparent)]">
+                                            <i class="icon-triangle-alert text-rose-500"></i>
+                                            <p class="text-xs text-gray-600 dark:text-gray-300">SpO2 below threshold — continuous pulse-ox monitoring in place.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 tgd-sidebar">
+                                <!-- Nurse -->
+                                <div class="tgd-surface tgd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Triage Nurse</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Alicia Barnett, RN</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Emergency Department</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="tgd-hmeta"><i class="icon-badge-check text-[12px]"></i>Charge Nurse</span>
+                                    </div>
+                                </div>
+
+                                <!-- Assessment details -->
+                                <div class="tgd-surface p-5">
+                                    <h3 class="tgd-title mb-3">Assessment Details</h3>
+                                    <div class="tgd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">Denise Okafor</span></div>
+                                    <div class="tgd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Record #</span><span class="v">ER-4822</span></div>
+                                    <div class="tgd-kv"><span class="k"><i class="icon-siren text-[13px]"></i>ESI Level</span><span class="v">ESI 2 — Emergent</span></div>
+                                    <div class="tgd-kv"><span class="k"><i class="icon-user-round text-[13px]"></i>Nurse</span><span class="v">Alicia Barnett, RN</span></div>
+                                    <div class="tgd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Time</span><span class="v">09:31 AM</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="tgd-surface p-5 space-y-2.5">
+                                    <h3 class="tgd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="tgd-btn tgd-btn-solid w-full justify-start"><i class="icon-timer-reset"></i>Schedule Reassessment</button>
+                                    <button type="button" class="tgd-btn tgd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Assessment</button>
+                                    <a href="triage.html" class="tgd-btn tgd-btn-solid w-full justify-start"><i class="icon-list"></i>All Assessments</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "triage-detail"})
+    </body>
+</html>

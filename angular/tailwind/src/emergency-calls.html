@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Emergency Calls — Dreams HMS"}) @@include('partials/header.html', {"page": "emergency-calls"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="emergency-calls">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search ..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Emergency Calls", "parentUrl": "ambulance.html", "parent": "Ambulance Dashboard"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Emergency Calls</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Log and track incoming emergency call dispatches</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-phone-call text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Calls</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-alert-circle text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Dispatched / Active</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-navigation text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">En Route</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">4</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Completed Today</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Calls</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Call ID</th>
+                                            <th>Caller</th>
+                                            <th>Location</th>
+                                            <th>Dispatched Vehicle</th>
+                                            <th>Call Time</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-primary font-mono text-sm"><a href="emergency-call-detail.html">#EC-00001</a></td><td class="font-medium text-gray-900">Susan Blake</td><td class="text-gray-600 dark:text-gray-300">42 Elm Street</td><td class="text-gray-600 dark:text-gray-300">AMB-101</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 14:32</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Completed</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="emergency-call-detail.html">#EC-00002</a></td><td class="font-medium text-gray-900">George Patel</td><td class="text-gray-600 dark:text-gray-300">118 Oak Avenue</td><td class="text-gray-600 dark:text-gray-300">AMB-104</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 15:10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">En Route</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="emergency-call-detail.html">#EC-00003</a></td><td class="font-medium text-gray-900">Helen Rossi</td><td class="text-gray-600 dark:text-gray-300">9 Market Square</td><td class="text-gray-600 dark:text-gray-300">AMB-102</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 15:45</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Dispatched</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="emergency-call-detail.html">#EC-00004</a></td><td class="font-medium text-gray-900">Victor Cole</td><td class="text-gray-600 dark:text-gray-300">27 River Road</td><td class="text-gray-600 dark:text-gray-300">AMB-105</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 09:20</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Completed</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="emergency-call-detail.html">#EC-00005</a></td><td class="font-medium text-gray-900">Amanda Reyes</td><td class="text-gray-600 dark:text-gray-300">310 Pine Street</td><td class="text-gray-600 dark:text-gray-300">AMB-107</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 11:05</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Completed</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="emergency-call-detail.html">#EC-00006</a></td><td class="font-medium text-gray-900">Bruce Tanaka</td><td class="text-gray-600 dark:text-gray-300">5 Harbor View</td><td class="text-gray-600 dark:text-gray-300">AMB-108</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 16:02</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Dispatched</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="emergency-call-detail.html">#EC-00007</a></td><td class="font-medium text-gray-900">Laura Simmons</td><td class="text-gray-600 dark:text-gray-300">76 Sunset Blvd</td><td class="text-gray-600 dark:text-gray-300">AMB-106</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 08:15</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Completed</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="emergency-call-detail.html">#EC-00008</a></td><td class="font-medium text-gray-900">Derek Osei</td><td class="text-gray-600 dark:text-gray-300">220 Maple Court</td><td class="text-gray-600 dark:text-gray-300">AMB-103</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 13:47</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">En Route</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "emergency-calls"})
+    </body>
+</html>

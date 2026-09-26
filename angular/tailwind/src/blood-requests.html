@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Blood Requests — Dreams HMS"}) @@include('partials/header.html', {"page": "blood-requests"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="blood-requests">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search patient, requesting doctor..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Blood Requests", "parentUrl": "blood-bank.html", "parent": "Blood Bank"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Blood Requests</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Track blood requests raised by wards and doctors</p>
+                            </div>
+                            <button id="btn-add" class="flex items-center gap-2 bg-primary hover:bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                <i class="icon-plus"></i>
+                                New Request
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-file-text text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-total">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Requests</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-pending">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-emergency">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Emergency Requests</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-fulfilled">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Fulfilled</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                               <div class="relative flex-1 max-w-100 max-sm:min-w-full">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                                        <i class="icon-search text-gray-400"></i>
+                                    </span>
+                                    <input aria-label="Search patient, requesting doctor..." id="search" type="text" placeholder="Search patient, requesting doctor..." class="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-slate-600 rounded-lg bg-gray-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" >
+                                </div>
+                                <select aria-label="All Blood Groups" id="filter-group" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Blood Groups</option>
+                                    <option>A+</option>
+                                    <option>A-</option>
+                                    <option>B+</option>
+                                    <option>B-</option>
+                                    <option>AB+</option>
+                                    <option>AB-</option>
+                                    <option>O+</option>
+                                    <option>O-</option>
+                                </select>
+                                <select aria-label="All Status" id="filter-status" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Status</option>
+                                    <option>Pending</option>
+                                    <option>Approved</option>
+                                    <option>Fulfilled</option>
+                                </select>
+                                <span class="text-xs text-gray-400 ml-auto" id="count"></span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Request ID</th>
+                                            <th>Patient</th>
+                                            <th>Blood Group</th>
+                                            <th>Units</th>
+                                            <th>Requested By</th>
+                                            <th>Urgency</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr data-row-id="1"><td class="text-primary font-mono text-sm"><a href="blood-request-detail.html">#BR-00001</a></td><td class="font-medium text-gray-900">Ravi Kumar</td><td class="text-gray-600 dark:text-gray-300">O+</td><td class="text-gray-500 dark:text-gray-400">2</td><td class="text-gray-600 dark:text-gray-300">Dr. Mehta — ICU</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Emergency</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Fulfilled</span></td><td><div class="flex gap-1"><button onclick="brOpenEdit(1)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="brDelete(1,'Ravi Kumar')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="2"><td class="text-primary font-mono text-sm"><a href="blood-request-detail.html">#BR-00002</a></td><td class="font-medium text-gray-900">Sunita Rao</td><td class="text-gray-600 dark:text-gray-300">A-</td><td class="text-gray-500 dark:text-gray-400">1</td><td class="text-gray-600 dark:text-gray-300">Dr. Chen — Surgery</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Urgent</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Approved</span></td><td><div class="flex gap-1"><button onclick="brOpenEdit(2)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="brDelete(2,'Sunita Rao')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="3"><td class="text-primary font-mono text-sm"><a href="blood-request-detail.html">#BR-00003</a></td><td class="font-medium text-gray-900">James Miller</td><td class="text-gray-600 dark:text-gray-300">B+</td><td class="text-gray-500 dark:text-gray-400">3</td><td class="text-gray-600 dark:text-gray-300">Dr. Alvarez — Ortho</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Routine</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Pending</span></td><td><div class="flex gap-1"><button onclick="brOpenEdit(3)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="brDelete(3,'James Miller')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="4"><td class="text-primary font-mono text-sm"><a href="blood-request-detail.html">#BR-00004</a></td><td class="font-medium text-gray-900">Aisha Khan</td><td class="text-gray-600 dark:text-gray-300">AB+</td><td class="text-gray-500 dark:text-gray-400">1</td><td class="text-gray-600 dark:text-gray-300">Dr. Novak — Oncology</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Urgent</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Approved</span></td><td><div class="flex gap-1"><button onclick="brOpenEdit(4)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="brDelete(4,'Aisha Khan')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="5"><td class="text-primary font-mono text-sm"><a href="blood-request-detail.html">#BR-00005</a></td><td class="font-medium text-gray-900">Carlos Diaz</td><td class="text-gray-600 dark:text-gray-300">O-</td><td class="text-gray-500 dark:text-gray-400">4</td><td class="text-gray-600 dark:text-gray-300">Dr. Mehta — ICU</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Emergency</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Pending</span></td><td><div class="flex gap-1"><button onclick="brOpenEdit(5)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="brDelete(5,'Carlos Diaz')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="6"><td class="text-primary font-mono text-sm"><a href="blood-request-detail.html">#BR-00006</a></td><td class="font-medium text-gray-900">Lena Fischer</td><td class="text-gray-600 dark:text-gray-300">B-</td><td class="text-gray-500 dark:text-gray-400">2</td><td class="text-gray-600 dark:text-gray-300">Dr. Osei — Maternity</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Urgent</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Fulfilled</span></td><td><div class="flex gap-1"><button onclick="brOpenEdit(6)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="brDelete(6,'Lena Fischer')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="7"><td class="text-primary font-mono text-sm"><a href="blood-request-detail.html">#BR-00007</a></td><td class="font-medium text-gray-900">Tom Baker</td><td class="text-gray-600 dark:text-gray-300">A+</td><td class="text-gray-500 dark:text-gray-400">1</td><td class="text-gray-600 dark:text-gray-300">Dr. Sharma — Emergency</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Routine</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Fulfilled</span></td><td><div class="flex gap-1"><button onclick="brOpenEdit(7)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="brDelete(7,'Tom Baker')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr id="tbody-empty" class="hidden"><td colspan="8" class="text-center py-10 text-gray-400">No requests found</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="form-modal" class="modal-overlay hidden">
+            <div class="modal-panel">
+                <div class="flex items-center justify-between">
+                    <h2 id="m-title" class="text-xl font-bold text-gray-900">New Request</h2>
+                    <button id="m-close" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <form id="m-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="f-patient" class="form-label">Patient Name <span class="text-danger">*</span></label>
+                            <input id="f-patient" type="text" class="form-input" placeholder="Ravi Kumar" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-group" class="form-label">Blood Group</label>
+                            <select id="f-group" class="form-select">
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                                <option>O+</option>
+                                <option>O-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-units" class="form-label">Units Requested</label>
+                            <input id="f-units" type="number" class="form-input" placeholder="2" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-requestedby" class="form-label">Requesting Doctor / Ward</label>
+                            <input id="f-requestedby" type="text" class="form-input" placeholder="Dr. Mehta — ICU" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-urgency" class="form-label">Urgency</label>
+                            <select id="f-urgency" class="form-select">
+                                <option>Routine</option>
+                                <option>Urgent</option>
+                                <option>Emergency</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-date" class="form-label">Request Date</label>
+                            <div class="relative">
+                                <input type="text" id="f-date" placeholder="dd/mm/yyyy" class="form-input pr-10" data-provider="flatpickr" data-date-format="d-m-Y">
+                                <i class="icon-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-900"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-status" class="form-label">Status</label>
+                            <select id="f-status" class="form-select">
+                                <option>Pending</option>
+                                <option>Approved</option>
+                                <option>Fulfilled</option>
+                            </select>
+                        </div>
+                        <div class="form-group span-2">
+                            <label for="f-notes" class="form-label">Notes</label>
+                            <textarea id="f-notes" class="form-textarea" placeholder="Additional notes..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button id="m-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Save Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="del-modal" class="modal-overlay hidden">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Delete Request</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Delete request for
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    ?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                    <button id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "blood-requests"})
+    </body>
+</html>

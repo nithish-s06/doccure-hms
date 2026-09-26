@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Feedback Details — Dreams HMS"}) @@include('partials/header.html', {"page": "patient-feedback-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="patient-feedback-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="pfd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Feedback Details", "parentUrl": "patient-feedback.html", "parent": "Feedback"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="pfd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="pfd-hero-ico"><i class="icon-message-square"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="pfd-patient-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Ava Thompson</h1>
+                                            <span class="pfd-hbadge" id="pfd-status-badge"><span class="pfd-dot"></span><span id="pfd-status-text">Resolved</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="pfd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="pfd-fb-id">#FB-0001</span></span>
+                                            <span class="pfd-hmeta"><span class="pfd-hstars" id="pfd-hero-stars"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></span>
+                                            <span class="pfd-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i><span id="pfd-doctor-name">Dr. Chen</span> · <span id="pfd-dept">Cardiology</span></span>
+                                            <span class="pfd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Submitted <span id="pfd-date">2026-09-07</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 pfd-actions-print-hide">
+                                    <button type="button" class="pfd-btn pfd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="patient-feedback.html" id="pfd-back-btn" class="pfd-btn pfd-btn-primary"><i class="icon-arrow-left"></i>Back to Feedback</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="pfd-grid">
+                            <div class="pfd-vital pfd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-star"></i></span>
+                                    <span class="pfd-chip">Rating</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pfd-vital-rating">5.0</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Overall Rating</p>
+                            </div>
+                            <div class="pfd-vital pfd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-smile"></i></span>
+                                    <span class="pfd-chip">Sentiment</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pfd-vital-sentiment">Positive</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Sentiment</p>
+                            </div>
+                            <div class="pfd-vital pfd-c-rose">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-stethoscope"></i></span>
+                                    <span class="pfd-chip">Category</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pfd-vital-cat">Doctor</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Feedback Category</p>
+                            </div>
+                            <div class="pfd-vital pfd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-gauge"></i></span>
+                                    <span class="pfd-chip">NPS</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pfd-vital-nps">Promoter</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">NPS Segment</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="pfd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Feedback timeline -->
+                                <div class="pfd-surface">
+                                    <div class="pfd-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="pfd-title">Response Timeline</h2>
+                                    </div>
+                                    <div class="pfd-tl p-5" id="pfd-timeline">
+                                        <div class="pfd-tl-item done"><span class="pfd-tl-node"><i class="icon-send"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Feedback Submitted</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Submitted via the patient app after visit</p></div>
+                                        <div class="pfd-tl-item done"><span class="pfd-tl-node"><i class="icon-reply"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Hospital Responded</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Care team replied to acknowledge the feedback</p></div>
+                                        <div class="pfd-tl-item done"><span class="pfd-tl-node"><i class="icon-check-circle"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Marked Resolved</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Closed out by the patient experience team</p></div>
+                                    </div>
+                                </div>
+
+                                <!-- Patient comment -->
+                                <div class="pfd-surface">
+                                    <div class="pfd-head">
+                                        <span class="ico"><i class="icon-quote"></i></span>
+                                        <h2 class="pfd-title">Patient Comment</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="pfd-quote">
+                                            <p class="text-sm text-gray-700 dark:text-gray-200" id="pfd-comment">"Dr. Chen was incredibly attentive and explained everything clearly. Best cardiac care I've received."</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Hospital response -->
+                                <div class="pfd-surface" id="pfd-response-card">
+                                    <div class="pfd-head">
+                                        <span class="ico"><i class="icon-reply"></i></span>
+                                        <h2 class="pfd-title">Hospital Response</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300" id="pfd-response">Thank you for your feedback. We're glad to hear about your experience and will keep improving.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 pfd-sidebar">
+                                <!-- Doctor -->
+                                <div class="pfd-surface pfd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">About</p>
+                                    <h3 class="mt-1 text-lg font-extrabold" id="pfd-side-doctor">Dr. Chen</h3>
+                                    <p class="text-sm text-white/80 mt-0.5" id="pfd-side-dept">Cardiology</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="pfd-hmeta"><i class="icon-globe text-[12px]"></i>Source: <span id="pfd-side-source">App</span></span>
+                                    </div>
+                                </div>
+
+                                <!-- Feedback card -->
+                                <div class="pfd-surface p-5">
+                                    <h3 class="pfd-title mb-3">Feedback</h3>
+                                    <div class="pfd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v" id="pfd-kv-patient">Ava Thompson</span></div>
+                                    <div class="pfd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Feedback ID</span><span class="v" id="pfd-kv-id">#FB-0001</span></div>
+                                    <div class="pfd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Submitted</span><span class="v" id="pfd-kv-date">2026-09-07</span></div>
+                                    <div class="pfd-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Status</span><span class="v" id="pfd-kv-status">Resolved</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="pfd-surface p-5 space-y-2.5">
+                                    <h3 class="pfd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="pfd-btn pfd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="patient-feedback.html" id="pfd-all-link" class="pfd-btn pfd-btn-solid w-full justify-start"><i class="icon-list"></i>All Feedback</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "patient-feedback-detail"})
+    </body>
+</html>

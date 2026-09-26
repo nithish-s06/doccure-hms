@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Queue Management — Dreams HMS"}) @@include('partials/header.html', {"page": "queue-management"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search queue..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <!-- Breadcrumb -->
+                        @@include('partials/breadcrumb.html', {"current": "Queue Management", "parentUrl": "appointments.html", "parent": "Appointments"})
+
+                        <!-- Page Header -->
+                        <div class="flex flex-wrap items-center justify-between gap-3" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Queue Management</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Live outpatient token queue across all consultation rooms</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button type="button" id="btn-print" title="Print queue" class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-border-color text-gray-900 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                                    <i class="icon-printer"></i>
+                                    <span class="max-sm:hidden">Print</span>
+                                </button>
+                                <button type="button" id="btn-export" title="Export to CSV" class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-border-color text-gray-900 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                                    <i class="icon-file-down"></i>
+                                    <span class="max-sm:hidden">Export</span>
+                                </button>
+                                <button type="button" id="btn-call-next" class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                    <i class="icon-bell-ring"></i>
+                                    Call Next
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Now Serving -->
+                        <div class="rounded-[6px] p-5 bg-gradient-to-br from-primary via-primary-500 to-sky-500 shadow-lg shadow-primary/25 flex flex-wrap items-center gap-5" data-aos="fade-up">
+                            <div class="flex items-center gap-4">
+                                <span class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/25 flex items-center justify-center shrink-0">
+                                    <i class="icon-ticket text-2xl text-white"></i>
+                                </span>
+                                <div>
+                                    <p class="text-xs font-semibold uppercase tracking-wider text-white/70">Now Serving</p>
+                                    <p class="text-3xl font-extrabold text-white" id="now-token">—</p>
+                                </div>
+                            </div>
+                            <div class="h-10 w-px bg-white/20 max-sm:hidden"></div>
+                            <div>
+                                <p class="text-xs text-white/70">Patient</p>
+                                <p class="text-sm font-semibold text-white" id="now-patient">No patient called</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-white/70">Doctor</p>
+                                <p class="text-sm font-semibold text-white" id="now-doctor">—</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-white/70">Room</p>
+                                <p class="text-sm font-semibold text-white" id="now-room">—</p>
+                            </div>
+                            <p class="ml-auto text-xs text-white/80" id="now-next">Next up: —</p>
+                        </div>
+
+                        <!-- Appointment Statistics (module-exclusive component) -->
+                        <div id="stats-row" class="appt-stats cols-4" data-aos="fade-up" data-aos-delay="50"></div>
+
+                        <!-- Queue -->
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <div class="relative flex-1 min-w-52 max-w-72">
+                                    <label for="search" class="sr-only">Search queue</label>
+                                    <i class="icon-search absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                    <input id="search" type="search" placeholder="Search token, patient, doctor..." class="form-input pl-10!">
+                                </div>
+                                <label for="filter-doctor" class="sr-only">Filter by doctor</label>
+                                <select id="filter-doctor" class="form-select w-auto! py-2!">
+                                    <option value="">All Doctors</option>
+                                    <option>Dr. Sarah Chen</option>
+                                    <option>Dr. Michael Reyes</option>
+                                    <option>Dr. Emily Carter</option>
+                                    <option>Dr. David Okonkwo</option>
+                                </select>
+                                <label for="filter-priority" class="sr-only">Filter by priority</label>
+                                <select id="filter-priority" class="form-select w-auto! py-2!">
+                                    <option value="">All Priorities</option>
+                                    <option>Normal</option>
+                                    <option>Urgent</option>
+                                    <option>Critical</option>
+                                </select>
+                                <label for="filter-status" class="sr-only">Filter by status</label>
+                                <select id="filter-status" class="form-select w-auto! py-2!">
+                                    <option value="">All Status</option>
+                                    <option>Waiting</option>
+                                    <option>Called</option>
+                                    <option>In Consultation</option>
+                                    <option>On Hold</option>
+                                    <option>Completed</option>
+                                    <option>Skipped</option>
+                                </select>
+                                <button type="button" id="btn-reset" title="Clear all filters" class="p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                                    <i class="icon-rotate-ccw text-sm"></i>
+                                </button>
+                            </div>
+
+                            <!-- Bulk Actions -->
+                            <div id="bulk-bar" class="hidden px-4 py-2.5 bg-primary-100 dark:bg-primary-600/20 border-b border-border-color flex flex-wrap items-center gap-3">
+                                <p class="text-sm font-medium text-primary">
+                                    <span id="bulk-count">0</span>
+                                    selected
+                                </p>
+                                <div class="flex items-center gap-2 ml-auto">
+                                    <button type="button" data-bulk="hold" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-border-color text-xs font-semibold text-gray-900 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">Hold</button>
+                                    <button type="button" data-bulk="complete" class="px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors">Complete</button>
+                                </div>
+                            </div>
+
+                            <!-- Table -->
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="w-10">
+                                                <input type="checkbox" id="select-all" aria-label="Select all rows" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                            </th>
+                                            <th>Token</th>
+                                            <th>Patient</th>
+                                            <th>Doctor</th>
+                                            <th>Room</th>
+                                            <th>Waiting Time</th>
+                                            <th>Priority</th>
+                                            <th>Status</th>
+                                            <th class="text-right">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody">
+                                    <tr>
+                                        <td><input type="checkbox" data-row-select value="1" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
+                                        <td><a href="queue-token-detail.html" class="inline-flex items-center justify-center min-w-14 px-2 py-1 rounded-lg bg-gray-100 dark:bg-slate-800 font-bold text-gray-900 hover:underline">A-101</a></td>
+                                        <td><div><p class="font-medium text-gray-900">James Morrison</p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0147</p></div></td>
+                                        <td>Dr. Sarah Chen</td>
+                                        <td>Room 204</td>
+                                        <td><span class="text-gray-600 dark:text-gray-400">4 min</span></td>
+                                        <td><span class="badge badge-gray">Normal</span></td>
+                                        <td><span class="badge badge-purple">In Consultation</span></td>
+                                        <td class="text-right"><div class="hs-dropdown relative inline-flex [--placement:bottom-right]"><button type="button" aria-label="Row actions" class="hs-dropdown-toggle p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"><i class="icon-ellipsis-vertical text-sm"></i></button><div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-44 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu"><button type="button" role="menuitem" data-act="call" data-id="1" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-bell-ring text-sm"></i>Call</button><button type="button" role="menuitem" data-act="announce" data-id="1" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-volume-2 text-sm"></i>Announce</button><button type="button" role="menuitem" data-act="start" data-id="1" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-play text-sm"></i>Start Consultation</button><button type="button" role="menuitem" data-act="hold" data-id="1" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-pause text-sm"></i>Hold</button><button type="button" role="menuitem" data-act="skip" data-id="1" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-skip-forward text-sm"></i>Skip</button><button type="button" role="menuitem" data-act="complete" data-id="1" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-circle-check text-sm"></i>Complete</button><button type="button" role="menuitem" data-act="print" data-id="1" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-printer text-sm"></i>Print Token</button><button type="button" role="menuitem" data-act="delete" data-id="1" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-danger hover:bg-danger/10"><i class="icon-trash-2 text-sm"></i>Remove</button></div></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" data-row-select value="2" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
+                                        <td><a href="queue-token-detail.html" class="inline-flex items-center justify-center min-w-14 px-2 py-1 rounded-lg bg-gray-100 dark:bg-slate-800 font-bold text-gray-900 hover:underline">A-102</a></td>
+                                        <td><div><p class="font-medium text-gray-900">Linda Whitfield</p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0182</p></div></td>
+                                        <td>Dr. Sarah Chen</td>
+                                        <td>Room 204</td>
+                                        <td><span class="text-gray-600 dark:text-gray-400">11 min</span></td>
+                                        <td><span class="badge badge-gray">Normal</span></td>
+                                        <td><span class="badge badge-blue">Called</span></td>
+                                        <td class="text-right"><div class="hs-dropdown relative inline-flex [--placement:bottom-right]"><button type="button" aria-label="Row actions" class="hs-dropdown-toggle p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"><i class="icon-ellipsis-vertical text-sm"></i></button><div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-44 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu"><button type="button" role="menuitem" data-act="call" data-id="2" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-bell-ring text-sm"></i>Call</button><button type="button" role="menuitem" data-act="announce" data-id="2" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-volume-2 text-sm"></i>Announce</button><button type="button" role="menuitem" data-act="start" data-id="2" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-play text-sm"></i>Start Consultation</button><button type="button" role="menuitem" data-act="hold" data-id="2" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-pause text-sm"></i>Hold</button><button type="button" role="menuitem" data-act="skip" data-id="2" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-skip-forward text-sm"></i>Skip</button><button type="button" role="menuitem" data-act="complete" data-id="2" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-circle-check text-sm"></i>Complete</button><button type="button" role="menuitem" data-act="print" data-id="2" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-printer text-sm"></i>Print Token</button><button type="button" role="menuitem" data-act="delete" data-id="2" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-danger hover:bg-danger/10"><i class="icon-trash-2 text-sm"></i>Remove</button></div></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" data-row-select value="3" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
+                                        <td><a href="queue-token-detail.html" class="inline-flex items-center justify-center min-w-14 px-2 py-1 rounded-lg bg-gray-100 dark:bg-slate-800 font-bold text-gray-900 hover:underline">A-103</a></td>
+                                        <td><div><p class="font-medium text-gray-900">Robert Castillo</p><p class="text-xs text-gray-500 dark:text-gray-400">(646) 555-0113</p></div></td>
+                                        <td>Dr. Sarah Chen</td>
+                                        <td>Room 204</td>
+                                        <td><span class="text-amber-600 font-medium">18 min</span></td>
+                                        <td><span class="badge badge-amber">Urgent</span></td>
+                                        <td><span class="badge badge-amber">Waiting</span></td>
+                                        <td class="text-right"><div class="hs-dropdown relative inline-flex [--placement:bottom-right]"><button type="button" aria-label="Row actions" class="hs-dropdown-toggle p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"><i class="icon-ellipsis-vertical text-sm"></i></button><div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-44 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu"><button type="button" role="menuitem" data-act="call" data-id="3" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-bell-ring text-sm"></i>Call</button><button type="button" role="menuitem" data-act="announce" data-id="3" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-volume-2 text-sm"></i>Announce</button><button type="button" role="menuitem" data-act="start" data-id="3" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-play text-sm"></i>Start Consultation</button><button type="button" role="menuitem" data-act="hold" data-id="3" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-pause text-sm"></i>Hold</button><button type="button" role="menuitem" data-act="skip" data-id="3" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-skip-forward text-sm"></i>Skip</button><button type="button" role="menuitem" data-act="complete" data-id="3" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-circle-check text-sm"></i>Complete</button><button type="button" role="menuitem" data-act="print" data-id="3" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-printer text-sm"></i>Print Token</button><button type="button" role="menuitem" data-act="delete" data-id="3" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-danger hover:bg-danger/10"><i class="icon-trash-2 text-sm"></i>Remove</button></div></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" data-row-select value="4" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
+                                        <td><a href="queue-token-detail.html" class="inline-flex items-center justify-center min-w-14 px-2 py-1 rounded-lg bg-gray-100 dark:bg-slate-800 font-bold text-gray-900 hover:underline">B-201</a></td>
+                                        <td><div><p class="font-medium text-gray-900">Angela Brooks</p><p class="text-xs text-gray-500 dark:text-gray-400">(718) 555-0164</p></div></td>
+                                        <td>Dr. Michael Reyes</td>
+                                        <td>Room 118</td>
+                                        <td><span class="text-gray-600 dark:text-gray-400">6 min</span></td>
+                                        <td><span class="badge badge-gray">Normal</span></td>
+                                        <td><span class="badge badge-purple">In Consultation</span></td>
+                                        <td class="text-right"><div class="hs-dropdown relative inline-flex [--placement:bottom-right]"><button type="button" aria-label="Row actions" class="hs-dropdown-toggle p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"><i class="icon-ellipsis-vertical text-sm"></i></button><div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-44 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu"><button type="button" role="menuitem" data-act="call" data-id="4" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-bell-ring text-sm"></i>Call</button><button type="button" role="menuitem" data-act="announce" data-id="4" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-volume-2 text-sm"></i>Announce</button><button type="button" role="menuitem" data-act="start" data-id="4" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-play text-sm"></i>Start Consultation</button><button type="button" role="menuitem" data-act="hold" data-id="4" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-pause text-sm"></i>Hold</button><button type="button" role="menuitem" data-act="skip" data-id="4" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-skip-forward text-sm"></i>Skip</button><button type="button" role="menuitem" data-act="complete" data-id="4" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-circle-check text-sm"></i>Complete</button><button type="button" role="menuitem" data-act="print" data-id="4" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-printer text-sm"></i>Print Token</button><button type="button" role="menuitem" data-act="delete" data-id="4" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-danger hover:bg-danger/10"><i class="icon-trash-2 text-sm"></i>Remove</button></div></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" data-row-select value="5" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
+                                        <td><a href="queue-token-detail.html" class="inline-flex items-center justify-center min-w-14 px-2 py-1 rounded-lg bg-gray-100 dark:bg-slate-800 font-bold text-gray-900 hover:underline">B-202</a></td>
+                                        <td><div><p class="font-medium text-gray-900">Marcus Delgado</p><p class="text-xs text-gray-500 dark:text-gray-400">(347) 555-0198</p></div></td>
+                                        <td>Dr. Michael Reyes</td>
+                                        <td>Room 118</td>
+                                        <td><span class="text-amber-600 font-medium">23 min</span></td>
+                                        <td><span class="badge badge-gray">Normal</span></td>
+                                        <td><span class="badge badge-amber">Waiting</span></td>
+                                        <td class="text-right"><div class="hs-dropdown relative inline-flex [--placement:bottom-right]"><button type="button" aria-label="Row actions" class="hs-dropdown-toggle p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"><i class="icon-ellipsis-vertical text-sm"></i></button><div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-44 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu"><button type="button" role="menuitem" data-act="call" data-id="5" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-bell-ring text-sm"></i>Call</button><button type="button" role="menuitem" data-act="announce" data-id="5" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-volume-2 text-sm"></i>Announce</button><button type="button" role="menuitem" data-act="start" data-id="5" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-play text-sm"></i>Start Consultation</button><button type="button" role="menuitem" data-act="hold" data-id="5" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-pause text-sm"></i>Hold</button><button type="button" role="menuitem" data-act="skip" data-id="5" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-skip-forward text-sm"></i>Skip</button><button type="button" role="menuitem" data-act="complete" data-id="5" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-circle-check text-sm"></i>Complete</button><button type="button" role="menuitem" data-act="print" data-id="5" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-printer text-sm"></i>Print Token</button><button type="button" role="menuitem" data-act="delete" data-id="5" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-danger hover:bg-danger/10"><i class="icon-trash-2 text-sm"></i>Remove</button></div></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" data-row-select value="6" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
+                                        <td><a href="queue-token-detail.html" class="inline-flex items-center justify-center min-w-14 px-2 py-1 rounded-lg bg-gray-100 dark:bg-slate-800 font-bold text-gray-900 hover:underline">B-203</a></td>
+                                        <td><div><p class="font-medium text-gray-900">Priya Raghavan</p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0121</p></div></td>
+                                        <td>Dr. Michael Reyes</td>
+                                        <td>Room 118</td>
+                                        <td><span class="text-danger font-semibold">31 min</span></td>
+                                        <td><span class="badge badge-red">Critical</span></td>
+                                        <td><span class="badge badge-amber">Waiting</span></td>
+                                        <td class="text-right"><div class="hs-dropdown relative inline-flex [--placement:bottom-right]"><button type="button" aria-label="Row actions" class="hs-dropdown-toggle p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"><i class="icon-ellipsis-vertical text-sm"></i></button><div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-44 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu"><button type="button" role="menuitem" data-act="call" data-id="6" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-bell-ring text-sm"></i>Call</button><button type="button" role="menuitem" data-act="announce" data-id="6" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-volume-2 text-sm"></i>Announce</button><button type="button" role="menuitem" data-act="start" data-id="6" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-play text-sm"></i>Start Consultation</button><button type="button" role="menuitem" data-act="hold" data-id="6" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-pause text-sm"></i>Hold</button><button type="button" role="menuitem" data-act="skip" data-id="6" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-skip-forward text-sm"></i>Skip</button><button type="button" role="menuitem" data-act="complete" data-id="6" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-circle-check text-sm"></i>Complete</button><button type="button" role="menuitem" data-act="print" data-id="6" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-printer text-sm"></i>Print Token</button><button type="button" role="menuitem" data-act="delete" data-id="6" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-danger hover:bg-danger/10"><i class="icon-trash-2 text-sm"></i>Remove</button></div></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" data-row-select value="7" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
+                                        <td><a href="queue-token-detail.html" class="inline-flex items-center justify-center min-w-14 px-2 py-1 rounded-lg bg-gray-100 dark:bg-slate-800 font-bold text-gray-900 hover:underline">C-301</a></td>
+                                        <td><div><p class="font-medium text-gray-900">Daniel Kowalski</p><p class="text-xs text-gray-500 dark:text-gray-400">(917) 555-0176</p></div></td>
+                                        <td>Dr. Emily Carter</td>
+                                        <td>Room 302</td>
+                                        <td><span class="text-gray-600 dark:text-gray-400">9 min</span></td>
+                                        <td><span class="badge badge-gray">Normal</span></td>
+                                        <td><span class="badge badge-gray">On Hold</span></td>
+                                        <td class="text-right"><div class="hs-dropdown relative inline-flex [--placement:bottom-right]"><button type="button" aria-label="Row actions" class="hs-dropdown-toggle p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"><i class="icon-ellipsis-vertical text-sm"></i></button><div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-44 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu"><button type="button" role="menuitem" data-act="call" data-id="7" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-bell-ring text-sm"></i>Call</button><button type="button" role="menuitem" data-act="announce" data-id="7" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-volume-2 text-sm"></i>Announce</button><button type="button" role="menuitem" data-act="start" data-id="7" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-play text-sm"></i>Start Consultation</button><button type="button" role="menuitem" data-act="hold" data-id="7" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-pause text-sm"></i>Hold</button><button type="button" role="menuitem" data-act="skip" data-id="7" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-skip-forward text-sm"></i>Skip</button><button type="button" role="menuitem" data-act="complete" data-id="7" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-circle-check text-sm"></i>Complete</button><button type="button" role="menuitem" data-act="print" data-id="7" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-printer text-sm"></i>Print Token</button><button type="button" role="menuitem" data-act="delete" data-id="7" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-danger hover:bg-danger/10"><i class="icon-trash-2 text-sm"></i>Remove</button></div></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" data-row-select value="8" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
+                                        <td><a href="queue-token-detail.html" class="inline-flex items-center justify-center min-w-14 px-2 py-1 rounded-lg bg-gray-100 dark:bg-slate-800 font-bold text-gray-900 hover:underline">C-302</a></td>
+                                        <td><div><p class="font-medium text-gray-900">Sofia Alvarez</p><p class="text-xs text-gray-500 dark:text-gray-400">(646) 555-0155</p></div></td>
+                                        <td>Dr. Emily Carter</td>
+                                        <td>Room 302</td>
+                                        <td><span class="text-gray-600 dark:text-gray-400">14 min</span></td>
+                                        <td><span class="badge badge-amber">Urgent</span></td>
+                                        <td><span class="badge badge-amber">Waiting</span></td>
+                                        <td class="text-right"><div class="hs-dropdown relative inline-flex [--placement:bottom-right]"><button type="button" aria-label="Row actions" class="hs-dropdown-toggle p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"><i class="icon-ellipsis-vertical text-sm"></i></button><div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-44 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu"><button type="button" role="menuitem" data-act="call" data-id="8" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-bell-ring text-sm"></i>Call</button><button type="button" role="menuitem" data-act="announce" data-id="8" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-volume-2 text-sm"></i>Announce</button><button type="button" role="menuitem" data-act="start" data-id="8" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-play text-sm"></i>Start Consultation</button><button type="button" role="menuitem" data-act="hold" data-id="8" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-pause text-sm"></i>Hold</button><button type="button" role="menuitem" data-act="skip" data-id="8" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-skip-forward text-sm"></i>Skip</button><button type="button" role="menuitem" data-act="complete" data-id="8" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-circle-check text-sm"></i>Complete</button><button type="button" role="menuitem" data-act="print" data-id="8" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-printer text-sm"></i>Print Token</button><button type="button" role="menuitem" data-act="delete" data-id="8" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-danger hover:bg-danger/10"><i class="icon-trash-2 text-sm"></i>Remove</button></div></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" data-row-select value="9" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
+                                        <td><a href="queue-token-detail.html" class="inline-flex items-center justify-center min-w-14 px-2 py-1 rounded-lg bg-gray-100 dark:bg-slate-800 font-bold text-gray-900 hover:underline">C-303</a></td>
+                                        <td><div><p class="font-medium text-gray-900">Gregory Hollis</p><p class="text-xs text-gray-500 dark:text-gray-400">(718) 555-0139</p></div></td>
+                                        <td>Dr. Emily Carter</td>
+                                        <td>Room 302</td>
+                                        <td><span class="text-gray-400">—</span></td>
+                                        <td><span class="badge badge-gray">Normal</span></td>
+                                        <td><span class="badge badge-green">Completed</span></td>
+                                        <td class="text-right"><div class="hs-dropdown relative inline-flex [--placement:bottom-right]"><button type="button" aria-label="Row actions" class="hs-dropdown-toggle p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"><i class="icon-ellipsis-vertical text-sm"></i></button><div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-44 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu"><button type="button" role="menuitem" data-act="call" data-id="9" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-bell-ring text-sm"></i>Call</button><button type="button" role="menuitem" data-act="announce" data-id="9" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-volume-2 text-sm"></i>Announce</button><button type="button" role="menuitem" data-act="start" data-id="9" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-play text-sm"></i>Start Consultation</button><button type="button" role="menuitem" data-act="hold" data-id="9" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-pause text-sm"></i>Hold</button><button type="button" role="menuitem" data-act="skip" data-id="9" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-skip-forward text-sm"></i>Skip</button><button type="button" role="menuitem" data-act="complete" data-id="9" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-circle-check text-sm"></i>Complete</button><button type="button" role="menuitem" data-act="print" data-id="9" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-printer text-sm"></i>Print Token</button><button type="button" role="menuitem" data-act="delete" data-id="9" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-danger hover:bg-danger/10"><i class="icon-trash-2 text-sm"></i>Remove</button></div></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" data-row-select value="10" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
+                                        <td><a href="queue-token-detail.html" class="inline-flex items-center justify-center min-w-14 px-2 py-1 rounded-lg bg-gray-100 dark:bg-slate-800 font-bold text-gray-900 hover:underline">D-401</a></td>
+                                        <td><div><p class="font-medium text-gray-900">Naomi Fitzgerald</p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0190</p></div></td>
+                                        <td>Dr. David Okonkwo</td>
+                                        <td>Room 106</td>
+                                        <td><span class="text-gray-400">—</span></td>
+                                        <td><span class="badge badge-gray">Normal</span></td>
+                                        <td><span class="badge badge-green">Completed</span></td>
+                                        <td class="text-right"><div class="hs-dropdown relative inline-flex [--placement:bottom-right]"><button type="button" aria-label="Row actions" class="hs-dropdown-toggle p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"><i class="icon-ellipsis-vertical text-sm"></i></button><div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-44 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu"><button type="button" role="menuitem" data-act="call" data-id="10" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-bell-ring text-sm"></i>Call</button><button type="button" role="menuitem" data-act="announce" data-id="10" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-volume-2 text-sm"></i>Announce</button><button type="button" role="menuitem" data-act="start" data-id="10" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-play text-sm"></i>Start Consultation</button><button type="button" role="menuitem" data-act="hold" data-id="10" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-pause text-sm"></i>Hold</button><button type="button" role="menuitem" data-act="skip" data-id="10" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-skip-forward text-sm"></i>Skip</button><button type="button" role="menuitem" data-act="complete" data-id="10" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-circle-check text-sm"></i>Complete</button><button type="button" role="menuitem" data-act="print" data-id="10" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-printer text-sm"></i>Print Token</button><button type="button" role="menuitem" data-act="delete" data-id="10" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-danger hover:bg-danger/10"><i class="icon-trash-2 text-sm"></i>Remove</button></div></div></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="p-4 flex flex-col sm:flex-row sm:items-center gap-3 border-t border-border-color">
+                                <p class="text-sm text-gray-500 dark:text-gray-400" id="info">Showing 0 to 0 of 0 entries</p>
+                                <nav class="sm:ml-auto flex items-center gap-1" aria-label="Pagination" id="pager"></nav>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Announce / Recall Modal -->
+        <div id="announce-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+          <div class="flex min-h-full items-center justify-center p-4">
+            <div class="modal-panel sm pointer-events-auto">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-11 h-11 rounded-full bg-primary-100 dark:bg-primary-600/20 flex items-center justify-center shrink-0">
+                        <i class="icon-volume-2 text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Announce Token</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Push this token to the waiting-room displays.</p>
+                    </div>
+                </div>
+                <div class="rounded-xl border border-border-color p-5 text-center mb-4">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Now Calling</p>
+                    <p class="text-4xl font-extrabold text-primary mt-1" id="announce-token">—</p>
+                    <p class="text-sm font-medium text-gray-900 mt-2" id="announce-patient"></p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400" id="announce-room"></p>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <p class="form-label mb-2.5">Announce On</p>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" id="an-display" checked class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Waiting-room display</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" id="an-audio" checked class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Audio call-out</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" id="an-sms" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">SMS to patient</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="an-repeat">Repeat Announcement</label>
+                        <select id="an-repeat" class="form-select">
+                            <option>Once</option>
+                            <option>Twice</option>
+                            <option>Three times</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex gap-3 justify-end">
+                    <button type="button" data-hs-overlay="#announce-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                    <button type="button" id="announce-confirm" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold flex items-center gap-2">
+                        <i class="icon-volume-2"></i>
+                        Announce
+                    </button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delete / Remove Modal -->
+        <div id="del-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+          <div class="flex min-h-full items-center justify-center p-4">
+            <div class="modal-panel sm pointer-events-auto">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Remove From Queue</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Remove
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    from the queue?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button type="button" id="del-cancel-btn" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#del-modal">Keep It</button>
+                    <button type="button" id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold" data-hs-overlay="#del-modal">Remove</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+        @@include('partials/script.html', {"page": "queue-management"})
+    </body>
+</html>

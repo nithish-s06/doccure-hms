@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Blood Issue — Dreams HMS"}) @@include('partials/header.html', {"page": "blood-issue"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="blood-issue">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search patient, issued by..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Blood Issue", "parentUrl": "blood-bank.html", "parent": "Blood Bank"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Blood Issue Register</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Record and track units of blood issued to wards and patients</p>
+                            </div>
+                            <button id="btn-add" class="flex items-center gap-2 bg-primary hover:bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                <i class="icon-plus"></i>
+                                New Issue
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-rose-50 dark:bg-rose-900/20 rounded-xl">
+                                    <i class="icon-droplet text-rose-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-units">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Units Issued</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-calendar text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-today">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Issued Today</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-pendingcm">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Pending Cross-Match</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-file-text text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-total">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Records</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                               <div class="relative flex-1 max-w-100 max-sm:min-w-full">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                                        <i class="icon-search text-gray-400"></i>
+                                    </span>
+                                    <input aria-label="Search patient, issued by..." id="search" type="text" placeholder="Search patient, issued by..." class="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-slate-600 rounded-lg bg-gray-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" >
+                                </div>
+                                <select aria-label="All Blood Groups" id="filter-group" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Blood Groups</option>
+                                    <option>A+</option>
+                                    <option>A-</option>
+                                    <option>B+</option>
+                                    <option>B-</option>
+                                    <option>AB+</option>
+                                    <option>AB-</option>
+                                    <option>O+</option>
+                                    <option>O-</option>
+                                </select>
+                                <select aria-label="All Cross-Match" id="filter-crossmatch" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Cross-Match</option>
+                                    <option>Compatible</option>
+                                    <option>Pending</option>
+                                    <option>Incompatible</option>
+                                </select>
+                                <span class="text-xs text-gray-400 ml-auto" id="count"></span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Issue ID</th>
+                                            <th>Blood Group</th>
+                                            <th>Units</th>
+                                            <th>Issued To</th>
+                                            <th>Issued By</th>
+                                            <th>Issue Date/Time</th>
+                                            <th>Cross-Match</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr data-row-id="1"><td class="text-primary font-mono text-sm"><a href="blood-issue-detail.html">#BI-00001</a></td><td class="font-medium text-gray-900">O+</td><td class="text-gray-500 dark:text-gray-400">2</td><td class="text-gray-600 dark:text-gray-300">Ravi Kumar — ICU Bed 4</td><td class="text-gray-600 dark:text-gray-300">Nurse Fatima Ali</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 09:20</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Compatible</span></td><td><div class="flex gap-1"><button onclick="biOpenEdit(1)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="biDelete(1,'Ravi Kumar — ICU Bed 4')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="2"><td class="text-primary font-mono text-sm"><a href="blood-issue-detail.html">#BI-00002</a></td><td class="font-medium text-gray-900">A-</td><td class="text-gray-500 dark:text-gray-400">1</td><td class="text-gray-600 dark:text-gray-300">Sunita Rao — Surgery Bed 1</td><td class="text-gray-600 dark:text-gray-300">Nurse Grace Lim</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05 14:10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Compatible</span></td><td><div class="flex gap-1"><button onclick="biOpenEdit(2)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="biDelete(2,'Sunita Rao — Surgery Bed 1')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="3"><td class="text-primary font-mono text-sm"><a href="blood-issue-detail.html">#BI-00003</a></td><td class="font-medium text-gray-900">B+</td><td class="text-gray-500 dark:text-gray-400">1</td><td class="text-gray-600 dark:text-gray-300">James Miller — Ortho Ward 2</td><td class="text-gray-600 dark:text-gray-300">Nurse Omar Farid</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04 11:45</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Pending</span></td><td><div class="flex gap-1"><button onclick="biOpenEdit(3)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="biDelete(3,'James Miller — Ortho Ward 2')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="4"><td class="text-primary font-mono text-sm"><a href="blood-issue-detail.html">#BI-00004</a></td><td class="font-medium text-gray-900">AB+</td><td class="text-gray-500 dark:text-gray-400">1</td><td class="text-gray-600 dark:text-gray-300">Aisha Khan — Oncology Ward</td><td class="text-gray-600 dark:text-gray-300">Nurse Fatima Ali</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04 08:30</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Compatible</span></td><td><div class="flex gap-1"><button onclick="biOpenEdit(4)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="biDelete(4,'Aisha Khan — Oncology Ward')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="5"><td class="text-primary font-mono text-sm"><a href="blood-issue-detail.html">#BI-00005</a></td><td class="font-medium text-gray-900">O-</td><td class="text-gray-500 dark:text-gray-400">3</td><td class="text-gray-600 dark:text-gray-300">Carlos Diaz — ICU Bed 7</td><td class="text-gray-600 dark:text-gray-300">Nurse Grace Lim</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-07 02:15</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Compatible</span></td><td><div class="flex gap-1"><button onclick="biOpenEdit(5)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="biDelete(5,'Carlos Diaz — ICU Bed 7')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="6"><td class="text-primary font-mono text-sm"><a href="blood-issue-detail.html">#BI-00006</a></td><td class="font-medium text-gray-900">B-</td><td class="text-gray-500 dark:text-gray-400">2</td><td class="text-gray-600 dark:text-gray-300">Lena Fischer — Maternity Ward</td><td class="text-gray-600 dark:text-gray-300">Nurse Priya Das</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-02 16:50</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Incompatible</span></td><td><div class="flex gap-1"><button onclick="biOpenEdit(6)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="biDelete(6,'Lena Fischer — Maternity Ward')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="7"><td class="text-primary font-mono text-sm"><a href="blood-issue-detail.html">#BI-00007</a></td><td class="font-medium text-gray-900">A+</td><td class="text-gray-500 dark:text-gray-400">1</td><td class="text-gray-600 dark:text-gray-300">Tom Baker — Emergency Bay 2</td><td class="text-gray-600 dark:text-gray-300">Nurse Omar Farid</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-30 19:05</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Compatible</span></td><td><div class="flex gap-1"><button onclick="biOpenEdit(7)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="biDelete(7,'Tom Baker — Emergency Bay 2')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr id="tbody-empty" class="hidden"><td colspan="7" class="text-center py-10 text-gray-400">No issue records found</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="form-modal" class="modal-overlay hidden">
+            <div class="modal-panel">
+                <div class="flex items-center justify-between">
+                    <h2 id="m-title" class="text-xl font-bold text-gray-900">New Issue Record</h2>
+                    <button id="m-close" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <form id="m-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="f-group" class="form-label">Blood Group</label>
+                            <select id="f-group" class="form-select">
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                                <option>O+</option>
+                                <option>O-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-units" class="form-label">Units</label>
+                            <input id="f-units" type="number" class="form-input" placeholder="2" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-issuedto" class="form-label">Issued To (Patient / Ward) <span class="text-danger">*</span></label>
+                            <input id="f-issuedto" type="text" class="form-input" placeholder="Ravi Kumar — ICU Bed 4" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-issuedby" class="form-label">Issued By</label>
+                            <input id="f-issuedby" type="text" class="form-input" placeholder="Nurse Fatima Ali" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-date" class="form-label">Issue Date</label>
+                            <div class="relative">
+                                <input type="text" id="f-date" placeholder="dd/mm/yyyy" class="form-input pr-10" data-provider="flatpickr" data-date-format="d-m-Y">
+                                <i class="icon-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-900"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-crossmatch" class="form-label">Cross-Match Status</label>
+                            <select id="f-crossmatch" class="form-select">
+                                <option>Compatible</option>
+                                <option>Pending</option>
+                                <option>Incompatible</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button id="m-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Save Issue Record</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="del-modal" class="modal-overlay hidden">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Delete Issue Record</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Delete issue record for
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    ?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                    <button id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "blood-issue"})
+    </body>
+</html>

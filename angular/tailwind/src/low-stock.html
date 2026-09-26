@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Low Stock — Dreams HMS"}) @@include('partials/header.html', {"page": "low-stock"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="low-stock">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search low stock items..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Low Stock", "parentUrl": "inventory.html", "parent": "Inventory Dashboard"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Low Stock</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Items that have fallen below their reorder level</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Low Stock Items</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Critical</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-trending-down text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">332</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Shortfall Qty</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-truck text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">7</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Suppliers Involved</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Low Stock Items</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Current Qty</th>
+                                            <th>Reorder Level</th>
+                                            <th>Category</th>
+                                            <th>Supplier</th>
+                                            <th>Urgency</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-medium text-gray-900">Surgical Gloves (M)</td><td class="text-danger font-semibold">45</td><td class="text-gray-500 dark:text-gray-400">60</td><td class="text-gray-600 dark:text-gray-300">Surgical</td><td class="text-gray-500 dark:text-gray-400">MedSupply Co.</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Warning</span></td></tr>
+<tr><td class="font-medium text-gray-900">Amoxicillin 250mg</td><td class="text-danger font-semibold">60</td><td class="text-gray-500 dark:text-gray-400">100</td><td class="text-gray-600 dark:text-gray-300">Pharmacy</td><td class="text-gray-500 dark:text-gray-400">PharmaLink Distributors</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Warning</span></td></tr>
+<tr><td class="font-medium text-gray-900">Digital Thermometer</td><td class="text-danger font-semibold">5</td><td class="text-gray-500 dark:text-gray-400">20</td><td class="text-gray-600 dark:text-gray-300">Equipment</td><td class="text-gray-500 dark:text-gray-400">EquipMed Global</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Critical</span></td></tr>
+<tr><td class="font-medium text-gray-900">Syringe 5ml</td><td class="text-danger font-semibold">25</td><td class="text-gray-500 dark:text-gray-400">50</td><td class="text-gray-600 dark:text-gray-300">Consumables</td><td class="text-gray-500 dark:text-gray-400">SurgiTech Supplies</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Warning</span></td></tr>
+<tr><td class="font-medium text-gray-900">N95 Masks</td><td class="text-danger font-semibold">30</td><td class="text-gray-500 dark:text-gray-400">150</td><td class="text-gray-600 dark:text-gray-300">Surgical</td><td class="text-gray-500 dark:text-gray-400">SafeHands PPE</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Critical</span></td></tr>
+<tr><td class="font-medium text-gray-900">Bed Sheets (Cotton)</td><td class="text-danger font-semibold">20</td><td class="text-gray-500 dark:text-gray-400">80</td><td class="text-gray-600 dark:text-gray-300">Linen</td><td class="text-gray-500 dark:text-gray-400">LinenCare Ltd.</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Critical</span></td></tr>
+<tr><td class="font-medium text-gray-900">Lab Reagents Kit</td><td class="text-danger font-semibold">8</td><td class="text-gray-500 dark:text-gray-400">15</td><td class="text-gray-600 dark:text-gray-300">Laboratory</td><td class="text-gray-500 dark:text-gray-400">DiagnoLabs Supply</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Low</span></td></tr>
+<tr><td class="font-medium text-gray-900">IV Cannula 20G</td><td class="text-danger font-semibold">100</td><td class="text-gray-500 dark:text-gray-400">150</td><td class="text-gray-600 dark:text-gray-300">Consumables</td><td class="text-gray-500 dark:text-gray-400">SurgiTech Supplies</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Low</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "low-stock"})
+    </body>
+</html>

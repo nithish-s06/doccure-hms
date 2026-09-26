@@ -1,0 +1,10 @@
+<div>
+    <app-sidebar/>
+    <div id="main" [class.expanded]="(settings.sidebarMini$ | async)">
+        <app-header/>
+        <!-- CONTENT -->
+            <main class="flex-1 p-6 dash-main">
+                <router-outlet/>
+            </main>
+    </div>
+</div>

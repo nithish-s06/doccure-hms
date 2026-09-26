@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Estimate Details — Dreams HMS"}) @@include('partials/header.html', {"page": "estimate-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="estimate-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="esd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Estimate Details", "parentUrl": "estimates.html", "parent": "Estimates"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="esd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="esd-hero-ico"><i class="icon-calculator"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="esd-estimate-title" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Estimate</h1>
+                                            <span class="esd-hbadge"><span class="esd-dot"></span><span id="esd-status-badge">Accepted</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="esd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="esd-estimate-id">#EST-30001</span></span>
+                                            <span class="esd-hmeta"><i class="icon-user text-[13px] text-sky-300"></i><span id="esd-patient-name">Priya Nair</span></span>
+                                            <span class="esd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i><span id="esd-date">2024-11-25</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 esd-actions-print-hide">
+                                    <button type="button" class="esd-btn esd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="estimates.html" class="esd-btn esd-btn-primary"><i class="icon-arrow-left"></i>Back to Estimates</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="esd-grid">
+                            <div class="esd-vital esd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-stethoscope"></i></span>
+                                    <span class="esd-chip">Procedure</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white truncate" id="esd-procedure" title="">Elective knee arthroscopy</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Procedure / Service</p>
+                            </div>
+                            <div class="esd-vital esd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-dollar-sign"></i></span>
+                                    <span class="esd-chip">Cost</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="esd-amount">$7,500.00</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Estimated Cost</p>
+                            </div>
+                            <div class="esd-vital esd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-calendar"></i></span>
+                                    <span class="esd-chip">Date</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="esd-stat-date">2024-11-25</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Date Issued</p>
+                            </div>
+                            <div class="esd-vital esd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-circle-check"></i></span>
+                                    <span class="esd-chip">Status</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="esd-stat-status">Accepted</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Status</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="esd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Summary -->
+                                <div class="esd-surface">
+                                    <div class="esd-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="esd-title">Estimate Summary</h2>
+                                    </div>
+                                    <div class="p-5" id="esd-summary"><div class="esd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">Priya Nair</span></div><div class="esd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Estimate #</span><span class="v">#EST-30001</span></div><div class="esd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Procedure</span><span class="v">Elective knee arthroscopy</span></div><div class="esd-kv"><span class="k"><i class="icon-dollar-sign text-[13px]"></i>Amount</span><span class="v">$7,500.00</span></div><div class="esd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date</span><span class="v">2024-11-25</span></div><div class="esd-kv"><span class="k"><i class="icon-circle-check text-[13px]"></i>Status</span><span class="v"><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Accepted</span></span></div></div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 esd-sidebar">
+                                <!-- Patient hero -->
+                                <div class="esd-surface esd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Prepared For</p>
+                                    <h3 class="mt-1 text-lg font-extrabold" id="esd-side-patient">Priya Nair</h3>
+                                    <p class="text-sm text-white/80 mt-0.5" id="esd-side-estimateid">#EST-30001</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="esd-hmeta"><i class="icon-dollar-sign text-[12px]"></i><span id="esd-side-amount">$7,500.00</span></span>
+                                    </div>
+                                </div>
+
+                                <!-- Key value card -->
+                                <div class="esd-surface p-5">
+                                    <h3 class="esd-title mb-3">Estimate</h3>
+                                    <div class="esd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v" id="esd-kv-patient">Priya Nair</span></div>
+                                    <div class="esd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Estimate #</span><span class="v" id="esd-kv-estimateid">#EST-30001</span></div>
+                                    <div class="esd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date</span><span class="v" id="esd-kv-date">2024-11-25</span></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "estimate-detail"})
+    </body>
+</html>

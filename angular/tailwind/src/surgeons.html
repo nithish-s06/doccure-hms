@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Surgeon Management Center — Dreams HMS"}) @@include('partials/header.html', {"page": "surgeons"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search surgeons, specialty, department..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="sg-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="sg-skeleton" class="space-y-4">
+                            <div class="sg-sk h-[150px] radius-override-100"></div>
+                            <div class="sg-sk h-[56px]"></div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><div class="sg-sk h-[280px]"></div><div class="sg-sk h-[280px]"></div><div class="sg-sk h-[280px]"></div><div class="sg-sk h-[280px]"></div></div>
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-4"><div class="sg-sk h-[280px]"></div><div class="sg-sk h-[280px]"></div></div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="sg-content" class="hidden space-y-4">
+
+                            <!-- ============ 1. HEADER ============ -->
+                            <section class="sg-hero p-5 lg:p-6">
+                                <div class="sg-hgrid"></div>
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="sg-chip bg-[rgba(13,148,136,.18)] text-[#5eead4]"><span class="sg-dot sg-live bg-[#2dd4bf]"></span> SURGICAL TEAM</span>
+                                            <span class="sg-chip bg-[rgba(220,38,38,.18)] text-[#fca5a5]"><i class="icon-phone-call text-[11px]"></i> <span id="sg-h-oncall">3</span> On Call</span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-[26px] font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-user-round-cog text-teal-300"></i> Surgeon Management Center</h1>
+                                        <p class="text-sm text-slate-400 mt-1">Profiles, specialties, workload &amp; operating schedules · <span id="sg-clock" class="tabular-nums"></span></p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 justify-end">
+                                        <button data-modal="add" class="sg-btn bg-teal-600 text-white hover:bg-teal-500"><i class="icon-user-plus"></i> Add Surgeon</button>
+                                        <button data-modal="assign" class="sg-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-slice"></i> Assign Surgery</button>
+                                        <button data-modal="allocate" class="sg-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-layout-grid"></i> Assign OT</button>
+                                        <button data-modal="import" class="sg-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-upload"></i> Import</button>
+                                        <button data-modal="export" class="sg-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    </div>
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
+                                    <div class="sg-hbadge"><p class="text-[11px] text-slate-400">Active Surgeons</p><p class="text-xl font-bold text-white" id="sg-h-active">10</p></div>
+                                    <div class="sg-hbadge"><p class="text-[11px] text-slate-400">Today's Surgeries</p><p class="text-xl font-bold text-sky-300" id="sg-h-surg">25</p></div>
+                                    <div class="sg-hbadge"><p class="text-[11px] text-slate-400">Available Now</p><p class="text-xl font-bold text-emerald-300" id="sg-h-avail">5</p></div>
+                                    <div class="sg-hbadge"><p class="text-[11px] text-slate-400">Avg Success Rate</p><p class="text-xl font-bold text-white" id="sg-h-succ">92%</p></div>
+                                </div>
+                            </section>
+
+                            <!-- ============ 2. TOOLBAR + DIRECTORY ============ -->
+                            <section class="sg-card p-3">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <div class="relative flex-1 min-w-[180px]"><i class="icon-search absolute left-2.5 top-1/2 -translate-y-1/2 sg-mut text-sm"></i><input aria-label="Search surgeon or specialty..." id="sg-search" class="sg-in !pl-8" placeholder="Search surgeon or specialty..."></div>
+                                    <select aria-label="All specialties" class="sg-in !w-auto" id="sg-fspec"><option value="">All specialties</option><option>Cardiac Surgery</option><option>Neuro Surgery</option><option>Orthopedic Surgery</option><option>General Surgery</option><option>Plastic Surgery</option><option>Pediatric Surgery</option><option>ENT Surgery</option><option>Urology</option></select>
+                                    <select aria-label="Any status" class="sg-in !w-auto" id="sg-fstatus"><option value="">Any status</option><option value="avail">Available</option><option value="surgery">In Surgery</option><option value="oncall">On Call</option><option value="off">Off Duty</option><option value="leave">On Leave</option></select>
+                                    <select aria-label="Sort" class="sg-in !w-auto" id="sg-sort"><option value="">Sort</option><option value="name">Name</option><option value="succ">Success rate</option><option value="exp">Experience</option><option value="rating">Rating</option></select>
+                                    <div class="sg-seg ml-auto" id="sg-viewtabs"><button data-vw="grid" class="on"><i class="icon-layout-grid text-[13px]"></i> Grid</button><button data-vw="compact"><i class="icon-layout-list text-[13px]"></i> Compact</button><button data-vw="list"><i class="icon-list text-[13px]"></i> List</button></div>
+                                </div>
+                                <p class="text-xs sg-mut mt-2"><i class="icon-users text-[11px]"></i> <span id="sg-count">12</span> surgeons</p>
+                            </section>
+
+                            <section id="sg-directory"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><div class="sg-doc stt-avail" data-doc="0">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="0"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="0" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-02.jpg" alt="Dr. Arjun Mehta"><span class="sg-statusdot absolute -bottom-0.5 -right-0.5 [background:#15803d]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]">Available</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Arjun Mehta</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse text-[11px]"></i> Cardiac Surgery</span>
+                <p class="text-[11px] sg-mut mt-1.5">Cardiology · MBBS, MS, MCh</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><span class="sg-rating-num">4.9</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">13y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">2</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">90%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div><div class="sg-doc stt-surgery" data-doc="1">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="1"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="1" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-03.jpg" alt="Dr. Sneha Khan"><span class="sg-statusdot pulse absolute -bottom-0.5 -right-0.5 [background:#e06c1f]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><span class="sg-dot sg-live [background:#e06c1f]"></span>In Surgery</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Sneha Khan</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#7c3aed_13%,transparent)] [color:#7c3aed]"><i class="icon-brain text-[11px]"></i> Neuro Surgery</span>
+                <p class="text-[11px] sg-mut mt-1.5">Neurosciences · MBBS, MS</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:var(--sg-soft)]"></i><span class="sg-rating-num">4.3</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">19y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">0</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">88%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div><div class="sg-doc stt-oncall" data-doc="2">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="2"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="2" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-05.jpg" alt="Dr. Rahul Sharma"><span class="sg-statusdot pulse absolute -bottom-0.5 -right-0.5 [background:#1d4ed8]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#1d4ed8_14%,transparent)] [color:#1d4ed8]"><span class="sg-dot sg-live [background:#1d4ed8]"></span>On Call</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Rahul Sharma</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]"><i class="icon-bone text-[11px]"></i> Orthopedic Surgery</span>
+                <p class="text-[11px] sg-mut mt-1.5">Orthopedics · MBBS, DNB</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><span class="sg-rating-num">4.7</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">9y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">3</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">89%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div><div class="sg-doc stt-avail" data-doc="3">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="3"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="3" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-04.jpg" alt="Dr. Leela Das"><span class="sg-statusdot absolute -bottom-0.5 -right-0.5 [background:#15803d]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]">Available</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Leela Das</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#0f766e_13%,transparent)] [color:#0f766e]"><i class="icon-slice text-[11px]"></i> General Surgery</span>
+                <p class="text-[11px] sg-mut mt-1.5">General Surgery · MBBS, MS, DrNB</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:var(--sg-soft)]"></i><span class="sg-rating-num">4.3</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">7y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">4</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">99%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div><div class="sg-doc stt-off" data-doc="4">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="4"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="4" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-01.jpg" alt="Dr. Priya Nair"><span class="sg-statusdot absolute -bottom-0.5 -right-0.5 [background:#64748b]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#64748b_14%,transparent)] [color:#64748b]">Off Duty</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Priya Nair</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#be185d_13%,transparent)] [color:#be185d]"><i class="icon-sparkles text-[11px]"></i> Plastic Surgery</span>
+                <p class="text-[11px] sg-mut mt-1.5">Cosmetic · MBBS, MS, FRCS</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><span class="sg-rating-num">4.8</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">12y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">0</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">88%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div><div class="sg-doc stt-leave" data-doc="5">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="5"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="5" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-08.jpg" alt="Dr. Vikram Iyer"><span class="sg-statusdot absolute -bottom-0.5 -right-0.5 [background:#7c3aed]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#7c3aed_14%,transparent)] [color:#7c3aed]">On Leave</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Vikram Iyer</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]"><i class="icon-baby text-[11px]"></i> Pediatric Surgery</span>
+                <p class="text-[11px] sg-mut mt-1.5">Pediatrics · MBBS, MS, MCh</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><span class="sg-rating-num">4.9</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">26y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">3</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">97%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div><div class="sg-doc stt-avail" data-doc="6">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="6"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="6" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-06.jpg" alt="Dr. Kavya Menon"><span class="sg-statusdot absolute -bottom-0.5 -right-0.5 [background:#15803d]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]">Available</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Kavya Menon</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#0e7490_13%,transparent)] [color:#0e7490]"><i class="icon-ear text-[11px]"></i> ENT Surgery</span>
+                <p class="text-[11px] sg-mut mt-1.5">ENT · MBBS, MS</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:var(--sg-soft)]"></i><span class="sg-rating-num">4.4</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">6y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">3</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">91%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div><div class="sg-doc stt-surgery" data-doc="7">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="7"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="7" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-09.jpg" alt="Dr. Deepak Kapoor"><span class="sg-statusdot pulse absolute -bottom-0.5 -right-0.5 [background:#e06c1f]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><span class="sg-dot sg-live [background:#e06c1f]"></span>In Surgery</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Deepak Kapoor</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#b45309_13%,transparent)] [color:#b45309]"><i class="icon-droplet text-[11px]"></i> Urology</span>
+                <p class="text-[11px] sg-mut mt-1.5">Urology · MBBS, DNB</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><span class="sg-rating-num">4.5</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">18y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">0</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">92%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div><div class="sg-doc stt-oncall" data-doc="8">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="8"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="8" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-10.jpg" alt="Dr. Nisha Rao"><span class="sg-statusdot pulse absolute -bottom-0.5 -right-0.5 [background:#1d4ed8]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#1d4ed8_14%,transparent)] [color:#1d4ed8]"><span class="sg-dot sg-live [background:#1d4ed8]"></span>On Call</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Nisha Rao</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse text-[11px]"></i> Cardiac Surgery</span>
+                <p class="text-[11px] sg-mut mt-1.5">Cardiology · MBBS, MS, DrNB</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><span class="sg-rating-num">4.9</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">12y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">3</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">92%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div><div class="sg-doc stt-avail" data-doc="9">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="9"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="9" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-12.jpg" alt="Dr. Rohan Reddy"><span class="sg-statusdot absolute -bottom-0.5 -right-0.5 [background:#15803d]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]">Available</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Rohan Reddy</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#7c3aed_13%,transparent)] [color:#7c3aed]"><i class="icon-brain text-[11px]"></i> Neuro Surgery</span>
+                <p class="text-[11px] sg-mut mt-1.5">Neurosciences · MBBS, MS, FRCS</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><span class="sg-rating-num">4.6</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">28y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">3</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">98%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div><div class="sg-doc stt-emerg" data-doc="10">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="10"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="10" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-13.jpg" alt="Dr. Anil Mehta"><span class="sg-statusdot pulse absolute -bottom-0.5 -right-0.5 [background:#dc2626]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#dc2626_14%,transparent)] [color:#dc2626]"><span class="sg-dot sg-live [background:#dc2626]"></span>Emergency Duty</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Anil Mehta</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]"><i class="icon-bone text-[11px]"></i> Orthopedic Surgery</span>
+                <p class="text-[11px] sg-mut mt-1.5">Orthopedics · MBBS, MS, MCh</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><span class="sg-rating-num">4.5</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">17y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">2</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">89%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div><div class="sg-doc stt-avail" data-doc="11">
+            <div class="sg-doc-banner">
+                <label onclick="event.stopPropagation()" class="absolute top-2.5 left-2.5 z-10"><input type="checkbox" data-sel="11"  class="accent-[var(--sg-c)]"></label>
+                <button data-menu="11" onclick="event.stopPropagation()" class="sg-doc-menubtn absolute top-2 right-2 w-7 h-7 rounded-lg flex items-center justify-center"><i class="icon-more-vertical text-sm"></i></button>
+            </div>
+            <div class="px-4 pb-4 -mt-8">
+                <div class="flex items-end justify-between">
+                    <div class="sg-avatar-ring"><img class="sg-avatar [width:54px] [height:54px]" src="assets/img/doctor/doctor-11.jpg" alt="Dr. Meera Khan"><span class="sg-statusdot absolute -bottom-0.5 -right-0.5 [background:#15803d]"></span></div>
+                    <span class="sg-chip mb-1.5 [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]">Available</span>
+                </div>
+                <p class="sg-doc-name mt-2.5"><a href="surgeon-profile.html" onclick="event.stopPropagation()" class="hover:text-[var(--sg-accent)] hover:underline">Dr. Meera Khan</a></p>
+                <span class="sg-spec-pill mt-1.5 [background:color-mix(in_srgb,#0f766e_13%,transparent)] [color:#0f766e]"><i class="icon-slice text-[11px]"></i> General Surgery</span>
+                <p class="text-[11px] sg-mut mt-1.5">General Surgery · MBBS, MS</p>
+                <div class="flex items-center gap-1.5 mt-2"><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:#f59e0b]"></i><i class="icon-star text-[11px] [color:var(--sg-soft)]"></i><span class="sg-rating-num">4.4</span></div>
+                <div class="sg-stat-row mt-3">
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,var(--sg-c)_14%,transparent)] [color:var(--sg-c)]"><i class="icon-briefcase"></i></span><p class="sg-stat-val sg-head">28y</p><p class="sg-stat-lbl">Experience</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]"><i class="icon-calendar-check"></i></span><p class="sg-stat-val [color:#e06c1f]">2</p><p class="sg-stat-lbl">Today</p></div>
+                    <div class="sg-stat"><span class="sg-stat-ic [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]"><i class="icon-trending-up"></i></span><p class="sg-stat-val [color:#15803d]">90%</p><p class="sg-stat-lbl">Success</p></div>
+                </div>
+                <div class="flex gap-2 mt-3.5">
+                    <a href="surgeon-profile.html" onclick="event.stopPropagation()" class="sg-btn sg-btn-primary flex-1 justify-center !py-2 text-xs"><i class="icon-eye"></i> Profile</a>
+                    <button data-modal="assign" onclick="event.stopPropagation()" title="Assign Surgery" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-slice"></i></button>
+                    <button data-modal="allocate" onclick="event.stopPropagation()" title="Assign OT" class="sg-btn sg-btn-ghost !py-2 !px-2.5 text-xs"><i class="icon-layout-grid"></i></button>
+                </div>
+            </div>
+        </div></div></section>
+
+                            <!-- ============ 5+6. PERFORMANCE + SCHEDULE ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                                <section class="sg-card p-5">
+                                    <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold sg-head flex items-center gap-2"><i class="icon-chart-column sg-hicon"></i> Surgeon Performance</h2><span class="sg-npill" id="sg-perf-name">Dr. Arjun Mehta</span></div>
+                                    <div id="sg-performance" class="grid grid-cols-3 gap-3"><div class="sg-panel p-3 flex flex-col items-center text-center">
+        <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="sg-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--sg-track)" stroke-width="3.4"/><circle class="bar [--p:90]" cx="18" cy="18" r="15.9" fill="none" stroke="#15803d" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-xs font-bold [color:#15803d]">90%</span></div>
+        <p class="text-[11px] font-semibold sg-head mt-1.5">Success Rate</p></div><div class="sg-panel p-3 flex flex-col items-center text-center">
+        <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="sg-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--sg-track)" stroke-width="3.4"/><circle class="bar [--p:30]" cx="18" cy="18" r="15.9" fill="none" stroke="#1d4ed8" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-xs font-bold [color:#1d4ed8]">757</span></div>
+        <p class="text-[11px] font-semibold sg-head mt-1.5">Total Surgeries</p></div><div class="sg-panel p-3 flex flex-col items-center text-center">
+        <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="sg-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--sg-track)" stroke-width="3.4"/><circle class="bar [--p:65]" cx="18" cy="18" r="15.9" fill="none" stroke="#0f766e" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-xs font-bold [color:#0f766e]">106m</span></div>
+        <p class="text-[11px] font-semibold sg-head mt-1.5">Avg Duration</p></div><div class="sg-panel p-3 flex flex-col items-center text-center">
+        <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="sg-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--sg-track)" stroke-width="3.4"/><circle class="bar [--p:96]" cx="18" cy="18" r="15.9" fill="none" stroke="#e06c1f" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-xs font-bold [color:#e06c1f]">96%</span></div>
+        <p class="text-[11px] font-semibold sg-head mt-1.5">Satisfaction</p></div><div class="sg-panel p-3 flex flex-col items-center text-center">
+        <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="sg-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--sg-track)" stroke-width="3.4"/><circle class="bar [--p:55]" cx="18" cy="18" r="15.9" fill="none" stroke="#b45309" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-xs font-bold [color:#b45309]">3%</span></div>
+        <p class="text-[11px] font-semibold sg-head mt-1.5">Low Complication</p></div><div class="sg-panel p-3 flex flex-col items-center text-center">
+        <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="sg-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--sg-track)" stroke-width="3.4"/><circle class="bar [--p:90]" cx="18" cy="18" r="15.9" fill="none" stroke="#7c3aed" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-xs font-bold [color:#7c3aed]">90%</span></div>
+        <p class="text-[11px] font-semibold sg-head mt-1.5">Recovery Rate</p></div></div>
+                                </section>
+                                <section class="sg-card p-5">
+                                    <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold sg-head flex items-center gap-2"><i class="icon-calendar sg-hicon"></i> Surgery Schedule</h2><span class="sg-npill" id="sg-sched-name">Dr. Arjun Mehta</span></div>
+                                    <div id="sg-schedule" class="sg-tl"><div class="sg-tl-item [--tc:#e06c1f]"><div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head">CABG</p><p class="text-[11px] sg-mut">OT-01 · with N. Das</p></div><span class="text-[11px] sg-mut whitespace-nowrap">08:00</span></div></div><div class="sg-tl-item [--tc:#1d4ed8]"><div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head">Knee Replacement</p><p class="text-[11px] sg-mut">OT-02 · with Dr. Menon</p></div><span class="text-[11px] sg-mut whitespace-nowrap">10:30</span></div></div><div class="sg-tl-item [--tc:#0f766e]"><div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head">Craniotomy</p><p class="text-[11px] sg-mut">Cardiac OT · with N. Pillai</p></div><span class="text-[11px] sg-mut whitespace-nowrap">13:00</span></div></div><div class="sg-tl-item [--tc:#15803d]"><div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head">Appendectomy</p><p class="text-[11px] sg-mut">Neuro OT · with N. Sharma</p></div><span class="text-[11px] sg-mut whitespace-nowrap">15:30</span></div></div></div>
+                                </section>
+                            </div>
+
+                            <!-- ============ 7. SPECIALIZATION CENTER ============ -->
+                            <section class="sg-card p-5">
+                                <h2 class="text-base font-bold sg-head flex items-center gap-2 mb-4"><i class="icon-stethoscope sg-hicon"></i> Specialization Center</h2>
+                                <div id="sg-specialties" class="grid grid-cols-2 md:grid-cols-4 gap-3"><div class="sg-spec [--sv:#dc2626]" data-spec="Cardiac Surgery">
+                <div class="flex items-center justify-between mb-1.5"><span class="sg-iconbadge w-8 h-8 [color:#dc2626]"><i class="icon-heart-pulse"></i></span><span class="sg-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]">2</span></div>
+                <p class="text-sm font-bold sg-head leading-tight">Cardiac Surgery</p>
+                <p class="text-[11px] sg-mut mt-0.5">5 surgeries today</p>
+            </div><div class="sg-spec [--sv:#7c3aed]" data-spec="Neuro Surgery">
+                <div class="flex items-center justify-between mb-1.5"><span class="sg-iconbadge w-8 h-8 [color:#7c3aed]"><i class="icon-brain"></i></span><span class="sg-chip [background:color-mix(in_srgb,#7c3aed_13%,transparent)] [color:#7c3aed]">2</span></div>
+                <p class="text-sm font-bold sg-head leading-tight">Neuro Surgery</p>
+                <p class="text-[11px] sg-mut mt-0.5">3 surgeries today</p>
+            </div><div class="sg-spec [--sv:#e06c1f]" data-spec="Orthopedic Surgery">
+                <div class="flex items-center justify-between mb-1.5"><span class="sg-iconbadge w-8 h-8 [color:#e06c1f]"><i class="icon-bone"></i></span><span class="sg-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">2</span></div>
+                <p class="text-sm font-bold sg-head leading-tight">Orthopedic Surgery</p>
+                <p class="text-[11px] sg-mut mt-0.5">5 surgeries today</p>
+            </div><div class="sg-spec [--sv:#0f766e]" data-spec="General Surgery">
+                <div class="flex items-center justify-between mb-1.5"><span class="sg-iconbadge w-8 h-8 [color:#0f766e]"><i class="icon-slice"></i></span><span class="sg-chip [background:color-mix(in_srgb,#0f766e_13%,transparent)] [color:#0f766e]">2</span></div>
+                <p class="text-sm font-bold sg-head leading-tight">General Surgery</p>
+                <p class="text-[11px] sg-mut mt-0.5">6 surgeries today</p>
+            </div><div class="sg-spec [--sv:#be185d]" data-spec="Plastic Surgery">
+                <div class="flex items-center justify-between mb-1.5"><span class="sg-iconbadge w-8 h-8 [color:#be185d]"><i class="icon-sparkles"></i></span><span class="sg-chip [background:color-mix(in_srgb,#be185d_13%,transparent)] [color:#be185d]">1</span></div>
+                <p class="text-sm font-bold sg-head leading-tight">Plastic Surgery</p>
+                <p class="text-[11px] sg-mut mt-0.5">0 surgeries today</p>
+            </div><div class="sg-spec [--sv:#1d4ed8]" data-spec="Pediatric Surgery">
+                <div class="flex items-center justify-between mb-1.5"><span class="sg-iconbadge w-8 h-8 [color:#1d4ed8]"><i class="icon-baby"></i></span><span class="sg-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]">1</span></div>
+                <p class="text-sm font-bold sg-head leading-tight">Pediatric Surgery</p>
+                <p class="text-[11px] sg-mut mt-0.5">3 surgeries today</p>
+            </div><div class="sg-spec [--sv:#0e7490]" data-spec="ENT Surgery">
+                <div class="flex items-center justify-between mb-1.5"><span class="sg-iconbadge w-8 h-8 [color:#0e7490]"><i class="icon-ear"></i></span><span class="sg-chip [background:color-mix(in_srgb,#0e7490_13%,transparent)] [color:#0e7490]">1</span></div>
+                <p class="text-sm font-bold sg-head leading-tight">ENT Surgery</p>
+                <p class="text-[11px] sg-mut mt-0.5">3 surgeries today</p>
+            </div><div class="sg-spec [--sv:#b45309]" data-spec="Urology">
+                <div class="flex items-center justify-between mb-1.5"><span class="sg-iconbadge w-8 h-8 [color:#b45309]"><i class="icon-droplet"></i></span><span class="sg-chip [background:color-mix(in_srgb,#b45309_13%,transparent)] [color:#b45309]">1</span></div>
+                <p class="text-sm font-bold sg-head leading-tight">Urology</p>
+                <p class="text-[11px] sg-mut mt-0.5">0 surgeries today</p>
+            </div></div>
+                            </section>
+
+                            <!-- ============ 8. TEAM COLLABORATION ============ -->
+                            <section class="sg-card p-5">
+                                <h2 class="text-base font-bold sg-head flex items-center gap-2 mb-4"><i class="icon-users sg-hicon"></i> Team Collaboration</h2>
+                                <div id="sg-team" class="space-y-3"><div><p class="text-[11px] font-bold sg-mut uppercase tracking-wide mb-2 flex items-center gap-1.5"><i class="icon-syringe sg-hicon text-[13px]"></i> Anesthesiologists</p><div class="grid grid-cols-2 gap-2"><div class="sg-panel p-2.5 flex items-center gap-2.5"><span class="sg-avatar round flex-none [width:34px] [height:34px] [background:#0f766e] [font-size:11px]">DK</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head truncate">Dr. K. Menon</p><p class="text-[10px] sg-mut truncate">Cardiac OT</p></div><span class="sg-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Assigned</span></div><div class="sg-panel p-2.5 flex items-center gap-2.5"><span class="sg-avatar round flex-none [width:34px] [height:34px] [background:#1e40af] [font-size:11px]">DT</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head truncate">Dr. T. Bose</p><p class="text-[10px] sg-mut truncate">Standby</p></div><span class="sg-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div></div></div><div><p class="text-[11px] font-bold sg-mut uppercase tracking-wide mb-2 flex items-center gap-1.5"><i class="icon-user-check sg-hicon text-[13px]"></i> OT Nurses</p><div class="grid grid-cols-2 gap-2"><div class="sg-panel p-2.5 flex items-center gap-2.5"><span class="sg-avatar round flex-none [width:34px] [height:34px] [background:#0f766e] [font-size:11px]">NF</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head truncate">N. Fernandes</p><p class="text-[10px] sg-mut truncate">Cardiac OT</p></div><span class="sg-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Scrubbed</span></div><div class="sg-panel p-2.5 flex items-center gap-2.5"><span class="sg-avatar round flex-none [width:34px] [height:34px] [background:#1e40af] [font-size:11px]">ND</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head truncate">N. Das</p><p class="text-[10px] sg-mut truncate">OT-03</p></div><span class="sg-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div></div></div><div><p class="text-[11px] font-bold sg-mut uppercase tracking-wide mb-2 flex items-center gap-1.5"><i class="icon-users sg-hicon text-[13px]"></i> Assistants</p><div class="grid grid-cols-2 gap-2"><div class="sg-panel p-2.5 flex items-center gap-2.5"><span class="sg-avatar round flex-none [width:34px] [height:34px] [background:#1e40af] [font-size:11px]">DV</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head truncate">Dr. V. Iyer</p><p class="text-[10px] sg-mut truncate">CABG</p></div><span class="sg-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">In Surgery</span></div><div class="sg-panel p-2.5 flex items-center gap-2.5"><span class="sg-avatar round flex-none [width:34px] [height:34px] [background:#4338ca] [font-size:11px]">DM</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head truncate">Dr. M. Shah</p><p class="text-[10px] sg-mut truncate">Standby</p></div><span class="sg-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div></div></div><div><p class="text-[11px] font-bold sg-mut uppercase tracking-wide mb-2 flex items-center gap-1.5"><i class="icon-graduation-cap sg-hicon text-[13px]"></i> Residents</p><div class="grid grid-cols-2 gap-2"><div class="sg-panel p-2.5 flex items-center gap-2.5"><span class="sg-avatar round flex-none [width:34px] [height:34px] [background:#0f766e] [font-size:11px]">RS</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head truncate">R. Sharma</p><p class="text-[10px] sg-mut truncate">Ortho</p></div><span class="sg-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Observing</span></div><div class="sg-panel p-2.5 flex items-center gap-2.5"><span class="sg-avatar round flex-none [width:34px] [height:34px] [background:#1e40af] [font-size:11px]">RN</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold sg-head truncate">R. Nair</p><p class="text-[10px] sg-mut truncate">Neuro</p></div><span class="sg-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">On Round</span></div></div></div></div>
+                            </section>
+
+                            <!-- BULK BAR -->
+                            <div class="sg-bulk items-center gap-2 px-4 py-2.5 flex-wrap">
+                                <span class="text-sm font-semibold"><span id="sg-selcount">0</span> selected</span>
+                                <div class="flex flex-wrap gap-1.5 ml-auto text-xs">
+                                    <button data-bulk="assign" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-slice"></i> Assign Surgery</button>
+                                    <button data-bulk="oncall" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-phone-call"></i> Set On-Call</button>
+                                    <button data-bulk="export" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    <button data-bulk="print" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-printer"></i> Print</button>
+                                    <button data-bulk="archive" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-archive"></i> Archive</button>
+                                    <button data-bulk="delete" class="px-2.5 py-1.5 rounded-md bg-rose-600/80 hover:bg-rose-600"><i class="icon-trash-2"></i> Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="sg-drawer" class="sg-drawer"></div>
+        <div id="sg-drawer-back" class="sg-drawer-back" data-close></div>
+        <div id="sg-modalhost"></div>
+        <div id="sg-menuhost"></div>
+        <div id="sg-toast" class="sg-toast"></div>
+
+
+        @@include('partials/script.html', {"page": "surgeons"})
+
+    </body>
+</html>

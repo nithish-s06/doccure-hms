@@ -1,0 +1,91 @@
+
+
+@if(totalData()){
+  <div class="grid grid-cols-12 px-4 gap-2 py-3">
+							<div class="sm:col-span-4 col-span-12">
+								<div id="tablelength" class="flex justify-center sm:block">
+                  <div class="dt-length">
+                    <label for="dt-length-0">Show 
+                     
+                      <select name="source_list_length" id="dt-length-0" aria-controls="source_list" class="dt-input"
+                       [(ngModel)]="pageSize"
+      (ngModelChange)="changePageSize($any($event))">
+      @if (tableData().length >= 0) {
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        }
+                      </select> 
+                      entries
+                    </label>
+                  </div>
+                </div>
+							</div>
+              <div class="sm:col-span-4 col-span-12 flex items-center justify-center">
+                <div id="tablepage" class="flex justify-center sm:block">
+                  <div class="dt-paging">
+                    <nav aria-label="pagination">
+                      <button [class.disabled]="currentPage() === 1"
+                       (click)="getMoreData('first')" class="dt-paging-button first" role="link" type="button" aria-controls="DataTables_Table_0" aria-disabled="true" aria-label="First" data-dt-idx="first" tabindex="-1">«</button>
+                      <button class="dt-paging-button previous"  [ngClass]="{
+                            disabled: currentPage() === 1
+                          }" id="source_list_previous" (click)="getMoreData('previous')">
+                          <i class="icon icon-chevron-left"></i>
+                      </button>
+                      @for (item of pageNumberArray(); track item; let i = $index) {
+                        <button class="dt-paging-button" [class.current]="item === currentPage()" [class]="
+          (pageNumberArray()[currentPage() - 2] > item &&
+            item !== 1 &&
+            pageNumberArray().length > 6) ||
+          (pageNumberArray()[currentPage()] < item &&
+            item !== 1 &&
+            pageNumberArray().length > 6 &&
+            pageNumberArray().length !== item)
+            ? 'hide-page-no'
+            : 'show-page-no'
+        " (click)="moveToPage(item)">
+                           {{ item }}
+                      </button>
+                        @if (i === 0 && pageNumberArray().length > 6 && currentPage() > 2) {
+                        <button
+                          class="dt-paging-button"
+                          [hidden]="currentPage() === 1"
+                          (click)="moveToPage(currentPage() - 2)"
+                          tabindex="0"
+                        >
+                          <a class="page-link" href="javascript:void(0);"> ... </a>
+                        </button>
+                        } @if ( i === pageNumberArray().length - 2 && pageNumberArray().length > 6
+                        ) {
+                        <button
+                          [hidden]="currentPage() >= totalPages()"
+                          class="dt-paging-button"
+                          (click)="moveToPage(currentPage() + 2)"
+                          tabindex="0"
+                          (keydown.enter)="moveToPage(currentPage() + 2)"
+                          (keydown.space)="moveToPage(currentPage() + 2)"
+                        >
+                          <a class="page-link" href="javascript:void(0);"> ... </a>
+                        </button>
+                        } 
+                      }
+                        <button class="dt-paging-button next" id="source_list_next" [class.disabled]="currentPage() === totalPages() || totalData() === 0"
+                         (click)="getMoreData('next')">
+                            <i class="icon icon-chevron-right"></i> 
+                        </button>
+                      <button  [ngClass]="{
+                            disabled:
+                              currentPage() === pageNumberArray()[pageNumberArray().length - 1] ||
+                              tableData().length === 0
+                          }" (click)="getMoreData('last')" class="dt-paging-button first" role="link" type="button" aria-controls="DataTables_Table_0" aria-disabled="true" aria-label="First" data-dt-idx="first" tabindex="-1">»</button>
+                      </nav>
+                    </div>
+                  </div>
+              </div>
+              <div class="sm:col-span-4 col-span-12 flex items-center sm:justify-end justify-center"> 
+									<div id="tableinfo" class="flex justify-center sm:block"><div class="dt-info" aria-live="polite" id="DataTables_Table_0_info" role="status">{{ startEntry }} - {{ endEntry }} Entries</div></div>
+								</div>
+  </div>
+
+            }

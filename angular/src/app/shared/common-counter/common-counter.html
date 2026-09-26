@@ -1,0 +1,8 @@
+
+
+
+<div class="flex items-center border border-border-color rounded-md w-max px-2 py-1 bg-white h-[38px]">
+    <button type="button" class="text-gray-500 hover:text-gray-700 px-1 cursor-pointer qty-plus" (click)="incrementQuantity()"><i class="ph ph-plus pointer-events-none"></i></button>
+    <input type="text" class="w-8 text-center text-sm border-none focus:outline-none focus:ring-0 p-0 bg-transparent qty-input" [(ngModel)]="quantity" name="quantity" (input)="validateQuantity($event)">
+    <button type="button" class="text-gray-500 hover:text-gray-700 px-1 cursor-pointer qty-minus" (click)="decrementQuantity()"><i class="ph ph-minus pointer-events-none"></i></button>
+</div>

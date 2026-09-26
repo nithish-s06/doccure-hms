@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Leave Request Details — Dreams HMS"}) @@include('partials/header.html', {"page": "doctor-leave-request-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="doctor-leave-request-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="dlr-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Leave Request Details", "parentUrl": "doctor-leave-requests.html", "parent": "Doctor Leave Requests"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="dlr-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="dlr-hero-ico"><i class="icon-calendar-x"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Sick Leave — 3 Days</h1>
+                                            <span class="dlr-hbadge"><span class="dlr-dot"></span>Approved</span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="dlr-hmeta"><i class="icon-hash text-[13px] text-amber-300"></i>LR-2041</span>
+                                            <span class="dlr-hmeta"><i class="icon-user-round text-[13px] text-sky-300"></i>Dr. John Mathew</span>
+                                            <span class="dlr-hmeta"><i class="icon-building-2 text-[13px] text-violet-300"></i>Emergency Department</span>
+                                            <span class="dlr-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Jul 17 – Jul 19, 2026</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 dlr-actions-print-hide">
+                                    <button type="button" class="dlr-btn dlr-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <button type="button" class="dlr-btn dlr-btn-glass"><i class="icon-download"></i>Download PDF</button>
+                                    <a href="doctor-leave-requests.html" class="dlr-btn dlr-btn-primary"><i class="icon-arrow-left"></i>Back to Leave Requests</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="dlr-grid">
+                            <div class="dlr-vital dlr-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-vaccine"></i></span>
+                                    <span class="dlr-chip">Type</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Sick Leave</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Leave Category</p>
+                            </div>
+                            <div class="dlr-vital dlr-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-clock"></i></span>
+                                    <span class="dlr-chip">Duration</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">3 Days</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Jul 17 – Jul 19, 2026</p>
+                            </div>
+                            <div class="dlr-vital dlr-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-shield-check"></i></span>
+                                    <span class="dlr-chip">Coverage</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Assigned</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Dr. Gopal Nair covering</p>
+                            </div>
+                            <div class="dlr-vital dlr-c-rose">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-alert-triangle"></i></span>
+                                    <span class="dlr-chip">Priority</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">High</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">2 supporting documents</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="dlr-layout">
+                            <div class="space-y-5">
+
+                                <!-- Approval workflow timeline -->
+                                <div class="dlr-surface">
+                                    <div class="dlr-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="dlr-title">Approval Workflow</h2>
+                                    </div>
+                                    <div class="dlr-tl p-5">
+                                        <div class="dlr-tl-item done">
+                                            <span class="dlr-tl-node"><i class="icon-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Request Submitted</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Dr. John Mathew filed a sick leave request for 3 days.</p>
+                                            <p class="text-[11px] font-semibold text-gray-400 mt-0.5">Jul 15, 2026 · 08:40 AM</p>
+                                        </div>
+                                        <div class="dlr-tl-item done">
+                                            <span class="dlr-tl-node"><i class="icon-eye"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Under Review</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">HR & department head reviewed roster impact for Emergency.</p>
+                                            <p class="text-[11px] font-semibold text-gray-400 mt-0.5">Jul 15, 2026 · 02:15 PM</p>
+                                        </div>
+                                        <div class="dlr-tl-item done">
+                                            <span class="dlr-tl-node"><i class="icon-user-shield"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Coverage Assigned</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Dr. Gopal Nair assigned to cover Emergency duty.</p>
+                                            <p class="text-[11px] font-semibold text-gray-400 mt-0.5">Jul 16, 2026 · 09:05 AM</p>
+                                        </div>
+                                        <div class="dlr-tl-item done">
+                                            <span class="dlr-tl-node"><i class="icon-check-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Approved</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Leave approved by Dept. Head — Emergency Medicine.</p>
+                                            <p class="text-[11px] font-semibold text-gray-400 mt-0.5">Jul 16, 2026 · 11:30 AM</p>
+                                        </div>
+                                        <div class="dlr-tl-item current">
+                                            <span class="dlr-tl-node"><i class="icon-arrow-left-right"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Return to Duty</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Expected back on shift after Jul 19, 2026.</p>
+                                            <p class="text-[11px] font-semibold text-amber-500 mt-0.5">Pending</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Decision summary -->
+                                <div class="dlr-surface">
+                                    <div class="dlr-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="dlr-title">Reason & Decision Summary</h2>
+                                    </div>
+                                    <div class="p-5 space-y-4">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Recovering from viral fever, advised bed rest by physician. Requesting 3 days of sick leave with coverage arranged for all scheduled Emergency Medicine duties.</p>
+                                        <div class="dlr-kv"><span class="k"><i class="icon-message-square-text text-[13px]"></i>Approver Note</span><span class="v">Approved — coverage confirmed, no roster conflicts.</span></div>
+                                        <div class="dlr-kv"><span class="k"><i class="icon-user-check text-[13px]"></i>Approved By</span><span class="v">Dr. Ayesha Khan · Dept. Head, Emergency</span></div>
+                                        <div>
+                                            <p class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Supporting Documents (2)</p>
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                                <div class="dlr-doc-row"><span class="dlr-doc-ic"><i class="icon-file-text"></i></span><div class="min-w-0"><p class="text-sm font-semibold text-gray-900 dark:text-white truncate">Medical Certificate.pdf</p><p class="text-xs text-gray-500 dark:text-gray-400">312 KB</p></div></div>
+                                                <div class="dlr-doc-row"><span class="dlr-doc-ic"><i class="icon-file-text"></i></span><div class="min-w-0"><p class="text-sm font-semibold text-gray-900 dark:text-white truncate">Physician's Note.pdf</p><p class="text-xs text-gray-500 dark:text-gray-400">204 KB</p></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 dlr-sidebar">
+                                <!-- Doctor highlight -->
+                                <div class="dlr-surface dlr-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Requesting Doctor</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Dr. John Mathew</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Emergency Medicine · Emergency Dept</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="dlr-hmeta"><i class="icon-user-round text-[12px]"></i>View Doctor Availability</span>
+                                    </div>
+                                </div>
+
+                                <!-- Request key-value card -->
+                                <div class="dlr-surface p-5">
+                                    <h3 class="dlr-title mb-3">Request Details</h3>
+                                    <div class="dlr-kv"><span class="k"><i class="icon-user text-[13px]"></i>Doctor</span><span class="v">Dr. John Mathew</span></div>
+                                    <div class="dlr-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Department</span><span class="v">Emergency</span></div>
+                                    <div class="dlr-kv"><span class="k"><i class="icon-vaccine text-[13px]"></i>Leave Type</span><span class="v">Sick Leave</span></div>
+                                    <div class="dlr-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Start Date</span><span class="v">Jul 17, 2026</span></div>
+                                    <div class="dlr-kv"><span class="k"><i class="icon-calendar-check text-[13px]"></i>End Date</span><span class="v">Jul 19, 2026</span></div>
+                                    <div class="dlr-kv"><span class="k"><i class="icon-user-shield text-[13px]"></i>Coverage By</span><span class="v">Dr. Gopal Nair</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="dlr-surface p-5 space-y-2.5">
+                                    <h3 class="dlr-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="dlr-btn dlr-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <button type="button" class="dlr-btn dlr-btn-solid w-full justify-start"><i class="icon-download"></i>Download PDF</button>
+                                    <a href="doctor-leave-requests.html" class="dlr-btn dlr-btn-solid w-full justify-start"><i class="icon-list"></i>All Leave Requests</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "doctor-leave-request-detail"})
+    </body>
+</html>

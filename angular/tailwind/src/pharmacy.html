@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Pharmacy — Dreams HMS"}) @@include('partials/header.html', {"page": "pharmacy"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search medicines..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Pharmacy &amp; Medicine</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage drug inventory, prescriptions, and stock</p>
+                            </div>
+                            <button id="btn-add" type="button" class="flex items-center gap-2 bg-primary hover:bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors" data-hs-overlay="#form-modal">
+                                <i class="icon-plus"></i>
+                                Add Medicine
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-pill text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-total">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Medicines</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-instock">5</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">In Stock</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-low">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Low Stock</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-ban text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-out">1</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Out of Stock</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                               <div class="relative flex-1 max-w-100 max-sm:min-w-full">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                                        <i class="icon-search text-gray-400"></i>
+                                    </span>
+                                    <input aria-label="Search medicine name, category..." id="search" type="text" placeholder="Search medicine name, category..." class="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-slate-600 rounded-lg bg-gray-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" >
+                                </div>
+                                <select aria-label="All Categories" id="filter-cat" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Categories</option>
+                                    <option>Antibiotics</option>
+                                    <option>Analgesics</option>
+                                    <option>Antihypertensives</option>
+                                    <option>Vitamins</option>
+                                    <option>Antidiabetics</option>
+                                    <option>Antihistamines</option>
+                                    <option>Antacids</option>
+                                </select>
+                                <select aria-label="All Status" id="filter-status" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Status</option>
+                                    <option>In Stock</option>
+                                    <option>Low Stock</option>
+                                    <option>Out of Stock</option>
+                                </select>
+                                <span class="text-xs text-gray-400 ml-auto" id="count">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Medicine</th>
+                                            <th>Generic Name</th>
+                                            <th>Category</th>
+                                            <th>Stock</th>
+                                            <th>Price</th>
+                                            <th>Supplier</th>
+                                            <th>Expiry</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr data-row-id="1"><td><p class="font-medium text-gray-900">Amoxicillin 500mg</p><p class="text-xs text-gray-400">Capsule</p></td><td class="text-gray-600 dark:text-gray-300">Amoxicillin</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Antibiotics</span></td><td><span class="text-gray-700 dark:text-gray-300">820</span> <span class="text-xs text-gray-400">Capsules</span></td><td class="text-gray-600 dark:text-gray-300">$1.20</td><td class="text-gray-500 dark:text-gray-400 text-sm">MedSupply Co.</td><td class="text-gray-500 dark:text-gray-400 text-sm">2025-06-30</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">In Stock</span></td><td><div class="flex gap-1"><button onclick="openEdit(1)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(1,'Amoxicillin 500mg')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="2"><td><p class="font-medium text-gray-900">Paracetamol 500mg</p><p class="text-xs text-gray-400">Tablet</p></td><td class="text-gray-600 dark:text-gray-300">Acetaminophen</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Analgesics</span></td><td><span class="text-gray-700 dark:text-gray-300">3200</span> <span class="text-xs text-gray-400">Tablets</span></td><td class="text-gray-600 dark:text-gray-300">$0.15</td><td class="text-gray-500 dark:text-gray-400 text-sm">PharmaDist Ltd.</td><td class="text-gray-500 dark:text-gray-400 text-sm">2026-01-15</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">In Stock</span></td><td><div class="flex gap-1"><button onclick="openEdit(2)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(2,'Paracetamol 500mg')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="3"><td><p class="font-medium text-gray-900">Metformin 500mg</p><p class="text-xs text-gray-400">Tablet</p></td><td class="text-gray-600 dark:text-gray-300">Metformin HCl</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Antidiabetics</span></td><td><span class="text-amber-600 font-semibold">45</span> <span class="text-xs text-gray-400">Tablets</span></td><td class="text-gray-600 dark:text-gray-300">$0.80</td><td class="text-gray-500 dark:text-gray-400 text-sm">DiabCare Inc.</td><td class="text-gray-500 dark:text-gray-400 text-sm">2025-09-20</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Low Stock</span></td><td><div class="flex gap-1"><button onclick="openEdit(3)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(3,'Metformin 500mg')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="4"><td><p class="font-medium text-gray-900">Amlodipine 5mg</p><p class="text-xs text-gray-400">Tablet</p></td><td class="text-gray-600 dark:text-gray-300">Amlodipine</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Antihypertensives</span></td><td><span class="text-gray-700 dark:text-gray-300">680</span> <span class="text-xs text-gray-400">Tablets</span></td><td class="text-gray-600 dark:text-gray-300">$0.60</td><td class="text-gray-500 dark:text-gray-400 text-sm">CardioPharm</td><td class="text-gray-500 dark:text-gray-400 text-sm">2025-12-31</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">In Stock</span></td><td><div class="flex gap-1"><button onclick="openEdit(4)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(4,'Amlodipine 5mg')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="5"><td><p class="font-medium text-gray-900">Omeprazole 20mg</p><p class="text-xs text-gray-400">Capsule</p></td><td class="text-gray-600 dark:text-gray-300">Omeprazole</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Antacids</span></td><td><span class="text-red-600 font-semibold">0</span> <span class="text-xs text-gray-400">Capsules</span></td><td class="text-gray-600 dark:text-gray-300">$0.90</td><td class="text-gray-500 dark:text-gray-400 text-sm">GastroMed</td><td class="text-gray-500 dark:text-gray-400 text-sm">2025-08-10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Out of Stock</span></td><td><div class="flex gap-1"><button onclick="openEdit(5)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(5,'Omeprazole 20mg')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="6"><td><p class="font-medium text-gray-900">Cetirizine 10mg</p><p class="text-xs text-gray-400">Tablet</p></td><td class="text-gray-600 dark:text-gray-300">Cetirizine HCl</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Antihistamines</span></td><td><span class="text-gray-700 dark:text-gray-300">350</span> <span class="text-xs text-gray-400">Tablets</span></td><td class="text-gray-600 dark:text-gray-300">$0.40</td><td class="text-gray-500 dark:text-gray-400 text-sm">AllergyCare</td><td class="text-gray-500 dark:text-gray-400 text-sm">2026-03-28</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">In Stock</span></td><td><div class="flex gap-1"><button onclick="openEdit(6)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(6,'Cetirizine 10mg')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="7"><td><p class="font-medium text-gray-900">Vitamin D3 1000IU</p><p class="text-xs text-gray-400">Tablet</p></td><td class="text-gray-600 dark:text-gray-300">Cholecalciferol</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Vitamins</span></td><td><span class="text-amber-600 font-semibold">30</span> <span class="text-xs text-gray-400">Tablets</span></td><td class="text-gray-600 dark:text-gray-300">$0.25</td><td class="text-gray-500 dark:text-gray-400 text-sm">NutriPharma</td><td class="text-gray-500 dark:text-gray-400 text-sm">2025-11-15</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Low Stock</span></td><td><div class="flex gap-1"><button onclick="openEdit(7)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(7,'Vitamin D3 1000IU')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="8"><td><p class="font-medium text-gray-900">Azithromycin 250mg</p><p class="text-xs text-gray-400">Tablet</p></td><td class="text-gray-600 dark:text-gray-300">Azithromycin</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Antibiotics</span></td><td><span class="text-gray-700 dark:text-gray-300">210</span> <span class="text-xs text-gray-400">Tablets</span></td><td class="text-gray-600 dark:text-gray-300">$2.10</td><td class="text-gray-500 dark:text-gray-400 text-sm">MedSupply Co.</td><td class="text-gray-500 dark:text-gray-400 text-sm">2025-07-22</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">In Stock</span></td><td><div class="flex gap-1"><button onclick="openEdit(8)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(8,'Azithromycin 250mg')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr id="tbody-empty-row" class="hidden"><td colspan="9" class="text-center py-10 text-gray-400">No medicines found</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="form-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="m-title">
+          <div class="flex min-h-full items-center justify-center p-4">
+            <div class="modal-panel pointer-events-auto">
+                <div class="flex items-center justify-between">
+                    <h2 id="m-title" class="text-xl font-bold text-gray-900">Add Medicine</h2>
+                    <button id="m-close" type="button" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" data-hs-overlay="#form-modal" aria-label="Close">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <form id="m-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="f-name" class="form-label">Brand Name <span class="text-danger">*</span></label>
+                            <input id="f-name" class="form-input" placeholder="Amoxicillin 500mg">
+                        </div>
+                        <div class="form-group">
+                            <label for="f-generic" class="form-label">Generic Name</label>
+                            <input id="f-generic" class="form-input" placeholder="Amoxicillin">
+                        </div>
+                        <div class="form-group">
+                            <label for="f-cat" class="form-label">Category</label>
+                            <select id="f-cat" class="form-select">
+                                <option>Antibiotics</option>
+                                <option>Analgesics</option>
+                                <option>Antihypertensives</option>
+                                <option>Vitamins</option>
+                                <option>Antidiabetics</option>
+                                <option>Antihistamines</option>
+                                <option>Antacids</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-unit" class="form-label">Unit</label>
+                            <select id="f-unit" class="form-select">
+                                <option>Tablet</option>
+                                <option>Capsule</option>
+                                <option>Syrup (ml)</option>
+                                <option>Injection (vial)</option>
+                                <option>Cream (g)</option>
+                                <option>Drop</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-stock" class="form-label">Stock Qty <span class="text-danger">*</span></label>
+                            <input id="f-stock" type="number" min="0" class="form-input" placeholder="500" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-reorder" class="form-label">Reorder Level</label>
+                            <input id="f-reorder" type="number" min="0" class="form-input" placeholder="50" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-price" class="form-label">Unit Price ($)</label>
+                            <input id="f-price" type="number" step="0.01" min="0" class="form-input" placeholder="2.50" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-supplier" class="form-label">Supplier</label>
+                            <input id="f-supplier" class="form-input" placeholder="MedSupply Co." >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-expiry" class="form-label">Expiry Date</label>
+                            <div class="relative">
+                                <input type="text" id="f-expiry" placeholder="dd/mm/yyyy" class="form-input pr-10" data-provider="flatpickr" data-date-format="d-m-Y">
+                                <i class="icon-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-900"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-status" class="form-label">Status</label>
+                            <select id="f-status" class="form-select">
+                                <option>In Stock</option>
+                                <option>Low Stock</option>
+                                <option>Out of Stock</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button id="m-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#form-modal">Cancel</button>
+                        <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Save</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+        <div id="del-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="del-name">
+          <div class="flex min-h-full items-center justify-center p-4">
+            <div class="modal-panel sm pointer-events-auto">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Remove Medicine</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Remove
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    from inventory?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#del-modal">Cancel</button>
+                    <button id="del-confirm-btn" type="button" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold" data-hs-overlay="#del-modal">Remove</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "pharmacy"})
+    </body>
+</html>

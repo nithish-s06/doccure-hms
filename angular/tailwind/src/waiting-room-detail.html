@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Queue Token Details — Dreams HMS"}) @@include('partials/header.html', {"page": "waiting-room-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="waiting-room-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="wqd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Queue Token Details", "parentUrl": "waiting-room.html", "parent": "Waiting Room"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="wqd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="wqd-hero-ico"><i class="icon-ticket"></i></div>
+                                    <div class="min-w-0">
+                                        <p class="wqd-kicker text-[11px] font-bold uppercase tracking-widest text-white/60 mb-1">Waiting Room</p>
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Ravi Kumar</h1>
+                                            <span class="wqd-hbadge"><span class="wqd-dot"></span><span>In Consultation</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="wqd-hmeta"><i class="icon-hash text-[13px] text-teal-300"></i>Token A-104</span>
+                                            <span class="wqd-hmeta"><i class="icon-building-2 text-[13px] text-sky-300"></i>Cardiology</span>
+                                            <span class="wqd-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i>Dr. Sarah Roberts</span>
+                                            <span class="wqd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Checked in 09:58 AM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 wqd-actions-print-hide">
+                                    <button type="button" class="wqd-btn wqd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Slip</button>
+                                    <a href="waiting-room.html" class="wqd-btn wqd-btn-primary"><i class="icon-arrow-left"></i>Back to Queue</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="wqd-grid">
+                            <div class="wqd-vital wqd-c-teal">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-ticket"></i></span>
+                                    <span class="wqd-chip">Token</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">A-104</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Queue Token</p>
+                            </div>
+                            <div class="wqd-vital wqd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-clock"></i></span>
+                                    <span class="wqd-chip">Waited</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">2 min</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Wait Time</p>
+                            </div>
+                            <div class="wqd-vital wqd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-flag"></i></span>
+                                    <span class="wqd-chip">Priority</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">High</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Triage Priority</p>
+                            </div>
+                            <div class="wqd-vital wqd-c-rose">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-triangle-alert"></i></span>
+                                    <span class="wqd-chip">Alert</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Allergy</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Penicillin allergy</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="wqd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Queue workflow -->
+                                <div class="wqd-surface">
+                                    <div class="wqd-head">
+                                        <span class="ico"><i class="icon-list"></i></span>
+                                        <h2 class="wqd-title">Queue Journey</h2>
+                                    </div>
+                                    <div class="wqd-tl p-5">
+                                        <div class="wqd-tl-item done">
+                                            <span class="wqd-tl-node"><i class="icon-user-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Checked in at front desk</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">09:58 AM · Scheduled 10:00 AM appointment</p>
+                                        </div>
+                                        <div class="wqd-tl-item done">
+                                            <span class="wqd-tl-node"><i class="icon-ticket"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Token A-104 issued</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Assigned to Cardiology queue</p>
+                                        </div>
+                                        <div class="wqd-tl-item done">
+                                            <span class="wqd-tl-node"><i class="icon-bell-ring"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Called to Room A1</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">10:00 AM · Dr. Sarah Roberts</p>
+                                        </div>
+                                        <div class="wqd-tl-item current">
+                                            <span class="wqd-tl-node"><i class="icon-stethoscope"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">In consultation</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Started 10:00 AM · in progress</p>
+                                        </div>
+                                        <div class="wqd-tl-item">
+                                            <span class="wqd-tl-node"><i class="icon-circle-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Visit complete</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Pending</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Visit notes -->
+                                <div class="wqd-surface">
+                                    <div class="wqd-head">
+                                        <span class="ico"><i class="icon-notebook-pen"></i></span>
+                                        <h2 class="wqd-title">Visit Notes</h2>
+                                    </div>
+                                    <div class="p-5 space-y-3">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Patient prefers morning slots. Scheduled follow-up for routine cardiac review. No changes to standing medication reported at check-in.</p>
+                                        <div class="flex items-center gap-2.5 p-3 rounded-xl [background:color-mix(in_oklab,var(--wqd-c)_8%,transparent)]">
+                                            <i class="icon-info text-teal-500"></i>
+                                            <p class="text-xs text-gray-600 dark:text-gray-300">Insurance verified — Star Health, cashless approved.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 wqd-sidebar">
+                                <!-- Doctor -->
+                                <div class="wqd-surface wqd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Assigned Doctor</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Dr. Sarah Roberts</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Cardiology · Interventional</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="wqd-hmeta"><i class="icon-door-open text-[12px]"></i>Room A1</span>
+                                    </div>
+                                </div>
+
+                                <!-- Token details -->
+                                <div class="wqd-surface p-5">
+                                    <h3 class="wqd-title mb-3">Token Details</h3>
+                                    <div class="wqd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">Ravi Kumar</span></div>
+                                    <div class="wqd-kv"><span class="k"><i class="icon-ticket text-[13px]"></i>Token</span><span class="v">A-104</span></div>
+                                    <div class="wqd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Department</span><span class="v">Cardiology</span></div>
+                                    <div class="wqd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Since</span><span class="v">09:58 AM</span></div>
+                                    <div class="wqd-kv"><span class="k"><i class="icon-shield text-[13px]"></i>Insurance</span><span class="v">Star Health</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="wqd-surface p-5 space-y-2.5">
+                                    <h3 class="wqd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="wqd-btn wqd-btn-solid w-full justify-start"><i class="icon-stethoscope"></i>Assign Doctor</button>
+                                    <button type="button" class="wqd-btn wqd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Queue Slip</button>
+                                    <a href="waiting-room.html" class="wqd-btn wqd-btn-solid w-full justify-start"><i class="icon-list"></i>All Queue Tokens</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "waiting-room-detail"})
+    </body>
+</html>

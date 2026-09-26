@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"File Manager — Dreams HMS"}) @@include('partials/header.html', {"page": "file-manager"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="file-manager">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="fm-page" class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "File Manager", "parentUrl": "", "parent": ""})
+
+                        <!-- HERO -->
+                        <section class="fm-hero" data-aos="fade-up">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="min-w-0">
+                                    <div class="flex flex-wrap items-center gap-2.5">
+                                        <span class="fm-hbadge"><span class="fm-dot"></span><span id="fm-total-badge">22</span> Files</span>
+                                        <span class="fm-hbadge fm-hbadge-emerald"><i class="icon-hard-drive text-[11px]"></i>38% storage used</span>
+                                        <span class="fm-hbadge fm-hbadge-amber"><i class="icon-share-2 text-[11px]"></i><span id="fm-shared-badge">7</span> Shared</span>
+                                    </div>
+                                    <h1 class="mt-3 text-2xl lg:text-3xl font-extrabold tracking-tight">File Manager</h1>
+                                    <p class="mt-1.5 max-w-xl text-sm text-white/70">Reports, scans and administrative documents — organized, searchable, and share-ready.</p>
+                                    <div class="mt-4 flex flex-wrap items-center gap-2.5 text-white/85">
+                                        <span class="fm-hmeta"><i class="icon-hard-drive text-[13px] text-sky-300"></i>7.6 GB of 20 GB used</span>
+                                        <span class="fm-hmeta"><i class="icon-shield-check text-[13px] text-emerald-300"></i>Encrypted &amp; HIPAA-ready</span>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2.5 w-full sm:w-auto">
+                                    <button id="fm-new-folder" type="button" class="fm-btn fm-btn-glass"><i class="icon-folder-plus"></i>New Folder</button>
+                                    <button id="fm-upload" type="button" class="fm-btn fm-btn-primary"><i class="icon-upload"></i>Upload File</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- KPI CARDS -->
+                        <section class="grid grid-cols-2 xl:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="60">
+                            <div class="fm-stat fm-c-primary">
+                                <div class="flex items-start justify-between gap-2 mb-3">
+                                    <span class="fm-stat-ico"><i class="icon-hard-drive"></i></span>
+                                    <svg class="fm-ring [--p:38]" viewBox="0 0 36 36"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Storage Used</p>
+                                <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mt-1">7.6 <span class="text-sm font-semibold text-gray-400">/ 20 GB</span></h3>
+                            </div>
+                            <div class="fm-stat fm-c-sky">
+                                <div class="flex items-start justify-between gap-2 mb-3">
+                                    <span class="fm-stat-ico"><i class="icon-file-stack"></i></span>
+                                    <span class="fm-chip">Files</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Total Files</p>
+                                <h3 id="fm-kpi-files" class="text-2xl font-extrabold text-gray-900 dark:text-white mt-1 tabular-nums">22</h3>
+                            </div>
+                            <div class="fm-stat fm-c-amber">
+                                <div class="flex items-start justify-between gap-2 mb-3">
+                                    <span class="fm-stat-ico"><i class="icon-folders"></i></span>
+                                    <span class="fm-chip">Folders</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Total Folders</p>
+                                <h3 id="fm-kpi-folders" class="text-2xl font-extrabold text-gray-900 dark:text-white mt-1 tabular-nums">7</h3>
+                            </div>
+                            <div class="fm-stat fm-c-emerald">
+                                <div class="flex items-start justify-between gap-2 mb-3">
+                                    <span class="fm-stat-ico"><i class="icon-share-2"></i></span>
+                                    <span class="fm-chip">Team</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Shared Files</p>
+                                <h3 id="fm-kpi-shared" class="text-2xl font-extrabold text-gray-900 dark:text-white mt-1 tabular-nums">7</h3>
+                            </div>
+                        </section>
+
+                        <!-- BODY -->
+                        <div class="fm-layout">
+                            <!-- SIDEBAR -->
+                            <aside class="space-y-5" data-aos="fade-up" data-aos-delay="80">
+                                <div class="fm-surface overflow-hidden fm-c-primary">
+                                    <div class="fm-head"><span class="ico"><i class="icon-hard-drive"></i></span><p class="fm-t">Storage Breakdown</p></div>
+                                    <div class="p-4">
+                                        <div class="fm-bar mb-3" id="fm-storage-segs"><span class="fm-c-rose [display:inline-block] [height:100%] [width:16.0%] [background:var(--fm-c)]"></span><span class="fm-c-amber [display:inline-block] [height:100%] [width:9.5%] [background:var(--fm-c)]"></span><span class="fm-c-emerald [display:inline-block] [height:100%] [width:7.0%] [background:var(--fm-c)]"></span><span class="fm-c-violet [display:inline-block] [height:100%] [width:3.5%] [background:var(--fm-c)]"></span><span class="fm-c-slate [display:inline-block] [height:100%] [width:2.0%] [background:var(--fm-c)]"></span></div>
+                                        <div class="space-y-2" id="fm-storage-legend"><div class="flex items-center justify-between text-xs"><span class="flex items-center gap-1.5 text-gray-600 dark:text-gray-300"><span class="w-2 h-2 rounded-full fm-c-rose [background:var(--fm-c)]"></span>Documents</span><span class="font-semibold text-gray-900 dark:text-white">3.2 GB</span></div><div class="flex items-center justify-between text-xs"><span class="flex items-center gap-1.5 text-gray-600 dark:text-gray-300"><span class="w-2 h-2 rounded-full fm-c-amber [background:var(--fm-c)]"></span>Images</span><span class="font-semibold text-gray-900 dark:text-white">1.9 GB</span></div><div class="flex items-center justify-between text-xs"><span class="flex items-center gap-1.5 text-gray-600 dark:text-gray-300"><span class="w-2 h-2 rounded-full fm-c-emerald [background:var(--fm-c)]"></span>Spreadsheets</span><span class="font-semibold text-gray-900 dark:text-white">1.4 GB</span></div><div class="flex items-center justify-between text-xs"><span class="flex items-center gap-1.5 text-gray-600 dark:text-gray-300"><span class="w-2 h-2 rounded-full fm-c-violet [background:var(--fm-c)]"></span>Archives</span><span class="font-semibold text-gray-900 dark:text-white">0.7 GB</span></div><div class="flex items-center justify-between text-xs"><span class="flex items-center gap-1.5 text-gray-600 dark:text-gray-300"><span class="w-2 h-2 rounded-full fm-c-slate [background:var(--fm-c)]"></span>Other</span><span class="font-semibold text-gray-900 dark:text-white">0.4 GB</span></div></div>
+                                        <p id="fm-storage-total" class="text-[11px] text-gray-400 mt-3 pt-3 border-t border-border-color">7.6 GB of 20 GB used · 62% free</p>
+                                    </div>
+                                </div>
+                                <div class="fm-surface overflow-hidden fm-c-amber">
+                                    <div class="fm-head"><span class="ico"><i class="icon-folder"></i></span><p class="fm-t">Quick Access</p></div>
+                                    <div id="fm-folder-nav" class="p-3 space-y-2"><div class="fm-fold fm-c-amber" data-nav="patient-records"><span class="fm-fold-ico"><i class="icon-folder"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">Patient Records</p><p class="text-[11px] text-gray-400">4 items</p></div></div><div class="fm-fold fm-c-sky" data-nav="lab-reports"><span class="fm-fold-ico"><i class="icon-folder"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">Lab Reports</p><p class="text-[11px] text-gray-400">3 items</p></div></div><div class="fm-fold fm-c-emerald" data-nav="invoices"><span class="fm-fold-ico"><i class="icon-folder"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">Invoices &amp; Billing</p><p class="text-[11px] text-gray-400">3 items</p></div></div><div class="fm-fold fm-c-violet" data-nav="hr-docs"><span class="fm-fold-ico"><i class="icon-folder"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">HR Documents</p><p class="text-[11px] text-gray-400">3 items</p></div></div><div class="fm-fold fm-c-rose" data-nav="insurance"><span class="fm-fold-ico"><i class="icon-folder"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">Insurance Claims</p><p class="text-[11px] text-gray-400">2 items</p></div></div><div class="fm-fold fm-c-primary" data-nav="shared-team"><span class="fm-fold-ico"><i class="icon-folder"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">Shared with Team</p><p class="text-[11px] text-gray-400">2 items</p></div></div></div>
+                                </div>
+                                <div class="fm-surface overflow-hidden fm-c-sky">
+                                    <div class="fm-head"><span class="ico"><i class="icon-history"></i></span><p class="fm-t">Recent Files</p></div>
+                                    <div id="fm-recent-list" class="p-2"><div class="fm-recent" data-file="file13"><span class="fm-doc-ico fm-c-emerald"><i class="icon-file-spreadsheet"></i></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 dark:text-white truncate">August Invoices Export.xlsx</p><p class="text-[10px] text-gray-400">2.1 MB · Aug 25, 2026</p></div></div><div class="fm-recent" data-file="file19"><span class="fm-doc-ico fm-c-emerald"><i class="icon-file-spreadsheet"></i></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 dark:text-white truncate">Insurance Claims Log.xlsx</p><p class="text-[10px] text-gray-400">1.6 MB · Aug 24, 2026</p></div></div><div class="fm-recent" data-file="file7"><span class="fm-doc-ico fm-c-rose"><i class="icon-file-text"></i></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 dark:text-white truncate">Discharge Summary - R. Clark.pdf</p><p class="text-[10px] text-gray-400">210 KB · Aug 22, 2026</p></div></div><div class="fm-recent" data-file="file10"><span class="fm-doc-ico fm-c-emerald"><i class="icon-file-spreadsheet"></i></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 dark:text-white truncate">Q3 Lab Test Volume.xlsx</p><p class="text-[10px] text-gray-400">1.3 MB · Aug 21, 2026</p></div></div><div class="fm-recent" data-file="file4"><span class="fm-doc-ico fm-c-rose"><i class="icon-file-text"></i></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 dark:text-white truncate">Patient Intake Form Template.pdf</p><p class="text-[10px] text-gray-400">320 KB · Aug 20, 2026</p></div></div><div class="fm-recent" data-file="file8"><span class="fm-doc-ico fm-c-rose"><i class="icon-file-text"></i></span><div class="min-w-0 flex-1"><p class="text-xs font-bold text-gray-900 dark:text-white truncate">Discharge Summary - A. Mehta.pdf</p><p class="text-[10px] text-gray-400">198 KB · Aug 19, 2026</p></div></div></div>
+                                </div>
+                            </aside>
+
+                            <!-- MAIN -->
+                            <div class="min-w-0 space-y-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="fm-surface overflow-hidden">
+                                    <div class="p-3 lg:p-4 flex flex-wrap items-center gap-2.5">
+                                        <nav id="fm-breadcrumb" class="flex items-center gap-1.5 text-sm"><span class="font-medium text-gray-900 dark:text-gray-200">Home</span></nav>
+                                        <div class="fm-search ml-auto">
+                                            <span class="ico"><i class="icon-search text-sm"></i></span>
+                                            <input aria-label="Search files..." id="fm-search" type="text" placeholder="Search files...">
+                                        </div>
+                                        <select aria-label="Sort: Name A–Z" id="fm-sort" class="fm-tool">
+                                            <option value="name">Sort: Name A–Z</option>
+                                            <option value="recent">Recently Modified</option>
+                                            <option value="size">Largest First</option>
+                                            <option value="type">Type</option>
+                                        </select>
+                                        <div class="fm-seg">
+                                            <button type="button" id="fm-view-grid" class="is-active"><i class="icon-layout-grid"></i>Grid</button>
+                                            <button type="button" id="fm-view-list"><i class="icon-list"></i>List</button>
+                                        </div>
+                                    </div>
+                                    <div class="px-3 lg:px-4 pb-3">
+                                        <span id="fm-count" class="text-xs text-gray-400 font-medium">9 items</span>
+                                    </div>
+                                </div>
+
+                                <div id="fm-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-4"><article class="fm-card fm-c-violet" data-folder="hr-docs"><div class="fm-thumb"><i class="icon-folder big"></i><div class="[position:absolute] [top:.5rem] [right:.5rem] [display:flex] [gap:.35rem]"><button class="fm-mini fm-del" data-kind="folder" data-id="hr-docs" title="Delete"><i class="icon-trash-2 text-xs"></i></button></div></div><div class="p-3"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">HR Documents</p><p class="text-[11px] text-gray-400 mt-0.5">3 items</p></div></article><article class="fm-card fm-c-rose" data-folder="insurance"><div class="fm-thumb"><i class="icon-folder big"></i><div class="[position:absolute] [top:.5rem] [right:.5rem] [display:flex] [gap:.35rem]"><button class="fm-mini fm-del" data-kind="folder" data-id="insurance" title="Delete"><i class="icon-trash-2 text-xs"></i></button></div></div><div class="p-3"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">Insurance Claims</p><p class="text-[11px] text-gray-400 mt-0.5">2 items</p></div></article><article class="fm-card fm-c-emerald" data-folder="invoices"><div class="fm-thumb"><i class="icon-folder big"></i><div class="[position:absolute] [top:.5rem] [right:.5rem] [display:flex] [gap:.35rem]"><button class="fm-mini fm-del" data-kind="folder" data-id="invoices" title="Delete"><i class="icon-trash-2 text-xs"></i></button></div></div><div class="p-3"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">Invoices &amp; Billing</p><p class="text-[11px] text-gray-400 mt-0.5">3 items</p></div></article><article class="fm-card fm-c-sky" data-folder="lab-reports"><div class="fm-thumb"><i class="icon-folder big"></i><div class="[position:absolute] [top:.5rem] [right:.5rem] [display:flex] [gap:.35rem]"><button class="fm-mini fm-del" data-kind="folder" data-id="lab-reports" title="Delete"><i class="icon-trash-2 text-xs"></i></button></div></div><div class="p-3"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">Lab Reports</p><p class="text-[11px] text-gray-400 mt-0.5">3 items</p></div></article><article class="fm-card fm-c-amber" data-folder="patient-records"><div class="fm-thumb"><i class="icon-folder big"></i><div class="[position:absolute] [top:.5rem] [right:.5rem] [display:flex] [gap:.35rem]"><button class="fm-mini fm-del" data-kind="folder" data-id="patient-records" title="Delete"><i class="icon-trash-2 text-xs"></i></button></div></div><div class="p-3"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">Patient Records</p><p class="text-[11px] text-gray-400 mt-0.5">4 items</p></div></article><article class="fm-card fm-c-primary" data-folder="shared-team"><div class="fm-thumb"><i class="icon-folder big"></i><div class="[position:absolute] [top:.5rem] [right:.5rem] [display:flex] [gap:.35rem]"><button class="fm-mini fm-del" data-kind="folder" data-id="shared-team" title="Delete"><i class="icon-trash-2 text-xs"></i></button></div></div><div class="p-3"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">Shared with Team</p><p class="text-[11px] text-gray-400 mt-0.5">2 items</p></div></article><article class="fm-card fm-c-sky" data-file="file2"><div class="fm-thumb"><i class="icon-file big"></i><div class="[position:absolute] [top:.5rem] [right:.5rem] [display:flex] [gap:.35rem]"><button class="fm-mini fm-dl" data-id="file2" title="Download"><i class="icon-download text-xs"></i></button><button class="fm-mini fm-del" data-kind="file" data-id="file2" title="Delete"><i class="icon-trash-2 text-xs"></i></button></div></div><div class="p-3"><p class="text-sm font-bold text-gray-900 dark:text-white truncate" title="Fire Safety Compliance.docx">Fire Safety Compliance.docx</p><p class="text-[11px] text-gray-400 mt-0.5">540 KB · Jul 18, 2026</p></div></article><article class="fm-card fm-c-rose" data-file="file1"><div class="fm-thumb"><i class="icon-file-text big"></i><span class="fm-badge [position:absolute] [top:.5rem] [left:.5rem]"><i class="icon-share-2 text-[9px]"></i>Shared</span><div class="[position:absolute] [top:.5rem] [right:.5rem] [display:flex] [gap:.35rem]"><button class="fm-mini fm-dl" data-id="file1" title="Download"><i class="icon-download text-xs"></i></button><button class="fm-mini fm-del" data-kind="file" data-id="file1" title="Delete"><i class="icon-trash-2 text-xs"></i></button></div></div><div class="p-3"><p class="text-sm font-bold text-gray-900 dark:text-white truncate" title="Hospital Accreditation Certificate.pdf">Hospital Accreditation Certificate.pdf</p><p class="text-[11px] text-gray-400 mt-0.5">2.4 MB · Aug 2, 2026</p></div></article><article class="fm-card fm-c-amber" data-file="file3"><div class="fm-thumb"><i class="icon-image big"></i><span class="fm-badge [position:absolute] [top:.5rem] [left:.5rem]"><i class="icon-share-2 text-[9px]"></i>Shared</span><div class="[position:absolute] [top:.5rem] [right:.5rem] [display:flex] [gap:.35rem]"><button class="fm-mini fm-dl" data-id="file3" title="Download"><i class="icon-download text-xs"></i></button><button class="fm-mini fm-del" data-kind="file" data-id="file3" title="Delete"><i class="icon-trash-2 text-xs"></i></button></div></div><div class="p-3"><p class="text-sm font-bold text-gray-900 dark:text-white truncate" title="Org Chart 2026.png">Org Chart 2026.png</p><p class="text-[11px] text-gray-400 mt-0.5">1.1 MB · Jun 30, 2026</p></div></article></div>
+
+                                <div id="fm-list-wrap" class="hidden fm-surface overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="fm-table">
+                                            <thead><tr><th>Name</th><th>Type</th><th>Size</th><th>Modified</th><th class="text-right">Actions</th></tr></thead>
+                                            <tbody id="fm-list-body"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div id="fm-empty" class="hidden fm-surface py-16 flex flex-col items-center text-center">
+                                    <span class="grid size-16 place-items-center rounded-2xl bg-primary/10 text-primary mb-4"><i class="icon-folder-open text-2xl"></i></span>
+                                    <h3 class="text-base font-bold text-gray-900 dark:text-white">This folder is empty</h3>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-sm">Upload a file or create a folder to get started.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="fm-folder-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white border p-6 border-border-color rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3">
+                        <span class="fm-doc-ico fm-c-amber"><i class="icon-folder-plus"></i></span>
+                        <div class="min-w-0 flex-1">
+                            <h2 class="text-lg font-bold text-gray-900 dark:text-white">New Folder</h2>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Create inside "<span id="fm-folder-target">Home</span>"</p>
+                        </div>
+                        <button id="fm-folder-modal-close" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" data-hs-overlay="#fm-folder-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="fm-f-name" class="form-label">Folder Name <span class="text-danger">*</span></label>
+                        <input id="fm-f-name" class="form-input" placeholder="New Folder">
+                    </div>
+                    <div class="flex gap-3 justify-end mt-5">
+                        <button id="fm-folder-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#fm-folder-modal">Cancel</button>
+                        <button id="fm-folder-save" type="button" class="fm-btn fm-btn-primary">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="fm-upload-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white border p-6 border-border-color rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3">
+                        <span class="fm-doc-ico fm-c-sky"><i class="icon-cloud-upload"></i></span>
+                        <div class="min-w-0 flex-1">
+                            <h2 class="text-lg font-bold text-gray-900 dark:text-white">Upload File</h2>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Add a file to "<span id="fm-upload-target">Home</span>"</p>
+                        </div>
+                        <button id="fm-upload-modal-close" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" data-hs-overlay="#fm-upload-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div id="fm-dropzone" class="fm-drop mt-4">
+                        <i class="icon-cloud-upload text-3xl text-gray-300 dark:text-slate-600"></i>
+                        <p class="text-sm font-semibold text-gray-600 dark:text-gray-300 mt-2">Drag &amp; drop a file here</p>
+                        <p class="text-xs text-gray-400 mt-1">or click Upload below to add a sample file</p>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-5">
+                        <button id="fm-upload-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#fm-upload-modal">Cancel</button>
+                        <button id="fm-upload-confirm" type="button" class="fm-btn fm-btn-primary"><i class="icon-upload"></i>Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="fm-preview-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white border p-6 border-border-color rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3">
+                        <span id="fm-preview-icon" class="fm-doc-ico fm-c-primary"><i class="icon-file"></i></span>
+                        <div class="min-w-0 flex-1">
+                            <h2 id="fm-preview-name" class="text-base font-bold text-gray-900 dark:text-white truncate">File name</h2>
+                            <p id="fm-preview-meta" class="text-xs text-gray-500 dark:text-gray-400"></p>
+                        </div>
+                        <button id="fm-preview-close" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" data-hs-overlay="#fm-preview-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div id="fm-preview-shared" class="hidden mt-4 items-center gap-1.5 text-xs font-semibold text-primary bg-primary/10 px-2.5 py-1 rounded-full w-fit"><i class="icon-share-2 text-[11px]"></i>Shared with team</div>
+                    <div class="flex gap-3 justify-end mt-5">
+                        <button id="fm-preview-delete" type="button" class="px-4 py-2 rounded-lg border border-red-200 dark:border-red-900/40 text-sm font-semibold text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"><i class="icon-trash-2 mr-1"></i>Delete</button>
+                        <button id="fm-preview-download" type="button" class="fm-btn fm-btn-primary"><i class="icon-download"></i>Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="del-modal" class="modal-overlay hidden">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Delete Item</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">Delete <strong id="del-name" class="text-gray-900"></strong>?</p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                    <button id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "file-manager"})
+    </body>
+</html>

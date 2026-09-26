@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Scan Request Details — Dreams HMS"}) @@include('partials/header.html', {"page": "scan-request-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="scan-request-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="srd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Scan Request Details", "parentUrl": "scan-requests.html", "parent": "Scan Requests"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="srd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="srd-hero-ico"><i class="icon-scan-line"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="srd-patient-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Anna Peterson</h1>
+                                            <span class="srd-hbadge" id="srd-status-badge-wrap"><span class="srd-dot [background:#009966]"></span><span id="srd-status-badge" class="text-success bg-success/10">Completed</span></span>
+                                            <span class="srd-hbadge" id="srd-priority-badge-wrap"><span id="srd-priority-badge" class="text-primary bg-primary/10">Routine</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="srd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="srd-scan-id">#SCR-00001</span></span>
+                                            <span class="srd-hmeta"><i class="icon-scan-line text-[13px] text-sky-300"></i><span id="srd-modality">X-Ray</span></span>
+                                            <span class="srd-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i><span id="srd-doctor-name">Dr. Sarah Lee</span></span>
+                                            <span class="srd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Requested <span id="srd-date">2024-12-02</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 srd-actions-print-hide">
+                                    <button type="button" class="srd-btn srd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="scan-requests.html" class="srd-btn srd-btn-primary"><i class="icon-arrow-left"></i>Back to Requests</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="srd-grid">
+                            <div class="srd-vital srd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-scan-line"></i></span>
+                                    <span class="srd-chip">Imaging</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="srd-modality-stat">X-Ray</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Modality</p>
+                            </div>
+                            <div class="srd-vital srd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-stethoscope"></i></span>
+                                    <span class="srd-chip">Doctor</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="srd-doctor-stat">Dr. Sarah Lee</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Ordering Doctor</p>
+                            </div>
+                            <div class="srd-vital srd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-siren"></i></span>
+                                    <span class="srd-chip">Priority</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="srd-priority-stat">Routine</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Priority</p>
+                            </div>
+                            <div class="srd-vital srd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-calendar"></i></span>
+                                    <span class="srd-chip">Requested</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="srd-requested-date">2024-12-02</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Requested Date</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="srd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Workflow timeline -->
+                                <div class="srd-surface">
+                                    <div class="srd-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="srd-title">Scan Workflow</h2>
+                                    </div>
+                                    <div class="srd-tl p-5" id="srd-timeline">
+                                        <div class="srd-tl-item done"><span class="srd-tl-node"><i class="icon-clipboard-list"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Pending</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-02</p></div>
+                                        <div class="srd-tl-item done"><span class="srd-tl-node"><i class="icon-calendar"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Scheduled</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-02</p></div>
+                                        <div class="srd-tl-item current"><span class="srd-tl-node"><i class="icon-check-circle"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Completed</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-02</p></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 srd-sidebar">
+                                <!-- Patient -->
+                                <div class="srd-surface srd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Patient</p>
+                                    <h3 class="mt-1 text-lg font-extrabold" id="srd-side-patient">Anna Peterson</h3>
+                                    <p class="text-sm text-white/80 mt-0.5" id="srd-side-modality">X-Ray Scan</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="srd-hmeta"><i class="icon-mail text-[12px]"></i>Contact Patient</span>
+                                    </div>
+                                </div>
+
+                                <!-- Request details -->
+                                <div class="srd-surface p-5">
+                                    <h3 class="srd-title mb-3">Request Details</h3>
+                                    <div class="srd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v" id="srd-kv-patient">Anna Peterson</span></div>
+                                    <div class="srd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Doctor</span><span class="v" id="srd-kv-doctor">Dr. Sarah Lee</span></div>
+                                    <div class="srd-kv"><span class="k"><i class="icon-scan-line text-[13px]"></i>Modality</span><span class="v" id="srd-kv-modality">X-Ray</span></div>
+                                    <div class="srd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date</span><span class="v" id="srd-kv-date">2024-12-02</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="srd-surface p-5 space-y-2.5">
+                                    <h3 class="srd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="srd-btn srd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="scan-requests.html" class="srd-btn srd-btn-solid w-full justify-start"><i class="icon-list"></i>All Scan Requests</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "scan-request-detail"})
+    </body>
+</html>

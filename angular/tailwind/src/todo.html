@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"To Do — Dreams HMS"}) @@include('partials/header.html', {"page": "todo"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="todo">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-4xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "To Do", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">To Do</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Personal and team task tracker.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-3" data-aos="fade-up" data-aos-delay="30">
+                            <div class="card p-4">
+                                <p class="text-xl font-bold text-gray-900">6</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Total Tasks</p>
+                            </div>
+                            <div class="card p-4">
+                                <p class="text-xl font-bold text-amber-600">4</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Pending</p>
+                            </div>
+                            <div class="card p-4">
+                                <p class="text-xl font-bold text-emerald-600">2</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Completed</p>
+                            </div>
+                        </div>
+
+                        <div class="card" data-aos="fade-up" data-aos-delay="60">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Tasks</span>
+                                <span class="text-xs text-gray-400 ml-auto">6 of 6</span>
+                            </div>
+                            <div class="divide-y divide-border-color">
+                                <div class="flex items-center gap-3 p-4">
+                                    <span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center border-gray-300 dark:border-slate-600"></span>
+                                    <div class="min-w-0 flex-1">
+                                        <p class="text-sm font-medium text-gray-900 truncate">Review ICU shift roster</p>
+                                        <p class="text-xs text-gray-400 truncate">Confirm staffing levels for the weekend.</p>
+                                    </div>
+                                    <span class="text-xs text-gray-400 shrink-0 hidden sm:inline">20-08-2026</span>
+                                    <span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-red-600 bg-red-50 dark:bg-red-900/20">High</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-4">
+                                    <span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center border-gray-300 dark:border-slate-600"></span>
+                                    <div class="min-w-0 flex-1">
+                                        <p class="text-sm font-medium text-gray-900 truncate">Approve pharmacy purchase order</p>
+                                    </div>
+                                    <span class="text-xs text-gray-400 shrink-0 hidden sm:inline">21-08-2026</span>
+                                    <span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-amber-600 bg-amber-50 dark:bg-amber-900/20">Medium</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-4">
+                                    <span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center border-gray-300 dark:border-slate-600"></span>
+                                    <div class="min-w-0 flex-1">
+                                        <p class="text-sm font-medium text-gray-900 truncate">Submit monthly compliance report</p>
+                                    </div>
+                                    <span class="text-xs text-gray-400 shrink-0 hidden sm:inline">22-08-2026</span>
+                                    <span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-red-600 bg-red-50 dark:bg-red-900/20">High</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-4">
+                                    <span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center bg-primary border-primary text-white"><i class="icon-check text-[10px]"></i></span>
+                                    <div class="min-w-0 flex-1">
+                                        <p class="text-sm font-medium line-through text-gray-400 truncate">Update patient discharge template</p>
+                                    </div>
+                                    <span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-blue-600 bg-blue-50 dark:bg-blue-900/20">Low</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-4">
+                                    <span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center border-gray-300 dark:border-slate-600"></span>
+                                    <div class="min-w-0 flex-1">
+                                        <p class="text-sm font-medium text-gray-900 truncate">Schedule CPR refresher training</p>
+                                        <p class="text-xs text-gray-400 truncate">Book training room B.</p>
+                                    </div>
+                                    <span class="text-xs text-gray-400 shrink-0 hidden sm:inline">25-08-2026</span>
+                                    <span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-amber-600 bg-amber-50 dark:bg-amber-900/20">Medium</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-4">
+                                    <span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center bg-primary border-primary text-white"><i class="icon-check text-[10px]"></i></span>
+                                    <div class="min-w-0 flex-1">
+                                        <p class="text-sm font-medium line-through text-gray-400 truncate">Reconcile petty cash for August</p>
+                                    </div>
+                                    <span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-blue-600 bg-blue-50 dark:bg-blue-900/20">Low</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "todo"})
+    </body>
+</html>

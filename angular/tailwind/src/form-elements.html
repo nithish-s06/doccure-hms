@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Form Elements — Dreams HMS"}) @@include('partials/header.html', {"page": "form-elements"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <!-- Page Header -->
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Form Elements</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Inputs, selects, checkboxes and validation states used across Dreams HMS</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                            <!-- Basic Inputs -->
+                            <div class="card p-5" data-aos="fade-up">
+                                <h2 class="font-semibold text-gray-900 mb-4">Basic Inputs</h2>
+                                <div class="space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-name">Patient Name</label>
+                                        <input type="text" id="fe-name" class="form-input" placeholder="Enter full name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-email">Email Address</label>
+                                        <input type="email" id="fe-email" class="form-input" placeholder="name@hospital.com">
+                                        <p class="text-xs text-gray-400 dark:text-gray-500">We'll never share this with anyone else.</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-phone">Phone Number</label>
+                                        <input type="tel" id="fe-phone" class="form-input" placeholder="+1 (800) 000-0000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-readonly">Patient ID (read-only)</label>
+                                        <input type="text" id="fe-readonly" class="form-input" value="PT-2026-00184" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-disabled">Assigned Ward (disabled)</label>
+                                        <input type="text" id="fe-disabled" class="form-input" value="ICU — Level 3" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Inputs With Icons -->
+                            <div class="card p-5" data-aos="fade-up" data-aos-delay="50">
+                                <h2 class="font-semibold text-gray-900 mb-4">Inputs With Icons</h2>
+                                <div class="space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-search">Leading Icon</label>
+                                        <div class="relative">
+                                            <i class="icon-search absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                            <input type="search" id="fe-search" class="form-input pl-10!" placeholder="Search patients...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-password">Trailing Icon — Password Toggle</label>
+                                        <div class="relative">
+                                            <i class="icon-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                            <input type="password" id="fe-password" class="form-input pl-10! pr-12!" value="password123">
+                                            <button type="button" aria-label="Show password" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                                                <i class="icon-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-amount">Prefix &amp; Suffix</label>
+                                        <div class="flex">
+                                            <span class="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-border-color bg-gray-50 dark:bg-slate-800 text-sm text-gray-500 dark:text-gray-400">$</span>
+                                            <input type="number" id="fe-amount" class="form-input rounded-none!" placeholder="0.00">
+                                            <span class="inline-flex items-center px-3 rounded-r-lg border border-l-0 border-border-color bg-gray-50 dark:bg-slate-800 text-sm text-gray-500 dark:text-gray-400">USD</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-url">Prefix Text</label>
+                                        <div class="flex">
+                                            <span class="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-border-color bg-gray-50 dark:bg-slate-800 text-sm text-gray-500 dark:text-gray-400">dreamshms.com/</span>
+                                            <input type="text" id="fe-url" class="form-input rounded-l-none!" placeholder="profile">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Select & Textarea -->
+                            <div class="card p-5" data-aos="fade-up">
+                                <h2 class="font-semibold text-gray-900 mb-4">Select &amp; Textarea</h2>
+                                <div class="space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-dept">Department</label>
+                                        <select id="fe-dept" class="form-select">
+                                            <option>Cardiology</option>
+                                            <option>Neurology</option>
+                                            <option>Orthopedics</option>
+                                            <option>Pediatrics</option>
+                                            <option>Radiology</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-multi">Multiple Select</label>
+                                        <select id="fe-multi" class="form-select" multiple size="4">
+                                            <option selected>Blood Test</option>
+                                            <option>X-Ray</option>
+                                            <option selected>MRI Scan</option>
+                                            <option>ECG</option>
+                                            <option>Ultrasound</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-notes">Clinical Notes</label>
+                                        <textarea id="fe-notes" class="form-textarea" rows="4" placeholder="Enter observations, diagnosis and treatment plan..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Checkboxes, Radios & Switches -->
+                            <div class="card p-5" data-aos="fade-up" data-aos-delay="50">
+                                <h2 class="font-semibold text-gray-900 mb-4">Checkboxes, Radios &amp; Switches</h2>
+                                <div class="space-y-5">
+                                    <div>
+                                        <p class="form-label mb-2.5">Symptoms</p>
+                                        <div class="space-y-2">
+                                            <label class="flex items-center gap-2.5">
+                                                <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                                <span class="text-sm text-gray-600 dark:text-gray-400">Fever</span>
+                                            </label>
+                                            <label class="flex items-center gap-2.5">
+                                                <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                                <span class="text-sm text-gray-600 dark:text-gray-400">Persistent cough</span>
+                                            </label>
+                                            <label class="flex items-center gap-2.5">
+                                                <input type="checkbox" disabled class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                                <span class="text-sm text-gray-400 dark:text-gray-500">Shortness of breath (disabled)</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="form-label mb-2.5">Blood Group</p>
+                                        <div class="flex flex-wrap gap-4">
+                                            <label class="flex items-center gap-2.5">
+                                                <input type="radio" name="fe-blood" checked class="w-4 h-4 border-gray-300 text-primary focus:ring-primary">
+                                                <span class="text-sm text-gray-600 dark:text-gray-400">A+</span>
+                                            </label>
+                                            <label class="flex items-center gap-2.5">
+                                                <input type="radio" name="fe-blood" class="w-4 h-4 border-gray-300 text-primary focus:ring-primary">
+                                                <span class="text-sm text-gray-600 dark:text-gray-400">B+</span>
+                                            </label>
+                                            <label class="flex items-center gap-2.5">
+                                                <input type="radio" name="fe-blood" class="w-4 h-4 border-gray-300 text-primary focus:ring-primary">
+                                                <span class="text-sm text-gray-600 dark:text-gray-400">O+</span>
+                                            </label>
+                                            <label class="flex items-center gap-2.5">
+                                                <input type="radio" name="fe-blood" class="w-4 h-4 border-gray-300 text-primary focus:ring-primary">
+                                                <span class="text-sm text-gray-600 dark:text-gray-400">AB+</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="form-label mb-2.5">Notifications</p>
+                                        <div class="space-y-3">
+                                            <label class="flex items-center gap-3">
+                                                <input type="checkbox" checked class="relative w-11 h-6 p-px bg-gray-200 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-primary disabled:opacity-50 checked:bg-primary checked:border-primary focus:checked:border-primary before:inline-block before:size-5 before:bg-white before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:bg-slate-700">
+                                                <span class="text-sm text-gray-600 dark:text-gray-400">Email alerts</span>
+                                            </label>
+                                            <label class="flex items-center gap-3">
+                                                <input type="checkbox" class="relative w-11 h-6 p-px bg-gray-200 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-primary disabled:opacity-50 checked:bg-primary checked:border-primary focus:checked:border-primary before:inline-block before:size-5 before:bg-white before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:bg-slate-700">
+                                                <span class="text-sm text-gray-600 dark:text-gray-400">SMS reminders</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- File Upload -->
+                            <div class="card p-5" data-aos="fade-up">
+                                <h2 class="font-semibold text-gray-900 mb-4">File Upload</h2>
+                                <div class="space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-file">Default File Input</label>
+                                        <input type="file" id="fe-file" class="block w-full text-sm text-gray-500 dark:text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-primary-hover file:cursor-pointer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-dropzone">Drop Area</label>
+                                        <label for="fe-dropzone" class="flex flex-col items-center justify-center gap-2 p-8 rounded-lg border-2 border-dashed border-border-color hover:border-primary/50 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-center">
+                                            <span class="w-11 h-11 rounded-xl bg-primary-100 dark:bg-primary-600/20 flex items-center justify-center">
+                                                <i class="icon-cloud-upload text-lg text-primary"></i>
+                                            </span>
+                                            <span class="text-sm font-medium text-gray-900">Click to upload or drag and drop</span>
+                                            <span class="text-xs text-gray-400 dark:text-gray-500">PDF, PNG or JPG (max. 10MB)</span>
+                                            <input type="file" id="fe-dropzone" class="hidden">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Validation States -->
+                            <div class="card p-5" data-aos="fade-up" data-aos-delay="50">
+                                <h2 class="font-semibold text-gray-900 mb-4">Validation States</h2>
+                                <div class="space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-valid">Valid Input</label>
+                                        <div class="relative">
+                                            <input type="text" id="fe-valid" class="form-input border-success! pr-10!" value="admin@example.com">
+                                            <i class="icon-circle-check absolute right-3.5 top-1/2 -translate-y-1/2 text-success"></i>
+                                        </div>
+                                        <p class="text-xs text-success">Looks good — email is available.</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-invalid">Invalid Input</label>
+                                        <div class="relative">
+                                            <input type="text" id="fe-invalid" class="form-input border-danger! pr-10!" value="not-an-email">
+                                            <i class="icon-circle-alert absolute right-3.5 top-1/2 -translate-y-1/2 text-danger"></i>
+                                        </div>
+                                        <p class="text-xs text-danger">Please enter a valid email address.</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fe-warning">Warning Input</label>
+                                        <input type="text" id="fe-warning" class="form-input border-warning!" value="weakpass">
+                                        <p class="text-xs text-warning">This password is too weak.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Input Sizes -->
+                        <div class="card p-5" data-aos="fade-up">
+                            <h2 class="font-semibold text-gray-900 mb-4">Input Sizes</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label" for="fe-sm">Small</label>
+                                    <input type="text" id="fe-sm" class="form-input py-1.5! text-xs!" placeholder="Small input">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="fe-md">Default</label>
+                                    <input type="text" id="fe-md" class="form-input" placeholder="Default input">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="fe-lg">Large</label>
+                                    <input type="text" id="fe-lg" class="form-input py-3! text-base!" placeholder="Large input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Horizontal Form -->
+                        <div class="card" data-aos="fade-up">
+                            <div class="p-4 border-b border-border-color">
+                                <h2 class="font-semibold text-gray-900">Horizontal Form Layout</h2>
+                            </div>
+                            <form class="p-5 space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                                    <label class="form-label md:col-span-1" for="fe-h-name">Full Name</label>
+                                    <div class="md:col-span-3">
+                                        <input type="text" id="fe-h-name" class="form-input" placeholder="Dr. Sarah Chen">
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                                    <label class="form-label md:col-span-1" for="fe-h-dept">Department</label>
+                                    <div class="md:col-span-3">
+                                        <select id="fe-h-dept" class="form-select">
+                                            <option>Cardiology</option>
+                                            <option>Neurology</option>
+                                            <option>Pediatrics</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                    <label class="form-label md:col-span-1 md:pt-2" for="fe-h-bio">Biography</label>
+                                    <div class="md:col-span-3">
+                                        <textarea id="fe-h-bio" class="form-textarea" rows="3" placeholder="Short professional summary..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-end gap-3 pt-2">
+                                    <button type="reset" class="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-border-color text-gray-900 text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">Cancel</button>
+                                    <button type="submit" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-colors">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "form-elements"})
+    </body>
+</html>

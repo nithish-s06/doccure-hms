@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Patient handover — Ward B — Dreams HMS"}) @@include('partials/header.html', {"page": "email-view"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="email-view">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-4xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "View Message", "parentUrl": "email.html", "parent": "Email"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Patient handover — Ward B</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">View message and reply.</p>
+                            </div>
+                            <a href="email.html" class="flex items-center gap-2 border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700">
+                                <i class="icon-arrow-left"></i>
+                                Back to Inbox
+                            </a>
+                        </div>
+
+                        <div class="card p-5" data-aos="fade-up" data-aos-delay="50">
+                            <div class="flex items-start gap-3 pb-4 border-b border-border-color">
+                                <div class="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold shrink-0">DA</div>
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center justify-between gap-3">
+                                        <p class="text-sm font-semibold text-gray-900">Dr. Alan Reyes &lt;alan.reyes@dreamshms.com&gt;</p>
+                                        <p class="text-xs text-gray-400 shrink-0">09:20 AM</p>
+                                    </div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">To: me@dreamshms.com</p>
+                                </div>
+                            </div>
+                            <div class="py-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">Hi,
+
+Please review the handover notes for bed 12 before your shift starts. Vitals have been stable overnight but the attending wants a follow-up chart entry by 9 AM.
+
+Thanks,
+Dr. Reyes</div>
+                            <div class="pt-4 border-t border-border-color">
+                                <label for="ev-reply" class="form-label">Reply</label>
+                                <textarea id="ev-reply" rows="4" class="form-textarea" placeholder="Write a reply..."></textarea>
+                                <div class="flex justify-end mt-3">
+                                    <button type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold flex items-center gap-2"><i class="icon-send text-sm"></i>Send Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "email-view"})
+    </body>
+</html>

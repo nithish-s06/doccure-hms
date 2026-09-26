@@ -1,0 +1,327 @@
+<header class="navbar-header hc-bar max-lg:justify-between border-b border-border-color dark:border-white/10">
+    <!-- ================= LEFT CLUSTER ================= -->
+    <div class="flex items-center gap-3">
+        <!-- Sidebar Mobile Button (preserved hook: #mobile_btn / .mobile-btn) -->
+        <button id="mobile_btn" class="mobile-btn hc-icon-btn grid lg:hidden! border-border-color!" aria-label="menu">
+            <i class="icon icon-menu"></i>
+        </button>
+
+        <!-- Logo (preserved markup: .logo / .logo-light / .logo-dark) -->
+        <a href="index.html" class="logo">
+            <span class="logo-light">
+                <span class="logo-lg"><img src="assets/img/logo-white.svg" alt="logo"></span>
+                <span class="logo-sm"><img src="assets/img/logo-small.svg" alt="small logo"></span>
+            </span>
+            <span class="logo-dark">
+                <span class="logo-lg"><img src="assets/img/logo.svg" alt="dark logo"></span>
+            </span>
+        </a>
+
+    </div>
+
+    @@if (typeof page !== 'undefined' && page === 'layout-fullwidth') {
+    <!-- Full Width layout demo: brings the off-canvas sidebar back on demand -->
+    <button type="button" id="menu_btn" class="hc-icon-btn border-border-color! bg-gray-100 dark:bg-white/10" aria-label="Toggle sidebar" title="Toggle sidebar">
+        <i class="icon-panel-left"></i>
+    </button>
+    }
+
+    <!-- ================= GLOBAL SEARCH / COMMAND TRIGGER ================= -->
+    <div id="hc-search" class="hc-search">
+        <div class="hc-search-field">
+            <i class="icon-search text-base text-gray-400"></i>
+            <input id="hc-search-input" type="text" autocomplete="off" placeholder="Search patients, staff, records…" class="hc-search-input" aria-label="Global search">
+            <span class="hc-kbd"><span class="text-[11px]">⌘</span>K</span>
+        </div>
+        <!-- Search suggestions panel -->
+        <div id="hc-search-panel" class="hc-pop hc-glass left-0 right-0 top-full mt-2" hidden>
+            <div class="hc-pop-head"><span class="hc-pop-title">Recent searches</span><button type="button" id="hc-recent-clear" class="text-[10px] font-bold text-primary hover:underline">Clear</button></div>
+            <div id="hc-recent" class="space-y-0.5 px-1"></div>
+            <div class="hc-pop-head mt-1"><span class="hc-pop-title">Suggestions</span></div>
+            <div id="hc-suggest" class="space-y-0.5 px-1">
+                <a href="patients.html" class="hc-dock-item hc-c-indigo"><span class="hc-dock-ico"><i class="icon-user"></i></span><span class="min-w-0"><span class="block text-xs font-bold text-gray-900">Patients</span><span class="block text-[10px] text-gray-400">Directory &amp; registration</span></span></a>
+                <a href="appointments.html" class="hc-dock-item hc-c-sky"><span class="hc-dock-ico"><i class="icon-calendar-check"></i></span><span class="min-w-0"><span class="block text-xs font-bold text-gray-900">Appointments</span><span class="block text-[10px] text-gray-400">Today&#39;s schedule</span></span></a>
+                <a href="laboratory-dashboard.html" class="hc-dock-item hc-c-violet"><span class="hc-dock-ico"><i class="icon-flask-conical"></i></span><span class="min-w-0"><span class="block text-xs font-bold text-gray-900">Lab results</span><span class="block text-[10px] text-gray-400">Pending verification</span></span></a>
+                <a href="billing-dashboard.html" class="hc-dock-item hc-c-gold"><span class="hc-dock-ico"><i class="icon-receipt"></i></span><span class="min-w-0"><span class="block text-xs font-bold text-gray-900">Invoices</span><span class="block text-[10px] text-gray-400">Billing &amp; claims</span></span></a>
+                <a href="wards.html" class="hc-dock-item hc-c-teal"><span class="hc-dock-ico"><i class="icon-bed"></i></span><span class="min-w-0"><span class="block text-xs font-bold text-gray-900">Bed availability</span><span class="block text-[10px] text-gray-400">Live ward map</span></span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= RIGHT UTILITY CLUSTER ================= -->
+    <div class="flex items-center gap-2.5 lg:ms-auto">
+        <!-- Live clock -->
+        <div class="hc-clock" role="group" aria-label="Current time and shift">
+            <span id="hc-clock-time" class="hc-clock-time">—</span>
+            <span id="hc-clock-meta" class="hc-clock-meta">—</span>
+        </div>
+
+        <!-- Emergency Quick Access -->
+        <a href="emergency-dashboard.html" class="hc-emg" aria-label="Emergency command">
+            <span class="hc-emg-dot"></span>
+            <i class="icon-siren text-base"></i>
+            <span class="hidden sm:inline">Emergency</span>
+        </a>
+
+        <div class="hc-cluster">
+            <!-- Command Palette trigger -->
+            <button type="button" id="hc-cmd-open" class="hc-icon-btn" aria-label="Open command palette (Ctrl+K)" title="Command palette · ⌘K">
+                <i class="icon-command"></i>
+            </button>
+
+            <!-- Quick Action Dock -->
+            <div class="header-item hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative flex">
+                <button type="button" class="hs-dropdown-toggle hc-icon-btn hc-dock-fab" aria-label="Quick actions">
+                    <i class="icon-plus"></i>
+                </button>
+                <div class="hs-dropdown-menu hc-pop hc-glass hs-dropdown-open:opacity-100 opacity-0 hidden w-64 mt-2!" role="menu" aria-orientation="vertical">
+                    <div class="hc-pop-head"><span class="hc-pop-title">Quick actions</span></div>
+                    <a href="patients.html" class="hc-dock-item hc-c-indigo" role="menuitem"><span class="hc-dock-ico"><i class="icon-user-plus"></i></span><span class="text-xs font-bold text-gray-900">New Patient</span></a>
+                    <a href="appointments.html" class="hc-dock-item hc-c-sky" role="menuitem"><span class="hc-dock-ico"><i class="icon-calendar-plus"></i></span><span class="text-xs font-bold text-gray-900">New Appointment</span></a>
+                    <a href="emergency.html" class="hc-dock-item hc-c-rose" role="menuitem"><span class="hc-dock-ico"><i class="icon-siren"></i></span><span class="text-xs font-bold text-gray-900">Emergency Case</span></a>
+                    <a href="laboratory.html" class="hc-dock-item hc-c-violet" role="menuitem"><span class="hc-dock-ico"><i class="icon-flask-conical"></i></span><span class="text-xs font-bold text-gray-900">Lab Request</span></a>
+                    <a href="pharmacy.html" class="hc-dock-item hc-c-emerald" role="menuitem"><span class="hc-dock-ico"><i class="icon-pill"></i></span><span class="text-xs font-bold text-gray-900">Dispense Medicine</span></a>
+                    <a href="billing.html" class="hc-dock-item hc-c-gold" role="menuitem"><span class="hc-dock-ico"><i class="icon-receipt"></i></span><span class="text-xs font-bold text-gray-900">Create Invoice</span></a>
+                </div>
+            </div>
+
+            <!-- AI Assistant -->
+            <div class="header-item hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative hidden sm:flex">
+                <button type="button" class="hs-dropdown-toggle hc-icon-btn" aria-label="AI assistant">
+                    <i class="icon-sparkles"></i>
+                    <span class="hc-dot bg-violet-500"></span>
+                </button>
+                <div class="hs-dropdown-menu hc-pop hc-glass hs-dropdown-open:opacity-100 opacity-0 hidden w-80 max-w-[92vw] mt-2!" role="menu" aria-orientation="vertical">
+                    <div class="hc-ai-hero">
+                        <div class="flex items-center gap-2">
+                            <span class="grid size-8 place-items-center rounded-lg bg-white/20 backdrop-blur-md"><i class="icon-sparkles"></i></span>
+                            <div><p class="text-sm font-extrabold leading-tight">Dreams AI</p><p class="text-[10px] font-medium text-white/70">Hospital operations copilot</p></div>
+                        </div>
+                        <p class="mt-2 text-[11px] font-medium text-white/80">Ask anything or pick a smart shortcut below.</p>
+                    </div>
+                    <div class="mt-2 grid grid-cols-2 gap-1.5">
+                        <button type="button" class="hc-ai-chip" data-ai="Summarize today's operations"><i class="icon-chart-column text-sm text-primary"></i>Ops summary</button>
+                        <button type="button" class="hc-ai-chip" data-ai="Show critical patients"><i class="icon-heart-pulse text-sm text-rose-500"></i>Critical patients</button>
+                        <button type="button" class="hc-ai-chip" data-ai="Bed availability by ward"><i class="icon-bed text-sm text-sky-500"></i>Bed status</button>
+                        <button type="button" class="hc-ai-chip" data-ai="Draft discharge summary"><i class="icon-file-text text-sm text-violet-500"></i>Draft summary</button>
+                        <button type="button" class="hc-ai-chip" data-ai="Revenue vs target today"><i class="icon-badge-dollar-sign text-sm text-amber-500"></i>Revenue check</button>
+                        <button type="button" class="hc-ai-chip" data-ai="Staffing gaps this shift"><i class="icon-users text-sm text-emerald-500"></i>Staffing gaps</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Drawer trigger -->
+            <button type="button" id="hc-activity-open" class="hc-icon-btn hidden sm:grid" aria-label="Recent activity">
+                <i class="icon-history"></i>
+            </button>
+
+            <span class="hc-divider"></span>
+
+            <!-- Language Dropdown (preserved) -->
+            <div class="header-item hs-dropdown [--placement:bottom-right] [--auto-close:inside] hidden lg:flex relative">
+                <button type="button" class="hs-dropdown-toggle hc-icon-btn" aria-label="Language">
+                    <i class="icon-languages"></i>
+                </button>
+                <div class="hs-dropdown-menu hc-pop hc-glass hs-dropdown-open:opacity-100 opacity-0 hidden w-44 mt-2!" role="menu" aria-orientation="vertical">
+                    <div class="hc-pop-head"><span class="hc-pop-title">Language</span></div>
+                    <button type="button" class="hc-dock-item hc-c-primary w-full text-left" role="menuitem"><img src="assets/img/icons/us.svg" class="size-6 rounded-lg" alt="flag"><span class="text-xs font-bold text-gray-900">English <span class="font-medium text-gray-400">· ENG</span></span></button>
+                    <button type="button" class="hc-dock-item hc-c-primary w-full text-left" role="menuitem"><img src="assets/img/icons/arab.svg" class="size-6 rounded-lg" alt="flag"><span class="text-xs font-bold text-gray-900">العربية <span class="font-medium text-gray-400">· ARB</span></span></button>
+                    <button type="button" class="hc-dock-item hc-c-primary w-full text-left" role="menuitem"><img src="assets/img/icons/germany.svg" class="size-6 rounded-lg" alt="flag"><span class="text-xs font-bold text-gray-900">Deutsch <span class="font-medium text-gray-400">· GER</span></span></button>
+                </div>
+            </div>
+
+            <!-- Appearance Switcher (Light / Dark / System) -->
+            <div class="header-item hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative flex">
+                <button type="button" class="hs-dropdown-toggle hc-icon-btn" aria-label="Appearance">
+                    <i id="hc-appearance-icon" class="icon-moon text-base!"></i>
+                </button>
+                <div class="hs-dropdown-menu hc-pop hc-glass hs-dropdown-open:opacity-100 opacity-0 hidden w-72 mt-2!" role="menu" aria-orientation="vertical">
+                    <div class="hc-pop-head"><span class="hc-pop-title">Appearance</span></div>
+                    <div class="hc-seg" id="hc-appearance" role="group" aria-label="Theme mode">
+                        <button type="button" class="hc-seg-btn" data-theme-set="light"><i class="icon-sun text-sm"></i>Light</button>
+                        <button type="button" class="hc-seg-btn" data-theme-set="dark"><i class="icon-moon text-sm"></i>Dark</button>
+                        <button type="button" class="hc-seg-btn" data-theme-set="system"><i class="icon-monitor text-sm"></i>System</button>
+                    </div>
+                    <p class="px-2 pt-2 text-[10px] font-semibold text-gray-400">System follows your device preference automatically.</p>
+                </div>
+            </div>
+
+            <!-- Notifications (preserved hooks: #notification-dropdown / #close-notification) -->
+            <div class="hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative flex" id="notification-dropdown">
+                <button class="hs-dropdown-toggle hc-icon-btn" aria-label="Notifications">
+                    <i class="icon-bell"></i>
+                    <span class="hc-badge" id="hc-noti-count">4</span>
+                </button>
+                <div class="hs-dropdown-menu hc-pop hc-glass hs-dropdown-open:opacity-100 opacity-0 hidden w-[26rem] max-w-[92vw] mt-2! notification-dropdown" role="menu" aria-orientation="vertical">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between px-2 pb-3 pt-1 border-b border-border-color">
+                        <div>
+                            <p class="text-sm font-extrabold text-gray-900">Notification Center</p>
+                            <p class="text-[11px] font-medium text-gray-400">Live across all departments</p>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" id="hc-noti-mark-read" class="hc-noti-act flex items-center gap-1"><i class="icon-check-check text-xs"></i>Mark read</button>
+                            <button type="button" class="hc-icon-btn !size-8 !border-border-color hover:!bg-danger hover:!text-white" aria-label="Close" id="close-notification"><i class="icon-x text-sm"></i></button>
+                        </div>
+                    </div>
+                    <!-- Tabs -->
+                    <div class="flex items-center gap-1 px-1 py-2.5" id="hc-noti-tabs" role="tablist">
+                        <button type="button" class="hc-noti-tab is-active" data-noti-tab="all" role="tab">All</button>
+                        <button type="button" class="hc-noti-tab" data-noti-tab="priority" role="tab">Priority</button>
+                        <button type="button" class="hc-noti-tab" data-noti-tab="clinical" role="tab">Clinical</button>
+                        <button type="button" class="hc-noti-tab" data-noti-tab="system" role="tab">System</button>
+                    </div>
+                    <!-- List -->
+                    <div data-simplebar>
+                        <div id="all-notifications" class="space-y-1.5 py-1">
+                            <div class="notification-item hc-noti hc-c-indigo" data-noti-cat="clinical" data-noti-priority="normal">
+                                <span class="hc-noti-ico"><i class="icon-user"></i></span>
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center gap-2"><p class="text-[13px] font-bold text-gray-900">New patient registered</p><span class="ml-auto shrink-0 text-[10px] text-gray-400">5 min</span></div>
+                                    <p class="text-[11px] text-gray-500">John Doe · registered by Secretary M</p>
+                                    <div class="mt-1.5 flex items-center gap-1.5"><span class="hc-noti-prio">Clinical</span><a href="patients.html" class="hc-noti-act">View</a></div>
+                                </div>
+                            </div>
+                            <div class="notification-item hc-noti hc-c-rose" data-noti-cat="priority" data-noti-priority="critical">
+                                <span class="hc-noti-ico"><i class="icon-bell"></i></span>
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center gap-2"><p class="text-[13px] font-bold text-gray-900">Emergency case admitted</p><span class="ml-auto shrink-0 text-[10px] text-gray-400">11 min</span></div>
+                                    <p class="text-[11px] text-gray-500">Room 30 · ICU bed assigned</p>
+                                    <div class="mt-1.5 flex items-center gap-1.5"><span class="hc-noti-prio">Critical</span><a href="emergency-dashboard.html" class="hc-noti-act">Respond</a></div>
+                                </div>
+                            </div>
+                            <div class="notification-item hc-noti hc-c-violet" data-noti-cat="clinical" data-noti-priority="normal">
+                                <span class="hc-noti-ico"><i class="icon-activity"></i></span>
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center gap-2"><p class="text-[13px] font-bold text-gray-900">Surgery completed</p><span class="ml-auto shrink-0 text-[10px] text-gray-400">15 min</span></div>
+                                    <p class="text-[11px] text-gray-500">Operation theatre 2 now clear</p>
+                                    <div class="mt-1.5 flex items-center gap-1.5"><span class="hc-noti-prio">Clinical</span><a href="operation-theater.html" class="hc-noti-act">View</a></div>
+                                </div>
+                            </div>
+                            <div class="notification-item hc-noti hc-c-amber" data-noti-cat="priority" data-noti-priority="high">
+                                <span class="hc-noti-ico"><i class="icon-triangle-alert"></i></span>
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center gap-2"><p class="text-[13px] font-bold text-gray-900">Pharmacy stock alert</p><span class="ml-auto shrink-0 text-[10px] text-gray-400">22 min</span></div>
+                                    <p class="text-[11px] text-gray-500">Critical supplies running low</p>
+                                    <div class="mt-1.5 flex items-center gap-1.5"><span class="hc-noti-prio">High</span><a href="pharmacy-dashboard.html" class="hc-noti-act">Reorder</a></div>
+                                </div>
+                            </div>
+                            <div class="notification-item hc-noti hc-c-teal" data-noti-cat="clinical" data-noti-priority="normal">
+                                <span class="hc-noti-ico"><i class="icon-file-text"></i></span>
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center gap-2"><p class="text-[13px] font-bold text-gray-900">Lab report ready</p><span class="ml-auto shrink-0 text-[10px] text-gray-400">36 min</span></div>
+                                    <p class="text-[11px] text-gray-500">PID 102 · blood sample results</p>
+                                    <div class="mt-1.5 flex items-center gap-1.5"><span class="hc-noti-prio">Clinical</span><a href="laboratory-dashboard.html" class="hc-noti-act">Open</a></div>
+                                </div>
+                            </div>
+                            <div class="notification-item hc-noti hc-c-sky" data-noti-cat="system" data-noti-priority="normal">
+                                <span class="hc-noti-ico"><i class="icon-truck"></i></span>
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center gap-2"><p class="text-[13px] font-bold text-gray-900">Ambulance dispatched</p><span class="ml-auto shrink-0 text-[10px] text-gray-400">2 hrs</span></div>
+                                    <p class="text-[11px] text-gray-500">Unit 048 · en route to Highway 2</p>
+                                    <div class="mt-1.5 flex items-center gap-1.5"><span class="hc-noti-prio">System</span><a href="ambulance.html" class="hc-noti-act">Track</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="hc-noti-empty" class="hidden py-8 text-center text-xs font-semibold text-gray-400">Nothing in this tab.</p>
+                    </div>
+                    <div class="pt-3">
+                        <a href="notifications.html" class="flex items-center justify-center gap-1 rounded-xl border border-border-color bg-white py-2 text-xs font-bold text-gray-900 hover:border-primary hover:bg-primary hover:text-white dark:bg-slate-800">
+                            View all notifications
+                            <i class="icon-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Profile (preserved dropdown) -->
+            <div class="hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative flex items-center">
+                <a href="#" class="hs-dropdown-toggle relative flex items-center gap-2 rounded-xl p-0.5 pr-1 transition-colors hover:bg-light dark:hover:bg-white/5" aria-haspopup="menu" aria-expanded="false" aria-label="Account">
+                    <div class="relative size-8">
+                        <div class="size-full overflow-hidden rounded-lg shadow-sm">
+                            <img src="assets/img/doctor/doctor-01.jpg" alt="Angela Merkel" class="size-full object-cover">
+                        </div>
+                        <span class="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-900"></span>
+                    </div>
+                    <div class="hidden text-left leading-tight lg:block">
+                        <p class="text-xs font-extrabold text-gray-900">Angela Merkel</p>
+                        <p class="text-[10px] font-semibold text-gray-400">Chief Physician</p>
+                    </div>
+                    <i class="icon-chevron-down hidden text-xs text-gray-400 lg:block"></i>
+                </a>
+                <div class="hs-dropdown-menu hc-pop hc-glass hs-dropdown-open:opacity-100 opacity-0 hidden w-72 max-w-[92vw] mt-2! !p-3" role="menu" aria-orientation="vertical">
+                    <!-- Premium profile card -->
+                    <div class="hc-prof-card">
+                        <div class="flex items-center gap-3">
+                            <div class="size-11 shrink-0 overflow-hidden rounded-xl ring-2 ring-white/25">
+                                <img src="assets/img/doctor/doctor-01.jpg" alt="Angela Merkel" class="size-full object-cover">
+                            </div>
+                            <div class="min-w-0">
+                                <p class="truncate text-sm font-extrabold">Angela Merkel</p>
+                                <div class="mt-1 flex flex-wrap gap-1"><span class="hc-prof-badge"><i class="icon-badge-check text-[9px]"></i>Chief Physician</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-3 grid grid-cols-2 gap-1.5">
+                            <div class="hc-prof-stat"><p class="text-[8px] font-bold uppercase tracking-wide text-white/50">Shift</p><p class="text-[11px] font-extrabold">Day · 8–5</p></div>
+                            <div class="hc-prof-stat"><p class="text-[8px] font-bold uppercase tracking-wide text-white/50">Dept</p><p class="text-[11px] font-extrabold">Cardiology</p></div>
+                        </div>
+                        <div class="mt-2 flex items-center gap-1.5 text-[10px] font-medium text-white/70">
+                            <span class="size-1.5 rounded-full bg-emerald-400"></span>
+                            On duty · 12 patients today · last active now
+                        </div>
+                    </div>
+                    <!-- Links -->
+                    <div class="mt-2 space-y-0.5">
+                        <a href="profile.html" class="hc-prof-link" role="menuitem"><i class="icon-user-circle"></i>My Profile</a>
+                        <a href="reports.html" class="hc-prof-link" role="menuitem"><i class="icon-file-text"></i>Reports</a>
+                        <a href="notifications.html" class="hc-prof-link" role="menuitem"><i class="icon-bell"></i>Notifications</a>
+                        <a href="settings.html" class="hc-prof-link" role="menuitem"><i class="icon-settings"></i>Settings</a>
+                    </div>
+                    <div class="mt-1 border-t border-border-color pt-1">
+                        <a href="login.html" class="hc-prof-link !text-danger" role="menuitem"><i class="icon-log-out !bg-danger/10 !text-danger"></i>Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ================= COMMAND PALETTE (Ctrl+K) ================= -->
+<div id="hc-cmd" class="hc-cmd" hidden>
+    <div class="hc-cmd-box">
+        <div class="hc-cmd-search">
+            <i class="icon-search text-lg text-gray-400"></i>
+            <input id="hc-cmd-input" type="text" autocomplete="off" placeholder="Search or run a command…" class="hc-cmd-input" aria-label="Command palette">
+            <span class="hc-kbd">Esc</span>
+        </div>
+        <div id="hc-cmd-list" class="hc-cmd-list"></div>
+        <div class="flex items-center justify-between border-t border-border-color px-4 py-2.5 text-[10px] font-semibold text-gray-400">
+            <span class="inline-flex items-center gap-2"><span class="hc-kbd">↑</span><span class="hc-kbd">↓</span>navigate</span>
+            <span class="inline-flex items-center gap-1"><span class="hc-kbd">Enter</span>select</span>
+            <span class="inline-flex items-center gap-1"><i class="icon-sparkles text-primary"></i>Dreams AI Command</span>
+        </div>
+    </div>
+</div>
+
+<!-- ================= RECENT ACTIVITY DRAWER ================= -->
+<div id="hc-activity" class="hc-drawer" hidden>
+    <div class="hc-drawer-backdrop" data-hc-drawer-close></div>
+    <aside class="hc-drawer-panel" aria-label="Recent activity">
+        <div class="flex items-center justify-between border-b border-border-color p-4">
+            <div class="flex items-center gap-2.5">
+                <span class="grid size-9 place-items-center rounded-xl bg-primary/10 text-primary"><i class="icon-history text-lg"></i></span>
+                <div><p class="text-sm font-extrabold text-gray-900">Activity Stream</p><p class="text-[11px] font-medium text-gray-400">Hospital-wide · last 24h</p></div>
+            </div>
+            <button type="button" class="hc-icon-btn !border-border-color" data-hc-drawer-close aria-label="Close activity"><i class="icon-x"></i></button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-4" id="hc-activity-list">
+            <div class="hc-drawer-item hc-c-indigo"><span class="hc-drawer-ico"><i class="icon-user-plus"></i></span><div class="min-w-0 flex-1 pb-1"><p class="text-[11px] font-semibold leading-relaxed text-gray-700 dark:text-gray-300">New patient John Doe registered at reception</p><p class="mt-0.5 text-[10px] font-semibold text-gray-400">just now ago</p></div></div>
+            <div class="hc-drawer-item hc-c-rose"><span class="hc-drawer-ico"><i class="icon-siren"></i></span><div class="min-w-0 flex-1 pb-1"><p class="text-[11px] font-semibold leading-relaxed text-gray-700 dark:text-gray-300">Emergency case admitted to ICU bed 30</p><p class="mt-0.5 text-[10px] font-semibold text-gray-400">6 min ago</p></div></div>
+            <div class="hc-drawer-item hc-c-violet"><span class="hc-drawer-ico"><i class="icon-flask-conical"></i></span><div class="min-w-0 flex-1 pb-1"><p class="text-[11px] font-semibold leading-relaxed text-gray-700 dark:text-gray-300">Lab report PID-102 verified and released</p><p class="mt-0.5 text-[10px] font-semibold text-gray-400">14 min ago</p></div></div>
+            <div class="hc-drawer-item hc-c-emerald"><span class="hc-drawer-ico"><i class="icon-pill"></i></span><div class="min-w-0 flex-1 pb-1"><p class="text-[11px] font-semibold leading-relaxed text-gray-700 dark:text-gray-300">Pharmacy dispensed 24 prescriptions this hour</p><p class="mt-0.5 text-[10px] font-semibold text-gray-400">28 min ago</p></div></div>
+            <div class="hc-drawer-item hc-c-gold"><span class="hc-drawer-ico"><i class="icon-receipt"></i></span><div class="min-w-0 flex-1 pb-1"><p class="text-[11px] font-semibold leading-relaxed text-gray-700 dark:text-gray-300">Invoice INV-9209 settled — $260 card payment</p><p class="mt-0.5 text-[10px] font-semibold text-gray-400">40 min ago</p></div></div>
+            <div class="hc-drawer-item hc-c-sky"><span class="hc-drawer-ico"><i class="icon-activity"></i></span><div class="min-w-0 flex-1 pb-1"><p class="text-[11px] font-semibold leading-relaxed text-gray-700 dark:text-gray-300">Surgery completed — theatre 2 now clear</p><p class="mt-0.5 text-[10px] font-semibold text-gray-400">1 hr ago</p></div></div>
+            <div class="hc-drawer-item hc-c-emerald"><span class="hc-drawer-ico"><i class="icon-truck"></i></span><div class="min-w-0 flex-1 pb-1"><p class="text-[11px] font-semibold leading-relaxed text-gray-700 dark:text-gray-300">Ambulance unit 048 dispatched to Highway 2</p><p class="mt-0.5 text-[10px] font-semibold text-gray-400">2 hrs ago</p></div></div>
+        </div>
+    </aside>
+</div>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Range Slider — Dreams HMS"}) @@include('partials/header.html', {"page": "ui-rangeslider"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <!-- Page Header -->
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Range Slider</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Input controls for selecting a numeric value or range.</p>
+                            </div>
+                        </div>
+
+                <div class="p-3 lg:py-6 lg:px-0">
+                    <!-- Start grid -->
+                    <div class="grid grid-cols-12 gap-6 items-baseline">
+                        <div class="preview-card col-span-12 bg-white rounded-md border border-border-color p-5">
+                            <div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+                                <h2 class="text-gray-900 text-lg font-bold mb-0">Basic Range Slider</h2>
+                                <button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+                                    <i class="icon-eye"></i>
+                                    <span class="code-btn">Show Code</span>
+                                </button>
+                            </div>
+                            <div class="preview-content">
+                                <div class="rangeslider_basic"></div>
+                            </div>  
+    <pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+    <button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon-copy"></i><span>Copy</span></button>
+    <code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+    &lt;div class="rangeslider_basic"&gt;&lt;/div&gt;
+    </code>
+    </pre>
+                        </div> <!-- end card -->
+
+                        <div class="preview-card col-span-12 bg-white rounded-md border border-border-color p-5">
+                            <div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+                                <h3 class="text-gray-900 text-lg font-bold mb-0">Multi Elements Range</h3>
+                                <button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+                                    <i class="icon-eye"></i>
+                                    <span class="code-btn">Show Code</span>
+                                </button>
+                            </div>
+                            <div class="preview-content">
+                                <div id="rangeslider_multielement"></div>
+                            </div> 
+    <pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+    <button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon-copy"></i><span>Copy</span></button>
+    <code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+    &lt;div id="rangeslider_multielement"&gt;&lt;/div&gt;
+    </code>
+    </pre>
+                        </div> <!-- end card -->
+
+                        <div class="preview-card col-span-12 bg-white rounded-md border border-border-color p-5">
+                            <div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+                                <h4 class="text-gray-900 text-lg font-bold mb-0">Value Range Slider</h4>
+                                <button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+                                    <i class="icon-eye"></i>
+                                    <span class="code-btn">Show Code</span>
+                                </button>
+                            </div>  
+                            <div class="preview-content">
+                                <div id="nonlinear"></div>
+                                <div class="flex justify-between mt-3">
+                                    <div class="example-val" id="lower-value"></div>
+                                    <div class="example-val" id="upper-value"></div>
+                                </div>
+                            </div> 
+    <pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+    <button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon-copy"></i><span>Copy</span></button>
+    <code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+    &lt;div&gt;
+        &lt;div id="nonlinear"&gt;&lt;/div&gt;
+        &lt;div class="flex justify-between mt-3"&gt;
+            &lt;div class="example-val" id="lower-value"&gt;&lt;/div&gt;
+            &lt;div class="example-val" id="upper-value"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt; 
+    </code>
+    </pre>
+                        </div> <!-- end card -->
+
+                        <div class="preview-card col-span-12 bg-white rounded-md border border-border-color p-5">
+                            <div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+                                <h5>Color Scheme</h5>
+                                <button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+                                    <i class="icon-eye"></i>
+                                    <span class="code-btn">Show Code</span>
+                                </button>
+                            </div>  
+                            <div class="preview-content">
+                                <div class="mb-4">
+                                    <h6 class="mb-2 text-sm">Primary</h6>
+                                    <div class="primary-range rangeslider_basic"></div> 
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6 class="mb-2 text-sm">Success</h6>
+                                    <div class="success-range rangeslider_basic"></div> 
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6 class="mb-2 text-sm">Info</h6>
+                                    <div class="info-range rangeslider_basic"></div> 
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6 class="mb-2 text-sm">Warning</h6>
+                                    <div class="warning-range rangeslider_basic"></div> 
+                                </div>
+
+                                <div>
+                                    <h6 class="mb-2 text-sm">Danger</h6>
+                                    <div class="danger-range rangeslider_basic"></div> 
+                                </div>
+
+                            </div>
+    <pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+    <button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon-copy"></i><span>Copy</span></button>
+    <code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+    &lt;div&gt;
+        &lt;div class="mb-4"&gt;
+            &lt;h6 class="mb-2 text-sm"&gt;Primary&lt;/h6&gt;
+            &lt;div class="primary-range" id="rangeslider_basic"&gt;&lt;/div&gt; 
+        &lt;/div&gt;
+
+        &lt;div class="mb-4"&gt;
+            &lt;h6 class="mb-2 text-sm"&gt;Success&lt;/h6&gt;
+            &lt;div class="success-range" id="rangeslider_basic"&gt;&lt;/div&gt; 
+        &lt;/div&gt;
+
+        &lt;div class="mb-4"&gt;
+            &lt;h6 class="mb-2 text-sm"&gt;Info&lt;/h6&gt;
+            &lt;div class="info-range" id="rangeslider_basic"&gt;&lt;/div&gt; 
+        &lt;/div&gt;
+
+        &lt;div class="mb-4"&gt;
+            &lt;h6 class="mb-2 text-sm"&gt;Warning&lt;/h6&gt;
+            &lt;div class="warning-range" id="rangeslider_basic"&gt;&lt;/div&gt; 
+        &lt;/div&gt;
+
+        &lt;div&gt;
+            &lt;h6 class="mb-2 text-sm"&gt;Danger&lt;/h6&gt;
+            &lt;div class="danger-range" id="rangeslider_basic"&gt;&lt;/div&gt; 
+        &lt;/div&gt;
+    &lt;/div&gt;
+    </code>
+    </pre>
+                        </div> <!-- end card -->
+
+                        <div class="preview-card col-span-12 bg-white rounded-md border border-border-color p-5">
+                            <div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+                                <h5>Locking Sliders Together</h5>
+                                <button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+                                    <i class="icon-eye"></i>
+                                    <span class="code-btn">Show Code</span>
+                                </button>
+                            </div>  
+                            <div class="preview-content">
+                                <div class="slider" id="slider1"></div>
+                                <span class="example-val mt-1" id="slider1-span"></span> 
+                                <div class="slider" id="slider2"></div>
+                                <span class="example-val mt-1" id="slider2-span"></span> 
+                                <button id="lockbutton" class="btn bg-primary border border-primary text-white text-center hover:bg-primary-hover hover:text-white mt-4" type="button">Lock</button>
+                            </div> 
+    <pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+    <button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon-copy"></i><span>Copy</span></button>
+    <code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+    &lt;div&gt;
+        &lt;div class="slider" id="slider1"&gt;&lt;/div&gt;
+        &lt;span class="example-val mt-1" id="slider1-span"&gt;&lt;/span&gt; 
+        &lt;div class="slider" id="slider2"&gt;&lt;/div&gt;
+        &lt;span class="example-val mt-1" id="slider2-span"&gt;&lt;/span&gt; 
+        &lt;button id="lockbutton" class="btn bg-primary border border-primary text-white text-center hover:bg-primary-hover hover:text-white mt-4"&gt;Lock&lt;/button&gt;
+    &lt;/div&gt; 
+    </code>
+    </pre>
+                        </div> <!-- end card -->
+
+                        <div class="preview-card col-span-12 bg-white rounded-md border border-border-color p-5">
+                            <div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+                                <h5>Tooltip</h5>
+                                <button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+                                    <i class="icon-eye"></i>
+                                    <span class="code-btn">Show Code</span>
+                                </button>
+                            </div>  
+                            <div class="preview-content">
+                                <div class="slider mt-13" id="slider-merging-tooltips"></div>
+                            </div>  
+    <pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+    <button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon-copy"></i><span>Copy</span></button>
+    <code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+    &lt;div class="slider mt-13" id="slider-merging-tooltips"&gt;&lt;/div&gt;  
+    </code>
+    </pre>
+                        </div> <!-- end card -->
+
+                        <div class="preview-card col-span-12 bg-white rounded-md border border-border-color p-5 pb-10 mb-6">
+                            <div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+                                <h5>Soft Limits</h5>
+                                <button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+                                    <i class="icon-eye"></i>
+                                    <span class="code-btn">Show Code</span>
+                                </button>
+                            </div>  
+                            <div class="preview-content">
+                                <div class="slider mb-2" id="soft"></div>
+                            </div>   
+    <pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+    <button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon-copy"></i><span>Copy</span></button>
+    <code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+    &lt;div class="slider mb-2" id="soft"&gt;&lt;/div&gt;   
+    </code>
+    </pre>
+                        </div> <!-- end card -->
+
+                        <div class="preview-card lg:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+                            <div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+                                <h5>Color Picker</h5>
+                                <button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+                                    <i class="icon-eye"></i>
+                                    <span class="code-btn">Show Code</span>
+                                </button>
+                            </div>  
+                            <div class="preview-content flex items-center justify-center gap-8">
+                                <div> 
+                                    <div class="sliders" id="red"></div>
+                                    <div class="sliders" id="green"></div>
+                                    <div class="sliders" id="blue"></div>
+                                </div> 
+                                <div id="result"></div>
+                            </div> 
+    <pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+    <button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon-copy"></i><span>Copy</span></button>
+    <code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+    &lt;div class="flex items-center gap-8"&gt;
+        &lt;div&gt; 
+            &lt;div class="sliders" id="red"&gt;&lt;/div&gt;
+            &lt;div class="sliders" id="green"&gt;&lt;/div&gt;
+            &lt;div class="sliders" id="blue"&gt;&lt;/div&gt;
+        &lt;/div&gt; 
+        &lt;div id="result"&gt;&lt;/div&gt;
+    &lt;/div&gt; 
+    </code>
+    </pre>
+                        </div> <!-- end card -->
+
+                        <div class="preview-card lg:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+                            <div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+                                <h5>Multi Range</h5>
+                                <button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+                                    <i class="icon-eye"></i>
+                                    <span class="code-btn">Show Code</span>
+                                </button>
+                            </div>
+                            <div class="preview-content">
+                                <div id="slider-vertical" class="mx-auto"></div>
+                            </div>
+    <pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+    <button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon-copy"></i><span>Copy</span></button>
+    <code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+    &lt;div id="slider-vertical" class="mx-auto"&gt;&lt;/div&gt;
+    </code>
+    </pre>   
+                        </div> <!-- end card -->
+
+                        <div class="preview-card lg:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+                            <div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+                                <h5>Vertical Range</h5>
+                                <button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+                                    <i class="icon-eye"></i>
+                                    <span class="code-btn">Show Code</span>
+                                </button>
+                            </div>  
+                            <div class="preview-content"> 
+                                <div id="slider-connect-upper" class="mx-auto"></div>
+                            </div> 
+    <pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+    <button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon-copy"></i><span>Copy</span></button>
+    <code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+    &lt;div id="slider-connect-upper" class="mx-auto"&gt;&lt;/div&gt;
+    </code>
+    </pre>
+                        </div> <!-- end card -->
+
+                        <div class="preview-card lg:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+                            <div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+                                <h5>Vertical Tooltip</h5>
+                                <button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+                                    <i class="icon-eye"></i>
+                                    <span class="code-btn">Show Code</span>
+                                </button>
+                            </div>  
+                            <div class="preview-content"> 
+                                <div id="slider-vertical-tooltip" class="mx-auto"></div>
+                            </div>
+    <pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+    <button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon-copy"></i><span>Copy</span></button>
+    <code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+    &lt;div id="slider-vertical-tooltip" class="mx-auto"&gt;&lt;/div&gt;
+    </code>
+    </pre> 
+                        </div> <!-- end card -->
+
+                    </div> 
+                    <!-- End grid -->  
+				</div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "ui-rangeslider"})
+    </body>
+</html>

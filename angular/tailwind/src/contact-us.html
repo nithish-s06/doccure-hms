@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Contact Us — Dreams HMS"}) @@include('partials/header.html', {"page": "contact-us"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="contact-us">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-6xl mx-auto space-y-6">
+                        @@include('partials/breadcrumb.html', {"current": "Contact Us", "parentUrl": "", "parent": ""})
+
+                        <div data-aos="fade-up">
+                            <h1 class="text-2xl font-bold text-gray-900">Contact Us</h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">We'd love to hear from you — reach out any time</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 text-center">
+                                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mx-auto"><i class="icon-phone text-blue-600"></i></div>
+                                <p class="text-sm font-bold text-gray-900 mt-3">Phone</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">+1 (415) 555-0100</p>
+                            </div>
+                            <div class="card p-4 text-center">
+                                <div class="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center mx-auto"><i class="icon-mail text-emerald-600"></i></div>
+                                <p class="text-sm font-bold text-gray-900 mt-3">Email</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">support@dreamshms.health</p>
+                            </div>
+                            <div class="card p-4 text-center">
+                                <div class="w-11 h-11 rounded-xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center mx-auto"><i class="icon-map-pin text-amber-600"></i></div>
+                                <p class="text-sm font-bold text-gray-900 mt-3">Address</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">221 Harbor View Lane, San Francisco, CA</p>
+                            </div>
+                            <div class="card p-4 text-center">
+                                <div class="w-11 h-11 rounded-xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center mx-auto"><i class="icon-clock text-purple-600"></i></div>
+                                <p class="text-sm font-bold text-gray-900 mt-3">Working Hours</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Mon – Sat, 8:00 AM – 8:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="card p-6" data-aos="fade-up" data-aos-delay="100">
+                            <h2 class="text-base font-bold text-gray-900 mb-4">Send Us a Message</h2>
+                            <form id="contact-form" onsubmit="return false;">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="c-name" class="form-label">Your Name <span class="text-danger">*</span></label>
+                                        <input id="c-name" class="form-input" placeholder="John Carter">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                        <input id="c-email" type="email" class="form-input" placeholder="john@example.com">
+                                    </div>
+                                    <div class="form-group span-2">
+                                        <label for="c-subject" class="form-label">Subject <span class="text-danger">*</span></label>
+                                        <input id="c-subject" class="form-input" placeholder="Appointment inquiry">
+                                    </div>
+                                    <div class="form-group span-2">
+                                        <label for="c-message" class="form-label">Message <span class="text-danger">*</span></label>
+                                        <textarea id="c-message" class="form-textarea" rows="5" placeholder="How can we help you?"></textarea>
+                                    </div>
+                                </div>
+                                <div class="flex justify-end mt-5">
+                                    <button type="button" id="btn-send" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold flex items-center gap-2"><i class="icon-send"></i> Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "contact-us"})
+    </body>
+</html>

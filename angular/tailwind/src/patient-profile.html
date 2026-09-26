@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Patient Profile — Dreams HMS"}) @@include('partials/header.html', {"page": "patient-profile"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search patients..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="pp-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="pp-skeleton" class="space-y-5">
+                            <div class="pp-sk h-[180px] radius-override-150"></div>
+                            <div class="pp-grid pp-g4">
+                                <div class="pp-sk h-[110px]"></div><div class="pp-sk h-[110px]"></div>
+                                <div class="pp-sk h-[110px]"></div><div class="pp-sk h-[110px]"></div>
+                            </div>
+                            <div class="pp-layout">
+                                <div class="space-y-5">
+                                    <div class="pp-grid pp-g4">
+                                        <div class="pp-sk h-[120px]"></div><div class="pp-sk h-[120px]"></div>
+                                        <div class="pp-sk h-[120px]"></div><div class="pp-sk h-[120px]"></div>
+                                    </div>
+                                    <div class="pp-sk h-[44px] radius-override-90"></div>
+                                    <div class="pp-grid pp-g2">
+                                        <div class="pp-sk h-[200px]"></div><div class="pp-sk h-[200px]"></div>
+                                        <div class="pp-sk h-[200px]"></div><div class="pp-sk h-[200px]"></div>
+                                    </div>
+                                </div>
+                                <div class="space-y-5">
+                                    <div class="pp-sk h-[280px] radius-override-125"></div>
+                                    <div class="pp-sk h-[220px] radius-override-125"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="pp-content" class="hidden space-y-5">
+                            @@include('partials/breadcrumb.html', {"current": "Patient Profile", "parentUrl": "patients.html", "parent": "Patients"})
+
+                            <!-- ---------- HERO ---------- -->
+                            <section class="pp-hero">
+                                <div class="flex flex-wrap items-start justify-between gap-6">
+                                    <div class="flex items-start gap-4 min-w-0">
+                                        <div class="pp-hero-ring shrink-0">
+                                            <img class="pp-hero-ava" src="assets/img/avatar/avatar-01.jpg" alt="James Morrison" onerror="this.style.display='none'">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <div class="flex flex-wrap items-center gap-2">
+                                                <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">James Morrison</h1>
+                                                <span class="pp-hbadge"><span class="pp-dot"></span><span id="pp-status-badge">Admitted</span></span>
+                                            </div>
+                                            <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                                <span class="pp-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i>PID-004821</span>
+                                                <span class="pp-hmeta pp-hmeta-rose"><i class="icon-droplet text-[13px]"></i>O+</span>
+                                                <span class="pp-hmeta"><i class="icon-user text-[13px] text-sky-300"></i>45 yrs · Male</span>
+                                                <span class="pp-hmeta"><i class="icon-clock text-[13px] text-emerald-300"></i>Last visit 2 days ago</span>
+                                                <span class="pp-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i>Dr. Chen · Cardiology</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap items-center gap-2 pp-actions-print-hide">
+                                        <button type="button" class="pp-btn pp-btn-primary" data-act="edit"><i class="icon-edit"></i>Edit Profile</button>
+                                        <button type="button" id="pp-admit-btn" class="pp-btn pp-btn-glass" data-act="toggle-admit"><i class="icon-log-out"></i>Discharge</button>
+                                        <button type="button" class="pp-btn pp-btn-glass" data-act="schedule"><i class="icon-calendar-plus"></i>Schedule</button>
+                                        <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
+                                            <button type="button" class="hs-dropdown-toggle pp-icobtn !bg-white/12 !border-white/25 !text-white" aria-label="More actions"><i class="icon-ellipsis-vertical"></i></button>
+                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-48 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu">
+                                                <button type="button" role="menuitem" data-act="print" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-printer text-sm"></i>Print Profile</button>
+                                                <button type="button" role="menuitem" data-act="pdf" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-download text-sm"></i>Download PDF</button>
+                                                <button type="button" role="menuitem" data-act="email" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-mail text-sm"></i>Send Email</button>
+                                                <button type="button" role="menuitem" data-act="sms" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-message-circle text-sm"></i>Send SMS</button>
+                                                <button type="button" role="menuitem" data-act="transfer" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"><i class="icon-arrow-left-right text-sm"></i>Transfer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ---------- HEALTH OVERVIEW ---------- -->
+                            <section class="pp-grid pp-g4">
+                                <div class="pp-vital pp-c-rose">
+                                    <div class="flex items-start justify-between">
+                                        <span class="vico"><i class="icon-heart-pulse"></i></span>
+                                        <span class="pp-chip">Normal</span>
+                                    </div>
+                                    <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">72 <span class="text-xs font-semibold text-gray-400">bpm</span></p>
+                                    <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Heart Rate</p>
+                                </div>
+                                <div class="pp-vital pp-c-sky">
+                                    <div class="flex items-start justify-between">
+                                        <span class="vico"><i class="icon-activity"></i></span>
+                                        <span class="pp-chip">Optimal</span>
+                                    </div>
+                                    <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">120/80</p>
+                                    <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Blood Pressure</p>
+                                </div>
+                                <div class="pp-vital pp-c-amber">
+                                    <div class="flex items-start justify-between">
+                                        <span class="vico"><i class="icon-thermometer"></i></span>
+                                        <span class="pp-chip">98.6°F</span>
+                                    </div>
+                                    <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">37.0 <span class="text-xs font-semibold text-gray-400">°C</span></p>
+                                    <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Temperature</p>
+                                </div>
+                                <div class="pp-vital pp-c-emerald">
+                                    <div class="flex items-start justify-between">
+                                        <span class="vico"><i class="icon-wind"></i></span>
+                                        <svg class="pp-ring" viewBox="0 0 36 36" data-p="98"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
+                                    </div>
+                                    <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">98% <span class="text-xs font-semibold text-gray-400">SpO₂</span></p>
+                                    <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Oxygen Level</p>
+                                </div>
+                                <div class="pp-vital pp-c-violet">
+                                    <div class="flex items-start justify-between">
+                                        <span class="vico"><i class="icon-scale"></i></span>
+                                        <svg class="pp-ring" viewBox="0 0 36 36" data-p="63"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
+                                    </div>
+                                    <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">24.2 <span class="text-xs font-semibold text-gray-400">BMI</span></p>
+                                    <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Body Mass Index</p>
+                                </div>
+                                <div class="pp-vital pp-c-indigo">
+                                    <div class="flex items-start justify-between">
+                                        <span class="vico"><i class="icon-weight"></i></span>
+                                        <span class="pp-chip">Stable</span>
+                                    </div>
+                                    <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">78 <span class="text-xs font-semibold text-gray-400">kg</span></p>
+                                    <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Weight</p>
+                                </div>
+                                <div class="pp-vital pp-c-teal">
+                                    <div class="flex items-start justify-between">
+                                        <span class="vico"><i class="icon-ruler"></i></span>
+                                        <span class="pp-chip">179 cm</span>
+                                    </div>
+                                    <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">1.79 <span class="text-xs font-semibold text-gray-400">m</span></p>
+                                    <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Height</p>
+                                </div>
+                                <div class="pp-vital pp-c-emerald">
+                                    <div class="flex items-start justify-between">
+                                        <span class="vico"><i class="icon-shield-check"></i></span>
+                                        <svg class="pp-ring" viewBox="0 0 36 36" data-p="86"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
+                                    </div>
+                                    <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Good</p>
+                                    <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Health Status</p>
+                                </div>
+                            </section>
+
+                            <div class="pp-layout">
+                                <!-- ================= LEFT (tabs) ================= -->
+                                <div class="space-y-5 min-w-0">
+                                    <div class="pp-surface overflow-hidden">
+                                        <div class="pp-tabs" role="tablist" data-hs-tab-role="tablist">
+                                            <button type="button" class="pp-tab active" id="pp-tab-item-overview" data-hs-tab="#pp-panel-overview" aria-controls="pp-panel-overview" aria-selected="true" role="tab"><i class="icon-layout-dashboard"></i>Overview</button>
+                                            <button type="button" class="pp-tab" id="pp-tab-item-history" data-hs-tab="#pp-panel-history" aria-controls="pp-panel-history" aria-selected="false" role="tab"><i class="icon-file-clock"></i>Medical History</button>
+                                            <button type="button" class="pp-tab" id="pp-tab-item-appointments" data-hs-tab="#pp-panel-appointments" aria-controls="pp-panel-appointments" aria-selected="false" role="tab"><i class="icon-calendar"></i>Appointments<span class="cnt">3</span></button>
+                                            <button type="button" class="pp-tab" id="pp-tab-item-prescriptions" data-hs-tab="#pp-panel-prescriptions" aria-controls="pp-panel-prescriptions" aria-selected="false" role="tab"><i class="icon-pill"></i>Prescriptions<span class="cnt">4</span></button>
+                                            <button type="button" class="pp-tab" id="pp-tab-item-labs" data-hs-tab="#pp-panel-labs" aria-controls="pp-panel-labs" aria-selected="false" role="tab"><i class="icon-flask-conical"></i>Lab Reports</button>
+                                            <button type="button" class="pp-tab" id="pp-tab-item-radiology" data-hs-tab="#pp-panel-radiology" aria-controls="pp-panel-radiology" aria-selected="false" role="tab"><i class="icon-scan"></i>Radiology</button>
+                                            <button type="button" class="pp-tab" id="pp-tab-item-billing" data-hs-tab="#pp-panel-billing" aria-controls="pp-panel-billing" aria-selected="false" role="tab"><i class="icon-receipt"></i>Billing</button>
+                                            <button type="button" class="pp-tab" id="pp-tab-item-insurance" data-hs-tab="#pp-panel-insurance" aria-controls="pp-panel-insurance" aria-selected="false" role="tab"><i class="icon-shield-check"></i>Insurance</button>
+                                            <button type="button" class="pp-tab" id="pp-tab-item-documents" data-hs-tab="#pp-panel-documents" aria-controls="pp-panel-documents" aria-selected="false" role="tab"><i class="icon-folder"></i>Documents<span class="cnt">6</span></button>
+                                            <button type="button" class="pp-tab" id="pp-tab-item-timeline" data-hs-tab="#pp-panel-timeline" aria-controls="pp-panel-timeline" aria-selected="false" role="tab"><i class="icon-git-commit-horizontal"></i>Timeline</button>
+                                            <button type="button" class="pp-tab" id="pp-tab-item-notes" data-hs-tab="#pp-panel-notes" aria-controls="pp-panel-notes" aria-selected="false" role="tab"><i class="icon-sticky-note"></i>Notes</button>
+                                        </div>
+
+                                        <div class="p-4 lg:p-5">
+                                            <!-- OVERVIEW -->
+                                            <div id="pp-panel-overview" class="pp-panel" role="tabpanel" aria-labelledby="pp-tab-item-overview">
+                                                <div class="pp-grid pp-g2">
+                                                    <div class="pp-surface pp-c-primary !shadow-none">
+                                                        <div class="pp-head"><span class="ico"><i class="icon-user"></i></span><p class="pp-title">Patient Information</p></div>
+                                                        <div class="p-4">
+                                                            <div class="pp-kv"><span class="k"><i class="icon-user"></i>Full Name</span><span class="v">James Morrison</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-cake"></i>Date of Birth</span><span class="v">14 Mar 1981</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-venus-and-mars"></i>Gender</span><span class="v">Male</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-globe"></i>Nationality</span><span class="v">Indian</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-heart-handshake"></i>Marital Status</span><span class="v">Married</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pp-surface pp-c-sky !shadow-none">
+                                                        <div class="pp-head"><span class="ico"><i class="icon-phone"></i></span><p class="pp-title">Contact Details</p></div>
+                                                        <div class="p-4">
+                                                            <div class="pp-kv"><span class="k"><i class="icon-phone"></i>Mobile</span><span class="v">+1 555 110 2233</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-mail"></i>Email</span><span class="v">morrison@ex.com</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-message-circle"></i>WhatsApp</span><span class="v">+1 555 110 2233</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-map-pin"></i>Address</span><span class="v">24 MG Road, Bengaluru</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-globe"></i>City</span><span class="v">Bengaluru, IN</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pp-surface pp-c-emerald !shadow-none">
+                                                        <div class="pp-head"><span class="ico"><i class="icon-shield-check"></i></span><p class="pp-title">Insurance Status</p><span class="ml-auto pp-chip pp-c-emerald">Verified</span></div>
+                                                        <div class="p-4">
+                                                            <div class="pp-kv"><span class="k"><i class="icon-building"></i>Provider</span><span class="v">Star Health</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-hash"></i>Policy No.</span><span class="v">SH-88245102</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-layers"></i>Coverage</span><span class="v">Comprehensive</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-calendar"></i>Valid Till</span><span class="v">12 Apr 2027</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pp-surface pp-c-amber !shadow-none">
+                                                        <div class="pp-head"><span class="ico"><i class="icon-bed"></i></span><p class="pp-title">Room &amp; Bed</p></div>
+                                                        <div class="p-4">
+                                                            <div class="pp-kv"><span class="k"><i class="icon-building-2"></i>Ward</span><span class="v">Cardiology · 2F</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-bed"></i>Room / Bed</span><span class="v">204-B</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-log-in"></i>Admitted</span><span class="v">2 days ago</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-user-cog"></i>Nurse</span><span class="v">Nurse Amelia</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pp-surface pp-c-rose !shadow-none">
+                                                        <div class="pp-head"><span class="ico"><i class="icon-life-buoy"></i></span><p class="pp-title">Emergency Contact</p></div>
+                                                        <div class="p-4">
+                                                            <div class="pp-kv"><span class="k"><i class="icon-user"></i>Name</span><span class="v">Laura Morrison</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-heart"></i>Relationship</span><span class="v">Spouse</span></div>
+                                                            <div class="pp-kv"><span class="k"><i class="icon-phone"></i>Mobile</span><span class="v">+1 555 998 4410</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pp-surface pp-c-violet !shadow-none">
+                                                        <div class="pp-head"><span class="ico"><i class="icon-triangle-alert"></i></span><p class="pp-title">Allergies &amp; Conditions</p></div>
+                                                        <div class="p-4 space-y-3">
+                                                            <div><p class="text-[11px] font-bold uppercase tracking-wide text-gray-400 mb-1.5">Allergies</p><div class="flex flex-wrap gap-1.5"><span class="pp-tag pp-c-amber">Penicillin</span><span class="pp-tag pp-c-amber">Pollen</span><span class="pp-tag pp-c-amber">Latex</span></div></div>
+                                                            <div><p class="text-[11px] font-bold uppercase tracking-wide text-gray-400 mb-1.5">Chronic Conditions</p><div class="flex flex-wrap gap-1.5"><span class="pp-tag pp-c-rose">Hypertension</span><span class="pp-tag pp-c-rose">Type-2 Diabetes</span></div></div>
+                                                            <div><p class="text-[11px] font-bold uppercase tracking-wide text-gray-400 mb-1.5">Current Medications</p><div class="flex flex-wrap gap-1.5"><span class="pp-tag pp-c-emerald">Atorvastatin</span><span class="pp-tag pp-c-emerald">Metformin</span><span class="pp-tag pp-c-emerald">Aspirin</span></div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- MEDICAL HISTORY (accordions) -->
+                                            <div id="pp-panel-history" class="pp-panel hidden" role="tabpanel" aria-labelledby="pp-tab-item-history">
+                                                <div class="space-y-2.5">
+                                                    <div class="pp-acc pp-c-primary open">
+                                                        <button class="pp-acc-head"><span class="pp-doc-ico pp-doc-ico-sm"><i class="icon-clipboard-list"></i></span><span><span class="pp-title block">Diagnoses</span><span class="text-[11px] text-gray-400">3 active diagnoses</span></span><i class="icon-chevron-down chev"></i></button>
+                                                        <div class="pp-acc-body"><div class="p-4 pt-0 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                                                            <p class="flex items-center gap-2"><span class="pp-tag pp-c-rose">I10</span>Essential Hypertension · since 2019</p>
+                                                            <p class="flex items-center gap-2"><span class="pp-tag pp-c-amber">E11</span>Type-2 Diabetes Mellitus · since 2021</p>
+                                                            <p class="flex items-center gap-2"><span class="pp-tag pp-c-sky">I25</span>Coronary Artery Disease · 2024</p>
+                                                        </div></div>
+                                                    </div>
+                                                    <div class="pp-acc pp-c-amber">
+                                                        <button class="pp-acc-head"><span class="pp-doc-ico pp-doc-ico-sm"><i class="icon-triangle-alert"></i></span><span><span class="pp-title block">Allergies</span><span class="text-[11px] text-gray-400">3 recorded</span></span><i class="icon-chevron-down chev"></i></button>
+                                                        <div class="pp-acc-body"><div class="p-4 pt-0 flex flex-wrap gap-1.5"><span class="pp-tag pp-c-amber">Penicillin · severe</span><span class="pp-tag pp-c-amber">Pollen · mild</span><span class="pp-tag pp-c-amber">Latex · moderate</span></div></div>
+                                                    </div>
+                                                    <div class="pp-acc pp-c-emerald">
+                                                        <button class="pp-acc-head"><span class="pp-doc-ico pp-doc-ico-sm"><i class="icon-syringe"></i></span><span><span class="pp-title block">Immunizations</span><span class="text-[11px] text-gray-400">Up to date</span></span><i class="icon-chevron-down chev"></i></button>
+                                                        <div class="pp-acc-body"><div class="p-4 pt-0 space-y-2 text-sm text-gray-600 dark:text-gray-300"><p>COVID-19 (Booster) · Jan 2024</p><p>Influenza · Oct 2025</p><p>Tetanus · 2022</p></div></div>
+                                                    </div>
+                                                    <div class="pp-acc pp-c-violet">
+                                                        <button class="pp-acc-head"><span class="pp-doc-ico pp-doc-ico-sm"><i class="icon-activity"></i></span><span><span class="pp-title block">Procedures</span><span class="text-[11px] text-gray-400">2 procedures</span></span><i class="icon-chevron-down chev"></i></button>
+                                                        <div class="pp-acc-body"><div class="p-4 pt-0 space-y-2 text-sm text-gray-600 dark:text-gray-300"><p>Coronary Angioplasty · Mar 2024</p><p>Stress Echocardiogram · 2023</p></div></div>
+                                                    </div>
+                                                    <div class="pp-acc pp-c-teal">
+                                                        <button class="pp-acc-head"><span class="pp-doc-ico pp-doc-ico-sm"><i class="icon-pill"></i></span><span><span class="pp-title block">Current Medications</span><span class="text-[11px] text-gray-400">3 active</span></span><i class="icon-chevron-down chev"></i></button>
+                                                        <div class="pp-acc-body"><div class="p-4 pt-0 space-y-2 text-sm text-gray-600 dark:text-gray-300"><p>Atorvastatin 20mg · once daily</p><p>Metformin 500mg · twice daily</p><p>Aspirin 75mg · once daily</p></div></div>
+                                                    </div>
+                                                    <div class="pp-acc pp-c-sky">
+                                                        <button class="pp-acc-head"><span class="pp-doc-ico pp-doc-ico-sm"><i class="icon-file-text"></i></span><span><span class="pp-title block">Clinical Notes</span><span class="text-[11px] text-gray-400">Latest observations</span></span><i class="icon-chevron-down chev"></i></button>
+                                                        <div class="pp-acc-body"><div class="p-4 pt-0 text-sm text-gray-600 dark:text-gray-300">Patient responding well to therapy. BP stabilizing. Continue current medication and review in 2 weeks.</div></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- APPOINTMENTS -->
+                                            <div id="pp-panel-appointments" class="pp-panel hidden" role="tabpanel" aria-labelledby="pp-tab-item-appointments">
+                                                <div class="space-y-2.5" id="pp-appts"><div class="pp-surface !shadow-none pp-c-sky p-3 flex items-center gap-3"><span class="pp-doc-ico"><i class="icon-calendar"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">Cardiology Follow-up</p><p class="text-[11px] text-gray-500 dark:text-gray-400">21 Jul 2026 · 10:30 AM · Dr. Chen</p></div><span class="pp-chip">Upcoming</span><button class="pp-icobtn" data-act="schedule"><i class="icon-ellipsis-vertical"></i></button></div><div class="pp-surface !shadow-none pp-c-emerald p-3 flex items-center gap-3"><span class="pp-doc-ico"><i class="icon-calendar"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">ECG Review</p><p class="text-[11px] text-gray-500 dark:text-gray-400">14 Jul 2026 · 09:00 AM · Dr. Chen</p></div><span class="pp-chip">Completed</span><button class="pp-icobtn" data-act="schedule"><i class="icon-ellipsis-vertical"></i></button></div><div class="pp-surface !shadow-none pp-c-amber p-3 flex items-center gap-3"><span class="pp-doc-ico"><i class="icon-calendar"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">Diet Consultation</p><p class="text-[11px] text-gray-500 dark:text-gray-400">02 Jul 2026 · 02:00 PM · Dr. Park</p></div><span class="pp-chip">Completed</span><button class="pp-icobtn" data-act="schedule"><i class="icon-ellipsis-vertical"></i></button></div></div>
+                                            </div>
+
+                                            <!-- PRESCRIPTIONS -->
+                                            <div id="pp-panel-prescriptions" class="pp-panel hidden" role="tabpanel" aria-labelledby="pp-tab-item-prescriptions">
+                                                <div class="pp-grid pp-g2" id="pp-rx"><div class="pp-surface !shadow-none pp-c-primary p-3.5 flex items-center gap-3"><span class="pp-doc-ico"><i class="icon-pill"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">Atorvastatin 20mg</p><p class="text-[11px] text-gray-500 dark:text-gray-400">Once daily · after dinner</p></div><button class="pp-icobtn" data-act="print"><i class="icon-printer text-sm"></i></button></div><div class="pp-surface !shadow-none pp-c-emerald p-3.5 flex items-center gap-3"><span class="pp-doc-ico"><i class="icon-pill"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">Metformin 500mg</p><p class="text-[11px] text-gray-500 dark:text-gray-400">Twice daily · with meals</p></div><button class="pp-icobtn" data-act="print"><i class="icon-printer text-sm"></i></button></div><div class="pp-surface !shadow-none pp-c-rose p-3.5 flex items-center gap-3"><span class="pp-doc-ico"><i class="icon-pill"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">Aspirin 75mg</p><p class="text-[11px] text-gray-500 dark:text-gray-400">Once daily · morning</p></div><button class="pp-icobtn" data-act="print"><i class="icon-printer text-sm"></i></button></div><div class="pp-surface !shadow-none pp-c-amber p-3.5 flex items-center gap-3"><span class="pp-doc-ico"><i class="icon-pill"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">Amlodipine 5mg</p><p class="text-[11px] text-gray-500 dark:text-gray-400">Once daily</p></div><button class="pp-icobtn" data-act="print"><i class="icon-printer text-sm"></i></button></div></div>
+                                            </div>
+
+                                            <!-- LAB REPORTS -->
+                                            <div id="pp-panel-labs" class="pp-panel hidden" role="tabpanel" aria-labelledby="pp-tab-item-labs">
+                                                <div class="overflow-x-auto"><table class="w-full text-sm" id="pp-labs"><thead><tr class="[text-align:left] [color:var(--color-gray-400)] [font-size:.68rem] [text-transform:uppercase] [letter-spacing:.05em]"><th class="py-2 px-2">Test</th><th class="py-2 px-2">Date</th><th class="py-2 px-2">Result</th><th class="py-2 px-2 text-right">Actions</th></tr></thead><tbody><tr class="[border-top:1px_solid_var(--color-border-color)]"><td class="py-2.5 px-2"><p class="font-bold text-gray-900 dark:text-white">CBC</p><p class="text-[11px] text-gray-400">Complete Blood Count</p></td><td class="py-2.5 px-2 text-gray-500">12 Jul</td><td class="py-2.5 px-2"><span class="pp-tag pp-c-emerald">Normal</span></td><td class="py-2.5 px-2"><div class="flex gap-1.5 justify-end"><button class="pp-icobtn" data-act="pdf" title="View"><i class="icon-eye text-sm"></i></button><button class="pp-icobtn" data-act="pdf" title="Download"><i class="icon-download text-sm"></i></button></div></td></tr><tr class="[border-top:1px_solid_var(--color-border-color)]"><td class="py-2.5 px-2"><p class="font-bold text-gray-900 dark:text-white">HbA1c</p><p class="text-[11px] text-gray-400">Glycated Haemoglobin</p></td><td class="py-2.5 px-2 text-gray-500">12 Jul</td><td class="py-2.5 px-2"><span class="pp-tag pp-c-amber">6.8% · High</span></td><td class="py-2.5 px-2"><div class="flex gap-1.5 justify-end"><button class="pp-icobtn" data-act="pdf" title="View"><i class="icon-eye text-sm"></i></button><button class="pp-icobtn" data-act="pdf" title="Download"><i class="icon-download text-sm"></i></button></div></td></tr><tr class="[border-top:1px_solid_var(--color-border-color)]"><td class="py-2.5 px-2"><p class="font-bold text-gray-900 dark:text-white">Lipid Panel</p><p class="text-[11px] text-gray-400">Cholesterol profile</p></td><td class="py-2.5 px-2 text-gray-500">10 Jul</td><td class="py-2.5 px-2"><span class="pp-tag pp-c-amber">Borderline</span></td><td class="py-2.5 px-2"><div class="flex gap-1.5 justify-end"><button class="pp-icobtn" data-act="pdf" title="View"><i class="icon-eye text-sm"></i></button><button class="pp-icobtn" data-act="pdf" title="Download"><i class="icon-download text-sm"></i></button></div></td></tr><tr class="[border-top:1px_solid_var(--color-border-color)]"><td class="py-2.5 px-2"><p class="font-bold text-gray-900 dark:text-white">Troponin</p><p class="text-[11px] text-gray-400">Cardiac marker</p></td><td class="py-2.5 px-2 text-gray-500">09 Jul</td><td class="py-2.5 px-2"><span class="pp-tag pp-c-emerald">Normal</span></td><td class="py-2.5 px-2"><div class="flex gap-1.5 justify-end"><button class="pp-icobtn" data-act="pdf" title="View"><i class="icon-eye text-sm"></i></button><button class="pp-icobtn" data-act="pdf" title="Download"><i class="icon-download text-sm"></i></button></div></td></tr></tbody></table></div>
+                                            </div>
+
+                                            <!-- RADIOLOGY -->
+                                            <div id="pp-panel-radiology" class="pp-panel hidden" role="tabpanel" aria-labelledby="pp-tab-item-radiology">
+                                                <div class="pp-grid pp-g3" id="pp-radio"><div class="pp-doc pp-c-sky"><div class="rounded-lg mb-3 grid place-items-center [height:120px] [background:color-mix(in_oklab,var(--pp-c)_12%,transparent)] [color:var(--pp-c)]"><i class="icon-scan text-4xl"></i></div><p class="text-sm font-bold text-gray-900 dark:text-white">Chest X-Ray</p><p class="text-[11px] text-gray-400">10 Jul 2026</p><div class="flex gap-1.5 mt-3"><button class="pp-btn pp-btn-solid flex-1" data-act="pdf"><i class="icon-eye"></i>View</button><button class="pp-icobtn" data-act="pdf"><i class="icon-download text-sm"></i></button></div></div><div class="pp-doc pp-c-violet"><div class="rounded-lg mb-3 grid place-items-center [height:120px] [background:color-mix(in_oklab,var(--pp-c)_12%,transparent)] [color:var(--pp-c)]"><i class="icon-brain text-4xl"></i></div><p class="text-sm font-bold text-gray-900 dark:text-white">Cardiac MRI</p><p class="text-[11px] text-gray-400">08 Jul 2026</p><div class="flex gap-1.5 mt-3"><button class="pp-btn pp-btn-solid flex-1" data-act="pdf"><i class="icon-eye"></i>View</button><button class="pp-icobtn" data-act="pdf"><i class="icon-download text-sm"></i></button></div></div><div class="pp-doc pp-c-rose"><div class="rounded-lg mb-3 grid place-items-center [height:120px] [background:color-mix(in_oklab,var(--pp-c)_12%,transparent)] [color:var(--pp-c)]"><i class="icon-heart-pulse text-4xl"></i></div><p class="text-sm font-bold text-gray-900 dark:text-white">Echocardiogram</p><p class="text-[11px] text-gray-400">05 Jul 2026</p><div class="flex gap-1.5 mt-3"><button class="pp-btn pp-btn-solid flex-1" data-act="pdf"><i class="icon-eye"></i>View</button><button class="pp-icobtn" data-act="pdf"><i class="icon-download text-sm"></i></button></div></div></div>
+                                            </div>
+
+                                            <!-- BILLING -->
+                                            <div id="pp-panel-billing" class="pp-panel hidden" role="tabpanel" aria-labelledby="pp-tab-item-billing">
+                                                <div class="overflow-x-auto"><table class="w-full text-sm" id="pp-bill"><thead><tr class="[text-align:left] [color:var(--color-gray-400)] [font-size:.68rem] [text-transform:uppercase] [letter-spacing:.05em]"><th class="py-2 px-2">Invoice</th><th class="py-2 px-2">Date</th><th class="py-2 px-2">Amount</th><th class="py-2 px-2 text-right">Status</th></tr></thead><tbody><tr class="[border-top:1px_solid_var(--color-border-color)]"><td class="py-2.5 px-2"><p class="font-bold text-gray-900 dark:text-white font-mono">#INV-2041</p><p class="text-[11px] text-gray-400">Cardiac Consultation</p></td><td class="py-2.5 px-2 text-gray-500">12 Jul</td><td class="py-2.5 px-2 font-bold text-gray-900 dark:text-white">₹180</td><td class="py-2.5 px-2 text-right"><span class="pp-tag pp-c-emerald">Paid</span></td></tr><tr class="[border-top:1px_solid_var(--color-border-color)]"><td class="py-2.5 px-2"><p class="font-bold text-gray-900 dark:text-white font-mono">#INV-2033</p><p class="text-[11px] text-gray-400">Lab Tests</p></td><td class="py-2.5 px-2 text-gray-500">10 Jul</td><td class="py-2.5 px-2 font-bold text-gray-900 dark:text-white">₹240</td><td class="py-2.5 px-2 text-right"><span class="pp-tag pp-c-emerald">Paid</span></td></tr><tr class="[border-top:1px_solid_var(--color-border-color)]"><td class="py-2.5 px-2"><p class="font-bold text-gray-900 dark:text-white font-mono">#INV-2029</p><p class="text-[11px] text-gray-400">Room Charges</p></td><td class="py-2.5 px-2 text-gray-500">09 Jul</td><td class="py-2.5 px-2 font-bold text-gray-900 dark:text-white">₹620</td><td class="py-2.5 px-2 text-right"><span class="pp-tag pp-c-amber">Pending</span></td></tr></tbody></table></div>
+                                            </div>
+
+                                            <!-- INSURANCE -->
+                                            <div id="pp-panel-insurance" class="pp-panel hidden" role="tabpanel" aria-labelledby="pp-tab-item-insurance">
+                                                <div class="pp-surface pp-c-emerald !shadow-none">
+                                                    <div class="pp-head"><span class="ico"><i class="icon-shield-check"></i></span><p class="pp-title">Insurance Coverage</p><span class="ml-auto pp-chip pp-c-emerald">Verified</span></div>
+                                                    <div class="p-4 pp-grid pp-g2">
+                                                        <div class="pp-kv"><span class="k">Provider</span><span class="v">Star Health</span></div>
+                                                        <div class="pp-kv"><span class="k">Policy Number</span><span class="v">SH-88245102</span></div>
+                                                        <div class="pp-kv"><span class="k">Coverage Type</span><span class="v">Comprehensive</span></div>
+                                                        <div class="pp-kv"><span class="k">Coverage Amount</span><span class="v">₹10,00,000</span></div>
+                                                        <div class="pp-kv"><span class="k">Co-pay</span><span class="v">10%</span></div>
+                                                        <div class="pp-kv"><span class="k">Valid Till</span><span class="v">12 Apr 2027</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- DOCUMENTS -->
+                                            <div id="pp-panel-documents" class="pp-panel hidden" role="tabpanel" aria-labelledby="pp-tab-item-documents">
+                                                <div class="pp-grid pp-g3" id="pp-docs"><div class="pp-doc pp-c-teal"><div class="flex items-start gap-3"><span class="pp-doc-ico"><i class="icon-id-card"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">ID Proof</p><p class="text-[11px] text-gray-400 truncate">passport.pdf · 1.2MB</p></div></div><div class="flex gap-1.5 mt-3"><button class="pp-icobtn flex-1" data-act="pdf" title="View"><i class="icon-eye text-sm"></i></button><button class="pp-icobtn flex-1" data-act="pdf" title="Download"><i class="icon-download text-sm"></i></button><button class="pp-icobtn flex-1" data-act="print" title="Print"><i class="icon-printer text-sm"></i></button><button class="pp-icobtn flex-1 [color:#e11d48] [border-color:rgba(244,63,94,.3)]" data-act="delete-doc" title="Delete"><i class="icon-trash-2 text-sm"></i></button></div></div><div class="pp-doc pp-c-emerald"><div class="flex items-start gap-3"><span class="pp-doc-ico"><i class="icon-shield-check"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">Insurance Card</p><p class="text-[11px] text-gray-400 truncate">allianz.jpg · 840KB</p></div></div><div class="flex gap-1.5 mt-3"><button class="pp-icobtn flex-1" data-act="pdf" title="View"><i class="icon-eye text-sm"></i></button><button class="pp-icobtn flex-1" data-act="pdf" title="Download"><i class="icon-download text-sm"></i></button><button class="pp-icobtn flex-1" data-act="print" title="Print"><i class="icon-printer text-sm"></i></button><button class="pp-icobtn flex-1 [color:#e11d48] [border-color:rgba(244,63,94,.3)]" data-act="delete-doc" title="Delete"><i class="icon-trash-2 text-sm"></i></button></div></div><div class="pp-doc pp-c-sky"><div class="flex items-start gap-3"><span class="pp-doc-ico"><i class="icon-flask-conical"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">Lab Reports</p><p class="text-[11px] text-gray-400 truncate">cbc-jul.pdf · 320KB</p></div></div><div class="flex gap-1.5 mt-3"><button class="pp-icobtn flex-1" data-act="pdf" title="View"><i class="icon-eye text-sm"></i></button><button class="pp-icobtn flex-1" data-act="pdf" title="Download"><i class="icon-download text-sm"></i></button><button class="pp-icobtn flex-1" data-act="print" title="Print"><i class="icon-printer text-sm"></i></button><button class="pp-icobtn flex-1 [color:#e11d48] [border-color:rgba(244,63,94,.3)]" data-act="delete-doc" title="Delete"><i class="icon-trash-2 text-sm"></i></button></div></div><div class="pp-doc pp-c-rose"><div class="flex items-start gap-3"><span class="pp-doc-ico"><i class="icon-pill"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">Prescriptions</p><p class="text-[11px] text-gray-400 truncate">rx-jul.pdf · 210KB</p></div></div><div class="flex gap-1.5 mt-3"><button class="pp-icobtn flex-1" data-act="pdf" title="View"><i class="icon-eye text-sm"></i></button><button class="pp-icobtn flex-1" data-act="pdf" title="Download"><i class="icon-download text-sm"></i></button><button class="pp-icobtn flex-1" data-act="print" title="Print"><i class="icon-printer text-sm"></i></button><button class="pp-icobtn flex-1 [color:#e11d48] [border-color:rgba(244,63,94,.3)]" data-act="delete-doc" title="Delete"><i class="icon-trash-2 text-sm"></i></button></div></div><div class="pp-doc pp-c-violet"><div class="flex items-start gap-3"><span class="pp-doc-ico"><i class="icon-scan"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">Radiology Images</p><p class="text-[11px] text-gray-400 truncate">chest-xray.dcm · 4.1MB</p></div></div><div class="flex gap-1.5 mt-3"><button class="pp-icobtn flex-1" data-act="pdf" title="View"><i class="icon-eye text-sm"></i></button><button class="pp-icobtn flex-1" data-act="pdf" title="Download"><i class="icon-download text-sm"></i></button><button class="pp-icobtn flex-1" data-act="print" title="Print"><i class="icon-printer text-sm"></i></button><button class="pp-icobtn flex-1 [color:#e11d48] [border-color:rgba(244,63,94,.3)]" data-act="delete-doc" title="Delete"><i class="icon-trash-2 text-sm"></i></button></div></div><div class="pp-doc pp-c-amber"><div class="flex items-start gap-3"><span class="pp-doc-ico"><i class="icon-file-text"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white">Referral Letter</p><p class="text-[11px] text-gray-400 truncate">referral.pdf · 96KB</p></div></div><div class="flex gap-1.5 mt-3"><button class="pp-icobtn flex-1" data-act="pdf" title="View"><i class="icon-eye text-sm"></i></button><button class="pp-icobtn flex-1" data-act="pdf" title="Download"><i class="icon-download text-sm"></i></button><button class="pp-icobtn flex-1" data-act="print" title="Print"><i class="icon-printer text-sm"></i></button><button class="pp-icobtn flex-1 [color:#e11d48] [border-color:rgba(244,63,94,.3)]" data-act="delete-doc" title="Delete"><i class="icon-trash-2 text-sm"></i></button></div></div></div>
+                                            </div>
+
+                                            <!-- TIMELINE -->
+                                            <div id="pp-panel-timeline" class="pp-panel hidden" role="tabpanel" aria-labelledby="pp-tab-item-timeline">
+                                                <div class="pp-tl" id="pp-timeline"><div class="pp-tl-item pp-c-primary"><span class="pp-tl-node"><i class="icon-user-plus"></i></span><div class="pp-surface !shadow-none p-3"><div class="flex items-center justify-between gap-2"><p class="text-sm font-bold text-gray-900 dark:text-white">Registration</p><span class="text-[11px] text-gray-400">01 Jul 2026</span></div><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Patient registered · OPD</p></div></div><div class="pp-tl-item pp-c-sky"><span class="pp-tl-node"><i class="icon-stethoscope"></i></span><div class="pp-surface !shadow-none p-3"><div class="flex items-center justify-between gap-2"><p class="text-sm font-bold text-gray-900 dark:text-white">Consultation</p><span class="text-[11px] text-gray-400">02 Jul 2026</span></div><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Initial cardiology consult · Dr. Chen</p></div></div><div class="pp-tl-item pp-c-emerald"><span class="pp-tl-node"><i class="icon-flask-conical"></i></span><div class="pp-surface !shadow-none p-3"><div class="flex items-center justify-between gap-2"><p class="text-sm font-bold text-gray-900 dark:text-white">Lab Tests</p><span class="text-[11px] text-gray-400">05 Jul 2026</span></div><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">CBC, Lipid panel, HbA1c</p></div></div><div class="pp-tl-item pp-c-violet"><span class="pp-tl-node"><i class="icon-scan"></i></span><div class="pp-surface !shadow-none p-3"><div class="flex items-center justify-between gap-2"><p class="text-sm font-bold text-gray-900 dark:text-white">Radiology</p><span class="text-[11px] text-gray-400">08 Jul 2026</span></div><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Chest X-Ray & Cardiac MRI</p></div></div><div class="pp-tl-item pp-c-rose"><span class="pp-tl-node"><i class="icon-activity"></i></span><div class="pp-surface !shadow-none p-3"><div class="flex items-center justify-between gap-2"><p class="text-sm font-bold text-gray-900 dark:text-white">Surgery</p><span class="text-[11px] text-gray-400">10 Jul 2026</span></div><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Coronary angioplasty</p></div></div><div class="pp-tl-item pp-c-amber"><span class="pp-tl-node"><i class="icon-pill"></i></span><div class="pp-surface !shadow-none p-3"><div class="flex items-center justify-between gap-2"><p class="text-sm font-bold text-gray-900 dark:text-white">Medication</p><span class="text-[11px] text-gray-400">11 Jul 2026</span></div><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Post-op therapy started</p></div></div><div class="pp-tl-item pp-c-teal"><span class="pp-tl-node"><i class="icon-calendar-check"></i></span><div class="pp-surface !shadow-none p-3"><div class="flex items-center justify-between gap-2"><p class="text-sm font-bold text-gray-900 dark:text-white">Follow-up</p><span class="text-[11px] text-gray-400">21 Jul 2026</span></div><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Recovery review scheduled</p></div></div><div class="pp-tl-item pp-c-indigo"><span class="pp-tl-node"><i class="icon-log-out"></i></span><div class="pp-surface !shadow-none p-3"><div class="flex items-center justify-between gap-2"><p class="text-sm font-bold text-gray-900 dark:text-white">Discharge</p><span class="text-[11px] text-gray-400">—</span></div><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Pending clearance</p></div></div></div>
+                                            </div>
+
+                                            <!-- NOTES -->
+                                            <div id="pp-panel-notes" class="pp-panel hidden" role="tabpanel" aria-labelledby="pp-tab-item-notes">
+                                                <div class="flex gap-2 mb-4">
+                                                    <input aria-label="Add a clinical note…" id="pp-note-input" class="pp-in" placeholder="Add a clinical note…">
+                                                    <button class="pp-btn pp-btn-primary" id="pp-note-add"><i class="icon-plus"></i>Add</button>
+                                                </div>
+                                                <div class="space-y-2.5" id="pp-notes"><div class="pp-surface !shadow-none p-3 flex gap-3"><span class="pp-doc-ico pp-c-primary [width:2.25rem] [height:2.25rem] [font-size:.9rem]"><i class="icon-sticky-note"></i></span><div class="min-w-0 flex-1"><p class="text-sm text-gray-700 dark:text-gray-200">BP trending down, within target range. Monitor glucose.</p><p class="text-[11px] text-gray-400 mt-1">Nurse Amelia · Yesterday</p></div></div><div class="pp-surface !shadow-none p-3 flex gap-3"><span class="pp-doc-ico pp-c-primary [width:2.25rem] [height:2.25rem] [font-size:.9rem]"><i class="icon-sticky-note"></i></span><div class="min-w-0 flex-1"><p class="text-sm text-gray-700 dark:text-gray-200">Patient responding well to post-op therapy. Continue current medication.</p><p class="text-[11px] text-gray-400 mt-1">Dr. Chen · 2h ago</p></div></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ================= RIGHT SIDEBAR ================= -->
+                                <aside class="space-y-5 xl:sticky xl:top-4">
+                                    <div class="pp-surface overflow-hidden">
+                                        <div class="pp-side-hero">
+                                            <div class="relative flex items-center gap-3">
+                                                <div class="pp-hero-ring shrink-0"><img class="pp-hero-ava w-[3.5rem] h-[3.5rem] radius-override-100" src="assets/img/avatar/avatar-01.jpg" alt="" onerror="this.style.display='none'"></div>
+                                                <div class="min-w-0">
+                                                    <p class="text-base font-extrabold truncate">James Morrison</p>
+                                                    <p class="text-[11px] font-mono text-white/80">PID-004821</p>
+                                                    <span class="pp-hbadge mt-1.5" id="pp-side-status">Admitted</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-4">
+                                            <div class="pp-kv"><span class="k"><i class="icon-stethoscope text-primary"></i>Doctor</span><span class="v">Dr. Chen</span></div>
+                                            <div class="pp-kv"><span class="k"><i class="icon-building-2 text-sky-500"></i>Department</span><span class="v">Cardiology</span></div>
+                                            <div class="pp-kv"><span class="k"><i class="icon-bed text-amber-500"></i>Room / Bed</span><span class="v">204-B</span></div>
+                                            <div class="pp-kv"><span class="k"><i class="icon-shield-check text-emerald-500"></i>Insurance</span><span class="v"><span class="pp-chip pp-c-emerald">Verified</span></span></div>
+                                            <div class="pp-kv"><span class="k"><i class="icon-life-buoy text-rose-500"></i>Emergency</span><span class="v">L. Morrison</span></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="pp-surface pp-c-primary overflow-hidden">
+                                        <div class="p-4 flex items-center gap-3 [background:linear-gradient(135deg,color-mix(in_oklab,var(--color-primary)_14%,transparent),transparent)]">
+                                            <span class="pp-doc-ico"><i class="icon-calendar-clock"></i></span>
+                                            <div><p class="pp-title">Upcoming Appointment</p><p class="text-[11px] text-gray-500 dark:text-gray-400">Next scheduled visit</p></div>
+                                        </div>
+                                        <div class="p-4">
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Cardiology Follow-up</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Mon, 21 Jul 2026 · 10:30 AM · Dr. Chen</p>
+                                            <div class="flex gap-2 mt-3">
+                                                <button class="pp-btn pp-btn-primary flex-1" data-act="schedule"><i class="icon-calendar-plus"></i>Reschedule</button>
+                                                <button class="pp-icobtn" data-act="sms" aria-label="Remind"><i class="icon-bell"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="pp-surface overflow-hidden">
+                                        <div class="pp-head"><span class="ico [--pp-c:var(--color-primary)]"><i class="icon-zap"></i></span><p class="pp-title">Quick Actions</p><button class="ml-auto pp-icobtn" id="pp-open-activity" aria-label="Activity log"><i class="icon-history"></i></button></div>
+                                        <div class="p-3 grid grid-cols-2 gap-2">
+                                            <button class="pp-btn pp-btn-solid" data-act="assign"><i class="icon-stethoscope"></i>Assign</button>
+                                            <button class="pp-btn pp-btn-solid" data-act="transfer"><i class="icon-arrow-left-right"></i>Transfer</button>
+                                            <button class="pp-btn pp-btn-solid" data-act="upload"><i class="icon-upload"></i>Upload</button>
+                                            <button class="pp-btn pp-btn-solid" data-act="print"><i class="icon-printer"></i>Print</button>
+                                            <button class="pp-btn pp-btn-solid" data-act="email"><i class="icon-mail"></i>Email</button>
+                                            <button class="pp-btn pp-btn-solid" data-act="sms"><i class="icon-message-circle"></i>SMS</button>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- ==================== OVERLAYS ====================
+             Each action opens its own static modal (no JS-built content —
+             rule: modal content stays in HTML, only Preline/plain show-hide
+             toggling is done in JS). None persist anywhere without a
+             backend, so Confirm just closes the modal and toasts. -->
+        <div id="pp-edit-modal" class="pp-modal" role="dialog" aria-modal="true" aria-labelledby="pp-edit-title">
+            <div class="pp-modal-back" data-close></div>
+            <div class="pp-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span class="pp-doc-ico"><i class="icon-edit"></i></span>
+                    <div class="min-w-0"><h3 id="pp-edit-title" class="text-lg font-bold text-gray-900 dark:text-white">Edit Patient</h3><p class="text-xs text-gray-500 dark:text-gray-400">Update demographics</p></div>
+                    <button class="pp-icobtn ml-auto" data-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="p-5 space-y-3">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><label class="pp-lbl">First Name</label><input id="e-fn" class="pp-in" value="James"></div>
+                        <div><label class="pp-lbl">Last Name</label><input id="e-ln" class="pp-in" value="Morrison"></div>
+                        <div><label class="pp-lbl">Phone</label><input id="e-ph" class="pp-in" value="+1 555 110 2233"></div>
+                        <div><label class="pp-lbl">Email</label><input id="e-em" class="pp-in" value="morrison@ex.com"></div>
+                    </div>
+                </div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0">
+                    <button class="pp-btn pp-btn-solid" data-close>Cancel</button>
+                    <button id="pp-edit-confirm" class="pp-btn pp-btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pp-assign-modal" class="pp-modal" role="dialog" aria-modal="true" aria-labelledby="pp-assign-title">
+            <div class="pp-modal-back" data-close></div>
+            <div class="pp-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span class="pp-doc-ico"><i class="icon-stethoscope"></i></span>
+                    <div class="min-w-0"><h3 id="pp-assign-title" class="text-lg font-bold text-gray-900 dark:text-white">Assign Doctor</h3></div>
+                    <button class="pp-icobtn ml-auto" data-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="p-5 space-y-3">
+                    <div><label class="pp-lbl">Doctor</label><select id="a-doc" class="pp-in"><option>Dr. Chen</option><option>Dr. Kumar</option><option>Dr. Mills</option><option>Dr. Park</option><option>Dr. Wang</option></select></div>
+                </div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0">
+                    <button class="pp-btn pp-btn-solid" data-close>Cancel</button>
+                    <button id="pp-assign-confirm" class="pp-btn pp-btn-primary">Assign</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pp-transfer-modal" class="pp-modal" role="dialog" aria-modal="true" aria-labelledby="pp-transfer-title">
+            <div class="pp-modal-back" data-close></div>
+            <div class="pp-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span class="pp-doc-ico"><i class="icon-arrow-left-right"></i></span>
+                    <div class="min-w-0"><h3 id="pp-transfer-title" class="text-lg font-bold text-gray-900 dark:text-white">Transfer Patient</h3></div>
+                    <button class="pp-icobtn ml-auto" data-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="p-5 space-y-3">
+                    <div><label class="pp-lbl">To Department</label><select id="t-dept" class="pp-in"><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>ICU</option><option>Oncology</option><option>Emergency</option></select></div>
+                    <div><label class="pp-lbl">Room / Bed</label><input id="t-room" class="pp-in" placeholder=""></div>
+                    <div><label class="pp-lbl">Reason</label><textarea id="t-reason" class="pp-in [resize:vertical]" rows="3"></textarea></div>
+                </div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0">
+                    <button class="pp-btn pp-btn-solid" data-close>Cancel</button>
+                    <button id="pp-transfer-confirm" class="pp-btn pp-btn-primary">Transfer</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pp-schedule-modal" class="pp-modal" role="dialog" aria-modal="true" aria-labelledby="pp-schedule-title">
+            <div class="pp-modal-back" data-close></div>
+            <div class="pp-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span class="pp-doc-ico pp-c-sky"><i class="icon-calendar-plus"></i></span>
+                    <div class="min-w-0"><h3 id="pp-schedule-title" class="text-lg font-bold text-gray-900 dark:text-white">Schedule Appointment</h3></div>
+                    <button class="pp-icobtn ml-auto" data-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="p-5 space-y-3">
+                    <div><label class="pp-lbl">Department</label><select id="s-dept" class="pp-in"><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>ICU</option><option>Oncology</option><option>Emergency</option></select></div>
+                    <div><label class="pp-lbl">Doctor</label><select id="s-doc" class="pp-in"><option>Dr. Chen</option><option>Dr. Kumar</option><option>Dr. Mills</option><option>Dr. Park</option><option>Dr. Wang</option></select></div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><label class="pp-lbl">Date</label><input id="s-date" class="pp-in" placeholder="dd/mm/yyyy"></div>
+                        <div><label class="pp-lbl">Time</label><input id="s-time" class="pp-in" placeholder="10:30 AM"></div>
+                    </div>
+                </div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0">
+                    <button class="pp-btn pp-btn-solid" data-close>Cancel</button>
+                    <button id="pp-schedule-confirm" class="pp-btn pp-btn-primary">Schedule</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pp-upload-modal" class="pp-modal" role="dialog" aria-modal="true" aria-labelledby="pp-upload-title">
+            <div class="pp-modal-back" data-close></div>
+            <div class="pp-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span class="pp-doc-ico pp-c-violet"><i class="icon-upload"></i></span>
+                    <div class="min-w-0"><h3 id="pp-upload-title" class="text-lg font-bold text-gray-900 dark:text-white">Upload Document</h3></div>
+                    <button class="pp-icobtn ml-auto" data-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="p-5 space-y-3">
+                    <div><label class="pp-lbl">Document Type</label><select id="u-type" class="pp-in"><option>ID Proof</option><option>Insurance Card</option><option>Lab Report</option><option>Prescription</option><option>Radiology Image</option><option>Referral Letter</option></select></div>
+                    <div class="[border:2px_dashed_var(--color-border-color)] [border-radius:.9rem] [padding:1.5rem] [text-align:center] [color:var(--color-gray-500)]"><i class="icon-cloud-upload text-2xl"></i><p class="text-sm font-bold mt-1">Drag &amp; drop or click to browse</p><p class="text-[11px]">PDF, JPG, PNG up to 10MB</p></div>
+                </div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0">
+                    <button class="pp-btn pp-btn-solid" data-close>Cancel</button>
+                    <button id="pp-upload-confirm" class="pp-btn pp-btn-primary">Upload</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pp-email-modal" class="pp-modal" role="dialog" aria-modal="true" aria-labelledby="pp-email-title">
+            <div class="pp-modal-back" data-close></div>
+            <div class="pp-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span class="pp-doc-ico pp-c-sky"><i class="icon-mail"></i></span>
+                    <div class="min-w-0"><h3 id="pp-email-title" class="text-lg font-bold text-gray-900 dark:text-white">Send Email</h3><p class="text-xs text-gray-500 dark:text-gray-400">morrison@ex.com</p></div>
+                    <button class="pp-icobtn ml-auto" data-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="p-5 space-y-3">
+                    <div><label class="pp-lbl">Subject</label><input id="em-sub" class="pp-in" placeholder=""></div>
+                    <div><label class="pp-lbl">Message</label><textarea id="em-msg" class="pp-in [resize:vertical]" rows="3"></textarea></div>
+                </div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0">
+                    <button class="pp-btn pp-btn-solid" data-close>Cancel</button>
+                    <button id="pp-email-confirm" class="pp-btn pp-btn-primary">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pp-sms-modal" class="pp-modal" role="dialog" aria-modal="true" aria-labelledby="pp-sms-title">
+            <div class="pp-modal-back" data-close></div>
+            <div class="pp-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span class="pp-doc-ico pp-c-emerald"><i class="icon-message-circle"></i></span>
+                    <div class="min-w-0"><h3 id="pp-sms-title" class="text-lg font-bold text-gray-900 dark:text-white">Send SMS</h3><p class="text-xs text-gray-500 dark:text-gray-400">+1 555 110 2233</p></div>
+                    <button class="pp-icobtn ml-auto" data-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="p-5 space-y-3">
+                    <div><label class="pp-lbl">Message</label><textarea id="sm-msg" class="pp-in [resize:vertical]" rows="3"></textarea></div>
+                </div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0">
+                    <button class="pp-btn pp-btn-solid" data-close>Cancel</button>
+                    <button id="pp-sms-confirm" class="pp-btn pp-btn-primary">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pp-deletedoc-modal" class="pp-modal" role="dialog" aria-modal="true" aria-labelledby="pp-deletedoc-title">
+            <div class="pp-modal-back" data-close></div>
+            <div class="pp-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span class="pp-doc-ico pp-c-rose"><i class="icon-trash-2"></i></span>
+                    <div class="min-w-0"><h3 id="pp-deletedoc-title" class="text-lg font-bold text-gray-900 dark:text-white">Delete Document</h3><p class="text-xs text-gray-500 dark:text-gray-400">This cannot be undone</p></div>
+                    <button class="pp-icobtn ml-auto" data-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="p-5 space-y-3"><p class="text-sm text-gray-600 dark:text-gray-300">Are you sure you want to delete this document?</p></div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0">
+                    <button class="pp-btn pp-btn-solid" data-close>Cancel</button>
+                    <button id="pp-deletedoc-confirm" class="pp-btn pp-btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pp-discharge-modal" class="pp-modal" role="dialog" aria-modal="true" aria-labelledby="pp-discharge-title">
+            <div class="pp-modal-back" data-close></div>
+            <div class="pp-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span class="pp-doc-ico pp-c-rose"><i class="icon-log-out"></i></span>
+                    <div class="min-w-0"><h3 id="pp-discharge-title" class="text-lg font-bold text-gray-900 dark:text-white">Discharge Patient</h3></div>
+                    <button class="pp-icobtn ml-auto" data-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="p-5 space-y-3">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Mark <strong>James Morrison</strong> as <strong>Discharged</strong>?</p>
+                    <div><label class="pp-lbl">Discharge summary</label><textarea id="d-sum" class="pp-in [resize:vertical]" rows="3"></textarea></div>
+                </div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0">
+                    <button class="pp-btn pp-btn-solid" data-close>Cancel</button>
+                    <button id="pp-discharge-confirm" class="pp-btn pp-btn-danger">Discharge</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pp-readmit-modal" class="pp-modal" role="dialog" aria-modal="true" aria-labelledby="pp-readmit-title">
+            <div class="pp-modal-back" data-close></div>
+            <div class="pp-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span class="pp-doc-ico pp-c-emerald"><i class="icon-bed"></i></span>
+                    <div class="min-w-0"><h3 id="pp-readmit-title" class="text-lg font-bold text-gray-900 dark:text-white">Admit Patient</h3></div>
+                    <button class="pp-icobtn ml-auto" data-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="p-5 space-y-3">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Mark <strong>James Morrison</strong> as <strong>Admitted</strong>?</p>
+                    <div><label class="pp-lbl">Ward</label><select id="d-ward" class="pp-in"><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>ICU</option><option>Oncology</option><option>Emergency</option></select></div>
+                </div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0">
+                    <button class="pp-btn pp-btn-solid" data-close>Cancel</button>
+                    <button id="pp-readmit-confirm" class="pp-btn pp-btn-primary">Admit</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pp-activity-drawer" class="pp-drawer" role="dialog" aria-modal="true" aria-label="Activity log">
+            <div class="pp-drawer-back" data-close></div>
+            <div class="pp-drawer-panel">
+                <div class="flex items-center justify-between p-4 border-b border-border-color">
+                    <div class="flex items-center gap-2.5"><span class="pp-doc-ico pp-c-primary"><i class="icon-history"></i></span><div><p class="pp-title">Activity Log</p><p class="text-[11px] text-gray-500 dark:text-gray-400">Recent audit trail</p></div></div>
+                    <button class="pp-icobtn" data-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="flex-1 overflow-y-auto p-4"><div class="pp-tl pp-c-primary" id="pp-activity"><div class="pp-tl-item pp-c-emerald"><span class="pp-tl-node"><i class="icon-activity"></i></span><p class="text-sm font-semibold text-gray-900 dark:text-white">Vitals recorded</p><p class="text-[11px] text-gray-400">2h ago</p></div><div class="pp-tl-item pp-c-primary"><span class="pp-tl-node"><i class="icon-pill"></i></span><p class="text-sm font-semibold text-gray-900 dark:text-white">Prescription updated by Dr. Chen</p><p class="text-[11px] text-gray-400">5h ago</p></div><div class="pp-tl-item pp-c-sky"><span class="pp-tl-node"><i class="icon-flask-conical"></i></span><p class="text-sm font-semibold text-gray-900 dark:text-white">Lab report uploaded</p><p class="text-[11px] text-gray-400">Yesterday</p></div><div class="pp-tl-item pp-c-amber"><span class="pp-tl-node"><i class="icon-bed"></i></span><p class="text-sm font-semibold text-gray-900 dark:text-white">Room changed to 204-B</p><p class="text-[11px] text-gray-400">2 days ago</p></div><div class="pp-tl-item pp-c-rose"><span class="pp-tl-node"><i class="icon-log-in"></i></span><p class="text-sm font-semibold text-gray-900 dark:text-white">Patient admitted</p><p class="text-[11px] text-gray-400">2 days ago</p></div></div></div>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "patient-profile"})
+    </body>
+</html>

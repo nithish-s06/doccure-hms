@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Expiry Batch Details — Dreams HMS"}) @@include('partials/header.html', {"page": "expiry-item-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="expiry-item-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="eid-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Expiry Batch Details", "parentUrl": "expiry-tracking.html", "parent": "Expiry Tracking"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="eid-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="eid-hero-ico"><i class="icon-calendar-clock"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Insulin Glargine</h1>
+                                            <span class="eid-hbadge"><span class="eid-dot"></span>Expired</span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="eid-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i>Batch GLA26A2</span>
+                                            <span class="eid-hmeta"><i class="icon-map-pin text-[13px] text-sky-300"></i>Cold Chain</span>
+                                            <span class="eid-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Expired 05 Jul 2026</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 eid-actions-print-hide">
+                                    <button type="button" class="eid-btn eid-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="expiry-tracking.html" class="eid-btn eid-btn-primary"><i class="icon-arrow-left"></i>Back to Expiry Tracking</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="eid-grid">
+                            <div class="eid-vital eid-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-map-pin"></i></span>
+                                    <span class="eid-chip">Location</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Cold Chain</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Storage Location</p>
+                            </div>
+                            <div class="eid-vital eid-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-package"></i></span>
+                                    <span class="eid-chip">Qty</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">60</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Units on Shelf</p>
+                            </div>
+                            <div class="eid-vital eid-c-rose">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-dollar-sign"></i></span>
+                                    <span class="eid-chip">At Risk</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">$504</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Value at Risk</p>
+                            </div>
+                            <div class="eid-vital eid-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-triangle-alert"></i></span>
+                                    <span class="eid-chip">Window</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">12 days ago</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Expired</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="eid-layout">
+                            <div class="space-y-5">
+
+                                <!-- Batch timeline -->
+                                <div class="eid-surface">
+                                    <div class="eid-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="eid-title">Batch Timeline</h2>
+                                    </div>
+                                    <div class="eid-tl p-5">
+                                        <div class="eid-tl-item done">
+                                            <span class="eid-tl-node"><i class="icon-truck"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Received into Cold Chain</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Batch GLA26A2 stocked at Cold Chain storage</p>
+                                        </div>
+                                        <div class="eid-tl-item done">
+                                            <span class="eid-tl-node"><i class="icon-triangle-alert"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Flagged for Rotation</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Entered the ≤ 30 day watch window</p>
+                                        </div>
+                                        <div class="eid-tl-item current">
+                                            <span class="eid-tl-node"><i class="icon-circle-x"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Expired</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">05 Jul 2026 — pending disposal</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Batch notes -->
+                                <div class="eid-surface">
+                                    <div class="eid-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="eid-title">Batch Notes</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="eid-desc-block">Batch GLA26A2 of Insulin Glargine, held in cold-chain storage, passed its expiry date on 05 Jul 2026 with 60 units remaining on the shelf. Store manager has been notified for disposal via the licensed waste contractor route; awaiting confirmation entry in the destruction register.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 eid-sidebar">
+                                <!-- Location card -->
+                                <div class="eid-surface eid-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Storage Location</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Cold Chain</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Stores Manager: Priya Raman</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="eid-hmeta"><i class="icon-hash text-[12px]"></i>GLA26A2</span>
+                                    </div>
+                                </div>
+
+                                <!-- Batch details -->
+                                <div class="eid-surface p-5">
+                                    <h3 class="eid-title mb-3">Batch Details</h3>
+                                    <div class="eid-kv"><span class="k"><i class="icon-pill text-[13px]"></i>Medicine</span><span class="v">Insulin Glargine</span></div>
+                                    <div class="eid-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Batch No.</span><span class="v">GLA26A2</span></div>
+                                    <div class="eid-kv"><span class="k"><i class="icon-map-pin text-[13px]"></i>Location</span><span class="v">Cold Chain</span></div>
+                                    <div class="eid-kv"><span class="k"><i class="icon-package text-[13px]"></i>Quantity</span><span class="v">60 units</span></div>
+                                    <div class="eid-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Expiry Date</span><span class="v">05 Jul 2026</span></div>
+                                    <div class="eid-kv"><span class="k"><i class="icon-dollar-sign text-[13px]"></i>Value at Risk</span><span class="v">$504</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="eid-surface p-5 space-y-2.5">
+                                    <h3 class="eid-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="eid-btn eid-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="expiry-tracking.html" class="eid-btn eid-btn-solid w-full justify-start"><i class="icon-list"></i>All Expiry Batches</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "expiry-item-detail"})
+    </body>
+</html>

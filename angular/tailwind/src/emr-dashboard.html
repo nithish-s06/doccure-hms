@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"EMR Command Center — Dreams HMS"}) @@include('partials/header.html', {"page": "emr-dashboard"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search patients, MRN, diagnosis..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="em-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="em-skeleton" class="space-y-5">
+                            <div class="em-sk h-[190px] radius-override-150"></div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+                                <div class="em-sk h-[130px]"></div><div class="em-sk h-[130px]"></div><div class="em-sk h-[130px]"></div>
+                                <div class="em-sk h-[130px]"></div><div class="em-sk h-[130px]"></div><div class="em-sk h-[130px]"></div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                                <div class="em-sk h-[170px]"></div><div class="em-sk h-[170px]"></div><div class="em-sk h-[170px]"></div><div class="em-sk h-[170px]"></div>
+                            </div>
+                            <div class="em-sk h-[64px]"></div>
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-5"><div class="em-sk h-[520px]"></div><div class="em-sk h-[520px]"></div></div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="em-content" class="hidden space-y-5">
+
+                            <!-- ---------- HERO ---------- -->
+                            <section class="em-hero">
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                                            <span class="em-chip bg-[rgba(34,197,94,.2)] text-[#86efac]"><i class="ti ti-circle text-[8px]"></i> EMR Online</span>
+                                            <span class="em-chip bg-[rgba(239,68,68,.22)] text-[#fca5a5]"><i class="ti ti-urgent text-xs"></i> 6 Critical Alerts</span>
+                                            <span class="em-chip bg-[rgba(255,255,255,.14)] text-[#e2e8f0]"><i class="ti ti-refresh text-xs"></i> Synced <span id="em-sync">just now</span></span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-3xl font-bold tracking-tight">Electronic Medical Records</h1>
+                                        <p class="text-sm text-slate-300 mt-1 max-w-xl">Unified clinical command center — patient records, admissions, diagnostics, prescriptions and risk monitoring in real time.</p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 max-w-md justify-end">
+                                        <button data-modal="record" class="inline-flex items-center gap-1.5 bg-white text-slate-900 text-sm font-semibold px-3.5 py-2 rounded-lg hover:bg-slate-100 transition"><i class="ti ti-file-plus"></i> New Record</button>
+                                        <button data-modal="note" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="ti ti-notes"></i> Clinical Note</button>
+                                        <button data-modal="rx" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="ti ti-prescription"></i> Prescription</button>
+                                        <button data-modal="upload" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="ti ti-upload"></i> Upload</button>
+                                        <button data-modal="report" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="ti ti-report-medical"></i> Report</button>
+                                        <button data-modal="export" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="ti ti-download"></i> Export EMR</button>
+                                    </div>
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
+                                    <div class="em-hstat"><p class="text-[11px] text-slate-300">Today's Active Patients</p><p class="text-xl font-bold">248</p></div>
+                                    <div class="em-hstat"><p class="text-[11px] text-slate-300">New Admissions</p><p class="text-xl font-bold text-emerald-300">34</p></div>
+                                    <div class="em-hstat"><p class="text-[11px] text-slate-300">Pending Clinical Reviews</p><p class="text-xl font-bold text-amber-300">19</p></div>
+                                    <div class="em-hstat"><p class="text-[11px] text-slate-300">Critical Patients</p><p class="text-xl font-bold text-rose-300">6</p></div>
+                                </div>
+                            </section>
+
+                            <!-- ---------- KPI ---------- -->
+                            <section id="em-kpis" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+      <div class="em-kpi [--k1:#6366f1] [--k2:#818cf8]">
+        <div class="glow"></div>
+        <div class="flex items-start justify-between">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center [background:color-mix(in_srgb,_#6366f1_15%,_transparent)] [color:#6366f1]"><i class="ti ti-folders text-lg"></i></div>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="em-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3.2"/><circle class="bar [--p:88]" cx="18" cy="18" r="15.9" fill="none" stroke="#6366f1" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#6366f1]">88%</span></div>
+        </div>
+        <p class="text-2xl font-bold mt-3 em-count" data-to="12480">0</p>
+        <p class="text-xs em-muted">Total Patient Records</p>
+        <div class="flex items-center justify-between mt-2"><span class="em-b [background:color-mix(in_srgb,_#6366f1_12%,_transparent)] [color:#6366f1]">+124 today</span><svg width="52" height="18" viewBox="0 0 52 18" class="overflow-visible"><polyline points="0,18 8.666666666666666,10.8 17.333333333333332,6 26,3.5999999999999996 34.666666666666664,1.1999999999999993 43.333333333333336,2.3999999999999986 52,0" fill="none" stroke="#6366f1" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="em-kpi [--k1:#0ea5e9] [--k2:#38bdf8]">
+        <div class="glow"></div>
+        <div class="flex items-start justify-between">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center [background:color-mix(in_srgb,_#0ea5e9_15%,_transparent)] [color:#0ea5e9]"><i class="ti ti-bed text-lg"></i></div>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="em-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3.2"/><circle class="bar [--p:82]" cx="18" cy="18" r="15.9" fill="none" stroke="#0ea5e9" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#0ea5e9]">82%</span></div>
+        </div>
+        <p class="text-2xl font-bold mt-3 em-count" data-to="418">0</p>
+        <p class="text-xs em-muted">Active Admissions</p>
+        <div class="flex items-center justify-between mt-2"><span class="em-b [background:color-mix(in_srgb,_#0ea5e9_12%,_transparent)] [color:#0ea5e9]">82% beds</span><svg width="52" height="18" viewBox="0 0 52 18" class="overflow-visible"><polyline points="0,18 8.666666666666666,12.31578947368421 17.333333333333332,8.526315789473685 26,6.157894736842104 34.666666666666664,3.7894736842105257 43.333333333333336,1.4210526315789487 52,0" fill="none" stroke="#0ea5e9" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="em-kpi [--k1:#ef4444] [--k2:#f87171]">
+        <div class="glow"></div>
+        <div class="flex items-start justify-between">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center [background:color-mix(in_srgb,_#ef4444_15%,_transparent)] [color:#ef4444]"><i class="ti ti-urgent text-lg"></i></div>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="em-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3.2"/><circle class="bar [--p:24]" cx="18" cy="18" r="15.9" fill="none" stroke="#ef4444" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#ef4444]">24%</span></div>
+        </div>
+        <p class="text-2xl font-bold mt-3 em-count" data-to="6">0</p>
+        <p class="text-xs em-muted">Critical Patients</p>
+        <div class="flex items-center justify-between mt-2"><span class="em-b [background:color-mix(in_srgb,_#ef4444_12%,_transparent)] [color:#ef4444]">ICU monitored</span><svg width="52" height="18" viewBox="0 0 52 18" class="overflow-visible"><polyline points="0,0 8.666666666666666,6 17.333333333333332,12 26,12 34.666666666666664,18 43.333333333333336,18 52,18" fill="none" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="em-kpi [--k1:#22c55e] [--k2:#4ade80]">
+        <div class="glow"></div>
+        <div class="flex items-start justify-between">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center [background:color-mix(in_srgb,_#22c55e_15%,_transparent)] [color:#22c55e]"><i class="ti ti-stethoscope text-lg"></i></div>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="em-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3.2"/><circle class="bar [--p:74]" cx="18" cy="18" r="15.9" fill="none" stroke="#22c55e" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#22c55e]">74%</span></div>
+        </div>
+        <p class="text-2xl font-bold mt-3 em-count" data-to="1842">0</p>
+        <p class="text-xs em-muted">Completed Consultations</p>
+        <div class="flex items-center justify-between mt-2"><span class="em-b [background:color-mix(in_srgb,_#22c55e_12%,_transparent)] [color:#22c55e]">+8% vs avg</span><svg width="52" height="18" viewBox="0 0 52 18" class="overflow-visible"><polyline points="0,18 8.666666666666666,12.736842105263158 17.333333333333332,8.526315789473685 26,6.421052631578949 34.666666666666664,2.7368421052631575 43.333333333333336,1.1578947368421062 52,0" fill="none" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="em-kpi [--k1:#f59e0b] [--k2:#fbbf24]">
+        <div class="glow"></div>
+        <div class="flex items-start justify-between">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center [background:color-mix(in_srgb,_#f59e0b_15%,_transparent)] [color:#f59e0b]"><i class="ti ti-flask text-lg"></i></div>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="em-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3.2"/><circle class="bar [--p:46]" cx="18" cy="18" r="15.9" fill="none" stroke="#f59e0b" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#f59e0b]">46%</span></div>
+        </div>
+        <p class="text-2xl font-bold mt-3 em-count" data-to="57">0</p>
+        <p class="text-xs em-muted">Pending Lab Results</p>
+        <div class="flex items-center justify-between mt-2"><span class="em-b [background:color-mix(in_srgb,_#f59e0b_12%,_transparent)] [color:#f59e0b]">12 critical</span><svg width="52" height="18" viewBox="0 0 52 18" class="overflow-visible"><polyline points="0,0 8.666666666666666,5.538461538461538 17.333333333333332,9.692307692307692 26,13.846153846153847 34.666666666666664,15.23076923076923 43.333333333333336,16.615384615384617 52,18" fill="none" stroke="#f59e0b" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="em-kpi [--k1:#a855f7] [--k2:#c084fc]">
+        <div class="glow"></div>
+        <div class="flex items-start justify-between">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center [background:color-mix(in_srgb,_#a855f7_15%,_transparent)] [color:#a855f7]"><i class="ti ti-notes text-lg"></i></div>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="em-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3.2"/><circle class="bar [--p:68]" cx="18" cy="18" r="15.9" fill="none" stroke="#a855f7" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#a855f7]">68%</span></div>
+        </div>
+        <p class="text-2xl font-bold mt-3 em-count" data-to="326">0</p>
+        <p class="text-xs em-muted">Today's Clinical Notes</p>
+        <div class="flex items-center justify-between mt-2"><span class="em-b [background:color-mix(in_srgb,_#a855f7_12%,_transparent)] [color:#a855f7]">+42 last hr</span><svg width="52" height="18" viewBox="0 0 52 18" class="overflow-visible"><polyline points="0,18 8.666666666666666,13.813953488372093 17.333333333333332,9.627906976744185 26,5.441860465116278 34.666666666666664,2.9302325581395348 43.333333333333336,1.2558139534883708 52,0" fill="none" stroke="#a855f7" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      </div></section>
+
+                            <!-- ---------- EXECUTIVE DASHBOARD WIDGETS ---------- -->
+                            <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                                <!-- Patient Flow -->
+                                <div class="em-card p-4">
+                                    <div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold">Patient Flow</h3><span class="em-b em-b-info">Today</span></div>
+                                    <svg id="em-flow" viewBox="0 0 260 90" class="w-full h-24"><defs><linearGradient id="gem-flow" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#14b8a6" stop-opacity=".35"/><stop offset="100%" stop-color="#14b8a6" stop-opacity="0"/></linearGradient></defs><polygon points="0,90 0,80 37.14285714285714,56 74.28571428571428,64 111.42857142857142,28 148.57142857142856,40 185.71428571428572,16 222.85714285714283,24 260,0 260,90" fill="url(#gem-flow)"/><polyline points="0,80 37.14285714285714,56 74.28571428571428,64 111.42857142857142,28 148.57142857142856,40 185.71428571428572,16 222.85714285714283,24 260,0" fill="none" stroke="#14b8a6" stroke-width="2" stroke-linecap="round"/></svg>
+                                    <div class="flex justify-between text-[11px] em-muted mt-1"><span>OPD 182</span><span>IPD 66</span><span>ER 41</span></div>
+                                </div>
+                                <!-- Diagnosis Distribution (donut) -->
+                                <div class="em-card p-4">
+                                    <h3 class="text-sm font-bold mb-3">Diagnosis Distribution</h3>
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative w-24 h-24 flex-none"><svg id="em-donut" viewBox="0 0 36 36" class="em-ring w-24 h-24"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3.6"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#ef4444" stroke-width="3.6" stroke-dasharray="28 72" stroke-dashoffset="0" pathLength="100"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#a855f7" stroke-width="3.6" stroke-dasharray="22 78" stroke-dashoffset="-28" pathLength="100"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#0ea5e9" stroke-width="3.6" stroke-dasharray="18 82" stroke-dashoffset="-50" pathLength="100"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#f59e0b" stroke-width="3.6" stroke-dasharray="17 83" stroke-dashoffset="-68" pathLength="100"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#22c55e" stroke-width="3.6" stroke-dasharray="15 85" stroke-dashoffset="-85" pathLength="100"/></svg><div class="absolute inset-0 flex flex-col items-center justify-center"><span class="text-lg font-bold">1.2k</span><span class="text-[9px] em-muted">cases</span></div></div>
+                                        <div id="em-donut-legend" class="flex-1 space-y-1 text-[11px]"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full [background:#ef4444]"></span><span class="flex-1">Cardiac</span><span class="em-muted font-semibold">28%</span></div><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full [background:#a855f7]"></span><span class="flex-1">Neuro</span><span class="em-muted font-semibold">22%</span></div><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full [background:#0ea5e9]"></span><span class="flex-1">Respiratory</span><span class="em-muted font-semibold">18%</span></div><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full [background:#f59e0b]"></span><span class="flex-1">Metabolic</span><span class="em-muted font-semibold">17%</span></div><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full [background:#22c55e]"></span><span class="flex-1">Other</span><span class="em-muted font-semibold">15%</span></div></div>
+                                    </div>
+                                </div>
+                                <!-- Department Performance -->
+                                <div class="em-card p-4">
+                                    <h3 class="text-sm font-bold mb-3">Department Performance</h3>
+                                    <div id="em-deptperf" class="space-y-2.5"><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Cardiology</span><span class="em-muted">92%</span></div><div class="em-barwrap"><span class="[width:92%] [background:#ef4444]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Neurology</span><span class="em-muted">86%</span></div><div class="em-barwrap"><span class="[width:86%] [background:#a855f7]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Oncology</span><span class="em-muted">78%</span></div><div class="em-barwrap"><span class="[width:78%] [background:#0ea5e9]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Pediatrics</span><span class="em-muted">71%</span></div><div class="em-barwrap"><span class="[width:71%] [background:#22c55e]"></span></div></div></div>
+                                </div>
+                                <!-- Bed Occupancy -->
+                                <div class="em-card p-4">
+                                    <div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold">Bed Occupancy</h3><span class="em-b em-b-warn">82%</span></div>
+                                    <div class="relative w-28 h-28 mx-auto"><svg viewBox="0 0 36 36" class="em-ring w-28 h-28"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3"/><circle class="bar [--p:82]" cx="18" cy="18" r="15.9" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" pathLength="100"/></svg><div class="absolute inset-0 flex flex-col items-center justify-center"><span class="text-xl font-bold">418</span><span class="text-[10px] em-muted">/ 510 beds</span></div></div>
+                                </div>
+                                <!-- Clinical Activity -->
+                                <div class="em-card p-4">
+                                    <h3 class="text-sm font-bold mb-3">Clinical Activity</h3>
+                                    <svg id="em-activity-chart" viewBox="0 0 260 80" class="w-full h-20"><defs><linearGradient id="gem-activity-chart" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6366f1" stop-opacity=".35"/><stop offset="100%" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs><polygon points="0,80 0,70 37.14285714285714,45 74.28571428571428,53.333333333333336 111.42857142857142,28.333333333333336 148.57142857142856,36.66666666666667 185.71428571428572,6.666666666666664 222.85714285714283,20 260,0 260,80" fill="url(#gem-activity-chart)"/><polyline points="0,70 37.14285714285714,45 74.28571428571428,53.333333333333336 111.42857142857142,28.333333333333336 148.57142857142856,36.66666666666667 185.71428571428572,6.666666666666664 222.85714285714283,20 260,0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round"/></svg>
+                                    <p class="text-[11px] em-muted mt-1">1,842 clinical events logged today</p>
+                                </div>
+                                <!-- Doctor Workload -->
+                                <div class="em-card p-4">
+                                    <h3 class="text-sm font-bold mb-3">Doctor Workload</h3>
+                                    <div id="em-workload" class="space-y-2.5"><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Dr. Mehta</span><span class="em-muted">88 pts</span></div><div class="em-barwrap"><span class="[width:88%] [background:#6366f1]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Dr. Kapoor</span><span class="em-muted">74 pts</span></div><div class="em-barwrap"><span class="[width:74%] [background:#0ea5e9]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Dr. Nair</span><span class="em-muted">65 pts</span></div><div class="em-barwrap"><span class="[width:65%] [background:#10b981]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Dr. Khan</span><span class="em-muted">58 pts</span></div><div class="em-barwrap"><span class="[width:58%] [background:#f59e0b]"></span></div></div></div>
+                                </div>
+                                <!-- Admission Trend -->
+                                <div class="em-card p-4">
+                                    <div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold">Admission Trend</h3><span class="em-b em-b-ok">+12%</span></div>
+                                    <svg id="em-adm" viewBox="0 0 260 80" class="w-full h-20"><defs><linearGradient id="gem-adm" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0ea5e9" stop-opacity=".35"/><stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/></linearGradient></defs><polygon points="0,80 0,70 37.14285714285714,46.66666666666667 74.28571428571428,54.44444444444444 111.42857142857142,31.111111111111107 148.57142857142856,38.888888888888886 185.71428571428572,15.555555555555557 222.85714285714283,23.333333333333336 260,0 260,80" fill="url(#gem-adm)"/><polyline points="0,70 37.14285714285714,46.66666666666667 74.28571428571428,54.44444444444444 111.42857142857142,31.111111111111107 148.57142857142856,38.888888888888886 185.71428571428572,15.555555555555557 222.85714285714283,23.333333333333336 260,0" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"/></svg>
+                                </div>
+                                <!-- Treatment Progress -->
+                                <div class="em-card p-4">
+                                    <h3 class="text-sm font-bold mb-3">Treatment Progress</h3>
+                                    <div id="em-treat" class="space-y-2.5"><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Recovering</span><span class="em-muted">64%</span></div><div class="em-barwrap"><span class="[width:64%] [background:#22c55e]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Stable</span><span class="em-muted">52%</span></div><div class="em-barwrap"><span class="[width:52%] [background:#0ea5e9]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Under Obs.</span><span class="em-muted">38%</span></div><div class="em-barwrap"><span class="[width:38%] [background:#f59e0b]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Critical</span><span class="em-muted">12%</span></div><div class="em-barwrap"><span class="[width:12%] [background:#ef4444]"></span></div></div></div>
+                                </div>
+                            </section>
+
+                            <!-- ---------- SMART TOOLBAR ---------- -->
+                            <section class="em-surface p-3">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <div class="relative flex-1 min-w-[200px]">
+                                        <i class="ti ti-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                        <input aria-label="Global search: patient, MRN, diagnosis..." id="em-search" class="em-input !pl-9" placeholder="Global search: patient, MRN, diagnosis...">
+                                    </div>
+                                    <select aria-label="All Departments" class="em-input !w-auto" data-filter="dept"><option value="">All Departments</option><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Oncology</option><option>Pediatrics</option><option>Emergency</option><option>Nephrology</option><option>Pulmonology</option></select>
+                                    <select aria-label="Treatment Status" class="em-input !w-auto" data-filter="status"><option value="">Treatment Status</option><option>Admitted</option><option>Under Treatment</option><option>Observation</option><option>Discharged</option></select>
+                                    <select aria-label="Risk" class="em-input !w-auto" data-filter="risk"><option value="">Risk</option><option>High</option><option>Medium</option><option>Low</option></select>
+                                    <select aria-label="Sort" class="em-input !w-auto" data-filter="sort"><option value="">Sort</option><option value="name">Name</option><option value="mrn">MRN</option><option value="risk">Risk</option></select>
+                                    <div class="relative">
+                                        <button class="em-tbtn" data-cols-btn><i class="ti ti-columns"></i> Columns</button>
+                                        <div id="em-colmenu" class="em-menu hidden !fixed"><label class="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer"><input type="checkbox" data-coltoggle="mrn" checked class="accent-[var(--em-c)]"> MRN</label><label class="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer"><input type="checkbox" data-coltoggle="patient" checked class="accent-[var(--em-c)]"> Patient</label><label class="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer"><input type="checkbox" data-coltoggle="doctor" checked class="accent-[var(--em-c)]"> Doctor</label><label class="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer"><input type="checkbox" data-coltoggle="dept" checked class="accent-[var(--em-c)]"> Department</label><label class="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer"><input type="checkbox" data-coltoggle="diag" checked class="accent-[var(--em-c)]"> Diagnosis</label><label class="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer"><input type="checkbox" data-coltoggle="adm" checked class="accent-[var(--em-c)]"> Admission</label><label class="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer"><input type="checkbox" data-coltoggle="status" checked class="accent-[var(--em-c)]"> Status</label><label class="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer"><input type="checkbox" data-coltoggle="critical" checked class="accent-[var(--em-c)]"> Critical</label></div>
+                                    </div>
+                                    <button class="em-tbtn" data-refresh><i class="ti ti-refresh"></i></button>
+                                    <button class="em-tbtn" data-modal="import"><i class="ti ti-upload"></i> Import</button>
+                                    <button class="em-tbtn" data-modal="export"><i class="ti ti-download"></i> Export</button>
+                                    <button class="em-tbtn" data-print><i class="ti ti-printer"></i> Print</button>
+                                    <div class="em-seg ml-auto" id="em-viewtoggle">
+                                        <button data-view="dashboard" class="on"><i class="ti ti-layout-dashboard"></i> Dashboard</button>
+                                        <button data-view="card"><i class="ti ti-layout-grid"></i> Cards</button>
+                                        <button data-view="list"><i class="ti ti-list"></i> List</button>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2 mt-2 text-xs em-muted"><i class="ti ti-filter"></i> <span id="em-count">24</span> records · <button data-clear class="text-[var(--em-c)] font-semibold hover:underline">Clear filters</button></div>
+                            </section>
+
+                            <!-- ==================== WORKSPACE ==================== -->
+
+                            <!-- DASHBOARD VIEW -->
+                            <div class="em-view active" data-viewpanel="dashboard">
+                                <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-5">
+                                    <div class="space-y-5">
+                                        <!-- Critical Cases + summary -->
+                                        <div class="grid sm:grid-cols-2 gap-4" id="em-summary">
+      <div class="em-card p-4 sm:col-span-2">
+        <div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold flex items-center gap-1.5"><i class="ti ti-urgent text-rose-500"></i> Critical Cases</h3><span class="em-b em-b-danger">4 active</span></div>
+        <div class="grid sm:grid-cols-2 gap-2.5">
+          <button data-drawer="0" class="flex items-center gap-2.5 rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition w-full">
+            <span class="em-av [width:38px] [height:38px] [background:#6366f1] [font-size:13.68px]">RS</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold truncate">Rahul Sharma</p><p class="text-[11px] em-muted truncate">Acute MI · Cardiology</p></div>
+            <span class="em-b em-b-danger">High</span></button><button data-drawer="3" class="flex items-center gap-2.5 rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition w-full">
+            <span class="em-av [width:38px] [height:38px] [background:#f59e0b] [font-size:13.68px]">PV</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold truncate">Priya Verma</p><p class="text-[11px] em-muted truncate">Type 2 Diabetes · Endocrinology</p></div>
+            <span class="em-b em-b-danger">High</span></button><button data-drawer="6" class="flex items-center gap-2.5 rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition w-full">
+            <span class="em-av [width:38px] [height:38px] [background:#ec4899] [font-size:13.68px]">AJ</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold truncate">Arjun Joshi</p><p class="text-[11px] em-muted truncate">CKD Stage 3 · Nephrology</p></div>
+            <span class="em-b em-b-danger">High</span></button><button data-drawer="9" class="flex items-center gap-2.5 rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition w-full">
+            <span class="em-av [width:38px] [height:38px] [background:#0ea5e9] [font-size:13.68px]">ND</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold truncate">Neha Das</p><p class="text-[11px] em-muted truncate">Appendicitis · General Surgery</p></div>
+            <span class="em-b em-b-danger">High</span></button>
+        </div>
+      </div></div>
+
+                                        <!-- Recent Admissions + Pending Reviews -->
+                                        <div class="grid md:grid-cols-2 gap-4">
+                                            <div class="em-card p-4"><div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold">Recent Admissions</h3><i class="ti ti-bed text-[var(--em-c)]"></i></div><div id="em-recent" class="space-y-2.5"><button data-drawer="0" class="flex items-center gap-2.5 w-full text-left hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg p-1.5 transition"><span class="em-av [width:32px] [height:32px] [background:#6366f1] [font-size:11.52px]">RS</span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Rahul Sharma</p><p class="text-[11px] em-muted">MRN-10400 · Cardiology</p></div><span class="text-[11px] em-muted">Jul 1, 2026</span></button><button data-drawer="1" class="flex items-center gap-2.5 w-full text-left hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg p-1.5 transition"><span class="em-av [width:32px] [height:32px] [background:#0ea5e9] [font-size:11.52px]">AP</span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Anita Patel</p><p class="text-[11px] em-muted">MRN-10401 · Neurology</p></div><span class="text-[11px] em-muted">Jul 2, 2026</span></button><button data-drawer="2" class="flex items-center gap-2.5 w-full text-left hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg p-1.5 transition"><span class="em-av [width:32px] [height:32px] [background:#10b981] [font-size:11.52px]">VM</span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Vikram Menon</p><p class="text-[11px] em-muted">MRN-10402 · Pulmonology</p></div><span class="text-[11px] em-muted">Jul 3, 2026</span></button><button data-drawer="3" class="flex items-center gap-2.5 w-full text-left hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg p-1.5 transition"><span class="em-av [width:32px] [height:32px] [background:#f59e0b] [font-size:11.52px]">PV</span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Priya Verma</p><p class="text-[11px] em-muted">MRN-10403 · Endocrinology</p></div><span class="text-[11px] em-muted">Jul 4, 2026</span></button><button data-drawer="4" class="flex items-center gap-2.5 w-full text-left hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg p-1.5 transition"><span class="em-av [width:32px] [height:32px] [background:#ef4444] [font-size:11.52px]">SN</span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Suresh Nair</p><p class="text-[11px] em-muted">MRN-10404 · Orthopedics</p></div><span class="text-[11px] em-muted">Jul 5, 2026</span></button></div></div>
+                                            <div class="em-card p-4"><div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold">Pending Clinical Reviews</h3><span class="em-b em-b-warn">19</span></div><div id="em-reviews" class="space-y-2.5"><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-950/50 text-amber-600 flex items-center justify-center"><i class="ti ti-clipboard-text"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Meera Singh</p><p class="text-[11px] em-muted">Dr. M. Iyer</p></div><button data-drawer="5" class="text-[11px] font-semibold text-[var(--em-c)] hover:underline">Review</button></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-950/50 text-amber-600 flex items-center justify-center"><i class="ti ti-clipboard-text"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Arjun Joshi</p><p class="text-[11px] em-muted">Dr. A. Mehta</p></div><button data-drawer="6" class="text-[11px] font-semibold text-[var(--em-c)] hover:underline">Review</button></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-950/50 text-amber-600 flex items-center justify-center"><i class="ti ti-clipboard-text"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Kavya Reddy</p><p class="text-[11px] em-muted">Dr. S. Kapoor</p></div><button data-drawer="7" class="text-[11px] font-semibold text-[var(--em-c)] hover:underline">Review</button></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-950/50 text-amber-600 flex items-center justify-center"><i class="ti ti-clipboard-text"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Deepak Gupta</p><p class="text-[11px] em-muted">Dr. R. Nair</p></div><button data-drawer="8" class="text-[11px] font-semibold text-[var(--em-c)] hover:underline">Review</button></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-950/50 text-amber-600 flex items-center justify-center"><i class="ti ti-clipboard-text"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Neha Das</p><p class="text-[11px] em-muted">Dr. L. Khan</p></div><button data-drawer="9" class="text-[11px] font-semibold text-[var(--em-c)] hover:underline">Review</button></div></div></div>
+                                        </div>
+
+                                        <!-- Lab + Radiology -->
+                                        <div class="grid md:grid-cols-2 gap-4">
+                                            <div class="em-card p-4"><h3 class="text-sm font-bold mb-3">Laboratory Overview</h3><div id="em-lab" class="grid grid-cols-2 gap-2.5"><div class="rounded-xl border em-hairline p-2.5"><div class="flex items-center gap-1.5 text-[11px] em-muted"><i class="ti ti-clock [color:#f59e0b]"></i> Pending</div><p class="text-lg font-bold mt-0.5">57</p></div><div class="rounded-xl border em-hairline p-2.5"><div class="flex items-center gap-1.5 text-[11px] em-muted"><i class="ti ti-check [color:#22c55e]"></i> Completed</div><p class="text-lg font-bold mt-0.5">284</p></div><div class="rounded-xl border em-hairline p-2.5"><div class="flex items-center gap-1.5 text-[11px] em-muted"><i class="ti ti-alert-triangle [color:#ef4444]"></i> Critical</div><p class="text-lg font-bold mt-0.5">12</p></div><div class="rounded-xl border em-hairline p-2.5"><div class="flex items-center gap-1.5 text-[11px] em-muted"><i class="ti ti-timeline [color:#0ea5e9]"></i> Avg TAT</div><p class="text-lg font-bold mt-0.5">2.4h</p></div></div></div>
+                                            <div class="em-card p-4"><h3 class="text-sm font-bold mb-3">Radiology Overview</h3><div id="em-radio" class="space-y-2"><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-slate-800 flex items-center justify-center"><i class="ti ti-radioactive [color:#22c55e]"></i></span><div class="flex-1"><p class="text-sm font-medium">X-Ray</p></div><span class="em-b [background:color-mix(in_srgb,_#22c55e_14%,_transparent)] [color:#22c55e]">Completed</span></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-slate-800 flex items-center justify-center"><i class="ti ti-radioactive [color:#f59e0b]"></i></span><div class="flex-1"><p class="text-sm font-medium">CT Scan</p></div><span class="em-b [background:color-mix(in_srgb,_#f59e0b_14%,_transparent)] [color:#f59e0b]">In Progress</span></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-slate-800 flex items-center justify-center"><i class="ti ti-radioactive [color:#0ea5e9]"></i></span><div class="flex-1"><p class="text-sm font-medium">MRI</p></div><span class="em-b [background:color-mix(in_srgb,_#0ea5e9_14%,_transparent)] [color:#0ea5e9]">Scheduled</span></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-slate-800 flex items-center justify-center"><i class="ti ti-radioactive [color:#22c55e]"></i></span><div class="flex-1"><p class="text-sm font-medium">Ultrasound</p></div><span class="em-b [background:color-mix(in_srgb,_#22c55e_14%,_transparent)] [color:#22c55e]">Reported</span></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-slate-800 flex items-center justify-center"><i class="ti ti-radioactive [color:#a855f7]"></i></span><div class="flex-1"><p class="text-sm font-medium">PET Scan</p></div><span class="em-b [background:color-mix(in_srgb,_#a855f7_14%,_transparent)] [color:#a855f7]">Pending</span></div></div></div>
+                                        </div>
+
+                                        <!-- Medication + Doctors -->
+                                        <div class="grid md:grid-cols-2 gap-4">
+                                            <div class="em-card p-4"><div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold">Medication Center</h3><i class="ti ti-pill text-[var(--em-c)]"></i></div><div id="em-meds" class="space-y-2.5"><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#6366f1_14%,_transparent)] [color:#6366f1]"><i class="ti ti-prescription"></i></span><div class="flex-1"><p class="text-sm font-medium">Active Prescriptions</p></div><span class="text-sm font-bold">842</span></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#22c55e_14%,_transparent)] [color:#22c55e]"><i class="ti ti-calendar-time"></i></span><div class="flex-1"><p class="text-sm font-medium">Medication Schedule</p></div><span class="text-sm font-bold">On track</span></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#f59e0b_14%,_transparent)] [color:#f59e0b]"><i class="ti ti-refresh-alert"></i></span><div class="flex-1"><p class="text-sm font-medium">Refill Needed</p></div><span class="text-sm font-bold">23</span></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#ef4444_14%,_transparent)] [color:#ef4444]"><i class="ti ti-alarm"></i></span><div class="flex-1"><p class="text-sm font-medium">Expiring Soon</p></div><span class="text-sm font-bold">9</span></div><div class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#a855f7_14%,_transparent)] [color:#a855f7]"><i class="ti ti-alert-hexagon"></i></span><div class="flex-1"><p class="text-sm font-medium">Drug Allergies</p></div><span class="text-sm font-bold">flagged</span></div></div></div>
+                                            <div class="em-card p-4"><h3 class="text-sm font-bold mb-3">Doctor Workspace</h3><div id="em-docs" class="space-y-2.5"><div class="flex items-center gap-2.5"><span class="em-av [width:34px] [height:34px] [background:#6366f1] [font-size:12px]">AM</span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Dr. A. Mehta</p><p class="text-[11px] em-muted">Cardiology · 18 pts today</p></div><div class="text-right"><span class="em-b em-b-warn"><i class="ti ti-star text-[9px]"></i> 4.9</span><p class="text-[10px] mt-0.5 [color:#22c55e]">Available</p></div></div><div class="flex items-center gap-2.5"><span class="em-av [width:34px] [height:34px] [background:#0ea5e9] [font-size:12px]">SK</span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Dr. S. Kapoor</p><p class="text-[11px] em-muted">Neurology · 14 pts today</p></div><div class="text-right"><span class="em-b em-b-warn"><i class="ti ti-star text-[9px]"></i> 4.7</span><p class="text-[10px] mt-0.5 [color:#f59e0b]">In Surgery</p></div></div><div class="flex items-center gap-2.5"><span class="em-av [width:34px] [height:34px] [background:#10b981] [font-size:12px]">RN</span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Dr. R. Nair</p><p class="text-[11px] em-muted">Orthopedics · 11 pts today</p></div><div class="text-right"><span class="em-b em-b-warn"><i class="ti ti-star text-[9px]"></i> 4.8</span><p class="text-[10px] mt-0.5 [color:#22c55e]">Available</p></div></div><div class="flex items-center gap-2.5"><span class="em-av [width:34px] [height:34px] [background:#f59e0b] [font-size:12px]">LK</span><div class="min-w-0 flex-1"><p class="text-sm font-medium truncate">Dr. L. Khan</p><p class="text-[11px] em-muted">Oncology · 9 pts today</p></div><div class="text-right"><span class="em-b em-b-warn"><i class="ti ti-star text-[9px]"></i> 4.6</span><p class="text-[10px] mt-0.5 [color:#f59e0b]">On Round</p></div></div></div></div>
+                                        </div>
+
+                                        <!-- Clinical Notes Center -->
+                                        <div class="em-card p-4">
+                                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                                <h3 class="text-sm font-bold">Clinical Notes Center</h3>
+                                                <div class="relative"><i class="ti ti-search absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i><input aria-label="Search notes..." id="em-notesearch" class="em-input !py-1.5 !pl-8 !w-48 text-xs" placeholder="Search notes..."></div>
+                                            </div>
+                                            <div class="flex flex-wrap gap-1.5 mb-3" id="em-notetabs">
+                                                <button class="em-tabbtn on" data-notetab="All">All</button><button class="em-tabbtn" data-notetab="SOAP">SOAP</button><button class="em-tabbtn" data-notetab="Progress">Progress</button><button class="em-tabbtn" data-notetab="Nursing">Nursing</button><button class="em-tabbtn" data-notetab="Follow-up">Follow-up</button><button class="em-tabbtn" data-notetab="Surgical">Surgical</button>
+                                            </div>
+                                            <div id="em-notes" class="grid sm:grid-cols-2 gap-3">
+      <div class="rounded-xl border em-hairline p-3 hover:shadow-md transition">
+        <div class="flex items-center justify-between mb-1.5"><span class="em-b em-b-info">SOAP</span><div class="flex items-center gap-1"><button data-notepin="0" class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-pin text-[var(--em-c)] text-sm"></i></button><button class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-star em-muted text-sm"></i></button></div></div>
+        <p class="text-sm font-semibold">Rahul Sharma</p><p class="text-[11px] em-muted mb-1.5">Dr. Mehta · 10m ago</p>
+        <p class="text-xs em-muted line-clamp-2">S: Chest pain radiating to left arm. O: BP 148/92, ECG ST-elevation. A: Acute MI. P: Aspirin, cath lab.</p>
+      </div>
+      <div class="rounded-xl border em-hairline p-3 hover:shadow-md transition">
+        <div class="flex items-center justify-between mb-1.5"><span class="em-b em-b-info">Progress</span><div class="flex items-center gap-1"><button data-notepin="1" class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-pin em-muted text-sm"></i></button><button class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-star em-muted text-sm"></i></button></div></div>
+        <p class="text-sm font-semibold">Anita Reddy</p><p class="text-[11px] em-muted mb-1.5">Dr. Kapoor · 32m ago</p>
+        <p class="text-xs em-muted line-clamp-2">Neuro status improving, GCS 14. Continue thrombolytics protocol, monitor hourly.</p>
+      </div>
+      <div class="rounded-xl border em-hairline p-3 hover:shadow-md transition">
+        <div class="flex items-center justify-between mb-1.5"><span class="em-b em-b-info">Nursing</span><div class="flex items-center gap-1"><button data-notepin="2" class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-pin em-muted text-sm"></i></button><button class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-star em-muted text-sm"></i></button></div></div>
+        <p class="text-sm font-semibold">Vikram Nair</p><p class="text-[11px] em-muted mb-1.5">Nurse J. · 1h ago</p>
+        <p class="text-xs em-muted line-clamp-2">Vitals stable. Pain 3/10. Dressing changed. IV fluids running at 80ml/hr.</p>
+      </div>
+      <div class="rounded-xl border em-hairline p-3 hover:shadow-md transition">
+        <div class="flex items-center justify-between mb-1.5"><span class="em-b em-b-info">Surgical</span><div class="flex items-center gap-1"><button data-notepin="3" class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-pin text-[var(--em-c)] text-sm"></i></button><button class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-star em-muted text-sm"></i></button></div></div>
+        <p class="text-sm font-semibold">Priya Patel</p><p class="text-[11px] em-muted mb-1.5">Dr. Nair · 2h ago</p>
+        <p class="text-xs em-muted line-clamp-2">ORIF femur completed. Blood loss 250ml. Hemodynamically stable post-op.</p>
+      </div>
+      <div class="rounded-xl border em-hairline p-3 hover:shadow-md transition">
+        <div class="flex items-center justify-between mb-1.5"><span class="em-b em-b-info">Follow-up</span><div class="flex items-center gap-1"><button data-notepin="4" class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-pin em-muted text-sm"></i></button><button class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-star em-muted text-sm"></i></button></div></div>
+        <p class="text-sm font-semibold">Suresh Gupta</p><p class="text-[11px] em-muted mb-1.5">Dr. Khan · 3h ago</p>
+        <p class="text-xs em-muted line-clamp-2">Chemo cycle 3 tolerated well. Next review in 2 weeks. CBC ordered.</p>
+      </div>
+      <div class="rounded-xl border em-hairline p-3 hover:shadow-md transition">
+        <div class="flex items-center justify-between mb-1.5"><span class="em-b em-b-info">Progress</span><div class="flex items-center gap-1"><button data-notepin="5" class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-pin em-muted text-sm"></i></button><button class="w-6 h-6 rounded hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-star em-muted text-sm"></i></button></div></div>
+        <p class="text-sm font-semibold">Meera Singh</p><p class="text-[11px] em-muted mb-1.5">Dr. Rao · 4h ago</p>
+        <p class="text-xs em-muted line-clamp-2">Respiratory rate normalized. Weaning off oxygen. Ambulating with assistance.</p>
+      </div></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- RIGHT RAIL -->
+                                    <div class="space-y-5">
+                                        <!-- Medical Alerts Center -->
+                                        <div class="em-card p-4">
+                                            <div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold">Medical Alerts Center</h3><span class="em-b em-b-danger">Live</span></div>
+                                            <div id="em-alerts" class="grid grid-cols-2 gap-2.5"><div class="rounded-xl border em-hairline p-2.5 flex items-center gap-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#ef4444_14%,_transparent)] [color:#ef4444]"><i class="ti ti-urgent"></i></span><div><p class="text-lg font-bold leading-none">6</p><p class="text-[10px] em-muted">Critical Patients</p></div></div><div class="rounded-xl border em-hairline p-2.5 flex items-center gap-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#f59e0b_14%,_transparent)] [color:#f59e0b]"><i class="ti ti-pill"></i></span><div><p class="text-lg font-bold leading-none">14</p><p class="text-[10px] em-muted">Medication</p></div></div><div class="rounded-xl border em-hairline p-2.5 flex items-center gap-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#a855f7_14%,_transparent)] [color:#a855f7]"><i class="ti ti-alert-hexagon"></i></span><div><p class="text-lg font-bold leading-none">8</p><p class="text-[10px] em-muted">Allergy</p></div></div><div class="rounded-xl border em-hairline p-2.5 flex items-center gap-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#0ea5e9_14%,_transparent)] [color:#0ea5e9]"><i class="ti ti-flask"></i></span><div><p class="text-lg font-bold leading-none">12</p><p class="text-[10px] em-muted">Lab Alerts</p></div></div><div class="rounded-xl border em-hairline p-2.5 flex items-center gap-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#dc2626_14%,_transparent)] [color:#dc2626]"><i class="ti ti-ambulance"></i></span><div><p class="text-lg font-bold leading-none">3</p><p class="text-[10px] em-muted">Emergency</p></div></div><div class="rounded-xl border em-hairline p-2.5 flex items-center gap-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#14b8a6_14%,_transparent)] [color:#14b8a6]"><i class="ti ti-virus"></i></span><div><p class="text-lg font-bold leading-none">5</p><p class="text-[10px] em-muted">Infection</p></div></div></div>
+                                        </div>
+                                        <!-- Patient Risk Center -->
+                                        <div class="em-card p-4">
+                                            <h3 class="text-sm font-bold mb-3">Patient Risk Center</h3>
+                                            <div id="em-risk" class="space-y-2.5"><div><div class="flex justify-between text-xs mb-1"><span class="font-medium flex items-center gap-1.5"><span class="w-2 h-2 rounded-full [background:#ef4444]"></span>High Risk</span><span class="em-muted">6</span></div><div class="em-barwrap"><span class="[width:2%] [background:#ef4444]"></span></div></div><div><div class="flex justify-between text-xs mb-1"><span class="font-medium flex items-center gap-1.5"><span class="w-2 h-2 rounded-full [background:#f59e0b]"></span>Medium Risk</span><span class="em-muted">38</span></div><div class="em-barwrap"><span class="[width:15%] [background:#f59e0b]"></span></div></div><div><div class="flex justify-between text-xs mb-1"><span class="font-medium flex items-center gap-1.5"><span class="w-2 h-2 rounded-full [background:#22c55e]"></span>Low Risk</span><span class="em-muted">204</span></div><div class="em-barwrap"><span class="[width:82%] [background:#22c55e]"></span></div></div><div class="grid grid-cols-3 gap-2 pt-1"><div class="rounded-lg border em-hairline p-2 text-center"><p class="text-sm font-bold [color:#14b8a6]">5</p><p class="text-[10px] em-muted">Infection</p></div><div class="rounded-lg border em-hairline p-2 text-center"><p class="text-sm font-bold [color:#a855f7]">8</p><p class="text-[10px] em-muted">Allergy</p></div><div class="rounded-lg border em-hairline p-2 text-center"><p class="text-sm font-bold [color:#ef4444]">4</p><p class="text-[10px] em-muted">Drug Int.</p></div></div></div>
+                                        </div>
+                                        <!-- Clinical Timeline -->
+                                        <div class="em-card p-4">
+                                            <div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold">Clinical Timeline</h3><span class="em-b em-b-info">MRN-10428</span></div>
+                                            <div id="em-timeline" class="em-tl"><div class="em-tl-item [--tc:#6366f1]">
+        <div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold flex items-center gap-1.5"><i class="ti ti-user-plus [color:#6366f1]"></i> Registration <span class="em-b em-b-ok">Done</span></p><p class="text-[11px] em-muted mt-0.5">Patient registered · MRN-10428</p><p class="text-[10px] em-muted">Reg Desk</p></div><span class="text-[11px] em-muted whitespace-nowrap">08:02 AM</span></div></div><div class="em-tl-item [--tc:#0ea5e9]">
+        <div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold flex items-center gap-1.5"><i class="ti ti-bed [color:#0ea5e9]"></i> Admission <span class="em-b em-b-ok">Done</span></p><p class="text-[11px] em-muted mt-0.5">Admitted to Cardiology ICU</p><p class="text-[10px] em-muted">Dr. Mehta</p></div><span class="text-[11px] em-muted whitespace-nowrap">08:20 AM</span></div></div><div class="em-tl-item [--tc:#ef4444]">
+        <div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold flex items-center gap-1.5"><i class="ti ti-heartbeat [color:#ef4444]"></i> Vital Signs <span class="em-b em-b-ok">Done</span></p><p class="text-[11px] em-muted mt-0.5">BP 148/92, HR 104, SpO2 94%</p><p class="text-[10px] em-muted">Nurse J.</p></div><span class="text-[11px] em-muted whitespace-nowrap">08:35 AM</span></div></div><div class="em-tl-item [--tc:#22c55e]">
+        <div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold flex items-center gap-1.5"><i class="ti ti-stethoscope [color:#22c55e]"></i> Consultation <span class="em-b em-b-ok">Done</span></p><p class="text-[11px] em-muted mt-0.5">Cardiac evaluation completed</p><p class="text-[10px] em-muted">Dr. Mehta</p></div><span class="text-[11px] em-muted whitespace-nowrap">09:10 AM</span></div></div><div class="em-tl-item [--tc:#a855f7]">
+        <div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold flex items-center gap-1.5"><i class="ti ti-clipboard-check [color:#a855f7]"></i> Diagnosis <span class="em-b em-b-ok">Done</span></p><p class="text-[11px] em-muted mt-0.5">Acute Myocardial Infarction</p><p class="text-[10px] em-muted">Dr. Mehta</p></div><span class="text-[11px] em-muted whitespace-nowrap">09:25 AM</span></div></div><div class="em-tl-item [--tc:#f59e0b]">
+        <div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold flex items-center gap-1.5"><i class="ti ti-flask [color:#f59e0b]"></i> Lab Ordered <span class="em-b em-b-warn">Active</span></p><p class="text-[11px] em-muted mt-0.5">Troponin, CBC, Lipid panel</p><p class="text-[10px] em-muted">Dr. Mehta</p></div><span class="text-[11px] em-muted whitespace-nowrap">09:40 AM</span></div></div><div class="em-tl-item [--tc:#0ea5e9]">
+        <div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold flex items-center gap-1.5"><i class="ti ti-radioactive [color:#0ea5e9]"></i> Radiology <span class="em-b em-b-warn">Active</span></p><p class="text-[11px] em-muted mt-0.5">Chest X-Ray requested</p><p class="text-[10px] em-muted">Dr. Kapoor</p></div><span class="text-[11px] em-muted whitespace-nowrap">10:05 AM</span></div></div><div class="em-tl-item [--tc:#94a3b8]">
+        <div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold flex items-center gap-1.5"><i class="ti ti-prescription [color:#94a3b8]"></i> Prescription <span class="em-b [background:color-mix(in_srgb,_#94a3b8_14%,_transparent)] [color:#94a3b8]">Pending</span></p><p class="text-[11px] em-muted mt-0.5">Awaiting cath lab</p><p class="text-[10px] em-muted">Pending</p></div><span class="text-[11px] em-muted whitespace-nowrap">—</span></div></div><div class="em-tl-item [--tc:#94a3b8]">
+        <div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold flex items-center gap-1.5"><i class="ti icon-scissors [color:#94a3b8]"></i> Surgery <span class="em-b [background:color-mix(in_srgb,_#94a3b8_14%,_transparent)] [color:#94a3b8]">Pending</span></p><p class="text-[11px] em-muted mt-0.5">Angioplasty 02:00 PM</p><p class="text-[10px] em-muted">Scheduled</p></div><span class="text-[11px] em-muted whitespace-nowrap">—</span></div></div><div class="em-tl-item [--tc:#94a3b8]">
+        <div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold flex items-center gap-1.5"><i class="ti ti-calendar [color:#94a3b8]"></i> Follow-up <span class="em-b [background:color-mix(in_srgb,_#94a3b8_14%,_transparent)] [color:#94a3b8]">Pending</span></p><p class="text-[11px] em-muted mt-0.5">Post-op review</p><p class="text-[10px] em-muted">—</p></div><span class="text-[11px] em-muted whitespace-nowrap">—</span></div></div><div class="em-tl-item [--tc:#94a3b8]">
+        <div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold flex items-center gap-1.5"><i class="ti ti-logout [color:#94a3b8]"></i> Discharge <span class="em-b [background:color-mix(in_srgb,_#94a3b8_14%,_transparent)] [color:#94a3b8]">Pending</span></p><p class="text-[11px] em-muted mt-0.5">Estimated Jul 22</p><p class="text-[10px] em-muted">—</p></div><span class="text-[11px] em-muted whitespace-nowrap">—</span></div></div></div>
+                                        </div>
+                                        <!-- Document Center -->
+                                        <div class="em-card p-4">
+                                            <h3 class="text-sm font-bold mb-3">Document Center</h3>
+                                            <div id="em-docs-center" class="grid grid-cols-2 gap-2.5"><button data-modal="upload" class="rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#6366f1_14%,_transparent)] [color:#6366f1]"><i class="ti ti-prescription"></i></span><p class="text-sm font-semibold mt-1.5">124</p><p class="text-[10px] em-muted">Prescriptions</p></button><button data-modal="upload" class="rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#0ea5e9_14%,_transparent)] [color:#0ea5e9]"><i class="ti ti-flask"></i></span><p class="text-sm font-semibold mt-1.5">286</p><p class="text-[10px] em-muted">Lab Reports</p></button><button data-modal="upload" class="rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#a855f7_14%,_transparent)] [color:#a855f7]"><i class="ti ti-radioactive"></i></span><p class="text-sm font-semibold mt-1.5">92</p><p class="text-[10px] em-muted">Radiology</p></button><button data-modal="upload" class="rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#22c55e_14%,_transparent)] [color:#22c55e]"><i class="ti ti-shield"></i></span><p class="text-sm font-semibold mt-1.5">58</p><p class="text-[10px] em-muted">Insurance</p></button><button data-modal="upload" class="rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#f59e0b_14%,_transparent)] [color:#f59e0b]"><i class="ti ti-file-check"></i></span><p class="text-sm font-semibold mt-1.5">41</p><p class="text-[10px] em-muted">Consent Forms</p></button><button data-modal="upload" class="rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#ec4899_14%,_transparent)] [color:#ec4899]"><i class="ti ti-notes"></i></span><p class="text-sm font-semibold mt-1.5">326</p><p class="text-[10px] em-muted">Clinical Notes</p></button><button data-modal="upload" class="rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#14b8a6_14%,_transparent)] [color:#14b8a6]"><i class="ti ti-send"></i></span><p class="text-sm font-semibold mt-1.5">18</p><p class="text-[10px] em-muted">Referrals</p></button><button data-modal="upload" class="rounded-xl border em-hairline p-2.5 text-left hover:shadow-md transition"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#ef4444_14%,_transparent)] [color:#ef4444]"><i class="ti ti-logout"></i></span><p class="text-sm font-semibold mt-1.5">73</p><p class="text-[10px] em-muted">Discharge</p></button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CARD VIEW -->
+                            <div class="em-view" data-viewpanel="card">
+                                <div id="em-cards" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="em-pcard" data-row-id="0">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#6366f1_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="0"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#6366f1] [font-size:16.56px]">RS</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Rahul Sharma</p><p class="text-[11px] em-muted">MRN-10400 · 18y · Male · O+</p></div>
+                <div class="relative"><button data-menu="0" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Acute MI</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. A. Mehta</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Cardiology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Penicillin</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#ef4444_15%,_transparent)] [color:#ef4444]"><i class="ti ti-activity-heartbeat text-[9px]"></i> High Risk</span>
+                <span class="em-b em-b-info">Admitted</span>
+                <span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Critical</span>
+                <span class="text-[10px] em-muted ml-auto">Updated 1h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="0" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="1">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#0ea5e9_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="1"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#0ea5e9] [font-size:16.56px]">AP</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Anita Patel</p><p class="text-[11px] em-muted">MRN-10401 · 25y · Female · A+</p></div>
+                <div class="relative"><button data-menu="1" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Ischemic Stroke</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. S. Kapoor</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Neurology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Sulfa, Latex</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#f59e0b_15%,_transparent)] [color:#f59e0b]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Medium Risk</span>
+                <span class="em-b em-b-warn">Under Treatment</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 2h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="1" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="2">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#10b981_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="2"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#10b981] [font-size:16.56px]">VM</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Vikram Menon</p><p class="text-[11px] em-muted">MRN-10402 · 32y · Male · B+</p></div>
+                <div class="relative"><button data-menu="2" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Pneumonia</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. R. Nair</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Pulmonology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">None</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#22c55e_15%,_transparent)] [color:#22c55e]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Low Risk</span>
+                <span class="em-b em-b-info">Observation</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 3h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="2" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="3">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#f59e0b_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="3"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#f59e0b] [font-size:16.56px]">PV</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Priya Verma</p><p class="text-[11px] em-muted">MRN-10403 · 39y · Female · AB+</p></div>
+                <div class="relative"><button data-menu="3" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Type 2 Diabetes</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. L. Khan</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Endocrinology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Peanuts</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#ef4444_15%,_transparent)] [color:#ef4444]"><i class="ti ti-activity-heartbeat text-[9px]"></i> High Risk</span>
+                <span class="em-b em-b-ok">Discharged</span>
+                <span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Critical</span>
+                <span class="text-[10px] em-muted ml-auto">Updated 4h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="3" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="4">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#ef4444_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="4"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#ef4444] [font-size:16.56px]">SN</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Suresh Nair</p><p class="text-[11px] em-muted">MRN-10404 · 46y · Male · O-</p></div>
+                <div class="relative"><button data-menu="4" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Fracture — Femur</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. P. Rao</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Orthopedics</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Aspirin</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#22c55e_15%,_transparent)] [color:#22c55e]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Low Risk</span>
+                <span class="em-b em-b-info">Admitted</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 5h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="4" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="5">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#a855f7_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="5"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#a855f7] [font-size:16.56px]">MS</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Meera Singh</p><p class="text-[11px] em-muted">MRN-10405 · 53y · Female · A-</p></div>
+                <div class="relative"><button data-menu="5" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Sepsis</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. M. Iyer</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Emergency</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">None</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#f59e0b_15%,_transparent)] [color:#f59e0b]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Medium Risk</span>
+                <span class="em-b em-b-warn">Under Treatment</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 6h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="5" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="6">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#ec4899_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="6"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#ec4899] [font-size:16.56px]">AJ</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Arjun Joshi</p><p class="text-[11px] em-muted">MRN-10406 · 60y · Male · O+</p></div>
+                <div class="relative"><button data-menu="6" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">CKD Stage 3</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. A. Mehta</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Nephrology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Penicillin</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#ef4444_15%,_transparent)] [color:#ef4444]"><i class="ti ti-activity-heartbeat text-[9px]"></i> High Risk</span>
+                <span class="em-b em-b-info">Observation</span>
+                <span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Critical</span>
+                <span class="text-[10px] em-muted ml-auto">Updated 7h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="6" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="7">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#14b8a6_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="7"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#14b8a6] [font-size:16.56px]">KR</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Kavya Reddy</p><p class="text-[11px] em-muted">MRN-10407 · 67y · Female · A+</p></div>
+                <div class="relative"><button data-menu="7" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">COPD Exacerbation</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. S. Kapoor</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Pulmonology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Sulfa, Latex</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#f59e0b_15%,_transparent)] [color:#f59e0b]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Medium Risk</span>
+                <span class="em-b em-b-ok">Discharged</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 8h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="7" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="8">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#6366f1_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="8"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#6366f1] [font-size:16.56px]">DG</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Deepak Gupta</p><p class="text-[11px] em-muted">MRN-10408 · 74y · Male · B+</p></div>
+                <div class="relative"><button data-menu="8" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Hypertension</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. R. Nair</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Cardiology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">None</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#22c55e_15%,_transparent)] [color:#22c55e]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Low Risk</span>
+                <span class="em-b em-b-info">Admitted</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 9h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="8" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="9">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#0ea5e9_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="9"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#0ea5e9] [font-size:16.56px]">ND</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Neha Das</p><p class="text-[11px] em-muted">MRN-10409 · 81y · Female · AB+</p></div>
+                <div class="relative"><button data-menu="9" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Appendicitis</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. L. Khan</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">General Surgery</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Peanuts</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#ef4444_15%,_transparent)] [color:#ef4444]"><i class="ti ti-activity-heartbeat text-[9px]"></i> High Risk</span>
+                <span class="em-b em-b-warn">Under Treatment</span>
+                <span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Critical</span>
+                <span class="text-[10px] em-muted ml-auto">Updated 10h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="9" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="10">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#10b981_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="10"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#10b981] [font-size:16.56px]">RS</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Rohan Sharma</p><p class="text-[11px] em-muted">MRN-10410 · 18y · Male · O-</p></div>
+                <div class="relative"><button data-menu="10" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Acute MI</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. P. Rao</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Cardiology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Aspirin</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#22c55e_15%,_transparent)] [color:#22c55e]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Low Risk</span>
+                <span class="em-b em-b-info">Observation</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 11h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="10" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="11">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#f59e0b_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="11"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#f59e0b] [font-size:16.56px]">SP</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Sana Patel</p><p class="text-[11px] em-muted">MRN-10411 · 25y · Female · A-</p></div>
+                <div class="relative"><button data-menu="11" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Ischemic Stroke</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. M. Iyer</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Neurology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">None</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#f59e0b_15%,_transparent)] [color:#f59e0b]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Medium Risk</span>
+                <span class="em-b em-b-ok">Discharged</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 12h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="11" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="12">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#ef4444_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="12"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#ef4444] [font-size:16.56px]">MM</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Manoj Menon</p><p class="text-[11px] em-muted">MRN-10412 · 32y · Male · O+</p></div>
+                <div class="relative"><button data-menu="12" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Pneumonia</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. A. Mehta</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Pediatrics</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Penicillin</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#ef4444_15%,_transparent)] [color:#ef4444]"><i class="ti ti-activity-heartbeat text-[9px]"></i> High Risk</span>
+                <span class="em-b em-b-info">Admitted</span>
+                <span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Critical</span>
+                <span class="text-[10px] em-muted ml-auto">Updated 1h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="12" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="13">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#a855f7_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="13"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#a855f7] [font-size:16.56px]">DV</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Divya Verma</p><p class="text-[11px] em-muted">MRN-10413 · 39y · Female · A+</p></div>
+                <div class="relative"><button data-menu="13" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Type 2 Diabetes</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. S. Kapoor</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Emergency</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Sulfa, Latex</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#f59e0b_15%,_transparent)] [color:#f59e0b]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Medium Risk</span>
+                <span class="em-b em-b-warn">Under Treatment</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 2h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="13" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="14">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#ec4899_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="14"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#ec4899] [font-size:16.56px]">KN</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Karan Nair</p><p class="text-[11px] em-muted">MRN-10414 · 46y · Male · B+</p></div>
+                <div class="relative"><button data-menu="14" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Fracture — Femur</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. R. Nair</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Nephrology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">None</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#22c55e_15%,_transparent)] [color:#22c55e]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Low Risk</span>
+                <span class="em-b em-b-info">Observation</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 3h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="14" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="15">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#14b8a6_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="15"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#14b8a6] [font-size:16.56px]">PS</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Pooja Singh</p><p class="text-[11px] em-muted">MRN-10415 · 53y · Female · AB+</p></div>
+                <div class="relative"><button data-menu="15" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Sepsis</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. L. Khan</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Pulmonology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Peanuts</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#ef4444_15%,_transparent)] [color:#ef4444]"><i class="ti ti-activity-heartbeat text-[9px]"></i> High Risk</span>
+                <span class="em-b em-b-ok">Discharged</span>
+                <span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Critical</span>
+                <span class="text-[10px] em-muted ml-auto">Updated 4h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="15" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="16">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#6366f1_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="16"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#6366f1] [font-size:16.56px]">RJ</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Rahul Joshi</p><p class="text-[11px] em-muted">MRN-10416 · 60y · Male · O-</p></div>
+                <div class="relative"><button data-menu="16" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">CKD Stage 3</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. P. Rao</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Cardiology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Aspirin</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#22c55e_15%,_transparent)] [color:#22c55e]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Low Risk</span>
+                <span class="em-b em-b-info">Admitted</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 5h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="16" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="17">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#0ea5e9_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="17"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#0ea5e9] [font-size:16.56px]">AR</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Anita Reddy</p><p class="text-[11px] em-muted">MRN-10417 · 67y · Female · A-</p></div>
+                <div class="relative"><button data-menu="17" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">COPD Exacerbation</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. M. Iyer</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Neurology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">None</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#f59e0b_15%,_transparent)] [color:#f59e0b]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Medium Risk</span>
+                <span class="em-b em-b-warn">Under Treatment</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 6h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="17" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="18">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#10b981_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="18"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#10b981] [font-size:16.56px]">VG</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Vikram Gupta</p><p class="text-[11px] em-muted">MRN-10418 · 74y · Male · O+</p></div>
+                <div class="relative"><button data-menu="18" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Hypertension</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. A. Mehta</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Orthopedics</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Penicillin</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#ef4444_15%,_transparent)] [color:#ef4444]"><i class="ti ti-activity-heartbeat text-[9px]"></i> High Risk</span>
+                <span class="em-b em-b-info">Observation</span>
+                <span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Critical</span>
+                <span class="text-[10px] em-muted ml-auto">Updated 7h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="18" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="19">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#f59e0b_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="19"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#f59e0b] [font-size:16.56px]">PD</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Priya Das</p><p class="text-[11px] em-muted">MRN-10419 · 81y · Female · A+</p></div>
+                <div class="relative"><button data-menu="19" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Appendicitis</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. S. Kapoor</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Oncology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Sulfa, Latex</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#f59e0b_15%,_transparent)] [color:#f59e0b]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Medium Risk</span>
+                <span class="em-b em-b-ok">Discharged</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 8h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="19" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="20">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#ef4444_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="20"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#ef4444] [font-size:16.56px]">SS</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Suresh Sharma</p><p class="text-[11px] em-muted">MRN-10420 · 18y · Male · B+</p></div>
+                <div class="relative"><button data-menu="20" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Acute MI</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. R. Nair</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Pediatrics</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">None</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#22c55e_15%,_transparent)] [color:#22c55e]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Low Risk</span>
+                <span class="em-b em-b-info">Admitted</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 9h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="20" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="21">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#a855f7_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="21"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#a855f7] [font-size:16.56px]">MP</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Meera Patel</p><p class="text-[11px] em-muted">MRN-10421 · 25y · Female · AB+</p></div>
+                <div class="relative"><button data-menu="21" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Ischemic Stroke</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. L. Khan</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Emergency</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Peanuts</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#ef4444_15%,_transparent)] [color:#ef4444]"><i class="ti ti-activity-heartbeat text-[9px]"></i> High Risk</span>
+                <span class="em-b em-b-warn">Under Treatment</span>
+                <span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Critical</span>
+                <span class="text-[10px] em-muted ml-auto">Updated 10h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="21" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="22">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#ec4899_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="22"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#ec4899] [font-size:16.56px]">AM</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Arjun Menon</p><p class="text-[11px] em-muted">MRN-10422 · 32y · Male · O-</p></div>
+                <div class="relative"><button data-menu="22" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Pneumonia</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. P. Rao</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Nephrology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">Aspirin</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#22c55e_15%,_transparent)] [color:#22c55e]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Low Risk</span>
+                <span class="em-b em-b-info">Observation</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 11h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="22" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="em-pcard" data-row-id="23">
+            <div class="p-4 pb-3 [background:linear-gradient(135deg,color-mix(in_srgb,_#14b8a6_12%,_transparent),transparent)]">
+              <div class="flex items-start gap-3">
+                <label class="pt-1"><input type="checkbox" data-sel="23"  class="accent-[var(--em-c)]"></label>
+                <span class="em-av [width:46px] [height:46px] [background:#14b8a6] [font-size:16.56px]">KV</span>
+                <div class="min-w-0 flex-1"><p class="font-bold truncate">Kavya Verma</p><p class="text-[11px] em-muted">MRN-10423 · 39y · Female · A-</p></div>
+                <div class="relative"><button data-menu="23" class="w-8 h-8 rounded-lg hover:bg-white/60 dark:hover:bg-slate-800 flex items-center justify-center"><i class="ti ti-dots-vertical em-muted"></i></button></div>
+              </div>
+            </div>
+            <div class="px-4 pb-4 space-y-2">
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Diagnosis</span><span class="font-semibold">Type 2 Diabetes</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Doctor</span><span class="font-medium">Dr. M. Iyer</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Department</span><span class="font-medium">Pulmonology</span></div>
+              <div class="flex items-center justify-between text-xs"><span class="em-muted">Allergies</span><span class="font-medium">None</span></div>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="em-b [background:color-mix(in_srgb,_#f59e0b_15%,_transparent)] [color:#f59e0b]"><i class="ti ti-activity-heartbeat text-[9px]"></i> Medium Risk</span>
+                <span class="em-b em-b-ok">Discharged</span>
+                
+                <span class="text-[10px] em-muted ml-auto">Updated 12h ago</span>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <a href="emr-record-detail.html" class="flex-1 text-center text-xs font-semibold bg-[var(--em-c)] text-white rounded-lg py-1.5 hover:opacity-90">View EMR</a>
+                <button data-modal="note" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-notes"></i></button>
+                <button data-menu="23" class="text-xs font-semibold border em-hairline rounded-lg px-2.5 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800"><i class="ti ti-dots"></i></button>
+              </div>
+            </div>
+          </div></div>
+                            </div>
+
+                            <!-- LIST VIEW -->
+                            <div class="em-view" data-viewpanel="list">
+                                <div class="em-surface overflow-hidden">
+                                    <div class="overflow-x-auto"><table class="em-tbl"><thead><tr id="em-listhead"><th class="[width:36px]"><input aria-label="Select all" type="checkbox" data-selall class="accent-[var(--em-c)]"></th><th data-col="mrn" class="">MRN</th><th data-col="patient" class="">Patient</th><th data-col="doctor" class="">Doctor</th><th data-col="dept" class="">Department</th><th data-col="diag" class="">Diagnosis</th><th data-col="adm" class="">Admission</th><th data-col="status" class="">Status</th><th data-col="critical" class="">Critical</th><th class="text-right">Actions</th></tr></thead><tbody id="em-listbody"><tr data-row-id="0">
+            <td><input aria-label="Select row" type="checkbox" data-sel="0"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10400</a></td>
+            <td data-col="patient" class=""><button data-drawer="0" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#6366f1] [font-size:10.08px]">RS</span><span class="font-medium">Rahul Sharma</span></button></td>
+            <td data-col="doctor" class="">Dr. A. Mehta</td>
+            <td data-col="dept" class="">Cardiology</td>
+            <td data-col="diag" class="">Acute MI</td>
+            <td data-col="adm" class="">Jul 1, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Admitted</span></td>
+            <td data-col="critical" class=""><span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Yes</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="0" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="1">
+            <td><input aria-label="Select row" type="checkbox" data-sel="1"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10401</a></td>
+            <td data-col="patient" class=""><button data-drawer="1" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#0ea5e9] [font-size:10.08px]">AP</span><span class="font-medium">Anita Patel</span></button></td>
+            <td data-col="doctor" class="">Dr. S. Kapoor</td>
+            <td data-col="dept" class="">Neurology</td>
+            <td data-col="diag" class="">Ischemic Stroke</td>
+            <td data-col="adm" class="">Jul 2, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-warn">Under Treatment</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="1" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="2">
+            <td><input aria-label="Select row" type="checkbox" data-sel="2"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10402</a></td>
+            <td data-col="patient" class=""><button data-drawer="2" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#10b981] [font-size:10.08px]">VM</span><span class="font-medium">Vikram Menon</span></button></td>
+            <td data-col="doctor" class="">Dr. R. Nair</td>
+            <td data-col="dept" class="">Pulmonology</td>
+            <td data-col="diag" class="">Pneumonia</td>
+            <td data-col="adm" class="">Jul 3, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Observation</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="2" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="3">
+            <td><input aria-label="Select row" type="checkbox" data-sel="3"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10403</a></td>
+            <td data-col="patient" class=""><button data-drawer="3" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#f59e0b] [font-size:10.08px]">PV</span><span class="font-medium">Priya Verma</span></button></td>
+            <td data-col="doctor" class="">Dr. L. Khan</td>
+            <td data-col="dept" class="">Endocrinology</td>
+            <td data-col="diag" class="">Type 2 Diabetes</td>
+            <td data-col="adm" class="">Jul 4, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-ok">Discharged</span></td>
+            <td data-col="critical" class=""><span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Yes</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="3" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="4">
+            <td><input aria-label="Select row" type="checkbox" data-sel="4"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10404</a></td>
+            <td data-col="patient" class=""><button data-drawer="4" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#ef4444] [font-size:10.08px]">SN</span><span class="font-medium">Suresh Nair</span></button></td>
+            <td data-col="doctor" class="">Dr. P. Rao</td>
+            <td data-col="dept" class="">Orthopedics</td>
+            <td data-col="diag" class="">Fracture — Femur</td>
+            <td data-col="adm" class="">Jul 5, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Admitted</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="4" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="5">
+            <td><input aria-label="Select row" type="checkbox" data-sel="5"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10405</a></td>
+            <td data-col="patient" class=""><button data-drawer="5" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#a855f7] [font-size:10.08px]">MS</span><span class="font-medium">Meera Singh</span></button></td>
+            <td data-col="doctor" class="">Dr. M. Iyer</td>
+            <td data-col="dept" class="">Emergency</td>
+            <td data-col="diag" class="">Sepsis</td>
+            <td data-col="adm" class="">Jul 6, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-warn">Under Treatment</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="5" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="6">
+            <td><input aria-label="Select row" type="checkbox" data-sel="6"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10406</a></td>
+            <td data-col="patient" class=""><button data-drawer="6" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#ec4899] [font-size:10.08px]">AJ</span><span class="font-medium">Arjun Joshi</span></button></td>
+            <td data-col="doctor" class="">Dr. A. Mehta</td>
+            <td data-col="dept" class="">Nephrology</td>
+            <td data-col="diag" class="">CKD Stage 3</td>
+            <td data-col="adm" class="">Jul 7, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Observation</span></td>
+            <td data-col="critical" class=""><span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Yes</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="6" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="7">
+            <td><input aria-label="Select row" type="checkbox" data-sel="7"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10407</a></td>
+            <td data-col="patient" class=""><button data-drawer="7" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#14b8a6] [font-size:10.08px]">KR</span><span class="font-medium">Kavya Reddy</span></button></td>
+            <td data-col="doctor" class="">Dr. S. Kapoor</td>
+            <td data-col="dept" class="">Pulmonology</td>
+            <td data-col="diag" class="">COPD Exacerbation</td>
+            <td data-col="adm" class="">Jul 8, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-ok">Discharged</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="7" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="8">
+            <td><input aria-label="Select row" type="checkbox" data-sel="8"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10408</a></td>
+            <td data-col="patient" class=""><button data-drawer="8" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#6366f1] [font-size:10.08px]">DG</span><span class="font-medium">Deepak Gupta</span></button></td>
+            <td data-col="doctor" class="">Dr. R. Nair</td>
+            <td data-col="dept" class="">Cardiology</td>
+            <td data-col="diag" class="">Hypertension</td>
+            <td data-col="adm" class="">Jul 9, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Admitted</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="8" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="9">
+            <td><input aria-label="Select row" type="checkbox" data-sel="9"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10409</a></td>
+            <td data-col="patient" class=""><button data-drawer="9" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#0ea5e9] [font-size:10.08px]">ND</span><span class="font-medium">Neha Das</span></button></td>
+            <td data-col="doctor" class="">Dr. L. Khan</td>
+            <td data-col="dept" class="">General Surgery</td>
+            <td data-col="diag" class="">Appendicitis</td>
+            <td data-col="adm" class="">Jul 10, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-warn">Under Treatment</span></td>
+            <td data-col="critical" class=""><span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Yes</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="9" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="10">
+            <td><input aria-label="Select row" type="checkbox" data-sel="10"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10410</a></td>
+            <td data-col="patient" class=""><button data-drawer="10" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#10b981] [font-size:10.08px]">RS</span><span class="font-medium">Rohan Sharma</span></button></td>
+            <td data-col="doctor" class="">Dr. P. Rao</td>
+            <td data-col="dept" class="">Cardiology</td>
+            <td data-col="diag" class="">Acute MI</td>
+            <td data-col="adm" class="">Jul 11, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Observation</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="10" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="11">
+            <td><input aria-label="Select row" type="checkbox" data-sel="11"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10411</a></td>
+            <td data-col="patient" class=""><button data-drawer="11" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#f59e0b] [font-size:10.08px]">SP</span><span class="font-medium">Sana Patel</span></button></td>
+            <td data-col="doctor" class="">Dr. M. Iyer</td>
+            <td data-col="dept" class="">Neurology</td>
+            <td data-col="diag" class="">Ischemic Stroke</td>
+            <td data-col="adm" class="">Jul 12, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-ok">Discharged</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="11" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="12">
+            <td><input aria-label="Select row" type="checkbox" data-sel="12"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10412</a></td>
+            <td data-col="patient" class=""><button data-drawer="12" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#ef4444] [font-size:10.08px]">MM</span><span class="font-medium">Manoj Menon</span></button></td>
+            <td data-col="doctor" class="">Dr. A. Mehta</td>
+            <td data-col="dept" class="">Pediatrics</td>
+            <td data-col="diag" class="">Pneumonia</td>
+            <td data-col="adm" class="">Jul 13, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Admitted</span></td>
+            <td data-col="critical" class=""><span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Yes</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="12" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="13">
+            <td><input aria-label="Select row" type="checkbox" data-sel="13"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10413</a></td>
+            <td data-col="patient" class=""><button data-drawer="13" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#a855f7] [font-size:10.08px]">DV</span><span class="font-medium">Divya Verma</span></button></td>
+            <td data-col="doctor" class="">Dr. S. Kapoor</td>
+            <td data-col="dept" class="">Emergency</td>
+            <td data-col="diag" class="">Type 2 Diabetes</td>
+            <td data-col="adm" class="">Jul 14, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-warn">Under Treatment</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="13" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="14">
+            <td><input aria-label="Select row" type="checkbox" data-sel="14"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10414</a></td>
+            <td data-col="patient" class=""><button data-drawer="14" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#ec4899] [font-size:10.08px]">KN</span><span class="font-medium">Karan Nair</span></button></td>
+            <td data-col="doctor" class="">Dr. R. Nair</td>
+            <td data-col="dept" class="">Nephrology</td>
+            <td data-col="diag" class="">Fracture — Femur</td>
+            <td data-col="adm" class="">Jul 15, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Observation</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="14" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="15">
+            <td><input aria-label="Select row" type="checkbox" data-sel="15"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10415</a></td>
+            <td data-col="patient" class=""><button data-drawer="15" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#14b8a6] [font-size:10.08px]">PS</span><span class="font-medium">Pooja Singh</span></button></td>
+            <td data-col="doctor" class="">Dr. L. Khan</td>
+            <td data-col="dept" class="">Pulmonology</td>
+            <td data-col="diag" class="">Sepsis</td>
+            <td data-col="adm" class="">Jul 16, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-ok">Discharged</span></td>
+            <td data-col="critical" class=""><span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Yes</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="15" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="16">
+            <td><input aria-label="Select row" type="checkbox" data-sel="16"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10416</a></td>
+            <td data-col="patient" class=""><button data-drawer="16" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#6366f1] [font-size:10.08px]">RJ</span><span class="font-medium">Rahul Joshi</span></button></td>
+            <td data-col="doctor" class="">Dr. P. Rao</td>
+            <td data-col="dept" class="">Cardiology</td>
+            <td data-col="diag" class="">CKD Stage 3</td>
+            <td data-col="adm" class="">Jul 17, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Admitted</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="16" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="17">
+            <td><input aria-label="Select row" type="checkbox" data-sel="17"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10417</a></td>
+            <td data-col="patient" class=""><button data-drawer="17" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#0ea5e9] [font-size:10.08px]">AR</span><span class="font-medium">Anita Reddy</span></button></td>
+            <td data-col="doctor" class="">Dr. M. Iyer</td>
+            <td data-col="dept" class="">Neurology</td>
+            <td data-col="diag" class="">COPD Exacerbation</td>
+            <td data-col="adm" class="">Jul 18, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-warn">Under Treatment</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="17" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="18">
+            <td><input aria-label="Select row" type="checkbox" data-sel="18"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10418</a></td>
+            <td data-col="patient" class=""><button data-drawer="18" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#10b981] [font-size:10.08px]">VG</span><span class="font-medium">Vikram Gupta</span></button></td>
+            <td data-col="doctor" class="">Dr. A. Mehta</td>
+            <td data-col="dept" class="">Orthopedics</td>
+            <td data-col="diag" class="">Hypertension</td>
+            <td data-col="adm" class="">Jul 1, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Observation</span></td>
+            <td data-col="critical" class=""><span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Yes</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="18" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="19">
+            <td><input aria-label="Select row" type="checkbox" data-sel="19"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10419</a></td>
+            <td data-col="patient" class=""><button data-drawer="19" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#f59e0b] [font-size:10.08px]">PD</span><span class="font-medium">Priya Das</span></button></td>
+            <td data-col="doctor" class="">Dr. S. Kapoor</td>
+            <td data-col="dept" class="">Oncology</td>
+            <td data-col="diag" class="">Appendicitis</td>
+            <td data-col="adm" class="">Jul 2, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-ok">Discharged</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="19" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="20">
+            <td><input aria-label="Select row" type="checkbox" data-sel="20"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10420</a></td>
+            <td data-col="patient" class=""><button data-drawer="20" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#ef4444] [font-size:10.08px]">SS</span><span class="font-medium">Suresh Sharma</span></button></td>
+            <td data-col="doctor" class="">Dr. R. Nair</td>
+            <td data-col="dept" class="">Pediatrics</td>
+            <td data-col="diag" class="">Acute MI</td>
+            <td data-col="adm" class="">Jul 3, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Admitted</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="20" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="21">
+            <td><input aria-label="Select row" type="checkbox" data-sel="21"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10421</a></td>
+            <td data-col="patient" class=""><button data-drawer="21" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#a855f7] [font-size:10.08px]">MP</span><span class="font-medium">Meera Patel</span></button></td>
+            <td data-col="doctor" class="">Dr. L. Khan</td>
+            <td data-col="dept" class="">Emergency</td>
+            <td data-col="diag" class="">Ischemic Stroke</td>
+            <td data-col="adm" class="">Jul 4, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-warn">Under Treatment</span></td>
+            <td data-col="critical" class=""><span class="em-b em-b-danger"><i class="ti ti-urgent text-[9px]"></i> Yes</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="21" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="22">
+            <td><input aria-label="Select row" type="checkbox" data-sel="22"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10422</a></td>
+            <td data-col="patient" class=""><button data-drawer="22" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#ec4899] [font-size:10.08px]">AM</span><span class="font-medium">Arjun Menon</span></button></td>
+            <td data-col="doctor" class="">Dr. P. Rao</td>
+            <td data-col="dept" class="">Nephrology</td>
+            <td data-col="diag" class="">Pneumonia</td>
+            <td data-col="adm" class="">Jul 5, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-info">Observation</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="22" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr><tr data-row-id="23">
+            <td><input aria-label="Select row" type="checkbox" data-sel="23"  class="accent-[var(--em-c)]"></td>
+            <td data-col="mrn" class=""><a href="emr-record-detail.html" class="font-semibold text-[var(--em-c)] hover:underline">MRN-10423</a></td>
+            <td data-col="patient" class=""><button data-drawer="23" class="flex items-center gap-2 hover:text-[var(--em-c)]"><span class="em-av [width:28px] [height:28px] [background:#14b8a6] [font-size:10.08px]">KV</span><span class="font-medium">Kavya Verma</span></button></td>
+            <td data-col="doctor" class="">Dr. M. Iyer</td>
+            <td data-col="dept" class="">Pulmonology</td>
+            <td data-col="diag" class="">Type 2 Diabetes</td>
+            <td data-col="adm" class="">Jul 6, 2026</td>
+            <td data-col="status" class=""><span class="em-b em-b-ok">Discharged</span></td>
+            <td data-col="critical" class=""><span class="em-muted text-xs">—</span></td>
+            <td class="text-right"><div class="inline-flex gap-1"><a href="emr-record-detail.html" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-eye"></i></a><button data-menu="23" class="w-7 h-7 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 inline-flex items-center justify-center"><i class="ti ti-dots-vertical"></i></button></div></td>
+          </tr></tbody></table></div>
+                                </div>
+                            </div>
+
+                            <!-- ---------- ACTIVITY FEED ---------- -->
+                            <section class="em-surface p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-lg font-bold">Recent Activity</h2><span class="em-b em-b-info">Live feed</span></div>
+                                <div id="em-feed" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3"><div class="rounded-xl border em-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#0ea5e9_14%,_transparent)] [color:#0ea5e9]"><i class="ti ti-bed"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Admission</p><p class="text-[11px] em-muted truncate">Rahul Sharma → Cardiology ICU</p><p class="text-[10px] em-muted mt-0.5">2m ago</p></div></div><div class="rounded-xl border em-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#6366f1_14%,_transparent)] [color:#6366f1]"><i class="ti ti-notes"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Clinical Note</p><p class="text-[11px] em-muted truncate">SOAP note by Dr. Mehta</p><p class="text-[10px] em-muted mt-0.5">8m ago</p></div></div><div class="rounded-xl border em-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#a855f7_14%,_transparent)] [color:#a855f7]"><i class="ti ti-prescription"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Prescription</p><p class="text-[11px] em-muted truncate">Atorvastatin 40mg issued</p><p class="text-[10px] em-muted mt-0.5">15m ago</p></div></div><div class="rounded-xl border em-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#ef4444_14%,_transparent)] [color:#ef4444]"><i class="ti ti-flask"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Lab Result</p><p class="text-[11px] em-muted truncate">Troponin — Critical High</p><p class="text-[10px] em-muted mt-0.5">22m ago</p></div></div><div class="rounded-xl border em-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#14b8a6_14%,_transparent)] [color:#14b8a6]"><i class="ti ti-radioactive"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Radiology</p><p class="text-[11px] em-muted truncate">Chest X-Ray reported</p><p class="text-[10px] em-muted mt-0.5">35m ago</p></div></div><div class="rounded-xl border em-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#22c55e_14%,_transparent)] [color:#22c55e]"><i class="ti ti-user-check"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Doctor Update</p><p class="text-[11px] em-muted truncate">Dr. Kapoor now available</p><p class="text-[10px] em-muted mt-0.5">48m ago</p></div></div><div class="rounded-xl border em-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#f59e0b_14%,_transparent)] [color:#f59e0b]"><i class="ti ti-transfer"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Transfer</p><p class="text-[11px] em-muted truncate">Ward B → ICU (Bed 12)</p><p class="text-[10px] em-muted mt-0.5">1h ago</p></div></div><div class="rounded-xl border em-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#0ea5e9_14%,_transparent)] [color:#0ea5e9]"><i class="ti ti-logout"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Discharge</p><p class="text-[11px] em-muted truncate">Meera Singh discharged</p><p class="text-[10px] em-muted mt-0.5">2h ago</p></div></div></div>
+                            </section>
+
+                            <!-- BULK BAR -->
+                            <div class="em-bulk items-center gap-2 px-4 py-2.5 flex-wrap">
+                                <span class="text-sm font-semibold"><span id="em-selcount">0</span> selected</span>
+                                <div class="flex flex-wrap gap-1.5 ml-auto text-xs">
+                                    <button data-bulk="assign" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-user-check"></i> Assign Doctor</button>
+                                    <button data-bulk="report" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-report"></i> Reports</button>
+                                    <button data-bulk="export" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-download"></i> Export</button>
+                                    <button data-bulk="print" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-printer"></i> Print</button>
+                                    <button data-bulk="status" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-refresh"></i> Status</button>
+                                    <button data-bulk="notify" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-bell"></i> Notify</button>
+                                    <button data-bulk="archive" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-archive"></i> Archive</button>
+                                    <button data-bulk="delete" class="px-2.5 py-1.5 rounded-lg bg-rose-500/80 hover:bg-rose-500"><i class="ti ti-trash"></i> Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="em-drawer" class="em-drawer"></div>
+        <div id="em-modalhost"></div>
+        <div id="em-menuhost"></div>
+        <div id="em-toast" class="em-toast"></div>
+
+        @@include('partials/script.html', {"page": "emr-dashboard"})
+    </body>
+</html>

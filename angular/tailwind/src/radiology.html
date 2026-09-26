@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Radiology — Dreams HMS"}) @@include('partials/header.html', {"page": "radiology"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search radiology..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Radiology Department</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage imaging requests, scans and reports</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-scan text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Scans</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-zap text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">1</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">In Progress</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-file-check text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">5</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Reported</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Scans</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Scan ID</th>
+                                            <th>Patient</th>
+                                            <th>Modality</th>
+                                            <th>Body Part</th>
+                                            <th>Requested By</th>
+                                            <th>Date</th>
+                                            <th>Priority</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-primary font-mono text-sm"><a href="radiology-order-detail.html">#RAD-0001</a></td><td class="font-medium text-gray-900">James Morrison</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">X-Ray</span></td><td class="text-gray-600 dark:text-gray-300">Chest</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Sarah Chen</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Routine</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Reported</span></td><td><div class="flex gap-1"><button onclick="openEdit(1)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(1,'James Morrison')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="2"><td class="text-primary font-mono text-sm"><a href="radiology-order-detail.html">#RAD-0002</a></td><td class="font-medium text-gray-900">Robert Clark</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">CT Scan</span></td><td class="text-gray-600 dark:text-gray-300">Abdomen</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Alice Mills</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Urgent</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Reported</span></td><td><div class="flex gap-1"><button onclick="openEdit(2)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(2,'Robert Clark')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="3"><td class="text-primary font-mono text-sm"><a href="radiology-order-detail.html">#RAD-0003</a></td><td class="font-medium text-gray-900">Sarah Adams</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">MRI</span></td><td class="text-gray-600 dark:text-gray-300">Brain</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Raj Kumar</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-11</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Routine</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Scheduled</span></td><td><div class="flex gap-1"><button onclick="openEdit(3)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(3,'Sarah Adams')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="4"><td class="text-primary font-mono text-sm"><a href="radiology-order-detail.html">#RAD-0004</a></td><td class="font-medium text-gray-900">David Torres</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">X-Ray</span></td><td class="text-gray-600 dark:text-gray-300">Left Knee</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Felix Osei</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-11</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Routine</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Reported</span></td><td><div class="flex gap-1"><button onclick="openEdit(4)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(4,'David Torres')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="5"><td class="text-primary font-mono text-sm"><a href="radiology-order-detail.html">#RAD-0005</a></td><td class="font-medium text-gray-900">Helen Yu</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">MRI</span></td><td class="text-gray-600 dark:text-gray-300">Spine</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Raj Kumar</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-12</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Urgent</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">In Progress</span></td><td><div class="flex gap-1"><button onclick="openEdit(5)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(5,'Helen Yu')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="6"><td class="text-primary font-mono text-sm"><a href="radiology-order-detail.html">#RAD-0006</a></td><td class="font-medium text-gray-900">Linda Nguyen</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">PET Scan</span></td><td class="text-gray-600 dark:text-gray-300">Full Body</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Li Wang</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-13</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Routine</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Pending</span></td><td><div class="flex gap-1"><button onclick="openEdit(6)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(6,'Linda Nguyen')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="7"><td class="text-primary font-mono text-sm"><a href="radiology-order-detail.html">#RAD-0007</a></td><td class="font-medium text-gray-900">Anna Peterson</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Ultrasound</span></td><td class="text-gray-600 dark:text-gray-300">Abdomen</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. James Park</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">STAT</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Reported</span></td><td><div class="flex gap-1"><button onclick="openEdit(7)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(7,'Anna Peterson')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="8"><td class="text-primary font-mono text-sm"><a href="radiology-order-detail.html">#RAD-0008</a></td><td class="font-medium text-gray-900">Mark Davis</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">X-Ray</span></td><td class="text-gray-600 dark:text-gray-300">Right Hip</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Tom Rivas</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Urgent</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Reported</span></td><td><div class="flex gap-1"><button onclick="openEdit(8)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="deleteRecord(8,'Mark Davis')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="form-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="m-title">
+          <div class="flex min-h-full items-center justify-center p-4">
+            <div class="modal-panel pointer-events-auto">
+                <div class="flex items-center justify-between">
+                    <h2 id="m-title" class="text-xl font-bold text-gray-900">New Imaging Request</h2>
+                    <button id="m-close" type="button" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" data-hs-overlay="#form-modal" aria-label="Close">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <form id="m-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="f-patient" class="form-label">Patient Name <span class="text-danger">*</span></label>
+                            <input id="f-patient" class="form-input" placeholder="James Morrison" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-ref" class="form-label">Requested By</label>
+                            <input id="f-ref" class="form-input" placeholder="Dr. Sarah Chen" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-mod" class="form-label">Modality <span class="text-danger">*</span></label>
+                            <select id="f-mod" class="form-select">
+                                <option>X-Ray</option>
+                                <option>CT Scan</option>
+                                <option>MRI</option>
+                                <option>Ultrasound</option>
+                                <option>PET Scan</option>
+                                <option>Mammography</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-body" class="form-label">Body Part</label>
+                            <input id="f-body" class="form-input" placeholder="Chest, Abdomen, Brain..." >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-date" class="form-label">Date</label>
+                            <div class="relative">
+                                <input type="text" id="f-date" placeholder="dd/mm/yyyy" class="form-input pr-10" data-provider="flatpickr" data-date-format="d-m-Y">
+                                <i class="icon-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-900"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-priority" class="form-label">Priority</label>
+                            <select id="f-priority" class="form-select">
+                                <option>Routine</option>
+                                <option>Urgent</option>
+                                <option>STAT</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-status" class="form-label">Status</label>
+                            <select id="f-status" class="form-select">
+                                <option>Pending</option>
+                                <option>Scheduled</option>
+                                <option>In Progress</option>
+                                <option>Reported</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-radio" class="form-label">Radiologist</label>
+                            <input id="f-radio" class="form-input" placeholder="Dr. Patel" >
+                        </div>
+                        <div class="form-group span-2">
+                            <label for="f-notes" class="form-label">Clinical Notes</label>
+                            <textarea id="f-notes" class="form-textarea" placeholder="Clinical indication, notes..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button id="m-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#form-modal">Cancel</button>
+                        <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Save</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+        <div id="del-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="del-name">
+          <div class="flex min-h-full items-center justify-center p-4">
+            <div class="modal-panel sm pointer-events-auto">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Delete Request</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Delete imaging request for
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    ?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#del-modal">Cancel</button>
+                    <button id="del-confirm-btn" type="button" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold" data-hs-overlay="#del-modal">Delete</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+        @@include('partials/script.html', {"page": "radiology"})
+    </body>
+</html>

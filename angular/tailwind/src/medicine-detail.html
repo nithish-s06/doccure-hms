@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Medicine Details — Dreams HMS"}) @@include('partials/header.html', {"page": "medicine-detail"})
+    </head>
+    <body class="bg-gray-50 dark:bg-slate-950 text-gray-800 dark:text-gray-200 overflow-x-hidden" data-page="medicine-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search medicines, NDC code or active ingredients..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-950">
+                    <div id="mdd-page" class="max-w-[1500px] mx-auto space-y-6">
+
+                        @@include('partials/breadcrumb.html', {"current": "Tylenol (Acetaminophen)", "parentUrl": "medicines.html", "parent": "Medicines"})
+
+                        <!-- ---------- HERO BANNER ---------- -->
+                        <section class="mdd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="mdd-hero-ico">
+                                        <i class="icon-pill"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2.5">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight text-white" id="mdd-brand-name">
+                                                Tylenol <span class="text-white/70 font-medium text-lg" id="mdd-generic-name">(Acetaminophen 500 mg)</span>
+                                            </h1>
+                                            <span class="mdd-hbadge" id="mdd-status-badge"><span class="mdd-dot"></span><span id="mdd-status-text">In Stock (8,400 Units)</span></span>
+                                        </div>
+                                        <div class="mt-2.5 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="mdd-hmeta"><i class="icon-hash text-[13px] text-teal-300"></i><span id="mdd-code-no">#MED-0001</span></span>
+                                            <span class="mdd-hmeta"><i class="icon-barcode text-[13px] text-sky-300"></i>NDC: <span id="mdd-ndc-no">50580-496-01</span></span>
+                                            <span class="mdd-hmeta"><i class="icon-layers text-[13px] text-violet-300"></i><span id="mdd-category-name">Analgesics & Antipyretics</span></span>
+                                            <span class="mdd-hmeta"><i class="icon-tablets text-[13px] text-amber-300"></i>Oral Tablet (500 mg)</span>
+                                            <span class="mdd-hmeta"><i class="icon-truck text-[13px] text-emerald-300"></i>Supplier: McKesson</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2.5 mdd-actions-print-hide">
+                                    <button type="button" class="mdd-btn mdd-btn-glass" id="mdd-po-btn"><i class="icon-shopping-cart"></i>Create PO</button>
+                                    <button type="button" class="mdd-btn mdd-btn-glass" id="mdd-adjust-btn"><i class="icon-sliders"></i>Adjust Stock</button>
+                                    <button type="button" class="mdd-btn mdd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Monograph</button>
+                                    <a href="medicines.html" class="mdd-btn mdd-btn-primary"><i class="icon-arrow-left"></i>Back to Medicines</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- INVENTORY STOCK & VALUATION STRIP ---------- -->
+                        <div class="mdd-surface p-4 lg:p-5">
+                            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-xs">
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Formulary Category</span>
+                                    <p class="font-bold text-gray-900 dark:text-white text-sm">Essential Analgesic</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Manufacturer</span>
+                                    <p class="font-bold text-gray-900 dark:text-white text-sm">McNeil Healthcare</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Storage Requirement</span>
+                                    <p class="font-bold text-teal-600 dark:text-teal-400 text-sm">15-30°C (Controlled Room)</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Prescription Class</span>
+                                    <p class="font-bold text-indigo-600 dark:text-indigo-400 text-sm">OTC / Non-Controlled</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Expiry Watch</span>
+                                    <p class="font-bold text-amber-600 dark:text-amber-400 text-sm">240 Units Expiring 90d</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Unit Stock Cost</span>
+                                    <p class="font-bold text-emerald-600 dark:text-emerald-400 text-sm">$0.08 / Tablet</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ---------- KEY VITAL INVENTORY METRICS ---------- -->
+                        <section class="mdd-grid">
+                            <div class="mdd-vital mdd-c-teal">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-dollar-sign"></i></span>
+                                    <span class="mdd-chip">Unit Cost</span>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="mdd-stat-price">$0.08</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Wholesale Cost per Unit</p>
+                            </div>
+                            <div class="mdd-vital mdd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-package"></i></span>
+                                    <span class="mdd-chip">Stock On Hand</span>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="mdd-stat-stock">8,400</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Tablets in Main Dispensary</p>
+                            </div>
+                            <div class="mdd-vital mdd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-triangle-alert"></i></span>
+                                    <span class="mdd-chip">Reorder Point</span>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">2,000</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Minimum Safety Threshold</p>
+                            </div>
+                            <div class="mdd-vital mdd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-wallet"></i></span>
+                                    <span class="mdd-chip">Total Value</span>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">$672.00</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Current Inventory Valuation</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- MAIN CONTENT LAYOUT ---------- -->
+                        <div class="mdd-layout">
+                            <div class="space-y-6">
+
+                                <!-- CLINICAL PHARMACOLOGY MONOGRAPH -->
+                                <div class="mdd-surface p-5 border-l-4 border-l-teal-500">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <div class="w-8 h-8 rounded-full bg-teal-100 dark:bg-teal-950/80 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">
+                                                <i class="icon-flask-conical"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="mdd-title">Clinical Pharmacology & Composition</h3>
+                                                <p class="text-xs text-gray-500">Active ingredients and therapeutic mechanism</p>
+                                            </div>
+                                        </div>
+                                        <span class="px-2.5 py-1 rounded-md bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 font-bold text-[11px] border border-teal-200 dark:border-teal-800/50">
+                                            USP Verified Formulary
+                                        </span>
+                                    </div>
+                                    <div class="space-y-3 text-xs leading-relaxed text-gray-700 dark:text-gray-300">
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800">
+                                            <p class="font-extrabold text-gray-900 dark:text-white text-xs mb-1">Active Ingredient & Strength:</p>
+                                            <p>Acetaminophen (Paracetamol) 500 mg per film-coated tablet. Non-narcotic analgesic and antipyretic agent.</p>
+                                        </div>
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800">
+                                            <p class="font-extrabold text-gray-900 dark:text-white text-xs mb-1">Therapeutic Indications:</p>
+                                            <p>For temporary relief of mild to moderate pain including headache, muscular aches, backache, minor arthritis pain, toothache, and fever reduction.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- DOSAGE & ADMINISTRATION -->
+                                <div class="mdd-surface p-5">
+                                    <h2 class="mdd-title mb-3 flex items-center gap-2">
+                                        <i class="icon-clipboard-list text-teal-500"></i>Dosing Guidelines & Administration Limits
+                                    </h2>
+                                    <ul class="mdd-list">
+                                        <li><i class="icon-check text-teal-500 text-sm shrink-0 mt-0.5"></i><span><strong>Adult Dosing:</strong> 500 mg to 1000 mg orally every 4 to 6 hours as needed for pain or fever.</span></li>
+                                        <li><i class="icon-check text-teal-500 text-sm shrink-0 mt-0.5"></i><span><strong>Maximum Daily Limit:</strong> Do not exceed 3,000 mg (6 tablets) in any 24-hour period to prevent liver damage.</span></li>
+                                        <li><i class="icon-check text-teal-500 text-sm shrink-0 mt-0.5"></i><span><strong>Special Populations:</strong> Reduce dosage in patients with severe hepatic impairment or chronic alcohol intake.</span></li>
+                                    </ul>
+                                </div>
+
+                                <!-- BATCH & EXPIRY LOT TRACKING TABLE -->
+                                <div class="mdd-surface overflow-hidden">
+                                    <div class="mdd-head flex items-center justify-between">
+                                        <div class="flex items-center gap-2.5">
+                                            <span class="ico"><i class="icon-box"></i></span>
+                                            <div>
+                                                <h2 class="mdd-title">Active Batch Lots & Expiry Tracking</h2>
+                                                <p class="text-xs text-gray-500">Rack location and lot expiration breakdown</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs text-gray-400 font-mono">3 Active Lots</span>
+                                    </div>
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-left text-xs border-collapse">
+                                            <thead>
+                                                <tr class="bg-gray-100/60 dark:bg-slate-900/80 text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider border-b border-gray-200 dark:border-slate-800">
+                                                    <th class="py-3 px-4">Lot Number</th>
+                                                    <th class="py-3 px-4">Expiry Date</th>
+                                                    <th class="py-3 px-4 font-mono">Quantity</th>
+                                                    <th class="py-3 px-4">Storage Bin Location</th>
+                                                    <th class="py-3 px-4 text-center">QC Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-gray-100 dark:divide-slate-800 font-medium">
+                                                <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60">
+                                                    <td class="py-3 px-4 font-mono font-bold text-gray-900 dark:text-white">#LOT-2026-X81</td>
+                                                    <td class="py-3 px-4 text-emerald-600 dark:text-emerald-400 font-mono">Oct 2027 (Fresh)</td>
+                                                    <td class="py-3 px-4 font-mono font-bold">5,000 Units</td>
+                                                    <td class="py-3 px-4">Shelf A-12 / Bin 04</td>
+                                                    <td class="py-3 px-4 text-center">
+                                                        <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-[10px]">PASSED</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60">
+                                                    <td class="py-3 px-4 font-mono font-bold text-gray-900 dark:text-white">#LOT-2025-Y12</td>
+                                                    <td class="py-3 px-4 text-emerald-600 dark:text-emerald-400 font-mono">May 2027</td>
+                                                    <td class="py-3 px-4 font-mono font-bold">3,160 Units</td>
+                                                    <td class="py-3 px-4">Shelf A-12 / Bin 05</td>
+                                                    <td class="py-3 px-4 text-center">
+                                                        <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-[10px]">PASSED</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60">
+                                                    <td class="py-3 px-4 font-mono font-bold text-gray-900 dark:text-white">#LOT-2024-Z90</td>
+                                                    <td class="py-3 px-4 text-amber-600 dark:text-amber-400 font-mono">Dec 2024 (90 Days)</td>
+                                                    <td class="py-3 px-4 font-mono font-bold text-amber-600">240 Units</td>
+                                                    <td class="py-3 px-4">Shelf A-12 / Front Rack</td>
+                                                    <td class="py-3 px-4 text-center">
+                                                        <span class="px-2.5 py-0.5 rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold text-[10px]">EXPIRING SOON</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- BLACK BOX WARNINGS & CONSTRAINTS -->
+                                <div class="mdd-surface p-5 border-l-4 border-l-rose-500">
+                                    <h2 class="mdd-title mb-3 flex items-center gap-2 text-rose-600 dark:text-rose-400">
+                                        <i class="icon-triangle-alert"></i>Safety Precautions & Black Box Warnings
+                                    </h2>
+                                    <ul class="mdd-list warn">
+                                        <li><i class="icon-triangle-alert text-rose-500 text-sm shrink-0 mt-0.5"></i><span><strong>Hepatotoxicity Warning:</strong> Acetaminophen has been associated with cases of acute liver failure, at times resulting in liver transplant and death. Avoid combining with other OTC/prescription acetaminophen products.</span></li>
+                                        <li><i class="icon-triangle-alert text-rose-500 text-sm shrink-0 mt-0.5"></i><span><strong>Alcohol Interaction:</strong> Chronic alcohol users (≥3 drinks/day) face heightened risk of liver injury.</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- SIDEBAR PANELS -->
+                            <div class="space-y-6 mdd-sidebar">
+
+                                <!-- PRIMARY SUPPLIER CARD -->
+                                <div class="mdd-surface mdd-side-hero rounded-[1.25rem] p-5">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Primary Vendor</p>
+                                    <h3 class="mt-1 text-xl font-extrabold text-white">McKesson Corp</h3>
+                                    <p class="text-xs text-white/80 mt-0.5">Standard Pack Size: 6,000 Units</p>
+
+                                    <div class="mt-4 p-3 bg-white/10 backdrop-blur-md rounded-xl space-y-2 text-xs text-white">
+                                        <div class="flex items-center justify-between">
+                                            <span>Reorder Lead Time:</span>
+                                            <span class="font-bold">2 Business Days</span>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span>Contracted Price:</span>
+                                            <span class="font-bold">$0.075 / Unit</span>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="mt-4 w-full py-2.5 rounded-xl bg-white text-gray-900 font-bold text-xs hover:bg-gray-100 transition-colors shadow-lg" id="mdd-side-po-btn">
+                                        <i class="icon-shopping-cart mr-1"></i>Reorder 6,000 Units
+                                    </button>
+                                </div>
+
+                                <!-- FORMULARY METADATA CARD -->
+                                <div class="mdd-surface p-5">
+                                    <h3 class="mdd-title mb-3">Formulary Specifications</h3>
+                                    <div class="mdd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Formulary Code</span><span class="v" id="mdd-kv-code">#MED-0001</span></div>
+                                    <div class="mdd-kv"><span class="k"><i class="icon-barcode text-[13px]"></i>NDC Code</span><span class="v">50580-496-01</span></div>
+                                    <div class="mdd-kv"><span class="k"><i class="icon-layers text-[13px]"></i>Class</span><span class="v">Analgesic</span></div>
+                                    <div class="mdd-kv"><span class="k"><i class="icon-shield text-[13px]"></i>Schedule</span><span class="v text-emerald-600 font-bold">OTC / Non-Controlled</span></div>
+                                    <div class="mdd-kv"><span class="k"><i class="icon-thermometer text-[13px]"></i>Storage</span><span class="v">15-30°C Ambient</span></div>
+                                </div>
+
+                                <!-- QUICK ACTIONS -->
+                                <div class="mdd-surface p-5 space-y-2.5">
+                                    <h3 class="mdd-title mb-1">Medicine Actions</h3>
+                                    <button type="button" class="mdd-btn mdd-btn-solid w-full justify-start" id="mdd-side-adjust"><i class="icon-sliders"></i>Adjust Stock Count</button>
+                                    <button type="button" class="mdd-btn mdd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Medicine Monograph</button>
+                                    <a href="medicines.html" class="mdd-btn mdd-btn-solid w-full justify-start"><i class="icon-list"></i>All Medicines Directory</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "medicine-detail"})
+    </body>
+</html>
+

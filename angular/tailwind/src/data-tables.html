@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Data Tables — Dreams HMS"}) @@include('partials/header.html', {"page": "data-tables"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="data-tables">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <!-- Page Header -->
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Data Tables</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Sortable, searchable and paginated tables — no jQuery required</p>
+                            </div>
+                        </div>
+
+                        <!-- Full Data Table -->
+                        <div class="card" data-aos="fade-up">
+                            <div class="p-4 border-b border-border-color">
+                                <h2 class="font-semibold text-gray-900">Patient Records</h2>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Search, sort any column and page through results.</p>
+                            </div>
+
+                            <!-- Toolbar -->
+                            <div class="p-4 flex flex-col sm:flex-row sm:items-center gap-3 border-b border-border-color" data-dt-toolbar>
+                                <div class="flex items-center gap-2">
+                                    <label for="dt-length" class="text-sm text-gray-500 dark:text-gray-400">Show</label>
+                                    <select id="dt-length" class="form-select py-1.5! w-20" data-dt-length>
+                                        <option>5</option>
+                                        <option selected>10</option>
+                                        <option>25</option>
+                                        <option>50</option>
+                                    </select>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">entries</span>
+                                </div>
+                                <div class="relative sm:ml-auto sm:w-64">
+                                    <label for="dt-search" class="sr-only">Search records</label>
+                                    <i class="icon-search absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                    <input type="search" id="dt-search" class="form-input pl-10!" placeholder="Search records..." data-dt-search>
+                                </div>
+                            </div>
+
+                            <!-- Table -->
+                            <div class="overflow-x-auto">
+                                <table class="table" id="patients-table" data-datatable>
+                                    <thead>
+                                        <tr>
+                                            <th data-dt-sort="text">Patient ID</th>
+                                            <th data-dt-sort="text">Name</th>
+                                            <th data-dt-sort="text">Department</th>
+                                            <th data-dt-sort="text">Doctor</th>
+                                            <th data-dt-sort="number">Age</th>
+                                            <th data-dt-sort="text">Status</th>
+                                            <th data-dt-sort="number" class="text-right">Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>PT-2026-0184</td>
+                                            <td>Sarah Chen</td>
+                                            <td>Cardiology</td>
+                                            <td>Dr. Rajesh Kumar</td>
+                                            <td>34</td>
+                                            <td><span class="badge badge-green">Stable</span></td>
+                                            <td class="text-right" data-dt-value="240">$240.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0185</td>
+                                            <td>Rajesh Kumar</td>
+                                            <td>Neurology</td>
+                                            <td>Dr. Amelia Moore</td>
+                                            <td>47</td>
+                                            <td><span class="badge badge-amber">Observation</span></td>
+                                            <td class="text-right" data-dt-value="1120">$1,120.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0186</td>
+                                            <td>Amelia Moore</td>
+                                            <td>Orthopedics</td>
+                                            <td>Dr. James Park</td>
+                                            <td>29</td>
+                                            <td><span class="badge badge-green">Stable</span></td>
+                                            <td class="text-right" data-dt-value="0">$0.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0187</td>
+                                            <td>James Park</td>
+                                            <td>Emergency</td>
+                                            <td>Dr. Sarah Chen</td>
+                                            <td>52</td>
+                                            <td><span class="badge badge-red">Critical</span></td>
+                                            <td class="text-right" data-dt-value="3480">$3,480.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0188</td>
+                                            <td>Priya Nair</td>
+                                            <td>Pediatrics</td>
+                                            <td>Dr. Daniel Okafor</td>
+                                            <td>8</td>
+                                            <td><span class="badge badge-green">Stable</span></td>
+                                            <td class="text-right" data-dt-value="410">$410.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0189</td>
+                                            <td>Daniel Okafor</td>
+                                            <td>Cardiology</td>
+                                            <td>Dr. Rajesh Kumar</td>
+                                            <td>61</td>
+                                            <td><span class="badge badge-amber">Observation</span></td>
+                                            <td class="text-right" data-dt-value="2260">$2,260.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0190</td>
+                                            <td>Elena Vasquez</td>
+                                            <td>Radiology</td>
+                                            <td>Dr. Amelia Moore</td>
+                                            <td>38</td>
+                                            <td><span class="badge badge-green">Stable</span></td>
+                                            <td class="text-right" data-dt-value="780">$780.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0191</td>
+                                            <td>Marcus Bell</td>
+                                            <td>Neurology</td>
+                                            <td>Dr. James Park</td>
+                                            <td>45</td>
+                                            <td><span class="badge badge-red">Critical</span></td>
+                                            <td class="text-right" data-dt-value="5140">$5,140.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0192</td>
+                                            <td>Yuki Tanaka</td>
+                                            <td>Orthopedics</td>
+                                            <td>Dr. Sarah Chen</td>
+                                            <td>27</td>
+                                            <td><span class="badge badge-green">Stable</span></td>
+                                            <td class="text-right" data-dt-value="150">$150.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0193</td>
+                                            <td>Omar Haddad</td>
+                                            <td>Emergency</td>
+                                            <td>Dr. Daniel Okafor</td>
+                                            <td>55</td>
+                                            <td><span class="badge badge-amber">Observation</span></td>
+                                            <td class="text-right" data-dt-value="1890">$1,890.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0194</td>
+                                            <td>Grace Liu</td>
+                                            <td>Pediatrics</td>
+                                            <td>Dr. Rajesh Kumar</td>
+                                            <td>12</td>
+                                            <td><span class="badge badge-green">Stable</span></td>
+                                            <td class="text-right" data-dt-value="320">$320.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0195</td>
+                                            <td>Tomas Novak</td>
+                                            <td>Cardiology</td>
+                                            <td>Dr. Amelia Moore</td>
+                                            <td>68</td>
+                                            <td><span class="badge badge-red">Critical</span></td>
+                                            <td class="text-right" data-dt-value="4275">$4,275.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0196</td>
+                                            <td>Aisha Bello</td>
+                                            <td>Radiology</td>
+                                            <td>Dr. James Park</td>
+                                            <td>41</td>
+                                            <td><span class="badge badge-green">Stable</span></td>
+                                            <td class="text-right" data-dt-value="655">$655.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0197</td>
+                                            <td>Henrik Olsen</td>
+                                            <td>Neurology</td>
+                                            <td>Dr. Sarah Chen</td>
+                                            <td>33</td>
+                                            <td><span class="badge badge-amber">Observation</span></td>
+                                            <td class="text-right" data-dt-value="1475">$1,475.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0198</td>
+                                            <td>Fatima Zahra</td>
+                                            <td>Orthopedics</td>
+                                            <td>Dr. Daniel Okafor</td>
+                                            <td>50</td>
+                                            <td><span class="badge badge-green">Stable</span></td>
+                                            <td class="text-right" data-dt-value="920">$920.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Footer / Pagination -->
+                            <div class="p-4 flex flex-col sm:flex-row sm:items-center gap-3 border-t border-border-color">
+                                <p class="text-sm text-gray-500 dark:text-gray-400" data-dt-info>Showing 0 to 0 of 0 entries</p>
+                                <nav class="sm:ml-auto flex items-center gap-1" aria-label="Table pagination" data-dt-pagination></nav>
+                            </div>
+                        </div>
+
+                        <!-- Compact Data Table -->
+                        <div class="card" data-aos="fade-up">
+                            <div class="p-4 border-b border-border-color">
+                                <h2 class="font-semibold text-gray-900">Inventory — Sort Only</h2>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Sorting without search or pagination.</p>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="table" data-datatable data-dt-paginate="false">
+                                    <thead>
+                                        <tr>
+                                            <th data-dt-sort="text">Medicine</th>
+                                            <th data-dt-sort="text">Category</th>
+                                            <th data-dt-sort="number">Stock</th>
+                                            <th data-dt-sort="text">Expiry</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Amoxicillin 500mg</td>
+                                            <td>Antibiotic</td>
+                                            <td>1,240</td>
+                                            <td>Mar 2027</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Paracetamol 650mg</td>
+                                            <td>Analgesic</td>
+                                            <td>3,180</td>
+                                            <td>Nov 2026</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Atorvastatin 20mg</td>
+                                            <td>Cardiovascular</td>
+                                            <td>640</td>
+                                            <td>Jul 2027</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Salbutamol Inhaler</td>
+                                            <td>Respiratory</td>
+                                            <td>92</td>
+                                            <td>Jan 2027</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Insulin Glargine</td>
+                                            <td>Endocrine</td>
+                                            <td>48</td>
+                                            <td>Sep 2026</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "data-tables"})
+    </body>
+</html>

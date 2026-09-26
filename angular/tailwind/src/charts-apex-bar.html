@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Bar Charts — ApexCharts — Dreams HMS"}) @@include('partials/header.html', {"page": "charts-apex-bar"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="charts-apex-bar">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search chart components..."})
+            <div class="page-wrapper flex flex-col flex-1 min-w-0">
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="bx-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ============ COMPACT HEADING ============ -->
+                        <div class="flex flex-wrap items-end justify-between gap-3 mb-5">
+                            <div>
+                                <nav class="flex items-center gap-1.5 text-xs bx-mut mb-1">
+                                    <i class="icon-bar-chart-3"></i><span>Charts</span><i class="icon-chevron-right text-[.7rem]"></i><span class="font-semibold text-[var(--bx-c)]">Bar</span>
+                                </nav>
+                                <h1 class="text-xl font-bold">Bar Charts</h1>
+                                <p class="text-sm bx-mut mt-.5">Ready-to-use ApexCharts bar components — theme-aware, responsive and fully self-contained.</p>
+                            </div>
+                            <span class="bx-badge" id="bx-count">0 components</span>
+                        </div>
+
+                        <!-- ============ CHART GRID ============ -->
+                        <section id="bx-grid" class="grid grid-cols-1 xl:grid-cols-2 gap-5"></section>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- ============ MODAL ============ -->
+        <div class="bx-modal-wrap" id="bx-modal">
+            <div class="bx-modal-ov" data-close></div>
+            <div class="bx-modal" id="bx-modal-box">
+                <div class="bx-modal-head">
+                    <span class="bx-modal-badge"><i class="icon-code-2" id="bx-modal-ic"></i></span>
+                    <div class="min-w-0">
+                        <div class="text-sm font-bold truncate" id="bx-modal-title">Title</div>
+                        <div class="text-xs bx-mut truncate" id="bx-modal-sub">Subtitle</div>
+                    </div>
+                    <button class="bx-iconbtn ml-auto" data-close><i class="icon-x"></i></button>
+                </div>
+                <div class="bx-modal-body" id="bx-modal-body"></div>
+                <div class="bx-foot border-t border-[var(--bx-border)] py-[.85rem] px-[1.2rem]" id="bx-modal-foot"></div>
+            </div>
+        </div>
+
+        <div id="bx-toast"></div>
+
+        <!-- ApexCharts (available in template libs) -->
+        <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+        @@include('partials/script.html', {"page": "charts-apex-bar"})
+    </body>
+</html>

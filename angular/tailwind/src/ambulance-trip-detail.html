@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Ambulance Trip Details — Dreams HMS"}) @@include('partials/header.html', {"page": "ambulance-trip-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="ambulance-trip-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="atd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Ambulance Trip Details", "parentUrl": "ambulance-trips.html", "parent": "Ambulance Trips"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="atd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="atd-hero-ico"><i class="icon-truck"></i></div>
+                                    <div class="min-w-0">
+                                        <p class="atd-kicker">Ambulance Trip</p>
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="atd-patient" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Susan Blake</h1>
+                                            <span class="atd-hbadge"><span class="atd-dot"></span><span id="atd-status-badge">Completed</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="atd-hmeta"><i class="icon-hash text-[13px] text-sky-300"></i><span id="atd-trip-id">#TRP-00001</span></span>
+                                            <span class="atd-hmeta"><i class="icon-truck text-[13px] text-indigo-300"></i><span id="atd-hero-vehicle">AMB-101</span></span>
+                                            <span class="atd-hmeta"><i class="icon-user text-[13px] text-violet-300"></i><span id="atd-hero-driver">Mark Reynolds</span></span>
+                                            <span class="atd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Trip Date <span id="atd-hero-date">2024-12-06</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 atd-actions-print-hide">
+                                    <button type="button" class="atd-btn atd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="ambulance-trips.html" class="atd-btn atd-btn-primary"><i class="icon-arrow-left"></i>Back to Trips</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="atd-grid">
+                            <div class="atd-vital atd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-truck"></i></span>
+                                    <span class="atd-chip">Vehicle</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="atd-stat-vehicle">AMB-101</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Vehicle</p>
+                            </div>
+                            <div class="atd-vital atd-c-indigo">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-user"></i></span>
+                                    <span class="atd-chip">Driver</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="atd-stat-driver">Mark Reynolds</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Driver</p>
+                            </div>
+                            <div class="atd-vital atd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-route"></i></span>
+                                    <span class="atd-chip">Distance</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="atd-stat-distance">8.5 km</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Distance Covered</p>
+                            </div>
+                            <div class="atd-vital atd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-activity"></i></span>
+                                    <span class="atd-chip">Status</span>
+                                </div>
+                                <span class="mt-3 inline-flex w-fit items-center px-3 py-1.5 rounded-lg text-sm font-extrabold text-success bg-success/10" id="atd-stat-status">Completed</span>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Status</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="atd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Trip route -->
+                                <div class="atd-surface">
+                                    <div class="atd-head">
+                                        <span class="ico"><i class="icon-map-pin"></i></span>
+                                        <h2 class="atd-title">Trip Route</h2>
+                                    </div>
+                                    <div class="atd-route">
+                                        <div class="atd-route-point">
+                                            <span class="atd-route-ico pickup"><i class="icon-map-pin"></i></span>
+                                            <div class="min-w-0">
+                                                <p class="atd-route-label">Pickup</p>
+                                                <p class="atd-route-value" id="atd-route-pickup">42 Elm Street</p>
+                                            </div>
+                                        </div>
+                                        <div class="atd-route-connector">
+                                            <span class="atd-route-distance" id="atd-route-distance">8.5 km</span>
+                                            <div class="atd-route-line"></div>
+                                            <i class="icon-navigation"></i>
+                                        </div>
+                                        <div class="atd-route-point">
+                                            <span class="atd-route-ico drop"><i class="icon-flag"></i></span>
+                                            <div class="min-w-0">
+                                                <p class="atd-route-label">Drop-off</p>
+                                                <p class="atd-route-value" id="atd-route-drop">City General Hospital</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Workflow timeline -->
+                                <div class="atd-surface">
+                                    <div class="atd-head">
+                                        <span class="ico"><i class="icon-list"></i></span>
+                                        <h2 class="atd-title">Trip Workflow</h2>
+                                    </div>
+                                    <div class="atd-tl p-5" id="atd-timeline">
+                                        <div class="atd-tl-item done"><span class="atd-tl-node"><i class="icon-siren"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Dispatched</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-06</p></div>
+                                        <div class="atd-tl-item done"><span class="atd-tl-node"><i class="icon-navigation"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Active</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-06</p></div>
+                                        <div class="atd-tl-item current"><span class="atd-tl-node"><i class="icon-check-circle"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Completed</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-06</p></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 atd-sidebar">
+                                <!-- Driver -->
+                                <div class="atd-surface atd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Trip Driver</p>
+                                    <h3 class="mt-1 text-lg font-extrabold" id="atd-side-driver">Mark Reynolds</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Ambulance Driver</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="atd-hmeta"><i class="icon-phone-call text-[12px]"></i>Contact Driver</span>
+                                    </div>
+                                </div>
+
+                                <!-- Trip details -->
+                                <div class="atd-surface p-5">
+                                    <h3 class="atd-title mb-3">Trip Details</h3>
+                                    <div class="atd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v" id="atd-kv-patient">Susan Blake</span></div>
+                                    <div class="atd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Driver</span><span class="v" id="atd-kv-driver">Mark Reynolds</span></div>
+                                    <div class="atd-kv"><span class="k"><i class="icon-truck text-[13px]"></i>Vehicle</span><span class="v" id="atd-kv-vehicle">AMB-101</span></div>
+                                    <div class="atd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Trip Date</span><span class="v" id="atd-kv-date">2024-12-06</span></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "ambulance-trip-detail"})
+    </body>
+</html>

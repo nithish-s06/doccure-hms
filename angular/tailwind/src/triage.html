@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Triage — Dreams HMS"}) @@include('partials/header.html', {"page": "triage"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search patients awaiting triage..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <!-- Breadcrumb -->
+                        @@include('partials/breadcrumb.html', {"current": "Triage", "parentUrl": "emergency-dashboard.html", "parent": "Emergency"})
+
+                        <!-- Page Header -->
+                        <div class="flex flex-wrap items-center justify-between gap-3" data-aos="fade-up">
+                            <div>
+                                <div class="flex items-center gap-2.5">
+                                    <h1 class="text-2xl font-bold text-gray-900">Triage Station</h1>
+                                    <span class="badge badge-blue">
+                                        <span class="size-1.5 rounded-full bg-info animate-pulse" aria-hidden="true"></span>
+                                        Desk 2 Open
+                                    </span>
+                                </div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                    Emergency Severity Index (ESI) assessment
+                                    <span class="mx-1" aria-hidden="true">•</span>
+                                    Friday, July 17, 2026
+                                    <span class="mx-1" aria-hidden="true">•</span>
+                                    Charge nurse: <span class="font-medium text-gray-900">Alicia Barnett, RN</span>
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button type="button" id="btn-esi-guide" title="Open the ESI reference guide" class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-border-color text-gray-900 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                                    <i class="icon-book-open"></i>
+                                    <span class="max-sm:hidden">ESI Guide</span>
+                                </button>
+                                <button type="button" id="btn-export" title="Export the triage log to CSV" class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-border-color text-gray-900 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                                    <i class="icon-file-down"></i>
+                                    <span class="max-sm:hidden">Export</span>
+                                </button>
+                                <button type="button" id="btn-new" class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                    <i class="icon-clipboard-plus"></i>
+                                    New Assessment
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Triage KPIs (Emergency module component) -->
+                        <div id="kpi-row" class="er-kpis cols-6" data-aos="fade-up" data-aos-delay="50"><article class="er-kpi tone-urgent"><div class="er-kpi-head"><span class="er-kpi-icon"><i class="icon-clipboard-list" aria-hidden="true"></i></span><span class="er-kpi-live"><span class="er-kpi-live-dot" aria-hidden="true"></span>Live</span></div><p class="er-kpi-value"><span id="kpi-waiting">6</span></p><p class="er-kpi-label">Awaiting Triage</p><svg class="er-kpi-ecg" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polyline class="er-kpi-ecg-line" points="0,10 14,10 18,10 22,7 26,13 30,10 36,10 40,2 44,18 48,10 58,10 62,8 66,12 70,10 82,10 86,9 90,11 94,10 100,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline></svg><svg class="er-kpi-meter" viewBox="0 0 100 4" preserveAspectRatio="none" role="img" aria-label="Capacity 60 percent"><rect class="er-kpi-meter-track" x="0" y="0" width="100" height="4" rx="2" fill="currentColor" opacity="0.9"></rect><rect x="0" y="0" width="60" height="4" rx="2" fill="currentColor"></rect></svg><div class="er-kpi-foot"><span class="er-kpi-meta">queue cap 10</span><span class="er-kpi-pct">60%</span></div></article><article class="er-kpi tone-critical"><div class="er-kpi-head"><span class="er-kpi-icon"><i class="icon-hourglass" aria-hidden="true"></i></span></div><p class="er-kpi-value"><span id="kpi-longest">53</span><span class="er-kpi-unit">min</span></p><p class="er-kpi-label">Longest Wait</p><svg class="er-kpi-ecg" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polyline class="er-kpi-ecg-line" points="0,10 14,10 18,10 22,7 26,13 30,10 36,10 40,2 44,18 48,10 58,10 62,8 66,12 70,10 82,10 86,9 90,11 94,10 100,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline></svg><svg class="er-kpi-meter" viewBox="0 0 100 4" preserveAspectRatio="none" role="img" aria-label="Capacity 88 percent"><rect class="er-kpi-meter-track" x="0" y="0" width="100" height="4" rx="2" fill="currentColor" opacity="0.9"></rect><rect x="0" y="0" width="88" height="4" rx="2" fill="currentColor"></rect></svg><div class="er-kpi-foot"><span class="er-kpi-meta">target 15 min</span><span class="er-kpi-pct">88%</span></div></article><article class="er-kpi tone-stable"><div class="er-kpi-head"><span class="er-kpi-icon"><i class="icon-timer" aria-hidden="true"></i></span></div><p class="er-kpi-value"><span id="kpi-avg">5</span><span class="er-kpi-unit">min</span></p><p class="er-kpi-label">Avg Triage Time</p><svg class="er-kpi-ecg" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polyline class="er-kpi-ecg-line" points="0,10 14,10 18,10 22,7 26,13 30,10 36,10 40,2 44,18 48,10 58,10 62,8 66,12 70,10 82,10 86,9 90,11 94,10 100,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline></svg><svg class="er-kpi-meter" viewBox="0 0 100 4" preserveAspectRatio="none" role="img" aria-label="Capacity 50 percent"><rect class="er-kpi-meter-track" x="0" y="0" width="100" height="4" rx="2" fill="currentColor" opacity="0.9"></rect><rect x="0" y="0" width="50" height="4" rx="2" fill="currentColor"></rect></svg><div class="er-kpi-foot"><span class="er-kpi-meta">target 10 min</span><span class="er-kpi-pct">50%</span></div></article><article class="er-kpi tone-critical"><div class="er-kpi-head"><span class="er-kpi-icon"><i class="icon-heart-pulse" aria-hidden="true"></i></span><span class="er-kpi-live"><span class="er-kpi-live-dot" aria-hidden="true"></span>Live</span></div><p class="er-kpi-value"><span id="kpi-acuity">3</span></p><p class="er-kpi-label">High Acuity (ESI 1–2)</p><svg class="er-kpi-ecg" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polyline class="er-kpi-ecg-line" points="0,10 14,10 18,10 22,7 26,13 30,10 36,10 40,2 44,18 48,10 58,10 62,8 66,12 70,10 82,10 86,9 90,11 94,10 100,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline></svg><svg class="er-kpi-meter" viewBox="0 0 100 4" preserveAspectRatio="none" role="img" aria-label="Capacity 25 percent"><rect class="er-kpi-meter-track" x="0" y="0" width="100" height="4" rx="2" fill="currentColor" opacity="0.9"></rect><rect x="0" y="0" width="25" height="4" rx="2" fill="currentColor"></rect></svg><div class="er-kpi-foot"><span class="er-kpi-meta">of 12 triaged</span><span class="er-kpi-pct">25%</span></div></article><article class="er-kpi tone-critical"><div class="er-kpi-head"><span class="er-kpi-icon"><i class="icon-timer-reset" aria-hidden="true"></i></span><span class="er-kpi-live"><span class="er-kpi-live-dot" aria-hidden="true"></span>Action</span></div><p class="er-kpi-value"><span id="kpi-reassess">2</span></p><p class="er-kpi-label">Reassessments Overdue</p><svg class="er-kpi-ecg" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polyline class="er-kpi-ecg-line" points="0,10 14,10 18,10 22,7 26,13 30,10 36,10 40,2 44,18 48,10 58,10 62,8 66,12 70,10 82,10 86,9 90,11 94,10 100,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline></svg><svg class="er-kpi-meter" viewBox="0 0 100 4" preserveAspectRatio="none" role="img" aria-label="Capacity 50 percent"><rect class="er-kpi-meter-track" x="0" y="0" width="100" height="4" rx="2" fill="currentColor" opacity="0.9"></rect><rect x="0" y="0" width="50" height="4" rx="2" fill="currentColor"></rect></svg><div class="er-kpi-foot"><span class="er-kpi-meta">4 on timer</span><span class="er-kpi-pct">50%</span></div></article><article class="er-kpi tone-purple"><div class="er-kpi-head"><span class="er-kpi-icon"><i class="icon-clipboard-check" aria-hidden="true"></i></span></div><p class="er-kpi-value"><span id="kpi-done">12</span></p><p class="er-kpi-label">Triaged This Shift</p><svg class="er-kpi-ecg" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polyline class="er-kpi-ecg-line" points="0,10 14,10 18,10 22,7 26,13 30,10 36,10 40,2 44,18 48,10 58,10 62,8 66,12 70,10 82,10 86,9 90,11 94,10 100,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline></svg><svg class="er-kpi-meter" viewBox="0 0 100 4" preserveAspectRatio="none" role="img" aria-label="Capacity 60 percent"><rect class="er-kpi-meter-track" x="0" y="0" width="100" height="4" rx="2" fill="currentColor" opacity="0.9"></rect><rect x="0" y="0" width="60" height="4" rx="2" fill="currentColor"></rect></svg><div class="er-kpi-foot"><span class="er-kpi-meta">since 07:00 AM</span><span class="er-kpi-pct">60%</span></div></article></div>
+
+                        <div class="grid grid-cols-1 gap-5">
+                            <!-- ESI Distribution -->
+                            <section class="card" aria-labelledby="dist-title" data-aos="fade-up" data-aos-delay="150">
+                                <div class="p-4 border-b border-border-color flex items-center gap-2">
+                                    <i class="icon-chart-no-axes-column text-purple"></i>
+                                    <h2 id="dist-title" class="font-bold text-gray-900 mr-auto">ESI Distribution</h2>
+                                    <span class="text-[10px] font-semibold text-gray-400">Today</span>
+                                </div>
+                                <div id="dist-list" class="p-4 space-y-3"><div><div class="flex items-center gap-2 mb-1.5"><span class="badge badge-red">ESI 1</span><span class="text-xs text-gray-500 dark:text-gray-400 mr-auto">Resuscitation</span><span class="text-xs font-bold text-gray-900 tabular-nums">1</span><span class="text-[10px] text-gray-400 tabular-nums w-8 text-right">8%</span></div><div class="h-2 w-full rounded-full overflow-hidden bg-danger/10" role="img" aria-label="ESI 1: 1 patients, 8 percent of today's triage"><div class="h-full rounded-full bg-danger w-[25%]"></div></div></div><div><div class="flex items-center gap-2 mb-1.5"><span class="badge badge-red">ESI 2</span><span class="text-xs text-gray-500 dark:text-gray-400 mr-auto">Emergent</span><span class="text-xs font-bold text-gray-900 tabular-nums">2</span><span class="text-[10px] text-gray-400 tabular-nums w-8 text-right">17%</span></div><div class="h-2 w-full rounded-full overflow-hidden bg-danger/10" role="img" aria-label="ESI 2: 2 patients, 17 percent of today's triage"><div class="h-full rounded-full bg-danger w-[50%]"></div></div></div><div><div class="flex items-center gap-2 mb-1.5"><span class="badge badge-amber">ESI 3</span><span class="text-xs text-gray-500 dark:text-gray-400 mr-auto">Urgent</span><span class="text-xs font-bold text-gray-900 tabular-nums">4</span><span class="text-[10px] text-gray-400 tabular-nums w-8 text-right">33%</span></div><div class="h-2 w-full rounded-full overflow-hidden bg-warning/10" role="img" aria-label="ESI 3: 4 patients, 33 percent of today's triage"><div class="h-full rounded-full bg-warning w-[100%]"></div></div></div><div><div class="flex items-center gap-2 mb-1.5"><span class="badge badge-blue">ESI 4</span><span class="text-xs text-gray-500 dark:text-gray-400 mr-auto">Less Urgent</span><span class="text-xs font-bold text-gray-900 tabular-nums">3</span><span class="text-[10px] text-gray-400 tabular-nums w-8 text-right">25%</span></div><div class="h-2 w-full rounded-full overflow-hidden bg-info/10" role="img" aria-label="ESI 4: 3 patients, 25 percent of today's triage"><div class="h-full rounded-full bg-info w-[75%]"></div></div></div><div><div class="flex items-center gap-2 mb-1.5"><span class="badge badge-green">ESI 5</span><span class="text-xs text-gray-500 dark:text-gray-400 mr-auto">Non Urgent</span><span class="text-xs font-bold text-gray-900 tabular-nums">2</span><span class="text-[10px] text-gray-400 tabular-nums w-8 text-right">17%</span></div><div class="h-2 w-full rounded-full overflow-hidden bg-success/10" role="img" aria-label="ESI 5: 2 patients, 17 percent of today's triage"><div class="h-full rounded-full bg-success w-[50%]"></div></div></div></div>
+                                <div class="px-4 pb-4">
+                                    <div class="rounded-lg bg-gray-50 dark:bg-slate-800 p-3 flex items-center gap-2">
+                                        <i class="icon-info text-info shrink-0"></i>
+                                        <p class="text-[11px] text-gray-500 dark:text-gray-400">
+                                            ESI 1–2 arrivals bypass the waiting room and route direct to Resuscitation.
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-5">
+                            <!-- Completed Triage -->
+                            <section class="card" aria-labelledby="done-title" data-aos="fade-up" data-aos-delay="150">
+                                <div class="p-4 border-b border-border-color flex flex-wrap items-center gap-3">
+                                    <div class="flex items-center gap-2 mr-auto">
+                                        <i class="icon-clipboard-check text-success"></i>
+                                        <h2 id="done-title" class="font-bold text-gray-900">Completed Triage</h2>
+                                        <span id="done-count" class="badge badge-green">12</span>
+                                    </div>
+                                    <label for="filter-esi" class="sr-only">Filter by ESI level</label>
+                                    <select id="filter-esi" class="form-select w-auto! py-1.5! text-xs!">
+                                        <option value="">All ESI Levels</option>
+                                        <option value="1">ESI 1 — Resuscitation</option>
+                                        <option value="2">ESI 2 — Emergent</option>
+                                        <option value="3">ESI 3 — Urgent</option>
+                                        <option value="4">ESI 4 — Less Urgent</option>
+                                        <option value="5">ESI 5 — Non Urgent</option>
+                                    </select>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="table">
+                                        <caption class="sr-only">Assessments completed during this shift</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Patient</th>
+                                                <th scope="col">ESI</th>
+                                                <th scope="col">Vitals</th>
+                                                <th scope="col">Triaged By</th>
+                                                <th scope="col">Time</th>
+                                                <th scope="col">Disposition</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="done-body"><tr data-row-id="ER-4821"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-30.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Marcus Holloway</a></p><p class="text-xs text-gray-400">ER-4821</p></div></div></td><td><span class="badge badge-red" title="Resuscitation">ESI 1</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">BP 88/54 · HR 122 · SpO2 91%</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Alicia Barnett, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">09:38 AM</span></td><td><span class="badge badge-red">Resuscitation</span></td></tr>
+<tr data-row-id="ER-4823"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-02.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Arthur Delgado</a></p><p class="text-xs text-gray-400">ER-4823</p></div></div></td><td><span class="badge badge-red" title="Emergent">ESI 2</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">BP 178/96 · HR 88 · SpO2 96%</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Devon Marsh, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">09:34 AM</span></td><td><span class="badge badge-red">Resuscitation</span></td></tr>
+<tr data-row-id="ER-4822"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-01.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Denise Okafor</a></p><p class="text-xs text-gray-400">ER-4822</p></div></div></td><td><span class="badge badge-red" title="Emergent">ESI 2</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">BP 132/86 · HR 108 · SpO2 89%</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Alicia Barnett, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">09:31 AM</span></td><td><span class="badge badge-amber">Acute Care</span></td></tr>
+<tr data-row-id="ER-4826"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-05.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Rosalind Pierce</a></p><p class="text-xs text-gray-400">ER-4826</p></div></div></td><td><span class="badge badge-amber" title="Urgent">ESI 3</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">BP 104/62 · HR 58 · SpO2 97%</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Camille Ortega, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">09:20 AM</span></td><td><span class="badge badge-amber">Acute Care</span></td></tr>
+<tr data-row-id="ER-4825"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-04.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Terrence Whitfield</a></p><p class="text-xs text-gray-400">ER-4825</p></div></div></td><td><span class="badge badge-amber" title="Urgent">ESI 3</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">BP 128/80 · HR 84 · SpO2 99%</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Devon Marsh, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">09:12 AM</span></td><td><span class="badge badge-blue">Fast Track</span></td></tr>
+<tr data-row-id="ER-4824"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-03.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Kaitlyn Brewer</a></p><p class="text-xs text-gray-400">ER-4824</p></div></div></td><td><span class="badge badge-amber" title="Urgent">ESI 3</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">BP 118/74 · HR 96 · Temp 100.8°F</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Camille Ortega, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">09:04 AM</span></td><td><span class="badge badge-purple">Observation</span></td></tr>
+<tr data-row-id="ER-4827"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-06.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Julian Alvarez</a></p><p class="text-xs text-gray-400">ER-4827</p></div></div></td><td><span class="badge badge-blue" title="Less Urgent">ESI 4</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">HR 104 · Temp 102.1°F · SpO2 98%</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Preston Vaughn, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">08:57 AM</span></td><td><span class="badge badge-blue">Fast Track</span></td></tr>
+<tr data-row-id="ER-4828"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-07.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Bernadette Cho</a></p><p class="text-xs text-gray-400">ER-4828</p></div></div></td><td><span class="badge badge-blue" title="Less Urgent">ESI 4</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">BP 124/78 · HR 76</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Preston Vaughn, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">08:52 AM</span></td><td><span class="badge badge-blue">Fast Track</span></td></tr>
+<tr data-row-id="ER-4829"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-08.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Grant Sutherland</a></p><p class="text-xs text-gray-400">ER-4829</p></div></div></td><td><span class="badge badge-green" title="Non Urgent">ESI 5</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">BP 130/82 · HR 72</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Nadia Whitmore, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">08:36 AM</span></td><td><span class="badge badge-gray">Waiting Room</span></td></tr>
+<tr data-row-id="ER-4816"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-04.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Harold Nakamura</a></p><p class="text-xs text-gray-400">ER-4816</p></div></div></td><td><span class="badge badge-amber" title="Urgent">ESI 3</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">BP 142/88 · HR 90 · SpO2 95%</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Alicia Barnett, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">08:21 AM</span></td><td><span class="badge badge-purple">Observation</span></td></tr>
+<tr data-row-id="ER-4814"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-02.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Simone Ferraro</a></p><p class="text-xs text-gray-400">ER-4814</p></div></div></td><td><span class="badge badge-blue" title="Less Urgent">ESI 4</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">BP 120/76 · HR 80</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Nadia Whitmore, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">08:05 AM</span></td><td><span class="badge badge-blue">Fast Track</span></td></tr>
+<tr data-row-id="ER-4811"><td><div class="flex items-center gap-3"><img src="assets/img/avatar/avatar-29.jpg" alt="" class="avatar object-cover ring-2 ring-success/30"><div><p class="font-semibold"><a class="text-primary hover:underline" href="triage-detail.html">Cedric Lawson</a></p><p class="text-xs text-gray-400">ER-4811</p></div></div></td><td><span class="badge badge-green" title="Non Urgent">ESI 5</span></td><td><span class="text-xs text-gray-600 dark:text-gray-300">BP 126/80 · HR 74</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300">Camille Ortega, RN</span></td><td><span class="text-sm text-gray-600 dark:text-gray-300 tabular-nums">07:33 AM</span></td><td><span class="badge badge-gray">Waiting Room</span></td></tr>
+<tr id="done-empty-row" class="hidden"><td colspan="6" class="py-10 text-center"><i class="icon-search-x text-3xl text-gray-300 dark:text-slate-600"></i><p class="mt-2 text-sm font-medium text-gray-500 dark:text-gray-400">No assessments at this ESI level</p><p class="text-xs text-gray-400">Try selecting a different level.</p></td></tr></tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Triage Assessment Modal -->
+        <div id="assess-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="as-title">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white border p-6 border-border-color rounded-lg pointer-events-auto max-h-[88vh] overflow-y-auto">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                    <div class="flex items-center gap-3">
+                        <img id="as-avatar" class="avatar object-cover ring-2 ring-warning/30" src="assets/img/avatar/avatar-01.jpg" alt="">
+                        <div>
+                            <h2 id="as-title" class="text-lg font-bold text-gray-900">Triage Assessment</h2>
+                            <p id="as-sub" class="text-xs text-gray-500 dark:text-gray-400"></p>
+                        </div>
+                    </div>
+                    <button type="button" id="as-close" aria-label="Close assessment" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" data-hs-overlay="#assess-modal">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+
+                <form id="as-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group col-span-2">
+                            <label for="as-complaint" class="form-label">Chief Complaint</label>
+                            <input id="as-complaint" type="text" class="form-input" placeholder="Chest pain radiating to left arm">
+                        </div>
+
+                        <div class="form-group col-span-2">
+                            <p class="form-label">Vital Signs</p>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                <div>
+                                    <label for="as-hr" class="text-[11px] font-medium text-gray-400">Heart Rate (bpm)</label>
+                                    <input id="as-hr" type="number" min="0" max="300" class="form-input mt-1" placeholder="84">
+                                </div>
+                                <div>
+                                    <label for="as-spo2" class="text-[11px] font-medium text-gray-400">SpO2 (%)</label>
+                                    <input id="as-spo2" type="number" min="0" max="100" class="form-input mt-1" placeholder="98">
+                                </div>
+                                <div>
+                                    <label for="as-rr" class="text-[11px] font-medium text-gray-400">Resp. Rate (/min)</label>
+                                    <input id="as-rr" type="number" min="0" max="80" class="form-input mt-1" placeholder="16">
+                                </div>
+                                <div>
+                                    <label for="as-bp" class="text-[11px] font-medium text-gray-400">Blood Pressure</label>
+                                    <input id="as-bp" type="text" class="form-input mt-1" placeholder="120/80">
+                                </div>
+                                <div>
+                                    <label for="as-temp" class="text-[11px] font-medium text-gray-400">Temp (°F)</label>
+                                    <input id="as-temp" type="number" step="0.1" class="form-input mt-1" placeholder="98.6">
+                                </div>
+                                <div>
+                                    <label for="as-pain" class="text-[11px] font-medium text-gray-400">Pain (0–10)</label>
+                                    <input id="as-pain" type="number" min="0" max="10" class="form-input mt-1" placeholder="4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decision support: suggests an ESI level from the vitals entered above. -->
+                        <div class="form-group col-span-2">
+                            <div id="as-suggest" class="rounded-lg border border-border-color bg-gray-50 dark:bg-slate-800 p-3 flex items-center gap-2.5">
+                                <i id="as-suggest-icon" class="icon-info text-info shrink-0"></i>
+                                <p id="as-suggest-text" class="text-xs text-gray-500 dark:text-gray-400">
+                                    Enter vitals for a suggested ESI level. The nurse's assessment always overrides the suggestion.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-span-2">
+                            <label for="as-esi" class="form-label">Assigned ESI Level</label>
+                            <select id="as-esi" class="form-select">
+                                <option value="">Select a level</option>
+                                <option value="1">ESI 1 — Resuscitation (immediate, life-saving intervention)</option>
+                                <option value="2">ESI 2 — Emergent (high risk, cannot wait)</option>
+                                <option value="3">ESI 3 — Urgent (multiple resources expected)</option>
+                                <option value="4">ESI 4 — Less Urgent (one resource expected)</option>
+                                <option value="5">ESI 5 — Non Urgent (no resources expected)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="as-nurse" class="form-label">Triage Nurse</label>
+                            <select id="as-nurse" class="form-select"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="as-disposition" class="form-label">Disposition</label>
+                            <select id="as-disposition" class="form-select">
+                                <option>Resuscitation</option>
+                                <option>Acute Care</option>
+                                <option>Observation</option>
+                                <option>Fast Track</option>
+                                <option>Waiting Room</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-span-2">
+                            <label for="as-allergies" class="form-label">Allergies</label>
+                            <input id="as-allergies" type="text" class="form-input" placeholder="Penicillin, latex — or 'None known'">
+                        </div>
+
+                        <div class="form-group col-span-2">
+                            <label for="as-notes" class="form-label">Assessment Notes</label>
+                            <textarea id="as-notes" class="form-textarea" placeholder="Onset 30 min ago, diaphoretic, denies shortness of breath..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-border-color flex gap-2 justify-end">
+                        <button type="button" id="as-cancel" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#assess-modal">Cancel</button>
+                        <button type="button" id="as-save" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Complete Triage</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ESI Guide Modal -->
+        <div id="guide-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="gm-title">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white border p-6 border-border-color rounded-lg pointer-events-auto max-h-[88vh] overflow-y-auto">
+                <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <span class="size-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                            <i class="icon-book-open text-xl"></i>
+                        </span>
+                        <div>
+                            <h2 id="gm-title" class="text-lg font-bold text-gray-900">ESI Reference Guide</h2>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Emergency Severity Index, 5-level triage scale</p>
+                        </div>
+                    </div>
+                    <button type="button" id="gm-close" aria-label="Close guide" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" data-hs-overlay="#guide-modal">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <ul id="gm-body" class="space-y-2.5"><li class="rounded-lg border border-border-color p-3 flex gap-3"><span class="badge badge-red shrink-0 h-fit">ESI 1</span><div><p class="font-semibold text-sm text-gray-900">Resuscitation</p><p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Requires immediate life-saving intervention. Unresponsive, intubated, apneic, or pulseless.</p></div></li><li class="rounded-lg border border-border-color p-3 flex gap-3"><span class="badge badge-red shrink-0 h-fit">ESI 2</span><div><p class="font-semibold text-sm text-gray-900">Emergent</p><p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">High-risk situation, severe pain or distress, or confused / lethargic / disoriented. Cannot wait.</p></div></li><li class="rounded-lg border border-border-color p-3 flex gap-3"><span class="badge badge-amber shrink-0 h-fit">ESI 3</span><div><p class="font-semibold text-sm text-gray-900">Urgent</p><p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Stable, but two or more resources expected (labs, imaging, IV fluids, specialty consult).</p></div></li><li class="rounded-lg border border-border-color p-3 flex gap-3"><span class="badge badge-blue shrink-0 h-fit">ESI 4</span><div><p class="font-semibold text-sm text-gray-900">Less Urgent</p><p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Stable, one resource expected (a single X-ray, simple laceration repair, or prescription).</p></div></li><li class="rounded-lg border border-border-color p-3 flex gap-3"><span class="badge badge-green shrink-0 h-fit">ESI 5</span><div><p class="font-semibold text-sm text-gray-900">Non Urgent</p><p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Stable, no resources expected beyond a focused exam. Prescription refill, suture removal.</p></div></li></ul>
+                <div class="mt-5 pt-4 border-t border-border-color flex justify-end">
+                    <button type="button" id="gm-done" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold" data-hs-overlay="#guide-modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "triage"})
+    </body>
+</html>

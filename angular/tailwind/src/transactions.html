@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Transactions — Dreams HMS"}) @@include('partials/header.html', {"page": "transactions"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="transactions">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search transactions by description, category..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Transactions", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Transactions</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Unified ledger of all income, expense and transfer activity</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-file-text text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Transactions</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-trending-up text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$17,850.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Income</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-trending-down text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$52,050.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Expenses</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">-$34,200.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Net Balance</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Transactions</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Type</th>
+                                            <th>Category</th>
+                                            <th>Description</th>
+                                            <th>Amount</th>
+                                            <th>Account</th>
+                                            <th>Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Income</span></td><td class="text-gray-600 dark:text-gray-300">Patient Billing</td><td class="text-gray-600 dark:text-gray-300">OPD consultation fees</td><td class="font-semibold text-emerald-600">$4,200.00</td><td class="text-gray-500 dark:text-gray-400">Main Operating Account</td><td class="font-medium text-gray-900">$4,200.00</td></tr>
+<tr><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-02</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Expense</span></td><td class="text-gray-600 dark:text-gray-300">Utilities</td><td class="text-gray-600 dark:text-gray-300">Electricity bill</td><td class="font-semibold text-red-600">-$3,200.00</td><td class="text-gray-500 dark:text-gray-400">Main Operating Account</td><td class="font-medium text-gray-900">$1,000.00</td></tr>
+<tr><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-03</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Income</span></td><td class="text-gray-600 dark:text-gray-300">Pharmacy Sales</td><td class="text-gray-600 dark:text-gray-300">Pharmacy counter sales</td><td class="font-semibold text-emerald-600">$2,650.00</td><td class="text-gray-500 dark:text-gray-400">Pharmacy Account</td><td class="font-medium text-gray-900">$3,650.00</td></tr>
+<tr><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Expense</span></td><td class="text-gray-600 dark:text-gray-300">Medical Supplies</td><td class="text-gray-600 dark:text-gray-300">Surgical supplies restock</td><td class="font-semibold text-red-600">-$5,400.00</td><td class="text-gray-500 dark:text-gray-400">Main Operating Account</td><td class="font-medium text-gray-900">-$1,750.00</td></tr>
+<tr><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Transfer</span></td><td class="text-gray-600 dark:text-gray-300">Internal</td><td class="text-gray-600 dark:text-gray-300">Transfer to payroll account</td><td class="font-semibold text-emerald-600">$20,000.00</td><td class="text-gray-500 dark:text-gray-400">Payroll Account</td><td class="font-medium text-gray-900">$18,250.00</td></tr>
+<tr><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Income</span></td><td class="text-gray-600 dark:text-gray-300">Insurance Payout</td><td class="text-gray-600 dark:text-gray-300">BlueCross claim settlement</td><td class="font-semibold text-emerald-600">$11,000.00</td><td class="text-gray-500 dark:text-gray-400">Main Operating Account</td><td class="font-medium text-gray-900">$29,250.00</td></tr>
+<tr><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-07</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Expense</span></td><td class="text-gray-600 dark:text-gray-300">Salaries</td><td class="text-gray-600 dark:text-gray-300">Nursing staff payroll</td><td class="font-semibold text-red-600">-$42,000.00</td><td class="text-gray-500 dark:text-gray-400">Payroll Account</td><td class="font-medium text-gray-900">-$12,750.00</td></tr>
+<tr><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-08</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Expense</span></td><td class="text-gray-600 dark:text-gray-300">Maintenance</td><td class="text-gray-600 dark:text-gray-300">HVAC servicing</td><td class="font-semibold text-red-600">-$1,450.00</td><td class="text-gray-500 dark:text-gray-400">Main Operating Account</td><td class="font-medium text-gray-900">-$14,200.00</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "transactions"})
+    </body>
+</html>

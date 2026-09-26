@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Roles — Dreams HMS"}) @@include('partials/header.html', {"page": "roles"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="roles">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search roles by name..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Roles", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Roles</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Define staff roles and their assigned access levels</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-shield text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Roles</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">7</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active Roles</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-users text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">81</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Users Assigned</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-key text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">18</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Avg. Permissions / Role</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Roles</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Role Name</th>
+                                            <th>Description</th>
+                                            <th>Users</th>
+                                            <th>Permissions</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-medium text-gray-900">Admin</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-72 truncate" title="Full system access across all modules">Full system access across all modules</td><td class="text-gray-600 dark:text-gray-300">3</td><td class="text-gray-600 dark:text-gray-300">42</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Doctor</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-72 truncate" title="Clinical access to patients, prescriptions, lab orders">Clinical access to patients, prescriptions, lab orders</td><td class="text-gray-600 dark:text-gray-300">18</td><td class="text-gray-600 dark:text-gray-300">24</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Nurse</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-72 truncate" title="Ward-level patient care and vitals recording">Ward-level patient care and vitals recording</td><td class="text-gray-600 dark:text-gray-300">32</td><td class="text-gray-600 dark:text-gray-300">16</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Receptionist</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-72 truncate" title="Front-desk registration, appointments, billing entry">Front-desk registration, appointments, billing entry</td><td class="text-gray-600 dark:text-gray-300">9</td><td class="text-gray-600 dark:text-gray-300">12</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Pharmacist</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-72 truncate" title="Dispensing and pharmacy inventory management">Dispensing and pharmacy inventory management</td><td class="text-gray-600 dark:text-gray-300">6</td><td class="text-gray-600 dark:text-gray-300">14</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Lab Technician</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-72 truncate" title="Lab order processing and result entry">Lab order processing and result entry</td><td class="text-gray-600 dark:text-gray-300">7</td><td class="text-gray-600 dark:text-gray-300">10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Accountant</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-72 truncate" title="Billing, invoicing, and financial reports">Billing, invoicing, and financial reports</td><td class="text-gray-600 dark:text-gray-300">4</td><td class="text-gray-600 dark:text-gray-300">15</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Auditor</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-72 truncate" title="Read-only access for compliance reviews">Read-only access for compliance reviews</td><td class="text-gray-600 dark:text-gray-300">2</td><td class="text-gray-600 dark:text-gray-300">8</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-600 bg-gray-100 dark:bg-slate-700">Inactive</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "roles"})
+    </body>
+</html>

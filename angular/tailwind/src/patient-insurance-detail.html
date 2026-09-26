@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Insurance Claim Details — Dreams HMS"}) @@include('partials/header.html', {"page": "patient-insurance-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="patient-insurance-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="pin-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Claim Details", "parentUrl": "patient-insurance.html", "parent": "Insurance"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="pin-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="pin-hero-ico"><i class="icon-shield-check"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="pin-patient-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">James Morrison</h1>
+                                            <span class="pin-hbadge" id="pin-status-badge"><span class="pin-dot"></span><span id="pin-status-text">Approved</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="pin-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="pin-claim-id">#CLM-0001</span></span>
+                                            <span class="pin-hmeta"><i class="icon-building text-[13px] text-sky-300"></i><span id="pin-provider">Star Health</span></span>
+                                            <span class="pin-hmeta"><i class="icon-user-cog text-[13px] text-violet-300"></i>TPA <span id="pin-tpa">Medi Assist</span></span>
+                                            <span class="pin-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Filed <span id="pin-date">2026-08-31</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 pin-actions-print-hide">
+                                    <button type="button" class="pin-btn pin-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="patient-insurance.html" id="pin-back-btn" class="pin-btn pin-btn-primary"><i class="icon-arrow-left"></i>Back to Insurance</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="pin-grid">
+                            <div class="pin-vital pin-c-blue">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-banknote"></i></span>
+                                    <span class="pin-chip">Claimed</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pin-vital-amount">₹2,40,000</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Claimed Amount</p>
+                            </div>
+                            <div class="pin-vital pin-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-badge-check"></i></span>
+                                    <span class="pin-chip">Approved</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pin-vital-approved">₹2,10,000</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Approved Amount</p>
+                            </div>
+                            <div class="pin-vital pin-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-credit-card"></i></span>
+                                    <span class="pin-chip">Type</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pin-vital-type">Cashless</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Claim Type</p>
+                            </div>
+                            <div class="pin-vital pin-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-syringe"></i></span>
+                                    <span class="pin-chip">Service</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pin-vital-service">Surgery</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Service Type</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="pin-layout">
+                            <div class="space-y-5">
+
+                                <!-- Claim workflow -->
+                                <div class="pin-surface">
+                                    <div class="pin-head">
+                                        <span class="ico"><i class="icon-git-commit-horizontal"></i></span>
+                                        <h2 class="pin-title">Claim Processing Workflow</h2>
+                                    </div>
+                                    <div class="pin-tl p-5" id="pin-timeline">
+                                        <div class="pin-tl-item done"><span class="pin-tl-node"><i class="icon-file-plus"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Submitted</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Cashless claim filed for surgery via Star Health</p></div>
+                                        <div class="pin-tl-item done"><span class="pin-tl-node"><i class="icon-badge-check"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Pre-Authorization</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Pre-auth approved by Medi Assist TPA</p></div>
+                                        <div class="pin-tl-item done"><span class="pin-tl-node"><i class="icon-search-check"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Under Review</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Documents reviewed by claims desk</p></div>
+                                        <div class="pin-tl-item current"><span class="pin-tl-node"><i class="icon-file-check"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Approved</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">₹2,10,000 approved against ₹2,40,000 claimed</p></div>
+                                        <div class="pin-tl-item"><span class="pin-tl-node"><i class="icon-banknote"></i></span><p class="text-sm font-bold text-gray-400">Settlement</p><p class="text-xs text-gray-400 mt-0.5">Pending</p></div>
+                                    </div>
+                                </div>
+
+                                <!-- Policy information -->
+                                <div class="pin-surface p-5">
+                                    <h3 class="pin-title mb-3">Policy Information</h3>
+                                    <div class="pin-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Policy No.</span><span class="v" id="pin-info-policy">SH-88245102</span></div>
+                                    <div class="pin-kv"><span class="k"><i class="icon-building text-[13px]"></i>Provider</span><span class="v" id="pin-info-provider">Star Health</span></div>
+                                    <div class="pin-kv"><span class="k"><i class="icon-user-cog text-[13px]"></i>TPA</span><span class="v" id="pin-info-tpa">Medi Assist</span></div>
+                                    <div class="pin-kv"><span class="k"><i class="icon-hospital text-[13px]"></i>Hospital</span><span class="v" id="pin-info-hospital">Dreams General Hospital</span></div>
+                                    <div class="pin-kv"><span class="k"><i class="icon-percent text-[13px]"></i>Approval Rate</span><span class="v" id="pin-info-rate">88%</span></div>
+                                    <div class="mt-3 pin-bar pin-c-blue"><i class="w-[88%]"></i></div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 pin-sidebar">
+                                <!-- Provider -->
+                                <div class="pin-surface pin-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Insurance Provider</p>
+                                    <h3 class="mt-1 text-lg font-extrabold" id="pin-side-provider">Star Health</h3>
+                                    <p class="text-sm text-white/80 mt-0.5" id="pin-side-tpa">TPA: Medi Assist</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="pin-hmeta"><i class="icon-phone text-[12px]"></i>Contact Provider</span>
+                                    </div>
+                                </div>
+
+                                <!-- Claim card -->
+                                <div class="pin-surface p-5">
+                                    <h3 class="pin-title mb-3">Claim</h3>
+                                    <div class="pin-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v" id="pin-kv-patient">James Morrison</span></div>
+                                    <div class="pin-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Claim ID</span><span class="v" id="pin-kv-id">#CLM-0001</span></div>
+                                    <div class="pin-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Filed</span><span class="v" id="pin-kv-date">2026-08-31</span></div>
+                                    <div class="pin-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Status</span><span class="v" id="pin-kv-status">Approved</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="pin-surface p-5 space-y-2.5">
+                                    <h3 class="pin-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="pin-btn pin-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="patient-insurance.html" id="pin-all-link" class="pin-btn pin-btn-solid w-full justify-start"><i class="icon-list"></i>All Claims</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "patient-insurance-detail"})
+    </body>
+</html>

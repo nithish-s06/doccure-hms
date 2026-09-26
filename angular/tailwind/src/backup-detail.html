@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Backup Details — Dreams HMS"}) @@include('partials/header.html', {"page": "backup-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="backup-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="bkd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Backup Details", "parentUrl": "backup-restore.html", "parent": "Backup & Restore"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="bkd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="bkd-hero-ico"><i class="icon-database"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="bkd-hero-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight font-mono">BKP-20241216-0300</h1>
+                                            <span class="bkd-hbadge"><span class="bkd-dot"></span><span id="bkd-hero-status">Completed</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="bkd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="bkd-hero-id">#BKP-00001</span></span>
+                                            <span class="bkd-hmeta"><i class="icon-layers text-[13px] text-sky-300"></i><span id="bkd-hero-type">Full Backup</span></span>
+                                            <span class="bkd-hmeta"><i class="icon-hard-drive text-[13px] text-emerald-300"></i><span id="bkd-hero-size">4.8 GB</span></span>
+                                            <span class="bkd-hmeta"><i class="icon-calendar text-[13px] text-amber-300"></i><span id="bkd-hero-ts">2024-12-16 03:00</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 bkd-actions-print-hide">
+                                    <button type="button" class="bkd-btn bkd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="backup-restore.html" class="bkd-btn bkd-btn-primary"><i class="icon-arrow-left"></i>Back to Backups</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="bkd-grid">
+                            <div class="bkd-vital bkd-c-indigo">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-layers"></i></span>
+                                    <span class="bkd-chip">Type</span>
+                                </div>
+                                <p id="bkd-stat-type" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Full</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Backup Type</p>
+                            </div>
+                            <div class="bkd-vital bkd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-hard-drive"></i></span>
+                                    <span class="bkd-chip">Size</span>
+                                </div>
+                                <p id="bkd-stat-size" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">4.8 GB</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Archive Size</p>
+                            </div>
+                            <div class="bkd-vital bkd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-user"></i></span>
+                                    <span class="bkd-chip">Trigger</span>
+                                </div>
+                                <p id="bkd-stat-trigger" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Scheduled</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Triggered By</p>
+                            </div>
+                            <div class="bkd-vital bkd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-check-circle"></i></span>
+                                    <span class="bkd-chip">Stage</span>
+                                </div>
+                                <p id="bkd-stat-status" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Completed</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Status</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="bkd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Workflow timeline -->
+                                <div class="bkd-surface">
+                                    <div class="bkd-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="bkd-title">Backup Job Timeline</h2>
+                                    </div>
+                                    <div class="bkd-tl p-5">
+                                        <div class="bkd-tl-item done">
+                                            <span class="bkd-tl-node"><i class="icon-play"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Job Started</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-16 03:00 — scheduled nightly job triggered</p>
+                                        </div>
+                                        <div class="bkd-tl-item done">
+                                            <span class="bkd-tl-node"><i class="icon-database"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Database Snapshot Captured</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-16 03:04 — all tables locked and dumped</p>
+                                        </div>
+                                        <div class="bkd-tl-item done">
+                                            <span class="bkd-tl-node"><i class="icon-file-archive"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Compressed &amp; Encrypted</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-16 03:11 — archive compressed to 4.8 GB, AES-256 applied</p>
+                                        </div>
+                                        <div class="bkd-tl-item done">
+                                            <span class="bkd-tl-node"><i class="icon-cloud-upload"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Uploaded to Offsite Storage</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-16 03:22 — transferred to secondary storage region</p>
+                                        </div>
+                                        <div class="bkd-tl-item done">
+                                            <span class="bkd-tl-node"><i class="icon-shield-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Integrity Verified &amp; Completed</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-16 03:24 — checksum validated, job marked Completed</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Backup contents -->
+                                <div class="bkd-surface">
+                                    <div class="bkd-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="bkd-title">Included Data Sets</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="bkd-meterwrap mb-4">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <span class="text-xs font-bold text-gray-700 dark:text-gray-300">Storage used this cycle</span>
+                                                <span class="text-xs font-bold text-gray-900 dark:text-white">4.8 GB / 50 GB quota</span>
+                                            </div>
+                                            <div class="bkd-meter"><span class="w-[9.6%]"></span></div>
+                                        </div>
+                                        <ul class="grid sm:grid-cols-2 gap-2.5 text-sm">
+                                            <li class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-check-circle text-success"></i>Patient records &amp; EMR (2.6 GB)</li>
+                                            <li class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-check-circle text-success"></i>Billing &amp; invoices (0.9 GB)</li>
+                                            <li class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-check-circle text-success"></i>Lab &amp; radiology reports (0.7 GB)</li>
+                                            <li class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-check-circle text-success"></i>Pharmacy &amp; inventory (0.4 GB)</li>
+                                            <li class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-check-circle text-success"></i>System &amp; audit logs (0.2 GB)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 bkd-sidebar">
+                                <!-- Storage summary -->
+                                <div class="bkd-surface bkd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Storage Destination</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Offsite — Region EU-West</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Encrypted cloud storage bucket</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="bkd-hmeta"><i class="icon-shield text-[12px]"></i>AES-256 Encrypted</span>
+                                    </div>
+                                </div>
+
+                                <!-- Backup details -->
+                                <div class="bkd-surface p-5">
+                                    <h3 class="bkd-title mb-3">Backup Details</h3>
+                                    <div class="bkd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Backup ID</span><span class="v" id="bkd-kv-id">#BKP-00001</span></div>
+                                    <div class="bkd-kv"><span class="k"><i class="icon-layers text-[13px]"></i>Type</span><span class="v" id="bkd-kv-type">Full</span></div>
+                                    <div class="bkd-kv"><span class="k"><i class="icon-hard-drive text-[13px]"></i>Size</span><span class="v" id="bkd-kv-size">4.8 GB</span></div>
+                                    <div class="bkd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Triggered By</span><span class="v" id="bkd-kv-triggered">Scheduled</span></div>
+                                    <div class="bkd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date / Time</span><span class="v" id="bkd-kv-ts">2024-12-16 03:00</span></div>
+                                    <div class="bkd-kv"><span class="k"><i class="icon-timer text-[13px]"></i>Duration</span><span class="v">24 min</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="bkd-surface p-5 space-y-2.5">
+                                    <h3 class="bkd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="bkd-btn bkd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="backup-restore.html" class="bkd-btn bkd-btn-solid w-full justify-start"><i class="icon-list"></i>All Backups</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "backup-detail"})
+    </body>
+</html>

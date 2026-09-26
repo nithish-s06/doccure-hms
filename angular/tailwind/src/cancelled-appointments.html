@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Cancelled Appointments — Dreams HMS"}) @@include('partials/header.html', {"page": "cancelled-appointments"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search cancellations..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <!-- Breadcrumb -->
+                        @@include('partials/breadcrumb.html', {"current": "Cancelled Appointments", "parentUrl": "appointments.html", "parent": "Appointments"})
+
+                        <!-- Page Header -->
+                        <div class="flex flex-wrap items-center justify-between gap-3" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Cancelled Appointments</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Review cancellations, process refunds and restore bookings</p>
+                            </div>
+                        </div>
+
+                        <!-- Appointment Statistics (module-exclusive component) -->
+                        <div id="stats-row" class="appt-stats cols-4" data-aos="fade-up" data-aos-delay="50"><article class="appt-stat tone-danger"><div class="appt-stat-head"><span class="appt-stat-icon"><i class="icon-calendar-x" aria-hidden="true"></i></span><span class="appt-stat-delta is-up" title="+4.8% increase"><i class="icon-trending-up text-[10px]" aria-hidden="true"></i><span class="sr-only">+4.8% increase</span><span aria-hidden="true">+4.8%</span></span></div><p class="appt-stat-value" id="stat-today">3</p><p class="appt-stat-label">Cancelled Today</p><div class="appt-stat-foot"><svg class="appt-stat-spark" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polygon points="0,24 0.0,22.0 13.3,12.0 26.7,22.0 40.0,2.0 53.3,12.0 66.7,2.0 80.0,2.0 80,24" fill="currentColor" opacity="0.12"></polygon><polyline points="0.0,22.0 13.3,12.0 26.7,22.0 40.0,2.0 53.3,12.0 66.7,2.0 80.0,2.0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline><circle cx="80.0" cy="2.0" r="1.8" fill="currentColor"></circle></svg><span class="appt-stat-meta">vs last week</span></div></article><article class="appt-stat tone-slate"><div class="appt-stat-head"><span class="appt-stat-icon"><i class="icon-list-filter" aria-hidden="true"></i></span><span class="appt-stat-delta is-down" title="-6.5% decrease"><i class="icon-trending-down text-[10px]" aria-hidden="true"></i><span class="sr-only">-6.5% decrease</span><span aria-hidden="true">-6.5%</span></span></div><p class="appt-stat-value" id="stat-total">14</p><p class="appt-stat-label">Total Cancelled</p><div class="appt-stat-foot"><svg class="appt-stat-spark" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polygon points="0,24 0.0,2.0 13.3,10.0 26.7,6.0 40.0,14.0 53.3,18.0 66.7,22.0 80.0,18.0 80,24" fill="currentColor" opacity="0.12"></polygon><polyline points="0.0,2.0 13.3,10.0 26.7,6.0 40.0,14.0 53.3,18.0 66.7,22.0 80.0,18.0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline><circle cx="80.0" cy="18.0" r="1.8" fill="currentColor"></circle></svg><span class="appt-stat-meta">vs last month</span></div></article><article class="appt-stat tone-amber"><div class="appt-stat-head"><span class="appt-stat-icon"><i class="icon-banknote" aria-hidden="true"></i></span><span class="appt-stat-delta is-up" title="+2.3% increase"><i class="icon-trending-up text-[10px]" aria-hidden="true"></i><span class="sr-only">+2.3% increase</span><span aria-hidden="true">+2.3%</span></span></div><p class="appt-stat-value" id="stat-refund">5</p><p class="appt-stat-label">Refund Pending</p><div class="appt-stat-foot"><svg class="appt-stat-spark" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polygon points="0,24 0.0,22.0 13.3,12.0 26.7,22.0 40.0,2.0 53.3,12.0 66.7,2.0 80.0,12.0 80,24" fill="currentColor" opacity="0.12"></polygon><polyline points="0.0,22.0 13.3,12.0 26.7,22.0 40.0,2.0 53.3,12.0 66.7,2.0 80.0,12.0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline><circle cx="80.0" cy="12.0" r="1.8" fill="currentColor"></circle></svg><span class="appt-stat-meta">vs last week</span></div></article><article class="appt-stat tone-emerald"><div class="appt-stat-head"><span class="appt-stat-icon"><i class="icon-calendar-check" aria-hidden="true"></i></span><span class="appt-stat-delta is-up" title="+16.1% increase"><i class="icon-trending-up text-[10px]" aria-hidden="true"></i><span class="sr-only">+16.1% increase</span><span aria-hidden="true">+16.1%</span></span></div><p class="appt-stat-value" id="stat-resched">5</p><p class="appt-stat-label">Rescheduled</p><div class="appt-stat-foot"><svg class="appt-stat-spark" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polygon points="0,24 0.0,22.0 13.3,17.0 26.7,12.0 40.0,17.0 53.3,7.0 66.7,2.0 80.0,2.0 80,24" fill="currentColor" opacity="0.12"></polygon><polyline points="0.0,22.0 13.3,17.0 26.7,12.0 40.0,17.0 53.3,7.0 66.7,2.0 80.0,2.0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline><circle cx="80.0" cy="2.0" r="1.8" fill="currentColor"></circle></svg><span class="appt-stat-meta">vs last week</span></div></article></div>
+
+                        <!-- List -->
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Cancellations</span>
+                                <span class="text-xs text-gray-400 ml-auto">14 of 14</span>
+                            </div>
+
+                            <!-- Table -->
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Appointment ID</th>
+                                            <th>Patient</th>
+                                            <th>Doctor</th>
+                                            <th>Cancellation Date</th>
+                                            <th>Reason</th>
+                                            <th>Refund</th>
+                                            <th>Cancelled By</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody">
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20265</a></p><p class="text-xs text-gray-500 dark:text-gray-400">17 Jul 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Priya Raghavan</p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0121</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Sarah Chen</p><p class="text-xs text-gray-500 dark:text-gray-400">Cardiology</p></div></td>
+                                        <td>17 Jul 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="Patient request">Patient request</span></td>
+                                        <td><span class="badge badge-amber">Pending</span><span class="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">$180.00</span></td>
+                                        <td><span class="badge badge-blue">Patient</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20272</a></p><p class="text-xs text-gray-500 dark:text-gray-400">20 Jul 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Theodore Nakamura</p><p class="text-xs text-gray-500 dark:text-gray-400">(646) 555-0187</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Emily Carter</p><p class="text-xs text-gray-500 dark:text-gray-400">Orthopedics</p></div></td>
+                                        <td>17 Jul 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="Doctor unavailable">Doctor unavailable</span></td>
+                                        <td><span class="badge badge-green">Processed</span><span class="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">$170.00</span></td>
+                                        <td><span class="badge badge-purple">Doctor</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20281</a></p><p class="text-xs text-gray-500 dark:text-gray-400">19 Jul 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Marcus Delgado</p><p class="text-xs text-gray-500 dark:text-gray-400">(347) 555-0198</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Laura Bennett</p><p class="text-xs text-gray-500 dark:text-gray-400">Oncology</p></div></td>
+                                        <td>17 Jul 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="Emergency rescheduling">Emergency rescheduling</span></td>
+                                        <td><span class="badge badge-amber">Pending</span><span class="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">$260.00</span></td>
+                                        <td><span class="badge badge-emerald">Reception</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20244</a></p><p class="text-xs text-gray-500 dark:text-gray-400">14 Jul 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Linda Whitfield</p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0182</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Michael Reyes</p><p class="text-xs text-gray-500 dark:text-gray-400">Neurology</p></div></td>
+                                        <td>13 Jul 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="Insurance issue">Insurance issue</span></td>
+                                        <td><span class="badge badge-green">Processed</span><span class="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">$140.00</span></td>
+                                        <td><span class="badge badge-emerald">Reception</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20239</a></p><p class="text-xs text-gray-500 dark:text-gray-400">12 Jul 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Robert Castillo</p><p class="text-xs text-gray-500 dark:text-gray-400">(646) 555-0113</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Emily Carter</p><p class="text-xs text-gray-500 dark:text-gray-400">Orthopedics</p></div></td>
+                                        <td>11 Jul 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="No longer required">No longer required</span></td>
+                                        <td><span class="badge badge-gray">Not Applicable</span></td>
+                                        <td><span class="badge badge-blue">Patient</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20231</a></p><p class="text-xs text-gray-500 dark:text-gray-400">10 Jul 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Angela Brooks</p><p class="text-xs text-gray-500 dark:text-gray-400">(718) 555-0164</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. David Okonkwo</p><p class="text-xs text-gray-500 dark:text-gray-400">Pediatrics</p></div></td>
+                                        <td>09 Jul 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="Patient request">Patient request</span></td>
+                                        <td><span class="badge badge-green">Processed</span><span class="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">$120.00</span></td>
+                                        <td><span class="badge badge-blue">Patient</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20228</a></p><p class="text-xs text-gray-500 dark:text-gray-400">08 Jul 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Daniel Kowalski</p><p class="text-xs text-gray-500 dark:text-gray-400">(917) 555-0176</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Michael Reyes</p><p class="text-xs text-gray-500 dark:text-gray-400">Neurology</p></div></td>
+                                        <td>07 Jul 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="Doctor unavailable">Doctor unavailable</span></td>
+                                        <td><span class="badge badge-amber">Pending</span><span class="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">$200.00</span></td>
+                                        <td><span class="badge badge-purple">Doctor</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20220</a></p><p class="text-xs text-gray-500 dark:text-gray-400">05 Jul 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Sofia Alvarez</p><p class="text-xs text-gray-500 dark:text-gray-400">(646) 555-0155</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Emily Carter</p><p class="text-xs text-gray-500 dark:text-gray-400">Orthopedics</p></div></td>
+                                        <td>04 Jul 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="No-show auto-cancel">No-show auto-cancel</span></td>
+                                        <td><span class="badge badge-gray">Not Applicable</span></td>
+                                        <td><span class="badge badge-gray">System</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20215</a></p><p class="text-xs text-gray-500 dark:text-gray-400">03 Jul 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Naomi Fitzgerald</p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0190</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Laura Bennett</p><p class="text-xs text-gray-500 dark:text-gray-400">Oncology</p></div></td>
+                                        <td>02 Jul 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="Insurance issue">Insurance issue</span></td>
+                                        <td><span class="badge badge-green">Processed</span><span class="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">$240.00</span></td>
+                                        <td><span class="badge badge-emerald">Reception</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20208</a></p><p class="text-xs text-gray-500 dark:text-gray-400">01 Jul 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Ethan Caldwell</p><p class="text-xs text-gray-500 dark:text-gray-400">(347) 555-0102</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Sarah Chen</p><p class="text-xs text-gray-500 dark:text-gray-400">Cardiology</p></div></td>
+                                        <td>30 Jun 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="Patient request">Patient request</span></td>
+                                        <td><span class="badge badge-amber">Pending</span><span class="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">$150.00</span></td>
+                                        <td><span class="badge badge-blue">Patient</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20201</a></p><p class="text-xs text-gray-500 dark:text-gray-400">28 Jun 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Camille Rousseau</p><p class="text-xs text-gray-500 dark:text-gray-400">(917) 555-0128</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Michael Reyes</p><p class="text-xs text-gray-500 dark:text-gray-400">Neurology</p></div></td>
+                                        <td>27 Jun 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="Emergency rescheduling">Emergency rescheduling</span></td>
+                                        <td><span class="badge badge-green">Processed</span><span class="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">$160.00</span></td>
+                                        <td><span class="badge badge-purple">Doctor</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20194</a></p><p class="text-xs text-gray-500 dark:text-gray-400">25 Jun 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Victor Ramirez</p><p class="text-xs text-gray-500 dark:text-gray-400">(718) 555-0174</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Laura Bennett</p><p class="text-xs text-gray-500 dark:text-gray-400">Oncology</p></div></td>
+                                        <td>24 Jun 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="No-show auto-cancel">No-show auto-cancel</span></td>
+                                        <td><span class="badge badge-gray">Not Applicable</span></td>
+                                        <td><span class="badge badge-gray">System</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20188</a></p><p class="text-xs text-gray-500 dark:text-gray-400">22 Jun 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Hannah Whitmore</p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0163</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. David Okonkwo</p><p class="text-xs text-gray-500 dark:text-gray-400">Pediatrics</p></div></td>
+                                        <td>21 Jun 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="Patient request">Patient request</span></td>
+                                        <td><span class="badge badge-green">Processed</span><span class="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">$110.00</span></td>
+                                        <td><span class="badge badge-blue">Patient</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><p class="font-medium"><a class="text-primary" href="appointment-detail.html">APT-20180</a></p><p class="text-xs text-gray-500 dark:text-gray-400">19 Jun 2026</p></div></td>
+                                        <td><div><p class="font-medium text-gray-900">Grace Lindqvist</p><p class="text-xs text-gray-500 dark:text-gray-400">(646) 555-0136</p></div></td>
+                                        <td><div><p class="text-gray-900">Dr. Emily Carter</p><p class="text-xs text-gray-500 dark:text-gray-400">Orthopedics</p></div></td>
+                                        <td>18 Jun 2026</td>
+                                        <td><span class="block max-w-40 truncate" title="Doctor unavailable">Doctor unavailable</span></td>
+                                        <td><span class="badge badge-amber">Pending</span><span class="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">$190.00</span></td>
+                                        <td><span class="badge badge-purple">Doctor</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="p-4 flex flex-col sm:flex-row sm:items-center gap-3 border-t border-border-color">
+                                <p class="text-sm text-gray-500 dark:text-gray-400" id="info">Showing 1 to 14 of 14 entries</p>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "cancelled-appointments"})
+    </body>
+</html>

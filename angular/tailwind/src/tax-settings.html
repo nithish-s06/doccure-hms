@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Tax Settings — Dreams HMS"}) @@include('partials/header.html', {"page": "tax-settings"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="tax-settings">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search tax rules..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Tax Settings", "parentUrl": "billing.html", "parent": "Billing"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Tax Settings</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Configure tax rules applied to billing categories</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-percent text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">6</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Tax Rules</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">4</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active Rules</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-x-circle text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Inactive Rules</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-trending-up text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">10%</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Avg. Rate</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-xs text-gray-400 ml-auto">6 records</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Tax Rule Name</th>
+                                            <th>Rate (%)</th>
+                                            <th>Applicable Category</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td class="font-medium text-gray-900">Standard GST</td><td class="text-gray-600 dark:text-gray-300">18%</td><td class="text-gray-500 dark:text-gray-400">Consultation</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+                                        <tr><td class="font-medium text-gray-900">Pharmacy Tax</td><td class="text-gray-600 dark:text-gray-300">5%</td><td class="text-gray-500 dark:text-gray-400">Pharmacy</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+                                        <tr><td class="font-medium text-gray-900">Diagnostics Tax</td><td class="text-gray-600 dark:text-gray-300">12%</td><td class="text-gray-500 dark:text-gray-400">Diagnostics</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+                                        <tr><td class="font-medium text-gray-900">Room Charge Tax</td><td class="text-gray-600 dark:text-gray-300">8%</td><td class="text-gray-500 dark:text-gray-400">Room Charges</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+                                        <tr><td class="font-medium text-gray-900">Legacy Service Tax</td><td class="text-gray-600 dark:text-gray-300">15%</td><td class="text-gray-500 dark:text-gray-400">Procedures</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Inactive</span></td></tr>
+                                        <tr><td class="font-medium text-gray-900">Zero-Rated Consultation</td><td class="text-gray-600 dark:text-gray-300">0%</td><td class="text-gray-500 dark:text-gray-400">Consultation</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Inactive</span></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "tax-settings"})
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Email — Dreams HMS"}) @@include('partials/header.html', {"page": "email"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="email">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Email", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Email</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Inbox for hospital correspondence.</p>
+                            </div>
+                            <a href="email-compose.html" class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                <i class="icon-square-pen"></i>
+                                Compose
+                            </a>
+                        </div>
+
+                        <div class="card overflow-hidden" data-aos="fade-up" data-aos-delay="50">
+                            <div class="flex flex-col sm:flex-row">
+                                <div class="sm:w-56 shrink-0 border-b sm:border-b-0 sm:border-r border-border-color p-3 space-y-1" id="email-folders">
+                                    <button data-folder="inbox" class="email-folder-btn w-full text-left rounded-lg px-3 py-2 text-sm font-semibold flex items-center gap-2 bg-primary/10 text-primary"><i class="icon-inbox"></i>Inbox<span class="ml-auto text-xs" id="email-unread-count"></span></button>
+                                    <button data-folder="starred" class="email-folder-btn w-full text-left rounded-lg px-3 py-2 text-sm font-medium flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"><i class="icon-star"></i>Starred</button>
+                                    <button data-folder="sent" class="email-folder-btn w-full text-left rounded-lg px-3 py-2 text-sm font-medium flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"><i class="icon-send"></i>Sent</button>
+                                    <button data-folder="trash" class="email-folder-btn w-full text-left rounded-lg px-3 py-2 text-sm font-medium flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"><i class="icon-trash-2"></i>Trash</button>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="p-3 border-b border-border-color flex items-center gap-3">
+                                        <div class="relative flex-1 max-w-sm">
+                                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="icon-search text-sm"></i></span>
+                                            <input aria-label="Search mail..." id="email-search" type="text" placeholder="Search mail..." class="w-full pl-9 pr-3 py-2 rounded-lg bg-gray-50 dark:bg-slate-800 text-sm border border-gray-200 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900">
+                                        </div>
+                                        <span class="text-xs text-gray-400 ml-auto" id="email-count"></span>
+                                    </div>
+                                    <div id="email-list" class="divide-y divide-border-color"></div>
+                                    <div id="email-empty" class="hidden p-10 text-center text-sm text-gray-400">No messages here.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "email"})
+    </body>
+</html>

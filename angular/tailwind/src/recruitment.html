@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Recruitment — Dreams HMS"}) @@include('partials/header.html', {"page": "recruitment"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="recruitment">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search ..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Recruitment", "parentUrl": "hr.html", "parent": "Employees"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Recruitment</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Track open positions and candidate pipeline</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-briefcase text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">6</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Open Positions</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-users text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">98</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Applicants</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">In Interview Stage</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">1</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Hired This Month</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Positions</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Position</th>
+                                            <th>Department</th>
+                                            <th>Applicants</th>
+                                            <th>Stage</th>
+                                            <th>Posted Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+<tr><td class="font-medium text-gray-900">ICU Nurse</td><td class="text-gray-600 dark:text-gray-300">Critical Care</td><td class="text-gray-600 dark:text-gray-300">15</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Interview</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-20</td></tr>
+<tr><td class="font-medium text-gray-900">Radiology Technician</td><td class="text-gray-600 dark:text-gray-300">Radiology</td><td class="text-gray-600 dark:text-gray-300">9</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Screening</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-25</td></tr>
+<tr><td class="font-medium text-gray-900">ER Physician</td><td class="text-gray-600 dark:text-gray-300">Emergency</td><td class="text-gray-600 dark:text-gray-300">6</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Offer</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-10</td></tr>
+<tr><td class="font-medium text-gray-900">Pharmacist</td><td class="text-gray-600 dark:text-gray-300">Pharmacy</td><td class="text-gray-600 dark:text-gray-300">11</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Hired</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-05</td></tr>
+<tr><td class="font-medium text-gray-900">Lab Technician</td><td class="text-gray-600 dark:text-gray-300">Laboratory</td><td class="text-gray-600 dark:text-gray-300">8</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Screening</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td></tr>
+<tr><td class="font-medium text-gray-900">HR Coordinator</td><td class="text-gray-600 dark:text-gray-300">Administration</td><td class="text-gray-600 dark:text-gray-300">20</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Interview</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-18</td></tr>
+<tr><td class="font-medium text-gray-900">Cardiologist</td><td class="text-gray-600 dark:text-gray-300">Cardiology</td><td class="text-gray-600 dark:text-gray-300">4</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Offer</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-15</td></tr>
+<tr><td class="font-medium text-gray-900">Staff Nurse</td><td class="text-gray-600 dark:text-gray-300">Nursing</td><td class="text-gray-600 dark:text-gray-300">25</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Hired</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-02</td></tr>
+</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "recruitment"})
+    </body>
+</html>

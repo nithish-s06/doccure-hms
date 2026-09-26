@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Compose Email — Dreams HMS"}) @@include('partials/header.html', {"page": "email-compose"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="email-compose">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-4xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Compose", "parentUrl": "email.html", "parent": "Email"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Compose Email</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Write and send a new message.</p>
+                            </div>
+                            <a href="email.html" class="flex items-center gap-2 border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700">
+                                <i class="icon-arrow-left"></i>
+                                Back to Inbox
+                            </a>
+                        </div>
+
+                        <div class="card p-5" data-aos="fade-up" data-aos-delay="50">
+                            <form id="compose-form" onsubmit="return false;" class="space-y-4">
+                                <div class="form-group">
+                                    <label for="compose-to" class="form-label">To <span class="text-danger">*</span></label>
+                                    <input id="compose-to" class="form-input" placeholder="recipient@dreamshms.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="compose-cc" class="form-label">Cc</label>
+                                    <input id="compose-cc" class="form-input" placeholder="cc@dreamshms.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="compose-subject" class="form-label">Subject <span class="text-danger">*</span></label>
+                                    <input id="compose-subject" class="form-input" placeholder="Subject">
+                                </div>
+                                <div class="form-group">
+                                    <label for="compose-body" class="form-label">Message <span class="text-danger">*</span></label>
+                                    <textarea id="compose-body" rows="12" class="form-textarea" placeholder="Write your message..."></textarea>
+                                </div>
+                                <div class="flex gap-3 justify-end pt-2 border-t border-border-color">
+                                    <a href="email.html" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Discard</a>
+                                    <button type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold flex items-center gap-2"><i class="icon-send text-sm"></i>Send</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "email-compose"})
+    </body>
+</html>

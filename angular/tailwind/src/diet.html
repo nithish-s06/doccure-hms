@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Diet &amp; Nutrition — Dreams HMS"}) @@include('partials/header.html', {"page": "diet"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="diet">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search diet plans..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Diet &amp; Nutrition</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage patient diet plans and nutritional prescriptions</p>
+                            </div>
+                            <button id="btn-add" data-hs-overlay="#form-modal" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                                <i class="icon-plus"></i>
+                                New Diet Plan
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-utensils text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-total">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active Plans</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-salad text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-diabetic">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Diabetic</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-heart text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-cardiac">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Cardiac</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-leaf text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-other">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Other Plans</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                               <div class="relative flex-1 max-w-100 max-sm:min-w-full">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                                        <i class="icon-search text-gray-400"></i>
+                                    </span>
+                                    <input aria-label="Search patient, plan type..." id="search" type="text" placeholder="Search patient, plan type..." class="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-slate-600 rounded-lg bg-gray-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" >
+                                </div>
+                                <select aria-label="All Plan Types" id="filter-type" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Plan Types</option>
+                                    <option>Diabetic</option>
+                                    <option>Cardiac</option>
+                                    <option>Weight Loss</option>
+                                    <option>Renal</option>
+                                    <option>High Protein</option>
+                                    <option>Liquid</option>
+                                    <option>General</option>
+                                </select>
+                                <span class="text-xs text-gray-400 ml-auto" id="count">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient</th>
+                                            <th>Plan Type</th>
+                                            <th>Ward / Room</th>
+                                            <th>Dietitian</th>
+                                            <th>Calories/Day</th>
+                                            <th>Restrictions</th>
+                                            <th>Start Date</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr data-row-id="1"><td class="font-medium text-gray-900">James Morrison</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Cardiac</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Cardiology - A101</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Nadia Ahmed</td><td class="font-semibold text-gray-900">1800 kcal</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-xs truncate">Low sodium, low fat, no fried food</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="dietOpenEdit(1)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="dietDeleteRecord(1,'James Morrison')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="2"><td class="font-medium text-gray-900">Robert Clark</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Liquid</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">ICU - 01</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Nadia Ahmed</td><td class="font-semibold text-gray-900">1200 kcal</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-xs truncate">Post-op, IV + oral liquids only</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-03</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="dietOpenEdit(2)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="dietDeleteRecord(2,'Robert Clark')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="3"><td class="font-medium text-gray-900">Emily Johnson</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">High Protein</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Maternity - MW01</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Pita</td><td class="font-semibold text-gray-900">2400 kcal</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-xs truncate">Post-delivery recovery</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-29</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Completed</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="dietOpenEdit(3)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="dietDeleteRecord(3,'Emily Johnson')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="4"><td class="font-medium text-gray-900">David Torres</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">General</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Surgical - SW05</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Nadia Ahmed</td><td class="font-semibold text-gray-900">2000 kcal</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-xs truncate">Post knee surgery</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="dietOpenEdit(4)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="dietDeleteRecord(4,'David Torres')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="5"><td class="font-medium text-gray-900">Michael Harris</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Cardiac</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Geriatrics - G03</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Pita</td><td class="font-semibold text-gray-900">1600 kcal</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-xs truncate">Low potassium, no salt</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="dietOpenEdit(5)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="dietDeleteRecord(5,'Michael Harris')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="6"><td class="font-medium text-gray-900">Linda Nguyen</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Renal</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Oncology - OW02</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Nadia Ahmed</td><td class="font-semibold text-gray-900">1900 kcal</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-xs truncate">Chemotherapy dietary support</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="dietOpenEdit(6)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="dietDeleteRecord(6,'Linda Nguyen')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="7"><td class="font-medium text-gray-900">Carlos Vega</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Liquid</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">ICU - 04</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Pita</td><td class="font-semibold text-gray-900">1000 kcal</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-xs truncate">NPO, progressing to liquids</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="dietOpenEdit(7)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="dietDeleteRecord(7,'Carlos Vega')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="8"><td class="font-medium text-gray-900">Helen Yu</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Diabetic</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Neurology - N01</td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Nadia Ahmed</td><td class="font-semibold text-gray-900">1700 kcal</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-xs truncate">Stroke patient — awaiting swallow assessment</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-09</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">On Hold</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="dietOpenEdit(8)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="dietDeleteRecord(8,'Helen Yu')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr id="tbody-empty" class="hidden"><td colspan="9" class="text-center py-10 text-gray-400">No plans found</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="form-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none flex items-center justify-center p-4" role="dialog" tabindex="-1">
+            <div class="modal-panel">
+                <div class="flex items-center justify-between">
+                    <h2 id="m-title" class="text-xl font-bold text-gray-900">New Diet Plan</h2>
+                    <button type="button" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" aria-label="Close" data-hs-overlay="#form-modal">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <form id="m-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="f-patient" class="form-label">Patient Name <span class="text-danger">*</span></label>
+                            <input id="f-patient" class="form-input" placeholder="James Morrison" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-type" class="form-label">Plan Type <span class="text-danger">*</span></label>
+                            <select id="f-type" class="form-select">
+                                <option>Diabetic</option>
+                                <option>Cardiac</option>
+                                <option>Weight Loss</option>
+                                <option>Renal</option>
+                                <option>High Protein</option>
+                                <option>Liquid</option>
+                                <option>General</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-ward" class="form-label">Ward / Room</label>
+                            <input id="f-ward" class="form-input" placeholder="General Ward A - A101" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-dietitian" class="form-label">Dietitian</label>
+                            <input id="f-dietitian" class="form-input" placeholder="Dr. Nadia Ahmed" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-cal" class="form-label">Calories/Day</label>
+                            <input id="f-cal" type="number" min="0" class="form-input" placeholder="1800" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-date" class="form-label">Start Date</label>
+                            <div class="relative">
+                                <input type="text" id="f-date" placeholder="dd/mm/yyyy" class="form-input pr-10" data-provider="flatpickr" data-date-format="d-m-Y">
+                                <i class="icon-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-900"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-status" class="form-label">Status</label>
+                            <select id="f-status" class="form-select">
+                                <option>Active</option>
+                                <option>On Hold</option>
+                                <option>Completed</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-meals" class="form-label">Meals/Day</label>
+                            <select id="f-meals" class="form-select">
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+                        <div class="form-group span-2">
+                            <label for="f-notes" class="form-label">Restrictions &amp; Notes</label>
+                            <textarea id="f-notes" class="form-textarea" placeholder="No salt, lactose-free, gluten-free, allergies..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#form-modal">Cancel</button>
+                        <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold">Save Plan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="del-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none flex items-center justify-center p-4" role="dialog" tabindex="-1">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Remove Plan</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Remove diet plan for
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    ?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#del-modal">Cancel</button>
+                    <button id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "diet"})
+    </body>
+</html>

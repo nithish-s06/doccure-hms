@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Accounts — Dreams HMS"}) @@include('partials/header.html', {"page": "accounts"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="accounts">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search accounts by name, number..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Accounts", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Chart of Accounts</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Overview of all financial accounts and their balances</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-briefcase text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">7</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Accounts</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-trending-up text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$247,000.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Assets</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-trending-down text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$154,500.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Liabilities</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$92,500.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Net Worth</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Accounts</span>
+                                <span class="text-xs text-gray-400 ml-auto">7 of 7</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Account Name</th>
+                                            <th>Type</th>
+                                            <th>Account Number</th>
+                                            <th>Balance</th>
+                                            <th>Last Activity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-medium text-gray-900"><a class="text-primary" href="account-detail.html">Main Operating Account</a></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Asset</span></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">ACC-10001</td><td class="font-semibold text-gray-900">$185,000.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-08</td></tr>
+<tr><td class="font-medium text-gray-900"><a class="text-primary" href="account-detail.html">Payroll Account</a></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Asset</span></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">ACC-10002</td><td class="font-semibold text-gray-900">$62,000.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-07</td></tr>
+<tr><td class="font-medium text-gray-900"><a class="text-primary" href="account-detail.html">Accounts Payable</a></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Liability</span></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">ACC-20001</td><td class="font-semibold text-gray-900">$34,500.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td></tr>
+<tr><td class="font-medium text-gray-900"><a class="text-primary" href="account-detail.html">Equipment Loan</a></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Liability</span></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">ACC-20002</td><td class="font-semibold text-gray-900">$120,000.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td></tr>
+<tr><td class="font-medium text-gray-900"><a class="text-primary" href="account-detail.html">Patient Service Revenue</a></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Revenue</span></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">ACC-30001</td><td class="font-semibold text-gray-900">$245,000.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-08</td></tr>
+<tr><td class="font-medium text-gray-900"><a class="text-primary" href="account-detail.html">Pharmacy Revenue</a></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Revenue</span></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">ACC-30002</td><td class="font-semibold text-gray-900">$58,000.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-07</td></tr>
+<tr><td class="font-medium text-gray-900"><a class="text-primary" href="account-detail.html">Operating Expenses</a></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Expense</span></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">ACC-40001</td><td class="font-semibold text-gray-900">$98,000.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-08</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "accounts"})
+    </body>
+</html>

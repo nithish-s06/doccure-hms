@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Trauma Case Details — Dreams HMS"}) @@include('partials/header.html', {"page": "trauma-case-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="trauma-case-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="tcd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Trauma Case Details", "parentUrl": "trauma-cases.html", "parent": "Trauma Command Center"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="tcd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="tcd-hero-ico"><i class="icon-siren"></i></div>
+                                    <div class="min-w-0">
+                                        <p class="tcd-kicker">Trauma Case</p>
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Unknown Male, approx. 40</h1>
+                                            <span class="tcd-hbadge"><span class="tcd-dot"></span>Critical</span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="tcd-hmeta"><i class="icon-hash text-[13px] text-rose-300"></i>#TC-00001</span>
+                                            <span class="tcd-hmeta"><i class="icon-car-crash text-[13px] text-orange-300"></i>Motor Vehicle Collision</span>
+                                            <span class="tcd-hmeta"><i class="icon-map-pin text-[13px] text-sky-300"></i>Resus Bay 1</span>
+                                            <span class="tcd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Activated <span>2026-09-08 09:14</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 tcd-actions-print-hide">
+                                    <button type="button" class="tcd-btn tcd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Report</button>
+                                    <button type="button" class="tcd-btn tcd-btn-glass"><i class="icon-list-checks"></i>Update Status</button>
+                                    <a href="trauma-cases.html" class="tcd-btn tcd-btn-primary"><i class="icon-arrow-left"></i>Back to Trauma Center</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="tcd-grid">
+                            <div class="tcd-vital tcd-c-rose">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-activity"></i></span>
+                                    <span class="tcd-chip">Severity</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Critical</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">ISS 29 · Injury Severity</p>
+                            </div>
+                            <div class="tcd-vital tcd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-scan"></i></span>
+                                    <span class="tcd-chip">Region</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Chest / Abdomen</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Body Region</p>
+                            </div>
+                            <div class="tcd-vital tcd-c-indigo">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-users"></i></span>
+                                    <span class="tcd-chip">Team</span>
+                                </div>
+                                <p class="mt-3 text-base lg:text-lg font-extrabold text-gray-900 dark:text-white truncate">Dr. Thomas Rivas</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Trauma Lead</p>
+                            </div>
+                            <div class="tcd-vital tcd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-map-pin"></i></span>
+                                    <span class="tcd-chip">Location</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Resus Bay 1</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Current Location</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="tcd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Emergency timeline -->
+                                <div class="tcd-surface">
+                                    <div class="tcd-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="tcd-title">Emergency Timeline</h2>
+                                    </div>
+                                    <div class="tcd-tl p-5">
+                                        <div class="tcd-tl-item done">
+                                            <span class="tcd-tl-node"><i class="icon-phone-incoming"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Emergency Call Received</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">09:02 — restrained driver, high-speed MVC, prolonged extrication reported</p>
+                                        </div>
+                                        <div class="tcd-tl-item done">
+                                            <span class="tcd-tl-node"><i class="icon-siren"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Trauma Team Activated — Level 1</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">09:08 — full team paged, Resus Bay 1 reserved</p>
+                                        </div>
+                                        <div class="tcd-tl-item done">
+                                            <span class="tcd-tl-node"><i class="icon-ambulance"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Patient Arrived via Medic 09</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">09:14 — hypotensive in the field, 2 large-bore IVs in place</p>
+                                        </div>
+                                        <div class="tcd-tl-item current">
+                                            <span class="tcd-tl-node"><i class="icon-heart-pulse"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Primary Survey &amp; Resuscitation</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">In progress — FAST scan positive, blood products being transfused</p>
+                                        </div>
+                                        <div class="tcd-tl-item">
+                                            <span class="tcd-tl-node"><i class="icon-scissors"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Exploratory Laparotomy — Pending</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">OR 3 on standby, awaiting anesthesia clearance</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Vitals -->
+                                <div class="tcd-surface">
+                                    <div class="tcd-head">
+                                        <span class="ico"><i class="icon-heart-pulse"></i></span>
+                                        <h2 class="tcd-title">Latest Vitals</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="tcd-vsgrid">
+                                            <div class="tcd-vs"><p class="val">88 / 54</p><p class="lbl">BP (mmHg)</p></div>
+                                            <div class="tcd-vs"><p class="val">128</p><p class="lbl">HR (bpm)</p></div>
+                                            <div class="tcd-vs"><p class="val">91%</p><p class="lbl">SpO2</p></div>
+                                            <div class="tcd-vs"><p class="val">GCS 13</p><p class="lbl">Consciousness</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Injuries -->
+                                <div class="tcd-surface">
+                                    <div class="tcd-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="tcd-title">Documented Injuries</h2>
+                                    </div>
+                                    <div class="p-5 space-y-2.5 text-sm">
+                                        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-alert-triangle text-danger"></i>Suspected splenic laceration — positive FAST scan</div>
+                                        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-alert-triangle text-danger"></i>Right-sided rib fractures (4th–7th)</div>
+                                        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-alert-triangle text-warning"></i>Closed fracture, left femur</div>
+                                        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-alert-triangle text-warning"></i>Superficial lacerations, forehead</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 tcd-sidebar">
+                                <!-- Trauma lead -->
+                                <div class="tcd-surface tcd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Trauma Lead</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Dr. Thomas Rivas</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Level I Trauma Center</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="tcd-hmeta"><i class="icon-radio text-[12px]"></i>Page Team</span>
+                                    </div>
+                                </div>
+
+                                <!-- Case details -->
+                                <div class="tcd-surface p-5">
+                                    <h3 class="tcd-title mb-3">Case Details</h3>
+                                    <div class="tcd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Case ID</span><span class="v">#TC-00001</span></div>
+                                    <div class="tcd-kv"><span class="k"><i class="icon-car-crash text-[13px]"></i>Trauma Type</span><span class="v">MVC</span></div>
+                                    <div class="tcd-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Severity</span><span class="v">Critical</span></div>
+                                    <div class="tcd-kv"><span class="k"><i class="icon-map-pin text-[13px]"></i>Location</span><span class="v">Resus Bay 1</span></div>
+                                    <div class="tcd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Activated</span><span class="v">09:14 AM</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="tcd-surface p-5 space-y-2.5">
+                                    <h3 class="tcd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="tcd-btn tcd-btn-solid w-full justify-start"><i class="icon-scissors"></i>Schedule Surgery</button>
+                                    <button type="button" class="tcd-btn tcd-btn-solid w-full justify-start"><i class="icon-ambulance"></i>Emergency Transfer</button>
+                                    <button type="button" class="tcd-btn tcd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Trauma Report</button>
+                                    <a href="trauma-cases.html" class="tcd-btn tcd-btn-solid w-full justify-start"><i class="icon-list"></i>All Trauma Cases</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "trauma-case-detail"})
+    </body>
+</html>

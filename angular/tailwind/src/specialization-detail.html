@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Specialization Details — Dreams HMS"}) @@include('partials/header.html', {"page": "specialization-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="specialization-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="spd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Specialization Details", "parentUrl": "specializations.html", "parent": "Specializations"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="spd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="spd-hero-ico"><i class="icon-heart"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="spd-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Cardiology</h1>
+                                            <span class="spd-hbadge"><span class="spd-dot"></span><span id="spd-demand-badge">High Demand</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="spd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="spd-id">#SPEC-0001</span></span>
+                                            <span class="spd-hmeta"><i class="icon-building-2 text-[13px] text-sky-300"></i><span id="spd-dept">Cardiology Department</span></span>
+                                            <span class="spd-hmeta"><i class="icon-tag text-[13px] text-violet-300"></i><span id="spd-cat">Medical</span></span>
+                                            <span class="spd-hmeta"><i class="icon-star text-[13px] text-amber-300"></i><span id="spd-rating">4.9</span> Avg Rating</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 spd-actions-print-hide">
+                                    <button type="button" class="spd-btn spd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="specializations.html" class="spd-btn spd-btn-primary"><i class="icon-arrow-left"></i>Back to Catalog</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="spd-grid">
+                            <div class="spd-vital spd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-users"></i></span>
+                                    <span class="spd-chip">Doctors</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="spd-doctors">18</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Doctors Mapped</p>
+                            </div>
+                            <div class="spd-vital spd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-clipboard-list"></i></span>
+                                    <span class="spd-chip">Volume</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="spd-procedures">214</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Procedures / Month</p>
+                            </div>
+                            <div class="spd-vital spd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-star"></i></span>
+                                    <span class="spd-chip">Rating</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="spd-rating2">4.9</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Average Patient Rating</p>
+                            </div>
+                            <div class="spd-vital spd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-trending-up"></i></span>
+                                    <span class="spd-chip">Growth</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="spd-growth">+14%</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">YoY Growth</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="spd-layout">
+                            <div class="space-y-5">
+
+                                <!-- About & key procedures -->
+                                <div class="spd-surface">
+                                    <div class="spd-head">
+                                        <span class="ico"><i class="icon-info"></i></span>
+                                        <h2 class="spd-title">About This Specialization</h2>
+                                    </div>
+                                    <div class="p-5 space-y-4">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed" id="spd-desc">Diagnosis and treatment of heart and blood vessel disorders including interventional procedures.</p>
+                                        <div>
+                                            <p class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Key Procedures</p>
+                                            <div class="flex flex-wrap gap-2" id="spd-procs">
+                                                <span class="spd-tag">Angioplasty</span>
+                                                <span class="spd-tag">Echocardiography</span>
+                                                <span class="spd-tag">Pacemaker</span>
+                                                <span class="spd-tag">Bypass Surgery</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Consultants -->
+                                <div class="spd-surface">
+                                    <div class="spd-head">
+                                        <span class="ico"><i class="icon-stethoscope"></i></span>
+                                        <h2 class="spd-title">Consultants in This Specialty</h2>
+                                    </div>
+                                    <div class="p-5 grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="spd-docs">
+                                        <div class="spd-doc-row"><span class="spd-ava">SR</span><span class="text-sm font-semibold text-gray-900 dark:text-white">Dr. Sarah Roberts</span></div>
+                                        <div class="spd-doc-row"><span class="spd-ava">AK</span><span class="text-sm font-semibold text-gray-900 dark:text-white">Dr. A. Khan</span></div>
+                                        <div class="spd-doc-row"><span class="spd-ava">ML</span><span class="text-sm font-semibold text-gray-900 dark:text-white">Dr. M. Lee</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 spd-sidebar">
+                                <!-- Department highlight -->
+                                <div class="spd-surface spd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Department</p>
+                                    <h3 class="mt-1 text-lg font-extrabold" id="spd-side-dept">Cardiology</h3>
+                                    <p class="text-sm text-white/80 mt-0.5" id="spd-side-wait">Avg wait: 2 days</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="spd-hmeta"><i class="icon-users text-[12px]"></i>View Doctors</span>
+                                    </div>
+                                </div>
+
+                                <!-- Details card -->
+                                <div class="spd-surface p-5">
+                                    <h3 class="spd-title mb-3">Specialization Details</h3>
+                                    <div class="spd-kv"><span class="k"><i class="icon-tag text-[13px]"></i>Category</span><span class="v" id="spd-kv-cat">Medical</span></div>
+                                    <div class="spd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Department</span><span class="v" id="spd-kv-dept">Cardiology</span></div>
+                                    <div class="spd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Avg Wait</span><span class="v" id="spd-kv-wait">2 days</span></div>
+                                    <div class="spd-kv"><span class="k"><i class="icon-users text-[13px]"></i>Consultants</span><span class="v" id="spd-kv-docs">18 doctors</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="spd-surface p-5 space-y-2.5">
+                                    <h3 class="spd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="spd-btn spd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="specializations.html" class="spd-btn spd-btn-solid w-full justify-start"><i class="icon-list"></i>All Specializations</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "specialization-detail"})
+    </body>
+</html>

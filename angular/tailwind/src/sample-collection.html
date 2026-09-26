@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Sample Collection — Dreams HMS"}) @@include('partials/header.html', {"page": "sample-collection"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="sample-collection">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search sample ID, patient, test..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Sample Collection", "parentUrl": "laboratory.html", "parent": "Laboratory"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Sample Collection Log</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Track biological samples collected from patients for laboratory testing</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-droplet text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Samples</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Collected</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-truck text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">In Transit</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-inbox text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Received</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Samples</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Sample ID</th>
+                                            <th>Patient</th>
+                                            <th>Test</th>
+                                            <th>Collected By</th>
+                                            <th>Collection Time</th>
+                                            <th>Sample Type</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-primary font-mono text-sm"><a href="sample-detail.html">#SMP-00001</a></td><td class="font-medium text-gray-900">Emily Johnson</td><td class="text-gray-600 dark:text-gray-300">Complete Blood Count</td><td class="text-gray-500 dark:text-gray-400">Nurse Alicia Brown</td><td class="text-gray-500 dark:text-gray-400 text-sm">09:30 AM</td><td class="text-gray-500 dark:text-gray-400">Whole Blood</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Received</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="sample-detail.html">#SMP-00002</a></td><td class="font-medium text-gray-900">David Torres</td><td class="text-gray-600 dark:text-gray-300">Lipid Panel</td><td class="text-gray-500 dark:text-gray-400">Nurse Tom Reilly</td><td class="text-gray-500 dark:text-gray-400 text-sm">10:15 AM</td><td class="text-gray-500 dark:text-gray-400">Serum</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">In Transit</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="sample-detail.html">#SMP-00003</a></td><td class="font-medium text-gray-900">Linda Nguyen</td><td class="text-gray-600 dark:text-gray-300">Urine Culture</td><td class="text-gray-500 dark:text-gray-400">Nurse Kelly Chan</td><td class="text-gray-500 dark:text-gray-400 text-sm">08:45 AM</td><td class="text-gray-500 dark:text-gray-400">Urine</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Collected</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="sample-detail.html">#SMP-00004</a></td><td class="font-medium text-gray-900">Michael Harris</td><td class="text-gray-600 dark:text-gray-300">HIV Antibody Test</td><td class="text-gray-500 dark:text-gray-400">Nurse Alicia Brown</td><td class="text-gray-500 dark:text-gray-400 text-sm">11:00 AM</td><td class="text-gray-500 dark:text-gray-400">Serum</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Received</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="sample-detail.html">#SMP-00005</a></td><td class="font-medium text-gray-900">Sarah Adams</td><td class="text-gray-600 dark:text-gray-300">Biopsy Analysis</td><td class="text-gray-500 dark:text-gray-400">Dr. Rachel Kim</td><td class="text-gray-500 dark:text-gray-400 text-sm">01:20 PM</td><td class="text-gray-500 dark:text-gray-400">Tissue</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">In Transit</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="sample-detail.html">#SMP-00006</a></td><td class="font-medium text-gray-900">Anna Peterson</td><td class="text-gray-600 dark:text-gray-300">Blood Glucose</td><td class="text-gray-500 dark:text-gray-400">Nurse Tom Reilly</td><td class="text-gray-500 dark:text-gray-400 text-sm">07:50 AM</td><td class="text-gray-500 dark:text-gray-400">Plasma</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Received</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="sample-detail.html">#SMP-00007</a></td><td class="font-medium text-gray-900">James Morrison</td><td class="text-gray-600 dark:text-gray-300">Throat Culture</td><td class="text-gray-500 dark:text-gray-400">Nurse Kelly Chan</td><td class="text-gray-500 dark:text-gray-400 text-sm">09:05 AM</td><td class="text-gray-500 dark:text-gray-400">Swab</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Collected</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="sample-detail.html">#SMP-00008</a></td><td class="font-medium text-gray-900">Robert Clark</td><td class="text-gray-600 dark:text-gray-300">Hepatitis B Panel</td><td class="text-gray-500 dark:text-gray-400">Nurse Alicia Brown</td><td class="text-gray-500 dark:text-gray-400 text-sm">02:40 PM</td><td class="text-gray-500 dark:text-gray-400">Serum</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">In Transit</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "sample-collection"})
+    </body>
+</html>

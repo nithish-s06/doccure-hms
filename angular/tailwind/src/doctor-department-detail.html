@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Department Details — Dreams HMS"}) @@include('partials/header.html', {"page": "doctor-department-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="doctor-department-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="ddd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Department Details", "parentUrl": "doctors.html", "parent": "Doctors"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="ddd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="ddd-hero-ico"><i class="icon-brain"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Neurology</h1>
+                                            <span class="ddd-hbadge"><span class="ddd-dot"></span>Active</span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="ddd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i>DEPT-0002</span>
+                                            <span class="ddd-hmeta"><i class="icon-user text-[13px] text-sky-300"></i>Dr. Vikram Nair · Head of Department</span>
+                                            <span class="ddd-hmeta"><i class="icon-map-pin text-[13px] text-violet-300"></i>Block B · Floor 3</span>
+                                            <span class="ddd-hmeta"><i class="icon-phone text-[13px] text-emerald-300"></i>Ext. 2203</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 ddd-actions-print-hide">
+                                    <button type="button" class="ddd-btn ddd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <button type="button" class="ddd-btn ddd-btn-glass"><i class="icon-download"></i>Download PDF</button>
+                                    <a href="doctors.html" class="ddd-btn ddd-btn-primary"><i class="icon-arrow-left"></i>Back to Doctors</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="ddd-grid">
+                            <div class="ddd-vital ddd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-stethoscope"></i></span>
+                                    <span class="ddd-chip">Doctors</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">14</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Doctors Assigned</p>
+                            </div>
+                            <div class="ddd-vital ddd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-users"></i></span>
+                                    <span class="ddd-chip">Staff</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">30</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Support Staff</p>
+                            </div>
+                            <div class="ddd-vital ddd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-bed"></i></span>
+                                    <span class="ddd-chip">Beds</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">28</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Occupancy 76%</p>
+                            </div>
+                            <div class="ddd-vital ddd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-star"></i></span>
+                                    <span class="ddd-chip">Rating</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">4.8</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Patient Rating</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="ddd-layout">
+                            <div class="space-y-5">
+
+                                <!-- About -->
+                                <div class="ddd-surface">
+                                    <div class="ddd-head">
+                                        <span class="ico"><i class="icon-file-text"></i></span>
+                                        <h2 class="ddd-title">About the Department</h2>
+                                    </div>
+                                    <div class="p-5 space-y-4">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Diagnosis and treatment of disorders of the nervous system, including stroke care, epilepsy management and neuro-diagnostics. The department runs a dedicated stroke unit and works closely with Radiology and Emergency for time-critical cases.</p>
+                                        <div class="flex flex-wrap gap-1.5">
+                                            <span class="ddd-chip ddd-c-violet">EEG</span>
+                                            <span class="ddd-chip ddd-c-sky">Stroke Unit</span>
+                                            <span class="ddd-chip ddd-c-amber">Neuro-Surgery</span>
+                                            <span class="ddd-chip ddd-c-emerald">MRI Diagnostics</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Assigned doctors -->
+                                <div class="ddd-surface">
+                                    <div class="ddd-head">
+                                        <span class="ico"><i class="icon-stethoscope"></i></span>
+                                        <h2 class="ddd-title">Assigned Doctors (14)</h2>
+                                    </div>
+                                    <div class="px-5">
+                                        <div class="ddd-doc">
+                                            <span class="ava">VN</span>
+                                            <div class="flex-1 min-w-0"><div class="nm">Dr. Vikram Nair</div><div class="sp">Head of Department · Neurologist</div></div>
+                                            <span class="ddd-chip ddd-c-emerald">Available</span>
+                                        </div>
+                                        <div class="ddd-doc">
+                                            <span class="ava">SG</span>
+                                            <div class="flex-1 min-w-0"><div class="nm">Dr. S. Gupta</div><div class="sp">Consultant Neurologist</div></div>
+                                            <span class="ddd-chip ddd-c-emerald">Available</span>
+                                        </div>
+                                        <div class="ddd-doc">
+                                            <span class="ava">RJ</span>
+                                            <div class="flex-1 min-w-0"><div class="nm">Dr. R. Jain</div><div class="sp">Neuro-Surgeon</div></div>
+                                            <span class="ddd-chip ddd-c-amber">In Surgery</span>
+                                        </div>
+                                        <div class="ddd-doc">
+                                            <span class="ava">AK</span>
+                                            <div class="flex-1 min-w-0"><div class="nm">Dr. A. Kapoor</div><div class="sp">Stroke Specialist</div></div>
+                                            <span class="ddd-chip ddd-c-emerald">Available</span>
+                                        </div>
+                                        <div class="ddd-doc">
+                                            <span class="ava">MP</span>
+                                            <div class="flex-1 min-w-0"><div class="nm">Dr. M. Prasad</div><div class="sp">Pediatric Neurologist</div></div>
+                                            <span class="ddd-chip ddd-c-sky">On Leave</span>
+                                        </div>
+                                        <div class="ddd-doc">
+                                            <span class="ava">+9</span>
+                                            <div class="flex-1 min-w-0"><div class="nm text-gray-500 dark:text-gray-400 font-semibold">9 more doctors</div><div class="sp">View full roster in the department register</div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 ddd-sidebar">
+                                <!-- Department highlight -->
+                                <div class="ddd-surface ddd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Department</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Neurology</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Status: Active · 76% bed occupancy</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="ddd-hmeta"><i class="icon-map-pin text-[12px]"></i>Block B · Floor 3</span>
+                                    </div>
+                                </div>
+
+                                <!-- Department key-value card -->
+                                <div class="ddd-surface p-5">
+                                    <h3 class="ddd-title mb-3">Department Details</h3>
+                                    <div class="ddd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Head of Dept.</span><span class="v">Dr. Vikram Nair</span></div>
+                                    <div class="ddd-kv"><span class="k"><i class="icon-map-pin text-[13px]"></i>Location</span><span class="v">Block B, Floor 3</span></div>
+                                    <div class="ddd-kv"><span class="k"><i class="icon-phone text-[13px]"></i>Extension</span><span class="v">2203</span></div>
+                                    <div class="ddd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Operating Hours</span><span class="v">Mon–Sat, 8:00 AM – 8:00 PM</span></div>
+                                    <div class="ddd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Established</span><span class="v">2011</span></div>
+                                    <div class="ddd-kv"><span class="k"><i class="icon-bed text-[13px]"></i>Beds</span><span class="v">28 (76% occupied)</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="ddd-surface p-5 space-y-2.5">
+                                    <h3 class="ddd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="ddd-btn ddd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <button type="button" class="ddd-btn ddd-btn-solid w-full justify-start"><i class="icon-download"></i>Download PDF</button>
+                                    <a href="doctors.html" class="ddd-btn ddd-btn-solid w-full justify-start"><i class="icon-list"></i>All Doctors</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "doctor-department-detail"})
+    </body>
+</html>

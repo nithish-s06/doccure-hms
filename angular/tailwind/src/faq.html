@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"FAQ — Dreams HMS"}) @@include('partials/header.html', {"page": "faq"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="faq">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search FAQs..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-4xl mx-auto space-y-6">
+                        @@include('partials/breadcrumb.html', {"current": "FAQ", "parentUrl": "help-center.html", "parent": "Help Center"})
+
+                        <div class="text-center" data-aos="fade-up">
+                            <h1 class="text-2xl font-bold text-gray-900">Frequently Asked Questions</h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Quick answers about appointments, billing, insurance and visiting hours</p>
+                        </div>
+
+                        <!-- Appointments -->
+                        <div data-aos="fade-up" data-aos-delay="50">
+                            <h2 class="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2 flex items-center gap-2"><i class="icon-calendar-check text-primary"></i> Appointments</h2>
+                            <div class="hs-accordion-group border border-border-color rounded-lg overflow-hidden">
+                                <div class="hs-accordion active">
+                                    <button class="hs-accordion-toggle py-4 px-5 hs-accordion-active:bg-light hs-accordion-active:border-0 border-y-0 border-x-0 border-border-color inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-900 disabled:pointer-events-none" aria-expanded="true" aria-controls="faq-1" type="button">
+                                        How do I book an appointment with a doctor?
+                                        <span class="hs-accordion-active:hidden block size-4 ms-auto"><i class="icon-chevron-down"></i></span>
+                                        <span class="hs-accordion-active:block hidden size-4 ms-auto"><i class="icon-chevron-up"></i></span>
+                                    </button>
+                                    <div id="faq-1" class="hs-accordion-content w-full overflow-hidden duration-300" role="region">
+                                        <div class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300">Go to <strong>Appointments &rarr; Book Appointment</strong>, select your preferred department and doctor, then choose an available time slot. You'll receive a confirmation by email and SMS.</div>
+                                    </div>
+                                </div>
+                                <div class="hs-accordion">
+                                    <button class="hs-accordion-toggle py-4 px-5 hs-accordion-active:bg-light hs-accordion-active:border-0 border-t border-b-0 border-x-0 border-border-color inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-900 disabled:pointer-events-none" aria-expanded="false" aria-controls="faq-2" type="button">
+                                        Can I reschedule or cancel an appointment?
+                                        <span class="hs-accordion-active:hidden block size-4 ms-auto"><i class="icon-chevron-down"></i></span>
+                                        <span class="hs-accordion-active:block hidden size-4 ms-auto"><i class="icon-chevron-up"></i></span>
+                                    </button>
+                                    <div id="faq-2" class="hs-accordion-content hidden w-full overflow-hidden duration-300" role="region">
+                                        <div class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300">Yes, appointments can be rescheduled or cancelled up to 2 hours before the scheduled time from <strong>My Appointments</strong>, free of charge.</div>
+                                    </div>
+                                </div>
+                                <div class="hs-accordion">
+                                    <button class="hs-accordion-toggle py-4 px-5 hs-accordion-active:bg-light hs-accordion-active:border-0 border-t border-b-0 border-x-0 border-border-color inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-900 disabled:pointer-events-none" aria-expanded="false" aria-controls="faq-3" type="button">
+                                        What should I bring for my first visit?
+                                        <span class="hs-accordion-active:hidden block size-4 ms-auto"><i class="icon-chevron-down"></i></span>
+                                        <span class="hs-accordion-active:block hidden size-4 ms-auto"><i class="icon-chevron-up"></i></span>
+                                    </button>
+                                    <div id="faq-3" class="hs-accordion-content hidden w-full overflow-hidden duration-300" role="region">
+                                        <div class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300">Please bring a valid photo ID, your insurance card (if applicable), and any prior medical records or referral letters.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Billing & Insurance -->
+                        <div data-aos="fade-up" data-aos-delay="100">
+                            <h2 class="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2 flex items-center gap-2"><i class="icon-credit-card text-primary"></i> Billing &amp; Insurance</h2>
+                            <div class="hs-accordion-group border border-border-color rounded-lg overflow-hidden">
+                                <div class="hs-accordion">
+                                    <button class="hs-accordion-toggle py-4 px-5 hs-accordion-active:bg-light hs-accordion-active:border-0 border-y-0 border-x-0 border-border-color inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-900 disabled:pointer-events-none" aria-expanded="false" aria-controls="faq-4" type="button">
+                                        Which insurance providers do you accept?
+                                        <span class="hs-accordion-active:hidden block size-4 ms-auto"><i class="icon-chevron-down"></i></span>
+                                        <span class="hs-accordion-active:block hidden size-4 ms-auto"><i class="icon-chevron-up"></i></span>
+                                    </button>
+                                    <div id="faq-4" class="hs-accordion-content hidden w-full overflow-hidden duration-300" role="region">
+                                        <div class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300">We work with most major insurers including BlueCross, Aetna, Cigna and UnitedHealth. Visit <strong>Insurance &rarr; Claims</strong> to check eligibility for your specific plan.</div>
+                                    </div>
+                                </div>
+                                <div class="hs-accordion">
+                                    <button class="hs-accordion-toggle py-4 px-5 hs-accordion-active:bg-light hs-accordion-active:border-0 border-t border-b-0 border-x-0 border-border-color inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-900 disabled:pointer-events-none" aria-expanded="false" aria-controls="faq-5" type="button">
+                                        How do I pay an outstanding invoice?
+                                        <span class="hs-accordion-active:hidden block size-4 ms-auto"><i class="icon-chevron-down"></i></span>
+                                        <span class="hs-accordion-active:block hidden size-4 ms-auto"><i class="icon-chevron-up"></i></span>
+                                    </button>
+                                    <div id="faq-5" class="hs-accordion-content hidden w-full overflow-hidden duration-300" role="region">
+                                        <div class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300">Open <strong>Billing &rarr; Invoices</strong>, select the invoice and choose your preferred payment method — card, bank transfer or wallet.</div>
+                                    </div>
+                                </div>
+                                <div class="hs-accordion">
+                                    <button class="hs-accordion-toggle py-4 px-5 hs-accordion-active:bg-light hs-accordion-active:border-0 border-t border-b-0 border-x-0 border-border-color inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-900 disabled:pointer-events-none" aria-expanded="false" aria-controls="faq-6" type="button">
+                                        How long does claim approval usually take?
+                                        <span class="hs-accordion-active:hidden block size-4 ms-auto"><i class="icon-chevron-down"></i></span>
+                                        <span class="hs-accordion-active:block hidden size-4 ms-auto"><i class="icon-chevron-up"></i></span>
+                                    </button>
+                                    <div id="faq-6" class="hs-accordion-content hidden w-full overflow-hidden duration-300" role="region">
+                                        <div class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300">Most claims are reviewed within 5–7 business days. You can track live status from <strong>Insurance &rarr; Claims</strong>.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Visiting Hours -->
+                        <div data-aos="fade-up" data-aos-delay="150">
+                            <h2 class="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2 flex items-center gap-2"><i class="icon-clock text-primary"></i> Visiting Hours &amp; Policies</h2>
+                            <div class="hs-accordion-group border border-border-color rounded-lg overflow-hidden">
+                                <div class="hs-accordion">
+                                    <button class="hs-accordion-toggle py-4 px-5 hs-accordion-active:bg-light hs-accordion-active:border-0 border-y-0 border-x-0 border-border-color inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-900 disabled:pointer-events-none" aria-expanded="false" aria-controls="faq-7" type="button">
+                                        What are the general visiting hours?
+                                        <span class="hs-accordion-active:hidden block size-4 ms-auto"><i class="icon-chevron-down"></i></span>
+                                        <span class="hs-accordion-active:block hidden size-4 ms-auto"><i class="icon-chevron-up"></i></span>
+                                    </button>
+                                    <div id="faq-7" class="hs-accordion-content hidden w-full overflow-hidden duration-300" role="region">
+                                        <div class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300">General wards allow visitors from 10:00 AM – 12:00 PM and 5:00 PM – 7:00 PM. ICU visiting is limited to immediate family, 15 minutes per slot.</div>
+                                    </div>
+                                </div>
+                                <div class="hs-accordion">
+                                    <button class="hs-accordion-toggle py-4 px-5 hs-accordion-active:bg-light hs-accordion-active:border-0 border-t border-b-0 border-x-0 border-border-color inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-900 disabled:pointer-events-none" aria-expanded="false" aria-controls="faq-8" type="button">
+                                        Is the emergency department open 24/7?
+                                        <span class="hs-accordion-active:hidden block size-4 ms-auto"><i class="icon-chevron-down"></i></span>
+                                        <span class="hs-accordion-active:block hidden size-4 ms-auto"><i class="icon-chevron-up"></i></span>
+                                    </button>
+                                    <div id="faq-8" class="hs-accordion-content hidden w-full overflow-hidden duration-300" role="region">
+                                        <div class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300">Yes, our Emergency department operates 24 hours a day, 7 days a week with dedicated on-call physicians and ambulance dispatch.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact CTA -->
+                        <div class="card p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                            <p class="text-sm font-bold text-gray-900">Still have questions?</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Reach out to our support team for further assistance</p>
+                            <div class="flex flex-wrap items-center justify-center gap-3 mt-4">
+                                <a href="support-tickets.html" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold"><i class="icon-message-circle"></i> Raise a Ticket</a>
+                                <a href="contact-us.html" class="inline-flex items-center gap-2 border border-border-color px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"><i class="icon-mail"></i> Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "faq"})
+    </body>
+</html>

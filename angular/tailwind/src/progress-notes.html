@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Progress Notes — Dreams HMS"}) @@include('partials/header.html', {"page": "progress-notes"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="progress-notes">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search progress notes by patient, doctor..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Progress Notes", "parentUrl": "medical-records.html", "parent": "Medical Records"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Progress Notes</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Clinical progress notes recorded during patient encounters</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-file-text text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">7</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Notes</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-message-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Consultations</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-repeat text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Follow-ups</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-log-out text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Discharge Summaries</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Progress Notes</span>
+                                <span class="text-xs text-gray-400 ml-auto">7 of 7</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient</th>
+                                            <th>Doctor</th>
+                                            <th>Note Summary</th>
+                                            <th>Date</th>
+                                            <th>Note Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-medium text-gray-900">Michael Harris</td><td class="text-gray-600 dark:text-gray-300">Dr. Yusuf Karim</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Patient reports improved mobility post-fracture. Continue physiotherapy.">Patient reports improved mobility post-fracture. Continue physiotherapy.</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td class="text-gray-500 dark:text-gray-400">Follow-up</td></tr><tr><td class="font-medium text-gray-900">James Morrison</td><td class="text-gray-600 dark:text-gray-300">Dr. Amara Osei</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Routine diabetes check-in. HbA1c stable at 6.8%.">Routine diabetes check-in. HbA1c stable at 6.8%.</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td><td class="text-gray-500 dark:text-gray-400">Consultation</td></tr><tr><td class="font-medium text-gray-900">Fatima Al-Sayed</td><td class="text-gray-600 dark:text-gray-300">Dr. Elena Vasquez</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Discharged after cardiac catheterization. Stable vitals, follow-up in 2 weeks.">Discharged after cardiac catheterization. Stable vitals, follow-up in 2 weeks.</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td><td class="text-gray-500 dark:text-gray-400">Discharge Summary</td></tr><tr><td class="font-medium text-gray-900">Sarah Adams</td><td class="text-gray-600 dark:text-gray-300">Dr. Amara Osei</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="GERD symptoms improving with omeprazole. Recommend dietary changes.">GERD symptoms improving with omeprazole. Recommend dietary changes.</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-03</td><td class="text-gray-500 dark:text-gray-400">Follow-up</td></tr><tr><td class="font-medium text-gray-900">Priya Nair</td><td class="text-gray-600 dark:text-gray-300">Dr. Amara Osei</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Pre-op assessment for knee arthroscopy. Cleared for surgery.">Pre-op assessment for knee arthroscopy. Cleared for surgery.</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-30</td><td class="text-gray-500 dark:text-gray-400">Consultation</td></tr><tr><td class="font-medium text-gray-900">Owen Fitzgerald</td><td class="text-gray-600 dark:text-gray-300">Dr. Elena Vasquez</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Discussed bariatric surgery risks and post-op diet plan.">Discussed bariatric surgery risks and post-op diet plan.</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td class="text-gray-500 dark:text-gray-400">Consultation</td></tr><tr><td class="font-medium text-gray-900">Anna Peterson</td><td class="text-gray-600 dark:text-gray-300">Dr. Yusuf Karim</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Discharged post-appendectomy in good condition.">Discharged post-appendectomy in good condition.</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-08-25</td><td class="text-gray-500 dark:text-gray-400">Discharge Summary</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "progress-notes"})
+    </body>
+</html>

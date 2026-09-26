@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Laboratory — Dreams HMS"}) @@include('partials/header.html', {"page": "laboratory"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search lab tests..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Laboratory Management</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Track lab tests, samples and results</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-flask-conical text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Tests</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-microscope text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">4</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Processing</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-file-check text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Completed</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Tests</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Lab ID</th>
+                                            <th>Test Name</th>
+                                            <th>Patient</th>
+                                            <th>Referred By</th>
+                                            <th>Sample Type</th>
+                                            <th>Date</th>
+                                            <th>Priority</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr><td class="text-primary font-mono text-sm"><a href="lab-test-detail.html">#LAB-0001</a></td><td class="font-medium text-gray-900">Complete Blood Count</td><td class="text-gray-600 dark:text-gray-300">James Morrison</td><td class="text-gray-500 dark:text-gray-400">Dr. Sarah Chen</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Blood</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Routine</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Completed</span></td></tr><tr><td class="text-primary font-mono text-sm"><a href="lab-test-detail.html">#LAB-0002</a></td><td class="font-medium text-gray-900">Lipid Profile</td><td class="text-gray-600 dark:text-gray-300">Sarah Adams</td><td class="text-gray-500 dark:text-gray-400">Dr. Raj Kumar</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Blood</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Routine</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Processing</span></td></tr><tr><td class="text-primary font-mono text-sm"><a href="lab-test-detail.html">#LAB-0003</a></td><td class="font-medium text-gray-900">Urine Culture</td><td class="text-gray-600 dark:text-gray-300">Robert Clark</td><td class="text-gray-500 dark:text-gray-400">Dr. Alice Mills</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Urine</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Urgent</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Processing</span></td></tr><tr><td class="text-primary font-mono text-sm"><a href="lab-test-detail.html">#LAB-0004</a></td><td class="font-medium text-gray-900">Thyroid Function Test</td><td class="text-gray-600 dark:text-gray-300">Emily Johnson</td><td class="text-gray-500 dark:text-gray-400">Dr. James Park</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Blood</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-11</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Routine</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Pending</span></td></tr><tr><td class="text-primary font-mono text-sm"><a href="lab-test-detail.html">#LAB-0005</a></td><td class="font-medium text-gray-900">HbA1c</td><td class="text-gray-600 dark:text-gray-300">David Torres</td><td class="text-gray-500 dark:text-gray-400">Dr. Felix Osei</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Blood</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-11</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Routine</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Sample Collected</span></td></tr><tr><td class="text-primary font-mono text-sm"><a href="lab-test-detail.html">#LAB-0006</a></td><td class="font-medium text-gray-900">Chest X-Ray Film</td><td class="text-gray-600 dark:text-gray-300">Linda Nguyen</td><td class="text-gray-500 dark:text-gray-400">Dr. Li Wang</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">N/A</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-12</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">STAT</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Processing</span></td></tr><tr><td class="text-primary font-mono text-sm"><a href="lab-test-detail.html">#LAB-0007</a></td><td class="font-medium text-gray-900">Blood Culture</td><td class="text-gray-600 dark:text-gray-300">Michael Harris</td><td class="text-gray-500 dark:text-gray-400">Dr. Maya Nair</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Blood</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-12</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">STAT</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Pending</span></td></tr><tr><td class="text-primary font-mono text-sm"><a href="lab-test-detail.html">#LAB-0008</a></td><td class="font-medium text-gray-900">Stool Routine</td><td class="text-gray-600 dark:text-gray-300">Anna Peterson</td><td class="text-gray-500 dark:text-gray-400">Dr. Tom Rivas</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">Stool</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-13</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Routine</span></td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Completed</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "laboratory"})
+    </body>
+</html>

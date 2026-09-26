@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Branches — Dreams HMS"}) @@include('partials/header.html', {"page": "branches"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="branches">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search branches by name, city..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Branches", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Branches</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage hospital branches and facility locations</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-building text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">6</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Branches</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">4</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Under Construction</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-users text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">775</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Bed Capacity</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Branches</span>
+                                <span class="text-xs text-gray-400 ml-auto">6 of 6</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Branch Name</th>
+                                            <th>City</th>
+                                            <th>Address</th>
+                                            <th>Phone</th>
+                                            <th>Manager</th>
+                                            <th>Bed Capacity</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-medium text-gray-900">Dreams HMS — Central</td><td class="text-gray-500 dark:text-gray-400">Springfield</td><td class="text-gray-600 dark:text-gray-300">100 Central Ave</td><td class="text-gray-500 dark:text-gray-400">(555) 201-4400</td><td class="text-gray-500 dark:text-gray-400">Dr. Helen Ross</td><td class="text-gray-900 font-medium">320</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Dreams HMS — Westside</td><td class="text-gray-500 dark:text-gray-400">Springfield</td><td class="text-gray-600 dark:text-gray-300">221 Westside Blvd</td><td class="text-gray-500 dark:text-gray-400">(555) 201-4410</td><td class="text-gray-500 dark:text-gray-400">Dr. Marcus Lee</td><td class="text-gray-900 font-medium">120</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Dreams HMS — Riverside</td><td class="text-gray-500 dark:text-gray-400">Rivertown</td><td class="text-gray-600 dark:text-gray-300">48 Riverside Dr</td><td class="text-gray-500 dark:text-gray-400">(555) 340-2200</td><td class="text-gray-500 dark:text-gray-400">Dr. Anita Kapoor</td><td class="text-gray-900 font-medium">85</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Dreams HMS — North Wing</td><td class="text-gray-500 dark:text-gray-400">Springfield</td><td class="text-gray-600 dark:text-gray-300">780 North St</td><td class="text-gray-500 dark:text-gray-400">(555) 201-4420</td><td class="text-gray-500 dark:text-gray-400">Dr. Owen Reyes</td><td class="text-gray-900 font-medium">60</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Under Construction</span></td></tr>
+<tr><td class="font-medium text-gray-900">Dreams HMS — Lakeview</td><td class="text-gray-500 dark:text-gray-400">Lakeview</td><td class="text-gray-600 dark:text-gray-300">12 Harbor Rd</td><td class="text-gray-500 dark:text-gray-400">(555) 512-9090</td><td class="text-gray-500 dark:text-gray-400">Dr. Sophia Kim</td><td class="text-gray-900 font-medium">150</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Dreams HMS — East Annex</td><td class="text-gray-500 dark:text-gray-400">Springfield</td><td class="text-gray-600 dark:text-gray-300">35 East Ave</td><td class="text-gray-500 dark:text-gray-400">(555) 201-4430</td><td class="text-gray-500 dark:text-gray-400">Dr. Felix Adeyemi</td><td class="text-gray-900 font-medium">40</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Under Construction</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "branches"})
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Bed Occupancy Report — Dreams HMS"}) @@include('partials/header.html', {"page": "bed-occupancy-report"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="bed-occupancy-report">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Bed Occupancy Report", "parentUrl": "reports.html", "parent": "Reports"})
+
+                        <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Bed Occupancy Report</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Ward-wise bed availability and occupancy summary for the selected period</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-percent text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-occupancy-rate">76.0%</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Overall Occupancy Rate</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-bed text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-total-beds">400</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Beds</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-bed text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-occupied-beds">304</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Occupied Beds</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-bed text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-available-beds">96</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Available Beds</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Ward-wise Occupancy</h3>
+                                <span class="text-xs text-gray-400" id="count">10 wards</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Ward / Department</th>
+                                            <th>Beds Total</th>
+                                            <th>Occupied</th>
+                                            <th>Available</th>
+                                            <th>Occupancy %</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr><td class="font-medium text-gray-900">General Ward</td><td class="text-gray-700 dark:text-gray-300">120</td><td class="text-gray-700 dark:text-gray-300">98</td><td class="text-gray-700 dark:text-gray-300">22</td><td class="font-semibold text-amber-600">81.7%</td></tr><tr><td class="font-medium text-gray-900">ICU</td><td class="text-gray-700 dark:text-gray-300">30</td><td class="text-gray-700 dark:text-gray-300">27</td><td class="text-gray-700 dark:text-gray-300">3</td><td class="font-semibold text-red-600">90.0%</td></tr><tr><td class="font-medium text-gray-900">Emergency</td><td class="text-gray-700 dark:text-gray-300">25</td><td class="text-gray-700 dark:text-gray-300">21</td><td class="text-gray-700 dark:text-gray-300">4</td><td class="font-semibold text-amber-600">84.0%</td></tr><tr><td class="font-medium text-gray-900">Maternity</td><td class="text-gray-700 dark:text-gray-300">40</td><td class="text-gray-700 dark:text-gray-300">29</td><td class="text-gray-700 dark:text-gray-300">11</td><td class="font-semibold text-amber-600">72.5%</td></tr><tr><td class="font-medium text-gray-900">Pediatrics</td><td class="text-gray-700 dark:text-gray-300">35</td><td class="text-gray-700 dark:text-gray-300">22</td><td class="text-gray-700 dark:text-gray-300">13</td><td class="font-semibold text-emerald-600">62.9%</td></tr><tr><td class="font-medium text-gray-900">Surgical Ward</td><td class="text-gray-700 dark:text-gray-300">50</td><td class="text-gray-700 dark:text-gray-300">41</td><td class="text-gray-700 dark:text-gray-300">9</td><td class="font-semibold text-amber-600">82.0%</td></tr><tr><td class="font-medium text-gray-900">Cardiology</td><td class="text-gray-700 dark:text-gray-300">28</td><td class="text-gray-700 dark:text-gray-300">24</td><td class="text-gray-700 dark:text-gray-300">4</td><td class="font-semibold text-amber-600">85.7%</td></tr><tr><td class="font-medium text-gray-900">Orthopedics</td><td class="text-gray-700 dark:text-gray-300">32</td><td class="text-gray-700 dark:text-gray-300">19</td><td class="text-gray-700 dark:text-gray-300">13</td><td class="font-semibold text-emerald-600">59.4%</td></tr><tr><td class="font-medium text-gray-900">Isolation Ward</td><td class="text-gray-700 dark:text-gray-300">18</td><td class="text-gray-700 dark:text-gray-300">6</td><td class="text-gray-700 dark:text-gray-300">12</td><td class="font-semibold text-emerald-600">33.3%</td></tr><tr><td class="font-medium text-gray-900">Neurology</td><td class="text-gray-700 dark:text-gray-300">22</td><td class="text-gray-700 dark:text-gray-300">17</td><td class="text-gray-700 dark:text-gray-300">5</td><td class="font-semibold text-amber-600">77.3%</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "bed-occupancy-report"})
+    </body>
+</html>

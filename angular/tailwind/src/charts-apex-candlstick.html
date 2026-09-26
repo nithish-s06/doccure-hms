@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Candlestick Charts — ApexCharts — Dreams HMS"}) @@include('partials/header.html', {"page": "charts-apex-candlstick"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="charts-apex-candlstick">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search chart components..."})
+            <div class="page-wrapper flex flex-col flex-1 min-w-0">
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="ck-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ============ COMPACT HEADING ============ -->
+                        <div class="flex flex-wrap items-end justify-between gap-3 mb-5">
+                            <div>
+                                <nav class="flex items-center gap-1.5 text-xs ck-mut mb-1">
+                                    <i class="icon-candlestick-chart"></i><span>Charts</span><i class="icon-chevron-right text-[.7rem]"></i><span class="font-semibold text-[var(--ck-c)]">Candlestick</span>
+                                </nav>
+                                <h1 class="text-xl font-bold">Candlestick Charts</h1>
+                                <p class="text-sm ck-mut mt-.5">Ready-to-use ApexCharts OHLC candlestick components — theme-aware, responsive and fully self-contained.</p>
+                            </div>
+                            <span class="ck-badge" id="ck-count">0 components</span>
+                        </div>
+
+                        <!-- ============ CHART GRID ============ -->
+                        <section id="ck-grid" class="grid grid-cols-1 xl:grid-cols-2 gap-5"></section>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- ============ MODAL ============ -->
+        <div class="ck-modal-wrap" id="ck-modal">
+            <div class="ck-modal-ov" data-close></div>
+            <div class="ck-modal" id="ck-modal-box">
+                <div class="ck-modal-head">
+                    <span class="ck-modal-badge"><i class="icon-code-2" id="ck-modal-ic"></i></span>
+                    <div class="min-w-0">
+                        <div class="text-sm font-bold truncate" id="ck-modal-title">Title</div>
+                        <div class="text-xs ck-mut truncate" id="ck-modal-sub">Subtitle</div>
+                    </div>
+                    <button class="ck-iconbtn ml-auto" data-close><i class="icon-x"></i></button>
+                </div>
+                <div class="ck-modal-body" id="ck-modal-body"></div>
+                <div class="ck-foot border-t border-[var(--ck-border)] py-[.85rem] px-[1.2rem]" id="ck-modal-foot"></div>
+            </div>
+        </div>
+
+        <div id="ck-toast"></div>
+
+        <!-- ApexCharts (available in template libs) -->
+        <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+        @@include('partials/script.html', {"page": "charts-apex-candlstick"})
+    </body>
+</html>

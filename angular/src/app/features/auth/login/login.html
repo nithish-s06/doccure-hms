@@ -1,0 +1,145 @@
+<!-- Auth card (layered / glass accents) -->
+<div class="relative rounded-3xl">
+    <div class="absolute -inset-0.5 rounded-3xl bg-gradient-to-br from-blue-500/25 via-transparent to-fuchsia-500/25 opacity-70 blur-[2px]"></div>
+    <div class="relative rounded-3xl bg-white dark:bg-slate-900 border border-gray-200/70 dark:border-white/10 p-6 sm:p-8 lg-card-shadow">
+        <div class="mb-6">
+            <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-gray-900 dark:text-white">Welcome back</h2>
+            <p class="text-gray-500 dark:text-gray-400 mt-1.5 text-sm">Sign in to your Dreams HMS command center.</p>
+        </div>
+
+        <form data-submit-redirect="index.html" class="space-y-4">
+            <!-- Email -->
+            <div class="relative">
+                <input id="login-email" type="email" value="admin@example.com" placeholder=" " class="fl-input peer w-full rounded-xl border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 pl-11 pr-10 py-3.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 transition-all">
+                <i class="icon-mail fl-icon absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 transition-colors"></i>
+                <label for="login-email" class="fl-label">Email address</label>
+                <i class="icon-check-circle fl-ok absolute right-3.5 top-1/2 -translate-y-1/2 text-emerald-500"></i>
+            </div>
+
+            <!-- Password (structure preserved for the global visibility toggle) -->
+            <div class="relative">
+                <input id="login-password" type="password" value="password123" placeholder=" " class="fl-input peer w-full rounded-xl border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 pl-11 pr-12 py-3.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 transition-all">
+                <i class="icon-lock fl-icon absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 transition-colors"></i>
+                <label for="login-password" class="fl-label">Password</label>
+                <button type="button" class="absolute right-2.5 top-1/2 -translate-y-1/2 grid size-8 place-items-center rounded-lg text-gray-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-white/10 transition-colors" aria-label="Show password">
+                    <i class="icon-eye"></i>
+                </button>
+            </div>
+
+            <!-- Remember + forgot -->
+            <div class="flex items-center justify-between pt-0.5">
+                <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                    <span class="relative inline-grid place-items-center">
+                        <input type="checkbox" checked class="lg-cb peer sr-only">
+                        <span class="lg-cb-box grid size-5 place-items-center rounded-md border-2 border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 transition-colors">
+                            <i class="icon-check lg-cb-tick text-[11px] text-white"></i>
+                        </span>
+                    </span>
+                    <span class="text-sm font-medium text-gray-600 dark:text-gray-300">Remember me</span>
+                </label>
+                <a [routerLink]="AllRoutes.forgotPassword" class="text-sm font-bold text-blue-600 dark:text-blue-400 hover:underline">Forgot password?</a>
+            </div>
+
+            <!-- Premium CTA with loading state -->
+            <button id="lg-submit" type="submit" class="lg-cta w-full rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3.5 font-bold text-[15px] shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2">
+                <span id="lg-submit-default" class="flex items-center gap-2"><i class="icon-log-in"></i>Sign In to Dashboard</span>
+                <span id="lg-submit-loading" class="hidden items-center gap-2"><span class="lg-spin size-4 rounded-full border-2 border-white/40 border-t-white"></span>Signing you in…</span>
+            </button>
+        </form>
+
+        <!-- Demo credentials -->
+        <div class="mt-4 flex items-center gap-3 rounded-xl border border-blue-100 dark:border-blue-500/20 bg-blue-50/70 dark:bg-blue-500/10 px-3.5 py-3">
+            <span class="grid size-8 shrink-0 place-items-center rounded-lg bg-blue-600/10 text-blue-600 dark:text-blue-400"><i class="icon-key-round text-sm"></i></span>
+            <div class="min-w-0 flex-1">
+                <p class="text-[11px] font-bold text-blue-700 dark:text-blue-300 uppercase tracking-wide">Demo credentials</p>
+                <p class="text-[11px] text-blue-600/80 dark:text-blue-300/70 truncate">admin@example.com · password123</p>
+            </div>
+            <button type="button" id="lg-demo-fill" class="shrink-0 rounded-lg bg-white dark:bg-white/10 border border-blue-200 dark:border-white/10 px-2.5 py-1 text-[11px] font-bold text-blue-600 dark:text-blue-300 hover:bg-blue-600 hover:text-white transition-colors">Use</button>
+        </div>
+
+        <!-- Divider -->
+        <div class="my-5 flex items-center gap-4">
+            <div class="flex-1 h-px bg-gray-200 dark:bg-white/10"></div>
+            <span class="text-xs font-medium text-gray-400">or continue with</span>
+            <div class="flex-1 h-px bg-gray-200 dark:bg-white/10"></div>
+        </div>
+
+        <!-- Social (UI only) -->
+        <div class="grid grid-cols-2 gap-3">
+            <button type="button" class="lg-social flex items-center justify-center gap-2 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 py-2.5 px-4 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-white/20 text-gray-900 dark:text-white text-sm font-semibold">
+                <svg class="w-5 h-5" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                </svg>
+                Google
+            </button>
+            <button type="button" class="lg-social flex items-center justify-center gap-2 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 py-2.5 px-4 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-white/20 text-gray-900 dark:text-white text-sm font-semibold">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="#0078D4">
+                    <path d="M11.5 2.5L2 7v10l9.5 4.5L21 17V7L11.5 2.5zM11.5 5l7.5 3.5v7L11.5 19 4 15.5v-7L11.5 5z" />
+                </svg>
+                Microsoft
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Role login cards -->
+<div class="mt-6">
+    <div class="flex items-center gap-2 mb-3">
+        <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-gray-400">Quick access by role</p>
+        <div class="flex-1 h-px bg-gray-200 dark:bg-white/10"></div>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+        <a href="index.html" class="lg-role group rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-900 p-3 [--acc:#6366f1]">
+            <span class="lg-role-ic grid size-9 place-items-center rounded-xl text-white text-sm mb-2 [background:linear-gradient(135deg,#6366f1,#4338ca)]"><i class="icon-shield-check"></i></span>
+            <p class="text-[13px] font-black text-gray-900 dark:text-white">Administrator</p>
+            <p class="text-[10px] text-gray-500 dark:text-gray-400">Full control</p>
+        </a>
+        <a href="doctor-dashboard.html" class="lg-role group rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-900 p-3 [--acc:#0ea5e9]">
+            <span class="lg-role-ic grid size-9 place-items-center rounded-xl text-white text-sm mb-2 [background:linear-gradient(135deg,#0ea5e9,#0369a1)]"><i class="icon-stethoscope"></i></span>
+            <p class="text-[13px] font-black text-gray-900 dark:text-white">Doctor</p>
+            <p class="text-[10px] text-gray-500 dark:text-gray-400">Clinical day</p>
+        </a>
+        <a href="nurse-dashboard.html" class="lg-role group rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-900 p-3 [--acc:#0d9488]">
+            <span class="lg-role-ic grid size-9 place-items-center rounded-xl text-white text-sm mb-2 [background:linear-gradient(135deg,#14b8a6,#0f766e)]"><i class="icon-heart-pulse"></i></span>
+            <p class="text-[13px] font-black text-gray-900 dark:text-white">Nurse</p>
+            <p class="text-[10px] text-gray-500 dark:text-gray-400">Ward command</p>
+        </a>
+        <a href="reception-dashboard.html" class="lg-role group rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-900 p-3 [--acc:#f59e0b]">
+            <span class="lg-role-ic grid size-9 place-items-center rounded-xl text-white text-sm mb-2 [background:linear-gradient(135deg,#f59e0b,#b45309)]"><i class="icon-headset"></i></span>
+            <p class="text-[13px] font-black text-gray-900 dark:text-white">Reception</p>
+            <p class="text-[10px] text-gray-500 dark:text-gray-400">Front desk</p>
+        </a>
+        <a href="pharmacy-dashboard.html" class="lg-role group rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-900 p-3 [--acc:#10b981]">
+            <span class="lg-role-ic grid size-9 place-items-center rounded-xl text-white text-sm mb-2 [background:linear-gradient(135deg,#10b981,#047857)]"><i class="icon-pill"></i></span>
+            <p class="text-[13px] font-black text-gray-900 dark:text-white">Pharmacy</p>
+            <p class="text-[10px] text-gray-500 dark:text-gray-400">Dispensary</p>
+        </a>
+        <a href="laboratory-dashboard.html" class="lg-role group rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-900 p-3 [--acc:#3b82f6]">
+            <span class="lg-role-ic grid size-9 place-items-center rounded-xl text-white text-sm mb-2 [background:linear-gradient(135deg,#3b82f6,#1d4ed8)]"><i class="icon-flask-conical"></i></span>
+            <p class="text-[13px] font-black text-gray-900 dark:text-white">Laboratory</p>
+            <p class="text-[10px] text-gray-500 dark:text-gray-400">LIMS floor</p>
+        </a>
+    </div>
+</div>
+
+<!-- Enterprise footer: security / support / version / shortcuts -->
+<div class="mt-6 rounded-2xl border border-gray-200/70 dark:border-white/10 bg-gray-50 dark:bg-slate-900/60 px-4 py-3">
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] font-semibold text-gray-500 dark:text-gray-400">
+        <span class="inline-flex items-center gap-1.5"><i class="icon-fingerprint text-emerald-500"></i>Secure authentication</span>
+        <span class="inline-flex items-center gap-1.5"><i class="icon-shield-check text-blue-500"></i>HIPAA Ready</span>
+        <span class="inline-flex items-center gap-1.5"><i class="icon-lock text-violet-500"></i>256-bit TLS</span>
+        <span class="inline-flex items-center gap-1.5"><i class="icon-headphones text-amber-500"></i>24/7 Support</span>
+    </div>
+    <div class="mt-2.5 flex flex-wrap items-center justify-between gap-2 border-t border-gray-200/70 dark:border-white/10 pt-2.5 text-[10px] text-gray-400">
+        <span class="inline-flex items-center gap-1.5"><i class="icon-globe"></i>Works on all modern browsers</span>
+        <span>Dreams HMS · v1.0.0 Enterprise</span>
+        <span class="hidden sm:inline-flex items-center gap-1">Press <kbd class="rounded border border-gray-300 dark:border-white/15 bg-white dark:bg-white/10 px-1.5 py-0.5 font-bold text-gray-500">Enter</kbd> to sign in</span>
+    </div>
+</div>
+
+<p class="text-center text-xs text-gray-500 dark:text-gray-400 mt-5">
+    Need access? <a href="contact-us.html" class="font-bold text-blue-600 dark:text-blue-400 hover:underline">Contact your administrator</a>
+</p>

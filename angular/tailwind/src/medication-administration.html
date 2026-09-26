@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Medication Administration — Dreams HMS"}) @@include('partials/header.html', {"page": "medication-administration"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="medication-administration">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search patient, medication..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Medication Administration", "parentUrl": "nursing-dashboard.html", "parent": "Nurse Dashboard"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Medication Administration Record</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">MAR log tracking medication doses administered to patients</p>
+                            </div>
+                            <button id="btn-add" class="flex items-center gap-2 bg-primary hover:bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                <i class="icon-plus"></i>
+                                New Entry
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-clipboard text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-total">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Doses</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-given">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Given</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-x-circle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-missed">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Missed</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-refused">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Refused</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                               <div class="relative flex-1 max-w-100 max-sm:min-w-full">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                                        <i class="icon-search text-gray-400"></i>
+                                    </span>
+                                    <input aria-label="Search patient, medication..." id="search" type="text" placeholder="Search patient, medication..." class="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-slate-600 rounded-lg bg-gray-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" >
+                                </div>
+                                <select aria-label="All Status" id="filter-status" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Status</option>
+                                    <option>Given</option>
+                                    <option>Missed</option>
+                                    <option>Refused</option>
+                                </select>
+                                <span class="text-xs text-gray-400 ml-auto" id="count"></span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient</th>
+                                            <th>Medication</th>
+                                            <th>Dose</th>
+                                            <th>Route</th>
+                                            <th>Scheduled</th>
+                                            <th>Administered</th>
+                                            <th>By</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr data-row-id="1"><td class="font-medium text-gray-900">Ravi Kumar</td><td class="text-gray-600 dark:text-gray-300">Amoxicillin</td><td class="text-gray-500 dark:text-gray-400">500mg</td><td class="text-gray-500 dark:text-gray-400">Oral</td><td class="text-gray-500 dark:text-gray-400 text-sm">08:00 AM</td><td class="text-gray-500 dark:text-gray-400 text-sm">08:05 AM</td><td class="text-gray-600 dark:text-gray-300">Fatima Ali</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Given</span></td><td><div class="flex gap-1"><button onclick="maOpenEdit(1)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="maDelete(1,'Ravi Kumar')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="2"><td class="font-medium text-gray-900">Sunita Rao</td><td class="text-gray-600 dark:text-gray-300">Morphine</td><td class="text-gray-500 dark:text-gray-400">2mg</td><td class="text-gray-500 dark:text-gray-400">IV</td><td class="text-gray-500 dark:text-gray-400 text-sm">09:00 AM</td><td class="text-gray-500 dark:text-gray-400 text-sm">09:02 AM</td><td class="text-gray-600 dark:text-gray-300">Grace Lim</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Given</span></td><td><div class="flex gap-1"><button onclick="maOpenEdit(2)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="maDelete(2,'Sunita Rao')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="3"><td class="font-medium text-gray-900">James Miller</td><td class="text-gray-600 dark:text-gray-300">Ibuprofen</td><td class="text-gray-500 dark:text-gray-400">400mg</td><td class="text-gray-500 dark:text-gray-400">Oral</td><td class="text-gray-500 dark:text-gray-400 text-sm">12:00 PM</td><td class="text-gray-500 dark:text-gray-400 text-sm">—</td><td class="text-gray-600 dark:text-gray-300">Omar Farid</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Missed</span></td><td><div class="flex gap-1"><button onclick="maOpenEdit(3)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="maDelete(3,'James Miller')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="4"><td class="font-medium text-gray-900">Aisha Khan</td><td class="text-gray-600 dark:text-gray-300">Ondansetron</td><td class="text-gray-500 dark:text-gray-400">4mg</td><td class="text-gray-500 dark:text-gray-400">IV</td><td class="text-gray-500 dark:text-gray-400 text-sm">10:30 AM</td><td class="text-gray-500 dark:text-gray-400 text-sm">10:31 AM</td><td class="text-gray-600 dark:text-gray-300">Priya Das</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Given</span></td><td><div class="flex gap-1"><button onclick="maOpenEdit(4)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="maDelete(4,'Aisha Khan')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="5"><td class="font-medium text-gray-900">Carlos Diaz</td><td class="text-gray-600 dark:text-gray-300">Insulin Regular</td><td class="text-gray-500 dark:text-gray-400">6 units</td><td class="text-gray-500 dark:text-gray-400">Subcutaneous</td><td class="text-gray-500 dark:text-gray-400 text-sm">07:00 AM</td><td class="text-gray-500 dark:text-gray-400 text-sm">—</td><td class="text-gray-600 dark:text-gray-300">Fatima Ali</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Refused</span></td><td><div class="flex gap-1"><button onclick="maOpenEdit(5)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="maDelete(5,'Carlos Diaz')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="6"><td class="font-medium text-gray-900">Lena Fischer</td><td class="text-gray-600 dark:text-gray-300">Paracetamol</td><td class="text-gray-500 dark:text-gray-400">650mg</td><td class="text-gray-500 dark:text-gray-400">Oral</td><td class="text-gray-500 dark:text-gray-400 text-sm">06:00 PM</td><td class="text-gray-500 dark:text-gray-400 text-sm">06:05 PM</td><td class="text-gray-600 dark:text-gray-300">Grace Lim</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Given</span></td><td><div class="flex gap-1"><button onclick="maOpenEdit(6)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="maDelete(6,'Lena Fischer')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="7"><td class="font-medium text-gray-900">Tom Baker</td><td class="text-gray-600 dark:text-gray-300">Cetirizine</td><td class="text-gray-500 dark:text-gray-400">10mg</td><td class="text-gray-500 dark:text-gray-400">Oral</td><td class="text-gray-500 dark:text-gray-400 text-sm">09:00 PM</td><td class="text-gray-500 dark:text-gray-400 text-sm">09:10 PM</td><td class="text-gray-600 dark:text-gray-300">Omar Farid</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Given</span></td><td><div class="flex gap-1"><button onclick="maOpenEdit(7)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="maDelete(7,'Tom Baker')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="8"><td class="font-medium text-gray-900">Hana Suzuki</td><td class="text-gray-600 dark:text-gray-300">Silver Sulfadiazine</td><td class="text-gray-500 dark:text-gray-400">Apply thin layer</td><td class="text-gray-500 dark:text-gray-400">Topical</td><td class="text-gray-500 dark:text-gray-400 text-sm">02:00 PM</td><td class="text-gray-500 dark:text-gray-400 text-sm">—</td><td class="text-gray-600 dark:text-gray-300">Priya Das</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Missed</span></td><td><div class="flex gap-1"><button onclick="maOpenEdit(8)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="maDelete(8,'Hana Suzuki')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr id="tbody-empty" class="hidden"><td colspan="9" class="text-center py-10 text-gray-400">No records found</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="form-modal" class="modal-overlay hidden">
+            <div class="modal-panel">
+                <div class="flex items-center justify-between">
+                    <h2 id="m-title" class="text-xl font-bold text-gray-900">New MAR Entry</h2>
+                    <button id="m-close" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <form id="m-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="f-patient" class="form-label">Patient <span class="text-danger">*</span></label>
+                            <input id="f-patient" type="text" class="form-input" placeholder="Ravi Kumar" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-medication" class="form-label">Medication <span class="text-danger">*</span></label>
+                            <input id="f-medication" type="text" class="form-input" placeholder="Amoxicillin" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-dose" class="form-label">Dose</label>
+                            <input id="f-dose" type="text" class="form-input" placeholder="500mg" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-route" class="form-label">Route</label>
+                            <select id="f-route" class="form-select">
+                                <option>Oral</option>
+                                <option>IV</option>
+                                <option>IM</option>
+                                <option>Subcutaneous</option>
+                                <option>Topical</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-scheduled" class="form-label">Scheduled Time</label>
+                            <input id="f-scheduled" type="text" class="form-input" placeholder="08:00 AM" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-administered" class="form-label">Administered Time</label>
+                            <input id="f-administered" type="text" class="form-input" placeholder="08:05 AM" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-by" class="form-label">Administered By</label>
+                            <input id="f-by" type="text" class="form-input" placeholder="Nurse Fatima Ali" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-date" class="form-label">Date</label>
+                            <div class="relative">
+                                <input type="text" id="f-date" placeholder="dd/mm/yyyy" class="form-input pr-10" data-provider="flatpickr" data-date-format="d-m-Y">
+                                <i class="icon-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-900"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-status" class="form-label">Status</label>
+                            <select id="f-status" class="form-select">
+                                <option>Given</option>
+                                <option>Missed</option>
+                                <option>Refused</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button id="m-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Save MAR Entry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="del-modal" class="modal-overlay hidden">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Delete MAR Entry</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Delete mar entry for
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    ?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                    <button id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "medication-administration"})
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Purchase Orders — Dreams HMS"}) @@include('partials/header.html', {"page": "inventory-purchase-orders"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="inventory-purchase-orders">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search purchase orders..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Purchase Orders", "parentUrl": "inventory.html", "parent": "Inventory Dashboard"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Purchase Orders</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Track and manage purchase orders sent to suppliers</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-file-text text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total POs</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$44,600.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Value</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">5</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Received</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Purchase Orders</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>PO Number</th>
+                                            <th>Supplier</th>
+                                            <th>Items</th>
+                                            <th>Total Amount</th>
+                                            <th>Order Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-primary font-mono text-sm"><a href="purchase-order-detail.html">#PO-00001</a></td><td class="font-medium text-gray-900">MedSupply Co.</td><td class="text-gray-500 dark:text-gray-400">Gloves, Syringes, Masks</td><td class="font-semibold text-gray-900">$3,200.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Received</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="purchase-order-detail.html">#PO-00002</a></td><td class="font-medium text-gray-900">PharmaLink Distributors</td><td class="text-gray-500 dark:text-gray-400">Paracetamol, Amoxicillin</td><td class="font-semibold text-gray-900">$8,600.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-03</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Sent</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="purchase-order-detail.html">#PO-00003</a></td><td class="font-medium text-gray-900">SurgiTech Supplies</td><td class="text-gray-500 dark:text-gray-400">Surgical Kits</td><td class="font-semibold text-gray-900">$5,400.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-600 bg-gray-100">Draft</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="purchase-order-detail.html">#PO-00004</a></td><td class="font-medium text-gray-900">EquipMed Global</td><td class="text-gray-500 dark:text-gray-400">Wheelchairs, Thermometers</td><td class="font-semibold text-gray-900">$12,500.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Sent</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="purchase-order-detail.html">#PO-00005</a></td><td class="font-medium text-gray-900">LinenCare Ltd.</td><td class="text-gray-500 dark:text-gray-400">Bed Sheets, Gowns</td><td class="font-semibold text-gray-900">$2,100.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-28</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Received</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="purchase-order-detail.html">#PO-00006</a></td><td class="font-medium text-gray-900">SafeHands PPE</td><td class="text-gray-500 dark:text-gray-400">N95 Masks, Gloves</td><td class="font-semibold text-gray-900">$4,300.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-600 bg-gray-100">Draft</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="purchase-order-detail.html">#PO-00007</a></td><td class="font-medium text-gray-900">DiagnoLabs Supply</td><td class="text-gray-500 dark:text-gray-400">Lab Reagents</td><td class="font-semibold text-gray-900">$6,700.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-02</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Received</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="purchase-order-detail.html">#PO-00008</a></td><td class="font-medium text-gray-900">CleanRoom Essentials</td><td class="text-gray-500 dark:text-gray-400">Disinfectants</td><td class="font-semibold text-gray-900">$1,800.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-07</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Sent</span></td></tr>
+</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "inventory-purchase-orders"})
+    </body>
+</html>

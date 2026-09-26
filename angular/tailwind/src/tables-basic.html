@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Basic Tables — Dreams HMS"}) @@include('partials/header.html', {"page": "tables-basic"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <!-- Page Header -->
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Basic Tables</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Static table styles built on the template's table system</p>
+                            </div>
+                        </div>
+
+                        <!-- Default Table -->
+                        <div class="card" data-aos="fade-up">
+                            <div class="p-4 border-b border-border-color">
+                                <h2 class="font-semibold text-gray-900">Default Table</h2>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Standard bordered rows with hover highlighting.</p>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient ID</th>
+                                            <th>Name</th>
+                                            <th>Department</th>
+                                            <th>Admitted</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>PT-2026-0184</td>
+                                            <td>Sarah Chen</td>
+                                            <td>Cardiology</td>
+                                            <td>12 Jul 2026</td>
+                                            <td><span class="badge badge-green">Stable</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0185</td>
+                                            <td>Rajesh Kumar</td>
+                                            <td>Neurology</td>
+                                            <td>13 Jul 2026</td>
+                                            <td><span class="badge badge-amber">Observation</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0186</td>
+                                            <td>Amelia Moore</td>
+                                            <td>Orthopedics</td>
+                                            <td>14 Jul 2026</td>
+                                            <td><span class="badge badge-green">Stable</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>PT-2026-0187</td>
+                                            <td>James Park</td>
+                                            <td>Emergency</td>
+                                            <td>15 Jul 2026</td>
+                                            <td><span class="badge badge-red">Critical</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Striped Table -->
+                        <div class="card" data-aos="fade-up">
+                            <div class="p-4 border-b border-border-color">
+                                <h2 class="font-semibold text-gray-900">Striped Rows</h2>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Alternating row shading for dense data.</p>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="table [&_tbody_tr:nth-child(odd)_td]:bg-gray-50 dark:[&_tbody_tr:nth-child(odd)_td]:bg-slate-800/50">
+                                    <thead>
+                                        <tr>
+                                            <th>Invoice</th>
+                                            <th>Patient</th>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>INV-4412</td>
+                                            <td>Sarah Chen</td>
+                                            <td>12 Jul 2026</td>
+                                            <td>$1,240.00</td>
+                                            <td><span class="badge badge-green">Paid</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>INV-4413</td>
+                                            <td>Rajesh Kumar</td>
+                                            <td>13 Jul 2026</td>
+                                            <td>$860.50</td>
+                                            <td><span class="badge badge-amber">Pending</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>INV-4414</td>
+                                            <td>Amelia Moore</td>
+                                            <td>14 Jul 2026</td>
+                                            <td>$2,110.00</td>
+                                            <td><span class="badge badge-green">Paid</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>INV-4415</td>
+                                            <td>James Park</td>
+                                            <td>15 Jul 2026</td>
+                                            <td>$430.25</td>
+                                            <td><span class="badge badge-red">Overdue</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Bordered Table -->
+                        <div class="card" data-aos="fade-up">
+                            <div class="p-4 border-b border-border-color">
+                                <h2 class="font-semibold text-gray-900">Bordered Cells</h2>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Full cell borders for report-style layouts.</p>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="table [&_th]:border [&_th]:border-border-color [&_td]:border [&_td]:border-border-color">
+                                    <thead>
+                                        <tr>
+                                            <th>Test</th>
+                                            <th>Result</th>
+                                            <th>Reference Range</th>
+                                            <th>Unit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Haemoglobin</td>
+                                            <td>13.8</td>
+                                            <td>13.0 — 17.0</td>
+                                            <td>g/dL</td>
+                                        </tr>
+                                        <tr>
+                                            <td>White Blood Cells</td>
+                                            <td>7.2</td>
+                                            <td>4.0 — 11.0</td>
+                                            <td>10⁹/L</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Platelets</td>
+                                            <td>245</td>
+                                            <td>150 — 400</td>
+                                            <td>10⁹/L</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Table With Avatars & Actions -->
+                        <div class="card" data-aos="fade-up">
+                            <div class="p-4 border-b border-border-color flex items-center justify-between">
+                                <div>
+                                    <h2 class="font-semibold text-gray-900">With Avatars &amp; Actions</h2>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Rich cells combining media, badges and row actions.</p>
+                                </div>
+                                <button class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                    <i class="icon-plus"></i>
+                                    Add Doctor
+                                </button>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="w-10">
+                                                <input type="checkbox" aria-label="Select all rows" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                            </th>
+                                            <th>Doctor</th>
+                                            <th>Specialization</th>
+                                            <th>Patients</th>
+                                            <th>Status</th>
+                                            <th class="text-right">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                            </td>
+                                            <td>
+                                                <div class="flex items-center gap-3">
+                                                    <img src="assets/img/avatar/avatar-01.jpg" alt="" class="w-9 h-9 rounded-full object-cover">
+                                                    <div>
+                                                        <p class="font-medium text-gray-900">Dr. Sarah Chen</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400">sarah.chen@hospital.com</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Cardiology</td>
+                                            <td>142</td>
+                                            <td><span class="badge badge-green">Active</span></td>
+                                            <td>
+                                                <div class="flex items-center justify-end gap-1">
+                                                    <button aria-label="View" class="p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                                                        <i class="icon-eye text-sm"></i>
+                                                    </button>
+                                                    <button aria-label="Edit" class="p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                                                        <i class="icon-pencil text-sm"></i>
+                                                    </button>
+                                                    <button aria-label="Delete" class="p-2 rounded-lg text-gray-500 hover:text-danger hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                                                        <i class="icon-trash-2 text-sm"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                            </td>
+                                            <td>
+                                                <div class="flex items-center gap-3">
+                                                    <img src="assets/img/avatar/avatar-02.jpg" alt="" class="w-9 h-9 rounded-full object-cover">
+                                                    <div>
+                                                        <p class="font-medium text-gray-900">Dr. Rajesh Kumar</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400">rajesh.kumar@hospital.com</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Neurology</td>
+                                            <td>98</td>
+                                            <td><span class="badge badge-green">Active</span></td>
+                                            <td>
+                                                <div class="flex items-center justify-end gap-1">
+                                                    <button aria-label="View" class="p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                                                        <i class="icon-eye text-sm"></i>
+                                                    </button>
+                                                    <button aria-label="Edit" class="p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                                                        <i class="icon-pencil text-sm"></i>
+                                                    </button>
+                                                    <button aria-label="Delete" class="p-2 rounded-lg text-gray-500 hover:text-danger hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                                                        <i class="icon-trash-2 text-sm"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                            </td>
+                                            <td>
+                                                <div class="flex items-center gap-3">
+                                                    <img src="assets/img/avatar/avatar-03.jpg" alt="" class="w-9 h-9 rounded-full object-cover">
+                                                    <div>
+                                                        <p class="font-medium text-gray-900">Dr. Amelia Moore</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400">amelia.moore@hospital.com</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Orthopedics</td>
+                                            <td>76</td>
+                                            <td><span class="badge badge-gray">On Leave</span></td>
+                                            <td>
+                                                <div class="flex items-center justify-end gap-1">
+                                                    <button aria-label="View" class="p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                                                        <i class="icon-eye text-sm"></i>
+                                                    </button>
+                                                    <button aria-label="Edit" class="p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                                                        <i class="icon-pencil text-sm"></i>
+                                                    </button>
+                                                    <button aria-label="Delete" class="p-2 rounded-lg text-gray-500 hover:text-danger hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                                                        <i class="icon-trash-2 text-sm"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                            <!-- Compact Table -->
+                            <div class="card" data-aos="fade-up">
+                                <div class="p-4 border-b border-border-color">
+                                    <h2 class="font-semibold text-gray-900">Compact Table</h2>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="table [&_td]:py-2! [&_th]:py-2!">
+                                        <thead>
+                                            <tr>
+                                                <th>Bed</th>
+                                                <th>Ward</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>B-101</td>
+                                                <td>General</td>
+                                                <td><span class="badge badge-red">Occupied</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>B-102</td>
+                                                <td>General</td>
+                                                <td><span class="badge badge-green">Available</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>B-201</td>
+                                                <td>ICU</td>
+                                                <td><span class="badge badge-red">Occupied</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>B-202</td>
+                                                <td>ICU</td>
+                                                <td><span class="badge badge-amber">Cleaning</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Table With Footer -->
+                            <div class="card" data-aos="fade-up" data-aos-delay="50">
+                                <div class="p-4 border-b border-border-color">
+                                    <h2 class="font-semibold text-gray-900">With Summary Footer</h2>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th class="text-right">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Consultation</td>
+                                                <td>1</td>
+                                                <td class="text-right">$120.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Blood Test</td>
+                                                <td>2</td>
+                                                <td class="text-right">$180.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>MRI Scan</td>
+                                                <td>1</td>
+                                                <td class="text-right">$940.00</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2" class="font-semibold text-gray-900">Total</td>
+                                                <td class="text-right font-semibold text-gray-900">$1,240.00</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Responsive Table -->
+                        <div class="card" data-aos="fade-up">
+                            <div class="p-4 border-b border-border-color">
+                                <h2 class="font-semibold text-gray-900">Responsive — Horizontal Scroll</h2>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Wide tables scroll inside their container instead of breaking the page.</p>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient</th>
+                                            <th>Age</th>
+                                            <th>Blood Group</th>
+                                            <th>Department</th>
+                                            <th>Doctor</th>
+                                            <th>Admitted</th>
+                                            <th>Discharge</th>
+                                            <th>Room</th>
+                                            <th>Insurance</th>
+                                            <th>Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Sarah Chen</td>
+                                            <td>34</td>
+                                            <td>A+</td>
+                                            <td>Cardiology</td>
+                                            <td>Dr. Kumar</td>
+                                            <td>12 Jul 2026</td>
+                                            <td>18 Jul 2026</td>
+                                            <td>B-101</td>
+                                            <td>MedCare Plus</td>
+                                            <td>$240.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rajesh Kumar</td>
+                                            <td>47</td>
+                                            <td>O-</td>
+                                            <td>Neurology</td>
+                                            <td>Dr. Moore</td>
+                                            <td>13 Jul 2026</td>
+                                            <td>—</td>
+                                            <td>B-204</td>
+                                            <td>HealthFirst</td>
+                                            <td>$1,120.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Amelia Moore</td>
+                                            <td>29</td>
+                                            <td>B+</td>
+                                            <td>Orthopedics</td>
+                                            <td>Dr. Park</td>
+                                            <td>14 Jul 2026</td>
+                                            <td>16 Jul 2026</td>
+                                            <td>B-118</td>
+                                            <td>Self-Pay</td>
+                                            <td>$0.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "tables-basic"})
+    </body>
+</html>

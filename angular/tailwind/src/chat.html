@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Chat — Dreams HMS"}) @@include('partials/header.html', {"page": "chat"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="chat">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Chat", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Chat</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Message doctors, nurses and staff in real time.</p>
+                            </div>
+                        </div>
+
+                        <div class="card overflow-hidden" data-aos="fade-up" data-aos-delay="50">
+                            <div class="flex h-[70vh] min-h-[520px]">
+                                <!-- Contact list -->
+                                <div class="w-full sm:w-72 shrink-0 border-r border-border-color flex flex-col">
+                                    <div class="p-3 border-b border-border-color">
+                                        <div class="relative">
+                                            <i class="icon-search absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400"></i>
+                                            <input id="chat-contact-search" type="text" autocomplete="off" placeholder="Search contacts..." aria-label="Search contacts" class="w-full pl-9 pr-3 py-2 rounded-full bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100">
+                                        </div>
+                                    </div>
+                                    <div id="chat-contact-list" class="flex-1 overflow-y-auto">
+                                        <div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color bg-primary/5"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-01.jpg" alt="Dr. Jack Michalak" class="w-10 h-10 rounded-full object-cover"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800"></span></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Dr. Jack Michalak</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Sounds good. Let me know if you have questions.</span></span></div>
+                                        <div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-03.jpg" alt="Nurse Lara Curtin" class="w-10 h-10 rounded-full object-cover"></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Nurse Lara Curtin</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Awesome, thanks!</span></span></div>
+                                        <div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-25.jpg" alt="Dr. Brian Fulton" class="w-10 h-10 rounded-full object-cover"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800"></span></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Dr. Brian Fulton</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Sent over the scan images for review.</span></span></div>
+                                        <div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-20.jpg" alt="Trudy Heintz" class="w-10 h-10 rounded-full object-cover"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800"></span></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Trudy Heintz</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Missed call from you, everything okay?</span></span></div>
+                                        <div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-29.jpg" alt="Dr. Roger Tucker" class="w-10 h-10 rounded-full object-cover"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800"></span></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Dr. Roger Tucker</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Checked, looks good. Approving now.</span></span></div>
+                                        <div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-23.jpg" alt="Leona Daniels" class="w-10 h-10 rounded-full object-cover"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800"></span></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Leona Daniels</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Stock for amoxicillin is low.</span></span></div>
+                                        <div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-24.jpg" alt="Dr. William Bailey" class="w-10 h-10 rounded-full object-cover"></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Dr. William Bailey</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Shall I submit the surgery report tomorrow?</span></span></div>
+                                        <p id="chat-contact-empty" class="hidden text-center text-xs text-gray-400 py-6">No contacts found.</p>
+                                    </div>
+                                </div>
+                                <!-- Conversation -->
+                                <div class="flex-1 flex flex-col min-w-0">
+                                    <div class="p-4 border-b border-border-color flex items-center gap-3"><img src="assets/img/avatar/avatar-01.jpg" alt="Dr. Jack Michalak" class="w-10 h-10 rounded-full object-cover shrink-0"><span class="min-w-0"><span class="block text-sm font-bold text-gray-900 truncate">Dr. Jack Michalak</span><span class="block text-xs text-gray-500 dark:text-gray-400">Cardiology • Online</span></span></div>
+                                    <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50 dark:bg-slate-900/40">
+                                        <div class="flex justify-start"><div class="max-w-[75%]"><div class="bg-white dark:bg-slate-800 border border-border-color text-sm px-4 py-2.5 rounded-2xl rounded-bl-md text-gray-700 dark:text-gray-200">Hi, I wanted to update you on the new remote-consult policy.</div><p class="text-[11px] text-gray-400 mt-1">08:40 PM</p></div></div>
+                                        <div class="flex justify-end"><div class="max-w-[75%]"><div class="bg-primary text-white text-sm px-4 py-2.5 rounded-2xl rounded-br-md">Thanks for the heads up, I&#39;ll review it today.</div><p class="text-[11px] text-gray-400 text-right mt-1">09:00 PM</p></div></div>
+                                        <div class="flex justify-start"><div class="max-w-[75%]"><div class="bg-white dark:bg-slate-800 border border-border-color text-sm px-4 py-2.5 rounded-2xl rounded-bl-md text-gray-700 dark:text-gray-200">Sounds good. Let me know if you have questions.</div><p class="text-[11px] text-gray-400 mt-1">09:01 PM</p></div></div>
+                                    </div>
+                                    <div class="p-3 border-t border-border-color flex items-center gap-2">
+                                        <input aria-label="Type your message here..." type="text" autocomplete="off" placeholder="Type your message here..." class="flex-1 px-4 py-2.5 rounded-full bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900">
+                                        <button type="button" class="w-10 h-10 shrink-0 flex items-center justify-center rounded-full bg-primary hover:bg-primary-hover text-white">
+                                            <i class="icon-send text-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "chat"})
+    </body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"OT Calendar & Scheduling — Dreams HMS"}) @@include('partials/header.html', {"page": "ot-calendar"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search surgeries, surgeons, OT rooms..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="oc-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="oc-skeleton" class="space-y-4">
+                            <div class="oc-sk h-[150px] radius-override-100"></div>
+                            <div class="oc-sk h-[520px] radius-override-100"></div>
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-4"><div class="oc-sk h-[300px]"></div><div class="oc-sk h-[300px]"></div></div>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3"><div class="oc-sk h-[150px]"></div><div class="oc-sk h-[150px]"></div><div class="oc-sk h-[150px]"></div><div class="oc-sk h-[150px]"></div></div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="oc-content" class="hidden space-y-4">
+
+                            <!-- ============ 1. HEADER ============ -->
+                            <section class="oc-hero p-5 lg:p-6">
+                                <div class="oc-hgrid"></div>
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="oc-chip bg-[rgba(13,148,136,.18)] text-[#5eead4]"><span class="oc-dot oc-live bg-[#2dd4bf]"></span> SCHEDULING</span>
+                                            <span class="oc-chip bg-[rgba(220,38,38,.18)] text-[#fca5a5]"><i class="icon-alert-triangle text-[11px]"></i> <span id="oc-h-conf">2</span> Conflicts</span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-[26px] font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-calendar-clock text-teal-300"></i> OT Calendar &amp; Scheduling</h1>
+                                        <p class="text-sm text-slate-400 mt-1">Plan surgeries, allocate theaters &amp; balance surgical resources · <span id="oc-clock" class="tabular-nums"></span></p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 justify-end">
+                                        <button data-modal="schedule" class="oc-btn bg-teal-600 text-white hover:bg-teal-500"><i class="icon-calendar-plus"></i> Schedule Surgery</button>
+                                        <button data-modal="emergency" class="oc-btn bg-rose-600 text-white hover:bg-rose-500"><i class="icon-alert-triangle"></i> Emergency Booking</button>
+                                        <button data-modal="block" class="oc-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-ban"></i> Block OT</button>
+                                        <button data-modal="import" class="oc-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-upload"></i> Import</button>
+                                        <button data-modal="export" class="oc-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    </div>
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
+                                    <div class="oc-hbadge"><p class="text-[11px] text-slate-400">Today's Surgeries</p><p class="text-xl font-bold text-white" id="oc-h-today">8</p></div>
+                                    <div class="oc-hbadge"><p class="text-[11px] text-slate-400">Available OT Rooms</p><p class="text-xl font-bold text-emerald-300" id="oc-h-avail">4</p></div>
+                                    <div class="oc-hbadge"><p class="text-[11px] text-slate-400">Emergency Slots</p><p class="text-xl font-bold text-rose-300">2</p></div>
+                                    <div class="oc-hbadge"><p class="text-[11px] text-slate-400">Scheduled This Week</p><p class="text-xl font-bold text-white" id="oc-h-week">16</p></div>
+                                </div>
+                            </section>
+
+                            <!-- ============ 2. INTERACTIVE CALENDAR ============ -->
+                            <section class="oc-card p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                                    <div class="flex items-center gap-2">
+                                        <button data-nav="-1" class="w-8 h-8 rounded-lg oc-btn-ghost !p-0 flex items-center justify-center"><i class="icon-chevron-left"></i></button>
+                                        <button data-nav="today" class="oc-btn oc-btn-ghost btn-compact">Today</button>
+                                        <button data-nav="1" class="w-8 h-8 rounded-lg oc-btn-ghost !p-0 flex items-center justify-center"><i class="icon-chevron-right"></i></button>
+                                        <h2 class="text-base font-bold oc-head ml-1" id="oc-caltitle">July 2026</h2>
+                                    </div>
+                                    <div class="oc-seg" id="oc-viewtabs">
+                                        <button data-cv="month" class="on"><i class="icon-calendar-days text-[13px]"></i> Month</button>
+                                        <button data-cv="week"><i class="icon-calendar-range text-[13px]"></i> Week</button>
+                                        <button data-cv="day"><i class="icon-calendar text-[13px]"></i> Day</button>
+                                        <button data-cv="timeline"><i class="icon-gantt-chart text-[13px]"></i> Timeline</button>
+                                        <button data-cv="resource"><i class="icon-layout-grid text-[13px]"></i> OT Resource</button>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-3 mb-3 text-[11px]">
+                                    <span class="oc-mut font-semibold">Priority:</span>
+                                    <span class="flex items-center gap-1.5 oc-mut"><span class="oc-dot bg-[#dc2626]"></span>Emergency</span>
+                                    <span class="flex items-center gap-1.5 oc-mut"><span class="oc-dot bg-[#e06c1f]"></span>High</span>
+                                    <span class="flex items-center gap-1.5 oc-mut"><span class="oc-dot bg-[#1d4ed8]"></span>Medium</span>
+                                    <span class="flex items-center gap-1.5 oc-mut"><span class="oc-dot bg-[#0f766e]"></span>Routine</span>
+                                    <span class="ml-auto oc-npill"><i class="icon-move text-[11px]"></i> Drag events to reschedule</span>
+                                </div>
+                                <div id="oc-calendar">
+        <div class="grid grid-cols-7 gap-1px mb-1"><div class="text-center text-[11px] font-semibold oc-mut py-1">Sun</div><div class="text-center text-[11px] font-semibold oc-mut py-1">Mon</div><div class="text-center text-[11px] font-semibold oc-mut py-1">Tue</div><div class="text-center text-[11px] font-semibold oc-mut py-1">Wed</div><div class="text-center text-[11px] font-semibold oc-mut py-1">Thu</div><div class="text-center text-[11px] font-semibold oc-mut py-1">Fri</div><div class="text-center text-[11px] font-semibold oc-mut py-1">Sat</div></div>
+        <div class="oc-monthgrid"><div class="oc-daycell dim " data-daydrop="">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-mut">28</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell dim " data-daydrop="">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-mut">29</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell dim " data-daydrop="">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-mut">30</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="1">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">1</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="2">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">2</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="3">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">3</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="4">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">4</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#1d4ed8]" draggable="true" data-evt="2" data-src="month" title="Vikram Nair · Craniotomy · OT-03 · 10:00">
+        <span class="truncate">10:00 Craniotomy</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="5">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">5</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#0f766e]" draggable="true" data-evt="3" data-src="month" title="Priya Patel · Appendectomy · OT-04 · 15:00">
+        <span class="truncate">15:00 Appendectomy</span></div><div class="oc-evt  [background:#0f766e]" draggable="true" data-evt="4" data-src="month" title="Suresh Gupta · Cholecystectomy · Cardiac OT · 10:00">
+        <span class="truncate">10:00 Cholecystectomy</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="6">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">6</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="7">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">7</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="8">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">8</span><span class="text-[9px] oc-mut">+1</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#1d4ed8]" draggable="true" data-evt="5" data-src="month" title="Meera Singh · Hip Replacement · Neuro OT · 15:00">
+        <span class="truncate">15:00 Hip Replacement</span></div><div class="oc-evt  [background:#e06c1f]" draggable="true" data-evt="6" data-src="month" title="Arjun Menon · Cataract · Emergency OT · 9:00">
+        <span class="truncate">9:00 Cataract</span></div><div class="oc-evt  [background:#dc2626]" draggable="true" data-evt="7" data-src="month" title="Kavya Das · C-Section · Orthopedic OT · 8:00">
+        <span class="truncate">8:00 C-Section</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="9">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">9</span><span class="text-[9px] oc-mut">+1</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#e06c1f]" draggable="true" data-evt="8" data-src="month" title="Deepak Joshi · Spinal Fusion · OT-01 · 14:00">
+        <span class="truncate">14:00 Spinal Fusion</span></div><div class="oc-evt  [background:#1d4ed8]" draggable="true" data-evt="9" data-src="month" title="Neha Verma · Hernia Repair · OT-02 · 10:00">
+        <span class="truncate">10:00 Hernia Repair</span></div><div class="oc-evt  [background:#0f766e]" draggable="true" data-evt="10" data-src="month" title="Rohan Iyer · Angioplasty · OT-03 · 14:00">
+        <span class="truncate">14:00 Angioplasty</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="10">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">10</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="11">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">11</span><span class="text-[9px] oc-mut">+1</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#0f766e]" draggable="true" data-evt="11" data-src="month" title="Sana Khan · Thyroidectomy · OT-04 · 11:00">
+        <span class="truncate">11:00 Thyroidectomy</span></div><div class="oc-evt  [background:#1d4ed8]" draggable="true" data-evt="12" data-src="month" title="Manoj Rao · CABG · Cardiac OT · 12:00">
+        <span class="truncate">12:00 CABG</span></div><div class="oc-evt  [background:#e06c1f]" draggable="true" data-evt="13" data-src="month" title="Divya Menon · Knee Replacement · Neuro OT · 10:00">
+        <span class="truncate">10:00 Knee Replacement</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="12">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">12</span><span class="text-[9px] oc-mut">+1</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#dc2626]" draggable="true" data-evt="14" data-src="month" title="Rahul Sharma · Craniotomy · Emergency OT · 11:00">
+        <span class="truncate">11:00 Craniotomy</span></div><div class="oc-evt  [background:#e06c1f]" draggable="true" data-evt="15" data-src="month" title="Anita Reddy · Appendectomy · Orthopedic OT · 9:00">
+        <span class="truncate">9:00 Appendectomy</span></div><div class="oc-evt  [background:#1d4ed8]" draggable="true" data-evt="16" data-src="month" title="Vikram Nair · Cholecystectomy · OT-01 · 8:00">
+        <span class="truncate">8:00 Cholecystectomy</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="13">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">13</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#0f766e]" draggable="true" data-evt="17" data-src="month" title="Priya Patel · Hip Replacement · OT-02 · 14:00">
+        <span class="truncate">14:00 Hip Replacement</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="14">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">14</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#0f766e]" draggable="true" data-evt="18" data-src="month" title="Suresh Gupta · Cataract · OT-03 · 15:00">
+        <span class="truncate">15:00 Cataract</span></div><div class="oc-evt  [background:#1d4ed8]" draggable="true" data-evt="19" data-src="month" title="Meera Singh · C-Section · OT-04 · 9:00">
+        <span class="truncate">9:00 C-Section</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="15">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">15</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#e06c1f]" draggable="true" data-evt="20" data-src="month" title="Arjun Menon · Spinal Fusion · Cardiac OT · 10:00">
+        <span class="truncate">10:00 Spinal Fusion</span></div><div class="oc-evt  [background:#dc2626]" draggable="true" data-evt="21" data-src="month" title="Kavya Das · Hernia Repair · Neuro OT · 9:00">
+        <span class="truncate">9:00 Hernia Repair</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="16">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">16</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  today" data-daydrop="17">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">17</span><span class="text-[9px] oc-mut">+5</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt conflict [background:#dc2626]" draggable="true" data-evt="0" data-src="month" title="Rahul Sharma · CABG · OT-01 · 9:00">
+        <i class="icon-alert-triangle text-[8px]"></i><span class="truncate">9:00 CABG</span></div><div class="oc-evt conflict [background:#e06c1f]" draggable="true" data-evt="1" data-src="month" title="Anita Reddy · Knee Replacement · OT-01 · 9:00">
+        <i class="icon-alert-triangle text-[8px]"></i><span class="truncate">9:00 Knee Replacement</span></div><div class="oc-evt  [background:#e06c1f]" draggable="true" data-evt="22" data-src="month" title="Deepak Joshi · Angioplasty · Emergency OT · 11:00">
+        <span class="truncate">11:00 Angioplasty</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="18">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">18</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#1d4ed8]" draggable="true" data-evt="23" data-src="month" title="Neha Verma · Thyroidectomy · Orthopedic OT · 15:00">
+        <span class="truncate">15:00 Thyroidectomy</span></div><div class="oc-evt  [background:#0f766e]" draggable="true" data-evt="24" data-src="month" title="Rohan Iyer · CABG · OT-01 · 12:00">
+        <span class="truncate">12:00 CABG</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="19">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">19</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#0f766e]" draggable="true" data-evt="25" data-src="month" title="Sana Khan · Knee Replacement · OT-02 · 14:00">
+        <span class="truncate">14:00 Knee Replacement</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="20">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">20</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#1d4ed8]" draggable="true" data-evt="26" data-src="month" title="Manoj Rao · Craniotomy · OT-03 · 12:00">
+        <span class="truncate">12:00 Craniotomy</span></div><div class="oc-evt  [background:#e06c1f]" draggable="true" data-evt="27" data-src="month" title="Divya Menon · Appendectomy · OT-04 · 13:00">
+        <span class="truncate">13:00 Appendectomy</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="21">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">21</span><span class="text-[9px] oc-mut">+1</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#dc2626]" draggable="true" data-evt="28" data-src="month" title="Rahul Sharma · Cholecystectomy · Cardiac OT · 10:00">
+        <span class="truncate">10:00 Cholecystectomy</span></div><div class="oc-evt  [background:#e06c1f]" draggable="true" data-evt="29" data-src="month" title="Anita Reddy · Hip Replacement · Neuro OT · 8:00">
+        <span class="truncate">8:00 Hip Replacement</span></div><div class="oc-evt  [background:#1d4ed8]" draggable="true" data-evt="30" data-src="month" title="Vikram Nair · Cataract · Emergency OT · 11:00">
+        <span class="truncate">11:00 Cataract</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="22">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">22</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="23">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">23</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="24">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">24</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#0f766e]" draggable="true" data-evt="31" data-src="month" title="Priya Patel · C-Section · Orthopedic OT · 8:00">
+        <span class="truncate">8:00 C-Section</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="25">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">25</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="26">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">26</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="27">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">27</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell  " data-daydrop="28">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">28</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#0f766e]" draggable="true" data-evt="32" data-src="month" title="Suresh Gupta · Spinal Fusion · OT-01 · 14:00">
+        <span class="truncate">14:00 Spinal Fusion</span></div><div class="oc-evt  [background:#1d4ed8]" draggable="true" data-evt="33" data-src="month" title="Meera Singh · Hernia Repair · OT-02 · 10:00">
+        <span class="truncate">10:00 Hernia Repair</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="29">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">29</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#e06c1f]" draggable="true" data-evt="34" data-src="month" title="Arjun Menon · Angioplasty · OT-03 · 8:00">
+        <span class="truncate">8:00 Angioplasty</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="30">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">30</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#dc2626]" draggable="true" data-evt="35" data-src="month" title="Kavya Das · Thyroidectomy · OT-04 · 8:00">
+        <span class="truncate">8:00 Thyroidectomy</span></div><div class="oc-evt  [background:#e06c1f]" draggable="true" data-evt="36" data-src="month" title="Deepak Joshi · CABG · Cardiac OT · 8:00">
+        <span class="truncate">8:00 CABG</span></div></div>
+            </div><div class="oc-daycell  " data-daydrop="31">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-head">31</span></div>
+                <div class="space-y-0.5 overflow-hidden"><div class="oc-evt  [background:#1d4ed8]" draggable="true" data-evt="37" data-src="month" title="Neha Verma · Knee Replacement · Neuro OT · 15:00">
+        <span class="truncate">15:00 Knee Replacement</span></div></div>
+            </div><div class="oc-daycell dim " data-daydrop="">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-mut">1</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell dim " data-daydrop="">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-mut">2</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell dim " data-daydrop="">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-mut">3</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell dim " data-daydrop="">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-mut">4</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell dim " data-daydrop="">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-mut">5</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell dim " data-daydrop="">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-mut">6</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell dim " data-daydrop="">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-mut">7</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div><div class="oc-daycell dim " data-daydrop="">
+                <div class="flex items-center justify-between"><span class="oc-daynum oc-mut">8</span></div>
+                <div class="space-y-0.5 overflow-hidden"></div>
+            </div></div></div>
+                            </section>
+
+                            <!-- ============ 3+4. RESOURCE TIMELINE + AVAILABILITY handled in views; 4 cards below ============ -->
+                            <section class="oc-card p-5">
+                                <h2 class="text-base font-bold oc-head flex items-center gap-2 mb-4"><i class="icon-layout-grid oc-hicon"></i> OT Availability</h2>
+                                <div id="oc-avail" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"><div class="oc-panel p-3.5">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold oc-head flex items-center gap-1.5"><span class="oc-iconbadge w-7 h-7 [color:#e06c1f]"><i class="icon-layout-grid text-sm"></i></span> OT-01</span><span class="oc-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Booked</span></div>
+            <div class="text-[11px] space-y-1">
+                <div class="flex justify-between"><span class="oc-mut">Current</span><span class="oc-head font-medium">CABG (9:00)</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Next</span><span class="oc-head font-medium">Knee Replacement (9:00)</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Equipment</span><span class="[color:#15803d]"><i class="icon-check text-[11px]"></i> Ready</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Cleaning</span><span class="oc-head">Scheduled</span></div>
+            </div>
+            <button data-modal="schedule" class="oc-btn oc-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-calendar-plus"></i> Book slot</button>
+        </div><div class="oc-panel p-3.5">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold oc-head flex items-center gap-1.5"><span class="oc-iconbadge w-7 h-7 [color:#e06c1f]"><i class="icon-layout-grid text-sm"></i></span> OT-02</span><span class="oc-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Booked</span></div>
+            <div class="text-[11px] space-y-1">
+                <div class="flex justify-between"><span class="oc-mut">Current</span><span class="oc-head font-medium">Hip Replacement (10:00)</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Next</span><span class="oc-head font-medium">None</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Equipment</span><span class="[color:#15803d]"><i class="icon-check text-[11px]"></i> Ready</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Cleaning</span><span class="oc-head">Scheduled</span></div>
+            </div>
+            <button data-modal="schedule" class="oc-btn oc-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-calendar-plus"></i> Book slot</button>
+        </div><div class="oc-panel p-3.5">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold oc-head flex items-center gap-1.5"><span class="oc-iconbadge w-7 h-7 [color:#15803d]"><i class="icon-layout-grid text-sm"></i></span> OT-03</span><span class="oc-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div>
+            <div class="text-[11px] space-y-1">
+                <div class="flex justify-between"><span class="oc-mut">Current</span><span class="oc-head font-medium">—</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Next</span><span class="oc-head font-medium">None</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Equipment</span><span class="[color:#15803d]"><i class="icon-check text-[11px]"></i> Ready</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Cleaning</span><span class="oc-head">Done</span></div>
+            </div>
+            <button data-modal="schedule" class="oc-btn oc-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-calendar-plus"></i> Book slot</button>
+        </div><div class="oc-panel p-3.5">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold oc-head flex items-center gap-1.5"><span class="oc-iconbadge w-7 h-7 [color:#15803d]"><i class="icon-layout-grid text-sm"></i></span> OT-04</span><span class="oc-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div>
+            <div class="text-[11px] space-y-1">
+                <div class="flex justify-between"><span class="oc-mut">Current</span><span class="oc-head font-medium">—</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Next</span><span class="oc-head font-medium">None</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Equipment</span><span class="[color:#15803d]"><i class="icon-check text-[11px]"></i> Ready</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Cleaning</span><span class="oc-head">Done</span></div>
+            </div>
+            <button data-modal="schedule" class="oc-btn oc-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-calendar-plus"></i> Book slot</button>
+        </div><div class="oc-panel p-3.5">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold oc-head flex items-center gap-1.5"><span class="oc-iconbadge w-7 h-7 [color:#15803d]"><i class="icon-layout-grid text-sm"></i></span> Cardiac OT</span><span class="oc-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div>
+            <div class="text-[11px] space-y-1">
+                <div class="flex justify-between"><span class="oc-mut">Current</span><span class="oc-head font-medium">—</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Next</span><span class="oc-head font-medium">None</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Equipment</span><span class="[color:#15803d]"><i class="icon-check text-[11px]"></i> Ready</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Cleaning</span><span class="oc-head">Done</span></div>
+            </div>
+            <button data-modal="schedule" class="oc-btn oc-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-calendar-plus"></i> Book slot</button>
+        </div><div class="oc-panel p-3.5">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold oc-head flex items-center gap-1.5"><span class="oc-iconbadge w-7 h-7 [color:#15803d]"><i class="icon-layout-grid text-sm"></i></span> Neuro OT</span><span class="oc-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div>
+            <div class="text-[11px] space-y-1">
+                <div class="flex justify-between"><span class="oc-mut">Current</span><span class="oc-head font-medium">—</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Next</span><span class="oc-head font-medium">None</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Equipment</span><span class="[color:#15803d]"><i class="icon-check text-[11px]"></i> Ready</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Cleaning</span><span class="oc-head">Done</span></div>
+            </div>
+            <button data-modal="schedule" class="oc-btn oc-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-calendar-plus"></i> Book slot</button>
+        </div><div class="oc-panel p-3.5">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold oc-head flex items-center gap-1.5"><span class="oc-iconbadge w-7 h-7 [color:#e06c1f]"><i class="icon-layout-grid text-sm"></i></span> Emergency OT</span><span class="oc-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Booked</span></div>
+            <div class="text-[11px] space-y-1">
+                <div class="flex justify-between"><span class="oc-mut">Current</span><span class="oc-head font-medium">Angioplasty (11:00)</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Next</span><span class="oc-head font-medium">Craniotomy (15:00)</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Equipment</span><span class="[color:#15803d]"><i class="icon-check text-[11px]"></i> Ready</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Cleaning</span><span class="oc-head">Scheduled</span></div>
+            </div>
+            <button data-modal="schedule" class="oc-btn oc-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-calendar-plus"></i> Book slot</button>
+        </div><div class="oc-panel p-3.5">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold oc-head flex items-center gap-1.5"><span class="oc-iconbadge w-7 h-7 [color:#e06c1f]"><i class="icon-layout-grid text-sm"></i></span> Orthopedic OT</span><span class="oc-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Booked</span></div>
+            <div class="text-[11px] space-y-1">
+                <div class="flex justify-between"><span class="oc-mut">Current</span><span class="oc-head font-medium">Appendectomy (12:00)</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Next</span><span class="oc-head font-medium">None</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Equipment</span><span class="[color:#15803d]"><i class="icon-check text-[11px]"></i> Ready</span></div>
+                <div class="flex justify-between"><span class="oc-mut">Cleaning</span><span class="oc-head">Scheduled</span></div>
+            </div>
+            <button data-modal="schedule" class="oc-btn oc-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-calendar-plus"></i> Book slot</button>
+        </div></div>
+                            </section>
+
+                            <!-- ============ 6+7. PLANNING PANEL + CONFLICT CENTER ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_380px] gap-4">
+                                <section class="oc-card p-5">
+                                    <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold oc-head flex items-center gap-2"><i class="icon-clipboard-list oc-hicon"></i> Surgery Planning Panel</h2><span class="oc-npill" id="oc-plan-id">CABG · July 17</span></div>
+                                    <div id="oc-planning">
+        <div class="flex items-center gap-3 mb-3">
+            <span class="oc-avatar flex-none [width:42px] [height:42px] [background:#475569] [font-size:14px]">RS</span>
+            <div class="min-w-0 flex-1"><p class="font-bold oc-head">Rahul Sharma</p><p class="text-[11px] oc-mut">MRN-70600 · CABG</p></div>
+            <span class="oc-chip pr-emerg [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]">Emergency</span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-x-4">
+            <div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--oc-border)]"><span class="oc-mut">Procedure</span><span class="font-medium oc-head">CABG</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--oc-border)]"><span class="oc-mut">OT Room</span><span class="font-medium oc-head">OT-01</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--oc-border)]"><span class="oc-mut">Date</span><span class="font-medium oc-head">July 17</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--oc-border)]"><span class="oc-mut">Time</span><span class="font-medium oc-head">9:00</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--oc-border)]"><span class="oc-mut">Duration</span><span class="font-medium oc-head">2h</span></div></div>
+            <div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--oc-border)]"><span class="oc-mut">Surgeon</span><span class="font-medium oc-head">Dr. A. Mehta</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--oc-border)]"><span class="oc-mut">Anesthesiologist</span><span class="font-medium oc-head">Dr. K. Menon</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--oc-border)]"><span class="oc-mut">OT Nurse</span><span class="font-medium oc-head">N. Fernandes</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--oc-border)]"><span class="oc-mut">Status</span><span class="font-medium oc-head">Scheduled</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--oc-border)]"><span class="oc-mut">Priority</span><span class="font-medium oc-head">Emergency</span></div></div>
+        </div>
+        <div class="mt-3">
+            <p class="text-[11px] font-bold oc-mut uppercase tracking-wide mb-2">Pre-op Checklist</p>
+            <div class="grid sm:grid-cols-2 gap-x-4 gap-y-1"><label class="flex items-center gap-2 text-xs oc-head"><input type="checkbox" class="accent-[var(--oc-c)]" checked> Consent signed</label><label class="flex items-center gap-2 text-xs oc-head"><input type="checkbox" class="accent-[var(--oc-c)]" checked> Fasting confirmed</label><label class="flex items-center gap-2 text-xs oc-head"><input type="checkbox" class="accent-[var(--oc-c)]" checked> Blood cross-matched</label><label class="flex items-center gap-2 text-xs oc-head"><input type="checkbox" class="accent-[var(--oc-c)]" checked> Equipment reserved</label><label class="flex items-center gap-2 text-xs oc-head"><input type="checkbox" class="accent-[var(--oc-c)]" checked> Anesthesia review</label><label class="flex items-center gap-2 text-xs oc-head"><input type="checkbox" class="accent-[var(--oc-c)]" checked> Team briefed</label></div>
+        </div>
+        </div>
+                                </section>
+                                <section class="oc-card p-5">
+                                    <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold oc-head flex items-center gap-2"><i class="icon-alert-triangle oc-hicon"></i> Conflict Center</h2><span class="oc-chip bg-[color-mix(in_srgb,#dc2626_13%,transparent)] text-[#dc2626]" id="oc-conf-count">2</span></div>
+                                    <div id="oc-conflicts" class="space-y-2.5"><div class="oc-panel p-3 [border-left:3px_solid_#dc2626]">
+            <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold oc-head flex items-center gap-1.5"><i class="icon-alert-triangle text-rose-500 text-[13px]"></i> OT Occupied</span><span class="oc-chip [background:color-mix(in_srgb,#dc2626_12%,transparent)] [color:#dc2626]">OT-01</span></div>
+            <p class="text-[11px] oc-mut">CABG (9:00) &amp; Knee Replacement (9:00) — July 17</p>
+            <div class="flex gap-1.5 mt-2">
+                <button data-resolve-move="1" class="oc-npill hover:bg-[var(--oc-hover)]"><i class="icon-move text-[11px]"></i> Move Knee Replacement</button>
+                <button data-resolve-room="1" class="oc-npill hover:bg-[var(--oc-hover)]"><i class="icon-layout-grid text-[11px]"></i> New OT</button>
+                <button data-resolve-time="1" class="oc-npill hover:bg-[var(--oc-hover)]"><i class="icon-clock text-[11px]"></i> Shift time</button>
+            </div>
+        </div><div class="oc-panel p-3 [border-left:3px_solid_#dc2626]">
+            <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold oc-head flex items-center gap-1.5"><i class="icon-alert-triangle text-rose-500 text-[13px]"></i> Surgeon Busy</span><span class="oc-chip [background:color-mix(in_srgb,#dc2626_12%,transparent)] [color:#dc2626]">Neuro OT</span></div>
+            <p class="text-[11px] oc-mut">Hip Replacement (15:00) &amp; Thyroidectomy (16:00) — July 8</p>
+            <div class="flex gap-1.5 mt-2">
+                <button data-resolve-move="42" class="oc-npill hover:bg-[var(--oc-hover)]"><i class="icon-move text-[11px]"></i> Move Thyroidectomy</button>
+                <button data-resolve-room="42" class="oc-npill hover:bg-[var(--oc-hover)]"><i class="icon-layout-grid text-[11px]"></i> New OT</button>
+                <button data-resolve-time="42" class="oc-npill hover:bg-[var(--oc-hover)]"><i class="icon-clock text-[11px]"></i> Shift time</button>
+            </div>
+        </div></div>
+                                </section>
+                            </div>
+
+                            <!-- ============ 5. SURGEON & STAFF SCHEDULE ============ -->
+                            <section class="oc-card p-5">
+                                <h2 class="text-base font-bold oc-head flex items-center gap-2 mb-4"><i class="icon-users oc-hicon"></i> Surgeon &amp; Staff Schedule</h2>
+                                <div id="oc-staff" class="space-y-3">
+        <div><p class="text-[11px] font-bold oc-mut uppercase tracking-wide mb-2">Surgeons</p><div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-2">
+        <div class="oc-panel p-3"><div class="flex items-center gap-2.5"><img class="oc-avatar flex-none [width:36px] [height:36px]" src="assets/img/doctor/doctor-02.jpg" alt="Dr. A. Mehta"><div class="min-w-0 flex-1"><p class="text-sm font-semibold oc-head truncate">Dr. A. Mehta</p><p class="text-[10px] oc-mut">Cardiac · 3 surgeries</p></div></div><div class="mt-2"><span class="oc-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div></div><div class="oc-panel p-3"><div class="flex items-center gap-2.5"><img class="oc-avatar flex-none [width:36px] [height:36px]" src="assets/img/doctor/doctor-04.jpg" alt="Dr. R. Nair"><div class="min-w-0 flex-1"><p class="text-sm font-semibold oc-head truncate">Dr. R. Nair</p><p class="text-[10px] oc-mut">Ortho · 2 surgeries</p></div></div><div class="mt-2"><span class="oc-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">In Surgery</span></div></div><div class="oc-panel p-3"><div class="flex items-center gap-2.5"><img class="oc-avatar flex-none [width:36px] [height:36px]" src="assets/img/doctor/doctor-09.jpg" alt="Dr. S. Kapoor"><div class="min-w-0 flex-1"><p class="text-sm font-semibold oc-head truncate">Dr. S. Kapoor</p><p class="text-[10px] oc-mut">Neuro · 1 surgeries</p></div></div><div class="mt-2"><span class="oc-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div></div><div class="oc-panel p-3"><div class="flex items-center gap-2.5"><img class="oc-avatar flex-none [width:36px] [height:36px]" src="assets/img/doctor/doctor-06.jpg" alt="Dr. L. Khan"><div class="min-w-0 flex-1"><p class="text-sm font-semibold oc-head truncate">Dr. L. Khan</p><p class="text-[10px] oc-mut">General · 2 surgeries</p></div></div><div class="mt-2"><span class="oc-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Off at 2 PM</span></div></div>
+        </div></div>
+        <div class="grid sm:grid-cols-2 gap-3">
+            <div><p class="text-[11px] font-bold oc-mut uppercase tracking-wide mb-2">Anesthesiologists</p><div class="grid grid-cols-2 gap-2"><div class="oc-panel p-3"><div class="flex items-center gap-2.5"><img class="oc-avatar flex-none [width:36px] [height:36px]" src="assets/img/doctor/doctor-12.jpg" alt="Dr. K. Menon"><div class="min-w-0 flex-1"><p class="text-sm font-semibold oc-head truncate">Dr. K. Menon</p><p class="text-[10px] oc-mut">2 today</p></div></div><span class="oc-chip mt-2 inline-flex [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Assigned</span></div><div class="oc-panel p-3"><div class="flex items-center gap-2.5"><img class="oc-avatar flex-none [width:36px] [height:36px]" src="assets/img/doctor/doctor-10.jpg" alt="Dr. T. Bose"><div class="min-w-0 flex-1"><p class="text-sm font-semibold oc-head truncate">Dr. T. Bose</p><p class="text-[10px] oc-mut">1 today</p></div></div><span class="oc-chip mt-2 inline-flex [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div></div></div>
+            <div><p class="text-[11px] font-bold oc-mut uppercase tracking-wide mb-2">OT Nurses</p><div class="grid grid-cols-2 gap-2"><div class="oc-panel p-3"><div class="flex items-center gap-2.5"><img class="oc-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-08.jpg" alt="N. Fernandes"><div class="min-w-0 flex-1"><p class="text-sm font-semibold oc-head truncate">N. Fernandes</p><p class="text-[10px] oc-mut">Cardiac OT · Day</p></div></div></div><div class="oc-panel p-3"><div class="flex items-center gap-2.5"><img class="oc-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-11.jpg" alt="N. Das"><div class="min-w-0 flex-1"><p class="text-sm font-semibold oc-head truncate">N. Das</p><p class="text-[10px] oc-mut">OT-03 · Day</p></div></div></div></div></div>
+        </div></div>
+                            </section>
+
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="oc-drawer" class="oc-drawer"></div>
+        <div id="oc-drawer-back" class="oc-drawer-back" data-close></div>
+        <div id="oc-modalhost"></div>
+        <div id="oc-menuhost"></div>
+
+        @@include('partials/script.html', {"page": "ot-calendar"})
+    </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Account Details — Dreams HMS"}) @@include('partials/header.html', {"page": "account-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="account-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="acd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Account Details", "parentUrl": "accounts.html", "parent": "Accounts"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="acd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="acd-hero-ico"><i class="icon-briefcase"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="acd-hero-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Main Operating Account</h1>
+                                            <span class="acd-hbadge"><span class="acd-dot"></span><span id="acd-hero-type">Asset</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="acd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="acd-hero-number">ACC-10001</span></span>
+                                            <span class="acd-hmeta"><i class="icon-layers text-[13px] text-sky-300"></i><span id="acd-hero-type-label">Asset Account</span></span>
+                                            <span class="acd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Last activity <span id="acd-hero-lastdate">2024-12-08</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 acd-actions-print-hide">
+                                    <button type="button" class="acd-btn acd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <button type="button" class="acd-btn acd-btn-glass"><i class="icon-download"></i>Download Statement</button>
+                                    <a href="accounts.html" class="acd-btn acd-btn-primary"><i class="icon-arrow-left"></i>Back to Accounts</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="acd-grid">
+                            <div class="acd-vital acd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-layers"></i></span>
+                                    <span class="acd-chip">Type</span>
+                                </div>
+                                <p id="acd-stat-type" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Asset</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Account Type</p>
+                            </div>
+                            <div class="acd-vital acd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-hash"></i></span>
+                                    <span class="acd-chip">Number</span>
+                                </div>
+                                <p id="acd-stat-number" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">ACC-10001</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Account Number</p>
+                            </div>
+                            <div class="acd-vital acd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-dollar-sign"></i></span>
+                                    <span class="acd-chip">Balance</span>
+                                </div>
+                                <p id="acd-stat-balance" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">$185,000.00</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Current Balance</p>
+                            </div>
+                            <div class="acd-vital acd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-clock"></i></span>
+                                    <span class="acd-chip">Activity</span>
+                                </div>
+                                <p id="acd-stat-lastdate" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">2024-12-08</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Last Activity</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="acd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Account summary -->
+                                <div class="acd-surface">
+                                    <div class="acd-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="acd-title">Account Summary</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="acd-kv"><span class="k"><i class="icon-file-text text-[13px]"></i>Account Name</span><span class="v" id="acd-sum-name">Main Operating Account</span></div>
+                                        <div class="acd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Account Number</span><span class="v" id="acd-sum-number">ACC-10001</span></div>
+                                        <div class="acd-kv"><span class="k"><i class="icon-layers text-[13px]"></i>Type</span><span class="v"><span id="acd-sum-type" class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Asset</span></span></div>
+                                        <div class="acd-kv"><span class="k"><i class="icon-dollar-sign text-[13px]"></i>Balance</span><span class="v" id="acd-sum-balance">$185,000.00</span></div>
+                                        <div class="acd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Last Activity</span><span class="v" id="acd-sum-lastdate">2024-12-08</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- Recent transactions -->
+                                <div class="acd-surface">
+                                    <div class="acd-head">
+                                        <span class="ico"><i class="icon-repeat"></i></span>
+                                        <h2 class="acd-title">Recent Transactions</h2>
+                                    </div>
+                                    <div class="p-5 space-y-3">
+                                        <div class="acd-desc-block">Payroll disbursement — Dec cycle · <strong>-$62,000.00</strong> · 2024-12-08</div>
+                                        <div class="acd-desc-block">Patient service revenue deposit · <strong>+$41,250.00</strong> · 2024-12-07</div>
+                                        <div class="acd-desc-block">Pharmacy revenue transfer · <strong>+$8,600.00</strong> · 2024-12-05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 acd-sidebar">
+                                <!-- Account hero -->
+                                <div class="acd-surface acd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Chart of Accounts</p>
+                                    <h3 id="acd-side-name" class="mt-1 text-lg font-extrabold">Main Operating Account</h3>
+                                    <p class="text-sm text-white/80 mt-0.5" id="acd-side-number">ACC-10001</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="acd-hmeta"><i class="icon-dollar-sign text-[12px]"></i><span id="acd-side-balance">$185,000.00</span></span>
+                                    </div>
+                                </div>
+
+                                <!-- Key value card -->
+                                <div class="acd-surface p-5">
+                                    <h3 class="acd-title mb-3">Account</h3>
+                                    <div class="acd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Account #</span><span class="v" id="acd-kv-number">ACC-10001</span></div>
+                                    <div class="acd-kv"><span class="k"><i class="icon-layers text-[13px]"></i>Type</span><span class="v" id="acd-kv-type">Asset</span></div>
+                                    <div class="acd-kv"><span class="k"><i class="icon-dollar-sign text-[13px]"></i>Balance</span><span class="v" id="acd-kv-balance">$185,000.00</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="acd-surface p-5 space-y-2.5">
+                                    <h3 class="acd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="acd-btn acd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <button type="button" class="acd-btn acd-btn-solid w-full justify-start"><i class="icon-download"></i>Download Statement</button>
+                                    <a href="accounts.html" class="acd-btn acd-btn-solid w-full justify-start"><i class="icon-list"></i>All Accounts</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "account-detail"})
+    </body>
+</html>

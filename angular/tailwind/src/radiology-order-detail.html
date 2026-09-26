@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Radiology Order Details — Dreams HMS"}) @@include('partials/header.html', {"page": "radiology-order-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="radiology-order-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="rod-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Radiology Order Details", "parentUrl": "radiology.html", "parent": "Radiology"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="rod-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="rod-hero-ico"><i class="icon-scan"></i></div>
+                                    <div class="min-w-0">
+                                        <p class="rod-kicker">Imaging Request</p>
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">James Morrison</h1>
+                                            <span class="rod-hbadge"><span class="rod-dot"></span>Reported</span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="rod-hmeta"><i class="icon-hash text-[13px] text-violet-300"></i>#RAD-0001</span>
+                                            <span class="rod-hmeta"><i class="icon-scan-line text-[13px] text-sky-300"></i>X-Ray · Chest</span>
+                                            <span class="rod-hmeta"><i class="icon-user text-[13px] text-indigo-300"></i>Referred by Dr. Sarah Chen</span>
+                                            <span class="rod-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>2024-12-10</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 rod-actions-print-hide">
+                                    <button type="button" class="rod-btn rod-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="radiology.html" class="rod-btn rod-btn-primary"><i class="icon-arrow-left"></i>Back to Radiology</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="rod-grid">
+                            <div class="rod-vital rod-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-scan-line"></i></span>
+                                    <span class="rod-chip">Modality</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">X-Ray</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Imaging Modality</p>
+                            </div>
+                            <div class="rod-vital rod-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-scan"></i></span>
+                                    <span class="rod-chip">Region</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Chest</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Body Part</p>
+                            </div>
+                            <div class="rod-vital rod-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-flag"></i></span>
+                                    <span class="rod-chip">Priority</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Routine</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Priority Level</p>
+                            </div>
+                            <div class="rod-vital rod-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-file-check"></i></span>
+                                    <span class="rod-chip">Stage</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Reported</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Status</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="rod-layout">
+                            <div class="space-y-5">
+
+                                <!-- Workflow timeline -->
+                                <div class="rod-surface">
+                                    <div class="rod-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="rod-title">Imaging Workflow</h2>
+                                    </div>
+                                    <div class="rod-tl p-5">
+                                        <div class="rod-tl-item done"><span class="rod-tl-node"><i class="icon-clipboard-list"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Pending</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-10 · Request raised by Dr. Sarah Chen</p></div>
+                                        <div class="rod-tl-item done"><span class="rod-tl-node"><i class="icon-calendar"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Scheduled</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-10 · Imaging bay booked</p></div>
+                                        <div class="rod-tl-item done"><span class="rod-tl-node"><i class="icon-scan"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">In Progress</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-10 · X-Ray captured</p></div>
+                                        <div class="rod-tl-item current"><span class="rod-tl-node"><i class="icon-file-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Reported</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-10 · Reviewed by Dr. Patel</p></div>
+                                    </div>
+                                </div>
+
+                                <!-- Clinical notes -->
+                                <div class="rod-surface">
+                                    <div class="rod-head">
+                                        <span class="ico"><i class="icon-sticky-note"></i></span>
+                                        <h2 class="rod-title">Clinical Notes</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="rod-note">Possible pneumonia — follow-up chest X-Ray recommended in 2 weeks to confirm resolution.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 rod-sidebar">
+                                <!-- Radiologist -->
+                                <div class="rod-surface rod-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Reporting Radiologist</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Dr. Patel</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Radiology Department</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="rod-hmeta"><i class="icon-mail text-[12px]"></i>Contact Radiologist</span>
+                                    </div>
+                                </div>
+
+                                <!-- Order details -->
+                                <div class="rod-surface p-5">
+                                    <h3 class="rod-title mb-3">Order Details</h3>
+                                    <div class="rod-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">James Morrison</span></div>
+                                    <div class="rod-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Scan ID</span><span class="v">#RAD-0001</span></div>
+                                    <div class="rod-kv"><span class="k"><i class="icon-user text-[13px]"></i>Requested By</span><span class="v">Dr. Sarah Chen</span></div>
+                                    <div class="rod-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date</span><span class="v">2024-12-10</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="rod-surface p-5 space-y-2.5">
+                                    <h3 class="rod-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="rod-btn rod-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="radiology.html" class="rod-btn rod-btn-solid w-full justify-start"><i class="icon-list"></i>All Requests</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "radiology-order-detail"})
+    </body>
+</html>

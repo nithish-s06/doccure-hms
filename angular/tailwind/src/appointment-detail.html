@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Appointment Details — Dreams HMS"}) @@include('partials/header.html', {"page": "appointment-detail"})
+    </head>
+    <body class="bg-gray-50 dark:bg-slate-950 text-gray-800 dark:text-gray-200 overflow-x-hidden" data-page="appointment-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search appointments, patient name or token #..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-950">
+                    <div id="apmd-page" class="max-w-[1500px] mx-auto space-y-6">
+
+                        @@include('partials/breadcrumb.html', {"current": "Priya Raghavan (#APT-20265)", "parentUrl": "appointments.html", "parent": "Appointments"})
+
+                        <!-- ---------- HERO BANNER ---------- -->
+                        <section class="apmd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="apmd-hero-ico">
+                                        <i class="icon-calendar-check"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2.5">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight text-white" id="apmd-patient-name">
+                                                Priya Raghavan <span class="text-white/70 font-medium text-lg" id="apmd-patient-meta">(34Y / Female)</span>
+                                            </h1>
+                                            <span class="apmd-hbadge" id="apmd-status-badge"><span class="apmd-dot"></span><span id="apmd-status-text">Confirmed & Checked-In</span></span>
+                                        </div>
+                                        <div class="mt-2.5 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="apmd-hmeta"><i class="icon-hash text-[13px] text-rose-300"></i><span id="apmd-apt-id">#APT-20265</span></span>
+                                            <span class="apmd-hmeta"><i class="icon-ticket text-[13px] text-amber-300"></i>Token: <span class="font-black text-amber-200">T-012</span></span>
+                                            <span class="apmd-hmeta"><i class="icon-user text-[13px] text-sky-300"></i>Dr. Sarah Chen, MD (Cardiology)</span>
+                                            <span class="apmd-hmeta"><i class="icon-building-2 text-[13px] text-violet-300"></i>Consultation Room 4B</span>
+                                            <span class="apmd-hmeta"><i class="icon-clock text-[13px] text-emerald-300"></i>Today · 03:30 PM - 04:00 PM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2.5 apmd-actions-print-hide">
+                                    <button type="button" class="apmd-btn apmd-btn-glass" id="apmd-reschedule-btn"><i class="icon-calendar"></i>Reschedule</button>
+                                    <button type="button" class="apmd-btn apmd-btn-glass" id="apmd-cancel-btn"><i class="icon-circle-x"></i>Cancel</button>
+                                    <button type="button" class="apmd-btn apmd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Pass</button>
+                                    <a href="appointments.html" class="apmd-btn apmd-btn-primary"><i class="icon-arrow-left"></i>Back to Appointments</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- QUICK PATIENT TRIAGE VITALS STRIP ---------- -->
+                        <div class="apmd-surface p-4 lg:p-5">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Pre-Consultation Triage Vitals (Captured 03:15 PM)</span>
+                                <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-full"><i class="icon-check-circle text-xs"></i>Vitals Cleared</span>
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-xs">
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Heart Rate</span>
+                                    <p class="font-bold text-gray-900 dark:text-white text-sm">76 bpm <span class="text-[10px] text-emerald-500 font-normal">Normal</span></p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Blood Pressure</span>
+                                    <p class="font-bold text-gray-900 dark:text-white text-sm">124 / 82 mmHg</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Body Temp</span>
+                                    <p class="font-bold text-teal-600 dark:text-teal-400 text-sm">98.6 °F</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Oxygen Saturation</span>
+                                    <p class="font-bold text-indigo-600 dark:text-indigo-400 text-sm">98% SpO2</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Body Weight / BMI</span>
+                                    <p class="font-bold text-gray-900 dark:text-white text-sm">62 kg <span class="text-[10px] text-gray-400 font-normal">(BMI 22.4)</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ---------- KEY VITAL METRICS ---------- -->
+                        <section class="apmd-grid">
+                            <div class="apmd-vital apmd-c-indigo">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-stethoscope"></i></span>
+                                    <span class="apmd-chip">Consultation Type</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Follow-Up Evaluation</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Cardiology Speciality</p>
+                            </div>
+                            <div class="apmd-vital apmd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-clock"></i></span>
+                                    <span class="apmd-chip">Check-In Status</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">In Waiting Lounge</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Checked in 15 mins ago</p>
+                            </div>
+                            <div class="apmd-vital apmd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-dollar-sign"></i></span>
+                                    <span class="apmd-chip">Consultation Fee</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">$180.00</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Copay $20 Paid</p>
+                            </div>
+                            <div class="apmd-vital apmd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-shield-check"></i></span>
+                                    <span class="apmd-chip">Insurance Pre-Auth</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Approved (80%)</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">BlueCross BlueShield</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: MAIN CONTENT + SIDEBAR ---------- -->
+                        <div class="apmd-layout">
+
+                            <div class="space-y-6">
+
+                                <!-- Consultation Details & Reason -->
+                                <div class="apmd-surface">
+                                    <div class="apmd-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="apmd-title">Appointment Summary &amp; Clinical Context</h2>
+                                    </div>
+                                    <div class="p-5 space-y-4">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div class="apmd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient Name</span><span class="v">Priya Raghavan</span></div>
+                                            <div class="apmd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Patient MRN</span><span class="v">#PAT-30948</span></div>
+                                            <div class="apmd-kv"><span class="k"><i class="icon-phone text-[13px]"></i>Contact Phone</span><span class="v">(212) 555-0121</span></div>
+                                            <div class="apmd-kv"><span class="k"><i class="icon-mail text-[13px]"></i>Email</span><span class="v">p.raghavan@example.com</span></div>
+                                            <div class="apmd-kv"><span class="k"><i class="icon-user-round text-[13px]"></i>Attending Doctor</span><span class="v">Dr. Sarah Chen, MD</span></div>
+                                            <div class="apmd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Department</span><span class="v">Cardiology Clinic</span></div>
+                                            <div class="apmd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Appointment Date</span><span class="v">17 Jul 2026</span></div>
+                                            <div class="apmd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Time Slot</span><span class="v">03:30 PM - 04:00 PM (30m)</span></div>
+                                        </div>
+
+                                        <div class="pt-3 border-t border-gray-100 dark:border-slate-800">
+                                            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Chief Complaint &amp; Reason for Visit</h4>
+                                            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800 text-xs leading-relaxed text-gray-700 dark:text-gray-300">
+                                                Patient reports mild palpitation episodes following exercise over the last 2 weeks. Requesting follow-up review of recent 24-hour Holter monitor results and medication adjustment check for Atenolol 25mg.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Physician Pre-Consultation Prep & Clinical History -->
+                                <div class="apmd-surface">
+                                    <div class="apmd-head">
+                                        <span class="ico"><i class="icon-file-text"></i></span>
+                                        <h2 class="apmd-title">Pre-Consultation Records &amp; Medical History</h2>
+                                    </div>
+                                    <div class="p-5 space-y-4">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                                            <div class="p-3 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50">
+                                                <span class="text-gray-400 font-medium block mb-1">Previous Visit</span>
+                                                <p class="font-bold text-gray-900 dark:text-white">04 Jun 2026</p>
+                                                <p class="text-[11px] text-gray-500 mt-0.5">Routine Cardiac Workup</p>
+                                            </div>
+                                            <div class="p-3 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50">
+                                                <span class="text-gray-400 font-medium block mb-1">Known Allergies</span>
+                                                <p class="font-bold text-rose-600 dark:text-rose-400">Penicillin (Severe)</p>
+                                                <p class="text-[11px] text-gray-500 mt-0.5">Anaphylaxis Risk</p>
+                                            </div>
+                                            <div class="p-3 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50">
+                                                <span class="text-gray-400 font-medium block mb-1">Active Prescriptions</span>
+                                                <p class="font-bold text-indigo-600 dark:text-indigo-400">Atenolol 25mg Daily</p>
+                                                <p class="text-[11px] text-gray-500 mt-0.5">Beta-blocker Therapy</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- RIGHT SIDEBAR -->
+                            <div class="space-y-6">
+
+                                <!-- Patient Profile Card -->
+                                <div class="apmd-surface apmd-side-hero rounded-[1.25rem]">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <div class="w-11 h-11 rounded-full bg-white/20 grid place-items-center font-bold text-white text-base">
+                                            PR
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-extrabold text-white">Priya Raghavan</h3>
+                                            <p class="text-xs text-white/80">MRN: #PAT-30948</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-xs space-y-1.5 text-white/90">
+                                        <p><i class="icon-phone text-[12px] me-1.5"></i>(212) 555-0121</p>
+                                        <p><i class="icon-map-pin text-[12px] me-1.5"></i>New York, NY 10001</p>
+                                    </div>
+                                    <div class="mt-4 pt-3 border-t border-white/20 flex items-center justify-between">
+                                        <a href="opd-patient-detail.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-white hover:underline">
+                                            <i class="icon-external-link"></i>View Full Patient Chart
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Attending Physician Card -->
+                                <div class="apmd-surface p-5">
+                                    <h3 class="apmd-title mb-3">Attending Physician</h3>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 grid place-items-center font-bold text-sm border border-indigo-200 dark:border-indigo-800">
+                                            SC
+                                        </div>
+                                        <div>
+                                            <p class="font-extrabold text-sm text-gray-900 dark:text-white">Dr. Sarah Chen, MD</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Senior Cardiologist</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 text-xs space-y-2 border-t border-gray-100 dark:border-slate-800 pt-3">
+                                        <div class="flex justify-between text-gray-600 dark:text-gray-400"><span>Department:</span><span class="font-bold text-gray-900 dark:text-white">Cardiology</span></div>
+                                        <div class="flex justify-between text-gray-600 dark:text-gray-400"><span>Consultation Room:</span><span class="font-bold text-gray-900 dark:text-white">Room 4B</span></div>
+                                        <div class="flex justify-between text-gray-600 dark:text-gray-400"><span>Todays Slots:</span><span class="font-bold text-emerald-600 dark:text-emerald-400">12 / 15 Filled</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- Billing & Payment Snapshot -->
+                                <div class="apmd-surface p-5">
+                                    <h3 class="apmd-title mb-3">Billing Breakdown</h3>
+                                    <div class="space-y-2 text-xs">
+                                        <div class="flex justify-between text-gray-600 dark:text-gray-400"><span>Consultation Gross:</span><span class="font-bold">$180.00</span></div>
+                                        <div class="flex justify-between text-emerald-600 dark:text-emerald-400"><span>Insurance Cover (80%):</span><span class="font-bold">-$144.00</span></div>
+                                        <div class="flex justify-between text-gray-600 dark:text-gray-400"><span>Patient Copay:</span><span class="font-bold">$36.00</span></div>
+                                        <div class="flex justify-between text-teal-600 dark:text-teal-400"><span>Copay Advance Paid:</span><span class="font-bold">-$20.00</span></div>
+                                        <div class="pt-2 border-t border-gray-100 dark:border-slate-800 flex justify-between font-extrabold text-sm text-gray-900 dark:text-white">
+                                            <span>Balance Due:</span>
+                                            <span class="text-indigo-600 dark:text-indigo-400">$16.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "appointment-detail"})
+    </body>
+</html>

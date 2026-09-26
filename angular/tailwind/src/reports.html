@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Reports — Dreams HMS"}) @@include('partials/header.html', {"page": "reports"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <div data-aos="fade-up">
+                            <h1 class="text-2xl font-bold text-gray-900">Reports</h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Performance, patient, revenue and operational analytics.</p>
+                        </div>
+
+                        <!-- Filter Bar -->
+                        <div class="card p-4 flex flex-wrap gap-3 items-center" data-aos="fade-up">
+                            <div class="relative w-50">
+                                <input type="text" id="f-date" class="form-input pr-8!" data-provider="flatpickr" data-date-format="d M y" data-range-date="true" value="01 Jan 26 to 20 Jan 26" aria-label="Date range">
+                                <i class="icon-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-900"></i>
+                            </div>
+                            <select aria-label="All Departments" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                <option>All Departments</option>
+                                <option>Surgery</option>
+                                <option>Medicine</option>
+                            </select>
+                            <button class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Apply Filters</button>
+                        </div>
+
+                        <!-- Charts -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                            <div class="card p-5 pb-0" data-aos="fade-up">
+                                <h2 class="font-semibold text-gray-900 mb-4">Admissions vs Discharges (2024)</h2>
+                                <div id="reportsAdmissionsChart"></div>
+                            </div>
+                            <div class="card p-5 pb-0" data-aos="fade-up" data-aos-delay="100">
+                                <h2 class="font-semibold text-gray-900 mb-4">Revenue Trend ($K)</h2>
+                                <div id="reportsRevenueChart"></div>
+                            </div>
+                        </div>
+
+                        <!-- KPI Comparison Table -->
+                        <div class="card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="p-4 border-b border-border-color">
+                                <h2 class="font-semibold text-gray-900">Key Performance Metrics</h2>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Metric</th>
+                                            <th>Current Period</th>
+                                            <th>Previous Period</th>
+                                            <th>Change</th>
+                                            <th>Trend</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="dark:text-gray-300">
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Total Admissions</td>
+                                            <td>567</td>
+                                            <td>523</td>
+                                            <td class="text-emerald-600 font-medium">+44 (+8.4%)</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Up
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Average Length of Stay</td>
+                                            <td>4.2 days</td>
+                                            <td>4.6 days</td>
+                                            <td class="text-emerald-600 font-medium">-0.4 days (-8.7%)</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Improved
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Bed Occupancy Rate</td>
+                                            <td>82.4%</td>
+                                            <td>78.1%</td>
+                                            <td class="text-emerald-600 font-medium">+4.3%</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Up
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Patient Satisfaction</td>
+                                            <td>94.2%</td>
+                                            <td>91.8%</td>
+                                            <td class="text-emerald-600 font-medium">+2.4%</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Up
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Emergency Response Time</td>
+                                            <td>8.3 min</td>
+                                            <td>9.7 min</td>
+                                            <td class="text-emerald-600 font-medium">-1.4 min</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Improved
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Prescription Errors</td>
+                                            <td>0.03%</td>
+                                            <td>0.07%</td>
+                                            <td class="text-emerald-600 font-medium">-0.04%</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Improved
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Net Revenue</td>
+                                            <td>$812K</td>
+                                            <td>$748K</td>
+                                            <td class="text-emerald-600 font-medium">+$64K (+8.6%)</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Up
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Insurance Claim Rate</td>
+                                            <td>73.4%</td>
+                                            <td>68.9%</td>
+                                            <td class="text-emerald-600 font-medium">+4.5%</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Up
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Surgery Cancellation Rate</td>
+                                            <td>3.2%</td>
+                                            <td>4.1%</td>
+                                            <td class="text-emerald-600 font-medium">-0.9%</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Improved
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Readmission Rate</td>
+                                            <td>5.1%</td>
+                                            <td>5.8%</td>
+                                            <td class="text-emerald-600 font-medium">-0.7%</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Improved
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Staff Utilization</td>
+                                            <td>88.2%</td>
+                                            <td>85.6%</td>
+                                            <td class="text-emerald-600 font-medium">+2.6%</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Up
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-medium text-gray-900">Cost per Patient</td>
+                                            <td>$1,428</td>
+                                            <td>$1,521</td>
+                                            <td class="text-emerald-600 font-medium">-$93 (-6.1%)</td>
+                                            <td>
+                                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 flex items-center gap-1 w-fit">
+                                                    <i class="icon-trending-up"></i>
+                                                    Improved
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        @@include('partials/script.html', {"page": "reports"})
+    </body>
+</html>

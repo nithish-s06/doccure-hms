@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Revenue Reports — Dreams HMS"}) @@include('partials/header.html', {"page": "revenue-reports"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="revenue-reports">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Revenue Reports", "parentUrl": "reports.html", "parent": "Reports"})
+
+                        <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Revenue Reports</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Collections and outstanding revenue summary for the selected period</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-total">$11,200.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Revenue</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-collected">$6,660.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Collected</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-outstanding">$4,540.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Outstanding</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-credit-card text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-avg">$933.33</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Avg Transaction</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="p-4 border-b border-border-color">
+                                    <h3 class="font-semibold text-gray-900">Revenue by Department</h3>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="data-table">
+                                        <thead><tr><th>Department</th><th>Amount</th><th>% of Total</th></tr></thead>
+                                        <tbody id="tbody-dept"><tr><td class="font-medium text-gray-900">Cardiology</td><td>$3,690.00</td><td>32.9%</td></tr><tr><td class="font-medium text-gray-900">Orthopedics</td><td>$1,950.00</td><td>17.4%</td></tr><tr><td class="font-medium text-gray-900">Pharmacy</td><td>$900.00</td><td>8.0%</td></tr><tr><td class="font-medium text-gray-900">Laboratory</td><td>$860.00</td><td>7.7%</td></tr><tr><td class="font-medium text-gray-900">General Medicine</td><td>$980.00</td><td>8.8%</td></tr><tr><td class="font-medium text-gray-900">Pediatrics</td><td>$420.00</td><td>3.8%</td></tr><tr><td class="font-medium text-gray-900">Oncology</td><td>$2,400.00</td><td>21.4%</td></tr></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card" data-aos="fade-up" data-aos-delay="150">
+                                <div class="p-4 border-b border-border-color">
+                                    <h3 class="font-semibold text-gray-900">By Payment Method</h3>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="data-table">
+                                        <thead><tr><th>Method</th><th>Amount</th><th>Count</th></tr></thead>
+                                        <tbody id="tbody-method"><tr><td class="font-medium text-gray-900">Card</td><td>$3,610.00</td><td>4</td></tr><tr><td class="font-medium text-gray-900">Cash</td><td>$1,530.00</td><td>3</td></tr><tr><td class="font-medium text-gray-900">Insurance</td><td>$4,540.00</td><td>3</td></tr><tr><td class="font-medium text-gray-900">Bank Transfer</td><td>$1,520.00</td><td>2</td></tr></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="p-4 border-b border-border-color flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Monthly Trend</h3>
+                                <span class="text-xs text-gray-400" id="count">12 records</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Month</th>
+                                            <th>Revenue</th>
+                                            <th>Collected</th>
+                                            <th>Outstanding</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr><td class="font-medium text-gray-900">December 2024</td><td>$11,200.00</td><td>$6,660.00</td><td>$4,540.00</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "revenue-reports"})
+    </body>
+</html>

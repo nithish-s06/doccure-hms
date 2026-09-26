@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Family Members — Dreams HMS"}) @@include('partials/header.html', {"page": "patient-family-members"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="patient-family-members">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search family members by name, patient..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Family Members", "parentUrl": "patients.html", "parent": "Patients"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Family Members</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Directory of registered patient family members and emergency contacts</p>
+                            </div>
+                            <button id="btn-add" class="flex items-center gap-2 bg-primary hover:bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                <i class="icon-plus"></i>
+                                Add Family Member
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-users text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-total">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Members</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-phone-call text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-emergency">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Emergency Contacts</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-user-plus text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-spouse">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Spouses</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-baby text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-children">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Children</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                               <div class="relative flex-1 max-w-100 max-sm:min-w-full">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                                        <i class="icon-search text-gray-400"></i>
+                                    </span>
+                                    <input aria-label="Search member, related patient..." id="search" type="text" placeholder="Search member, related patient..." class="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-slate-600 rounded-lg bg-gray-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" >
+                                </div>
+                                <select aria-label="All Relations" id="filter-relation" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Relations</option>
+                                    <option>Spouse</option>
+                                    <option>Child</option>
+                                    <option>Parent</option>
+                                    <option>Sibling</option>
+                                    <option>Guardian</option>
+                                    <option>Other</option>
+                                </select>
+                                <select aria-label="All Contacts" id="filter-emergency" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Contacts</option>
+                                    <option value="Yes">Emergency Contact</option>
+                                    <option value="No">Not Emergency Contact</option>
+                                </select>
+                                <span class="text-xs text-gray-400 ml-auto" id="count">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Family Member Name</th>
+                                            <th>Relation</th>
+                                            <th>Related Patient</th>
+                                            <th>Contact Number</th>
+                                            <th>Emergency Contact</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody">
+                                        <tr data-row-id="1"><td class="font-medium text-gray-900">Rachel Morrison</td><td class="text-gray-600 dark:text-gray-300">Spouse</td><td class="text-gray-600 dark:text-gray-300">James Morrison</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-201-4432</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Yes</span></td><td><div class="flex gap-1"><button onclick="fmOpenEdit(1)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="fmDelete(1,'Rachel Morrison')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+                                        <tr data-row-id="2"><td class="font-medium text-gray-900">Tommy Clark</td><td class="text-gray-600 dark:text-gray-300">Child</td><td class="text-gray-600 dark:text-gray-300">Robert Clark</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-330-2210</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">No</span></td><td><div class="flex gap-1"><button onclick="fmOpenEdit(2)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="fmDelete(2,'Tommy Clark')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+                                        <tr data-row-id="3"><td class="font-medium text-gray-900">Susan Johnson</td><td class="text-gray-600 dark:text-gray-300">Parent</td><td class="text-gray-600 dark:text-gray-300">Emily Johnson</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-118-9987</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Yes</span></td><td><div class="flex gap-1"><button onclick="fmOpenEdit(3)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="fmDelete(3,'Susan Johnson')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+                                        <tr data-row-id="4"><td class="font-medium text-gray-900">Carlos Torres</td><td class="text-gray-600 dark:text-gray-300">Sibling</td><td class="text-gray-600 dark:text-gray-300">David Torres</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-773-4501</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">No</span></td><td><div class="flex gap-1"><button onclick="fmOpenEdit(4)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="fmDelete(4,'Carlos Torres')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+                                        <tr data-row-id="5"><td class="font-medium text-gray-900">Minh Nguyen</td><td class="text-gray-600 dark:text-gray-300">Spouse</td><td class="text-gray-600 dark:text-gray-300">Linda Nguyen</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-902-1187</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Yes</span></td><td><div class="flex gap-1"><button onclick="fmOpenEdit(5)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="fmDelete(5,'Minh Nguyen')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+                                        <tr data-row-id="6"><td class="font-medium text-gray-900">Ella Harris</td><td class="text-gray-600 dark:text-gray-300">Child</td><td class="text-gray-600 dark:text-gray-300">Michael Harris</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-664-3320</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-900 bg-light/60">No</span></td><td><div class="flex gap-1"><button onclick="fmOpenEdit(6)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="fmDelete(6,'Ella Harris')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+                                        <tr data-row-id="7"><td class="font-medium text-gray-900">George Adams</td><td class="text-gray-600 dark:text-gray-300">Parent</td><td class="text-gray-600 dark:text-gray-300">Sarah Adams</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-441-6650</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Yes</span></td><td><div class="flex gap-1"><button onclick="fmOpenEdit(7)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="fmDelete(7,'George Adams')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+                                        <tr data-row-id="8"><td class="font-medium text-gray-900">Kevin Peterson</td><td class="text-gray-600 dark:text-gray-300">Guardian</td><td class="text-gray-600 dark:text-gray-300">Anna Peterson</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-287-9043</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Yes</span></td><td><div class="flex gap-1"><button onclick="fmOpenEdit(8)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="fmDelete(8,'Kevin Peterson')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+                                        <tr id="tbody-empty" class="hidden"><td colspan="6" class="text-center py-10 text-gray-400">No family members found</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="form-modal" class="modal-overlay hidden">
+            <div class="modal-panel">
+                <div class="flex items-center justify-between">
+                    <h2 id="m-title" class="text-xl font-bold text-gray-900">Add Family Member</h2>
+                    <button id="m-close" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <form id="m-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="f-name" class="form-label">Family Member Name <span class="text-danger">*</span></label>
+                            <input id="f-name" class="form-input" placeholder="Rachel Morrison" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-relation" class="form-label">Relation</label>
+                            <select id="f-relation" class="form-select">
+                                <option>Spouse</option>
+                                <option>Child</option>
+                                <option>Parent</option>
+                                <option>Sibling</option>
+                                <option>Guardian</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-patient" class="form-label">Related Patient <span class="text-danger">*</span></label>
+                            <input id="f-patient" class="form-input" placeholder="James Morrison" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-contact" class="form-label">Contact Number</label>
+                            <input id="f-contact" class="form-input" placeholder="+1 555-201-4432" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-emergency" class="form-label">Emergency Contact</label>
+                            <select id="f-emergency" class="form-select">
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button id="m-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Save Member</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="del-modal" class="modal-overlay hidden">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Delete Family Member</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Delete family member
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    ?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                    <button id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "patient-family-members"})
+    </body>
+</html>

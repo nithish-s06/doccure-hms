@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Suppliers — Dreams HMS"}) @@include('partials/header.html', {"page": "inventory-suppliers"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="inventory-suppliers">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search suppliers..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Suppliers", "parentUrl": "inventory.html", "parent": "Inventory Dashboard"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Suppliers</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage vendor and supplier relationships</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-truck text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Suppliers</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">6</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-package text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">217</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Items Supplied</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Inactive</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Suppliers</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Contact Person</th>
+                                            <th>Phone</th>
+                                            <th>Email</th>
+                                            <th>Items Supplied</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-medium text-gray-900">MedSupply Co.</td><td class="text-gray-600 dark:text-gray-300">John Carter</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-0134</td><td class="text-gray-500 dark:text-gray-400 text-sm">orders@medsupply.com</td><td class="text-gray-900">35</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">PharmaLink Distributors</td><td class="text-gray-600 dark:text-gray-300">Maria Gomez</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-0221</td><td class="text-gray-500 dark:text-gray-400 text-sm">sales@pharmalink.com</td><td class="text-gray-900">58</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">SurgiTech Supplies</td><td class="text-gray-600 dark:text-gray-300">Peter Chan</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-0342</td><td class="text-gray-500 dark:text-gray-400 text-sm">support@surgitech.com</td><td class="text-gray-900">22</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">LinenCare Ltd.</td><td class="text-gray-600 dark:text-gray-300">Grace Kim</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-0453</td><td class="text-gray-500 dark:text-gray-400 text-sm">info@linencare.com</td><td class="text-gray-900">14</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Inactive</span></td></tr>
+<tr><td class="font-medium text-gray-900">EquipMed Global</td><td class="text-gray-600 dark:text-gray-300">Ahmed Farid</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-0564</td><td class="text-gray-500 dark:text-gray-400 text-sm">contact@equipmed.com</td><td class="text-gray-900">30</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">CleanRoom Essentials</td><td class="text-gray-600 dark:text-gray-300">Lucy Bennett</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-0675</td><td class="text-gray-500 dark:text-gray-400 text-sm">hello@cleanroom.com</td><td class="text-gray-900">12</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Inactive</span></td></tr>
+<tr><td class="font-medium text-gray-900">DiagnoLabs Supply</td><td class="text-gray-600 dark:text-gray-300">Tom Reeves</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-0786</td><td class="text-gray-500 dark:text-gray-400 text-sm">orders@diagnolabs.com</td><td class="text-gray-900">19</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">SafeHands PPE</td><td class="text-gray-600 dark:text-gray-300">Nina Osei</td><td class="text-gray-500 dark:text-gray-400 text-sm">+1 555-0897</td><td class="text-gray-500 dark:text-gray-400 text-sm">sales@safehands.com</td><td class="text-gray-900">27</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "inventory-suppliers"})
+    </body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Operation Theater Command Center — Dreams HMS"}) @@include('partials/header.html', {"page": "operation-theater"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search OT rooms, surgeries, surgeons..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="ot-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="ot-skeleton" class="space-y-4">
+                            <div class="ot-sk h-[166px] radius-override-100"></div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3"><div class="ot-sk h-[118px]"></div><div class="ot-sk h-[118px]"></div><div class="ot-sk h-[118px]"></div><div class="ot-sk h-[118px]"></div><div class="ot-sk h-[118px]"></div><div class="ot-sk h-[118px]"></div></div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3"><div class="ot-sk h-[220px]"></div><div class="ot-sk h-[220px]"></div><div class="ot-sk h-[220px]"></div><div class="ot-sk h-[220px]"></div></div>
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-4"><div class="ot-sk h-[300px]"></div><div class="ot-sk h-[300px]"></div></div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="ot-content" class="hidden space-y-4">
+
+                            <!-- ============ 1. COMMAND HEADER ============ -->
+                            <section class="ot-hero p-5 lg:p-6">
+                                <div class="ot-hgrid"></div>
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="ot-chip bg-[rgba(13,148,136,.18)] text-[#5eead4]"><span class="ot-dot ot-live bg-[#2dd4bf]"></span> OT OPS LIVE</span>
+                                            <span class="ot-chip bg-[rgba(224,108,31,.2)] text-[#fdba74]"><i class="icon-activity text-[11px]"></i> <span id="ot-h-active">4</span> In Surgery</span>
+                                            <span class="ot-chip bg-[rgba(148,163,184,.14)] text-[#cbd5e1]"><i class="icon-refresh-cw text-[11px]"></i> Updated <span id="ot-updated">just now</span></span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-[26px] font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-slice text-teal-300"></i> Operation Theater Command Center</h1>
+                                        <p class="text-sm text-slate-400 mt-1">Centralized surgical operations control · <span id="ot-clock" class="tabular-nums"></span></p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 justify-end">
+                                        <button data-modal="schedule" class="ot-btn bg-teal-600 text-white hover:bg-teal-500"><i class="icon-calendar-plus"></i> Schedule</button>
+                                        <button data-modal="emergency" class="ot-btn bg-rose-600 text-white hover:bg-rose-500"><i class="icon-alert-triangle"></i> Emergency</button>
+                                        <button data-modal="allocate" class="ot-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-layout-grid"></i> Allocate OT</button>
+                                        <button data-modal="team" class="ot-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-users"></i> Assign Team</button>
+                                        <button data-modal="export" class="ot-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    </div>
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-6 gap-3 mt-5">
+                                    <div class="ot-hbadge"><p class="text-[11px] text-slate-400">Active Surgeries</p><p class="text-xl font-bold text-white" id="ot-h-surg">4</p></div>
+                                    <div class="ot-hbadge"><p class="text-[11px] text-slate-400">Available OT</p><p class="text-xl font-bold text-emerald-300" id="ot-h-avail">1</p></div>
+                                    <div class="ot-hbadge"><p class="text-[11px] text-slate-400">Scheduled</p><p class="text-xl font-bold text-sky-300" id="ot-h-sched">11</p></div>
+                                    <div class="ot-hbadge"><p class="text-[11px] text-slate-400">Emergency</p><p class="text-xl font-bold text-rose-300" id="ot-h-emerg">1</p></div>
+                                    <div class="ot-hbadge"><p class="text-[11px] text-slate-400">Teams On Duty</p><p class="text-xl font-bold text-white">6</p></div>
+                                    <div class="ot-hbadge"><p class="text-[11px] text-slate-400">Completed Today</p><p class="text-xl font-bold text-emerald-300">18</p></div>
+                                </div>
+                            </section>
+
+                            <!-- ============ 2. OT OVERVIEW ============ -->
+                            <section id="ot-overview" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+      <div class="ot-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ot-iconbadge w-9 h-9 [color:#0d9488]"><i class="icon-layout-grid"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ot-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ot-track)" stroke-width="3.2"/><circle class="bar [--p:100]" cx="18" cy="18" r="15.9" fill="none" stroke="#0d9488" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#0d9488]">100%</span></div>
+        </div>
+        <p class="text-2xl font-bold ot-head mt-2 tabular-nums">8</p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ot-mut">Total OT Rooms</p><svg class="ot-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,18 10.8,18 21.6,18 32.4,18 43.2,18 54,18" fill="none" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ot-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ot-iconbadge w-9 h-9 [color:#e06c1f]"><i class="icon-activity"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ot-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ot-track)" stroke-width="3.2"/><circle class="bar [--p:56]" cx="18" cy="18" r="15.9" fill="none" stroke="#e06c1f" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#e06c1f]">56%</span></div>
+        </div>
+        <p class="text-2xl font-bold ot-head mt-2 tabular-nums">4</p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ot-mut">Active Rooms</p><svg class="ot-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,18 10.8,9 21.6,18 32.4,0 43.2,9 54,9" fill="none" stroke="#e06c1f" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ot-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ot-iconbadge w-9 h-9 [color:#15803d]"><i class="icon-circle-check"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ot-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ot-track)" stroke-width="3.2"/><circle class="bar [--p:25]" cx="18" cy="18" r="15.9" fill="none" stroke="#15803d" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#15803d]">25%</span></div>
+        </div>
+        <p class="text-2xl font-bold ot-head mt-2 tabular-nums">1</p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ot-mut">Available</p><svg class="ot-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,0 10.8,9 21.6,0 32.4,9 43.2,9 54,18" fill="none" stroke="#15803d" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ot-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ot-iconbadge w-9 h-9 [color:#dc2626]"><i class="icon-alert-triangle"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ot-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ot-track)" stroke-width="3.2"/><circle class="bar [--p:20]" cx="18" cy="18" r="15.9" fill="none" stroke="#dc2626" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#dc2626]">20%</span></div>
+        </div>
+        <p class="text-2xl font-bold ot-head mt-2 tabular-nums">1</p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ot-mut">Emergency OT</p><svg class="ot-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,9 10.8,18 21.6,9 32.4,0 43.2,9 54,9" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ot-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ot-iconbadge w-9 h-9 [color:#1d4ed8]"><i class="icon-clipboard-check"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ot-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ot-track)" stroke-width="3.2"/><circle class="bar [--p:80]" cx="18" cy="18" r="15.9" fill="none" stroke="#1d4ed8" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#1d4ed8]">80%</span></div>
+        </div>
+        <p class="text-2xl font-bold ot-head mt-2 tabular-nums">18</p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ot-mut">Completed Today</p><svg class="ot-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,18 10.8,12 21.6,9 32.4,6 43.2,3 54,0" fill="none" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ot-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ot-iconbadge w-9 h-9 [color:#7c3aed]"><i class="icon-timer"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ot-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ot-track)" stroke-width="3.2"/><circle class="bar [--p:68]" cx="18" cy="18" r="15.9" fill="none" stroke="#7c3aed" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#7c3aed]">68%</span></div>
+        </div>
+        <p class="text-2xl font-bold ot-head mt-2 tabular-nums">124<span class="text-sm ot-mut"> min</span></p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ot-mut">Avg Duration</p><svg class="ot-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,0 10.8,6 21.6,12 32.4,15 43.2,18 54,18" fill="none" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div></section>
+
+                            <!-- ============ 3. INTERACTIVE OT CONTROL BOARD ============ -->
+                            <section class="ot-card p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                                    <div class="flex items-center gap-2.5"><span class="ot-iconbadge w-9 h-9"><i class="icon-layout-grid"></i></span><div><h2 class="text-base font-bold ot-head">Interactive OT Control Board</h2><p class="text-xs ot-mut">Live theater status · click a room to open its workspace · hover to preview</p></div></div>
+                                    <div class="flex flex-wrap gap-3 text-[11px]" id="ot-legend"><span class="flex items-center gap-1.5 ot-mut"><span class="ot-dot [background:#15803d]"></span>Available</span><span class="flex items-center gap-1.5 ot-mut"><span class="ot-dot [background:#1d4ed8]"></span>Preparing</span><span class="flex items-center gap-1.5 ot-mut"><span class="ot-dot [background:#e06c1f]"></span>In Surgery</span><span class="flex items-center gap-1.5 ot-mut"><span class="ot-dot [background:#dc2626]"></span>Emergency</span><span class="flex items-center gap-1.5 ot-mut"><span class="ot-dot [background:#b7791f]"></span>Cleaning</span><span class="flex items-center gap-1.5 ot-mut"><span class="ot-dot [background:#64748b]"></span>Maintenance</span></div>
+                                </div>
+                                <div id="ot-board" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><div class="ot-room st-avail" data-room="0">
+        <div class="flex items-center justify-between mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="0"  class="accent-[var(--ot-c)]"><span class="text-sm font-bold ot-head">OT-01</span></label>
+            <span class="statpill ot-chip">Available</span>
+        </div>
+        <div class="flex flex-col items-center justify-center py-3 text-center">
+            <i class="icon-circle-check text-2xl [color:#15803d]"></i>
+            <p class="text-[11px] ot-mut mt-1">General · Ready for allocation</p>
+            <button data-menu="0" onclick="event.stopPropagation()" class="absolute top-2.5 right-2.5 w-6 h-6 rounded-md hover:bg-[var(--ot-hover)] flex items-center justify-center ot-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center justify-between mt-2 pt-2 border-t text-[10px] [border-color:var(--ot-border)]">
+            <span class="ot-mut"><i class="icon-shield-check text-[10px] [color:#15803d]"></i> Sterile</span>
+            <span class="ot-mut"><i class="icon-cpu text-[10px]"></i> Ready</span>
+        </div>
+        <div class="prev mt-1.5"><p class="text-[10px] ot-mut">Last used 40 min ago · turnover avg 22 min</p></div>
+    </div><div class="ot-room st-prep" data-room="1">
+        <div class="flex items-center justify-between mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="1"  class="accent-[var(--ot-c)]"><span class="text-sm font-bold ot-head">OT-02</span></label>
+            <span class="statpill ot-chip">Preparing</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ot-avatar flex-none [width:32px] [height:32px] [background:#0f766e] [font-size:11px]">AR</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">Anita Reddy</p><p class="text-[10px] ot-mut truncate">Total Knee Replacement</p></div>
+            <button data-menu="1" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ot-hover)] flex items-center justify-center ot-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center justify-between text-[10px] ot-mut mt-1.5"><span><i class="icon-stethoscope text-[10px]"></i> S</span><span>09:00 → 12:15</span></div>
+        <p class="text-[10px] ot-mut mt-2">Preparing theater...</p>
+        <div class="flex items-center justify-between mt-2 pt-2 border-t text-[10px] [border-color:var(--ot-border)]">
+            <span class="ot-mut"><i class="icon-shield-check text-[10px] [color:#15803d]"></i> Sterile</span>
+            <span class="ot-mut"><i class="icon-cpu text-[10px]"></i> Ready</span>
+        </div>
+        <div class="prev mt-1.5"><p class="text-[10px] ot-mut">Anesthetist: Dr. T. Bose · Nurse: N. Pillai</p></div>
+    </div><div class="ot-room st-prog" data-room="2">
+        <div class="flex items-center justify-between mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="2"  class="accent-[var(--ot-c)]"><span class="text-sm font-bold ot-head">OT-03</span></label>
+            <span class="statpill ot-chip">In Surgery</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ot-avatar flex-none [width:32px] [height:32px] [background:#1e40af] [font-size:11px]">VN</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">Vikram Nair</p><p class="text-[10px] ot-mut truncate">Craniotomy</p></div>
+            <button data-menu="2" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ot-hover)] flex items-center justify-center ot-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center justify-between text-[10px] ot-mut mt-1.5"><span><i class="icon-stethoscope text-[10px]"></i> R</span><span>07:30 → 10:45</span></div>
+        <div class="flex items-center gap-2 mt-1.5"><div class="ot-stab flex-1"><span class="[width:55%] [background:#e06c1f]"></span></div><span class="text-[10px] font-bold [color:#e06c1f]">55%</span></div><p class="text-[10px] ot-mut mt-1">Phase: Critical Procedure</p>
+        <div class="flex items-center justify-between mt-2 pt-2 border-t text-[10px] [border-color:var(--ot-border)]">
+            <span class="ot-mut"><i class="icon-shield-check text-[10px] [color:#15803d]"></i> Sterile</span>
+            <span class="ot-mut"><i class="icon-cpu text-[10px]"></i> Ready</span>
+        </div>
+        <div class="prev mt-1.5"><p class="text-[10px] ot-mut">Anesthetist: Dr. M. Shah · Nurse: N. Sharma</p></div>
+    </div><div class="ot-room st-clean" data-room="3">
+        <div class="flex items-center justify-between mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="3"  class="accent-[var(--ot-c)]"><span class="text-sm font-bold ot-head">OT-04</span></label>
+            <span class="statpill ot-chip">Cleaning</span>
+        </div>
+        <div class="flex flex-col items-center justify-center py-3 text-center">
+            <i class="icon-spray-can text-2xl [color:#b7791f]"></i>
+            <p class="text-[11px] ot-mut mt-1">General · Turnover cleaning</p>
+            <button data-menu="3" onclick="event.stopPropagation()" class="absolute top-2.5 right-2.5 w-6 h-6 rounded-md hover:bg-[var(--ot-hover)] flex items-center justify-center ot-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center justify-between mt-2 pt-2 border-t text-[10px] [border-color:var(--ot-border)]">
+            <span class="ot-mut"><i class="icon-shield-check text-[10px] [color:#15803d]"></i> Sterile</span>
+            <span class="ot-mut"><i class="icon-cpu text-[10px]"></i> Ready</span>
+        </div>
+        <div class="prev mt-1.5"><p class="text-[10px] ot-mut">Last used 40 min ago · turnover avg 22 min</p></div>
+    </div><div class="ot-room st-emerg" data-room="4">
+        <div class="flex items-center justify-between mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="4"  class="accent-[var(--ot-c)]"><span class="text-sm font-bold ot-head">Emergency OT</span></label>
+            <span class="statpill ot-chip"><i class="icon-alert-triangle text-[9px]"></i> Emergency</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ot-avatar flex-none [width:32px] [height:32px] [background:#0e7490] [font-size:11px]">SG</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">Suresh Gupta</p><p class="text-[10px] ot-mut truncate">Cholecystectomy</p></div>
+            <button data-menu="4" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ot-hover)] flex items-center justify-center ot-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center justify-between text-[10px] ot-mut mt-1.5"><span><i class="icon-stethoscope text-[10px]"></i> P</span><span>08:15 → 11:30</span></div>
+        <div class="flex items-center gap-2 mt-1.5"><div class="ot-stab flex-1"><span class="[width:68%] [background:#dc2626]"></span></div><span class="text-[10px] font-bold [color:#dc2626]">68%</span></div><p class="text-[10px] ot-mut mt-1">Phase: Closure</p>
+        <div class="flex items-center justify-between mt-2 pt-2 border-t text-[10px] [border-color:var(--ot-border)]">
+            <span class="ot-mut"><i class="icon-shield-check text-[10px] [color:#15803d]"></i> Sterile</span>
+            <span class="ot-mut"><i class="icon-cpu text-[10px]"></i> Ready</span>
+        </div>
+        <div class="prev mt-1.5"><p class="text-[10px] ot-mut">Anesthetist: Dr. T. Bose · Nurse: N. Reddy</p></div>
+    </div><div class="ot-room st-prog" data-room="5">
+        <div class="flex items-center justify-between mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="5"  class="accent-[var(--ot-c)]"><span class="text-sm font-bold ot-head">Cardiac OT</span></label>
+            <span class="statpill ot-chip">In Surgery</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ot-avatar flex-none [width:32px] [height:32px] [background:#334155] [font-size:11px]">MS</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">Meera Singh</p><p class="text-[10px] ot-mut truncate">Hip Replacement</p></div>
+            <button data-menu="5" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ot-hover)] flex items-center justify-center ot-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center justify-between text-[10px] ot-mut mt-1.5"><span><i class="icon-stethoscope text-[10px]"></i> V</span><span>09:00 → 12:15</span></div>
+        <div class="flex items-center gap-2 mt-1.5"><div class="ot-stab flex-1"><span class="[width:42%] [background:#e06c1f]"></span></div><span class="text-[10px] font-bold [color:#e06c1f]">42%</span></div><p class="text-[10px] ot-mut mt-1">Phase: Surgery Started</p>
+        <div class="flex items-center justify-between mt-2 pt-2 border-t text-[10px] [border-color:var(--ot-border)]">
+            <span class="ot-mut"><i class="icon-shield-check text-[10px] [color:#15803d]"></i> Sterile</span>
+            <span class="ot-mut"><i class="icon-cpu text-[10px]"></i> Ready</span>
+        </div>
+        <div class="prev mt-1.5"><p class="text-[10px] ot-mut">Anesthetist: Dr. M. Shah · Nurse: N. Fernandes</p></div>
+    </div><div class="ot-room st-prog" data-room="6">
+        <div class="flex items-center justify-between mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="6"  class="accent-[var(--ot-c)]"><span class="text-sm font-bold ot-head">Orthopedic OT</span></label>
+            <span class="statpill ot-chip">In Surgery</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ot-avatar flex-none [width:32px] [height:32px] [background:#3f6212] [font-size:11px]">AM</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">Arjun Menon</p><p class="text-[10px] ot-mut truncate">Cataract Surgery</p></div>
+            <button data-menu="6" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ot-hover)] flex items-center justify-center ot-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center justify-between text-[10px] ot-mut mt-1.5"><span><i class="icon-stethoscope text-[10px]"></i> A</span><span>07:30 → 10:45</span></div>
+        <div class="flex items-center gap-2 mt-1.5"><div class="ot-stab flex-1"><span class="[width:77%] [background:#e06c1f]"></span></div><span class="text-[10px] font-bold [color:#e06c1f]">77%</span></div><p class="text-[10px] ot-mut mt-1">Phase: Closure</p>
+        <div class="flex items-center justify-between mt-2 pt-2 border-t text-[10px] [border-color:var(--ot-border)]">
+            <span class="ot-mut"><i class="icon-shield-check text-[10px] [color:#15803d]"></i> Sterile</span>
+            <span class="ot-mut"><i class="icon-cpu text-[10px]"></i> Ready</span>
+        </div>
+        <div class="prev mt-1.5"><p class="text-[10px] ot-mut">Anesthetist: Dr. K. Menon · Nurse: N. Pillai</p></div>
+    </div><div class="ot-room st-maint" data-room="7">
+        <div class="flex items-center justify-between mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="7"  class="accent-[var(--ot-c)]"><span class="text-sm font-bold ot-head">Neuro OT</span></label>
+            <span class="statpill ot-chip">Maintenance</span>
+        </div>
+        <div class="flex flex-col items-center justify-center py-3 text-center">
+            <i class="icon-wrench text-2xl [color:#64748b]"></i>
+            <p class="text-[11px] ot-mut mt-1">Neuro · Under maintenance</p>
+            <button data-menu="7" onclick="event.stopPropagation()" class="absolute top-2.5 right-2.5 w-6 h-6 rounded-md hover:bg-[var(--ot-hover)] flex items-center justify-center ot-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center justify-between mt-2 pt-2 border-t text-[10px] [border-color:var(--ot-border)]">
+            <span class="ot-mut"><i class="icon-shield-check text-[10px] [color:#b7791f]"></i> Pending</span>
+            <span class="ot-mut"><i class="icon-cpu text-[10px]"></i> Servicing</span>
+        </div>
+        <div class="prev mt-1.5"><p class="text-[10px] ot-mut">Last used 40 min ago · turnover avg 22 min</p></div>
+    </div></div>
+                            </section>
+
+                            <!-- ============ 5. WORKFLOW ============ -->
+                            <section class="ot-card p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold ot-head flex items-center gap-2"><i class="icon-git-branch ot-hicon"></i> Surgical Workflow</h2><span class="ot-npill" id="ot-wf-room">OT-03</span></div>
+                                <div id="ot-workflow"><div class="space-y-0"><div class="ot-stage done flex gap-3 pb-3">
+            <div class="flex flex-col items-center"><div class="ot-stage-dot"><i class="icon-check text-[13px]"></i></div><div class="w-0.5 flex-1 mt-1 [background:var(--ot-accent)]"></div></div>
+            <div class="flex-1 pb-1"><div class="flex items-center justify-between"><p class="text-sm font-medium ot-head">Patient Prepared</p><span class="text-[10px] [color:var(--ot-accent)]">Done</span></div><div class="ot-stab mt-1.5"><span class="[width:100%] [background:var(--ot-accent)]"></span></div></div>
+        </div><div class="ot-stage done flex gap-3 pb-3">
+            <div class="flex flex-col items-center"><div class="ot-stage-dot"><i class="icon-check text-[13px]"></i></div><div class="w-0.5 flex-1 mt-1 [background:var(--ot-accent)]"></div></div>
+            <div class="flex-1 pb-1"><div class="flex items-center justify-between"><p class="text-sm font-medium ot-head">Shifted to OT</p><span class="text-[10px] [color:var(--ot-accent)]">Done</span></div><div class="ot-stab mt-1.5"><span class="[width:100%] [background:var(--ot-accent)]"></span></div></div>
+        </div><div class="ot-stage done flex gap-3 pb-3">
+            <div class="flex flex-col items-center"><div class="ot-stage-dot"><i class="icon-check text-[13px]"></i></div><div class="w-0.5 flex-1 mt-1 [background:var(--ot-accent)]"></div></div>
+            <div class="flex-1 pb-1"><div class="flex items-center justify-between"><p class="text-sm font-medium ot-head">Anesthesia Started</p><span class="text-[10px] [color:var(--ot-accent)]">Done</span></div><div class="ot-stab mt-1.5"><span class="[width:100%] [background:var(--ot-accent)]"></span></div></div>
+        </div><div class="ot-stage done flex gap-3 pb-3">
+            <div class="flex flex-col items-center"><div class="ot-stage-dot"><i class="icon-check text-[13px]"></i></div><div class="w-0.5 flex-1 mt-1 [background:var(--ot-accent)]"></div></div>
+            <div class="flex-1 pb-1"><div class="flex items-center justify-between"><p class="text-sm font-medium ot-head">Surgery Started</p><span class="text-[10px] [color:var(--ot-accent)]">Done</span></div><div class="ot-stab mt-1.5"><span class="[width:100%] [background:var(--ot-accent)]"></span></div></div>
+        </div><div class="ot-stage active flex gap-3 pb-3">
+            <div class="flex flex-col items-center"><div class="ot-stage-dot">5</div><div class="w-0.5 flex-1 mt-1 [background:var(--ot-border)]"></div></div>
+            <div class="flex-1 pb-1"><div class="flex items-center justify-between"><p class="text-sm font-medium ot-head">Critical Procedure</p><span class="ot-npill">In progress</span></div><div class="ot-stab mt-1.5"><span class="[width:55%] [background:var(--ot-accent)]"></span></div></div>
+        </div><div class="ot-stage  flex gap-3 pb-3">
+            <div class="flex flex-col items-center"><div class="ot-stage-dot">6</div><div class="w-0.5 flex-1 mt-1 [background:var(--ot-border)]"></div></div>
+            <div class="flex-1 pb-1"><div class="flex items-center justify-between"><p class="text-sm font-medium ot-mut">Closure</p></div></div>
+        </div><div class="ot-stage  flex gap-3 pb-3">
+            <div class="flex flex-col items-center"><div class="ot-stage-dot">7</div><div class="w-0.5 flex-1 mt-1 [background:var(--ot-border)]"></div></div>
+            <div class="flex-1 pb-1"><div class="flex items-center justify-between"><p class="text-sm font-medium ot-mut">Recovery</p></div></div>
+        </div><div class="ot-stage  flex gap-3 ">
+            <div class="flex flex-col items-center"><div class="ot-stage-dot">8</div></div>
+            <div class="flex-1 pb-1"><div class="flex items-center justify-between"><p class="text-sm font-medium ot-mut">Shift to ICU / Ward</p></div></div>
+        </div></div></div>
+                            </section>
+
+                            <!-- ============ 6. OPERATION SCHEDULE BOARD ============ -->
+                            <section class="ot-card p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                                    <h2 class="text-base font-bold ot-head flex items-center gap-2"><i class="icon-calendar-clock ot-hicon"></i> Operation Schedule Board</h2>
+                                    <div class="ot-seg" id="ot-schedtabs"><button data-sv="timeline" class="on">Timeline</button><button data-sv="daily">Daily</button><button data-sv="weekly">Weekly</button><button data-sv="availability">Availability</button></div>
+                                </div>
+                                <div id="ot-schedule" class="overflow-x-auto"><div class="ot-sched-grid [--cols:8]">
+            <div class="ot-sched-cell !border-b-2 flex items-center justify-center text-[10px] ot-mut font-semibold [min-height:32px]">Time</div>
+            <div class="ot-sched-cell !border-b-2 flex items-center justify-center text-[10px] font-semibold ot-head [min-height:32px]">OT-01</div><div class="ot-sched-cell !border-b-2 flex items-center justify-center text-[10px] font-semibold ot-head [min-height:32px]">OT-02</div><div class="ot-sched-cell !border-b-2 flex items-center justify-center text-[10px] font-semibold ot-head [min-height:32px]">OT-03</div><div class="ot-sched-cell !border-b-2 flex items-center justify-center text-[10px] font-semibold ot-head [min-height:32px]">OT-04</div><div class="ot-sched-cell !border-b-2 flex items-center justify-center text-[10px] font-semibold ot-head [min-height:32px]">Emergency OT</div><div class="ot-sched-cell !border-b-2 flex items-center justify-center text-[10px] font-semibold ot-head [min-height:32px]">Cardiac OT</div><div class="ot-sched-cell !border-b-2 flex items-center justify-center text-[10px] font-semibold ot-head [min-height:32px]">Orthopedic OT</div><div class="ot-sched-cell !border-b-2 flex items-center justify-center text-[10px] font-semibold ot-head [min-height:32px]">Neuro OT</div>
+            <div class="ot-sched-cell flex items-center justify-center text-[10px] ot-mut">08:00</div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:38px] [background:#0f766e]" data-sched="100"><p class="font-semibold truncate">Spinal</p><p class="opacity-80 truncate">R</p></div></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:4174px] [background:#0f766e]" data-sched="1"><p class="font-semibold truncate">Total</p><p class="opacity-80 truncate">S</p></div></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:6154px] [background:#0f766e]" data-sched="2"><p class="font-semibold truncate">Craniotomy</p><p class="opacity-80 truncate">R</p></div></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:7914px] [background:#dc2626]" data-sched="4"><p class="font-semibold truncate">Cholecystectomy</p><p class="opacity-80 truncate">P</p></div></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:8794px] [background:#0f766e]" data-sched="5"><p class="font-semibold truncate">Hip</p><p class="opacity-80 truncate">V</p></div></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:4834px] [background:#e06c1f]" data-sched="6"><p class="font-semibold truncate">Cataract</p><p class="opacity-80 truncate">A</p></div></div><div class="ot-sched-cell"></div><div class="ot-sched-cell flex items-center justify-center text-[10px] ot-mut">09:00</div><div class="ot-sched-cell"></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:82px] [background:#e06c1f]" data-sched="101"><p class="font-semibold truncate">Hernia</p><p class="opacity-80 truncate">L</p></div></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell flex items-center justify-center text-[10px] ot-mut">10:00</div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:38px] [background:#0f766e]" data-sched="102"><p class="font-semibold truncate">Angioplasty</p><p class="opacity-80 truncate">P</p></div></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell flex items-center justify-center text-[10px] ot-mut">11:00</div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:126px] [background:#0f766e]" data-sched="103"><p class="font-semibold truncate">Thyroidectomy</p><p class="opacity-80 truncate">V</p></div></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell flex items-center justify-center text-[10px] ot-mut">12:00</div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:82px] [background:#e06c1f]" data-sched="104"><p class="font-semibold truncate">Coronary</p><p class="opacity-80 truncate">A</p></div></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell flex items-center justify-center text-[10px] ot-mut">13:00</div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:38px] [background:#0f766e]" data-sched="105"><p class="font-semibold truncate">Total</p><p class="opacity-80 truncate">S</p></div></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell flex items-center justify-center text-[10px] ot-mut">14:00</div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:82px] [background:#0f766e]" data-sched="106"><p class="font-semibold truncate">Craniotomy</p><p class="opacity-80 truncate">R</p></div></div><div class="ot-sched-cell"></div><div class="ot-sched-cell flex items-center justify-center text-[10px] ot-mut">15:00</div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"></div><div class="ot-sched-cell"><div class="ot-sched-block [top:2px] [height:126px] [background:#e06c1f]" data-sched="107"><p class="font-semibold truncate">Appendectomy</p><p class="opacity-80 truncate">L</p></div></div></div></div>
+                            </section>
+
+                            <!-- ============ 7. SURGICAL TEAM CENTER ============ -->
+                            <section class="ot-card p-5">
+                                <h2 class="text-base font-bold ot-head flex items-center gap-2 mb-4"><i class="icon-users ot-hicon"></i> Surgical Team Center</h2>
+                                <div id="ot-team" class="space-y-3">
+        <div><p class="text-[11px] font-bold ot-mut uppercase tracking-wide mb-2">Surgeons</p><div class="grid sm:grid-cols-3 gap-2">
+        <div class="ot-panel p-3"><div class="flex items-center gap-2.5"><span class="ot-avatar flex-none [width:36px] [height:36px] [background:#475569] [font-size:12px]">DA</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">Dr. A. Mehta</p><p class="text-[10px] ot-mut">Cardiac Surgery</p></div><span class="ot-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">In Surgery</span></div><div class="flex justify-between text-[10px] ot-mut mt-2"><span>3 today · 18y</span><span>Cardiac OT</span></div></div><div class="ot-panel p-3"><div class="flex items-center gap-2.5"><span class="ot-avatar flex-none [width:36px] [height:36px] [background:#0f766e] [font-size:12px]">DR</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">Dr. R. Nair</p><p class="text-[10px] ot-mut">Orthopedics</p></div><span class="ot-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div><div class="flex justify-between text-[10px] ot-mut mt-2"><span>2 today · 12y</span><span>—</span></div></div><div class="ot-panel p-3"><div class="flex items-center gap-2.5"><span class="ot-avatar flex-none [width:36px] [height:36px] [background:#1e40af] [font-size:12px]">DS</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">Dr. S. Kapoor</p><p class="text-[10px] ot-mut">Neurosurgery</p></div><span class="ot-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]">Scrubbing</span></div><div class="flex justify-between text-[10px] ot-mut mt-2"><span>1 today · 15y</span><span>Neuro OT</span></div></div>
+        </div></div>
+        <div class="grid sm:grid-cols-2 gap-3">
+            <div><p class="text-[11px] font-bold ot-mut uppercase tracking-wide mb-2">Anesthesiologists</p><div class="space-y-2"><div class="ot-panel p-3"><div class="flex items-center gap-2.5"><span class="ot-avatar flex-none [width:36px] [height:36px] [background:#4338ca] [font-size:12px]">DK</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">Dr. K. Menon</p><p class="text-[10px] ot-mut truncate">CABG · Cardiac OT · 2 rooms</p></div><span class="ot-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Active</span></div></div><div class="ot-panel p-3"><div class="flex items-center gap-2.5"><span class="ot-avatar flex-none [width:36px] [height:36px] [background:#0e7490] [font-size:12px]">DT</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">Dr. T. Bose</p><p class="text-[10px] ot-mut truncate">Standby · 1 room</p></div><span class="ot-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div></div></div></div>
+            <div><p class="text-[11px] font-bold ot-mut uppercase tracking-wide mb-2">OT Nurses</p><div class="space-y-2"><div class="ot-panel p-3"><div class="flex items-center gap-2.5"><span class="ot-avatar flex-none [width:36px] [height:36px] [background:#334155] [font-size:12px]">NF</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">N. Fernandes</p><p class="text-[10px] ot-mut truncate">Cardiac OT · Day</p></div><span class="ot-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Scrubbed</span></div></div><div class="ot-panel p-3"><div class="flex items-center gap-2.5"><span class="ot-avatar flex-none [width:36px] [height:36px] [background:#3f6212] [font-size:12px]">ND</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ot-head truncate">N. Das</p><p class="text-[10px] ot-mut truncate">OT-03 · Day</p></div><span class="ot-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div></div></div></div>
+        </div></div>
+                            </section>
+
+                            <!-- ============ 8+10. EQUIPMENT + ANALYTICS ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                                <section class="ot-card p-5">
+                                    <h2 class="text-base font-bold ot-head flex items-center gap-2 mb-4"><i class="icon-cpu ot-hicon"></i> Equipment &amp; Sterility Center</h2>
+                                    <div id="ot-equipment" class="grid sm:grid-cols-2 gap-2.5"><div class="ot-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ot-head flex items-center gap-1.5"><span class="ot-iconbadge w-7 h-7 [color:#e06c1f]"><i class="icon-cpu text-sm"></i></span> Anesthesia Machine</span><span class="ot-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">In Use</span></div>
+        <div class="flex justify-between text-[11px] ot-mut mt-1"><span>ANES-04 · Cardiac OT</span><span><i class="icon-shield-check text-[11px] [color:#15803d]"></i> Sterile</span></div>
+        <p class="text-[10px] ot-mut mt-1">Last maintenance: Jul 12</p>
+    </div><div class="ot-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ot-head flex items-center gap-1.5"><span class="ot-iconbadge w-7 h-7 [color:#e06c1f]"><i class="icon-cpu text-sm"></i></span> Surgical Lights</span><span class="ot-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">In Use</span></div>
+        <div class="flex justify-between text-[11px] ot-mut mt-1"><span>LGT-11 · OT-03</span><span><i class="icon-shield-check text-[11px] [color:#15803d]"></i> Sterile</span></div>
+        <p class="text-[10px] ot-mut mt-1">Last maintenance: Jul 15</p>
+    </div><div class="ot-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ot-head flex items-center gap-1.5"><span class="ot-iconbadge w-7 h-7 [color:#64748b]"><i class="icon-cpu text-sm"></i></span> OT Table</span><span class="ot-chip [background:color-mix(in_srgb,#64748b_13%,transparent)] [color:#64748b]">Idle</span></div>
+        <div class="flex justify-between text-[11px] ot-mut mt-1"><span>TBL-07 · Neuro OT</span><span><i class="icon-shield-check text-[11px] [color:#15803d]"></i> Sterile</span></div>
+        <p class="text-[10px] ot-mut mt-1">Last maintenance: Jul 10</p>
+    </div><div class="ot-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ot-head flex items-center gap-1.5"><span class="ot-iconbadge w-7 h-7 [color:#e06c1f]"><i class="icon-cpu text-sm"></i></span> Ventilator</span><span class="ot-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">In Use</span></div>
+        <div class="flex justify-between text-[11px] ot-mut mt-1"><span>VNT-09 · Cardiac OT</span><span><i class="icon-shield-check text-[11px] [color:#15803d]"></i> Sterile</span></div>
+        <p class="text-[10px] ot-mut mt-1">Last maintenance: Jul 18</p>
+    </div><div class="ot-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ot-head flex items-center gap-1.5"><span class="ot-iconbadge w-7 h-7 [color:#e06c1f]"><i class="icon-cpu text-sm"></i></span> ECG Monitor</span><span class="ot-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">In Use</span></div>
+        <div class="flex justify-between text-[11px] ot-mut mt-1"><span>MON-15 · OT-03</span><span><i class="icon-shield-check text-[11px] [color:#15803d]"></i> Sterile</span></div>
+        <p class="text-[10px] ot-mut mt-1">Last maintenance: Jul 14</p>
+    </div><div class="ot-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ot-head flex items-center gap-1.5"><span class="ot-iconbadge w-7 h-7 [color:#15803d]"><i class="icon-cpu text-sm"></i></span> Defibrillator</span><span class="ot-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Ready</span></div>
+        <div class="flex justify-between text-[11px] ot-mut mt-1"><span>DEF-03 · Standby</span><span><i class="icon-shield-check text-[11px] [color:#15803d]"></i> Sterile</span></div>
+        <p class="text-[10px] ot-mut mt-1">Last maintenance: Jul 11</p>
+    </div><div class="ot-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ot-head flex items-center gap-1.5"><span class="ot-iconbadge w-7 h-7 [color:#e06c1f]"><i class="icon-cpu text-sm"></i></span> Electrocautery</span><span class="ot-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">In Use</span></div>
+        <div class="flex justify-between text-[11px] ot-mut mt-1"><span>ECU-06 · Ortho OT</span><span><i class="icon-shield-check text-[11px] [color:#15803d]"></i> Sterile</span></div>
+        <p class="text-[10px] ot-mut mt-1">Last maintenance: Jul 16</p>
+    </div><div class="ot-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ot-head flex items-center gap-1.5"><span class="ot-iconbadge w-7 h-7 [color:#15803d]"><i class="icon-cpu text-sm"></i></span> Suction Machine</span><span class="ot-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Ready</span></div>
+        <div class="flex justify-between text-[11px] ot-mut mt-1"><span>SUC-12 · Store</span><span><i class="icon-shield-check text-[11px] [color:#15803d]"></i> Sterile</span></div>
+        <p class="text-[10px] ot-mut mt-1">Last maintenance: Jul 13</p>
+    </div></div>
+                                </section>
+                                <section class="ot-card p-5">
+                                    <h2 class="text-base font-bold ot-head flex items-center gap-2 mb-4"><i class="icon-chart-column ot-hicon"></i> OT Utilization Analytics</h2>
+                                    <div id="ot-analytics" class="space-y-3">
+        <div class="ot-panel p-3">
+            <div class="flex items-center justify-between mb-1"><p class="text-xs font-bold ot-head">Room Utilization · 8 days</p><span class="ot-chip [background:color-mix(in_srgb,#0f766e_13%,transparent)] [color:#0f766e]">79% avg</span></div>
+            <svg class="w-full h-14" viewBox="0 0 280 56" preserveAspectRatio="none"><defs><linearGradient id="otg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0d9488" stop-opacity=".28"/><stop offset="100%" stop-color="#0d9488" stop-opacity="0"/></linearGradient></defs><polygon points="0,56 0,22 40,19 80,20.5 120,16 160,17.5 200,14 240,16.5 280,13 280,56" fill="url(#otg)"/><polyline points="0,22 40,19 80,20.5 120,16 160,17.5 200,14 240,16.5 280,13" fill="none" stroke="#0d9488" stroke-width="2"/></svg>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-3">
+            <div class="ot-panel p-3"><p class="text-xs font-bold ot-head mb-2">Surgery Types</p><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">Orthopedic</span><span class="ot-mut">34%</span></div><div class="ot-stab"><span class="[width:34%] [background:#e06c1f]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">Cardiac</span><span class="ot-mut">26%</span></div><div class="ot-stab"><span class="[width:26%] [background:#dc2626]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">General</span><span class="ot-mut">22%</span></div><div class="ot-stab"><span class="[width:22%] [background:#0f766e]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">Neuro</span><span class="ot-mut">18%</span></div><div class="ot-stab"><span class="[width:18%] [background:#1d4ed8]"></span></div></div></div>
+            <div class="ot-panel p-3"><p class="text-xs font-bold ot-head mb-2">Department Utilization</p><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">Cardiac OT</span><span class="ot-mut">88%</span></div><div class="ot-stab"><span class="[width:88%] [background:#dc2626]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">Ortho OT</span><span class="ot-mut">76%</span></div><div class="ot-stab"><span class="[width:76%] [background:#e06c1f]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">General</span><span class="ot-mut">64%</span></div><div class="ot-stab"><span class="[width:64%] [background:#0f766e]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">Neuro</span><span class="ot-mut">52%</span></div><div class="ot-stab"><span class="[width:52%] [background:#1d4ed8]"></span></div></div></div>
+            <div class="ot-panel p-3"><p class="text-xs font-bold ot-head mb-2">Turnaround Time</p><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">&lt; 20 min</span><span class="ot-mut">62%</span></div><div class="ot-stab"><span class="[width:62%] [background:#15803d]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">20–40 min</span><span class="ot-mut">28%</span></div><div class="ot-stab"><span class="[width:28%] [background:#b7791f]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">> 40 min</span><span class="ot-mut">10%</span></div><div class="ot-stab"><span class="[width:10%] [background:#dc2626]"></span></div></div></div>
+            <div class="ot-panel p-3"><p class="text-xs font-bold ot-head mb-2">Surgery Success</p><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">Successful</span><span class="ot-mut">96%</span></div><div class="ot-stab"><span class="[width:96%] [background:#15803d]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">Complications</span><span class="ot-mut">3%</span></div><div class="ot-stab"><span class="[width:3%] [background:#b7791f]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="ot-head font-medium">Re-operation</span><span class="ot-mut">1%</span></div><div class="ot-stab"><span class="[width:1%] [background:#dc2626]"></span></div></div></div>
+        </div></div>
+                                </section>
+                            </div>
+
+                            <!-- ============ 14. RECENT OT ACTIVITIES ============ -->
+                            <section class="ot-card p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold ot-head flex items-center gap-2"><i class="icon-radar ot-hicon"></i> Recent OT Activities</h2><span class="ot-chip bg-[color-mix(in_srgb,#15803d_14%,transparent)] text-[#15803d]"><span class="ot-dot ot-live bg-[#22c55e]"></span> Live</span></div>
+                                <div id="ot-activity" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3"><div class="ot-panel p-3 flex items-start gap-2.5"><span class="ot-iconbadge w-8 h-8 flex-none [color:#0e7490]"><i class="icon-calendar-plus"></i></span><div class="min-w-0"><p class="text-sm font-semibold ot-head">Surgery Scheduled</p><p class="text-[11px] ot-mut truncate">CABG · Cardiac OT · 08:15</p><p class="text-[10px] ot-mut mt-0.5">3m ago</p></div></div><div class="ot-panel p-3 flex items-start gap-2.5"><span class="ot-iconbadge w-8 h-8 flex-none [color:#e06c1f]"><i class="icon-slice"></i></span><div class="min-w-0"><p class="text-sm font-semibold ot-head">Surgery Started</p><p class="text-[11px] ot-mut truncate">Knee Replacement · OT-03</p><p class="text-[10px] ot-mut mt-0.5">9m ago</p></div></div><div class="ot-panel p-3 flex items-start gap-2.5"><span class="ot-iconbadge w-8 h-8 flex-none [color:#1d4ed8]"><i class="icon-spray-can"></i></span><div class="min-w-0"><p class="text-sm font-semibold ot-head">OT Prepared</p><p class="text-[11px] ot-mut truncate">Neuro OT · sterile</p><p class="text-[10px] ot-mut mt-0.5">14m ago</p></div></div><div class="ot-panel p-3 flex items-start gap-2.5"><span class="ot-iconbadge w-8 h-8 flex-none [color:#7c3aed]"><i class="icon-cpu"></i></span><div class="min-w-0"><p class="text-sm font-semibold ot-head">Equipment Checked</p><p class="text-[11px] ot-mut truncate">Anesthesia machine · OK</p><p class="text-[10px] ot-mut mt-0.5">22m ago</p></div></div><div class="ot-panel p-3 flex items-start gap-2.5"><span class="ot-iconbadge w-8 h-8 flex-none [color:#15803d]"><i class="icon-shield-check"></i></span><div class="min-w-0"><p class="text-sm font-semibold ot-head">Sterility Completed</p><p class="text-[11px] ot-mut truncate">OT-02 · verified</p><p class="text-[10px] ot-mut mt-0.5">28m ago</p></div></div><div class="ot-panel p-3 flex items-start gap-2.5"><span class="ot-iconbadge w-8 h-8 flex-none [color:#15803d]"><i class="icon-circle-check"></i></span><div class="min-w-0"><p class="text-sm font-semibold ot-head">Surgery Completed</p><p class="text-[11px] ot-mut truncate">Appendectomy · OT-01</p><p class="text-[10px] ot-mut mt-0.5">35m ago</p></div></div><div class="ot-panel p-3 flex items-start gap-2.5"><span class="ot-iconbadge w-8 h-8 flex-none [color:#15803d]"><i class="icon-heart"></i></span><div class="min-w-0"><p class="text-sm font-semibold ot-head">Recovery Started</p><p class="text-[11px] ot-mut truncate">C-Section · Ward 2</p><p class="text-[10px] ot-mut mt-0.5">44m ago</p></div></div><div class="ot-panel p-3 flex items-start gap-2.5"><span class="ot-iconbadge w-8 h-8 flex-none [color:#64748b]"><i class="icon-bed"></i></span><div class="min-w-0"><p class="text-sm font-semibold ot-head">Patient Shifted</p><p class="text-[11px] ot-mut truncate">CABG → Cardiac ICU</p><p class="text-[10px] ot-mut mt-0.5">52m ago</p></div></div></div>
+                            </section>
+
+                            <!-- BULK BAR -->
+                            <div class="ot-bulk items-center gap-2 px-4 py-2.5 flex-wrap">
+                                <span class="text-sm font-semibold"><span id="ot-selcount">0</span> selected</span>
+                                <div class="flex flex-wrap gap-1.5 ml-auto text-xs">
+                                    <button data-bulk="allocate" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-layout-grid"></i> Allocate</button>
+                                    <button data-bulk="team" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-users"></i> Team</button>
+                                    <button data-bulk="export" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    <button data-bulk="print" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-printer"></i> Print</button>
+                                    <button data-bulk="archive" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-archive"></i> Archive</button>
+                                    <button data-bulk="delete" class="px-2.5 py-1.5 rounded-md bg-rose-600/80 hover:bg-rose-600"><i class="icon-trash-2"></i> Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="ot-drawer" class="ot-drawer"></div>
+        <div id="ot-drawer-back" class="ot-drawer-back" data-close></div>
+        <div id="ot-modalhost"></div>
+        <div id="ot-menuhost"></div>
+        <div id="ot-toast" class="ot-toast"></div>
+
+        @@include('partials/script.html', {"page": "operation-theater"})
+    </body>
+</html>

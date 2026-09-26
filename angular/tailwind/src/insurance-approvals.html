@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Insurance Approvals — Dreams HMS"}) @@include('partials/header.html', {"page": "insurance-approvals"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="insurance-approvals">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search approval queue..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Approvals", "parentUrl": "insurance.html", "parent": "Insurance"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Approval Queue</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Internal review and sign-off for claims and pre-authorizations before submission</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-list-checks text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">6</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">In Queue</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Awaiting Approval</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Approved</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-x-circle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">1</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Rejected</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Items</span>
+                                <span class="text-xs text-gray-400 ml-auto">6 of 6</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Reference</th>
+                                            <th>Patient</th>
+                                            <th>Type</th>
+                                            <th>Amount</th>
+                                            <th>Approver</th>
+                                            <th>Approval Date</th>
+                                            <th>Notes</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-primary font-mono text-sm"><a href="insurance-approval-detail.html">CLM-2024-1187</a></td><td class="font-medium text-gray-900">James Morrison</td><td class="text-gray-500 dark:text-gray-400">Claim</td><td class="font-semibold text-gray-900">$3,200.00</td><td class="text-gray-600 dark:text-gray-300">Dr. Amara Osei</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-03</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Standard review">Standard review</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Approved</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-approval-detail.html">PA-2024-0092</a></td><td class="font-medium text-gray-900">Marcus Webb</td><td class="text-gray-500 dark:text-gray-400">Pre-Authorization</td><td class="font-semibold text-gray-900">$1,800.00</td><td class="text-gray-600 dark:text-gray-300">Dr. Yusuf Karim</td><td class="text-gray-500 dark:text-gray-400 text-sm">—</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Awaiting clinical documents">Awaiting clinical documents</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Awaiting Approval</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-approval-detail.html">CLM-2024-1201</a></td><td class="font-medium text-gray-900">David Torres</td><td class="text-gray-500 dark:text-gray-400">Claim</td><td class="font-semibold text-gray-900">$5,800.00</td><td class="text-gray-600 dark:text-gray-300">Finance Desk</td><td class="text-gray-500 dark:text-gray-400 text-sm">—</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="High value — escalated to committee">High value — escalated to committee</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Escalated</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-approval-detail.html">PA-2024-0088</a></td><td class="font-medium text-gray-900">Owen Fitzgerald</td><td class="text-gray-500 dark:text-gray-400">Pre-Authorization</td><td class="font-semibold text-gray-900">$22,000.00</td><td class="text-gray-600 dark:text-gray-300">Dr. Elena Vasquez</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Not medically necessary per policy">Not medically necessary per policy</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Rejected</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-approval-detail.html">CLM-2024-1176</a></td><td class="font-medium text-gray-900">Anna Peterson</td><td class="text-gray-500 dark:text-gray-400">Claim</td><td class="font-semibold text-gray-900">$680.00</td><td class="text-gray-600 dark:text-gray-300">Dr. Amara Osei</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Auto-approved — under threshold">Auto-approved — under threshold</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Approved</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-approval-detail.html">PA-2024-0095</a></td><td class="font-medium text-gray-900">Hana Suzuki</td><td class="text-gray-500 dark:text-gray-400">Pre-Authorization</td><td class="font-semibold text-gray-900">$2,100.00</td><td class="text-gray-600 dark:text-gray-300">Dr. Yusuf Karim</td><td class="text-gray-500 dark:text-gray-400 text-sm">—</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="In progress">In progress</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Awaiting Approval</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "insurance-approvals"})
+    </body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Popovers — Dreams HMS"}) @@include('partials/header.html', {"page": "ui-popovers"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <!-- Page Header -->
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Popovers</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Small overlays that display contextual content on click or hover.</p>
+                            </div>
+                        </div>
+
+                <div class="p-3 lg:py-6 lg:px-0">
+				    <!-- Start grid -->
+					<div class="grid grid-cols-12 gap-6">
+
+						<div class="preview-card md:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h2 class="text-gray-900 text-lg font-bold mb-0">Four Directions</h2>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div> 
+							<div class="preview-content flex flex-wrap justify-center sm:justify-start gap-2"> 
+								<div class="hs-tooltip [--trigger:focus] [--placement:top]">
+									<button type="button" class="btn hs-tooltip-toggle bg-transparent border border-primary text-primary text-center hover:bg-primary-100 focus:bg-primary-100">Popover Top</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-border-color rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-white border-b border-border-color rounded-t-lg ">
+											<h3 class="font-semibold text-gray-900">Popover Top</h3>
+										</div>
+										<div class="px-3 py-2">
+											<p>And here's some amazing content. It's very engaging. Right?</p>
+										</div> 
+									</div>
+								</div> 
+								<div class="hs-tooltip [--trigger:focus] [--placement:bottom]">
+									<button type="button" class="btn hs-tooltip-toggle bg-transparent border border-primary text-primary text-center hover:bg-primary-100 focus:bg-primary-100">Popover Bottom</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-border-color rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-white border-b border-border-color rounded-t-lg ">
+											<h4 class="font-semibold text-gray-900">Popover Bottom</h4>
+										</div>
+										<div class="px-3 py-2">
+											<p>And here's some amazing content. It's very engaging. Right?</p>
+										</div>
+										<div data-popper-arrow></div>
+									</div>
+								</div>   
+								<div class="hs-tooltip [--trigger:focus] [--placement:right]">
+									<button type="button" class="btn hs-tooltip-toggle bg-transparent border border-primary text-primary text-center hover:bg-primary-100 focus:bg-primary-100">Popover Right</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-border-color rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-white border-b border-border-color rounded-t-lg ">
+											<h5 class="font-semibold text-gray-900">Popover Right</h5>
+										</div>
+										<div class="px-3 py-2">
+											<p>And here's some amazing content. It's very engaging. Right?</p>
+										</div>
+										<div data-popper-arrow></div>
+									</div>
+								</div>
+								<div class="hs-tooltip [--trigger:focus] [--placement:left]">
+									<button type="button" class="btn hs-tooltip-toggle bg-transparent border border-primary text-primary text-center hover:bg-primary-100 focus:bg-primary-100">Popover Left</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-border-color rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-white border-b border-border-color rounded-t-lg ">
+											<h5 class="font-semibold text-gray-900">Popover Left</h5>
+										</div>
+										<div class="px-3 py-2">
+											<p>And here's some amazing content. It's very engaging. Right?</p>
+										</div>
+										<div data-popper-arrow></div>
+									</div>
+								</div> 
+							</div>
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-auto">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"> <i class="icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] p-4 pr-16">
+	&lt;div class="flex flex-wrap justify-center sm:justify-start gap-2"&gt;
+
+	&lt;div class="hs-tooltip [--trigger:focus] [--placement:top]"&gt;
+		&lt;button type="button"
+		class="btn hs-tooltip-toggle bg-transparent border border-primary text-primary hover:bg-primary-100 focus:bg-primary-100"&gt;
+		Popover Top
+		&lt;/button&gt;
+
+		&lt;div class="hs-tooltip-content absolute z-10 invisible opacity-0 inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-border-color rounded-lg shadow-sm hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"&gt;
+		&lt;div class="px-3 py-2 border-b border-border-color rounded-t-lg"&gt;
+			&lt;h5 class="font-semibold text-gray-900"&gt;Popover Top&lt;/h5&gt;
+		&lt;/div&gt;
+		&lt;div class="px-3 py-2"&gt;
+			&lt;p&gt;And here's some amazing content. It's very engaging. Right?&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div class="hs-tooltip [--trigger:focus] [--placement:bottom]"&gt;
+		&lt;button type="button"
+		class="btn hs-tooltip-toggle bg-transparent border border-primary text-primary hover:bg-primary-100 focus:bg-primary-100"&gt;
+		Popover Bottom
+		&lt;/button&gt;
+
+		&lt;div class="hs-tooltip-content absolute z-10 invisible opacity-0 inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-border-color rounded-lg shadow-sm hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"&gt;
+		&lt;div class="px-3 py-2 border-b border-border-color rounded-t-lg"&gt;
+			&lt;h5 class="font-semibold text-gray-900"&gt;Popover Bottom&lt;/h5&gt;
+		&lt;/div&gt;
+		&lt;div class="px-3 py-2"&gt;
+			&lt;p&gt;And here's some amazing content. It's very engaging. Right?&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div data-popper-arrow&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card md:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Hover and Click Toggle</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div> 
+							<div class="preview-content flex flex-wrap justify-center sm:justify-start gap-2">
+								<div class="hs-tooltip [--trigger:focus]">
+									<button type="button" class="btn hs-tooltip-toggle  bg-primary border border-primary text-white text-center hover:bg-primary-hover hover:text-white focus:bg-primary-hover">Click to toggle popover</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-border-color rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-white border-b border-border-color rounded-t-lg ">
+											<h5 class="font-semibold text-gray-900">Popover Title</h5>
+										</div>
+										<div class="px-3 py-2">
+											<p>And here's some amazing content. It's very engaging. Right?</p>
+										</div> 
+									</div>
+								</div> 
+								<div class="hs-tooltip [--trigger:hover]">
+									<button type="button" class="btn hs-tooltip-toggle  bg-primary border border-primary text-white text-center hover:bg-primary-hover hover:text-white ">On Hover Tooltip</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-border-color rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-white border-b border-border-color rounded-t-lg ">
+											<h5 class="font-semibold text-gray-900">Popover Title</h5>
+										</div>
+										<div class="px-3 py-2">
+											<p>And here's some amazing content. It's very engaging. Right?</p>
+										</div> 
+									</div>
+								</div>    
+							</div>
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-auto">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"> <i class="icon-copy"></i><span>Copy</span></button>
+
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! p-4 pr-16">
+	&lt;div class="preview-content flex flex-wrap justify-center sm:justify-start gap-2"&gt;
+
+		&lt;div class="hs-tooltip [--trigger:focus]"&gt;
+			&lt;button type="button" class="btn hs-tooltip-toggle bg-primary border border-primary text-white hover:bg-primary-hover focus:bg-primary-hover"&gt;
+			Click to toggle popover
+			&lt;/button&gt;
+			&lt;div class="hs-tooltip-content absolute z-10 invisible opacity-0 inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-border-color rounded-lg shadow-sm hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"&gt;
+				&lt;div class="px-3 py-2 border-b border-border-color rounded-t-lg"&gt;
+					&lt;h5 class="font-semibold text-gray-900"&gt;Popover Title&lt;/h5&gt;
+				&lt;/div&gt;
+				&lt;div class="px-3 py-2"&gt;
+					&lt;p&gt;And here's some amazing content. It's very engaging. Right?&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;div class="hs-tooltip [--trigger:hover]"&gt;
+			&lt;button type="button" class="btn hs-tooltip-toggle bg-primary border border-primary text-white hover:bg-primary-hover"&gt;
+			On Hover Tooltip
+			&lt;/button&gt;
+			&lt;div class="hs-tooltip-content absolute z-10 invisible opacity-0 inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-border-color rounded-lg shadow-sm hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"&gt;
+				&lt;div class="px-3 py-2 border-b border-border-color rounded-t-lg"&gt;
+					&lt;h5 class="font-semibold text-gray-900"&gt;Popover Title&lt;/h5&gt;
+				&lt;/div&gt;
+				&lt;div class="px-3 py-2"&gt;
+					&lt;p&gt;And here's some amazing content. It's very engaging. Right?&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div>  <!-- end card --> 
+
+						<div class="preview-card md:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Colored Popovers</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div> 
+							<div class="preview-content flex flex-wrap sm:flex-row flex-col items-center justify-center sm:justify-start gap-2">
+								<div class="hs-tooltip [--trigger:focus]">
+									<button type="button" class="btn hs-tooltip-toggle  bg-primary  text-white text-center hover:bg-primary-hover hover:text-white ">Primary</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-white transition-opacity duration-300 bg-primary border border-primary rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-primary border-b border-white dark:border-dark rounded-t-lg ">
+											<h5 class="font-semibold text-white">Primary Background</h5>
+										</div>
+										<div class="px-3 py-2">
+											<p>Popover with primary background.</p>
+										</div> 
+									</div> 
+								</div> 
+								<div class="hs-tooltip [--trigger:focus]">
+									<button type="button" class="btn hs-tooltip-toggle  bg-info text-white text-center hover:bg-info-800 hover:text-white ">Info</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-white transition-opacity duration-300 bg-info border border-info rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-info border-b border-white dark:border-dark rounded-t-lg ">
+											<h5 class="font-semibold text-white">Info Background</h5>
+										</div>
+										<div class="px-3 py-2">
+											<p>Popover with info background.</p>
+										</div> 
+									</div> 
+								</div> 
+								<div class="hs-tooltip [--trigger:focus]">
+									<button type="button" class="btn hs-tooltip-toggle  bg-warning text-white text-center hover:bg-warning-800 hover:text-white ">Warning</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-white transition-opacity duration-300 bg-warning border border-warning rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-warning border-b border-white dark:border-dark rounded-t-lg ">
+											<h5 class="font-semibold text-white">Warning Background</h5>
+										</div>
+										<div class="px-3 py-2">
+											<p>Popover with warning background.</p>
+										</div> 
+									</div> 
+								</div> 
+								<div class="hs-tooltip [--trigger:focus]">
+									<button type="button" class="btn hs-tooltip-toggle  bg-success text-white text-center hover:bg-success-800 hover:text-white ">Success</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-white transition-opacity duration-300 bg-success border border-success rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-success border-b border-white dark:border-dark rounded-t-lg ">
+											<h5 class="font-semibold text-white">Success Background</h5>
+										</div>
+										<div class="px-3 py-2">
+											<p>Popover with success background.</p>
+										</div> 
+									</div> 
+								</div> 
+								<div class="hs-tooltip [--trigger:focus]">
+									<button type="button" class="btn hs-tooltip-toggle  bg-danger text-white text-center hover:bg-danger-800 hover:text-white ">Danger</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-white transition-opacity duration-300 bg-danger border border-danger rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-danger border-b border-white dark:border-dark rounded-t-lg ">
+											<h5 class="font-semibold text-white">Danger Background</h5>
+										</div>
+										<div class="px-3 py-2">
+											<p>Popover with danger background.</p>
+										</div> 
+									</div> 
+								</div>  
+							</div>
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-auto">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"> <i class="icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]!  p-4 pr-16">
+	&lt;div class="preview-content flex flex-wrap sm:flex-row flex-col items-center justify-center sm:justify-start gap-2"&gt;
+
+		&lt;div class="hs-tooltip [--trigger:focus]"&gt;
+			&lt;button type="button" class="btn hs-tooltip-toggle bg-primary text-white hover:bg-primary-hover"&gt;Primary&lt;/button&gt;
+			&lt;div class="hs-tooltip-content absolute z-10 invisible opacity-0 inline-block w-64 text-sm text-white transition-opacity duration-300 bg-primary border border-primary rounded-lg shadow-sm hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"&gt;
+				&lt;div class="px-3 py-2 border-b border-white dark:border-dark rounded-t-lg"&gt;
+					&lt;h5 class="font-semibold text-white"&gt;Primary Background&lt;/h5&gt;
+				&lt;/div&gt;
+				&lt;div class="px-3 py-2"&gt;
+					&lt;p&gt;Popover with primary background.&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;div class="hs-tooltip [--trigger:focus]"&gt;
+			&lt;button type="button" class="btn hs-tooltip-toggle bg-info text-white hover:bg-info-800"&gt;Info&lt;/button&gt;
+			&lt;div class="hs-tooltip-content absolute z-10 invisible opacity-0 inline-block w-64 text-sm text-white transition-opacity duration-300 bg-info border border-info rounded-lg shadow-sm hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"&gt;
+				&lt;div class="px-3 py-2 border-b border-white dark:border-dark rounded-t-lg"&gt;
+					&lt;h5 class="font-semibold text-white"&gt;Info Background&lt;/h5&gt;
+				&lt;/div&gt;
+				&lt;div class="px-3 py-2"&gt;
+					&lt;p&gt;Popover with info background.&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;div class="hs-tooltip [--trigger:focus]"&gt;
+			&lt;button type="button" class="btn hs-tooltip-toggle bg-warning text-white hover:bg-warning-800"&gt;Warning&lt;/button&gt;
+			&lt;div class="hs-tooltip-content absolute z-10 invisible opacity-0 inline-block w-64 text-sm text-white transition-opacity duration-300 bg-warning border border-warning rounded-lg shadow-sm hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"&gt;
+				&lt;div class="px-3 py-2 border-b border-white dark:border-dark rounded-t-lg"&gt;
+					&lt;h5 class="font-semibold text-white"&gt;Warning Background&lt;/h5&gt;
+				&lt;/div&gt;
+				&lt;div class="px-3 py-2"&gt;
+					&lt;p&gt;Popover with warning background.&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;div class="hs-tooltip [--trigger:focus]"&gt;
+			&lt;button type="button" class="btn hs-tooltip-toggle bg-success text-white hover:bg-success-800"&gt;Success&lt;/button&gt;
+			&lt;div class="hs-tooltip-content absolute z-10 invisible opacity-0 inline-block w-64 text-sm text-white transition-opacity duration-300 bg-success border border-success rounded-lg shadow-sm hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"&gt;
+				&lt;div class="px-3 py-2 border-b border-white dark:border-dark rounded-t-lg"&gt;
+					&lt;h5 class="font-semibold text-white"&gt;Success Background&lt;/h5&gt;
+				&lt;/div&gt;
+				&lt;div class="px-3 py-2"&gt;
+					&lt;p&gt;Popover with success background.&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;div class="hs-tooltip [--trigger:focus]"&gt;
+			&lt;button type="button" class="btn hs-tooltip-toggle bg-danger text-white hover:bg-danger-800"&gt;Danger&lt;/button&gt;
+			&lt;div class="hs-tooltip-content absolute z-10 invisible opacity-0 inline-block w-64 text-sm text-white transition-opacity duration-300 bg-danger border border-danger rounded-lg shadow-sm hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"&gt;
+				&lt;div class="px-3 py-2 border-b border-white dark:border-dark rounded-t-lg"&gt;
+					&lt;h5 class="font-semibold text-white"&gt;Danger Background&lt;/h5&gt;
+				&lt;/div&gt;
+				&lt;div class="px-3 py-2"&gt;
+					&lt;p&gt;Popover with danger background.&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card md:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Disabled Elements</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div> 
+							<div class="preview-content flex flex-wrap justify-center sm:justify-start gap-2">
+								<div class="hs-tooltip [--trigger:focus]">
+									<button type="button" class="btn hs-tooltip-toggle  bg-primary border border-primary text-white text-center hover:bg-primary-hover hover:text-white cursor-not-allowed" disabled>Disabled Button</button>
+									<div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible absolute z-10 invisible inline-block w-64 text-sm text-white transition-opacity duration-300 bg-primary border border-primary rounded-lg shadow-sm opacity-0">
+										<div class="px-3 py-2 bg-primary border-b border-border-color rounded-t-lg ">
+											<h5 class="font-semibold text-white">Disabled Popover</h5>
+										</div>
+										<div class="px-3 py-2">
+											<p>This popover button is disabled.</p>
+										</div> 
+									</div> 
+								</div>  
+							</div>
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-auto">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"> <i class="icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]!  p-4 pr-16">
+	&lt;div class="preview-content flex flex-wrap justify-center sm:justify-start gap-2"&gt;
+		&lt;div class="hs-tooltip [--trigger:focus]"&gt;
+			&lt;button type="button" class="btn hs-tooltip-toggle bg-primary border border-primary text-white text-center hover:bg-primary-hover cursor-not-allowed" disabled&gt; Disabled Button&lt;/button&gt;
+			&lt;div class="hs-tooltip-content absolute z-10 invisible opacity-0 inline-block w-64 text-sm text-white transition-opacity duration-300 bg-primary border border-primary rounded-lg shadow-sm hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"&gt;
+				&lt;div class="px-3 py-2 border-b border-border-color rounded-t-lg"&gt;
+					&lt;h5 class="font-semibold text-white"&gt;Disabled Popover&lt;/h5&gt;
+				&lt;/div&gt;
+				&lt;div class="px-3 py-2"&gt;
+					&lt;p&gt;This popover button is disabled.&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+					</div> <!-- end grid -->     
+			    </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "ui-popovers"})
+    </body>
+</html>

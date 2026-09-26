@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Suppliers — Dreams HMS"}) @@include('partials/header.html', {"page": "pharmacy-suppliers"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search suppliers..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="ph-scope hms-scope flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-6">
+                        <!-- Breadcrumb -->
+                        @@include('partials/breadcrumb.html', {"current": "Suppliers", "parentUrl": "pharmacy.html", "parent": "Pharmacy"})
+
+                        <!-- Hero -->
+                        <section class="ph-hero" aria-labelledby="hero-title" data-aos="fade-up">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="min-w-0">
+                                    <div class="flex flex-wrap items-center gap-3">
+                                        <h1 id="hero-title" class="ph-hero-title">Pharmacy Suppliers</h1>
+                                        <span id="ph-flag" class="hms-chip tone-medium">
+                                            <i class="icon-truck text-[9px]" aria-hidden="true"></i>
+                                            <span id="ph-flag-text">1 On Hold</span>
+                                        </span>
+                                    </div>
+                                    <p class="ph-hero-sub">
+                                        <span class="inline-flex items-center gap-1.5"><i class="icon-building-2 text-[13px]" aria-hidden="true"></i><span id="hero-summary">6 suppliers · 12 open POs</span></span>
+                                        <span aria-hidden="true">•</span>
+                                        <span class="inline-flex items-center gap-1.5"><i class="icon-user-round text-[13px]" aria-hidden="true"></i>Procurement lead: <span class="font-semibold text-white/90">Martin Okafor</span></span>
+                                        <span aria-hidden="true">•</span>
+                                        <span class="inline-flex items-center gap-1.5"><i class="icon-refresh-cw text-[13px]" aria-hidden="true"></i>Synced <time datetime="2026-07-17T09:42" class="font-semibold text-white/90">09:42 AM</time></span>
+                                    </p>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Supplier actions">
+                                    <button type="button" id="btn-add" class="ph-action is-primary"><i class="icon-plus" aria-hidden="true"></i>Add Supplier</button>
+                                    <button type="button" id="btn-export" class="ph-action"><i class="icon-file-down" aria-hidden="true"></i>Export</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- KPIs -->
+                        <section aria-labelledby="kpi-title" data-aos="fade-up" data-aos-delay="50">
+                            <h2 id="kpi-title" class="sr-only">Supplier indicators</h2>
+                            <div id="kpi-row" class="ph-kpis">
+                                <article class="ph-kpi ph-primary"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-truck" aria-hidden="true"></i></span></div><p class="ph-kpi-value"><span id="kpi-total">6</span></p><p class="ph-kpi-label">Suppliers</p><p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>registered vendors</p></article>
+                                <article class="ph-kpi ph-sky"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-star" aria-hidden="true"></i></span></div><p class="ph-kpi-value"><span id="kpi-preferred">2</span></p><p class="ph-kpi-label">Preferred</p><p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>first-choice vendors</p></article>
+                                <article class="ph-kpi ph-danger"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-pause" aria-hidden="true"></i></span></div><p class="ph-kpi-value"><span id="kpi-hold">1</span></p><p class="ph-kpi-label">On Hold</p><p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>orders suspended</p></article>
+                                <article class="ph-kpi ph-amber"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-clipboard-list" aria-hidden="true"></i></span></div><p class="ph-kpi-value"><span id="kpi-pos">12</span></p><p class="ph-kpi-label">Open POs</p><p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>awaiting delivery</p></article>
+                                <article class="ph-kpi ph-violet"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-timer" aria-hidden="true"></i></span></div><p class="ph-kpi-value"><span id="kpi-ontime">86%</span></p><p class="ph-kpi-label">Avg On-Time</p><p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>delivery performance</p></article>
+                                <article class="ph-kpi ph-slate"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-dollar-sign" aria-hidden="true"></i></span></div><p class="ph-kpi-value"><span id="kpi-spend">$1240k</span></p><p class="ph-kpi-label">YTD Spend</p><p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>across vendors</p></article>
+                            </div>
+                        </section>
+
+                        <!-- Directory -->
+                        <section class="hms-panel" aria-labelledby="grid-title" data-aos="fade-up" data-aos-delay="100">
+                            <div class="hms-panel-head">
+                                <span class="hms-panel-icon ph-primary"><i class="icon-truck" aria-hidden="true"></i></span>
+                                <h2 id="grid-title" class="hms-panel-title mr-auto">Supplier Directory</h2>
+                                <div class="relative min-w-44">
+                                    <label for="search" class="sr-only">Search suppliers</label>
+                                    <i class="icon-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" aria-hidden="true"></i>
+                                    <input id="search" type="search" placeholder="Name, contact, city..." class="form-input pl-9! py-1.5! text-xs!">
+                                </div>
+                                <label for="filter-status" class="sr-only">Filter by status</label>
+                                <select id="filter-status" class="form-select w-auto! py-1.5! text-xs!">
+                                    <option value="">All Status</option>
+                                    <option>Preferred</option>
+                                    <option>Approved</option>
+                                    <option>On Hold</option>
+                                </select>
+                                <span id="grid-count" class="hms-chip ph-primary">0 suppliers</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <caption class="sr-only">All approved pharmacy suppliers</caption>
+                                    <thead class="bg-gray-50/80 dark:bg-slate-800/60">
+                                        <tr>
+                                            <th scope="col" class="hms-th">Supplier</th>
+                                            <th scope="col" class="hms-th">Contact</th>
+                                            <th scope="col" class="hms-th">Categories</th>
+                                            <th scope="col" class="hms-th">On-Time Rate</th>
+                                            <th scope="col" class="hms-th">Open POs</th>
+                                            <th scope="col" class="hms-th">YTD Spend</th>
+                                            <th scope="col" class="hms-th">Status</th>                                        </tr>
+                                    </thead>
+                                    <tbody id="grid-body"><tr class="hms-row" data-row-id="SUP-01"><td class="hms-cell"><div class="flex items-center gap-3"><span class="hms-member-avatar ph-primary size-9! rounded-full!"><i class="icon-building-2 text-sm" aria-hidden="true"></i></span><div class="min-w-0"><p class="text-xs font-bold"><a class="text-primary hover:underline truncate" href="pharmacy-supplier-detail.html">McKesson</a></p><p class="text-[10px] text-gray-400">SUP-01 · Irving, TX</p></div></div></td><td class="hms-cell"><p class="text-xs font-semibold text-gray-700 dark:text-gray-300">Dana Whitcomb</p><p class="text-[10px] text-gray-400">orders@mckesson.com</p></td><td class="hms-cell"><div class="flex flex-wrap gap-1"><span class="hms-chip tone-info">Analgesics</span><span class="hms-chip tone-info">Endocrine</span></div></td><td class="hms-cell"><div class="flex items-center gap-2 min-w-28"><svg class="ph-stock stock-ok" viewBox="0 0 100 6" preserveAspectRatio="none" role="img" aria-label="97 percent on time"><rect x="0" y="0" width="100" height="6" rx="3" fill="currentColor" opacity="0.15"></rect><rect x="0" y="0" width="97" height="6" rx="3" fill="currentColor"></rect></svg><span class="text-xs font-extrabold text-gray-900 tabular-nums w-9 text-right">97%</span></div></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">3</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">$412k</span></td><td class="hms-cell"><span class="badge badge-green">Preferred</span></td></tr><tr class="hms-row" data-row-id="SUP-02"><td class="hms-cell"><div class="flex items-center gap-3"><span class="hms-member-avatar ph-primary size-9! rounded-full!"><i class="icon-building-2 text-sm" aria-hidden="true"></i></span><div class="min-w-0"><p class="text-xs font-bold"><a class="text-primary hover:underline truncate" href="pharmacy-supplier-detail.html">Cardinal Health</a></p><p class="text-[10px] text-gray-400">SUP-02 · Dublin, OH</p></div></div></td><td class="hms-cell"><p class="text-xs font-semibold text-gray-700 dark:text-gray-300">Luis Herrera</p><p class="text-[10px] text-gray-400">supply@cardinalhealth.com</p></td><td class="hms-cell"><div class="flex flex-wrap gap-1"><span class="hms-chip tone-info">Antibiotics</span><span class="hms-chip tone-info">CNS</span></div></td><td class="hms-cell"><div class="flex items-center gap-2 min-w-28"><svg class="ph-stock stock-ok" viewBox="0 0 100 6" preserveAspectRatio="none" role="img" aria-label="94 percent on time"><rect x="0" y="0" width="100" height="6" rx="3" fill="currentColor" opacity="0.15"></rect><rect x="0" y="0" width="94" height="6" rx="3" fill="currentColor"></rect></svg><span class="text-xs font-extrabold text-gray-900 tabular-nums w-9 text-right">94%</span></div></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">2</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">$286k</span></td><td class="hms-cell"><span class="badge badge-green">Preferred</span></td></tr><tr class="hms-row" data-row-id="SUP-03"><td class="hms-cell"><div class="flex items-center gap-3"><span class="hms-member-avatar ph-primary size-9! rounded-full!"><i class="icon-building-2 text-sm" aria-hidden="true"></i></span><div class="min-w-0"><p class="text-xs font-bold"><a class="text-primary hover:underline truncate" href="pharmacy-supplier-detail.html">AmerisourceBergen</a></p><p class="text-[10px] text-gray-400">SUP-03 · Conshohocken, PA</p></div></div></td><td class="hms-cell"><p class="text-xs font-semibold text-gray-700 dark:text-gray-300">Renee Caldwell</p><p class="text-[10px] text-gray-400">po@amerisourcebergen.com</p></td><td class="hms-cell"><div class="flex flex-wrap gap-1"><span class="hms-chip tone-info">Analgesics</span><span class="hms-chip tone-info">Endocrine</span></div></td><td class="hms-cell"><div class="flex items-center gap-2 min-w-28"><svg class="ph-stock stock-ok" viewBox="0 0 100 6" preserveAspectRatio="none" role="img" aria-label="91 percent on time"><rect x="0" y="0" width="100" height="6" rx="3" fill="currentColor" opacity="0.15"></rect><rect x="0" y="0" width="91" height="6" rx="3" fill="currentColor"></rect></svg><span class="text-xs font-extrabold text-gray-900 tabular-nums w-9 text-right">91%</span></div></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">4</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">$231k</span></td><td class="hms-cell"><span class="badge badge-blue">Approved</span></td></tr><tr class="hms-row" data-row-id="SUP-04"><td class="hms-cell"><div class="flex items-center gap-3"><span class="hms-member-avatar ph-primary size-9! rounded-full!"><i class="icon-building-2 text-sm" aria-hidden="true"></i></span><div class="min-w-0"><p class="text-xs font-bold"><a class="text-primary hover:underline truncate" href="pharmacy-supplier-detail.html">Cencora</a></p><p class="text-[10px] text-gray-400">SUP-04 · Philadelphia, PA</p></div></div></td><td class="hms-cell"><p class="text-xs font-semibold text-gray-700 dark:text-gray-300">Piotr Zielinski</p><p class="text-[10px] text-gray-400">orders@cencora.com</p></td><td class="hms-cell"><div class="flex flex-wrap gap-1"><span class="hms-chip tone-info">Cardiovascular</span><span class="hms-chip tone-info">Gastrointestinal</span></div></td><td class="hms-cell"><div class="flex items-center gap-2 min-w-28"><svg class="ph-stock stock-low" viewBox="0 0 100 6" preserveAspectRatio="none" role="img" aria-label="88 percent on time"><rect x="0" y="0" width="100" height="6" rx="3" fill="currentColor" opacity="0.15"></rect><rect x="0" y="0" width="88" height="6" rx="3" fill="currentColor"></rect></svg><span class="text-xs font-extrabold text-gray-900 tabular-nums w-9 text-right">88%</span></div></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">1</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">$174k</span></td><td class="hms-cell"><span class="badge badge-blue">Approved</span></td></tr><tr class="hms-row" data-row-id="SUP-05"><td class="hms-cell"><div class="flex items-center gap-3"><span class="hms-member-avatar ph-primary size-9! rounded-full!"><i class="icon-building-2 text-sm" aria-hidden="true"></i></span><div class="min-w-0"><p class="text-xs font-bold"><a class="text-primary hover:underline truncate" href="pharmacy-supplier-detail.html">Morris &amp; Dickson</a></p><p class="text-[10px] text-gray-400">SUP-05 · Shreveport, LA</p></div></div></td><td class="hms-cell"><p class="text-xs font-semibold text-gray-700 dark:text-gray-300">Abby Lantz</p><p class="text-[10px] text-gray-400">sales@morrisdickson.com</p></td><td class="hms-cell"><div class="flex flex-wrap gap-1"><span class="hms-chip tone-info">Gastrointestinal</span><span class="hms-chip tone-info">Cardiovascular</span></div></td><td class="hms-cell"><div class="flex items-center gap-2 min-w-28"><svg class="ph-stock stock-low" viewBox="0 0 100 6" preserveAspectRatio="none" role="img" aria-label="82 percent on time"><rect x="0" y="0" width="100" height="6" rx="3" fill="currentColor" opacity="0.15"></rect><rect x="0" y="0" width="82" height="6" rx="3" fill="currentColor"></rect></svg><span class="text-xs font-extrabold text-gray-900 tabular-nums w-9 text-right">82%</span></div></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">2</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">$96k</span></td><td class="hms-cell"><span class="badge badge-blue">Approved</span></td></tr><tr class="hms-row" data-row-id="SUP-06"><td class="hms-cell"><div class="flex items-center gap-3"><span class="hms-member-avatar ph-primary size-9! rounded-full!"><i class="icon-building-2 text-sm" aria-hidden="true"></i></span><div class="min-w-0"><p class="text-xs font-bold"><a class="text-primary hover:underline truncate" href="pharmacy-supplier-detail.html">Henry Schein</a></p><p class="text-[10px] text-gray-400">SUP-06 · Melville, NY</p></div></div></td><td class="hms-cell"><p class="text-xs font-semibold text-gray-700 dark:text-gray-300">Tobias Grant</p><p class="text-[10px] text-gray-400">rx@henryschein.com</p></td><td class="hms-cell"><div class="flex flex-wrap gap-1"><span class="hms-chip tone-info">Respiratory</span></div></td><td class="hms-cell"><div class="flex items-center gap-2 min-w-28"><svg class="ph-stock stock-out" viewBox="0 0 100 6" preserveAspectRatio="none" role="img" aria-label="64 percent on time"><rect x="0" y="0" width="100" height="6" rx="3" fill="currentColor" opacity="0.15"></rect><rect x="0" y="0" width="64" height="6" rx="3" fill="currentColor"></rect></svg><span class="text-xs font-extrabold text-gray-900 tabular-nums w-9 text-right">64%</span></div></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">0</span></td><td class="hms-cell"><span class="text-xs font-bold text-gray-900 tabular-nums">$41k</span></td><td class="hms-cell"><span class="badge badge-amber">On Hold</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Supplier modal -->
+        <div id="sup-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none ph-scope" role="dialog" aria-modal="true" aria-labelledby="sm-title" tabindex="-1">
+            <div class="md:max-w-xl m-3 md:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center justify-between gap-3 pb-5 border-b border-border-color dark:border-neutral-700">
+                        <div class="flex items-center gap-3">
+                            <span class="size-11 rounded-2xl bg-teal-500/10 text-teal-500 flex items-center justify-center shrink-0"><i class="icon-truck text-xl" aria-hidden="true"></i></span>
+                            <div>
+                                <h2 id="sm-title" class="text-lg font-bold text-gray-900">Add Supplier</h2>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Registers a vendor for pharmacy procurement.</p>
+                            </div>
+                        </div>
+                        <button type="button" id="sm-close" aria-label="Close" data-hs-overlay="#sup-modal" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x" aria-hidden="true"></i></button>
+                    </div>
+                    <form id="sm-form" onsubmit="return false;" class="py-5 overflow-y-auto">
+                        <div class="form-grid">
+                            <div class="form-group"><label for="sm-name" class="form-label">Company Name</label><input id="sm-name" type="text" class="form-input" placeholder="McKesson"></div>
+                            <div class="form-group"><label for="sm-contact" class="form-label">Contact Person</label><input id="sm-contact" type="text" class="form-input" placeholder="Dana Whitcomb"></div>
+                            <div class="form-group"><label for="sm-email" class="form-label">Email</label><input id="sm-email" type="email" class="form-input" placeholder="orders@mckesson.com"></div>
+                            <div class="form-group"><label for="sm-phone" class="form-label">Phone</label><input id="sm-phone" type="tel" class="form-input" placeholder="(415) 983-8300"></div>
+                            <div class="form-group"><label for="sm-city" class="form-label">City</label><input id="sm-city" type="text" class="form-input" placeholder="Irving, TX"></div>
+                            <div class="form-group">
+                                <label for="sm-status" class="form-label">Status</label>
+                                <select id="sm-status" class="form-select"><option>Approved</option><option>Preferred</option><option>On Hold</option></select>
+                            </div>
+                            <div class="form-group col-span-2"><label for="sm-cats" class="form-label">Supply Categories</label><input id="sm-cats" type="text" class="form-input" placeholder="Antibiotics, Analgesics"></div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-border-color flex gap-2 justify-end">
+                            <button type="button" id="sm-cancel" data-hs-overlay="#sup-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                            <button type="button" id="sm-save" class="px-5 py-2 rounded-lg bg-teal-500 hover:bg-teal-600 text-white text-sm font-semibold">Save Supplier</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "pharmacy-suppliers"})
+    </body>
+</html>

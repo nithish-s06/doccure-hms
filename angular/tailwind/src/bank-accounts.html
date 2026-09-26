@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Bank Accounts — Dreams HMS"}) @@include('partials/header.html', {"page": "bank-accounts"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="bank-accounts">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search bank, account number..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Bank Accounts", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Bank Accounts</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage all bank accounts held by the hospital</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-credit-card text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">6</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Accounts</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$667,800.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Balance</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">4</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active Accounts</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Frozen Accounts</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Bank Accounts</span>
+                                <span class="text-xs text-gray-400 ml-auto">6 of 6</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Bank Name</th>
+                                            <th>Account Number</th>
+                                            <th>Type</th>
+                                            <th>Branch</th>
+                                            <th>Balance</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-medium text-gray-900"><a class="text-primary" href="bank-account-detail.html">First National Bank</a></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">XXXX-XXXX-4521</td><td class="text-gray-500 dark:text-gray-400">Checking</td><td class="text-gray-500 dark:text-gray-400">Downtown Branch</td><td class="font-semibold text-gray-900">$185,000.00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a class="text-primary" href="bank-account-detail.html">First National Bank</a></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">XXXX-XXXX-7734</td><td class="text-gray-500 dark:text-gray-400">Savings</td><td class="text-gray-500 dark:text-gray-400">Downtown Branch</td><td class="font-semibold text-gray-900">$320,000.00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a class="text-primary" href="bank-account-detail.html">Metro Community Bank</a></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">XXXX-XXXX-1198</td><td class="text-gray-500 dark:text-gray-400">Checking</td><td class="text-gray-500 dark:text-gray-400">Westside Branch</td><td class="font-semibold text-gray-900">$42,000.00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a class="text-primary" href="bank-account-detail.html">Union Trust Bank</a></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">XXXX-XXXX-8842</td><td class="text-gray-500 dark:text-gray-400">Savings</td><td class="text-gray-500 dark:text-gray-400">Central Branch</td><td class="font-semibold text-gray-900">$98,000.00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Frozen</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a class="text-primary" href="bank-account-detail.html">Metro Community Bank</a></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">XXXX-XXXX-2276</td><td class="text-gray-500 dark:text-gray-400">Checking</td><td class="text-gray-500 dark:text-gray-400">Westside Branch</td><td class="font-semibold text-gray-900">$15,600.00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a class="text-primary" href="bank-account-detail.html">First National Bank</a></td><td class="text-gray-500 dark:text-gray-400 font-mono text-sm">XXXX-XXXX-5590</td><td class="text-gray-500 dark:text-gray-400">Checking</td><td class="text-gray-500 dark:text-gray-400">Downtown Branch</td><td class="font-semibold text-gray-900">$7,200.00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Frozen</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "bank-accounts"})
+    </body>
+</html>

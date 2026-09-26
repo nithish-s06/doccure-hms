@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Refunds — Dreams HMS"}) @@include('partials/header.html', {"page": "refunds"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="refunds">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search refunds by patient, invoice ref..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Refunds", "parentUrl": "billing.html", "parent": "Billing"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Refunds</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Refund requests and processed refund records</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-rotate-ccw text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">6</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Refunds</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$2,335.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Refunded</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Processed</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Refunds</span>
+                                <span class="text-xs text-gray-400 ml-auto">6 of 6</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Refund ID</th>
+                                            <th>Patient</th>
+                                            <th>Original Invoice Ref</th>
+                                            <th>Amount</th>
+                                            <th>Reason</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-primary font-mono text-sm">#RFD-40001</td><td class="font-medium text-gray-900">Diego Fernandez</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10032</td><td class="font-semibold text-gray-900">$150.00</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Duplicate charge on lab test">Duplicate charge on lab test</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-02</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Processed</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm">#RFD-40002</td><td class="font-medium text-gray-900">Grace Kimani</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10041</td><td class="font-semibold text-gray-900">$320.00</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Cancelled procedure">Cancelled procedure</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Pending</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm">#RFD-40003</td><td class="font-medium text-gray-900">Marcus Webb</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10018</td><td class="font-semibold text-gray-900">$90.00</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Overpayment adjustment">Overpayment adjustment</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-28</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Processed</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm">#RFD-40004</td><td class="font-medium text-gray-900">Hana Suzuki</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10052</td><td class="font-semibold text-gray-900">$500.00</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Insurance covered charge already billed">Insurance covered charge already billed</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Pending</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm">#RFD-40005</td><td class="font-medium text-gray-900">Fatima Al-Sayed</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10058</td><td class="font-semibold text-gray-900">$1,200.00</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Billing error — wrong procedure code">Billing error — wrong procedure code</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-07</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Pending</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm">#RFD-40006</td><td class="font-medium text-gray-900">Owen Fitzgerald</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10025</td><td class="font-semibold text-gray-900">$75.00</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Partial refund on consultation fee">Partial refund on consultation fee</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-22</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Processed</span></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "refunds"})
+    </body>
+</html>

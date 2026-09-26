@@ -1,0 +1,53 @@
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-icon.png">
+
+<!-- Lucide Font CSS -->
+<link rel="stylesheet" href="assets/libs/lucide-static/font/lucide.css">
+
+<!-- Simplebar CSS -->
+<link rel="stylesheet" href="assets/libs/simplebar/simplebar.min.css">
+
+<!-- AOS CSS -->
+<link rel="stylesheet" href="assets/libs/aos/aos.css">
+
+@@if (['ambulance', 'ambulance-vehicles', 'ambulance-trips', 'ambulance-maintenance', 'appointment-requests', 'appointments', 'asset-tracking', 'attendance', 'billing', 'blood-bank', 'book-appointment', 'cancelled-appointments', 'diet', 'emergency', 'emergency-calls', 'follow-up-appointments', 'form-pickers', 'hr', 'icu', 'insurance', 'insurance-claims', 'pre-authorization', 'insurance-approvals', 'inventory-purchase-orders', 'leave-management', 'payroll', 'recruitment', 'reimbursements', 'inventory', 'laboratory', 'medical-records', 'operation-theater', 'patients', 'pharmacy', 'radiology', 'reports', 'stock-in', 'stock-out', 'stock-transfers', 'telemedicine', 'wards', 'income', 'expenses', 'transactions', 'accounts', 'notice-board', 'announcements', 'complaints', 'equipment', 'asset-maintenance', 'repairs', 'lab-tests', 'lab-test-categories', 'lab-test-requests', 'sample-collection', 'sample-tracking', 'lab-test-results', 'x-ray', 'mri', 'ct-scan', 'ultrasound', 'scan-requests', 'radiology-reports', 'medical-history', 'diagnoses', 'emr-prescriptions', 'allergies', 'progress-notes', 'emr-documents', 'invoices', 'payments', 'estimates', 'refunds', 'discounts', 'patient-family-members', 'support-tickets', 'blood-requests', 'blood-issue', 'blood-camps', 'nursing-dashboard', 'nursing-notes', 'vital-signs', 'medication-administration', 'care-plans', 'shift-reports', 'meal-planning', 'nutrition-assessment', 'dietician', 'calendar', 'todo', 'add-doctor', 'add-patient', 'admissions', 'appointment-detail', 'blood-donors', 'consultation-fees', 'consultation-history', 'discharges', 'doctor-availability', 'doctor-leave-requests', 'doctor-profile', 'doctor-schedule', 'doctors', 'icu-patients', 'ipd-patients', 'opd-patients', 'patient-appointments', 'patient-documents', 'patient-feedback', 'patient-insurance', 'patient-medical-history', 'patient-prescriptions', 'patient-visits', 'patient-vitals', 'scheduled-sessions', 'surgeon-profile', 'surgeons', 'waiting-room'].includes(page)) {
+<!-- Flatpickr CSS -->
+<link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
+}
+
+@@if (page === 'form-editors') {
+<!-- Quill CSS -->
+<link rel="stylesheet" href="assets/libs/quill/quill.snow.css">
+<link rel="stylesheet" href="assets/libs/quill/quill.bubble.css">
+}
+
+@@if (page === 'ui-dragula') {
+<!-- Dragula CSS -->
+<link rel="stylesheet" href="assets/libs/dragula/dragula.min.css">
+}
+
+@@if (page === 'ui-rangeslider') {
+<!-- noUiSlider CSS -->
+<link rel="stylesheet" href="assets/libs/nouislider/nouislider.min.css">
+}
+
+@@if (page === 'icon-fontawesome') {
+<!-- FontAwesome CSS -->
+<link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+}
+
+@@if (page === 'icon-phosphor') {
+<!-- Phosphor Icons CSS -->
+<link rel="stylesheet" href="assets/libs/phosphor-icons/duotone/style.css">
+}
+
+@@if (['icon-tabler', 'consultation-fees', 'consultation-history', 'doctor-availability-detail', 'doctor-availability', 'doctor-leave-requests', 'doctor-profile', 'doctor-schedule', 'emr-dashboard', 'emr-record-detail', 'scheduled-sessions', 'settings', 'specializations', 'surgeon-profile', 'telemedicine', 'waiting-room', 'ward-detail', 'wards'].includes(page)) {
+<!-- Tabler Icons CSS -->
+<link rel="stylesheet" href="assets/libs/tabler-icons/tabler-icons.min.css">
+}
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="assets/css/style.css">

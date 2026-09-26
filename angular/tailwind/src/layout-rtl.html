@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        @@include('partials/title-meta.html', {"title":"RTL Layout — Dreams HMS"}) @@include('partials/header.html', {"page": "layout-rtl"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="layout-rtl">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "RTL", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">RTL Layout</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">A right-to-left preview of the interface, for right-to-left language markets such as Arabic.</p>
+                            </div>
+                            <span class="inline-flex items-center gap-2 py-1.5 px-3 rounded-full bg-primary-transparent text-primary text-xs font-semibold">
+                                <i class="icon-languages text-sm"></i>
+                                RTL Preview
+                            </span>
+                        </div>
+
+                        <div class="card p-4 flex items-start gap-3" data-aos="fade-up" data-aos-delay="30">
+                            <div class="p-2.5 size-9 flex items-center justify-center bg-primary-transparent rounded-lg shrink-0">
+                                <i class="icon-info text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">How this layout works</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">This page sets <code class="px-1.5 py-0.5 rounded bg-gray-100 dark:bg-slate-800 text-[11px]">dir="rtl"</code> on the document, which flips text alignment and the overall reading direction. Only this page is affected — the rest of the app remains left-to-right.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-users text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">1,248</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">المرضى النشطون</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-calendar-check text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">86</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">مواعيد اليوم</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-bed text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">72%</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">إشغال الأسرة</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-stethoscope text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">64</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">الأطباء المناوبون</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card p-5" data-aos="fade-up" data-aos-delay="80">
+                            <h2 class="font-bold text-gray-900 mb-4">أحدث المرضى</h2>
+                            <div class="overflow-x-auto">
+                                <table class="data-table w-full">
+                                    <thead>
+                                        <tr><th>المريض</th><th>القسم</th><th>تاريخ الدخول</th><th>الحالة</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td class="font-medium text-gray-900">سارة كولمان</td><td>العناية المركزة</td><td>2024-12-06</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg bg-success/10 text-success">مستقرة</span></td></tr>
+                                        <tr><td class="font-medium text-gray-900">ميغيل توريس</td><td>الجناح العام ب</td><td>2024-12-05</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg bg-warning/10 text-warning">تحت المراقبة</span></td></tr>
+                                        <tr><td class="font-medium text-gray-900">أيكو تاناكا</td><td>جناح الولادة</td><td>2024-12-05</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg bg-success/10 text-success">مستقرة</span></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "layout-rtl"})
+    </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Form Editors — Dreams HMS"}) @@include('partials/header.html', {"page": "form-editors"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <!-- Page Header -->
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Form Editors</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Rich text editors for clinical notes, discharge summaries and templates</p>
+                            </div>
+                        </div>
+
+                        <!-- Snow Editor -->
+                        <div class="card" data-aos="fade-up">
+                            <div class="p-4 border-b border-border-color">
+                                <h2 class="font-semibold text-gray-900">Full Editor — Discharge Summary</h2>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Complete toolbar with headings, lists, links and formatting.</p>
+                            </div>
+                            <div class="p-5">
+                                <div id="editor-snow" class="min-h-[220px]">
+                                    <h2>Discharge Summary</h2>
+                                    <p>Patient <strong>Sarah Chen (PT-2026-00184)</strong> was admitted on 12 July 2026 with acute chest pain.</p>
+                                    <p>Condition stable at discharge. Follow-up scheduled in <em>two weeks</em>.</p>
+                                    <ul><li>Continue prescribed medication</li><li>Low-sodium diet</li><li>No strenuous activity for 6 weeks</li></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                            <!-- Simple Editor -->
+                            <div class="card" data-aos="fade-up">
+                                <div class="p-4 border-b border-border-color">
+                                    <h2 class="font-semibold text-gray-900">Simple Editor</h2>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Minimal toolbar for short clinical notes.</p>
+                                </div>
+                                <div class="p-5">
+                                    <div id="editor-simple" class="min-h-[160px]">
+                                        <p>Vitals within normal range. Patient responding well to treatment.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bubble Editor -->
+                            <div class="card" data-aos="fade-up" data-aos-delay="50">
+                                <div class="p-4 border-b border-border-color">
+                                    <h2 class="font-semibold text-gray-900">Bubble Editor</h2>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Select any text to reveal the inline toolbar.</p>
+                                </div>
+                                <div class="p-5">
+                                    <div id="editor-bubble" class="min-h-[160px]">
+                                        <p>Highlight any part of this text to reveal the floating toolbar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Read Only -->
+                        <div class="card" data-aos="fade-up">
+                            <div class="p-4 border-b border-border-color flex items-center justify-between">
+                                <div>
+                                    <h2 class="font-semibold text-gray-900">Read-Only View</h2>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Signed-off records are locked from further editing.</p>
+                                </div>
+                                <span class="badge badge-green">
+                                    <i class="icon-lock text-xs mr-1"></i>
+                                    Signed Off
+                                </span>
+                            </div>
+                            <div class="p-5">
+                                <div id="editor-readonly" class="min-h-[120px]">
+                                    <p><strong>Consultation Note — 14 July 2026</strong></p>
+                                    <p>Reviewed by Dr. Rajesh Kumar. Record signed off and locked.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Editor In A Form -->
+                        <div class="card" data-aos="fade-up">
+                            <div class="p-4 border-b border-border-color">
+                                <h2 class="font-semibold text-gray-900">Editor Inside A Form</h2>
+                            </div>
+                            <form class="p-5 space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="ed-title">Template Name</label>
+                                        <input type="text" id="ed-title" class="form-input" placeholder="e.g. Post-Operative Care Notes">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="ed-dept">Department</label>
+                                        <select id="ed-dept" class="form-select">
+                                            <option>Cardiology</option>
+                                            <option>Neurology</option>
+                                            <option>Surgery</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="form-label">Template Body</p>
+                                    <div id="editor-form" class="min-h-[160px]"></div>
+                                </div>
+                                <div class="flex items-center justify-end gap-3 pt-2">
+                                    <button type="reset" class="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-border-color text-gray-900 text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">Discard</button>
+                                    <button type="submit" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-colors">Save Template</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "form-editors"})
+    </body>
+</html>

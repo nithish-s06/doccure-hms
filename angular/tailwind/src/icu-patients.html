@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"ICU Patient Operations — Dreams HMS"}) @@include('partials/header.html', {"page": "icu-patients"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search ICU patients, MRN, bed..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="ip-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="ip-skeleton" class="space-y-4">
+                            <div class="ip-sk h-[168px] radius-override-100"></div>
+                            <div class="ip-sk h-[44px]"></div>
+                            <div class="grid grid-cols-2 md:grid-cols-5 gap-3"><div class="ip-sk h-[112px]"></div><div class="ip-sk h-[112px]"></div><div class="ip-sk h-[112px]"></div><div class="ip-sk h-[112px]"></div><div class="ip-sk h-[112px]"></div></div>
+                            <div class="ip-sk h-[360px] radius-override-100"></div>
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_380px] gap-4"><div class="ip-sk h-[420px]"></div><div class="ip-sk h-[420px]"></div></div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="ip-content" class="hidden space-y-4">
+
+                            <!-- ============ 1. OPERATIONS HEADER ============ -->
+                            <section class="ip-hero p-5 lg:p-6">
+                                <div class="ip-hgrid"></div>
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="ip-chip bg-[rgba(13,148,136,.18)] text-[#5eead4]"><span class="ip-dot ip-live bg-[#2dd4bf]"></span> OPERATIONS LIVE</span>
+                                            <span class="ip-chip bg-[rgba(220,38,38,.18)] text-[#fca5a5]"><i class="icon-alert-triangle text-[11px]"></i> 7 Critical</span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-[26px] font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-stethoscope text-teal-300"></i> ICU Patient Operations</h1>
+                                        <p class="text-sm text-slate-400 mt-1">Daily critical-care management &amp; clinical workflows · <span id="ip-clock" class="tabular-nums"></span></p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 justify-end">
+                                        <button data-modal="admit" class="ip-btn bg-teal-600 text-white hover:bg-teal-500"><i class="icon-user-plus"></i> Admit</button>
+                                        <button data-modal="emergency" class="ip-btn bg-rose-600 text-white hover:bg-rose-500"><i class="icon-alert-triangle"></i> Emergency</button>
+                                        <button data-modal="assignbed" class="ip-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-bed"></i> Allocate</button>
+                                        <button data-modal="transfer" class="ip-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-arrow-left-right"></i> Transfer</button>
+                                        <button data-modal="doctor" class="ip-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-stethoscope"></i> Assign Dr</button>
+                                        <button data-modal="export" class="ip-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    </div>
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-6 gap-3 mt-5">
+                                    <div class="ip-hbadge"><p class="text-[11px] text-slate-400">ICU Patients</p><p class="text-xl font-bold text-white" id="ip-h-total">26</p></div>
+                                    <div class="ip-hbadge"><p class="text-[11px] text-slate-400">Critical Cases</p><p class="text-xl font-bold text-rose-300" id="ip-h-crit">7</p></div>
+                                    <div class="ip-hbadge"><p class="text-[11px] text-slate-400">On Ventilator</p><p class="text-xl font-bold text-sky-300" id="ip-h-vent">15</p></div>
+                                    <div class="ip-hbadge"><p class="text-[11px] text-slate-400">Isolation</p><p class="text-xl font-bold text-slate-200" id="ip-h-iso">4</p></div>
+                                    <div class="ip-hbadge"><p class="text-[11px] text-slate-400">Available Beds</p><p class="text-xl font-bold text-emerald-300" id="ip-h-free">6</p></div>
+                                    <div class="ip-hbadge"><p class="text-[11px] text-slate-400">Avg ICU Stay</p><p class="text-xl font-bold text-white">6.4<span class="text-xs text-slate-400"> d</span></p></div>
+                                </div>
+                            </section>
+
+                            <!-- ============ 2. ALERT RIBBON ============ -->
+                            <section id="ip-ribbonwrap" class="ip-card ip-ribbon px-3 py-2 flex items-center gap-3">
+                                <span class="ip-chip flex-none bg-[color-mix(in_srgb,#dc2626_13%,transparent)] text-[#dc2626]"><span class="ip-dot ip-live bg-[#dc2626]"></span> ALERTS</span>
+                                <div class="ip-seg flex-none" id="ip-alertfilter"><button data-sev="all" class="on">All</button><button data-sev="high">Critical</button><button data-sev="med">Warning</button><button data-sev="ok">Info</button></div>
+                                <div class="ip-ribbon flex-1"><div class="ip-ribbon-track" id="ip-ribbon"></div></div>
+                                <button data-dismiss-alerts class="flex-none w-7 h-7 rounded-lg ip-mut hover:bg-[var(--ip-hover)] flex items-center justify-center" title="Dismiss"><i class="icon-x"></i></button>
+                            </section>
+
+                            <!-- ============ 3. ACUITY BOARD ============ -->
+                            <section id="ip-acuity" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3"></section>
+
+                            <!-- ============ 4. INTERACTIVE ICU BED WORKSPACE ============ -->
+                            <section class="ip-card p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                                    <div class="flex items-center gap-2.5"><span class="ip-iconbadge w-9 h-9"><i class="icon-layout-grid"></i></span><div><h2 class="text-base font-bold ip-head">ICU Bed Workspace</h2><p class="text-xs ip-mut">Click a bed to select it · hover to preview</p></div></div>
+                                    <div class="flex flex-wrap items-center gap-2.5">
+                                        <div class="relative"><i class="icon-search absolute left-2.5 top-1/2 -translate-y-1/2 ip-mut text-sm"></i><input aria-label="Filter beds..." id="ip-bedsearch" class="ip-in !pl-8 !py-1.5 !w-44" placeholder="Filter beds..."></div>
+                                        <div class="ip-seg" id="ip-zonetabs"></div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-3 text-[11px] mb-4" id="ip-bedlegend"></div>
+                                <div id="ip-floor" class="space-y-5"></div>
+                            </section>
+
+                            <!-- ============ 7. MEDICATION & INFUSION ============ -->
+                            <section class="ip-card p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                                    <h2 class="text-base font-bold ip-head flex items-center gap-2"><i class="icon-syringe ip-hicon"></i> Medication &amp; Infusion Center</h2>
+                                    <div class="ip-seg" id="ip-medtabs"><button data-medtab="All" class="on">All</button><button data-medtab="Running">Running</button><button data-medtab="Upcoming">Upcoming</button><button data-medtab="Completed">Completed</button><button data-medtab="Missed">Missed</button></div>
+                                </div>
+                                <div id="ip-meds" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+                            </section>
+
+                            <!-- ============ 8. CLINICAL TASKS KANBAN ============ -->
+                            <section class="ip-card p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold ip-head flex items-center gap-2"><i class="icon-list-checks ip-hicon"></i> Today's Clinical Tasks</h2><span class="ip-npill">Drag to move</span></div>
+                                <div id="ip-kanban" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3"></div>
+                            </section>
+
+                            <!-- ============ 9+11. DOCTOR ORDERS + CARE TEAM ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                                <section class="ip-card p-5">
+                                    <h2 class="text-base font-bold ip-head flex items-center gap-2 mb-4"><i class="icon-clipboard-list ip-hicon"></i> Doctor Orders Center</h2>
+                                    <div id="ip-orders" class="space-y-2.5"></div>
+                                </section>
+                                <section class="ip-card p-5">
+                                    <h2 class="text-base font-bold ip-head flex items-center gap-2 mb-4"><i class="icon-users ip-hicon"></i> Care Team Workspace</h2>
+                                    <div id="ip-team" class="space-y-3"></div>
+                                </section>
+                            </div>
+
+                            <!-- ============ 15. RECENT ICU ACTIVITIES ============ -->
+                            <section class="ip-card p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold ip-head flex items-center gap-2"><i class="icon-radar ip-hicon"></i> Recent ICU Activities</h2><span class="ip-chip bg-[color-mix(in_srgb,#15803d_14%,transparent)] text-[#15803d]"><span class="ip-dot ip-live bg-[#22c55e]"></span> Live</span></div>
+                                <div id="ip-activities" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+                            </section>
+
+                            <!-- BULK BAR -->
+                            <div class="ip-bulk items-center gap-2 px-4 py-2.5 flex-wrap">
+                                <span class="text-sm font-semibold"><span id="ip-selcount">0</span> selected</span>
+                                <div class="flex flex-wrap gap-1.5 ml-auto text-xs">
+                                    <button data-bulk="doctor" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-stethoscope"></i> Doctor</button>
+                                    <button data-bulk="nurse" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-user-check"></i> Nurse</button>
+                                    <button data-bulk="transfer" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-arrow-left-right"></i> Transfer</button>
+                                    <button data-bulk="status" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-refresh-cw"></i> Status</button>
+                                    <button data-bulk="print" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-printer"></i> Print</button>
+                                    <button data-bulk="export" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    <button data-bulk="archive" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-archive"></i> Archive</button>
+                                    <button data-bulk="delete" class="px-2.5 py-1.5 rounded-md bg-rose-600/80 hover:bg-rose-600"><i class="icon-trash-2"></i> Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="ip-modalhost"></div>
+        <div id="ip-menuhost"></div>
+
+        @@include('partials/script.html', {"page": "icu-patients"})
+    </body>
+</html>

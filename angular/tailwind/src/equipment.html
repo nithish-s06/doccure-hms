@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Equipment Registry — Dreams HMS"}) @@include('partials/header.html', {"page": "equipment"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="equipment">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search equipment by name, asset tag..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Equipment Registry", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Equipment Registry</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Track hospital equipment assets, warranty and status</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-wrench text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">10</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Equipment</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">7</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Operational</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Under Repair</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-shield text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">1</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Warranty Expiring Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Equipment</span>
+                                <span class="text-xs text-gray-400 ml-auto">10 of 10</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Asset Tag</th>
+                                            <th>Equipment Name</th>
+                                            <th>Category</th>
+                                            <th>Department/Location</th>
+                                            <th>Purchase Date</th>
+                                            <th>Warranty Expiry</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-mono text-sm text-gray-500 dark:text-gray-400"><a href="equipment-detail.html" class="text-primary hover:underline">EQ-1001</a></td><td class="font-medium text-gray-900">MRI Scanner</td><td class="text-gray-600 dark:text-gray-300">Diagnostic</td><td class="text-gray-600 dark:text-gray-300">Radiology</td><td class="text-gray-500 dark:text-gray-400 text-sm">2021-03-10</td><td class="text-gray-500 dark:text-gray-400 text-sm">2025-03-10</td><td><span class="badge badge-success">Operational</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-500 dark:text-gray-400"><a href="equipment-detail.html" class="text-primary hover:underline">EQ-1002</a></td><td class="font-medium text-gray-900">Ventilator</td><td class="text-gray-600 dark:text-gray-300">Life Support</td><td class="text-gray-600 dark:text-gray-300">ICU</td><td class="text-gray-500 dark:text-gray-400 text-sm">2022-06-15</td><td class="text-gray-500 dark:text-gray-400 text-sm">2025-01-05</td><td><span class="badge badge-success">Operational</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-500 dark:text-gray-400"><a href="equipment-detail.html" class="text-primary hover:underline">EQ-1003</a></td><td class="font-medium text-gray-900">Surgical Laser</td><td class="text-gray-600 dark:text-gray-300">Surgical</td><td class="text-gray-600 dark:text-gray-300">Operation Theater 1</td><td class="text-gray-500 dark:text-gray-400 text-sm">2020-11-20</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-30</td><td><span class="badge badge-warning">Under Repair</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-500 dark:text-gray-400"><a href="equipment-detail.html" class="text-primary hover:underline">EQ-1004</a></td><td class="font-medium text-gray-900">Server Rack</td><td class="text-gray-600 dark:text-gray-300">IT</td><td class="text-gray-600 dark:text-gray-300">Server Room</td><td class="text-gray-500 dark:text-gray-400 text-sm">2023-01-12</td><td class="text-gray-500 dark:text-gray-400 text-sm">2026-01-12</td><td><span class="badge badge-success">Operational</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-500 dark:text-gray-400"><a href="equipment-detail.html" class="text-primary hover:underline">EQ-1005</a></td><td class="font-medium text-gray-900">Patient Bed</td><td class="text-gray-600 dark:text-gray-300">Furniture</td><td class="text-gray-600 dark:text-gray-300">General Ward</td><td class="text-gray-500 dark:text-gray-400 text-sm">2019-08-05</td><td class="text-gray-500 dark:text-gray-400 text-sm">2023-08-05</td><td><span class="badge badge-danger">Decommissioned</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-500 dark:text-gray-400"><a href="equipment-detail.html" class="text-primary hover:underline">EQ-1006</a></td><td class="font-medium text-gray-900">ECG Machine</td><td class="text-gray-600 dark:text-gray-300">Diagnostic</td><td class="text-gray-600 dark:text-gray-300">Cardiology</td><td class="text-gray-500 dark:text-gray-400 text-sm">2022-09-18</td><td class="text-gray-500 dark:text-gray-400 text-sm">2025-02-14</td><td><span class="badge badge-success">Operational</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-500 dark:text-gray-400"><a href="equipment-detail.html" class="text-primary hover:underline">EQ-1007</a></td><td class="font-medium text-gray-900">Anesthesia Machine</td><td class="text-gray-600 dark:text-gray-300">Surgical</td><td class="text-gray-600 dark:text-gray-300">Operation Theater 2</td><td class="text-gray-500 dark:text-gray-400 text-sm">2021-12-01</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-25</td><td><span class="badge badge-success">Operational</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-500 dark:text-gray-400"><a href="equipment-detail.html" class="text-primary hover:underline">EQ-1008</a></td><td class="font-medium text-gray-900">Defibrillator</td><td class="text-gray-600 dark:text-gray-300">Life Support</td><td class="text-gray-600 dark:text-gray-300">Emergency Ward</td><td class="text-gray-500 dark:text-gray-400 text-sm">2023-04-22</td><td class="text-gray-500 dark:text-gray-400 text-sm">2026-04-22</td><td><span class="badge badge-success">Operational</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-500 dark:text-gray-400"><a href="equipment-detail.html" class="text-primary hover:underline">EQ-1009</a></td><td class="font-medium text-gray-900">X-Ray Machine</td><td class="text-gray-600 dark:text-gray-300">Diagnostic</td><td class="text-gray-600 dark:text-gray-300">Radiology</td><td class="text-gray-500 dark:text-gray-400 text-sm">2020-05-30</td><td class="text-gray-500 dark:text-gray-400 text-sm">2025-01-20</td><td><span class="badge badge-warning">Under Repair</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-500 dark:text-gray-400"><a href="equipment-detail.html" class="text-primary hover:underline">EQ-1010</a></td><td class="font-medium text-gray-900">Nurse Workstation PC</td><td class="text-gray-600 dark:text-gray-300">IT</td><td class="text-gray-600 dark:text-gray-300">General Ward</td><td class="text-gray-500 dark:text-gray-400 text-sm">2023-07-10</td><td class="text-gray-500 dark:text-gray-400 text-sm">2026-07-10</td><td><span class="badge badge-success">Operational</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "equipment"})
+    </body>
+</html>

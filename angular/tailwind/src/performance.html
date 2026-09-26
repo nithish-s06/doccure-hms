@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Performance — Dreams HMS"}) @@include('partials/header.html', {"page": "performance"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="performance">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search ..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Performance", "parentUrl": "hr.html", "parent": "Employees"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Performance</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Track staff performance reviews and ratings</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-file-text text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Reviews</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">4</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Completed</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-award text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3.9</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Avg Score</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Overdue</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Reviews</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Employee</th>
+                                            <th>Review Period</th>
+                                            <th>Score</th>
+                                            <th>Reviewer</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+<tr><td class="font-medium text-gray-900">Priya Sharma</td><td class="text-gray-600 dark:text-gray-300">Q4 2024</td><td class="text-gray-600 dark:text-gray-300">4.5/5</td><td class="text-gray-600 dark:text-gray-300">Dr. Alan Whitmore</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Completed</span></td></tr>
+<tr><td class="font-medium text-gray-900">Bruno Castellanos</td><td class="text-gray-600 dark:text-gray-300">Q4 2024</td><td class="text-gray-600 dark:text-gray-300">3.8/5</td><td class="text-gray-600 dark:text-gray-300">Ms. Colette Fenn</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Completed</span></td></tr>
+<tr><td class="font-medium text-gray-900">Yuki Tanabe</td><td class="text-gray-600 dark:text-gray-300">Q4 2024</td><td class="text-gray-600 dark:text-gray-300">—</td><td class="text-gray-600 dark:text-gray-300">Dr. Renata Voss</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Scheduled</span></td></tr>
+<tr><td class="font-medium text-gray-900">Esteban Cruz</td><td class="text-gray-600 dark:text-gray-300">Q3 2024</td><td class="text-gray-600 dark:text-gray-300">2.9/5</td><td class="text-gray-600 dark:text-gray-300">Dr. Wesley Cho</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Overdue</span></td></tr>
+<tr><td class="font-medium text-gray-900">Nadia Okafor</td><td class="text-gray-600 dark:text-gray-300">Q4 2024</td><td class="text-gray-600 dark:text-gray-300">4.9/5</td><td class="text-gray-600 dark:text-gray-300">Dr. Alan Whitmore</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Completed</span></td></tr>
+<tr><td class="font-medium text-gray-900">Felix Granger</td><td class="text-gray-600 dark:text-gray-300">Q4 2024</td><td class="text-gray-600 dark:text-gray-300">—</td><td class="text-gray-600 dark:text-gray-300">Dr. Samuel Ortiz</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Scheduled</span></td></tr>
+<tr><td class="font-medium text-gray-900">Sophie Lindqvist</td><td class="text-gray-600 dark:text-gray-300">Q3 2024</td><td class="text-gray-600 dark:text-gray-300">3.2/5</td><td class="text-gray-600 dark:text-gray-300">Ms. Colette Fenn</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Overdue</span></td></tr>
+<tr><td class="font-medium text-gray-900">Ravi Chandran</td><td class="text-gray-600 dark:text-gray-300">Q4 2024</td><td class="text-gray-600 dark:text-gray-300">4.1/5</td><td class="text-gray-600 dark:text-gray-300">Dr. Priyanka Rao</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Completed</span></td></tr>
+</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "performance"})
+    </body>
+</html>

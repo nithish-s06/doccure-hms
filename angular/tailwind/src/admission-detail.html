@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Admission Details — Dreams HMS"}) @@include('partials/header.html', {"page": "admission-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="admission-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="amd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Admission Details", "parentUrl": "admissions.html", "parent": "Admissions"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="amd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="amd-hero-ico"><i class="icon-user-plus"></i></div>
+                                    <div class="min-w-0">
+                                        <p class="amd-kicker">Patient Admission</p>
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="amd-patient-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">James Morrison</h1>
+                                            <span class="amd-hbadge"><span class="amd-dot"></span><span id="amd-hero-status-text">Admitted</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="amd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="amd-hero-id">ADM-0001</span></span>
+                                            <span class="amd-hmeta"><i class="icon-building-2 text-[13px] text-sky-300"></i><span id="amd-hero-dept">Cardiology</span></span>
+                                            <span class="amd-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i><span id="amd-hero-doctor">Dr. Chen</span></span>
+                                            <span class="amd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Admitted <span>2024-12-06 09:20</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 amd-actions-print-hide">
+                                    <button type="button" class="amd-btn amd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="admissions.html" class="amd-btn amd-btn-primary"><i class="icon-arrow-left"></i>Back to Admissions</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="amd-grid">
+                            <div class="amd-vital amd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-building-2"></i></span>
+                                    <span class="amd-chip">Dept</span>
+                                </div>
+                                <p id="amd-stat-dept" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Cardiology</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Department</p>
+                            </div>
+                            <div class="amd-vital amd-c-indigo">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-stethoscope"></i></span>
+                                    <span class="amd-chip">Doctor</span>
+                                </div>
+                                <p id="amd-stat-doctor" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Dr. Chen</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Attending Physician</p>
+                            </div>
+                            <div class="amd-vital amd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-bed"></i></span>
+                                    <span class="amd-chip">Ward</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">204-B</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">General 2F</p>
+                            </div>
+                            <div class="amd-vital amd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-activity"></i></span>
+                                    <span class="amd-chip">Status</span>
+                                </div>
+                                <span id="amd-stat-status" class="mt-3 inline-flex w-fit items-center px-3 py-1.5 rounded-lg text-sm font-extrabold text-purple bg-purple/10">Admitted</span>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Admission Status</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="amd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Admission workflow -->
+                                <div class="amd-surface">
+                                    <div class="amd-head">
+                                        <span class="ico"><i class="icon-list"></i></span>
+                                        <h2 class="amd-title">Admission Workflow</h2>
+                                    </div>
+                                    <div class="amd-tl p-5">
+                                        <div class="amd-tl-item done"><span class="amd-tl-node"><i class="icon-user-plus"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Registered</p><p class="text-xs text-gray-500 dark:text-gray-400">2024-12-06 · 09:20</p></div>
+                                        <div class="amd-tl-item done"><span class="amd-tl-node"><i class="icon-shield-check"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Insurance Verified</p><p class="text-xs text-gray-500 dark:text-gray-400">2024-12-06</p></div>
+                                        <div class="amd-tl-item done"><span class="amd-tl-node"><i class="icon-bed"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Bed Assigned · 204-B</p><p class="text-xs text-gray-500 dark:text-gray-400">2024-12-06</p></div>
+                                        <div class="amd-tl-item current"><span class="amd-tl-node"><i class="icon-badge-check"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Admitted</p><p class="text-xs text-gray-500 dark:text-gray-400">2024-12-06</p></div>
+                                    </div>
+                                </div>
+
+                                <!-- Admission information -->
+                                <div class="amd-surface">
+                                    <div class="amd-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="amd-title">Admission Information</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="amd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span id="amd-info-patient" class="v">James Morrison</span></div>
+                                        <div class="amd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Admission ID</span><span id="amd-info-id" class="v">ADM-0001</span></div>
+                                        <div class="amd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Department</span><span id="amd-info-dept" class="v">Cardiology</span></div>
+                                        <div class="amd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Doctor</span><span id="amd-info-doctor" class="v">Dr. Chen</span></div>
+                                        <div class="amd-kv"><span class="k"><i class="icon-layout-grid text-[13px]"></i>Ward</span><span class="v">General 2F</span></div>
+                                        <div class="amd-kv"><span class="k"><i class="icon-door-open text-[13px]"></i>Room / Bed</span><span class="v">204 / B</span></div>
+                                        <div class="amd-kv"><span class="k"><i class="icon-tag text-[13px]"></i>Admission Type</span><span class="v">Scheduled</span></div>
+                                        <div class="amd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Admission Date</span><span class="v">2024-12-06 · 09:20</span></div>
+                                        <div class="amd-kv"><span class="k"><i class="icon-shield-check text-[13px]"></i>Insurance</span><span class="v">Verified</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- Admission notes -->
+                                <div class="amd-surface">
+                                    <div class="amd-head">
+                                        <span class="ico"><i class="icon-file-text"></i></span>
+                                        <h2 class="amd-title">Admission Notes</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Elective cardiac catheterization admission. NPO after midnight; baseline ECG and labs drawn on arrival. Monitor for chest pain and vitals every 4 hours post-procedure.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 amd-sidebar">
+                                <!-- Attending doctor -->
+                                <div class="amd-surface amd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Attending Doctor</p>
+                                    <h3 id="amd-side-doctor-name" class="mt-1 text-lg font-extrabold">Dr. Chen</h3>
+                                    <p id="amd-side-doctor-dept" class="text-sm text-white/80 mt-0.5">Cardiology</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="amd-hmeta"><i class="icon-phone-call text-[12px]"></i>Contact Doctor</span>
+                                    </div>
+                                </div>
+
+                                <!-- Bed / ward details -->
+                                <div class="amd-surface p-5">
+                                    <h3 class="amd-title mb-3">Bed &amp; Ward</h3>
+                                    <div class="amd-kv"><span class="k"><i class="icon-layout-grid text-[13px]"></i>Ward</span><span class="v">General 2F</span></div>
+                                    <div class="amd-kv"><span class="k"><i class="icon-door-open text-[13px]"></i>Room</span><span class="v">204</span></div>
+                                    <div class="amd-kv"><span class="k"><i class="icon-bed text-[13px]"></i>Bed</span><span class="v">B</span></div>
+                                    <div class="amd-kv"><span class="k"><i class="icon-shield-check text-[13px]"></i>Insurance</span><span class="v">Verified</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="amd-surface p-5 space-y-2.5">
+                                    <h3 class="amd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="amd-btn amd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="admissions.html" class="amd-btn amd-btn-solid w-full justify-start"><i class="icon-list"></i>All Admissions</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "admission-detail"})
+    </body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Consultation Details — Dreams HMS"}) @@include('partials/header.html', {"page": "consultation-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="consultation-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="cnd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Consultation Details", "parentUrl": "consultation-history.html", "parent": "Consultation History"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="cnd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="cnd-hero-ico"><i class="icon-stethoscope"></i></div>
+                                    <div class="min-w-0">
+                                        <p class="cnd-kicker">Consultation Record</p>
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Ravi Kumar</h1>
+                                            <span class="cnd-hbadge"><span class="cnd-dot"></span>Follow-up</span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="cnd-hmeta"><i class="icon-hash text-[13px] text-sky-300"></i>#CN-7001</span>
+                                            <span class="cnd-hmeta"><i class="icon-user text-[13px] text-indigo-300"></i>Dr. Sarah Roberts</span>
+                                            <span class="cnd-hmeta"><i class="icon-building-2 text-[13px] text-violet-300"></i>Cardiology</span>
+                                            <span class="cnd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>17 Jul 2026 · 10:00 AM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 cnd-actions-print-hide">
+                                    <button type="button" class="cnd-btn cnd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="consultation-history.html" class="cnd-btn cnd-btn-primary"><i class="icon-arrow-left"></i>Back to History</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="cnd-grid">
+                            <div class="cnd-vital cnd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-user"></i></span>
+                                    <span class="cnd-chip">Type</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">In-person</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Consultation Type</p>
+                            </div>
+                            <div class="cnd-vital cnd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-clock"></i></span>
+                                    <span class="cnd-chip">Duration</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">24 min</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Session Duration</p>
+                            </div>
+                            <div class="cnd-vital cnd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-repeat"></i></span>
+                                    <span class="cnd-chip">Follow-up</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">24 Jul 2026</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Next Follow-up</p>
+                            </div>
+                            <div class="cnd-vital cnd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-activity"></i></span>
+                                    <span class="cnd-chip">Status</span>
+                                </div>
+                                <span class="mt-3 inline-flex w-fit items-center px-3 py-1.5 rounded-lg text-sm font-extrabold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">Follow-up</span>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Status</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="cnd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Clinical summary -->
+                                <div class="cnd-surface">
+                                    <div class="cnd-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="cnd-title">Clinical Summary</h2>
+                                    </div>
+                                    <div class="p-5 space-y-4">
+                                        <div>
+                                            <p class="text-xs font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1.5">Chief Complaint</p>
+                                            <p class="text-sm text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-slate-800 rounded-lg p-3">Presenting with symptoms related to stable angina; onset gradual over the past week.</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1.5">Diagnosis</p>
+                                            <div class="p-3 rounded-xl bg-sky-50 dark:bg-sky-900/20 border border-sky-100 dark:border-sky-900/40">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white">Stable angina</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">ICD-10 coded · confirmed</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1.5">Clinical Findings</p>
+                                            <div class="flex flex-wrap gap-1.5">
+                                                <span class="cnd-tag">BP 130/85</span>
+                                                <span class="cnd-tag">HR 78 bpm</span>
+                                                <span class="cnd-tag">Temp 98.6°F</span>
+                                                <span class="cnd-tag">SpO₂ 98%</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1.5">Treatment Plan &amp; Follow-up</p>
+                                            <p class="text-sm text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-slate-800 rounded-lg p-3">Continue medication, lifestyle advice given. Follow-up scheduled for <strong class="text-gray-900 dark:text-white">24 Jul 2026</strong>.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Prescriptions & orders -->
+                                <div class="cnd-surface">
+                                    <div class="cnd-head">
+                                        <span class="ico"><i class="icon-pill"></i></span>
+                                        <h2 class="cnd-title">Prescriptions &amp; Orders</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <p class="text-xs font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">Prescriptions</p>
+                                        <div class="cnd-rx"><i class="icon-pill text-pink-500"></i><span class="text-sm font-bold text-gray-900 dark:text-white flex-1">Amlodipine 5mg</span><span class="text-xs text-gray-500 dark:text-gray-400">1-0-0 · 30 days</span></div>
+                                        <div class="cnd-rx"><i class="icon-pill text-pink-500"></i><span class="text-sm font-bold text-gray-900 dark:text-white flex-1">Atorvastatin 10mg</span><span class="text-xs text-gray-500 dark:text-gray-400">0-0-1 · 30 days</span></div>
+                                        <div class="grid grid-cols-2 gap-3 mt-4">
+                                            <div class="p-3 rounded-xl border border-border-color">
+                                                <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Lab Orders</p>
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white">CBC, Lipid Profile</p>
+                                            </div>
+                                            <div class="p-3 rounded-xl border border-border-color">
+                                                <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Radiology</p>
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white">ECG, Echo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Consultation timeline -->
+                                <div class="cnd-surface">
+                                    <div class="cnd-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="cnd-title">Consultation Workflow</h2>
+                                    </div>
+                                    <div class="cnd-tl p-5">
+                                        <div class="cnd-tl-item done">
+                                            <span class="cnd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Appointment Scheduled</p>
+                                        </div>
+                                        <div class="cnd-tl-item done">
+                                            <span class="cnd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Patient Check-in</p>
+                                        </div>
+                                        <div class="cnd-tl-item done">
+                                            <span class="cnd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Vitals Recorded</p>
+                                        </div>
+                                        <div class="cnd-tl-item done">
+                                            <span class="cnd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Consultation Started</p>
+                                        </div>
+                                        <div class="cnd-tl-item done">
+                                            <span class="cnd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Diagnosis Completed</p>
+                                        </div>
+                                        <div class="cnd-tl-item done">
+                                            <span class="cnd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Prescription Generated</p>
+                                        </div>
+                                        <div class="cnd-tl-item done">
+                                            <span class="cnd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Follow-up Scheduled</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 cnd-sidebar">
+                                <!-- Patient -->
+                                <div class="cnd-surface cnd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Patient</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Ravi Kumar</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">52 yrs · Returning patient</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="cnd-hmeta"><i class="icon-file-text text-[12px]"></i>View Patient Profile</span>
+                                    </div>
+                                </div>
+
+                                <!-- Consultation key-value card -->
+                                <div class="cnd-surface p-5">
+                                    <h3 class="cnd-title mb-3">Consultation Details</h3>
+                                    <div class="cnd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Consultation ID</span><span class="v">CN-7001</span></div>
+                                    <div class="cnd-kv"><span class="k"><i class="icon-user-round text-[13px]"></i>Doctor</span><span class="v">Dr. Sarah Roberts</span></div>
+                                    <div class="cnd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Department</span><span class="v">Cardiology</span></div>
+                                    <div class="cnd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date</span><span class="v">17 Jul 2026</span></div>
+                                    <div class="cnd-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Status</span><span class="v">Follow-up</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="cnd-surface p-5 space-y-2.5">
+                                    <h3 class="cnd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="cnd-btn cnd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="consultation-history.html" class="cnd-btn cnd-btn-solid w-full justify-start"><i class="icon-list"></i>All Consultations</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "consultation-detail"})
+    </body>
+</html>

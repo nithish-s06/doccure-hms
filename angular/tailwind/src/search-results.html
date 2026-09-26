@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Search Results — Dreams HMS"}) @@include('partials/header.html', {"page": "search-results"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="search-results">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search patients, appointments, doctors..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-4xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Search Results", "parentUrl": "", "parent": ""})
+
+                        <div data-aos="fade-up">
+                            <h1 class="text-2xl font-bold text-gray-900">Search Results</h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Searching across patients, appointments, doctors, invoices and more</p>
+                        </div>
+
+                        <div class="relative" data-aos="fade-up" data-aos-delay="50">
+                            <i class="icon-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input aria-label="Search everything..." type="text" value="morrison" placeholder="Search everything..." readonly class="w-full pl-11 pr-4 py-3 rounded-xl border border-border-color bg-white dark:bg-slate-800 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+
+                        <div class="flex items-center justify-between" data-aos="fade-up" data-aos-delay="75">
+                            <p class="text-xs text-gray-500 dark:text-gray-400"><span class="font-semibold text-gray-900">4</span> results found</p>
+                        </div>
+
+                        <div class="space-y-3" data-aos="fade-up" data-aos-delay="100">
+                            <a href="patient-profile.html" class="card p-4 flex items-start gap-4 hover:shadow-md transition-shadow block"><span class="px-2 py-1 rounded-lg text-xs font-semibold shrink-0 text-primary bg-primary/10">Patient</span><div class="min-w-0"><p class="text-sm font-semibold text-gray-900">James Morrison</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Patient #4021 · Cardiology · Last visit 12 Aug 2026</p></div><i class="icon-chevron-right text-gray-300 ml-auto shrink-0"></i></a>
+                            <a href="appointments.html" class="card p-4 flex items-start gap-4 hover:shadow-md transition-shadow block"><span class="px-2 py-1 rounded-lg text-xs font-semibold shrink-0 text-success bg-success/10">Appointment</span><div class="min-w-0"><p class="text-sm font-semibold text-gray-900">Follow-up — James Morrison</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Scheduled with Dr. Angela Reyes on 20 Aug 2026, 10:30 AM</p></div><i class="icon-chevron-right text-gray-300 ml-auto shrink-0"></i></a>
+                            <a href="billing.html" class="card p-4 flex items-start gap-4 hover:shadow-md transition-shadow block"><span class="px-2 py-1 rounded-lg text-xs font-semibold shrink-0 text-warning bg-warning/10">Invoice</span><div class="min-w-0"><p class="text-sm font-semibold text-gray-900">INV-3391 — James Morrison</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">$1,240.00 · Paid on 14 Aug 2026</p></div><i class="icon-chevron-right text-gray-300 ml-auto shrink-0"></i></a>
+                            <a href="patient-profile.html" class="card p-4 flex items-start gap-4 hover:shadow-md transition-shadow block"><span class="px-2 py-1 rounded-lg text-xs font-semibold shrink-0 text-primary bg-primary/10">Patient</span><div class="min-w-0"><p class="text-sm font-semibold text-gray-900">Rachel Morrison-Kim</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Patient #4108 · Orthopedics · Last visit 03 Aug 2026</p></div><i class="icon-chevron-right text-gray-300 ml-auto shrink-0"></i></a>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "search-results"})
+    </body>
+</html>

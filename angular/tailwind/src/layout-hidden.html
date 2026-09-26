@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Hidden Menu Layout — Dreams HMS"}) @@include('partials/header.html', {"page": "layout-hidden"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="layout-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Hidden Menu", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Hidden Menu Layout</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">The sidebar is fully off-canvas by default, giving the content area full width until you explicitly open the menu.</p>
+                            </div>
+                            <button id="menu_btn" class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                <i class="icon-menu"></i>
+                                Show Menu
+                            </button>
+                        </div>
+
+                        <div class="card p-4 flex items-start gap-3" data-aos="fade-up" data-aos-delay="30">
+                            <div class="p-2.5 size-9 flex items-center justify-center bg-primary-transparent rounded-lg shrink-0">
+                                <i class="icon-panel-left-close text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">How this layout works</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Click <strong>Show Menu</strong> to slide the sidebar in — it reuses the same <code class="px-1.5 py-0.5 rounded bg-gray-100 dark:bg-slate-800 text-[11px]">slide-nav</code> toggle and overlay the mobile menu already uses, just applied at desktop width too. Click the overlay or the close icon to hide it again.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-flask-conical text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">214</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Lab Tests Today</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-pill text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">1,032</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Prescriptions Filled</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-ambulance text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">9</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Ambulances Active</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-receipt text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$48,920</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Revenue Today</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "layout-hidden"})
+    </body>
+</html>

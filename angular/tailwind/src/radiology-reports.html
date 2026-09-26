@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Radiology Reports — Dreams HMS"}) @@include('partials/header.html', {"page": "radiology-reports"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="radiology-reports">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search request ID, patient, radiologist..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Reports", "parentUrl": "radiology.html", "parent": "Radiology"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Radiology Reports</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Finalized imaging reports with radiologist findings across all modalities</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-file-text text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">7</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Reports</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-edit text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Draft</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">5</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Finalized</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-users text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Radiologists</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Reports</span>
+                                <span class="text-xs text-gray-400 ml-auto">7 of 7</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Request ID</th>
+                                            <th>Patient</th>
+                                            <th>Modality</th>
+                                            <th>Findings Summary</th>
+                                            <th>Radiologist</th>
+                                            <th>Report Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-primary font-mono text-sm"><a href="radiology-report-detail.html">#RPT-00001</a></td><td class="font-medium text-gray-900">David Torres</td><td class="text-gray-600 dark:text-gray-300">X-Ray</td><td class="text-gray-500 dark:text-gray-400 max-w-xs truncate" title="No acute abnormality detected.">No acute abnormality detected.</td><td class="text-gray-500 dark:text-gray-400">Dr. Nina Petrova</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-02</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Finalized</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="radiology-report-detail.html">#RPT-00002</a></td><td class="font-medium text-gray-900">Linda Nguyen</td><td class="text-gray-600 dark:text-gray-300">MRI</td><td class="text-gray-500 dark:text-gray-400 max-w-xs truncate" title="Mild disc bulge at L4-L5.">Mild disc bulge at L4-L5.</td><td class="text-gray-500 dark:text-gray-400">Dr. Omar Farouk</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Finalized</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="radiology-report-detail.html">#RPT-00003</a></td><td class="font-medium text-gray-900">Michael Harris</td><td class="text-gray-600 dark:text-gray-300">CT</td><td class="text-gray-500 dark:text-gray-400 max-w-xs truncate" title="Findings pending final review.">Findings pending final review.</td><td class="text-gray-500 dark:text-gray-400">Dr. Nina Petrova</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Draft</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="radiology-report-detail.html">#RPT-00004</a></td><td class="font-medium text-gray-900">Sarah Adams</td><td class="text-gray-600 dark:text-gray-300">Ultrasound</td><td class="text-gray-500 dark:text-gray-400 max-w-xs truncate" title="Normal fetal growth for gestational age.">Normal fetal growth for gestational age.</td><td class="text-gray-500 dark:text-gray-400">Dr. Omar Farouk</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-30</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Finalized</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="radiology-report-detail.html">#RPT-00005</a></td><td class="font-medium text-gray-900">Anna Peterson</td><td class="text-gray-600 dark:text-gray-300">X-Ray</td><td class="text-gray-500 dark:text-gray-400 max-w-xs truncate" title="Suspected hairline fracture, awaiting confirmation.">Suspected hairline fracture, awaiting confirmation.</td><td class="text-gray-500 dark:text-gray-400">Dr. Nina Petrova</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Draft</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="radiology-report-detail.html">#RPT-00006</a></td><td class="font-medium text-gray-900">James Morrison</td><td class="text-gray-600 dark:text-gray-300">MRI</td><td class="text-gray-500 dark:text-gray-400 max-w-xs truncate" title="No significant intracranial abnormality.">No significant intracranial abnormality.</td><td class="text-gray-500 dark:text-gray-400">Dr. Omar Farouk</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Finalized</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="radiology-report-detail.html">#RPT-00007</a></td><td class="font-medium text-gray-900">Robert Clark</td><td class="text-gray-600 dark:text-gray-300">CT</td><td class="text-gray-500 dark:text-gray-400 max-w-xs truncate" title="Small renal cyst, likely benign.">Small renal cyst, likely benign.</td><td class="text-gray-500 dark:text-gray-400">Dr. Nina Petrova</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Finalized</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "radiology-reports"})
+    </body>
+</html>

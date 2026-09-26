@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Starter Page — Dreams HMS"}) @@include('partials/header.html', {"page": "starter-page"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="starter-page">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Starter Page", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Starter Page</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">A blank canvas that keeps the standard Dreams HMS shell — sidebar, topbar and breadcrumb are already wired up</p>
+                            </div>
+                        </div>
+
+                        <div class="card p-16 flex flex-col items-center justify-center text-center" data-aos="fade-up" data-aos-delay="50">
+                            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
+                                <i class="icon-layout-dashboard text-2xl text-primary"></i>
+                            </div>
+                            <p class="text-base font-bold text-gray-900 mt-4">Start building your page here</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-md">Replace this card with your own layout — cards, tables, forms or charts — using the same design tokens as the rest of Dreams HMS.</p>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "starter-page"})
+    </body>
+</html>

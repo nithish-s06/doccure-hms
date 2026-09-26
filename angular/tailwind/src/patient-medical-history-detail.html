@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Medical Record Details — Dreams HMS"}) @@include('partials/header.html', {"page": "patient-medical-history-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="patient-medical-history-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="pmhd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Medical Record Details", "parentUrl": "patient-medical-history.html", "parent": "Medical History"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="pmhd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="pmhd-hero-ico"><i class="icon-calendar-clock"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Post-op Cardiac Review</h1>
+                                            <span class="pmhd-hbadge"><span class="pmhd-dot"></span>Active</span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="pmhd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i>#MR-0001</span>
+                                            <span class="pmhd-hmeta"><i class="icon-user text-[13px] text-sky-300"></i>James Morrison · PID-004821</span>
+                                            <span class="pmhd-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i>Dr. Chen · Cardiology</span>
+                                            <span class="pmhd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>2026-09-10 · 09:30 AM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 pmhd-actions-print-hide">
+                                    <button type="button" class="pmhd-btn pmhd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Record</button>
+                                    <button type="button" class="pmhd-btn pmhd-btn-glass"><i class="icon-download"></i>Download PDF</button>
+                                    <a href="patient-medical-history.html" class="pmhd-btn pmhd-btn-primary"><i class="icon-arrow-left"></i>Back to History</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="pmhd-grid">
+                            <div class="pmhd-vital pmhd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-calendar-clock"></i></span>
+                                    <span class="pmhd-chip">Category</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Follow-up</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Record Category</p>
+                            </div>
+                            <div class="pmhd-vital pmhd-c-rose">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-building-2"></i></span>
+                                    <span class="pmhd-chip">Dept</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Cardiology</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Department</p>
+                            </div>
+                            <div class="pmhd-vital pmhd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-activity"></i></span>
+                                    <span class="pmhd-chip">Status</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Active</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Record Status</p>
+                            </div>
+                            <div class="pmhd-vital pmhd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-paperclip"></i></span>
+                                    <span class="pmhd-chip">Files</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">1 Attached</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Attachments</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="pmhd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Record workflow -->
+                                <div class="pmhd-surface">
+                                    <div class="pmhd-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="pmhd-title">Record Workflow</h2>
+                                    </div>
+                                    <div class="pmhd-tl p-5">
+                                        <div class="pmhd-tl-item done"><span class="pmhd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Consultation Recorded</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Dr. Chen logged the follow-up visit · 09:30 AM</p></div>
+                                        <div class="pmhd-tl-item done"><span class="pmhd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Clinical Notes Reviewed</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Post-op recovery notes verified against chart</p></div>
+                                        <div class="pmhd-tl-item current"><span class="pmhd-tl-node"><i class="icon-loader"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Active — Under Follow-up</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Next review scheduled per cardiology protocol</p></div>
+                                        <div class="pmhd-tl-item"><span class="pmhd-tl-node"><i class="icon-archive"></i></span>
+                                            <p class="text-sm font-bold text-gray-500">Filed to EMR</p>
+                                            <p class="text-xs text-gray-400 mt-0.5">Pending closure of the follow-up loop</p></div>
+                                    </div>
+                                </div>
+
+                                <!-- Clinical summary -->
+                                <div class="pmhd-surface">
+                                    <div class="pmhd-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="pmhd-title">Clinical Summary</h2>
+                                    </div>
+                                    <div class="p-5 space-y-4">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Patient reviewed two weeks after coronary angioplasty with stent placement. Reports no chest pain, mild fatigue on exertion. Surgical site healing well, no signs of infection. Continue current cardiac medication regimen.</p>
+                                        <div class="grid grid-cols-3 gap-2.5 text-center">
+                                            <div class="rounded-xl border border-border-color p-2.5"><p class="text-base font-extrabold text-gray-900 dark:text-white">128/82</p><p class="text-[10px] text-gray-500">BP</p></div>
+                                            <div class="rounded-xl border border-border-color p-2.5"><p class="text-base font-extrabold text-gray-900 dark:text-white">76</p><p class="text-[10px] text-gray-500">Pulse</p></div>
+                                            <div class="rounded-xl border border-border-color p-2.5"><p class="text-base font-extrabold text-gray-900 dark:text-white">98%</p><p class="text-[10px] text-gray-500">SpO₂</p></div>
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                                            <div class="pmhd-report pmhd-c-rose"><span class="pmhd-report-ico"><i class="icon-heart-pulse"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">Echo Report</p><p class="text-[10px] text-gray-400 truncate">Echo · 9 days ago · EF 52%</p></div></div>
+                                            <div class="pmhd-report pmhd-c-primary"><span class="pmhd-report-ico"><i class="icon-activity"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-bold text-gray-900 dark:text-white truncate">ECG</p><p class="text-[10px] text-gray-400 truncate">12-lead · Sinus rhythm</p></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Notes -->
+                                <div class="pmhd-surface">
+                                    <div class="pmhd-head">
+                                        <span class="ico"><i class="icon-sticky-note"></i></span>
+                                        <h2 class="pmhd-title">Clinical Notes</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Continue Atorvastatin 20mg, Aspirin 75mg and Metoprolol 50mg as prescribed. Advise low-sodium cardiac diet and gradual return to light activity. Follow-up visit in 4 weeks with repeat lipid panel.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 pmhd-sidebar">
+                                <!-- Attending physician -->
+                                <div class="pmhd-surface pmhd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Attending Physician</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Dr. Chen</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Cardiology</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="pmhd-hmeta"><i class="icon-mail text-[12px]"></i>Contact Doctor</span>
+                                    </div>
+                                </div>
+
+                                <!-- Patient card -->
+                                <div class="pmhd-surface p-5">
+                                    <h3 class="pmhd-title mb-3">Patient</h3>
+                                    <div class="pmhd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Name</span><span class="v">James Morrison</span></div>
+                                    <div class="pmhd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Record ID</span><span class="v">#MR-0001</span></div>
+                                    <div class="pmhd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date</span><span class="v">2026-09-10</span></div>
+                                    <div class="pmhd-kv"><span class="k"><i class="icon-tag text-[13px]"></i>Category</span><span class="v">Follow-up</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="pmhd-surface p-5 space-y-2.5">
+                                    <h3 class="pmhd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="pmhd-btn pmhd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Record</button>
+                                    <button type="button" class="pmhd-btn pmhd-btn-solid w-full justify-start"><i class="icon-download"></i>Download PDF</button>
+                                    <a href="patient-medical-history.html" class="pmhd-btn pmhd-btn-solid w-full justify-start"><i class="icon-list"></i>All Medical Records</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "patient-medical-history-detail"})
+    </body>
+</html>

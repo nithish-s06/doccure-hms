@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"IPD Patient Details — Dreams HMS"}) @@include('partials/header.html', {"page": "ipd-patient-detail"})
+    </head>
+    <body class="bg-gray-50 dark:bg-slate-950 text-gray-800 dark:text-gray-200 overflow-x-hidden" data-page="ipd-patient-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search IPD patients, beds or admission ID..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-950">
+                    <div id="ipx-page" class="max-w-[1500px] mx-auto space-y-6">
+
+                        @@include('partials/breadcrumb.html', {"current": "IPD Patient Details", "parentUrl": "ipd-patients.html", "parent": "IPD Management"})
+
+                        <!-- ---------- HERO BANNER ---------- -->
+                        <section class="ipx-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="ipx-hero-ico">
+                                        <i class="icon-bed-single"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <p class="ipx-kicker">Inpatient Care & Hospital Admission Record</p>
+                                        <div class="flex flex-wrap items-center gap-2.5">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight text-white" id="ipx-patient-name">James Morrison</h1>
+                                            <span class="ipx-hbadge bg-rose-500/20 text-rose-300 border-rose-500/30" id="ipx-status-badge">
+                                                <span class="ipx-dot bg-rose-400"></span><span id="ipx-status-text">Critical (ICU)</span>
+                                            </span>
+                                            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1">
+                                                <i class="icon-layout-grid text-[12px]"></i>ICU-1 / Bed B1
+                                            </span>
+                                        </div>
+                                        <div class="mt-2.5 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="ipx-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="ipx-admission-id">#IPD-0001</span></span>
+                                            <span class="ipx-hmeta"><i class="icon-user text-[13px] text-purple-300"></i>MRN: <span id="ipx-mrn-no">#PAT-88392</span></span>
+                                            <span class="ipx-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i><span id="ipx-doctor-name">Dr. Robert Chen, MD</span></span>
+                                            <span class="ipx-hmeta"><i class="icon-user-round text-[13px] text-sky-300"></i><span id="ipx-nurse-name">Nurse Alba, RN</span></span>
+                                            <span class="ipx-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Length of Stay: <span id="ipx-stay-days">6 Days</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2.5 ipx-actions-print-hide">
+                                    <button type="button" class="ipx-btn ipx-btn-glass" data-action="print"><i class="icon-printer"></i>Print Summary</button>
+                                    <a href="ipd-patients.html" class="ipx-btn ipx-btn-primary"><i class="icon-arrow-left"></i>Back to IPD</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- CONTINUOUS TELEMETRY VITALS STRIP ---------- -->
+                        <div class="ipx-surface p-4 lg:p-5">
+                            <div class="flex items-center justify-between mb-3 border-b border-gray-100 dark:border-slate-800 pb-2">
+                                <span class="text-xs font-extrabold uppercase tracking-wider text-gray-500 dark:text-gray-400 flex items-center gap-2">
+                                    <i class="icon-activity text-rose-500 animate-pulse"></i>Continuous ICU Telemetry Monitoring
+                                </span>
+                                <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono font-bold flex items-center gap-1">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>Bedside Monitor Channel #04 Active
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">ECG Heart Rate</span>
+                                    <p class="text-base font-extrabold text-rose-600 dark:text-rose-400 mt-0.5">84 <span class="text-xs font-medium text-gray-400">bpm</span></p>
+                                    <span class="text-[10px] text-emerald-500 font-bold">Sinus Rhythm</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">Arterial BP</span>
+                                    <p class="text-base font-extrabold text-gray-900 dark:text-white mt-0.5">118/76 <span class="text-xs font-medium text-gray-400">mmHg</span></p>
+                                    <span class="text-[10px] text-emerald-500 font-bold">MAP: 90 mmHg</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">Pulse Oximetry</span>
+                                    <p class="text-base font-extrabold text-sky-600 dark:text-sky-400 mt-0.5">99% <span class="text-xs font-medium text-gray-400">SpO2</span></p>
+                                    <span class="text-[10px] text-sky-500 font-bold">Nasal Cannula 2L</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">Core Temp</span>
+                                    <p class="text-base font-extrabold text-gray-900 dark:text-white mt-0.5">98.8 <span class="text-xs font-medium text-gray-400">°F</span></p>
+                                    <span class="text-[10px] text-emerald-500 font-bold">Normothermic</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">GCS Score</span>
+                                    <p class="text-base font-extrabold text-gray-900 dark:text-white mt-0.5">15/15 <span class="text-xs font-medium text-gray-400">GCS</span></p>
+                                    <span class="text-[10px] text-emerald-500 font-bold">Alert & Oriented</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">24h Fluid Balance</span>
+                                    <p class="text-base font-extrabold text-indigo-600 dark:text-indigo-400 mt-0.5">+300 <span class="text-xs font-medium text-gray-400">mL</span></p>
+                                    <span class="text-[10px] text-indigo-500 font-bold">In: 2400 / Out: 2100</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ---------- KEY ADMISSION METRICS GRID ---------- -->
+                        <section class="ipx-grid">
+                            <div class="ipx-vital ipx-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-layout-grid"></i></span>
+                                    <span class="ipx-chip">Ward</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ipx-stat-ward">ICU Ward</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Room ICU-1 · Bed B1</p>
+                            </div>
+                            <div class="ipx-vital ipx-c-rose">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-timer"></i></span>
+                                    <span class="ipx-chip">Stay Length</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">6 Days</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Admitted 6 Days Ago</p>
+                            </div>
+                            <div class="ipx-vital ipx-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-user-round"></i></span>
+                                    <span class="ipx-chip">Primary Nurse</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Nurse Alba</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">ICU Shift Leader</p>
+                            </div>
+                            <div class="ipx-vital ipx-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-activity"></i></span>
+                                    <span class="ipx-chip">Care Status</span>
+                                </div>
+                                <span class="mt-3 inline-flex w-fit items-center px-3 py-1 rounded-lg text-xs font-extrabold text-rose-600 dark:text-rose-400 bg-rose-500/10 border border-rose-500/20">
+                                    Active Inpatient
+                                </span>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Under ICU Protocol</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- MAIN CONTENT LAYOUT ---------- -->
+                        <div class="ipx-layout">
+                            <div class="space-y-6">
+
+                                <!-- DAILY CONSULTANT WARD ROUND NOTES -->
+                                <div class="ipx-surface p-5 border-l-4 border-l-rose-500">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <div class="w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold text-sm">
+                                                <i class="icon-stethoscope"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="ipx-title">Consultant Daily Ward Round & Care Plan</h3>
+                                                <p class="text-xs text-gray-500">Chief Attending Review by Dr. Robert Chen, MD</p>
+                                            </div>
+                                        </div>
+                                        <span class="px-2.5 py-1 rounded-md bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 font-bold text-[11px] border border-rose-200 dark:border-rose-800/50">
+                                            ICU Round #DAY-06
+                                        </span>
+                                    </div>
+
+                                    <div class="space-y-3 text-xs leading-relaxed text-gray-700 dark:text-gray-300">
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800">
+                                            <p class="font-extrabold text-gray-900 dark:text-white text-xs mb-1">Clinical Assessment & Progress:</p>
+                                            <p>58-year-old male admitted 6 days ago for acute cardiac decompensation. Patient remains hemodynamically stable on low-dose inotropic support. Telemetry shows sinus rhythm at 84 bpm without ventricular ectopy. Lungs show bilateral basilar crackles, improved from admission.</p>
+                                        </div>
+
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800">
+                                            <p class="font-extrabold text-gray-900 dark:text-white text-xs mb-1">Diagnostic Imaging & Lab Summary:</p>
+                                            <p>• Bedside Echocardiogram: LVEF 42%, mild mitral regurgitation.<br>
+                                            • Electrolytes: Serum Potassium 4.2 mEq/L, Sodium 138 mEq/L, Serum Creatinine 1.1 mg/dL.<br>
+                                            • BNP: 420 pg/mL (trending down from 1,200 pg/mL on Day 01).</p>
+                                        </div>
+
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800">
+                                            <p class="font-extrabold text-gray-900 dark:text-white text-xs mb-1">Plan of Care for Next 24 Hours:</p>
+                                            <p>1. Wean IV Furosemide drip to oral Torsemide 20mg twice daily.<br>
+                                            2. Continue oxygen via nasal cannula at 2L/min to maintain SpO2 > 95%.<br>
+                                            3. Evaluate for transfer from ICU Bed B1 to Step-Down Cardiac Telemetry Ward tomorrow morning if hemodynamics remain stable.<br>
+                                            4. Low sodium (2g/day) cardiac diet protocol.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- INPATIENT MEDICATION ADMINISTRATION RECORD (MAR) -->
+                                <div class="ipx-surface overflow-hidden">
+                                    <div class="ipx-head flex items-center justify-between">
+                                        <div class="flex items-center gap-2.5">
+                                            <span class="ico"><i class="icon-pill"></i></span>
+                                            <div>
+                                                <h2 class="ipx-title">Inpatient Medication Administration Record (MAR)</h2>
+                                                <p class="text-xs text-gray-500">Scheduled IV & Oral inpatient administrations</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="overflow-x-auto">
+                                        <table class="ipx-mar-table text-left text-xs">
+                                            <thead>
+                                                <tr class="bg-gray-100/60 dark:bg-slate-900/80 text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider">
+                                                    <th class="py-3 px-4">Drug & Route</th>
+                                                    <th class="py-3 px-4">Dosage</th>
+                                                    <th class="py-3 px-4">Frequency</th>
+                                                    <th class="py-3 px-4">Nurse Sign-off</th>
+                                                    <th class="py-3 px-4 text-center">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="ipx-mar-table-body" class="divide-y divide-gray-100 dark:divide-slate-800 font-medium">
+                                                <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60">
+                                                    <td class="py-3 px-4 font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                                        <i class="icon-syringe text-rose-500"></i>Furosemide (Lasix) IV
+                                                    </td>
+                                                    <td class="py-3 px-4">40 mg (IV Push)</td>
+                                                    <td class="py-3 px-4 text-gray-600 dark:text-gray-400">Q12H (08:00 & 20:00)</td>
+                                                    <td class="py-3 px-4">Nurse Alba, RN (08:05 AM)</td>
+                                                    <td class="py-3 px-4 text-center">
+                                                        <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-[10px]">GIVEN</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60">
+                                                    <td class="py-3 px-4 font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                                        <i class="icon-capsule text-indigo-500"></i>Metoprolol Succinate
+                                                    </td>
+                                                    <td class="py-3 px-4">25 mg (Oral Tab)</td>
+                                                    <td class="py-3 px-4 text-gray-600 dark:text-gray-400">Once Daily (09:00 AM)</td>
+                                                    <td class="py-3 px-4">Nurse Alba, RN (09:02 AM)</td>
+                                                    <td class="py-3 px-4 text-center">
+                                                        <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-[10px]">GIVEN</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60">
+                                                    <td class="py-3 px-4 font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                                        <i class="icon-syringe text-sky-500"></i>Enoxaparin (Lovenox) SC
+                                                    </td>
+                                                    <td class="py-3 px-4">40 mg (SubQ Syringe)</td>
+                                                    <td class="py-3 px-4 text-gray-600 dark:text-gray-400">Once Daily (20:00 PM)</td>
+                                                    <td class="py-3 px-4 text-gray-400">Scheduled 20:00 PM</td>
+                                                    <td class="py-3 px-4 text-center">
+                                                        <span class="px-2.5 py-0.5 rounded-md bg-sky-500/15 text-sky-600 dark:text-sky-400 font-bold text-[10px]">DUE LATER</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- INPATIENT WORKFLOW TIMELINE -->
+                                <div class="ipx-surface">
+                                    <div class="ipx-head">
+                                        <span class="ico"><i class="icon-git-commit-horizontal"></i></span>
+                                        <div>
+                                            <h2 class="ipx-title">Inpatient Admission Journey Timeline</h2>
+                                            <p class="text-xs text-gray-500">Sequential record of hospital stay events</p>
+                                        </div>
+                                    </div>
+                                    <div class="ipx-tl p-5">
+                                        <div class="ipx-tl-item done">
+                                            <span class="ipx-tl-node"><i class="icon-log-in"></i></span>
+                                            <div class="flex items-center justify-between">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white">Emergency Admission</p>
+                                                <span class="text-[11px] font-mono text-gray-500">6 Days Ago</span>
+                                            </div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Admitted via ER with acute dyspnea and pulmonary congestion</p>
+                                        </div>
+
+                                        <div class="ipx-tl-item done">
+                                            <span class="ipx-tl-node"><i class="icon-bed"></i></span>
+                                            <div class="flex items-center justify-between">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white">ICU Bed Allocation (ICU-1 / Bed B1)</p>
+                                                <span class="text-[11px] font-mono text-gray-500">6 Days Ago</span>
+                                            </div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Transferred to ICU under telemetry channel #04</p>
+                                        </div>
+
+                                        <div class="ipx-tl-item current">
+                                            <span class="ipx-tl-node"><i class="icon-stethoscope"></i></span>
+                                            <div class="flex items-center justify-between">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white">Active Treatment & Inotrope Weaning</p>
+                                                <span class="text-[11px] font-mono text-rose-500 font-bold">Day 06 Active</span>
+                                            </div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Consultant rounds by Dr. Robert Chen • Preparing for step-down</p>
+                                        </div>
+
+                                        <div class="ipx-tl-item">
+                                            <span class="ipx-tl-node"><i class="icon-log-out"></i></span>
+                                            <div class="flex items-center justify-between">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white">Discharge Planning & Clearance</p>
+                                                <span class="text-[11px] font-mono text-gray-400">Target Day 08</span>
+                                            </div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Post-discharge medication reconciliation and outpatient follow-up</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SIDEBAR PANELS -->
+                            <div class="space-y-6 ipx-sidebar">
+
+                                <!-- ATTENDING CONSULTANT CARD -->
+                                <div class="ipx-surface ipx-side-hero rounded-[1.25rem] p-5">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Attending Consultant</p>
+                                    <h3 class="mt-1 text-xl font-extrabold text-white" id="ipx-side-doctor">Dr. Robert Chen, MD</h3>
+                                    <p class="text-xs text-white/80 mt-0.5">Head of Cardiology & Critical Care</p>
+
+                                    <div class="mt-4 p-3 bg-white/10 backdrop-blur-md rounded-xl space-y-2 text-xs text-white">
+                                        <div class="flex items-center gap-2">
+                                            <i class="icon-user-round text-sky-300"></i>
+                                            <span>Primary Nurse: Nurse Alba, RN</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <i class="icon-phone text-emerald-300"></i>
+                                            <span>ICU Nursing Station: Ext. 4401</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- BED & WARD DETAILS -->
+                                <div class="ipx-surface p-5">
+                                    <h3 class="ipx-title mb-3">Bed & Placement Context</h3>
+                                    <div class="ipx-kv"><span class="k"><i class="icon-layout-grid text-[13px]"></i>Ward</span><span class="v font-bold" id="ipx-kv-ward">ICU Ward</span></div>
+                                    <div class="ipx-kv"><span class="k"><i class="icon-door-open text-[13px]"></i>Room</span><span class="v">ICU-1</span></div>
+                                    <div class="ipx-kv"><span class="k"><i class="icon-bed text-[13px]"></i>Bed Number</span><span class="v font-bold text-rose-600">Bed B1</span></div>
+                                    <div class="ipx-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Telemetry</span><span class="v">Channel #04</span></div>
+                                    <div class="ipx-kv"><span class="k"><i class="icon-shield-check text-[13px]"></i>Insurance</span><span class="v text-emerald-600 font-bold">$25,000 Approved</span></div>
+                                </div>
+
+                                <!-- QUICK ACTIONS -->
+                                <div class="ipx-surface p-5 space-y-2.5">
+                                    <h3 class="ipx-title mb-1">Inpatient Actions</h3>
+                                    <button type="button" class="ipx-btn ipx-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Inpatient Summary</button>
+                                    <a href="ipd-patients.html" class="ipx-btn ipx-btn-solid w-full justify-start"><i class="icon-list"></i>All IPD Patients Directory</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "ipd-patient-detail"})
+    </body>
+</html>
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Asset Tracking — Dreams HMS"}) @@include('partials/header.html', {"page": "asset-tracking"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="asset-tracking">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search assets..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Asset Tracking", "parentUrl": "inventory.html", "parent": "Inventory Dashboard"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Asset Tracking</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Track fixed assets and equipment across the facility</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-map-pin text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">9</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Assets</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">5</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-wrench text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Under Repair</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Retired</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Assets</span>
+                                <span class="text-xs text-gray-400 ml-auto">9 of 9</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Asset Name / Tag</th>
+                                            <th>Category</th>
+                                            <th>Location</th>
+                                            <th>Assigned To</th>
+                                            <th>Purchase Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-medium text-gray-900"><a href="asset-detail.html" class="text-primary hover:underline">Ventilator - AST-2045</a></td><td class="text-gray-600 dark:text-gray-300">Medical Equipment</td><td class="text-gray-500 dark:text-gray-400">ICU - Floor 2</td><td class="text-gray-500 dark:text-gray-400">Dr. Susan Lee</td><td class="text-gray-500 dark:text-gray-400 text-sm">2022-03-14</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a href="asset-detail.html" class="text-primary hover:underline">X-Ray Machine - AST-1120</a></td><td class="text-gray-600 dark:text-gray-300">Diagnostic Equipment</td><td class="text-gray-500 dark:text-gray-400">Radiology - Floor 1</td><td class="text-gray-500 dark:text-gray-400">Dr. Amir Khan</td><td class="text-gray-500 dark:text-gray-400 text-sm">2021-07-02</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a href="asset-detail.html" class="text-primary hover:underline">Wheelchair - AST-3301</a></td><td class="text-gray-600 dark:text-gray-300">Mobility Equipment</td><td class="text-gray-500 dark:text-gray-400">Physiotherapy</td><td class="text-gray-500 dark:text-gray-400">Unassigned</td><td class="text-gray-500 dark:text-gray-400 text-sm">2023-01-20</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a href="asset-detail.html" class="text-primary hover:underline">Defibrillator - AST-2210</a></td><td class="text-gray-600 dark:text-gray-300">Medical Equipment</td><td class="text-gray-500 dark:text-gray-400">Emergency Ward</td><td class="text-gray-500 dark:text-gray-400">Nurse Kelly Owens</td><td class="text-gray-500 dark:text-gray-400 text-sm">2020-11-11</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Under Repair</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a href="asset-detail.html" class="text-primary hover:underline">Autoclave - AST-4012</a></td><td class="text-gray-600 dark:text-gray-300">Sterilization Equipment</td><td class="text-gray-500 dark:text-gray-400">Operation Theatre</td><td class="text-gray-500 dark:text-gray-400">Tech. Marco Diaz</td><td class="text-gray-500 dark:text-gray-400 text-sm">2019-05-30</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Retired</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a href="asset-detail.html" class="text-primary hover:underline">Infusion Pump - AST-2288</a></td><td class="text-gray-600 dark:text-gray-300">Medical Equipment</td><td class="text-gray-500 dark:text-gray-400">General Ward</td><td class="text-gray-500 dark:text-gray-400">Nurse Ellen Cho</td><td class="text-gray-500 dark:text-gray-400 text-sm">2023-09-08</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a href="asset-detail.html" class="text-primary hover:underline">ECG Machine - AST-1755</a></td><td class="text-gray-600 dark:text-gray-300">Diagnostic Equipment</td><td class="text-gray-500 dark:text-gray-400">Cardiology</td><td class="text-gray-500 dark:text-gray-400">Dr. Susan Lee</td><td class="text-gray-500 dark:text-gray-400 text-sm">2022-12-19</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a href="asset-detail.html" class="text-primary hover:underline">Patient Monitor - AST-2560</a></td><td class="text-gray-600 dark:text-gray-300">Medical Equipment</td><td class="text-gray-500 dark:text-gray-400">ICU - Floor 2</td><td class="text-gray-500 dark:text-gray-400">Nurse Kelly Owens</td><td class="text-gray-500 dark:text-gray-400 text-sm">2021-02-25</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Under Repair</span></td></tr>
+<tr><td class="font-medium text-gray-900"><a href="asset-detail.html" class="text-primary hover:underline">Hospital Bed - AST-5010</a></td><td class="text-gray-600 dark:text-gray-300">Furniture</td><td class="text-gray-500 dark:text-gray-400">General Ward</td><td class="text-gray-500 dark:text-gray-400">Unassigned</td><td class="text-gray-500 dark:text-gray-400 text-sm">2018-08-16</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Retired</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "asset-tracking"})
+    </body>
+</html>

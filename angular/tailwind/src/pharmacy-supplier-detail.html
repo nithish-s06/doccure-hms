@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Supplier Details — Dreams HMS"}) @@include('partials/header.html', {"page": "pharmacy-supplier-detail"})
+    </head>
+    <body class="bg-gray-50 dark:bg-slate-950 text-gray-800 dark:text-gray-200 overflow-x-hidden" data-page="pharmacy-supplier-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search suppliers, purchase orders or drugs..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-950">
+                    <div id="pvr-page" class="max-w-[1500px] mx-auto space-y-6">
+
+                        @@include('partials/breadcrumb.html', {"current": "Supplier Details", "parentUrl": "pharmacy-suppliers.html", "parent": "Suppliers"})
+
+                        <!-- ---------- HERO BANNER ---------- -->
+                        <section class="pvr-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="pvr-hero-ico">
+                                        <i class="icon-building-2"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2.5">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight text-white" id="pvr-supplier-name">McKesson Pharmaceutical</h1>
+                                            <span class="pvr-hbadge" id="pvr-status-badge"><span class="pvr-dot"></span><span id="pvr-status-text">Tier-1 Preferred</span></span>
+                                            <div class="pvr-rating-stars" title="4.9 out of 5 Stars Performance Rating">
+                                                <i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star text-white/50"></i>
+                                                <span class="text-xs font-bold text-white ml-1">4.9 / 5.0</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2.5 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="pvr-hmeta"><i class="icon-hash text-[13px] text-teal-300"></i><span id="pvr-supplier-id">#SUP-00142</span></span>
+                                            <span class="pvr-hmeta"><i class="icon-file-text text-[13px] text-sky-300"></i>DEA Reg: <span id="pvr-dea-no">#DEA-MK994821</span></span>
+                                            <span class="pvr-hmeta"><i class="icon-user-round text-[13px] text-purple-300"></i>Contact: <span id="pvr-contact-person">Dana Whitcomb</span></span>
+                                            <span class="pvr-hmeta"><i class="icon-map-pin text-[13px] text-violet-300"></i><span id="pvr-location">Irving, Texas (HQ)</span></span>
+                                            <span class="pvr-hmeta"><i class="icon-phone text-[13px] text-emerald-300"></i><span id="pvr-phone">(415) 983-8300</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2.5 pvr-actions-print-hide">
+                                    <button type="button" class="pvr-btn pvr-btn-glass" data-action="print"><i class="icon-printer"></i>Print Summary</button>
+                                    <a href="pharmacy-suppliers.html" class="pvr-btn pvr-btn-primary"><i class="icon-arrow-left"></i>Back to Suppliers</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- VENDOR CONTEXT & FINANCIAL STRIP ---------- -->
+                        <div class="pvr-surface p-4 lg:p-5">
+                            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-xs">
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Payment Terms</span>
+                                    <p class="font-bold text-gray-900 dark:text-white text-sm">Net-30 (2% 10 Disc)</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Credit Limit</span>
+                                    <p class="font-bold text-emerald-600 dark:text-emerald-400 text-sm">$500,000 USD</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Active Contract</span>
+                                    <p class="font-bold text-indigo-600 dark:text-indigo-400 text-sm">Exp: Nov 2027</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Primary Category</span>
+                                    <p class="font-bold text-gray-900 dark:text-white text-sm">Full-Line Rx Wholesaler</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">Tax ID / EIN</span>
+                                    <p class="font-bold font-mono text-gray-900 dark:text-white text-sm">94-1083940</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-gray-400 font-medium">SLA Support Line</span>
+                                    <p class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-1">
+                                        <i class="icon-headphones text-xs text-teal-500"></i>24/7 Priority Desk
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ---------- KEY VENDOR PERFORMANCE METRICS ---------- -->
+                        <section class="pvr-grid">
+                            <div class="pvr-vital pvr-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-timer"></i></span>
+                                    <span class="pvr-chip">On-Time</span>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="pvr-stat-ontime">98.4%</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 flex items-center justify-between mt-1">
+                                    <span>Delivery SLA Rate</span>
+                                    <span class="text-emerald-500 font-bold">+2.4% vs SLA</span>
+                                </p>
+                            </div>
+                            <div class="pvr-vital pvr-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-clipboard-list"></i></span>
+                                    <span class="pvr-chip">Open Orders</span>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="pvr-stat-openpo">3 Orders</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Valued at $16,260 USD</p>
+                            </div>
+                            <div class="pvr-vital pvr-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-dollar-sign"></i></span>
+                                    <span class="pvr-chip">YTD Spend</span>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="pvr-stat-spend">$1.42M</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Trailing 12 Months</p>
+                            </div>
+                            <div class="pvr-vital pvr-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-shield-check"></i></span>
+                                    <span class="pvr-chip">QC Pass Rate</span>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">99.8%</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Batch QC Compliance</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- MAIN CONTENT & SIDEBAR ---------- -->
+                        <div class="pvr-layout">
+                            <div class="space-y-6">
+
+                                <!-- PERFORMANCE GAUGE & SLA METRICS -->
+                                <div class="pvr-surface">
+                                    <div class="pvr-head flex items-center justify-between">
+                                        <div class="flex items-center gap-2.5">
+                                            <span class="ico"><i class="icon-scale"></i></span>
+                                            <div>
+                                                <h2 class="pvr-title">Delivery SLA & Order Speed Benchmark</h2>
+                                                <p class="text-xs text-gray-500">Trailing 12-month fulfillment accuracy audit</p>
+                                            </div>
+                                        </div>
+                                        <span class="pvr-cert-badge"><i class="icon-award text-xs"></i>Top-Tier Vendor</span>
+                                    </div>
+                                    <div class="p-5 space-y-4">
+                                        <div class="flex items-center justify-between text-xs font-semibold text-gray-500 dark:text-gray-400">
+                                            <span>0% Poor</span>
+                                            <span class="text-amber-500">Target Threshold: 92%</span>
+                                            <span class="text-emerald-500 font-bold">Current: 98.4%</span>
+                                        </div>
+                                        <div class="pvr-gauge"><span class="w-[98.4%]"></span></div>
+                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
+                                            <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                                <span class="text-gray-400">Avg Lead Time</span>
+                                                <p class="text-base font-extrabold text-gray-900 dark:text-white mt-0.5">2.1 Days</p>
+                                                <p class="text-[10px] text-emerald-500">0.4 Days Faster than Target</p>
+                                            </div>
+                                            <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                                <span class="text-gray-400">Damaged / Return Rate</span>
+                                                <p class="text-base font-extrabold text-gray-900 dark:text-white mt-0.5">0.15%</p>
+                                                <p class="text-[10px] text-emerald-500">Extremely Low Exception Rate</p>
+                                            </div>
+                                            <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                                <span class="text-gray-400">Cold-Chain Accuracy</span>
+                                                <p class="text-base font-extrabold text-gray-900 dark:text-white mt-0.5">100%</p>
+                                                <p class="text-[10px] text-teal-500">Zero Temp Excursion Logs</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- OPEN PURCHASE ORDERS & SHIPMENT TRACKING -->
+                                <div class="pvr-surface overflow-hidden">
+                                    <div class="pvr-head flex items-center justify-between">
+                                        <div class="flex items-center gap-2.5">
+                                            <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                            <div>
+                                                <h2 class="pvr-title">Active Purchase Orders & Shipments</h2>
+                                                <p class="text-xs text-gray-500">Live order status and logistics courier tracking</p>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                                            <i class="icon-history text-xs"></i>View PO History
+                                        </button>
+                                    </div>
+                                    <div class="overflow-x-auto">
+                                        <table class="pvr-items text-left text-xs">
+                                            <thead>
+                                                <tr class="bg-gray-100/60 dark:bg-slate-900/80 text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider">
+                                                    <th class="py-3 px-4">PO Number</th>
+                                                    <th class="py-3 px-4">Drug Categories</th>
+                                                    <th class="py-3 px-4">Logistics Courier</th>
+                                                    <th class="py-3 px-4">Est. Delivery</th>
+                                                    <th class="py-3 px-4 font-right">Amount</th>
+                                                    <th class="py-3 px-4 text-center">Order Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="pvr-po-table-body" class="divide-y divide-gray-100 dark:divide-slate-800 font-medium"><tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 font-bold text-gray-900 dark:text-white flex items-center gap-1.5"><i class="icon-file-text text-indigo-500 text-xs"></i>#PO-00021</td><td class="py-3 px-4 text-gray-700 dark:text-gray-300 font-medium">Antibiotics, Analgesics</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400"><span>FedEx Cold-Chain Express</span><span class="block text-[10px] font-mono text-gray-400">#FX-994821</span></td><td class="py-3 px-4 text-gray-700 dark:text-gray-300 font-mono text-[11px]">Dec 04, 2024</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white font-mono">$8,400.00</td><td class="py-3 px-4 text-center"><span class="px-2.5 py-1 rounded-md border text-[10px] font-bold tracking-wider inline-block bg-sky-500/15 text-sky-600 dark:text-sky-400 border-sky-500/30">IN TRANSIT</span></td></tr><tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 font-bold text-gray-900 dark:text-white flex items-center gap-1.5"><i class="icon-file-text text-indigo-500 text-xs"></i>#PO-00025</td><td class="py-3 px-4 text-gray-700 dark:text-gray-300 font-medium">Endocrine, Cardiovascular</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400"><span>DHL Pharma Express</span><span class="block text-[10px] font-mono text-gray-400">#DHL-88310</span></td><td class="py-3 px-4 text-gray-700 dark:text-gray-300 font-mono text-[11px]">Dec 06, 2024</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white font-mono">$5,100.00</td><td class="py-3 px-4 text-center"><span class="px-2.5 py-1 rounded-md border text-[10px] font-bold tracking-wider inline-block bg-teal-500/15 text-teal-600 dark:text-teal-400 border-teal-500/30">DISPATCHED</span></td></tr><tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 font-bold text-gray-900 dark:text-white flex items-center gap-1.5"><i class="icon-file-text text-indigo-500 text-xs"></i>#PO-00029</td><td class="py-3 px-4 text-gray-700 dark:text-gray-300 font-medium">IV Fluids, Analgesics</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400"><span>McKesson Direct Fleet</span><span class="block text-[10px] font-mono text-gray-400">#MK-77402</span></td><td class="py-3 px-4 text-gray-700 dark:text-gray-300 font-mono text-[11px]">Dec 08, 2024</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white font-mono">$2,760.00</td><td class="py-3 px-4 text-center"><span class="px-2.5 py-1 rounded-md border text-[10px] font-bold tracking-wider inline-block bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30">UNDER QC INSPECTION</span></td></tr><tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 font-bold text-gray-900 dark:text-white flex items-center gap-1.5"><i class="icon-file-text text-indigo-500 text-xs"></i>#PO-00018</td><td class="py-3 px-4 text-gray-700 dark:text-gray-300 font-medium">Controlled Substances (Sched II)</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400"><span>Secure Bio Express</span><span class="block text-[10px] font-mono text-gray-400">#SB-11029</span></td><td class="py-3 px-4 text-gray-700 dark:text-gray-300 font-mono text-[11px]">Nov 28, 2024</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white font-mono">$12,950.00</td><td class="py-3 px-4 text-center"><span class="px-2.5 py-1 rounded-md border text-[10px] font-bold tracking-wider inline-block bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30">DELIVERED</span></td></tr></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- REGULATORY COMPLIANCE & CERTIFICATIONS -->
+                                <div class="pvr-surface p-5 border-l-4 border-l-teal-500">
+                                    <div class="flex items-start justify-between gap-4 mb-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <div class="w-9 h-9 rounded-xl bg-teal-100 dark:bg-teal-950/80 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-base">
+                                                <i class="icon-shield-check"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="pvr-title">Regulatory Compliance & Cold-Chain Licenses</h3>
+                                                <p class="text-xs text-gray-500">Verified credentials & FDA/DEA audit trail</p>
+                                            </div>
+                                        </div>
+                                        <span class="px-2.5 py-1 rounded-md bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 font-bold text-[11px] border border-teal-200 dark:border-teal-800/50">
+                                            Audit Status: Fully Compliant
+                                        </span>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 text-xs">
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800 flex items-start gap-3">
+                                            <i class="icon-check-circle text-teal-500 text-base mt-0.5"></i>
+                                            <div>
+                                                <p class="font-bold text-gray-900 dark:text-white">FDA Registered Drug Establishment</p>
+                                                <p class="text-gray-500 mt-0.5">Reg #FEI-300921820 • Active thru Dec 2026</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800 flex items-start gap-3">
+                                            <i class="icon-check-circle text-teal-500 text-base mt-0.5"></i>
+                                            <div>
+                                                <p class="font-bold text-gray-900 dark:text-white">DEA Schedule II-V Narcotics Registration</p>
+                                                <p class="text-gray-500 mt-0.5">Permit #DEA-MK994821 • Verified Compliant</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800 flex items-start gap-3">
+                                            <i class="icon-check-circle text-teal-500 text-base mt-0.5"></i>
+                                            <div>
+                                                <p class="font-bold text-gray-900 dark:text-white">Cold-Chain Storage Audit (2°C - 8°C & -20°C)</p>
+                                                <p class="text-gray-500 mt-0.5">Biologics & Vaccine Temperature Certified</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800 flex items-start gap-3">
+                                            <i class="icon-check-circle text-teal-500 text-base mt-0.5"></i>
+                                            <div>
+                                                <p class="font-bold text-gray-900 dark:text-white">Good Manufacturing Practice (cGMP)</p>
+                                                <p class="text-gray-500 mt-0.5">ISO 9001:2015 & cGMP Quality Certification</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SIDEBAR PANELS -->
+                            <div class="space-y-6 pvr-sidebar">
+
+                                <!-- ACCOUNT MANAGER CARD -->
+                                <div class="pvr-surface pvr-side-hero rounded-[1.25rem] p-5">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Key Account Representative</p>
+                                    <h3 class="mt-1 text-xl font-extrabold text-white" id="pvr-rep-name">Dana Whitcomb</h3>
+                                    <p class="text-xs text-white/80 mt-0.5">Senior Director of Health Systems</p>
+
+                                    <div class="mt-4 p-3 bg-white/10 backdrop-blur-md rounded-xl space-y-2 text-xs text-white">
+                                        <div class="flex items-center gap-2">
+                                            <i class="icon-mail text-teal-300"></i>
+                                            <a href="mailto:orders@mckesson.com" class="hover:underline font-medium">orders@mckesson.com</a>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <i class="icon-phone text-emerald-300"></i>
+                                            <span class="font-medium">(415) 983-8300 (Ext. 402)</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <i class="icon-headphones text-amber-300"></i>
+                                            <span class="font-medium">24/7 Hotline: (800) 555-MKES</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- CREDIT LINE & BILLING CARD -->
+                                <div class="pvr-surface p-5 space-y-3">
+                                    <h3 class="pvr-title mb-1 flex items-center gap-2">
+                                        <i class="icon-credit-card text-teal-500"></i>Credit Line & Financial Status
+                                    </h3>
+                                    <div class="space-y-3 text-xs">
+                                        <div>
+                                            <div class="flex items-center justify-between mb-1">
+                                                <span class="text-gray-500 font-medium">Credit Limit Usage</span>
+                                                <span class="font-bold text-gray-900 dark:text-white">$16,260 / $500,000</span>
+                                            </div>
+                                            <div class="pvr-credit-track">
+                                                <div class="pvr-credit-fill [width:3.25%]"></div>
+                                            </div>
+                                            <p class="text-[10px] text-emerald-600 dark:text-emerald-400 mt-1 font-semibold">$483,740 Available Credit Line</p>
+                                        </div>
+
+                                        <div class="pvr-kv"><span class="k"><i class="icon-file-text text-[13px]"></i>Outstanding Invoices</span><span class="v font-bold text-amber-600 dark:text-amber-400">$16,260.00</span></div>
+                                        <div class="pvr-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Next Payment Due</span><span class="v">Dec 15, 2024</span></div>
+                                        <div class="pvr-kv"><span class="k"><i class="icon-percent text-[13px]"></i>Early Pay Discount</span><span class="v text-emerald-600">2% if paid in 10 Days</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- SUPPLIER QUICK REFERENCE -->
+                                <div class="pvr-surface p-5">
+                                    <h3 class="pvr-title mb-3">Supplier Metadata</h3>
+                                    <div class="pvr-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Company</span><span class="v font-bold">McKesson Corp</span></div>
+                                    <div class="pvr-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Supplier ID</span><span class="v">SUP-00142</span></div>
+                                    <div class="pvr-kv"><span class="k"><i class="icon-map-pin text-[13px]"></i>City / State</span><span class="v">Irving, TX</span></div>
+                                    <div class="pvr-kv"><span class="k"><i class="icon-tags text-[13px]"></i>Core Categories</span><span class="v">Analgesics, Antibiotics, IV Fluids</span></div>
+                                    <div class="pvr-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Onboarding Date</span><span class="v">Jan 12, 2021</span></div>
+                                </div>
+
+                                <!-- QUICK ACTIONS -->
+                                <div class="pvr-surface p-5 space-y-2.5">
+                                    <h3 class="pvr-title mb-1">Supplier Actions</h3>
+                                    <button type="button" class="pvr-btn pvr-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Supplier Report</button>
+                                    <a href="pharmacy-suppliers.html" class="pvr-btn pvr-btn-solid w-full justify-start"><i class="icon-list"></i>All Suppliers Directory</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "pharmacy-supplier-detail"})
+    </body>
+</html>
+

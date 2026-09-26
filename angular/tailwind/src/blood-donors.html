@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Blood Donor Center — Dreams HMS"}) @@include('partials/header.html', {"page": "blood-donors"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="blood-donors">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search donors, blood group, phone..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="bd-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="bd-skeleton" class="space-y-4">
+                            <div class="bd-sk h-[150px] radius-override-100"></div>
+                            <div class="bd-sk h-[52px]"></div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><div class="bd-sk h-[250px]"></div><div class="bd-sk h-[250px]"></div><div class="bd-sk h-[250px]"></div><div class="bd-sk h-[250px]"></div></div>
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-4"><div class="bd-sk h-[260px]"></div><div class="bd-sk h-[260px]"></div></div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="bd-content" class="hidden space-y-4">
+
+                            <!-- ============ 1. HEADER ============ -->
+                            <section class="bd-hero p-5 lg:p-6">
+                                <div class="bd-hgrid"></div>
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="bd-chip bg-[rgba(220,38,38,.22)] text-[#fca5a5]"><span class="bd-dot bd-live bg-[#f87171]"></span> DONOR REGISTRY</span>
+                                            <span class="bd-chip bg-[rgba(21,128,61,.24)] text-[#86efac]"><i class="icon-circle-check text-[11px]"></i> <span id="bd-h-elig">0</span> Eligible</span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-[26px] font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-heart-handshake text-rose-300"></i> Blood Donor Management</h1>
+                                        <p class="text-sm text-rose-200/70 mt-1">Donor registry, eligibility, donation history &amp; drives · <span id="bd-clock" class="tabular-nums"></span></p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 justify-end">
+                                        <button data-hs-overlay="#bd-modal-add" class="bd-btn bg-rose-600 text-white hover:bg-rose-500"><i class="icon-user-plus"></i> Add Donor</button>
+                                        <button data-hs-overlay="#bd-modal-appointment" class="bd-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-calendar-plus"></i> Schedule</button>
+                                        <button data-hs-overlay="#bd-modal-camp" class="bd-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-tent"></i> New Camp</button>
+                                        <button data-hs-overlay="#bd-modal-import" class="bd-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-upload"></i> Import</button>
+                                        <button data-hs-overlay="#bd-modal-export" class="bd-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    </div>
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
+                                    <div class="bd-hbadge"><p class="text-[11px] text-rose-200/70">Total Donors</p><p class="text-xl font-bold text-white" id="bd-h-total">0</p></div>
+                                    <div class="bd-hbadge"><p class="text-[11px] text-rose-200/70">Eligible Now</p><p class="text-xl font-bold text-emerald-300" id="bd-h-elig2">0</p></div>
+                                    <div class="bd-hbadge"><p class="text-[11px] text-rose-200/70">Donations This Month</p><p class="text-xl font-bold text-white">248</p></div>
+                                    <div class="bd-hbadge"><p class="text-[11px] text-rose-200/70">Upcoming Appointments</p><p class="text-xl font-bold text-sky-300" id="bd-h-appt">6</p></div>
+                                </div>
+                            </section>
+
+                            <!-- ============ 2. DONOR DIRECTORY ============ -->
+                            <section class="bd-card p-3">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <div class="relative flex-1 min-w-[180px]"><i class="icon-search absolute left-2.5 top-1/2 -translate-y-1/2 bd-mut text-sm"></i><input aria-label="Search donor, phone..." id="bd-search" class="bd-in !pl-8" placeholder="Search donor, phone..."></div>
+                                    <select aria-label="All groups" class="bd-in !w-auto" id="bd-fgroup"><option value="">All groups</option><option>O+</option><option>O-</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option></select>
+                                    <select aria-label="Any eligibility" class="bd-in !w-auto" id="bd-felig"><option value="">Any eligibility</option><option value="elig">Eligible</option><option value="soon">Eligible Soon</option><option value="defer">Deferred</option><option value="new">New Donor</option></select>
+                                    <select aria-label="Sort" class="bd-in !w-auto" id="bd-sort"><option value="">Sort</option><option value="name">Name</option><option value="donations">Donations</option><option value="recent">Last Donation</option></select>
+                                    <div class="bd-seg ml-auto" id="bd-viewtabs"><button data-vw="grid" class="on"><i class="icon-layout-grid text-[13px]"></i> Grid</button><button data-vw="compact"><i class="icon-layout-list text-[13px]"></i> Compact</button><button data-vw="list"><i class="icon-list text-[13px]"></i> List</button></div>
+                                </div>
+                                <p class="text-xs bd-mut mt-2"><i class="icon-users text-[11px]"></i> <span id="bd-count">0</span> donors</p>
+                            </section>
+
+                            <section id="bd-directory"></section>
+
+                            <!-- ============ 3+4. GROUP DISTRIBUTION + ELIGIBILITY ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-4">
+                                <section class="bd-card p-5">
+                                    <h2 class="text-base font-bold bd-head flex items-center gap-2 mb-4"><i class="icon-chart-bar bd-hicon"></i> Donors by Blood Group</h2>
+                                    <div id="bd-distribution" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+                                </section>
+                                <section class="bd-card p-5">
+                                    <h2 class="text-base font-bold bd-head flex items-center gap-2 mb-4"><i class="icon-shield-check bd-hicon"></i> Eligibility Status</h2>
+                                    <div id="bd-eligibility" class="space-y-2"></div>
+                                </section>
+                            </div>
+
+                            <!-- ============ 5. UPCOMING DRIVES / APPOINTMENTS ============ -->
+                            <section class="bd-card p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold bd-head flex items-center gap-2"><i class="icon-tent bd-hicon"></i> Donation Drives &amp; Appointments</h2><button data-hs-overlay="#bd-modal-camp" class="bd-btn bd-btn-primary btn-compact text-xs"><i class="icon-plus"></i> New Camp</button></div>
+                                <div id="bd-camps" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                                    <div class="bd-panel p-3 [border-left:3px_solid_#dc2626]">
+                                        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold bd-head">Corporate Blood Drive</span><span class="bd-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]">Jul 24</span></div>
+                                        <p class="text-[11px] bd-mut"><i class="icon-map-pin text-[10px]"></i> Tech Park, Whitefield · <i class="icon-clock text-[10px]"></i> 09:00–16:00</p>
+                                        <div class="flex items-center justify-between text-[11px] bd-mut mt-2 mb-1"><span>Registered</span><span>68 / 120</span></div>
+                                        <div class="bd-stab"><span class="[width:57%] [background:#dc2626]"></span></div>
+                                        <button data-hs-overlay="#bd-modal-appointment" class="bd-btn bd-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-user-plus"></i> Register Donor</button>
+                                    </div>
+                                    <div class="bd-panel p-3 [border-left:3px_solid_#e06c1f]">
+                                        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold bd-head">Community Camp</span><span class="bd-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Jul 26</span></div>
+                                        <p class="text-[11px] bd-mut"><i class="icon-map-pin text-[10px]"></i> City Hall, Jayanagar · <i class="icon-clock text-[10px]"></i> 10:00–15:00</p>
+                                        <div class="flex items-center justify-between text-[11px] bd-mut mt-2 mb-1"><span>Registered</span><span>42 / 80</span></div>
+                                        <div class="bd-stab"><span class="[width:53%] [background:#e06c1f]"></span></div>
+                                        <button data-hs-overlay="#bd-modal-appointment" class="bd-btn bd-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-user-plus"></i> Register Donor</button>
+                                    </div>
+                                    <div class="bd-panel p-3 [border-left:3px_solid_#7c3aed]">
+                                        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold bd-head">University Donation Day</span><span class="bd-chip [background:color-mix(in_srgb,#7c3aed_13%,transparent)] [color:#7c3aed]">Jul 28</span></div>
+                                        <p class="text-[11px] bd-mut"><i class="icon-map-pin text-[10px]"></i> Campus Grounds · <i class="icon-clock text-[10px]"></i> 08:00–14:00</p>
+                                        <div class="flex items-center justify-between text-[11px] bd-mut mt-2 mb-1"><span>Registered</span><span>95 / 150</span></div>
+                                        <div class="bd-stab"><span class="[width:63%] [background:#7c3aed]"></span></div>
+                                        <button data-hs-overlay="#bd-modal-appointment" class="bd-btn bd-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-user-plus"></i> Register Donor</button>
+                                    </div>
+                                    <div class="bd-panel p-3 [border-left:3px_solid_#b91c1c]">
+                                        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold bd-head">Emergency Appeal — O-</span><span class="bd-chip [background:color-mix(in_srgb,#b91c1c_13%,transparent)] [color:#b91c1c]">Ongoing</span></div>
+                                        <p class="text-[11px] bd-mut"><i class="icon-map-pin text-[10px]"></i> Central Blood Bank · <i class="icon-clock text-[10px]"></i> All day</p>
+                                        <div class="flex items-center justify-between text-[11px] bd-mut mt-2 mb-1"><span>Registered</span><span>24 / 50</span></div>
+                                        <div class="bd-stab"><span class="[width:48%] [background:#b91c1c]"></span></div>
+                                        <button data-hs-overlay="#bd-modal-appointment" class="bd-btn bd-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-user-plus"></i> Register Donor</button>
+                                    </div>
+                                    <div class="bd-panel p-3 [border-left:3px_solid_#1d4ed8]">
+                                        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold bd-head">Weekend Mega Camp</span><span class="bd-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]">Aug 02</span></div>
+                                        <p class="text-[11px] bd-mut"><i class="icon-map-pin text-[10px]"></i> Stadium Complex · <i class="icon-clock text-[10px]"></i> 07:00–17:00</p>
+                                        <div class="flex items-center justify-between text-[11px] bd-mut mt-2 mb-1"><span>Registered</span><span>12 / 200</span></div>
+                                        <div class="bd-stab"><span class="[width:6%] [background:#1d4ed8]"></span></div>
+                                        <button data-hs-overlay="#bd-modal-appointment" class="bd-btn bd-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-user-plus"></i> Register Donor</button>
+                                    </div>
+                                    <div class="bd-panel p-3 [border-left:3px_solid_#0f766e]">
+                                        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold bd-head">Rotary Club Drive</span><span class="bd-chip [background:color-mix(in_srgb,#0f766e_13%,transparent)] [color:#0f766e]">Aug 05</span></div>
+                                        <p class="text-[11px] bd-mut"><i class="icon-map-pin text-[10px]"></i> Community Center · <i class="icon-clock text-[10px]"></i> 09:00–13:00</p>
+                                        <div class="flex items-center justify-between text-[11px] bd-mut mt-2 mb-1"><span>Registered</span><span>8 / 60</span></div>
+                                        <div class="bd-stab"><span class="[width:13%] [background:#0f766e]"></span></div>
+                                        <button data-hs-overlay="#bd-modal-appointment" class="bd-btn bd-btn-ghost w-full justify-center mt-2 !py-1.5 text-xs"><i class="icon-user-plus"></i> Register Donor</button>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ============ 6+7. TOP DONORS + ACTIVITY ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                                <section class="bd-card p-5">
+                                    <h2 class="text-base font-bold bd-head flex items-center gap-2 mb-4"><i class="icon-award bd-hicon"></i> Top Donors &amp; Rewards</h2>
+                                    <div id="bd-top" class="space-y-2.5"></div>
+                                </section>
+                                <section class="bd-card p-5">
+                                    <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold bd-head flex items-center gap-2"><i class="icon-radar bd-hicon"></i> Donor Activity</h2><span class="bd-chip bg-[color-mix(in_srgb,#15803d_14%,transparent)] text-[#15803d]"><span class="bd-dot bd-live bg-[#22c55e]"></span> Live</span></div>
+                                    <div id="bd-activity" class="space-y-2.5">
+                                        <div class="bd-panel p-3 flex items-start gap-2.5"><span class="bd-iconbadge w-8 h-8 flex-none [color:#dc2626]"><i class="icon-droplet"></i></span><div class="min-w-0"><p class="text-sm font-semibold bd-head">Donation Recorded</p><p class="text-[11px] bd-mut truncate">A+ · R. Kumar · 450ml</p><p class="text-[10px] bd-mut mt-0.5">5m ago</p></div></div>
+                                        <div class="bd-panel p-3 flex items-start gap-2.5"><span class="bd-iconbadge w-8 h-8 flex-none [color:#1d4ed8]"><i class="icon-user-plus"></i></span><div class="min-w-0"><p class="text-sm font-semibold bd-head">New Donor Registered</p><p class="text-[11px] bd-mut truncate">O- · Meera Singh</p><p class="text-[10px] bd-mut mt-0.5">14m ago</p></div></div>
+                                        <div class="bd-panel p-3 flex items-start gap-2.5"><span class="bd-iconbadge w-8 h-8 flex-none [color:#e06c1f]"><i class="icon-calendar-plus"></i></span><div class="min-w-0"><p class="text-sm font-semibold bd-head">Appointment Scheduled</p><p class="text-[11px] bd-mut truncate">B+ · Jul 24 · 10:00</p><p class="text-[10px] bd-mut mt-0.5">26m ago</p></div></div>
+                                        <div class="bd-panel p-3 flex items-start gap-2.5"><span class="bd-iconbadge w-8 h-8 flex-none [color:#15803d]"><i class="icon-shield-check"></i></span><div class="min-w-0"><p class="text-sm font-semibold bd-head">Eligibility Updated</p><p class="text-[11px] bd-mut truncate">5 donors now eligible</p><p class="text-[10px] bd-mut mt-0.5">41m ago</p></div></div>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!-- BULK BAR -->
+                            <div class="bd-bulk items-center gap-2 px-4 py-2.5 flex-wrap">
+                                <span class="text-sm font-semibold"><span id="bd-selcount">0</span> selected</span>
+                                <div class="flex flex-wrap gap-1.5 ml-auto text-xs">
+                                    <button data-bulk="notify" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-bell"></i> Notify</button>
+                                    <button data-bulk="appointment" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-calendar-plus"></i> Schedule</button>
+                                    <button data-bulk="sms" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-message-square"></i> SMS</button>
+                                    <button data-bulk="export" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    <button data-bulk="print" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-printer"></i> Print</button>
+                                    <button data-bulk="archive" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-archive"></i> Archive</button>
+                                    <button data-bulk="delete" data-hs-overlay="#bd-modal-delete" class="px-2.5 py-1.5 rounded-md bg-rose-600/80 hover:bg-rose-600"><i class="icon-trash-2"></i> Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="bd-drawer" class="bd-drawer"></div>
+        <div id="bd-toast" class="bd-toast"></div>
+
+        <!-- ==================== MODALS (Preline) ==================== -->
+        <div id="bd-modal-add" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col rounded-lg pointer-events-auto [background:var(--bd-surface)]">
+                    <div class="bd-modal-head"><span class="bd-modal-badge"><i class="icon-user-plus"></i></span><div class="min-w-0"><h3 class="font-bold bd-head leading-tight">Add Donor</h3><p class="text-[11px] bd-mut">Register a new blood donor</p></div><button type="button" data-hs-overlay="#bd-modal-add" class="ml-auto w-8 h-8 rounded-lg hover:bg-[var(--bd-hover)] flex items-center justify-center bd-mut"><i class="icon-x"></i></button></div>
+                    <div class="bd-modal-body">
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div><label class="bd-formlabel">Full Name</label><input class="bd-in mt-1" placeholder="Donor name"></div>
+                            <div><label class="bd-formlabel">Blood Group</label><select class="bd-in mt-1"><option>O+</option><option>O-</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option></select></div>
+                            <div><label class="bd-formlabel">Age</label><input class="bd-in mt-1" placeholder="e.g. 28"></div>
+                            <div><label class="bd-formlabel">Gender</label><select class="bd-in mt-1"><option>Male</option><option>Female</option><option>Other</option></select></div>
+                            <div><label class="bd-formlabel">Phone</label><input class="bd-in mt-1" placeholder="+91 ..."></div>
+                            <div><label class="bd-formlabel">City / Area</label><select class="bd-in mt-1"><option>Whitefield</option><option>Indiranagar</option><option>Koramangala</option><option>Jayanagar</option><option>HSR Layout</option><option>Marathahalli</option></select></div>
+                            <div><label class="bd-formlabel">Weight (kg)</label><input class="bd-in mt-1" placeholder="65"></div>
+                            <div><label class="bd-formlabel">Last Donation</label><input type="text" placeholder="dd/mm/yyyy" class="bd-in mt-1" data-provider="flatpickr" data-date-format="d-m-Y"></div>
+                        </div>
+                    </div>
+                    <div class="bd-modal-foot"><button type="button" data-hs-overlay="#bd-modal-add" class="bd-btn bd-btn-ghost">Cancel</button><button type="button" data-modalok="add" data-hs-overlay="#bd-modal-add" class="bd-btn bd-btn-primary"><i class="icon-user-plus"></i> Register Donor</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bd-modal-edit" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col rounded-lg pointer-events-auto [background:var(--bd-surface)]">
+                    <div class="bd-modal-head"><span class="bd-modal-badge"><i class="icon-edit"></i></span><div class="min-w-0"><h3 class="font-bold bd-head leading-tight">Edit Donor</h3><p class="text-[11px] bd-mut">Update donor details</p></div><button type="button" data-hs-overlay="#bd-modal-edit" class="ml-auto w-8 h-8 rounded-lg hover:bg-[var(--bd-hover)] flex items-center justify-center bd-mut"><i class="icon-x"></i></button></div>
+                    <div class="bd-modal-body">
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div><label class="bd-formlabel">Blood Group</label><select class="bd-in mt-1"><option>O+</option><option>O-</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option></select></div>
+                            <div><label class="bd-formlabel">Phone</label><input class="bd-in mt-1" placeholder="+91 ..."></div>
+                            <div><label class="bd-formlabel">City</label><select class="bd-in mt-1"><option>Whitefield</option><option>Indiranagar</option><option>Koramangala</option><option>Jayanagar</option><option>HSR Layout</option><option>Marathahalli</option></select></div>
+                            <div><label class="bd-formlabel">Eligibility</label><select class="bd-in mt-1"><option>Eligible</option><option>Eligible Soon</option><option>Deferred</option><option>New Donor</option></select></div>
+                        </div>
+                    </div>
+                    <div class="bd-modal-foot"><button type="button" data-hs-overlay="#bd-modal-edit" class="bd-btn bd-btn-ghost">Cancel</button><button type="button" data-modalok="edit" data-hs-overlay="#bd-modal-edit" class="bd-btn bd-btn-primary"><i class="icon-edit"></i> Save Changes</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bd-modal-appointment" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col rounded-lg pointer-events-auto [background:var(--bd-surface)]">
+                    <div class="bd-modal-head"><span class="bd-modal-badge"><i class="icon-calendar-plus"></i></span><div class="min-w-0"><h3 class="font-bold bd-head leading-tight">Schedule Donation</h3><p class="text-[11px] bd-mut">Book a donation appointment</p></div><button type="button" data-hs-overlay="#bd-modal-appointment" class="ml-auto w-8 h-8 rounded-lg hover:bg-[var(--bd-hover)] flex items-center justify-center bd-mut"><i class="icon-x"></i></button></div>
+                    <div class="bd-modal-body">
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div><label class="bd-formlabel">Donor</label><input class="bd-in mt-1" placeholder="Search..."></div>
+                            <div><label class="bd-formlabel">Blood Group</label><select class="bd-in mt-1"><option>O+</option><option>O-</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option></select></div>
+                            <div><label class="bd-formlabel">Date</label><input type="text" placeholder="dd/mm/yyyy" class="bd-in mt-1" data-provider="flatpickr" data-date-format="d-m-Y"></div>
+                            <div><label class="bd-formlabel">Time Slot</label><select class="bd-in mt-1"><option>09:00</option><option>10:30</option><option>12:00</option><option>14:00</option><option>15:30</option></select></div>
+                            <div><label class="bd-formlabel">Location</label><select class="bd-in mt-1"><option>Central Blood Bank</option><option>Corporate Drive</option><option>Community Camp</option></select></div>
+                            <div><label class="bd-formlabel">Reminder</label><select class="bd-in mt-1"><option>SMS</option><option>Email</option><option>Both</option></select></div>
+                        </div>
+                    </div>
+                    <div class="bd-modal-foot"><button type="button" data-hs-overlay="#bd-modal-appointment" class="bd-btn bd-btn-ghost">Cancel</button><button type="button" data-modalok="appointment" data-hs-overlay="#bd-modal-appointment" class="bd-btn bd-btn-primary"><i class="icon-calendar-plus"></i> Schedule</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bd-modal-record" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col rounded-lg pointer-events-auto [background:var(--bd-surface)]">
+                    <div class="bd-modal-head"><span class="bd-modal-badge"><i class="icon-droplet"></i></span><div class="min-w-0"><h3 class="font-bold bd-head leading-tight">Record Donation</h3><p class="text-[11px] bd-mut">Log a completed donation</p></div><button type="button" data-hs-overlay="#bd-modal-record" class="ml-auto w-8 h-8 rounded-lg hover:bg-[var(--bd-hover)] flex items-center justify-center bd-mut"><i class="icon-x"></i></button></div>
+                    <div class="bd-modal-body">
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div><label class="bd-formlabel">Donor</label><input class="bd-in mt-1" placeholder="Search..."></div>
+                            <div><label class="bd-formlabel">Blood Group</label><select class="bd-in mt-1"><option>O+</option><option>O-</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option></select></div>
+                            <div><label class="bd-formlabel">Volume (ml)</label><select class="bd-in mt-1"><option>450</option><option>350</option><option>250</option></select></div>
+                            <div><label class="bd-formlabel">Component</label><select class="bd-in mt-1"><option>Whole Blood</option><option>Plasma</option><option>Platelets</option></select></div>
+                            <div><label class="bd-formlabel">Hemoglobin</label><input class="bd-in mt-1" placeholder="13.8"></div>
+                            <div><label class="bd-formlabel">Collected By</label><input class="bd-in mt-1" placeholder="Phlebotomist"></div>
+                        </div>
+                    </div>
+                    <div class="bd-modal-foot"><button type="button" data-hs-overlay="#bd-modal-record" class="bd-btn bd-btn-ghost">Cancel</button><button type="button" data-modalok="record" data-hs-overlay="#bd-modal-record" class="bd-btn bd-btn-primary"><i class="icon-droplet"></i> Record Donation</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bd-modal-camp" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col rounded-lg pointer-events-auto [background:var(--bd-surface)]">
+                    <div class="bd-modal-head"><span class="bd-modal-badge"><i class="icon-tent"></i></span><div class="min-w-0"><h3 class="font-bold bd-head leading-tight">New Donation Camp</h3><p class="text-[11px] bd-mut">Organise a blood drive</p></div><button type="button" data-hs-overlay="#bd-modal-camp" class="ml-auto w-8 h-8 rounded-lg hover:bg-[var(--bd-hover)] flex items-center justify-center bd-mut"><i class="icon-x"></i></button></div>
+                    <div class="bd-modal-body">
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div><label class="bd-formlabel">Camp Name</label><input class="bd-in mt-1" placeholder="e.g. Corporate Drive"></div>
+                            <div><label class="bd-formlabel">Organizer</label><input class="bd-in mt-1" placeholder="Company / NGO"></div>
+                            <div><label class="bd-formlabel">Location</label><input class="bd-in mt-1" placeholder="Venue"></div>
+                            <div><label class="bd-formlabel">Date</label><input type="text" placeholder="dd/mm/yyyy" class="bd-in mt-1" data-provider="flatpickr" data-date-format="d-m-Y"></div>
+                            <div><label class="bd-formlabel">Target Units</label><input class="bd-in mt-1" placeholder="120"></div>
+                            <div><label class="bd-formlabel">Contact</label><input class="bd-in mt-1" placeholder="+91 ..."></div>
+                        </div>
+                    </div>
+                    <div class="bd-modal-foot"><button type="button" data-hs-overlay="#bd-modal-camp" class="bd-btn bd-btn-ghost">Cancel</button><button type="button" data-modalok="camp" data-hs-overlay="#bd-modal-camp" class="bd-btn bd-btn-primary"><i class="icon-tent"></i> Create Camp</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bd-modal-import" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col rounded-lg pointer-events-auto [background:var(--bd-surface)]">
+                    <div class="bd-modal-head"><span class="bd-modal-badge"><i class="icon-upload"></i></span><div class="min-w-0"><h3 class="font-bold bd-head leading-tight">Import</h3><p class="text-[11px] bd-mut">Bulk-load donor records</p></div><button type="button" data-hs-overlay="#bd-modal-import" class="ml-auto w-8 h-8 rounded-lg hover:bg-[var(--bd-hover)] flex items-center justify-center bd-mut"><i class="icon-x"></i></button></div>
+                    <div class="bd-modal-body">
+                        <div class="flex gap-2 mb-3"><span class="bd-npill">CSV</span><span class="bd-npill">Excel</span><span class="bd-npill">Donor List</span></div>
+                        <div class="bd-dropz rounded-xl h-28 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-[var(--bd-hover)]"><i class="icon-cloud-upload text-3xl bd-mut"></i><p class="text-sm font-semibold mt-1 bd-head">Drop CSV / Excel file</p></div>
+                        <button type="button" class="text-xs font-semibold text-rose-600 hover:underline mt-2"><i class="icon-download"></i> Download sample template</button>
+                        <div class="mt-3 rounded-lg p-3 text-xs flex items-center gap-2 [background:color-mix(in_srgb,#15803d_11%,transparent)] [color:#15803d] [border:1px_solid_color-mix(in_srgb,#15803d_28%,transparent)]"><i class="icon-circle-check"></i> Validation passed · 16 donors · 0 errors</div>
+                    </div>
+                    <div class="bd-modal-foot"><button type="button" data-hs-overlay="#bd-modal-import" class="bd-btn bd-btn-ghost">Cancel</button><button type="button" data-modalok="import" data-hs-overlay="#bd-modal-import" class="bd-btn bd-btn-primary"><i class="icon-upload"></i> Import</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bd-modal-export" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col rounded-lg pointer-events-auto [background:var(--bd-surface)]">
+                    <div class="bd-modal-head"><span class="bd-modal-badge"><i class="icon-download"></i></span><div class="min-w-0"><h3 class="font-bold bd-head leading-tight">Export</h3><p class="text-[11px] bd-mut">Export donor data</p></div><button type="button" data-hs-overlay="#bd-modal-export" class="ml-auto w-8 h-8 rounded-lg hover:bg-[var(--bd-hover)] flex items-center justify-center bd-mut"><i class="icon-x"></i></button></div>
+                    <div class="bd-modal-body">
+                        <p class="text-xs bd-mut mb-2">Choose a format</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" data-expfmt="CSV" data-hs-overlay="#bd-modal-export" class="bd-btn bd-btn-ghost justify-center">CSV</button>
+                            <button type="button" data-expfmt="Excel" data-hs-overlay="#bd-modal-export" class="bd-btn bd-btn-ghost justify-center">Excel</button>
+                            <button type="button" data-expfmt="PDF" data-hs-overlay="#bd-modal-export" class="bd-btn bd-btn-ghost justify-center">PDF</button>
+                            <button type="button" data-expfmt="Print" data-hs-overlay="#bd-modal-export" class="bd-btn bd-btn-ghost justify-center">Print</button>
+                            <button type="button" data-expfmt="Eligible Donors" data-hs-overlay="#bd-modal-export" class="bd-btn bd-btn-ghost justify-center">Eligible Donors</button>
+                            <button type="button" data-expfmt="By Blood Group" data-hs-overlay="#bd-modal-export" class="bd-btn bd-btn-ghost justify-center">By Blood Group</button>
+                            <button type="button" data-expfmt="Donation History" data-hs-overlay="#bd-modal-export" class="bd-btn bd-btn-ghost justify-center">Donation History</button>
+                            <button type="button" data-expfmt="Full Registry" data-hs-overlay="#bd-modal-export" class="bd-btn bd-btn-ghost justify-center">Full Registry</button>
+                        </div>
+                    </div>
+                    <div class="bd-modal-foot"><button type="button" data-hs-overlay="#bd-modal-export" class="bd-btn bd-btn-ghost">Cancel</button><button type="button" data-modalok="export" data-hs-overlay="#bd-modal-export" class="bd-btn bd-btn-primary"><i class="icon-download"></i> Export</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bd-modal-delete" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+            <div class="m-3 mx-auto [width:min(420px,94vw)]">
+                <div class="rounded-lg pointer-events-auto [background:var(--bd-surface)]">
+                    <div class="p-5 text-center">
+                        <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3 [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><i class="icon-alert-triangle text-2xl"></i></div>
+                        <h3 class="font-bold text-lg bd-head">Confirm</h3>
+                        <p class="text-xs bd-mut mt-1" id="bd-delete-msg"></p>
+                        <div class="flex gap-2 mt-4">
+                            <button type="button" data-hs-overlay="#bd-modal-delete" class="bd-btn bd-btn-ghost flex-1 justify-center">Cancel</button>
+                            <button type="button" id="bd-delete-confirm" data-hs-overlay="#bd-modal-delete" class="bd-btn bd-btn-danger flex-1 justify-center">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "blood-donors"})
+
+    </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Lab Tests — Dreams HMS"}) @@include('partials/header.html', {"page": "lab-tests"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="lab-tests">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search test name, category..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Lab Tests", "parentUrl": "laboratory.html", "parent": "Laboratory"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Lab Test Catalog</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Master catalog of all diagnostic tests offered by the laboratory</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-flask-conical text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-total">10</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Tests</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-layers text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-categories">5</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Categories</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-avgprice">$78.50</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Avg. Price</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-clock text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-avgtat">29</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Avg. TAT (hrs)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Tests</span>
+                                <span class="text-xs text-gray-400 ml-auto">10 of 10</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Test Name</th>
+                                            <th>Category</th>
+                                            <th>Price</th>
+                                            <th>Turnaround Time</th>
+                                            <th>Sample Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+<tr><td class="font-medium text-gray-900">Complete Blood Count</td><td class="text-gray-600 dark:text-gray-300">Hematology</td><td class="font-semibold text-gray-900">$45.00</td><td class="text-gray-500 dark:text-gray-400">6 hrs</td><td class="text-gray-500 dark:text-gray-400">Whole Blood</td></tr>
+<tr><td class="font-medium text-gray-900">Lipid Panel</td><td class="text-gray-600 dark:text-gray-300">Biochemistry</td><td class="font-semibold text-gray-900">$60.00</td><td class="text-gray-500 dark:text-gray-400">8 hrs</td><td class="text-gray-500 dark:text-gray-400">Serum</td></tr>
+<tr><td class="font-medium text-gray-900">Liver Function Test</td><td class="text-gray-600 dark:text-gray-300">Biochemistry</td><td class="font-semibold text-gray-900">$75.00</td><td class="text-gray-500 dark:text-gray-400">12 hrs</td><td class="text-gray-500 dark:text-gray-400">Serum</td></tr>
+<tr><td class="font-medium text-gray-900">Urine Culture</td><td class="text-gray-600 dark:text-gray-300">Microbiology</td><td class="font-semibold text-gray-900">$55.00</td><td class="text-gray-500 dark:text-gray-400">48 hrs</td><td class="text-gray-500 dark:text-gray-400">Urine</td></tr>
+<tr><td class="font-medium text-gray-900">HIV Antibody Test</td><td class="text-gray-600 dark:text-gray-300">Serology</td><td class="font-semibold text-gray-900">$90.00</td><td class="text-gray-500 dark:text-gray-400">24 hrs</td><td class="text-gray-500 dark:text-gray-400">Serum</td></tr>
+<tr><td class="font-medium text-gray-900">Biopsy Analysis</td><td class="text-gray-600 dark:text-gray-300">Pathology</td><td class="font-semibold text-gray-900">$220.00</td><td class="text-gray-500 dark:text-gray-400">72 hrs</td><td class="text-gray-500 dark:text-gray-400">Tissue</td></tr>
+<tr><td class="font-medium text-gray-900">Blood Glucose (Fasting)</td><td class="text-gray-600 dark:text-gray-300">Biochemistry</td><td class="font-semibold text-gray-900">$25.00</td><td class="text-gray-500 dark:text-gray-400">4 hrs</td><td class="text-gray-500 dark:text-gray-400">Plasma</td></tr>
+<tr><td class="font-medium text-gray-900">Throat Culture</td><td class="text-gray-600 dark:text-gray-300">Microbiology</td><td class="font-semibold text-gray-900">$40.00</td><td class="text-gray-500 dark:text-gray-400">48 hrs</td><td class="text-gray-500 dark:text-gray-400">Swab</td></tr>
+<tr><td class="font-medium text-gray-900">Hepatitis B Panel</td><td class="text-gray-600 dark:text-gray-300">Serology</td><td class="font-semibold text-gray-900">$110.00</td><td class="text-gray-500 dark:text-gray-400">24 hrs</td><td class="text-gray-500 dark:text-gray-400">Serum</td></tr>
+<tr><td class="font-medium text-gray-900">Pap Smear</td><td class="text-gray-600 dark:text-gray-300">Pathology</td><td class="font-semibold text-gray-900">$65.00</td><td class="text-gray-500 dark:text-gray-400">48 hrs</td><td class="text-gray-500 dark:text-gray-400">Cervical Cells</td></tr>
+</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "lab-tests"})
+    </body>
+</html>

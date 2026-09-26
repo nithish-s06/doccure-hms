@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Chart JS — Dreams HMS"}) @@include('partials/header.html', {"page": "chart-js"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="chart-js">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <!-- Page Header -->
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Chart JS</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">A collection of Chart.js chart types used across Dreams HMS dashboards</p>
+                            </div>
+                        </div>
+
+                <div class="p-3 lg:py-6 lg:px-0">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-3 lg:mb-6">
+                        <h2 class="text-gray-900 text-xl font-bold mb-0">Chart JS</h2>
+                    </div>
+
+					<!-- Start grid -->
+					<div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h2 class="text-gray-900 text-lg font-bold mb-0">Bar Chart</h2>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartBar1"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartBar1"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h3 class="text-gray-900 text-lg font-bold mb-0">Transparency</h3>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartBar2"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartBar2"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h4 class="text-gray-900 text-lg font-bold mb-0">Gradient Bar Chart</h4>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartBar3"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartBar3"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Horizontal Bar Chart</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartBar4"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartBar4"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Horizontal Bar Chart Style2</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartBar5"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartBar5"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card -->
+						
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Vertical Stacked Bar Chart</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartStacked1"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartStacked1"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Horizontal Stacked Bar Chart</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartStacked2"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartStacked2"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Line Chart</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartLine1"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartLine1"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Donut Chart</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartPie"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartPie"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Pie Chart</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartDonut"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartDonut"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Scatter Chart</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartRadar"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartRadar"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div> <!-- end card --> 
+
+						<div class="preview-card bg-white rounded-md border border-border-color p-5">
+							<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap">
+								<h5>Area Line Chart</h5>
+								<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-sm border-border-color font-semibold rounded-md bg-light-200 dark:bg-gray-100 focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+									<i class="icon icon-eye"></i>
+									<span class="code-btn">Show Code</span>
+								</button>
+							</div>
+							<div class="preview-content h-75">
+								<canvas id="chartLine"></canvas>
+							</div> 
+	<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm overflow-hidden">
+	<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-sm px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+	<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+	&lt;div class="h-75"&gt;
+		&lt;canvas id="chartLine"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	</code>
+	</pre>
+
+						</div>  <!-- end card --> 
+
+					</div> 
+					<!-- End grid --> 
+				</div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        
+
+        @@include('partials/script.html', {"page": "chart-js"})
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!-- Card -->
+<div class="relative rounded-3xl">
+    <div class="absolute -inset-0.5 rounded-3xl bg-gradient-to-br from-blue-500/25 via-transparent to-fuchsia-500/25 opacity-70 blur-[2px]"></div>
+    <div class="relative rounded-3xl bg-white dark:bg-slate-900 border border-gray-200/70 dark:border-white/10 p-6 sm:p-8 lg-card-shadow">
+        <div class="mb-6">
+            <span class="inline-grid size-12 place-items-center rounded-2xl text-white text-lg mb-4 lg-icon-badge"><i class="icon-smartphone"></i></span>
+            <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-gray-900 dark:text-white">Verify your identity</h2>
+            <p class="text-gray-500 dark:text-gray-400 mt-1.5 text-sm">Enter the 6-digit code sent to <span class="font-bold text-gray-700 dark:text-gray-200">admin@example.com</span>.</p>
+        </div>
+
+        <form data-submit-redirect="index.html" class="space-y-5">
+            <fieldset>
+                <legend class="sr-only">Verification code</legend>
+                <div class="flex items-center justify-between gap-2" data-otp>
+                    <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 1" value="4" class="otp-input is-filled w-full h-14 text-center text-xl font-black rounded-xl border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500">
+                    <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2" value="8" class="otp-input is-filled w-full h-14 text-center text-xl font-black rounded-xl border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500">
+                    <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3" value="2" class="otp-input is-filled w-full h-14 text-center text-xl font-black rounded-xl border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500">
+                    <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4" value="1" class="otp-input is-filled w-full h-14 text-center text-xl font-black rounded-xl border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500">
+                    <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5" placeholder="—" class="otp-input w-full h-14 text-center text-xl font-black rounded-xl border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-slate-600 focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500">
+                    <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6" placeholder="—" class="otp-input w-full h-14 text-center text-xl font-black rounded-xl border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-slate-600 focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500">
+                </div>
+            </fieldset>
+
+            <button type="submit" class="lg-cta w-full rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3.5 font-bold text-[15px] shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2">
+                <span class="js-cta-default flex items-center gap-2"><i class="icon-shield-check"></i>Verify &amp; Continue</span>
+                <span class="js-cta-loading hidden items-center gap-2"><span class="lg-spin size-4 rounded-full border-2 border-white/40 border-t-white"></span>Verifying…</span>
+            </button>
+        </form>
+
+        <div class="mt-5 flex items-center justify-center gap-2 text-sm">
+            <span class="text-gray-500 dark:text-gray-400">Didn't get the code?</span>
+            <button type="button" id="otp-resend" class="inline-flex items-center gap-1.5 font-bold text-blue-600 dark:text-blue-400 hover:underline disabled:text-gray-400 disabled:no-underline disabled:cursor-not-allowed" disabled>
+                <i class="icon-rotate-cw text-sm"></i><span id="otp-resend-text">Resend in 0:30</span>
+            </button>
+        </div>
+
+        <div class="mt-5 flex items-center gap-3 rounded-xl border border-blue-100 dark:border-blue-500/20 bg-blue-50/70 dark:bg-blue-500/10 px-3.5 py-3">
+            <span class="grid size-8 shrink-0 place-items-center rounded-lg bg-blue-600/10 text-blue-600 dark:text-blue-400"><i class="icon-key-round text-sm"></i></span>
+            <div class="min-w-0">
+                <p class="text-[11px] font-bold text-blue-700 dark:text-blue-300 uppercase tracking-wide">Demo code</p>
+                <p class="text-[11px] text-blue-600/80 dark:text-blue-300/70">Any 6 digits will continue to the dashboard.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
+    <a [routerLink]="AllRoutes.login" class="font-bold text-blue-600 dark:text-blue-400 hover:underline">Back to sign in</a>
+</p>

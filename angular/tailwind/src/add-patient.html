@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Add New Patient — Dreams HMS"}) @@include('partials/header.html', {"page": "add-patient"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="ap-page" class="ap-shell max-w-[1400px] mx-auto space-y-5">
+
+                        <!-- Breadcrumb -->
+                        @@include('partials/breadcrumb.html', {"current": "Add New Patient", "parentUrl": "patients.html", "parent": "Patients"})
+
+                        <!-- ============================ HERO ============================ -->
+                        <section class="ap-hero" data-aos="fade-up">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="min-w-0">
+                                    <div class="flex flex-wrap items-center gap-2.5">
+                                        <span class="ap-hero-badge"><span class="dot"></span>New Registration</span>
+                                        <span class="ap-hero-badge ap-hero-badge-amber"><i class="icon-file-text text-[11px]"></i>Draft</span>
+                                        <span class="ap-hero-badge ap-hero-badge-emerald"><i class="icon-bed text-[11px]"></i>Ready for Admission</span>
+                                    </div>
+                                    <h1 class="mt-3 text-2xl lg:text-3xl font-extrabold tracking-tight">Add New Patient</h1>
+                                    <p class="mt-1.5 max-w-xl text-sm text-white/70">A premium onboarding experience — capture demographics, clinical history, insurance and documents in one guided flow.</p>
+                                    <div class="mt-4 flex flex-wrap items-center gap-2.5 text-xs font-semibold text-white/85">
+                                        <span class="ap-hero-meta"><i class="icon-clock text-[13px] text-sky-300"></i><span id="ap-clock">—</span></span>
+                                        <span class="ap-hero-meta"><i class="icon-hash text-[13px] text-indigo-300"></i>Reg. ID · PT-2026-0148</span>
+                                        <span class="ap-hero-meta"><i class="icon-map-pin text-[13px] text-emerald-300"></i>Main Campus · OPD</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-stretch gap-2.5 w-full sm:w-auto">
+                                    <div class="grid grid-cols-2 gap-2.5">
+                                        <button type="button" class="ap-btn ap-btn-primary" data-ap-action="save"><i class="icon-save"></i>Save Patient</button>
+                                        <button type="button" class="ap-btn ap-btn-glass" data-ap-action="save-new"><i class="icon-plus"></i>Save &amp; New</button>
+                                        <button type="button" class="ap-btn ap-btn-success" data-ap-action="admit"><i class="icon-bed"></i>Admit Patient</button>
+                                        <button type="button" class="ap-btn ap-btn-ghost" data-ap-action="cancel"><i class="icon-x"></i>Cancel</button>
+                                    </div>
+                                    <div class="ap-hero-meta justify-between text-white/85">
+                                        <span class="text-xs font-semibold">Completion</span>
+                                        <span class="text-sm font-extrabold" data-ap-pct>0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ===================== SUMMARY STAT CARDS ==================== -->
+                        <section class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3.5" data-aos="fade-up" data-aos-delay="50">
+                            <!-- Today's Registrations -->
+                            <div class="ap-stat ap-c-indigo">
+                                <div class="flex items-start justify-between">
+                                    <span class="ap-stat-ico"><i class="icon-user-plus"></i></span>
+                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="72" aria-hidden="true">
+                                        <circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                        <circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                    </svg>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">48</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Today's Registrations</p>
+                                <div class="mt-2.5 flex items-center justify-between gap-2">
+                                    <span class="ap-stat-chip"><i class="icon-trending-up text-[10px]"></i>+12%</span>
+                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                            </div>
+
+                            <!-- Waiting Admissions -->
+                            <div class="ap-stat ap-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="ap-stat-ico"><i class="icon-bed"></i></span>
+                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="55" aria-hidden="true">
+                                        <circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                        <circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                    </svg>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">17</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Waiting Admissions</p>
+                                <div class="mt-2.5 flex items-center justify-between gap-2">
+                                    <span class="ap-stat-chip">Queue</span>
+                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,6 9,8 17,5 25,10 33,8 41,12 53,9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                            </div>
+
+                            <!-- Emergency Patients -->
+                            <div class="ap-stat ap-c-rose">
+                                <div class="flex items-start justify-between">
+                                    <span class="ap-stat-ico"><i class="icon-siren"></i></span>
+                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="88" aria-hidden="true">
+                                        <circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                        <circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                    </svg>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">6</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Emergency Patients</p>
+                                <div class="mt-2.5 flex items-center justify-between gap-2">
+                                    <span class="ap-stat-chip"><i class="icon-activity text-[10px]"></i>Critical</span>
+                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,12 9,6 17,9 25,4 33,10 41,5 53,3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                            </div>
+
+                            <!-- Scheduled Appointments -->
+                            <div class="ap-stat ap-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="ap-stat-ico"><i class="icon-calendar-plus"></i></span>
+                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="64" aria-hidden="true">
+                                        <circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                        <circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                    </svg>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">132</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Scheduled Appointments</p>
+                                <div class="mt-2.5 flex items-center justify-between gap-2">
+                                    <span class="ap-stat-chip"><i class="icon-trending-up text-[10px]"></i>+8%</span>
+                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,13 9,10 17,11 25,6 33,8 41,5 53,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                            </div>
+
+                            <!-- Insurance Verified -->
+                            <div class="ap-stat ap-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="ap-stat-ico"><i class="icon-shield-check"></i></span>
+                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="91" aria-hidden="true">
+                                        <circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                        <circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                    </svg>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">91%</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Insurance Verified</p>
+                                <div class="mt-2.5 flex items-center justify-between gap-2">
+                                    <span class="ap-stat-chip"><i class="icon-badge-check text-[10px]"></i>Verified</span>
+                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,11 9,9 17,10 25,7 33,6 41,4 53,3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                            </div>
+
+                            <!-- Pending Documents -->
+                            <div class="ap-stat ap-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="ap-stat-ico"><i class="icon-file-text"></i></span>
+                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="40" aria-hidden="true">
+                                        <circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                        <circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle>
+                                    </svg>
+                                </div>
+                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">9</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Pending Documents</p>
+                                <div class="mt-2.5 flex items-center justify-between gap-2">
+                                    <span class="ap-stat-chip"><i class="icon-clock text-[10px]"></i>Awaiting</span>
+                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,5 9,7 17,6 25,9 33,8 41,11 53,10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ===================== PROGRESS STEPPER ===================== -->
+                        <section class="ap-card p-3" data-aos="fade-up" data-aos-delay="100">
+                            <div class="ap-stepper">
+                                <div class="ap-step is-active" data-step="personal"><span class="n">1</span><span class="lb">Personal Info</span></div>
+                                <span class="ap-step-line"></span>
+                                <div class="ap-step" data-step="contact"><span class="n">2</span><span class="lb">Contact</span></div>
+                                <span class="ap-step-line"></span>
+                                <div class="ap-step" data-step="medical"><span class="n">3</span><span class="lb">Medical</span></div>
+                                <span class="ap-step-line"></span>
+                                <div class="ap-step" data-step="insurance"><span class="n">4</span><span class="lb">Insurance</span></div>
+                                <span class="ap-step-line"></span>
+                                <div class="ap-step" data-step="emergency"><span class="n">5</span><span class="lb">Emergency</span></div>
+                                <span class="ap-step-line"></span>
+                                <div class="ap-step" data-step="documents"><span class="n">6</span><span class="lb">Documents</span></div>
+                                <span class="ap-step-line"></span>
+                                <div class="ap-step" data-step="review"><span class="n">7</span><span class="lb">Review</span></div>
+                            </div>
+                        </section>
+
+                        <!-- ==================== BODY: FORM + OVERVIEW ================== -->
+                        <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_340px] gap-5 items-start">
+
+                            <!-- ------------------------- FORM ----------------------- -->
+                            <form id="ap-form" data-noop-submit class="space-y-5 min-w-0" autocomplete="off">
+                                <div id="sec-personal" class="space-y-5">
+                                    <!-- Personal Details -->
+                                    <section class="ap-card ap-c-indigo" data-aos="fade-up" aria-labelledby="h-personal">
+                                        <div class="ap-card-head">
+                                            <span class="ico"><i class="icon-user"></i></span>
+                                            <div class="min-w-0">
+                                                <h2 id="h-personal" class="font-bold text-gray-900 dark:text-white">Personal Details</h2>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">Core demographics and identity of the patient</p>
+                                            </div>
+                                            <span class="ml-auto hidden sm:inline-flex ap-stat-chip">Step 1 of 7</span>
+                                        </div>
+                                        <div class="ap-card-body">
+                                            <div class="flex flex-col sm:flex-row gap-5">
+                                                <!-- Avatar upload -->
+                                                <div class="flex flex-col items-center gap-2 shrink-0">
+                                                    <div id="ap-avatar-drop" class="ap-avatar-drop" role="button" tabindex="0" aria-label="Upload patient photo">
+                                                        <div id="ap-avatar-ph" class="flex flex-col items-center gap-1 text-primary">
+                                                            <i class="icon-camera text-xl"></i>
+                                                            <span class="text-[10px] font-bold">Photo</span>
+                                                        </div>
+                                                        <img id="ap-avatar-img" class="hidden" alt="Patient photo preview">
+                                                    </div>
+                                                    <input id="ap-avatar-input" type="file" accept="image/*" class="hidden" aria-label="Upload patient photo">
+                                                    <p class="text-[10px] text-gray-400 text-center max-w-[7rem]">JPG / PNG · max 2MB</p>
+                                                </div>
+
+                                                <!-- Name + identity grid -->
+                                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 flex-1">
+                                                    <div class="ap-field">
+                                                        <input id="fld-first-name" class="ap-in" name="first_name" data-req placeholder=" ">
+                                                        <label for="fld-first-name" class="ap-lb">First Name <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="ap-field">
+                                                        <input id="fld-last-name" class="ap-in" name="last_name" data-req placeholder=" ">
+                                                        <label for="fld-last-name" class="ap-lb">Last Name <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="ap-field is-filled">
+                                                        <input id="fld-dob" class="ap-in" name="dob" type="text" data-req placeholder=" " data-provider="flatpickr" data-date-format="d-m-Y">
+                                                        <label for="fld-dob" class="ap-lb">Date of Birth <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="ap-field is-filled">
+                                                        <select id="fld-marital" class="ap-in" name="marital">
+                                                            <option value="">Select status</option>
+                                                            <option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option>
+                                                        </select>
+                                                        <label for="fld-marital" class="ap-lb">Marital Status</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Gender chips -->
+                                            <div class="mt-4">
+                                                <p class="form-label mb-2">Gender <span class="text-danger">*</span></p>
+                                                <div class="flex flex-wrap gap-2">
+                                                    <label class="ap-chip-choice"><input type="radio" name="gender" value="Male" data-req><span><i class="icon-mars"></i>Male</span></label>
+                                                    <label class="ap-chip-choice"><input type="radio" name="gender" value="Female" data-req><span><i class="icon-venus"></i>Female</span></label>
+                                                    <label class="ap-chip-choice"><input type="radio" name="gender" value="Other" data-req><span><i class="icon-circle"></i>Other</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                                                <div class="ap-field is-filled">
+                                                    <select id="fld-patient-type" class="ap-in" name="patient_type">
+                                                        <option value="">Select type</option>
+                                                        <option>Out-Patient (OPD)</option><option>In-Patient (IPD)</option><option>Emergency</option><option>Day Care</option>
+                                                    </select>
+                                                    <label for="fld-patient-type" class="ap-lb">Patient Type</label>
+                                                </div>
+                                                <div class="ap-field">
+                                                    <input id="fld-nationality" class="ap-in" name="nationality" placeholder=" " value="German">
+                                                    <label for="fld-nationality" class="ap-lb">Nationality</label>
+                                                </div>
+                                                <div class="ap-field is-filled">
+                                                    <select id="fld-language" class="ap-in" name="language">
+                                                        <option value="">Preferred language</option>
+                                                        <option>English</option><option>German</option><option>Arabic</option><option>French</option><option>Spanish</option>
+                                                    </select>
+                                                    <label for="fld-language" class="ap-lb">Preferred Language</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <!-- Identification -->
+                                    <section class="ap-card ap-c-teal" data-aos="fade-up" aria-labelledby="h-ident">
+                                        <div class="ap-card-head">
+                                            <span class="ico"><i class="icon-id-card"></i></span>
+                                            <div class="min-w-0">
+                                                <h2 id="h-ident" class="font-bold text-gray-900 dark:text-white">Identification</h2>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">Government-issued identity for verification</p>
+                                            </div>
+                                        </div>
+                                        <div class="ap-card-body grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                                            <div class="ap-field is-filled">
+                                                <select id="fld-id-type" class="ap-in" name="id_type">
+                                                    <option value="">Select ID type</option>
+                                                    <option>National ID</option><option>Passport</option><option>Driver's License</option><option>Social Security</option>
+                                                </select>
+                                                <label for="fld-id-type" class="ap-lb">ID Type</label>
+                                            </div>
+                                            <div class="ap-field has-ico">
+                                                <input id="fld-id-number" class="ap-in" name="id_number" placeholder=" ">
+                                                <label for="fld-id-number" class="ap-lb">ID Number</label>
+                                                <i class="ap-field-ico icon-hash"></i>
+                                            </div>
+                                            <div class="ap-field is-filled">
+                                                <input id="fld-id-issue" class="ap-in" name="id_issue" type="text" placeholder=" " data-provider="flatpickr" data-date-format="d-m-Y">
+                                                <label for="fld-id-issue" class="ap-lb">Issue Date</label>
+                                            </div>
+                                            <div class="ap-field is-filled">
+                                                <input id="fld-id-expiry" class="ap-in" name="id_expiry" type="text" placeholder=" " data-provider="flatpickr" data-date-format="d-m-Y">
+                                                <label for="fld-id-expiry" class="ap-lb">Expiry Date</label>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div id="sec-contact" class="space-y-5">
+                                    <!-- Contact Information -->
+                                    <section class="ap-card ap-c-sky" data-aos="fade-up" aria-labelledby="h-contact">
+                                        <div class="ap-card-head">
+                                            <span class="ico"><i class="icon-phone"></i></span>
+                                            <div class="min-w-0">
+                                                <h2 id="h-contact" class="font-bold text-gray-900 dark:text-white">Contact Information</h2>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">How the hospital will reach the patient</p>
+                                            </div>
+                                        </div>
+                                        <div class="ap-card-body grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                                            <div class="ap-field has-ico">
+                                                <input id="fld-phone" class="ap-in" name="phone" type="tel" data-req placeholder=" ">
+                                                <label for="fld-phone" class="ap-lb">Mobile Number <span class="text-danger">*</span></label>
+                                                <i class="ap-field-ico icon-phone"></i>
+                                            </div>
+                                            <div class="ap-field has-ico">
+                                                <input id="fld-alt-phone" class="ap-in" name="alt_phone" type="tel" placeholder=" ">
+                                                <label for="fld-alt-phone" class="ap-lb">Alternate Number</label>
+                                                <i class="ap-field-ico icon-phone-call"></i>
+                                            </div>
+                                            <div class="ap-field has-ico">
+                                                <input id="fld-email" class="ap-in" name="email" type="email" data-req placeholder=" ">
+                                                <label for="fld-email" class="ap-lb">Email Address <span class="text-danger">*</span></label>
+                                                <i class="ap-field-ico icon-mail"></i>
+                                            </div>
+                                            <div class="ap-field has-ico">
+                                                <input id="fld-whatsapp" class="ap-in" name="whatsapp" type="tel" placeholder=" ">
+                                                <label for="fld-whatsapp" class="ap-lb">WhatsApp Number</label>
+                                                <i class="ap-field-ico icon-message-circle"></i>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <!-- Address -->
+                                    <section class="ap-card ap-c-violet" data-aos="fade-up" aria-labelledby="h-address">
+                                        <div class="ap-card-head">
+                                            <span class="ico"><i class="icon-map-pin"></i></span>
+                                            <div class="min-w-0">
+                                                <h2 id="h-address" class="font-bold text-gray-900 dark:text-white">Address</h2>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">Residential / correspondence address</p>
+                                            </div>
+                                        </div>
+                                        <div class="ap-card-body space-y-3.5">
+                                            <div class="ap-field">
+                                                <input id="fld-addr1" class="ap-in" name="addr1" placeholder=" ">
+                                                <label for="fld-addr1" class="ap-lb">Address Line 1</label>
+                                            </div>
+                                            <div class="ap-field">
+                                                <input id="fld-addr2" class="ap-in" name="addr2" placeholder=" ">
+                                                <label for="fld-addr2" class="ap-lb">Address Line 2</label>
+                                            </div>
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                                                <div class="ap-field">
+                                                    <input id="fld-city" class="ap-in" name="city" placeholder=" ">
+                                                    <label for="fld-city" class="ap-lb">City</label>
+                                                </div>
+                                                <div class="ap-field">
+                                                    <input id="fld-state" class="ap-in" name="state" placeholder=" ">
+                                                    <label for="fld-state" class="ap-lb">State / Province</label>
+                                                </div>
+                                                <div class="ap-field">
+                                                    <input id="fld-zip" class="ap-in" name="zip" placeholder=" ">
+                                                    <label for="fld-zip" class="ap-lb">ZIP / Postal</label>
+                                                </div>
+                                                <div class="ap-field is-filled">
+                                                    <select id="fld-country" class="ap-in" name="country">
+                                                        <option value="">Country</option>
+                                                        <option>Germany</option><option>United States</option><option>United Kingdom</option><option>United Arab Emirates</option><option>India</option>
+                                                    </select>
+                                                    <label for="fld-country" class="ap-lb">Country</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div id="sec-medical" class="space-y-5">
+                                    <!-- Medical Information -->
+                                    <section class="ap-card ap-c-rose" data-aos="fade-up" aria-labelledby="h-medical">
+                                        <div class="ap-card-head">
+                                            <span class="ico"><i class="icon-heart-pulse"></i></span>
+                                            <div class="min-w-0">
+                                                <h2 id="h-medical" class="font-bold text-gray-900 dark:text-white">Medical Information</h2>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">Vitals, clinical history and current therapy</p>
+                                            </div>
+                                            <span class="ml-auto hidden sm:inline-flex ap-stat-chip"><i class="icon-activity text-[10px]"></i>Clinical</span>
+                                        </div>
+                                        <div class="ap-card-body space-y-4">
+                                            <!-- Blood group -->
+                                            <div>
+                                                <p class="form-label mb-2 flex items-center gap-1.5"><i class="icon-droplet text-rose-500"></i>Blood Group <span class="text-danger">*</span></p>
+                                                <div class="flex flex-wrap gap-2">
+                                                    <label class="ap-chip-choice"><input type="radio" name="blood" value="A+" data-req><span>A+</span></label>
+                                                    <label class="ap-chip-choice"><input type="radio" name="blood" value="A-"><span>A−</span></label>
+                                                    <label class="ap-chip-choice"><input type="radio" name="blood" value="B+"><span>B+</span></label>
+                                                    <label class="ap-chip-choice"><input type="radio" name="blood" value="B-"><span>B−</span></label>
+                                                    <label class="ap-chip-choice"><input type="radio" name="blood" value="O+"><span>O+</span></label>
+                                                    <label class="ap-chip-choice"><input type="radio" name="blood" value="O-"><span>O−</span></label>
+                                                    <label class="ap-chip-choice"><input type="radio" name="blood" value="AB+"><span>AB+</span></label>
+                                                    <label class="ap-chip-choice"><input type="radio" name="blood" value="AB-"><span>AB−</span></label>
+                                                </div>
+                                            </div>
+
+                                            <!-- Vitals -->
+                                            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+                                                <div class="ap-field has-ico">
+                                                    <input id="fld-height" class="ap-in" name="height" type="number" placeholder=" ">
+                                                    <label for="fld-height" class="ap-lb">Height (cm)</label>
+                                                    <i class="ap-field-ico icon-ruler"></i>
+                                                </div>
+                                                <div class="ap-field has-ico">
+                                                    <input id="fld-weight" class="ap-in" name="weight" type="number" placeholder=" ">
+                                                    <label for="fld-weight" class="ap-lb">Weight (kg)</label>
+                                                    <i class="ap-field-ico icon-weight"></i>
+                                                </div>
+                                                <div class="ap-field is-filled">
+                                                    <input id="fld-bmi" class="ap-in bg-gray-50! dark:bg-slate-700!" name="bmi" placeholder=" " value="—" readonly>
+                                                    <label for="fld-bmi" class="ap-lb">BMI (auto)</label>
+                                                </div>
+                                                <div class="ap-field is-filled">
+                                                    <select id="fld-bmi-class" class="ap-in" name="bmi_class">
+                                                        <option value="">Category</option>
+                                                        <option>Underweight</option><option>Normal</option><option>Overweight</option><option>Obese</option>
+                                                    </select>
+                                                    <label for="fld-bmi-class" class="ap-lb">BMI Category</label>
+                                                </div>
+                                            </div>
+
+                                            <!-- Allergies -->
+                                            <div>
+                                                <p class="form-label mb-2 flex items-center gap-1.5"><i class="icon-triangle-alert text-amber-500"></i>Allergies</p>
+                                                <div class="flex flex-wrap gap-2 mb-2.5">
+                                                    <label class="ap-chip-choice ap-c-amber"><input type="checkbox" name="allergy" value="Penicillin"><span>Penicillin</span></label>
+                                                    <label class="ap-chip-choice ap-c-amber"><input type="checkbox" name="allergy" value="Pollen"><span>Pollen</span></label>
+                                                    <label class="ap-chip-choice ap-c-amber"><input type="checkbox" name="allergy" value="Peanuts"><span>Peanuts</span></label>
+                                                    <label class="ap-chip-choice ap-c-amber"><input type="checkbox" name="allergy" value="Latex"><span>Latex</span></label>
+                                                    <label class="ap-chip-choice ap-c-amber"><input type="checkbox" name="allergy" value="Dust"><span>Dust</span></label>
+                                                </div>
+                                                <div class="ap-field">
+                                                    <textarea id="fld-allergy-notes" class="ap-in" name="allergy_notes" placeholder=" "></textarea>
+                                                    <label for="fld-allergy-notes" class="ap-lb">Other allergies / reactions</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                                                <div class="ap-field">
+                                                    <textarea id="fld-chronic" class="ap-in" name="chronic" placeholder=" "></textarea>
+                                                    <label for="fld-chronic" class="ap-lb">Chronic Diseases</label>
+                                                </div>
+                                                <div class="ap-field">
+                                                    <textarea id="fld-conditions" class="ap-in" name="conditions" placeholder=" "></textarea>
+                                                    <label for="fld-conditions" class="ap-lb">Existing Conditions</label>
+                                                </div>
+                                            </div>
+                                            <div class="ap-field">
+                                                <textarea id="fld-medications" class="ap-in" name="medications" placeholder=" "></textarea>
+                                                <label for="fld-medications" class="ap-lb">Current Medications</label>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <!-- Physician Assignment -->
+                                    <section class="ap-card ap-c-primary" data-aos="fade-up" aria-labelledby="h-physician">
+                                        <div class="ap-card-head">
+                                            <span class="ico"><i class="icon-stethoscope"></i></span>
+                                            <div class="min-w-0">
+                                                <h2 id="h-physician" class="font-bold text-gray-900 dark:text-white">Physician Assignment</h2>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">Route the patient to the right department &amp; doctor</p>
+                                            </div>
+                                        </div>
+                                        <div class="ap-card-body grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                                            <div class="ap-field is-filled">
+                                                <select id="fld-dept" class="ap-in" name="dept">
+                                                    <option value="">Department</option>
+                                                    <option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>General Medicine</option><option>Emergency</option>
+                                                </select>
+                                                <label for="fld-dept" class="ap-lb">Department</label>
+                                            </div>
+                                            <div class="ap-field is-filled">
+                                                <select id="fld-doctor" class="ap-in" name="doctor">
+                                                    <option value="">Assign doctor</option>
+                                                    <option>Dr. Angela Merkel</option><option>Dr. James Wilson</option><option>Dr. Sarah Chen</option><option>Dr. Omar Farouk</option>
+                                                </select>
+                                                <label for="fld-doctor" class="ap-lb">Assigned Doctor</label>
+                                            </div>
+                                            <div class="ap-field is-filled">
+                                                <select id="fld-room-pref" class="ap-in" name="room_pref">
+                                                    <option value="">Room preference</option>
+                                                    <option>General Ward</option><option>Semi-Private</option><option>Private</option><option>Deluxe Suite</option><option>ICU</option>
+                                                </select>
+                                                <label for="fld-room-pref" class="ap-lb">Room Preference</label>
+                                            </div>
+                                            <div class="ap-field is-filled">
+                                                <select id="fld-admission-type" class="ap-in" name="admission_type">
+                                                    <option value="">Admission type</option>
+                                                    <option>Elective</option><option>Emergency</option><option>Transfer</option><option>Observation</option>
+                                                </select>
+                                                <label for="fld-admission-type" class="ap-lb">Admission Type</label>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div id="sec-insurance" class="space-y-5">
+                                    <section class="ap-card ap-c-emerald" data-aos="fade-up" aria-labelledby="h-insurance">
+                                        <div class="ap-card-head">
+                                            <span class="ico"><i class="icon-shield-check"></i></span>
+                                            <div class="min-w-0">
+                                                <h2 id="h-insurance" class="font-bold text-gray-900 dark:text-white">Insurance Details</h2>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">Coverage &amp; verification for billing</p>
+                                            </div>
+                                            <span class="ml-auto inline-flex items-center gap-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 px-2.5 py-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Verification Ready</span>
+                                        </div>
+                                        <div class="ap-card-body space-y-4">
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+                                                <div class="ap-field is-filled">
+                                                    <select aria-label="Select provider" class="ap-in" name="ins_provider">
+                                                        <option value="">Select provider</option>
+                                                        <option>Allianz Care</option><option>AXA Health</option><option>Cigna Global</option><option>Bupa</option><option>MetLife</option><option>Self-Pay</option>
+                                                    </select>
+                                                    <label for="fld-ins-policy" class="ap-lb">Provider</label>
+                                                </div>
+                                                <div class="ap-field has-ico">
+                                                    <input id="fld-ins-policy" class="ap-in" name="ins_policy" placeholder=" ">
+                                                    <label for="fld-ins-coverage" class="ap-lb">Policy Number</label>
+                                                    <i class="ap-field-ico icon-hash"></i>
+                                                </div>
+                                                <div class="ap-field is-filled">
+                                                    <select id="fld-ins-coverage" class="ap-in" name="ins_coverage">
+                                                        <option value="">Coverage type</option>
+                                                        <option>Basic</option><option>Standard</option><option>Premium</option><option>Comprehensive</option><option>Corporate</option>
+                                                    </select>
+                                                    <label for="fld-ins-expiry" class="ap-lb">Coverage Type</label>
+                                                </div>
+                                                <div class="ap-field is-filled">
+                                                    <input id="fld-ins-expiry" class="ap-in" name="ins_expiry" type="text" placeholder=" " data-provider="flatpickr" data-date-format="d-m-Y">
+                                                    <label for="fld-ins-amount" class="ap-lb">Expiry Date</label>
+                                                </div>
+                                                <div class="ap-field has-ico">
+                                                    <input id="fld-ins-amount" class="ap-in" name="ins_amount" placeholder=" ">
+                                                    <label for="fld-ins-status" class="ap-lb">Coverage Amount</label>
+                                                    <i class="ap-field-ico icon-badge-dollar-sign"></i>
+                                                </div>
+                                                <div class="ap-field is-filled">
+                                                    <select id="fld-ins-status" class="ap-in" name="ins_status">
+                                                        <option value="">Verification status</option>
+                                                        <option>Verified</option><option>Pending</option><option>Rejected</option><option>Not Applicable</option>
+                                                    </select>
+                                                    <label for="fld-verification-status" class="ap-lb">Verification Status</label>
+                                                </div>
+                                            </div>
+
+                                            <!-- Upload insurance card -->
+                                            <div class="ap-upload ap-c-emerald" data-aos="fade-up">
+                                                <input id="fld-verification-status" type="file" accept="image/*,application/pdf" class="hidden">
+                                                <span class="u-ico"><i class="icon-shield-check"></i></span>
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white" data-u-label data-default="Upload Insurance Card">Upload Insurance Card</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">Drag &amp; drop or click to browse · front &amp; back</p>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div id="sec-emergency" class="space-y-5">
+                                    <section class="ap-card ap-c-amber" data-aos="fade-up" aria-labelledby="h-emergency">
+                                        <div class="ap-card-head">
+                                            <span class="ico"><i class="icon-life-buoy"></i></span>
+                                            <div class="min-w-0">
+                                                <h2 id="h-emergency" class="font-bold text-gray-900 dark:text-white">Emergency Contact</h2>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">Who to reach in a critical situation</p>
+                                            </div>
+                                        </div>
+                                        <div class="ap-card-body grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                                            <div class="ap-field has-ico">
+                                                <input id="fld-ec-name" class="ap-in" name="ec_name" placeholder=" ">
+                                                <label for="fld-ec-name" class="ap-lb">Contact Person</label>
+                                                <i class="ap-field-ico icon-user"></i>
+                                            </div>
+                                            <div class="ap-field is-filled">
+                                                <select id="fld-ec-relation" class="ap-in" name="ec_relation">
+                                                    <option value="">Relationship</option>
+                                                    <option>Spouse</option><option>Parent</option><option>Sibling</option><option>Child</option><option>Friend</option><option>Guardian</option>
+                                                </select>
+                                                <label for="fld-ec-relation" class="ap-lb">Relationship</label>
+                                            </div>
+                                            <div class="ap-field has-ico">
+                                                <input id="fld-ec-mobile" class="ap-in" name="ec_mobile" type="tel" placeholder=" ">
+                                                <label for="fld-ec-mobile" class="ap-lb">Mobile Number</label>
+                                                <i class="ap-field-ico icon-phone"></i>
+                                            </div>
+                                            <div class="ap-field has-ico">
+                                                <input id="fld-ec-alt" class="ap-in" name="ec_alt" type="tel" placeholder=" ">
+                                                <label for="fld-ec-alt" class="ap-lb">Alternate Number</label>
+                                                <i class="ap-field-ico icon-phone-call"></i>
+                                            </div>
+                                            <div class="ap-field sm:col-span-2">
+                                                <input id="fld-ec-address" class="ap-in" name="ec_address" placeholder=" ">
+                                                <label for="fld-ec-address" class="ap-lb">Address</label>
+                                            </div>
+                                            <div class="ap-field is-filled sm:col-span-2">
+                                                <select id="fld-ec-pref" class="ap-in" name="ec_pref">
+                                                    <option value="">Preferred hospital contact method</option>
+                                                    <option>Phone Call</option><option>SMS</option><option>WhatsApp</option><option>Email</option>
+                                                </select>
+                                                <label for="fld-ec-pref" class="ap-lb">Preferred Hospital Contact</label>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div id="sec-documents" class="space-y-5">
+                                    <section class="ap-card ap-c-violet" data-aos="fade-up" aria-labelledby="h-docs">
+                                        <div class="ap-card-head">
+                                            <span class="ico"><i class="icon-cloud-upload"></i></span>
+                                            <div class="min-w-0">
+                                                <h2 id="h-docs" class="font-bold text-gray-900 dark:text-white">Document Upload</h2>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">Attach supporting documents · drag &amp; drop supported</p>
+                                            </div>
+                                            <span class="ml-auto hidden sm:inline-flex ap-stat-chip">6 slots</span>
+                                        </div>
+                                        <div class="ap-card-body grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+                                            <div class="ap-upload ap-c-indigo">
+                                                <input type="file" accept="image/*" class="hidden" aria-label="Upload Patient Photo">
+                                                <span class="u-ico"><i class="icon-camera"></i></span>
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white" data-u-label data-default="Patient Photo">Patient Photo</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">JPG / PNG</p>
+                                            </div>
+                                            <div class="ap-upload ap-c-teal">
+                                                <input type="file" accept="image/*,application/pdf" class="hidden" aria-label="Upload Government ID">
+                                                <span class="u-ico"><i class="icon-id-card"></i></span>
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white" data-u-label data-default="Government ID">Government ID</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">Front &amp; back</p>
+                                            </div>
+                                            <div class="ap-upload ap-c-emerald">
+                                                <input type="file" accept="image/*,application/pdf" class="hidden" aria-label="Upload Insurance Card">
+                                                <span class="u-ico"><i class="icon-shield-check"></i></span>
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white" data-u-label data-default="Insurance Card">Insurance Card</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">Image / PDF</p>
+                                            </div>
+                                            <div class="ap-upload ap-c-rose">
+                                                <input type="file" accept="application/pdf,image/*" class="hidden" aria-label="Upload Medical Records">
+                                                <span class="u-ico"><i class="icon-heart-pulse"></i></span>
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white" data-u-label data-default="Medical Records">Medical Records</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">PDF preferred</p>
+                                            </div>
+                                            <div class="ap-upload ap-c-amber">
+                                                <input type="file" accept="application/pdf,image/*" class="hidden" aria-label="Upload Referral Letter">
+                                                <span class="u-ico"><i class="icon-file-text"></i></span>
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white" data-u-label data-default="Referral Letter">Referral Letter</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">From physician</p>
+                                            </div>
+                                            <div class="ap-upload ap-c-sky">
+                                                <input type="file" accept="application/pdf,image/*" class="hidden" aria-label="Upload Previous Reports">
+                                                <span class="u-ico"><i class="icon-clipboard-list"></i></span>
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white" data-u-label data-default="Previous Reports">Previous Reports</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">Labs / scans</p>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div id="sec-review" class="space-y-5">
+                                    <section class="ap-card ap-c-primary" data-aos="fade-up" aria-labelledby="h-review">
+                                        <div class="ap-card-head">
+                                            <span class="ico"><i class="icon-badge-check"></i></span>
+                                            <div class="min-w-0">
+                                                <h2 id="h-review" class="font-bold text-gray-900 dark:text-white">Review &amp; Submit</h2>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">Confirm the details before registering the patient</p>
+                                            </div>
+                                        </div>
+                                        <div class="ap-card-body space-y-4">
+                                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                                                <div class="rounded-2xl border border-border-color p-4 bg-gray-50/60 dark:bg-slate-700/30">
+                                                    <div class="flex items-center gap-2 text-primary"><i class="icon-user"></i><span class="text-xs font-bold uppercase tracking-wide">Identity</span></div>
+                                                    <p class="mt-2 text-sm font-bold text-gray-900 dark:text-white" id="ov-name-2">New Patient</p>
+                                                    <p class="text-[11px] text-gray-500 dark:text-gray-400">Demographics &amp; ID captured</p>
+                                                </div>
+                                                <div class="rounded-2xl border border-border-color p-4 bg-gray-50/60 dark:bg-slate-700/30">
+                                                    <div class="flex items-center gap-2 text-rose-500"><i class="icon-heart-pulse"></i><span class="text-xs font-bold uppercase tracking-wide">Clinical</span></div>
+                                                    <p class="mt-2 text-sm font-bold text-gray-900 dark:text-white">Medical history</p>
+                                                    <p class="text-[11px] text-gray-500 dark:text-gray-400">Vitals, allergies &amp; meds</p>
+                                                </div>
+                                                <div class="rounded-2xl border border-border-color p-4 bg-gray-50/60 dark:bg-slate-700/30">
+                                                    <div class="flex items-center gap-2 text-emerald-500"><i class="icon-shield-check"></i><span class="text-xs font-bold uppercase tracking-wide">Coverage</span></div>
+                                                    <p class="mt-2 text-sm font-bold text-gray-900 dark:text-white">Insurance</p>
+                                                    <p class="text-[11px] text-gray-500 dark:text-gray-400">Provider &amp; verification</p>
+                                                </div>
+                                            </div>
+
+                                            <label class="flex items-start gap-3 rounded-2xl border border-border-color p-4 cursor-pointer hover:border-primary transition-colors">
+                                                <input type="checkbox" name="consent" data-req class="mt-0.5 size-4 accent-primary">
+                                                <span class="text-sm text-gray-600 dark:text-gray-300">I confirm the information provided is accurate and the patient has consented to data processing under the hospital privacy policy &amp; applicable regulations.</span>
+                                            </label>
+
+                                            <div class="flex flex-wrap items-center gap-2.5">
+                                                <button type="button" class="ap-btn ap-btn-primary" data-ap-action="save"><i class="icon-save"></i>Save Patient</button>
+                                                <button type="button" class="ap-btn ap-btn-success" data-ap-action="admit"><i class="icon-bed"></i>Admit Patient</button>
+                                                <button type="button" class="ap-btn ap-btn-solid" data-ap-action="save-new"><i class="icon-plus"></i>Save &amp; Add Another</button>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </form>
+
+                            <!-- ------------------- OVERVIEW SIDEBAR ----------------- -->
+                            <aside class="space-y-5 xl:sticky xl:top-4 self-start" data-aos="fade-up" data-aos-delay="120">
+                                <!-- Patient Overview -->
+                                <section class="ap-side">
+                                    <div class="ap-side-hero">
+                                        <div class="relative flex items-center gap-3">
+                                            <div class="size-14 shrink-0 overflow-hidden rounded-2xl ring-2 ring-white/40 bg-white/20 grid place-items-center">
+                                                <img id="ov-avatar" src="assets/img/avatar/avatar-01.jpg" alt="Patient" class="size-full object-cover">
+                                            </div>
+                                            <div class="min-w-0">
+                                                <p id="ov-name" class="text-base font-extrabold truncate">New Patient</p>
+                                                <p class="text-[11px] font-semibold text-white/75">Registration in progress</p>
+                                            </div>
+                                        </div>
+                                        <div class="relative mt-4">
+                                            <div class="flex items-center justify-between text-[11px] font-bold text-white/85 mb-1.5">
+                                                <span>Completion</span><span data-ap-pct>0%</span>
+                                            </div>
+                                            <div class="ap-meter bg-white/25"><i class="[width:0%]" id="ap-meter-fill"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 space-y-0.5">
+                                        <div class="ap-side-stat">
+                                            <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5"><i class="icon-building-2 text-primary"></i>Department</span>
+                                            <span id="ov-dept" class="text-xs font-bold text-gray-900 dark:text-white">Not assigned</span>
+                                        </div>
+                                        <div class="ap-side-stat">
+                                            <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5"><i class="icon-stethoscope text-indigo-500"></i>Doctor</span>
+                                            <span id="ov-doctor" class="text-xs font-bold text-gray-900 dark:text-white">Not assigned</span>
+                                        </div>
+                                        <div class="ap-side-stat">
+                                            <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5"><i class="icon-bed text-sky-500"></i>Room Preference</span>
+                                            <span class="text-xs font-bold text-gray-900 dark:text-white">General Ward</span>
+                                        </div>
+                                        <div class="ap-side-stat">
+                                            <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5"><i class="icon-shield-check text-emerald-500"></i>Insurance</span>
+                                            <span class="inline-flex items-center gap-1 rounded-full bg-amber-100 dark:bg-amber-900/30 px-2 py-0.5 text-[10px] font-bold text-amber-600 dark:text-amber-400">Pending</span>
+                                        </div>
+                                        <div class="ap-side-stat">
+                                            <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5"><i class="icon-clipboard-check text-violet-500"></i>Admission</span>
+                                            <span class="inline-flex items-center gap-1 rounded-full bg-slate-100 dark:bg-slate-700 px-2 py-0.5 text-[10px] font-bold text-gray-600 dark:text-gray-300">Draft</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- Recent Registrations -->
+                                <section class="ap-side">
+                                    <div class="flex items-center justify-between px-4 pt-4">
+                                        <h3 class="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2"><i class="icon-history text-primary"></i>Recent Registrations</h3>
+                                        <a href="patients.html" class="text-[11px] font-bold text-primary hover:underline">View all</a>
+                                    </div>
+                                    <div class="p-2">
+                                        <div class="ap-recent-item">
+                                            <img src="assets/img/avatar/avatar-06.jpg" alt="Emma Schneider" class="size-9 rounded-xl object-cover shrink-0">
+                                            <div class="min-w-0 flex-1">
+                                                <p class="text-xs font-bold text-gray-900 dark:text-white truncate">Emma Schneider</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">Cardiology · 2 min ago</p>
+                                            </div>
+                                            <span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">Admitted</span>
+                                        </div>
+                                        <div class="ap-recent-item">
+                                            <img src="assets/img/avatar/avatar-07.jpg" alt="Liam Fischer" class="size-9 rounded-xl object-cover shrink-0">
+                                            <div class="min-w-0 flex-1">
+                                                <p class="text-xs font-bold text-gray-900 dark:text-white truncate">Liam Fischer</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">Orthopedics · 14 min ago</p>
+                                            </div>
+                                            <span class="inline-flex items-center gap-1 rounded-full bg-sky-100 dark:bg-sky-900/30 px-2 py-0.5 text-[10px] font-bold text-sky-600 dark:text-sky-400">OPD</span>
+                                        </div>
+                                        <div class="ap-recent-item">
+                                            <img src="assets/img/avatar/avatar-08.jpg" alt="Sophia Weber" class="size-9 rounded-xl object-cover shrink-0">
+                                            <div class="min-w-0 flex-1">
+                                                <p class="text-xs font-bold text-gray-900 dark:text-white truncate">Sophia Weber</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">Emergency · 31 min ago</p>
+                                            </div>
+                                            <span class="inline-flex items-center gap-1 rounded-full bg-rose-100 dark:bg-rose-900/30 px-2 py-0.5 text-[10px] font-bold text-rose-600 dark:text-rose-400">Critical</span>
+                                        </div>
+                                        <div class="ap-recent-item">
+                                            <img src="assets/img/avatar/avatar-09.jpg" alt="Noah Becker" class="size-9 rounded-xl object-cover shrink-0">
+                                            <div class="min-w-0 flex-1">
+                                                <p class="text-xs font-bold text-gray-900 dark:text-white truncate">Noah Becker</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">Pediatrics · 48 min ago</p>
+                                            </div>
+                                            <span class="inline-flex items-center gap-1 rounded-full bg-amber-100 dark:bg-amber-900/30 px-2 py-0.5 text-[10px] font-bold text-amber-600 dark:text-amber-400">Waiting</span>
+                                        </div>
+                                    </div>
+                                </section>
+                            </aside>
+                        </div>
+
+                        <!-- ===================== STICKY ACTION BAR ==================== -->
+                        <div class="ap-actionbar">
+                            <div class="flex items-center gap-2 pr-2 mr-auto">
+                                <span class="grid size-9 place-items-center rounded-xl bg-primary/10 text-primary shrink-0"><i class="icon-user-plus"></i></span>
+                                <div class="leading-tight">
+                                    <p class="text-xs font-bold text-gray-900 dark:text-gray-100">Registration <span data-ap-pct>0%</span> complete</p>
+                                    <p class="text-[11px] text-gray-500 dark:text-gray-400">Autosaved as draft a moment ago</p>
+                                </div>
+                            </div>
+                            <button type="button" class="ap-btn ap-btn-solid" data-ap-action="reset"><i class="icon-rotate-ccw"></i>Reset</button>
+                            <button type="button" class="ap-btn ap-btn-solid" data-ap-action="print"><i class="icon-printer"></i>Print</button>
+                            <button type="button" class="ap-btn ap-btn-glass !text-gray-900 dark:!text-white !bg-gray-100 dark:!bg-slate-700 !border-border-color" data-ap-action="save-new"><i class="icon-plus"></i>Save &amp; Add Another</button>
+                            <button type="button" class="ap-btn ap-btn-primary" data-ap-action="save"><i class="icon-save"></i>Save</button>
+                            <button type="button" class="ap-btn ap-btn-success" data-ap-action="admit"><i class="icon-bed"></i>Admit Patient</button>
+                        </div>
+
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "add-patient"})
+    </body>
+</html>

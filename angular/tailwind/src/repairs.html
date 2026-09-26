@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Repair Tickets — Dreams HMS"}) @@include('partials/header.html', {"page": "repairs"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="repairs">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search repair tickets..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Repair Tickets", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Repair Tickets</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Track and resolve equipment repair issues</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-wrench text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">10</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Tickets</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">4</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Open</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-clock text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">In Progress</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-circle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Critical Priority</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Repair Tickets</span>
+                                <span class="text-xs text-gray-400 ml-auto">10 of 10</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Ticket ID</th>
+                                            <th>Equipment</th>
+                                            <th>Issue</th>
+                                            <th>Reported By</th>
+                                            <th>Reported Date</th>
+                                            <th>Technician</th>
+                                            <th>Priority</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-mono text-sm text-gray-600 dark:text-gray-300"><a href="repair-detail.html">RT-1001</a></td><td class="font-medium text-gray-900">Ventilator Unit</td><td class="text-gray-600 dark:text-gray-300">Unusual noise during operation</td><td class="text-gray-500 dark:text-gray-400">Nora White</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td class="text-gray-600 dark:text-gray-300">Alan Foster</td><td><span class="badge badge-warning">High</span></td><td><span class="badge badge-success">Resolved</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-600 dark:text-gray-300"><a href="repair-detail.html">RT-1002</a></td><td class="font-medium text-gray-900">X-Ray Machine</td><td class="text-gray-600 dark:text-gray-300">Image quality degraded</td><td class="text-gray-500 dark:text-gray-400">Diego Ramirez</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-03</td><td class="text-gray-600 dark:text-gray-300">SurgiTech Supplies</td><td><span class="badge badge-danger">Critical</span></td><td><span class="badge badge-info">In Progress</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-600 dark:text-gray-300"><a href="repair-detail.html">RT-1003</a></td><td class="font-medium text-gray-900">Infusion Pump</td><td class="text-gray-600 dark:text-gray-300">Display not responding</td><td class="text-gray-500 dark:text-gray-400">Alan Foster</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td><td class="text-gray-600 dark:text-gray-300">Nora White</td><td><span class="badge badge-info">Medium</span></td><td><span class="badge badge-warning">Open</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-600 dark:text-gray-300"><a href="repair-detail.html">RT-1004</a></td><td class="font-medium text-gray-900">Defibrillator</td><td class="text-gray-600 dark:text-gray-300">Battery not holding charge</td><td class="text-gray-500 dark:text-gray-400">Nora White</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td class="text-gray-600 dark:text-gray-300">EquipMed Global</td><td><span class="badge badge-danger">Critical</span></td><td><span class="badge badge-info">In Progress</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-600 dark:text-gray-300"><a href="repair-detail.html">RT-1005</a></td><td class="font-medium text-gray-900">Patient Monitor</td><td class="text-gray-600 dark:text-gray-300">Intermittent signal loss</td><td class="text-gray-500 dark:text-gray-400">Diego Ramirez</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-07</td><td class="text-gray-600 dark:text-gray-300">Alan Foster</td><td><span class="badge badge-info">Medium</span></td><td><span class="badge badge-success">Resolved</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-600 dark:text-gray-300"><a href="repair-detail.html">RT-1006</a></td><td class="font-medium text-gray-900">Anesthesia Machine</td><td class="text-gray-600 dark:text-gray-300">Gas leak suspected</td><td class="text-gray-500 dark:text-gray-400">Alan Foster</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-09</td><td class="text-gray-600 dark:text-gray-300">SurgiTech Supplies</td><td><span class="badge badge-danger">Critical</span></td><td><span class="badge badge-warning">Open</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-600 dark:text-gray-300"><a href="repair-detail.html">RT-1007</a></td><td class="font-medium text-gray-900">Ultrasound Scanner</td><td class="text-gray-600 dark:text-gray-300">Probe connector loose</td><td class="text-gray-500 dark:text-gray-400">Nora White</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10</td><td class="text-gray-600 dark:text-gray-300">Diego Ramirez</td><td><span class="badge badge-secondary">Low</span></td><td><span class="badge badge-warning">Open</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-600 dark:text-gray-300"><a href="repair-detail.html">RT-1008</a></td><td class="font-medium text-gray-900">ECG Machine</td><td class="text-gray-600 dark:text-gray-300">Paper jam recurring</td><td class="text-gray-500 dark:text-gray-400">Diego Ramirez</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-12</td><td class="text-gray-600 dark:text-gray-300">Nora White</td><td><span class="badge badge-secondary">Low</span></td><td><span class="badge badge-success">Resolved</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-600 dark:text-gray-300"><a href="repair-detail.html">RT-1009</a></td><td class="font-medium text-gray-900">CT Scanner</td><td class="text-gray-600 dark:text-gray-300">Cooling system fault</td><td class="text-gray-500 dark:text-gray-400">Alan Foster</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-14</td><td class="text-gray-600 dark:text-gray-300">EquipMed Global</td><td><span class="badge badge-warning">High</span></td><td><span class="badge badge-info">In Progress</span></td></tr>
+<tr><td class="font-mono text-sm text-gray-600 dark:text-gray-300"><a href="repair-detail.html">RT-1010</a></td><td class="font-medium text-gray-900">MRI Scanner</td><td class="text-gray-600 dark:text-gray-300">Software crash during scan</td><td class="text-gray-500 dark:text-gray-400">Nora White</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-16</td><td class="text-gray-600 dark:text-gray-300">SurgiTech Supplies</td><td><span class="badge badge-warning">High</span></td><td><span class="badge badge-warning">Open</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "repairs"})
+    </body>
+</html>

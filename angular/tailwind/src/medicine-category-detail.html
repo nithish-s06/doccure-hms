@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Category Details — Dreams HMS"}) @@include('partials/header.html', {"page": "medicine-category-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="medicine-category-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="mcd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Category Details", "parentUrl": "medicine-categories.html", "parent": "Medicine Categories"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="mcd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="mcd-hero-ico"><i class="icon-pill"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight" id="mcd-name">Analgesics</h1>
+                                            <span class="mcd-hbadge"><span class="mcd-dot"></span><span id="mcd-status-text">Active</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="mcd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="mcd-code-meta">#CAT-01 · ANL</span></span>
+                                            <span class="mcd-hmeta"><i class="icon-pill text-[13px] text-sky-300"></i>4 medicines</span>
+                                            <span class="mcd-hmeta"><i class="icon-dollar-sign text-[13px] text-emerald-300"></i>$2.2k stock value</span>
+                                            <span class="mcd-hmeta"><i class="icon-shield text-[13px] text-amber-300"></i>1 controlled drug</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 mcd-actions-print-hide">
+                                    <button type="button" class="mcd-btn mcd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="medicines.html" class="mcd-btn mcd-btn-glass"><i class="icon-plus"></i>Add Medicine</a>
+                                    <a href="medicine-categories.html" class="mcd-btn mcd-btn-primary"><i class="icon-arrow-left"></i>Back to Categories</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="mcd-grid">
+                            <div class="mcd-vital mcd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-pill"></i></span>
+                                    <span class="mcd-chip">Total</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">4</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Medicines</p>
+                            </div>
+                            <div class="mcd-vital mcd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-circle-check"></i></span>
+                                    <span class="mcd-chip">Health</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">88%</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Stock Health</p>
+                            </div>
+                            <div class="mcd-vital mcd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-dollar-sign"></i></span>
+                                    <span class="mcd-chip">Value</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">$2.2k</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Stock Value</p>
+                            </div>
+                            <div class="mcd-vital mcd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-shield"></i></span>
+                                    <span class="mcd-chip">Controlled</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">1</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Controlled Drugs</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="mcd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Medicines in category -->
+                                <div class="mcd-surface">
+                                    <div class="mcd-head">
+                                        <span class="ico"><i class="icon-pill"></i></span>
+                                        <h2 class="mcd-title">Medicines in Category</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="mcd-med-row">
+                                            <span class="mcd-med-ico"><i class="icon-pill"></i></span>
+                                            <div class="min-w-0 flex-1">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white truncate">Tylenol</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">8,400 in stock · reorder at 2,000 · $0.08 / unit</p>
+                                            </div>
+                                            <span class="badge badge-green">OK</span>
+                                        </div>
+                                        <div class="mcd-med-row">
+                                            <span class="mcd-med-ico"><i class="icon-syringe"></i></span>
+                                            <div class="min-w-0 flex-1">
+                                                <div class="flex items-center gap-1.5">
+                                                    <p class="text-sm font-bold text-gray-900 dark:text-white truncate">OxyContin</p>
+                                                    <i class="icon-shield text-amber-500 text-xs" title="Controlled substance"></i>
+                                                </div>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">320 in stock · reorder at 400 · $1.85 / unit</p>
+                                            </div>
+                                            <span class="badge badge-amber">Low</span>
+                                        </div>
+                                        <div class="mcd-med-row">
+                                            <span class="mcd-med-ico"><i class="icon-pill"></i></span>
+                                            <div class="min-w-0 flex-1">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white truncate">Panadol</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">2,600 in stock · reorder at 700 · $0.15 / unit</p>
+                                            </div>
+                                            <span class="badge badge-green">OK</span>
+                                        </div>
+                                        <div class="mcd-med-row">
+                                            <span class="mcd-med-ico"><i class="icon-droplet"></i></span>
+                                            <div class="min-w-0 flex-1">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white truncate">Cortisone Cream</p>
+                                                <p class="text-[11px] text-gray-500 dark:text-gray-400">1,900 in stock · reorder at 600 · $0.28 / unit</p>
+                                            </div>
+                                            <span class="badge badge-green">OK</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Stock health breakdown -->
+                                <div class="mcd-surface">
+                                    <div class="mcd-head">
+                                        <span class="ico"><i class="icon-activity"></i></span>
+                                        <h2 class="mcd-title">Stock Health Breakdown</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="flex items-center gap-3 mb-3">
+                                            <p class="text-2xl font-extrabold text-gray-900 dark:text-white">88%</p>
+                                            <span class="badge badge-green">Healthy</span>
+                                            <span class="ml-auto text-xs text-gray-500 dark:text-gray-400">3 in stock · 1 low · 0 out</span>
+                                        </div>
+                                        <svg class="mcd-health-bar" viewBox="0 0 100 8" preserveAspectRatio="none" role="img" aria-label="Stock split: 75 percent in stock, 25 percent low, 0 percent out">
+                                            <rect x="0" y="0" width="75" height="8" fill="var(--color-success)"></rect>
+                                            <rect x="75" y="0" width="25" height="8" fill="var(--color-warning)"></rect>
+                                            <rect x="100" y="0" width="0" height="8" fill="var(--color-danger)"></rect>
+                                        </svg>
+                                        <div class="mt-3 flex items-center gap-4 text-[11px] font-semibold">
+                                            <span class="inline-flex items-center gap-1 text-success"><i class="icon-circle-check text-[10px]"></i>3 OK</span>
+                                            <span class="inline-flex items-center gap-1 text-warning"><i class="icon-triangle-alert text-[10px]"></i>1 Low</span>
+                                            <span class="inline-flex items-center gap-1 text-danger"><i class="icon-circle-x text-[10px]"></i>0 Out</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 mcd-sidebar">
+                                <!-- Category summary -->
+                                <div class="mcd-surface mcd-side-hero rounded-[1.25rem]">
+                                    <div class="flex items-center gap-3">
+                                        <span class="mcd-side-ico"><i class="icon-pill"></i></span>
+                                        <div class="min-w-0">
+                                            <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Category</p>
+                                            <h3 class="text-lg font-extrabold truncate">Analgesics</h3>
+                                            <p class="text-sm text-white/80 mt-0.5">#CAT-01 · ANL</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Category details -->
+                                <div class="mcd-surface p-5">
+                                    <h3 class="mcd-title mb-3">Category Details</h3>
+                                    <div class="mcd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Code</span><span class="v">ANL</span></div>
+                                    <div class="mcd-kv"><span class="k"><i class="icon-align-left text-[13px]"></i>Description</span><span class="v max-w-[11rem]">Pain relief and antipyretics, from OTC paracetamol to scheduled opioids.</span></div>
+                                    <div class="mcd-kv"><span class="k"><i class="icon-badge-check text-[13px]"></i>Status</span><span class="v">Active</span></div>
+                                    <div class="mcd-kv"><span class="k"><i class="icon-pill text-[13px]"></i>Medicines</span><span class="v">4</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="mcd-surface p-5 space-y-2.5">
+                                    <h3 class="mcd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="mcd-btn mcd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a href="medicine-categories.html" class="mcd-btn mcd-btn-solid w-full justify-start"><i class="icon-arrow-left"></i>Back to Categories</a>
+                                    <a href="medicine-categories.html" class="mcd-btn mcd-btn-solid w-full justify-start"><i class="icon-list"></i>All Categories</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "medicine-category-detail"})
+    </body>
+</html>

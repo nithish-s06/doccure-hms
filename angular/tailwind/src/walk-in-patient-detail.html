@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Walk-in Patient Details — Dreams HMS"}) @@include('partials/header.html', {"page": "walk-in-patient-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="walk-in-patient-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="wpd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Walk-in Patient Details", "parentUrl": "walk-in-patients.html", "parent": "Walk-in Patients"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="wpd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="wpd-hero-ico"><i class="icon-user-plus"></i></div>
+                                    <div class="min-w-0">
+                                        <p class="wpd-kicker">Walk-in Registration</p>
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Marcus Delgado</h1>
+                                            <span class="wpd-hbadge"><span class="wpd-dot"></span>Registered</span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="wpd-hmeta"><i class="icon-hash text-[13px] text-amber-300"></i>W-001</span>
+                                            <span class="wpd-hmeta"><i class="icon-stethoscope text-[13px] text-sky-300"></i>Cardiology</span>
+                                            <span class="wpd-hmeta"><i class="icon-user text-[13px] text-violet-300"></i>Dr. Sarah Chen</span>
+                                            <span class="wpd-hmeta"><i class="icon-flag text-[13px] text-rose-300"></i>Urgent</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 wpd-actions-print-hide">
+                                    <button type="button" class="wpd-btn wpd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Slip</button>
+                                    <a href="walk-in-patients.html" class="wpd-btn wpd-btn-primary"><i class="icon-arrow-left"></i>Back to Walk-ins</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="wpd-grid">
+                            <div class="wpd-vital wpd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-hash"></i></span>
+                                    <span class="wpd-chip">Token</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">W-001</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Queue Token</p>
+                            </div>
+                            <div class="wpd-vital wpd-c-indigo">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-user"></i></span>
+                                    <span class="wpd-chip">Age</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">47 yrs</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Patient Age</p>
+                            </div>
+                            <div class="wpd-vital wpd-c-rose">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-flag"></i></span>
+                                    <span class="wpd-chip">Priority</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Urgent</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Priority Level</p>
+                            </div>
+                            <div class="wpd-vital wpd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-credit-card"></i></span>
+                                    <span class="wpd-chip">Fee</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">$150</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Consultation Fee</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="wpd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Workflow timeline -->
+                                <div class="wpd-surface">
+                                    <div class="wpd-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="wpd-title">Visit Workflow</h2>
+                                    </div>
+                                    <div class="wpd-tl p-5">
+                                        <div class="wpd-tl-item done"><span class="wpd-tl-node"><i class="icon-user-plus"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Registered</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Token W-001 issued at front desk</p></div>
+                                        <div class="wpd-tl-item current"><span class="wpd-tl-node"><i class="icon-stethoscope"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Assigned to Doctor</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Waiting for consultation with Dr. Sarah Chen — Cardiology</p></div>
+                                        <div class="wpd-tl-item"><span class="wpd-tl-node"><i class="icon-circle-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Completed</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Pending</p></div>
+                                    </div>
+                                </div>
+
+                                <!-- Symptoms -->
+                                <div class="wpd-surface">
+                                    <div class="wpd-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="wpd-title">Reported Symptoms</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="wpd-note">Chest tightness after climbing stairs — patient reports mild shortness of breath, no prior cardiac history on record.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 wpd-sidebar">
+                                <!-- Contact -->
+                                <div class="wpd-surface wpd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Patient Contact</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Marcus Delgado</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">(347) 555-0198</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="wpd-hmeta"><i class="icon-phone-call text-[12px]"></i>Call Patient</span>
+                                    </div>
+                                </div>
+
+                                <!-- Registration details -->
+                                <div class="wpd-surface p-5">
+                                    <h3 class="wpd-title mb-3">Registration Details</h3>
+                                    <div class="wpd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">Marcus Delgado</span></div>
+                                    <div class="wpd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Token</span><span class="v">W-001</span></div>
+                                    <div class="wpd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Department</span><span class="v">Cardiology</span></div>
+                                    <div class="wpd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Doctor</span><span class="v">Dr. Sarah Chen</span></div>
+                                    <div class="wpd-kv"><span class="k"><i class="icon-credit-card text-[13px]"></i>Payment</span><span class="v">Insurance</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="wpd-surface p-5 space-y-2.5">
+                                    <h3 class="wpd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="wpd-btn wpd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Slip</button>
+                                    <a href="walk-in-patients.html" class="wpd-btn wpd-btn-solid w-full justify-start"><i class="icon-list"></i>All Walk-ins</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "walk-in-patient-detail"})
+    </body>
+</html>

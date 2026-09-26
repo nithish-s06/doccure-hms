@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Discounts — Dreams HMS"}) @@include('partials/header.html', {"page": "discounts"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="discounts">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search discounts by patient, invoice ref..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Discounts", "parentUrl": "billing.html", "parent": "Billing"})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Discounts &amp; Waivers</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Discount and waiver records applied to patient bills</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-percent text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">6</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Records</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$800.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Discounted</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-heart-handshake text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Charity Waivers</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-shield text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">1</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Insurance Discounts</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-xs text-gray-400 ml-auto">6 records</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient</th>
+                                            <th>Invoice Ref</th>
+                                            <th>Discount Type</th>
+                                            <th>Amount / %</th>
+                                            <th>Approved By</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td class="font-medium text-gray-900">Hana Suzuki</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10061</td><td class="text-gray-600 dark:text-gray-300">Staff</td><td class="font-semibold text-gray-900">10%</td><td class="text-gray-600 dark:text-gray-300">Dr. Elena Vasquez</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td></tr>
+                                        <tr><td class="font-medium text-gray-900">Grace Kimani</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10041</td><td class="text-gray-600 dark:text-gray-300">Charity</td><td class="font-semibold text-gray-900">$250</td><td class="text-gray-600 dark:text-gray-300">Admin — Finance</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td></tr>
+                                        <tr><td class="font-medium text-gray-900">Owen Fitzgerald</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10025</td><td class="text-gray-600 dark:text-gray-300">Insurance</td><td class="font-semibold text-gray-900">15%</td><td class="text-gray-600 dark:text-gray-300">Dr. Yusuf Karim</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-25</td></tr>
+                                        <tr><td class="font-medium text-gray-900">Diego Fernandez</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10032</td><td class="text-gray-600 dark:text-gray-300">Promotional</td><td class="font-semibold text-gray-900">$50</td><td class="text-gray-600 dark:text-gray-300">Front Desk Manager</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-30</td></tr>
+                                        <tr><td class="font-medium text-gray-900">Priya Nair</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10009</td><td class="text-gray-600 dark:text-gray-300">Staff</td><td class="font-semibold text-gray-900">10%</td><td class="text-gray-600 dark:text-gray-300">Dr. Amara Osei</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td></tr>
+                                        <tr><td class="font-medium text-gray-900">Fatima Al-Sayed</td><td class="text-gray-500 dark:text-gray-400 text-sm">INV-10058</td><td class="text-gray-600 dark:text-gray-300">Charity</td><td class="font-semibold text-gray-900">$500</td><td class="text-gray-600 dark:text-gray-300">Admin — Finance</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-07</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "discounts"})
+    </body>
+</html>

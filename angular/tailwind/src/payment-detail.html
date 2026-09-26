@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Payment Details — Dreams HMS"}) @@include('partials/header.html', {"page": "payment-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="payment-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="pmd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Payment Details", "parentUrl": "payments.html", "parent": "Payments"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="pmd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="pmd-hero-ico"><i class="icon-credit-card"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="pmd-payment-title" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Payment</h1>
+                                            <span class="pmd-hbadge"><span class="pmd-dot"></span><span>Completed</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="pmd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="pmd-payment-id">#PMT-20001</span></span>
+                                            <span class="pmd-hmeta"><i class="icon-user text-[13px] text-sky-300"></i><span id="pmd-patient-name">Anna Peterson</span></span>
+                                            <span class="pmd-hmeta"><i class="icon-file-text text-[13px] text-violet-300"></i><span id="pmd-invoice-ref">INV-10001</span></span>
+                                            <span class="pmd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Paid on <span id="pmd-date">2024-11-29</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 pmd-actions-print-hide">
+                                    <button type="button" class="pmd-btn pmd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Receipt</button>
+                                    <a href="payments.html" class="pmd-btn pmd-btn-primary"><i class="icon-arrow-left"></i>Back to Payments</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="pmd-grid">
+                            <div class="pmd-vital pmd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-dollar-sign"></i></span>
+                                    <span class="pmd-chip">Paid</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pmd-amount">$1,200.00</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Amount Paid</p>
+                            </div>
+                            <div class="pmd-vital pmd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-banknote"></i></span>
+                                    <span class="pmd-chip">Method</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pmd-method">Card</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Payment Method</p>
+                            </div>
+                            <div class="pmd-vital pmd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-file-text"></i></span>
+                                    <span class="pmd-chip">Invoice</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pmd-stat-invoiceref">INV-10001</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Invoice Ref</p>
+                            </div>
+                            <div class="pmd-vital pmd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-user"></i></span>
+                                    <span class="pmd-chip">Staff</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pmd-receivedby">Nina Patel</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Received By</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="pmd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Receipt -->
+                                <div class="pmd-surface">
+                                    <div class="pmd-head">
+                                        <span class="ico"><i class="icon-receipt"></i></span>
+                                        <h2 class="pmd-title">Payment Receipt</h2>
+                                    </div>
+                                    <div class="p-5" id="pmd-summary"><div class="pmd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">Anna Peterson</span></div><div class="pmd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Payment ID</span><span class="v">#PMT-20001</span></div><div class="pmd-kv"><span class="k"><i class="icon-file-text text-[13px]"></i>Invoice Reference</span><span class="v text-primary">INV-10001</span></div><div class="pmd-kv"><span class="k"><i class="icon-dollar-sign text-[13px]"></i>Amount</span><span class="v">$1,200.00</span></div><div class="pmd-kv"><span class="k"><i class="icon-banknote text-[13px]"></i>Method</span><span class="v">Card</span></div><div class="pmd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date</span><span class="v">2024-11-29</span></div><div class="pmd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Received By</span><span class="v">Nina Patel</span></div></div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 pmd-sidebar">
+                                <!-- Patient hero -->
+                                <div class="pmd-surface pmd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Paid By</p>
+                                    <h3 class="mt-1 text-lg font-extrabold" id="pmd-side-patient">Anna Peterson</h3>
+                                    <p class="text-sm text-white/80 mt-0.5" id="pmd-side-invoiceref">INV-10001</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="pmd-hmeta"><i class="icon-calendar text-[12px]"></i><span id="pmd-side-date">2024-11-29</span></span>
+                                    </div>
+                                </div>
+
+                                <!-- Key value card -->
+                                <div class="pmd-surface p-5">
+                                    <h3 class="pmd-title mb-3">Payment</h3>
+                                    <div class="pmd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v" id="pmd-kv-patient">Anna Peterson</span></div>
+                                    <div class="pmd-kv"><span class="k"><i class="icon-file-text text-[13px]"></i>Invoice Ref</span><span class="v" id="pmd-kv-invoiceref">INV-10001</span></div>
+                                    <div class="pmd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date</span><span class="v" id="pmd-kv-date">2024-11-29</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="pmd-surface p-5 space-y-2.5">
+                                    <h3 class="pmd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="pmd-btn pmd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Receipt</button>
+                                    <a href="payments.html" class="pmd-btn pmd-btn-solid w-full justify-start"><i class="icon-list"></i>All Payments</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "payment-detail"})
+    </body>
+</html>

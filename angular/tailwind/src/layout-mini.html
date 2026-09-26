@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Mini Sidebar Layout — Dreams HMS"}) @@include('partials/header.html', {"page": "layout-mini"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden mini-sidebar" data-page="layout-mini">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Main Viewport Scrollable -->
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Mini Sidebar", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Mini Sidebar Layout</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">The sidebar is collapsed to icon-only width, maximizing content space while keeping navigation one click away.</p>
+                            </div>
+                            <button id="layout-mini-toggle" class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors" onclick="document.getElementById('toggle_btn').click()">
+                                <i class="icon-panel-left"></i>
+                                Toggle Sidebar
+                            </button>
+                        </div>
+
+                        <div class="card p-4 flex items-start gap-3" data-aos="fade-up" data-aos-delay="30">
+                            <div class="p-2.5 size-9 flex items-center justify-center bg-primary-transparent rounded-lg shrink-0">
+                                <i class="icon-info text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">How this layout works</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">This page applies the <code class="px-1.5 py-0.5 rounded bg-gray-100 dark:bg-slate-800 text-[11px]">mini-sidebar</code> class to the body — the same mechanism the sidebar collapse toggle uses elsewhere in the app. Only this page is affected; navigating away restores the default sidebar width.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-users text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">1,248</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active Patients</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-calendar-check text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">86</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Today's Appointments</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-bed text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">72%</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Bed Occupancy</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-stethoscope text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">64</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Doctors on Duty</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "layout-mini"})
+    </body>
+</html>

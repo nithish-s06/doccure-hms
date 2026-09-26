@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Notes — Dreams HMS"}) @@include('partials/header.html', {"page": "notes"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="notes">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        @@include('partials/breadcrumb.html', {"current": "Notes", "parentUrl": "", "parent": ""})
+
+                        <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Notes</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Quick notes and reminders for your team.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 flex-wrap" data-aos="fade-up" data-aos-delay="30">
+                            <span class="text-xs text-gray-400 ml-auto">10 notes</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="60">
+                            <div class="rounded-xl border p-4 flex flex-col gap-2 bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-sm font-bold text-gray-900 line-clamp-2">Shift handover checklist</h3>
+                                    <i class="icon-pin text-amber-500 text-sm shrink-0"></i>
+                                </div>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-4 flex-1">Confirm vitals logged for all ICU patients before 8 AM handover.</p>
+                            </div>
+                            <div class="rounded-xl border p-4 flex flex-col gap-2 bg-gray-50 dark:bg-slate-800 border-gray-200 dark:border-slate-600">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-sm font-bold text-gray-900 line-clamp-2">NABH audit prep</h3>
+                                    <i class="icon-pin text-amber-500 text-sm shrink-0"></i>
+                                </div>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-4 flex-1">Gather hand-hygiene compliance logs and infection-control records before Thursday's walkthrough.</p>
+                            </div>
+                            <div class="rounded-xl border p-4 flex flex-col gap-2 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-sm font-bold text-gray-900 line-clamp-2">Pharmacy reorder</h3>
+                                </div>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-4 flex-1">Follow up with pharmacy on amoxicillin and insulin stock levels.</p>
+                            </div>
+                            <div class="rounded-xl border p-4 flex flex-col gap-2 bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-sm font-bold text-gray-900 line-clamp-2">Staff meeting notes</h3>
+                                </div>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-4 flex-1">Discussed new triage workflow, rollout planned for next month.</p>
+                            </div>
+                            <div class="rounded-xl border p-4 flex flex-col gap-2 bg-rose-50 dark:bg-rose-900/20 border-rose-200 dark:border-rose-800">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-sm font-bold text-gray-900 line-clamp-2">Equipment check</h3>
+                                </div>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-4 flex-1">Ventilators in ICU-2 due for calibration this week.</p>
+                            </div>
+                            <div class="rounded-xl border p-4 flex flex-col gap-2 bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-sm font-bold text-gray-900 line-clamp-2">Training reminder</h3>
+                                </div>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-4 flex-1">CPR refresher training scheduled for nursing staff on Friday.</p>
+                            </div>
+                            <div class="rounded-xl border p-4 flex flex-col gap-2 bg-rose-50 dark:bg-rose-900/20 border-rose-200 dark:border-rose-800">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-sm font-bold text-gray-900 line-clamp-2">Bed capacity alert</h3>
+                                </div>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-4 flex-1">General Ward running at 92% occupancy — flag to admissions before accepting new transfers.</p>
+                            </div>
+                            <div class="rounded-xl border p-4 flex flex-col gap-2 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-sm font-bold text-gray-900 line-clamp-2">Lab reagent order</h3>
+                                </div>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-4 flex-1">Central lab is low on CRP and lactate reagents — PO placed, ETA Wednesday.</p>
+                            </div>
+                            <div class="rounded-xl border p-4 flex flex-col gap-2 bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-sm font-bold text-gray-900 line-clamp-2">New hire orientation</h3>
+                                </div>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-4 flex-1">Two new nurses joining Ward 4B Monday — badge access and locker assignment still pending.</p>
+                            </div>
+                            <div class="rounded-xl border p-4 flex flex-col gap-2 bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-sm font-bold text-gray-900 line-clamp-2">Ambulance fleet check</h3>
+                                </div>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-4 flex-1">Unit 3 due for scheduled maintenance — arrange backup coverage for the weekend shift.</p>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "notes"})
+    </body>
+</html>

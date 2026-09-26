@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @@include('partials/title-meta.html', {"title":"Consultation Fee Details — Dreams HMS"}) @@include('partials/header.html', {"page": "consultation-fee-detail"})
+    </head>
+    <body class="bg-gray-50 overflow-x-hidden" data-page="consultation-fee-detail">
+        <div class="main-wrapper">
+            @@include('partials/sidebar.html') @@include('partials/topbar.html', {"placeholder":"Search here..."})
+
+            <div>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="cfd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        @@include('partials/breadcrumb.html', {"current": "Consultation Fee Details", "parentUrl": "consultation-fees.html", "parent": "Consultation Fees"})
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="cfd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="cfd-hero-ico"><i class="icon-indian-rupee"></i></div>
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 id="cfd-doctor-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Dr. Sarah Roberts — Cardiology Consultation</h1>
+                                            <span class="cfd-hbadge"><span class="cfd-dot"></span><span id="cfd-status-badge">Active</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="cfd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="cfd-fee-id">#FEE-501</span></span>
+                                            <span class="cfd-hmeta"><i class="icon-building-2 text-[13px] text-sky-300"></i><span id="cfd-dept">Cardiology</span></span>
+                                            <span class="cfd-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i><span id="cfd-ctype">In-person</span></span>
+                                            <span class="cfd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Effective <span id="cfd-eff-date">2024-01-15</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 cfd-actions-print-hide">
+                                    <button type="button" class="cfd-btn cfd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <button type="button" class="cfd-btn cfd-btn-glass" id="cfd-download-btn"><i class="icon-download"></i>Download PDF</button>
+                                    <a href="consultation-fees.html" class="cfd-btn cfd-btn-primary"><i class="icon-arrow-left"></i>Back to Fees</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="cfd-grid">
+                            <div class="cfd-vital cfd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-award"></i></span>
+                                    <span class="cfd-chip">Category</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="cfd-category">Senior Consultant</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Fee Category</p>
+                            </div>
+                            <div class="cfd-vital cfd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-receipt"></i></span>
+                                    <span class="cfd-chip">Base</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="cfd-base-fee">₹1,200.00</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Base Consultation Fee</p>
+                            </div>
+                            <div class="cfd-vital cfd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-cash"></i></span>
+                                    <span class="cfd-chip">Payable</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="cfd-final-fee">₹1,274.00</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Patient Payable Amount</p>
+                            </div>
+                            <div class="cfd-vital cfd-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-shield-check"></i></span>
+                                    <span class="cfd-chip">Status</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="cfd-pay-status">Active</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Payment Status</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="cfd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Fee breakdown -->
+                                <div class="cfd-surface">
+                                    <div class="cfd-head">
+                                        <span class="ico"><i class="icon-calculator"></i></span>
+                                        <h2 class="cfd-title">Fee Breakdown</h2>
+                                    </div>
+                                    <div class="p-5" id="cfd-breakdown-panel">
+                                        <div class="cfd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Consultation Charge</span><span class="v">₹1,000.00</span></div>
+                                        <div class="cfd-kv"><span class="k"><i class="icon-building text-[13px]"></i>Facility Fee</span><span class="v">₹200.00</span></div>
+                                        <div class="cfd-kv"><span class="k"><i class="icon-discount text-[13px]"></i>Discount (10%)</span><span class="v neg">-₹120.00</span></div>
+                                        <div class="cfd-kv"><span class="k"><i class="icon-file-text text-[13px]"></i>Taxable Amount</span><span class="v">₹1,080.00</span></div>
+                                        <div class="cfd-kv"><span class="k"><i class="icon-percent text-[13px]"></i>Tax / GST (18%)</span><span class="v pos">+₹194.00</span></div>
+                                        <div class="cfd-kv"><span class="k"><i class="icon-shield text-[13px]"></i>Insurance Covered</span><span class="v neg">-₹0.00</span></div>
+                                        <div class="cfd-kv total"><span class="k">Patient Payable</span><span class="v" id="cfd-breakdown-total">₹1,274.00</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- Fee revision timeline -->
+                                <div class="cfd-surface">
+                                    <div class="cfd-head">
+                                        <span class="ico"><i class="icon-route"></i></span>
+                                        <h2 class="cfd-title">Fee Revision History</h2>
+                                    </div>
+                                    <div class="cfd-tl p-5" id="cfd-timeline">
+                                        <div class="cfd-tl-item done">
+                                            <span class="cfd-tl-node"><i class="icon-check"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Fee structure created</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Base fee set to ₹1,000.00 — Cardiology, In-person</p>
+                                            <p class="text-[11px] text-gray-400 mt-0.5">2024-01-15</p>
+                                        </div>
+                                        <div class="cfd-tl-item done">
+                                            <span class="cfd-tl-node"><i class="icon-refresh"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Facility fee added</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">₹200.00 facility charge introduced for OPD visits</p>
+                                            <p class="text-[11px] text-gray-400 mt-0.5">2024-06-02</p>
+                                        </div>
+                                        <div class="cfd-tl-item current">
+                                            <span class="cfd-tl-node"><i class="icon-edit"></i></span>
+                                            <p class="text-sm font-bold text-gray-900 dark:text-white">Seasonal discount applied</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">10% loyalty discount active — last revised by billing admin</p>
+                                            <p class="text-[11px] text-gray-400 mt-0.5">2025-03-10 (current)</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Notes -->
+                                <div class="cfd-surface" id="cfd-notes-card">
+                                    <div class="cfd-head">
+                                        <span class="ico"><i class="icon-sticky-note"></i></span>
+                                        <h2 class="cfd-title">Notes</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300" id="cfd-notes-text">Fee applies to all standard in-person cardiology consultations. Follow-up visits within 7 days are billed separately at the discounted follow-up rate. Insurance pre-authorization is not required for this consultation type; co-pay, if any, is settled at the front desk.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 cfd-sidebar">
+                                <!-- Doctor highlight -->
+                                <div class="cfd-surface cfd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Consulting Doctor</p>
+                                    <h3 class="mt-1 text-lg font-extrabold" id="cfd-side-doctor">Dr. Sarah Roberts</h3>
+                                    <p class="text-sm text-white/80 mt-0.5" id="cfd-side-spec">Interventional Cardiology</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="cfd-hmeta"><i class="icon-mail text-[12px]"></i>Contact Doctor</span>
+                                    </div>
+                                </div>
+
+                                <!-- Fee details card -->
+                                <div class="cfd-surface p-5">
+                                    <h3 class="cfd-title mb-3">Fee Details</h3>
+                                    <div class="cfd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Fee ID</span><span class="v" id="cfd-kv-feeid">FEE-501</span></div>
+                                    <div class="cfd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Department</span><span class="v" id="cfd-kv-dept">Cardiology</span></div>
+                                    <div class="cfd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Consultation Type</span><span class="v" id="cfd-kv-ctype">In-person</span></div>
+                                    <div class="cfd-kv"><span class="k"><i class="icon-indian-rupee text-[13px]"></i>Currency</span><span class="v" id="cfd-kv-currency">INR (₹)</span></div>
+                                    <div class="cfd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Effective From</span><span class="v" id="cfd-kv-effdate">2024-01-15</span></div>
+                                    <div class="cfd-kv"><span class="k"><i class="icon-calendar-check text-[13px]"></i>Last Revised</span><span class="v" id="cfd-kv-revdate">2025-03-10</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="cfd-surface p-5 space-y-2.5">
+                                    <h3 class="cfd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="cfd-btn cfd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Fee Sheet</button>
+                                    <button type="button" class="cfd-btn cfd-btn-solid w-full justify-start" id="cfd-side-download"><i class="icon-download"></i>Download PDF</button>
+                                    <a href="consultation-fees.html" class="cfd-btn cfd-btn-solid w-full justify-start"><i class="icon-list"></i>All Fee Structures</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @@include('partials/script.html', {"page": "consultation-fee-detail"})
+    </body>
+</html>
