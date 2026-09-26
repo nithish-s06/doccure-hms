@@ -9,31 +9,20 @@ import { All_Routes } from '../../helpers/routes';
 })
 export class DataService {
   private readonly initialSidebarData: SideBar[] = [
-    // {
-    //   tittle: 'Overview',
-    //   menu: [
-    //     {
-    //       menuValue: 'Dashboard',
-    //       route: All_Routes.index,
-    //       hasSubRoute: false,
-    //       showSubRoute: false,
-    //       icon: 'layout-dashboard',
-    //       base: 'dashboard',
-    //       subMenus: []
-    //     },
-    //     {
-    //       menuValue: 'Point of Sale',
-    //       route: All_Routes.pos,
-    //       hasSubRoute: false,
-    //       showSubRoute: false,
-    //       icon: 'shopping-cart',
-    //       base: 'pos',
-    //       badgeText: 'POS',
-    //       badgeClass: 'nb-gold',
-    //       subMenus: []
-    //     },
-    //   ],
-    // },
+    {
+      tittle: 'Overview',
+      menu: [
+        {
+          menuValue: 'Dashboard',
+          route: All_Routes.index,
+          hasSubRoute: false,
+          showSubRoute: false,
+          icon: 'layout-dashboard',
+          base: 'index',
+          subMenus: [],
+        },
+      ],
+    },
     {
       tittle: 'Applications',
       menu: [
