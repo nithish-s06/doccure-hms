@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { CommandBarService } from '../../core/services/layout/command-bar.service';
 
 @Component({
   imports: [],
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './header.css',
   templateUrl: './header.html',
 })
-export class Header {}
+export class Header implements AfterViewInit {
+  constructor(private commandBarService: CommandBarService) {}
+
+  ngAfterViewInit(): void {
+    this.commandBarService.init();
+  }
+}
