@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { DataService } from '../../core/services/data/data.service';
 import { SideBar, SideBarMenu, SideBarSubMenu } from '../../core/model/model';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 @Component({
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive,NgScrollbarModule],
   selector: 'app-sidebar',
   styleUrl: './sidebar.css',
   templateUrl: './sidebar.html',
