@@ -89,4 +89,263 @@ export const All_Routes={
     uilucide:'/icons/lucide',
     uiphosphor:'/icons/phosphor',
 
+    // Dashboards
+    executiveDashboard:'/executive-dashboard',
+    doctorDashboard:'/doctor-dashboard',
+    nurseDashboard:'/nurse-dashboard',
+    receptionDashboard:'/reception-dashboard',
+    laboratoryDashboard:'/laboratory-dashboard',
+    pharmacyDashboard:'/pharmacy-dashboard',
+    billingDashboard:'/billing-dashboard',
+
+    // Patients
+    patients:'/patients',
+    addPatient:'/add-patient',
+    patientProfile:'/patient-profile',
+    admissions:'/admissions',
+    discharges:'/discharges',
+    opdPatients:'/opd-patients',
+    ipdPatients:'/ipd-patients',
+    patientVisits:'/patient-visits',
+    patientMedicalHistory:'/patient-medical-history',
+    patientDocuments:'/patient-documents',
+    patientInsurance:'/patient-insurance',
+    patientFamilyMembers:'/patient-family-members',
+    patientFeedback:'/patient-feedback',
+
+    // Doctors
+    doctors:'/doctors',
+    addDoctor:'/add-doctor',
+    doctorProfile:'/doctor-profile',
+    specializations:'/specializations',
+    doctorSchedule:'/doctor-schedule',
+    doctorAvailability:'/doctor-availability',
+    doctorLeaveRequests:'/doctor-leave-requests',
+    consultationFees:'/consultation-fees',
+
+    // Appointments
+    appointments:'/appointments',
+    appointmentCalendar:'/appointment-calendar',
+    bookAppointment:'/book-appointment',
+    queueManagement:'/queue-management',
+    walkInPatients:'/walk-in-patients',
+    followUpAppointments:'/follow-up-appointments',
+    appointmentRequests:'/appointment-requests',
+    cancelledAppointments:'/cancelled-appointments',
+
+    // Clinical - Pharmacy
+    pharmacy:'/pharmacy',
+    medicines:'/medicines',
+    medicineCategories:'/medicine-categories',
+    pharmacySuppliers:'/pharmacy-suppliers',
+    pharmacyPurchaseOrders:'/pharmacy-purchase-orders',
+    pharmacyInventory:'/pharmacy-inventory',
+    prescriptions:'/prescriptions',
+    pharmacySales:'/pharmacy-sales',
+    expiryTracking:'/expiry-tracking',
+    stockAlerts:'/stock-alerts',
+
+    // Clinical - Laboratory
+    laboratory:'/laboratory',
+    labTests:'/lab-tests',
+    labTestCategories:'/lab-test-categories',
+    labTestRequests:'/lab-test-requests',
+    sampleCollection:'/sample-collection',
+    sampleTracking:'/sample-tracking',
+    labTestResults:'/lab-test-results',
+
+    // Clinical - Emergency
+    emergencyDashboard:'/emergency-dashboard',
+    triage:'/triage',
+    emergency:'/emergency',
+    traumaCases:'/trauma-cases',
+    criticalCare:'/critical-care',
+
+    // Clinical - Wards & Beds
+    wards:'/wards',
+    bedStatus:'/bed-status',
+    bedAllocation:'/bed-allocation',
+    bedTransfer:'/bed-transfer',
+    bedOccupancy:'/bed-occupancy',
+
+    // Clinical - ICU
+    icu:'/icu',
+    icuPatients:'/icu-patients',
+    icuBeds:'/icu-beds',
+    icuMonitoring:'/icu-monitoring',
+    criticalAlerts:'/critical-alerts',
+
+    // Clinical - Operation Theater
+    operationTheater:'/operation-theater',
+    otCalendar:'/ot-calendar',
+    surgeons:'/surgeons',
+    otBooking:'/ot-booking',
+    operationReports:'/operation-reports',
+
+    // Clinical - Radiology
+    radiology:'/radiology',
+    xRay:'/x-ray',
+    mri:'/mri',
+    ctScan:'/ct-scan',
+    ultrasound:'/ultrasound',
+    scanRequests:'/scan-requests',
+    radiologyReports:'/radiology-reports',
+
+    // Clinical - Blood Bank
+    bloodBank:'/blood-bank',
+    bloodDonors:'/blood-donors',
+    bloodRequests:'/blood-requests',
+    bloodIssue:'/blood-issue',
+    bloodCamps:'/blood-camps',
+
+    // Clinical - Nursing
+    nursingDashboard:'/nursing-dashboard',
+    nursingNotes:'/nursing-notes',
+    vitalSigns:'/vital-signs',
+    medicationAdministration:'/medication-administration',
+    carePlans:'/care-plans',
+    shiftReports:'/shift-reports',
+
+    // Patient Care - Medical Records
+    medicalRecords:'/medical-records',
+    medicalHistory:'/medical-history',
+    diagnoses:'/diagnoses',
+    emrPrescriptions:'/emr-prescriptions',
+    allergies:'/allergies',
+    progressNotes:'/progress-notes',
+    emrDocuments:'/emr-documents',
+
+    // Patient Care - Telemedicine
+    telemedicine:'/telemedicine',
+    consultationHistory:'/consultation-history',
+    waitingRoom:'/waiting-room',
+    scheduledSessions:'/scheduled-sessions',
+
+    // Patient Care - Diet & Nutrition
+    diet:'/diet',
+    mealPlanning:'/meal-planning',
+    nutritionAssessment:'/nutrition-assessment',
+    dietician:'/dietician',
+
+    // Management - Billing
+    billing:'/billing',
+    invoices:'/invoices',
+    payments:'/payments',
+    estimates:'/estimates',
+    refunds:'/refunds',
+    discounts:'/discounts',
+    taxSettings:'/tax-settings',
+
+    // Management - Insurance
+    insurance:'/insurance',
+    insuranceClaims:'/insurance-claims',
+    preAuthorization:'/pre-authorization',
+    insuranceApprovals:'/insurance-approvals',
+    reimbursements:'/reimbursements',
+
+    // Management - HR & Staff
+    hr:'/hr',
+    attendance:'/attendance',
+    leaveManagement:'/leave-management',
+    payroll:'/payroll',
+    hrDepartments:'/hr-departments',
+    designations:'/designations',
+    shifts:'/shifts',
+    recruitment:'/recruitment',
+    performance:'/performance',
+
+    // Management - Inventory
+    inventory:'/inventory',
+    products:'/products',
+    inventoryCategories:'/inventory-categories',
+    inventorySuppliers:'/inventory-suppliers',
+    inventoryPurchaseOrders:'/inventory-purchase-orders',
+    stockIn:'/stock-in',
+    stockOut:'/stock-out',
+    stockTransfers:'/stock-transfers',
+    assetTracking:'/asset-tracking',
+    lowStock:'/low-stock',
+
+    // Management - Ambulance
+    ambulance:'/ambulance',
+    ambulanceVehicles:'/ambulance-vehicles',
+    ambulanceDrivers:'/ambulance-drivers',
+    emergencyCalls:'/emergency-calls',
+    ambulanceTrips:'/ambulance-trips',
+    ambulanceMaintenance:'/ambulance-maintenance',
+
+    // Management - Finance
+    income:'/income',
+    expenses:'/expenses',
+    transactions:'/transactions',
+    accounts:'/accounts',
+    bankAccounts:'/bank-accounts',
+    profitLoss:'/profit-loss',
+
+    // Management - Administration
+    branches:'/branches',
+    adminDepartments:'/admin-departments',
+    noticeBoard:'/notice-board',
+    announcements:'/announcements',
+    visitors:'/visitors',
+    complaints:'/complaints',
+
+    // Management - Assets
+    equipment:'/equipment',
+    assetMaintenance:'/asset-maintenance',
+    repairs:'/repairs',
+    vendors:'/vendors',
+    assetCategories:'/asset-categories',
+
+    // System - Reports
+    reports:'/reports',
+    patientReports:'/patient-reports',
+    appointmentReports:'/appointment-reports',
+    revenueReports:'/revenue-reports',
+    pharmacyReports:'/pharmacy-reports',
+    laboratoryReports:'/laboratory-reports',
+    doctorPerformance:'/doctor-performance',
+    bedOccupancyReport:'/bed-occupancy-report',
+    inventoryReports:'/inventory-reports',
+    hrReports:'/hr-reports',
+
+    // System - misc
+    activityLogs:'/activity-logs',
+    auditLogs:'/audit-logs',
+    users:'/users',
+    roles:'/roles',
+    permissions:'/permissions',
+    backupRestore:'/backup-restore',
+    emailTemplates:'/email-templates',
+    smsTemplates:'/sms-templates',
+    settings:'/settings',
+
+    // Authentication (additional)
+    lockScreen:'/lock-screen',
+    twoFactorAuthentication:'/two-factor-authentication',
+    sessionExpired:'/session-expired',
+
+    // Error pages (additional)
+    error401:'/error-401',
+    error403Page:'/error-403',
+    error429:'/error-429',
+    error503:'/error-503',
+    underMaintenance:'/under-maintenance',
+    offline:'/offline',
+
+    // General pages
+    profile:'/profile',
+    myAccount:'/my-account',
+    activity:'/activity',
+    gallery:'/gallery',
+    helpCenter:'/help-center',
+    knowledgeBase:'/knowledge-base',
+    supportTickets:'/support-tickets',
+    contactUs:'/contact-us',
+    searchResults:'/search-results',
+    pricing:'/pricing',
+    faq:'/faq',
+    termsConditions:'/terms-conditions',
+    starterPage:'/starter-page',
+
 }
