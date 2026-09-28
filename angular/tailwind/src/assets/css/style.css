@@ -1781,6 +1781,45 @@ body:has(#oc-page) {
         @apply max-sm:hidden;
     }
 
+    /* The SVGs are 1488x255 (wordmark) and 128x128 (mark); without an explicit
+       size they render at natural size and blow the command bar apart on
+       tablet/mobile widths. */
+    header .logo img {
+        @apply block h-6 w-auto max-w-none sm:h-7;
+    }
+
+    header .logo .logo-sm img {
+        @apply h-8 w-8;
+    }
+
+    /* Role-dashboard hero strips (executive / nurse / pharmacy / lab / billing).
+       The text block is `flex-1` (basis 0) inside a wrapping row, so it never
+       wraps and the action button squeezes it into a sliver on phones. Give it
+       a real basis so the button drops to its own line instead. */
+    .ex-alert > .min-w-0,
+    .ns-code > .min-w-0,
+    .rx-urgent > .min-w-0,
+    .lb-stat > .min-w-0,
+    .bl-close > .min-w-0,
+    .rc-serving > .min-w-0 {
+        @apply basis-48!;
+    }
+
+    .rc-serving .truncate {
+        @apply max-sm:whitespace-normal!;
+    }
+
+    /* The "•" separators between hero sub-line items end up orphaned at line
+       ends once the items wrap; they only make sense on a single line. */
+    .ex-hero-sub > [aria-hidden="true"],
+    .ns-hero-sub > [aria-hidden="true"],
+    .rx-hero-sub > [aria-hidden="true"],
+    .lb-hero-sub > [aria-hidden="true"],
+    .bl-hero-sub > [aria-hidden="true"],
+    .rc-hero-sub > [aria-hidden="true"] {
+        @apply max-sm:hidden;
+    }
+
     /* Badge */
     .badge {
         @apply inline-flex items-center py-0.5 px-2.5 rounded-full text-xs font-semibold;
@@ -4327,7 +4366,7 @@ body:has(#oc-page) {
 
     /* --- Bento tiles ----------------------------------------------------- */
     .dr-bento {
-        @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5;
+        @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5;
     }
     .dr-tile {
         --dr-accent: var(--dr-indigo);
@@ -5298,7 +5337,7 @@ body:has(#oc-page) {
     }
     /* Now-serving token marquee chip. */
     .rc-serving {
-        @apply relative flex items-center gap-3 overflow-hidden rounded-xl border border-amber-300/25 px-4 py-3 backdrop-blur-md;
+        @apply relative flex flex-wrap items-center gap-3 overflow-hidden rounded-xl border border-amber-300/25 px-4 py-3 backdrop-blur-md;
         background-image: linear-gradient(
             100deg,
             color-mix(in oklab, var(--rc-amber) 22%, transparent),
@@ -8380,7 +8419,7 @@ body:has(#oc-page) {
        drawer. Namespaced hc- so it never collides with page modules.
        ===================================================================== */
     .hc-bar {
-        @apply relative flex h-16 shrink-0 items-center gap-3 px-4 lg:px-6 z-30;
+        @apply relative flex h-16 shrink-0 items-center gap-2 px-3 sm:gap-3 sm:px-4 lg:px-6 z-30;
         background-color: color-mix(
             in oklab,
             var(--color-white) 82%,
@@ -8416,7 +8455,7 @@ body:has(#oc-page) {
 
     /* --- Generic round icon buttons -------------------------------------- */
     .hc-icon-btn {
-        @apply relative grid size-9 shrink-0 place-items-center rounded-full border border-transparent text-gray-500 transition-all duration-200 cursor-pointer;
+        @apply relative grid size-8 shrink-0 place-items-center rounded-full border border-transparent text-gray-500 transition-all duration-200 cursor-pointer sm:size-9;
     }
     .hc-icon-btn:hover {
         @apply -translate-y-0.5 border-border-color text-primary-text;
@@ -8434,7 +8473,7 @@ body:has(#oc-page) {
         --tw-ring-color: var(--color-white);
     }
     .hc-badge {
-        @apply absolute -right-1 -top-1 grid min-w-4 place-items-center rounded-full px-1 text-[9px] font-extrabold text-white;
+        @apply absolute right-0 top-0 grid min-w-4 place-items-center rounded-full px-1 text-[9px] font-extrabold text-white ring-2 ring-white dark:ring-slate-800;
         background-image: linear-gradient(135deg, #f43f5e, #e11d48);
     }
 
@@ -8575,10 +8614,10 @@ body:has(#oc-page) {
 
     /* --- Right utility cluster (glass card) ----------------------------- */
     .hc-cluster {
-        @apply flex items-center gap-1 rounded-xl border border-border-color bg-white p-1 dark:bg-slate-800/70;
+        @apply flex items-center gap-0.5 rounded-xl border border-border-color bg-white p-1 sm:gap-1 dark:bg-slate-800/70;
     }
     .hc-divider {
-        @apply mx-0.5 h-6 w-px shrink-0 bg-border-color;
+        @apply mx-0.5 h-6 w-px shrink-0 bg-border-color max-sm:hidden;
     }
 
     /* --- Live clock block ----------------------------------------------- */
@@ -8605,7 +8644,7 @@ body:has(#oc-page) {
         @apply -translate-y-0.5 brightness-110;
     }
     .hc-emg-dot {
-        @apply size-1.5 rounded-full bg-white;
+        @apply size-1.5 rounded-full bg-white max-sm:hidden;
         animation: tc-ping 1.4s ease-in-out infinite;
     }
 
@@ -9792,6 +9831,19 @@ span.flatpickr-weekday {
 }
 .dark .text-white {
     @apply text-[#FFFFFF];
+}
+
+/* UI-kit "Show Code" panels (pre.code, ~230 of them across the ui-* and
+   chart-* pages) are authored as `bg-dark text-gray-100`, i.e. "near-black
+   surface, light text". .dark{} repoints --color-dark to a pale lavender
+   (#c9ccf3, meant for text) and --color-gray-100 to a 10% white tint (meant
+   for soft badges), so in dark mode the panel turned lavender with
+   near-invisible text. Pin literal colors so the snippet reads the same in
+   both modes; the border keeps the panel distinct from the dark card. */
+.dark pre.code {
+    background-color: #0b1120;
+    color: #e2e8f0;
+    border: 1px solid #334155;
 }
 
 /* The single biggest source of "invisible in dark mode" text/borders across
@@ -65932,40 +65984,6 @@ input[type="checkbox"].da-cb {
 }
 .lv-bulk.show {
     transform: translateX(-50%) translateY(0);
-}
-
-/* ---------- TOAST ---------- */
-#lv-toast {
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    z-index: 90;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-.lv-toast {
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.7rem 0.95rem;
-    border-radius: 0.8rem;
-    background: var(--color-gray-900);
-    color: #fff;
-    font-size: 0.8rem;
-    font-weight: 700;
-    box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6);
-    animation: lv-tin 0.3s ease;
-}
-@keyframes lv-tin {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: none;
-    }
 }
 
 input[type="checkbox"].lv-cb {

@@ -6770,7 +6770,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const DOCTORS = ["Dr. Sarah Chen", "Dr. Michael Reyes", "Dr. Emily Carter", "Dr. David Okonkwo", "Dr. Laura Bennett"];
                 const DEPTS = ["Cardiology", "Neurology", "Orthopedics", "Pediatrics", "Oncology"];
-                const TYPES = ["Consultation", "Follow-Up", "Emergency", "Procedure"];
 
                 let events = [
                     { id: 1, patient: "James Morrison", doctor: "Dr. Sarah Chen", dept: "Cardiology", type: "Consultation", date: "2026-07-17", start: 9, dur: 0.5, phone: "(212) 555-0147" },
@@ -6794,7 +6793,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 let view = "month";
                 let cursor = { y: TODAY.y, m: TODAY.m, d: TODAY.d };
                 let miniCursor = { y: TODAY.y, m: TODAY.m };
-                const active = { doctors: new Set(DOCTORS), depts: new Set(DEPTS), types: new Set(TYPES) };
+                const active = { doctors: new Set(DOCTORS), depts: new Set(DEPTS) };
 
                 const iso = (y, m, d) => y + "-" + String(m + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
                 const daysInMonth = (y, m) => new Date(y, m + 1, 0).getDate();
@@ -6809,9 +6808,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 function visible() {
-                    return events.filter(
-                        (e) => active.doctors.has(e.doctor) && active.depts.has(e.dept) && active.types.has(e.type),
-                    );
+                    return events.filter((e) => active.doctors.has(e.doctor) && active.depts.has(e.dept));
                 }
 
                 function eventsOn(dateIso) {
@@ -6848,10 +6845,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // --- Filters ------------------------------------------------------------
-                // #filter-doctors, #filter-depts and #filter-types are already static
-                // checkbox markup in the HTML (all checked by default), matching what
-                // DOCTORS.map(checkboxRow)/DEPTS.map(...)/TYPES.map(...) would have
-                // produced on load.
+                // #filter-doctors and #filter-depts are already static checkbox markup
+                // in the HTML (all checked by default), matching what
+                // DOCTORS.map(checkboxRow)/DEPTS.map(...) would have produced on load.
 
                 document.querySelectorAll("[data-filter]").forEach(function (box) {
                     box.addEventListener("change", function () {
@@ -11983,28 +11979,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     ).join("");
                 }
 
-                function renderLabs() {
-                    $("labs-chip").textContent = LABS.length + " waiting";
-                    if (!LABS.length) {
-                        $("labs").innerHTML =
-                            '<div class="py-8 text-center"><i class="icon-check-check text-3xl text-success" aria-hidden="true"></i>' +
-                            '<p class="mt-2 text-xs font-semibold text-gray-500 dark:text-gray-400">Inbox zero</p>' +
-                            '<p class="text-[10px] text-gray-400">All results reviewed and signed.</p></div>';
-                        return;
-                    }
-                    $("labs").innerHTML = LABS.map((l, i) =>
-                        '<div class="dr-row' + (l.urgent ? " is-flagged" : "") + '" style="display:block">' +
-                        '<div class="flex items-center gap-2">' +
-                        '<p class="min-w-0 flex-1 truncate text-xs font-bold text-gray-900 dark:text-white">' + esc(l.test) + "</p>" +
-                        '<span class="badge shrink-0 ' + (l.flag === "High" ? "badge-red" : "badge-green") + '">' + l.flag + "</span>" +
-                        "</div>" +
-                        '<div class="mt-1.5 flex items-center justify-between gap-2">' +
-                        '<p class="min-w-0 flex-1 truncate text-[10px] text-gray-400">' + esc(l.patient) + " · " + esc(l.value) + "</p>" +
-                        '<button type="button" data-sign="' + i + '" class="shrink-0 rounded-lg bg-primary/10 px-2 py-1 text-[10px] font-bold text-primary transition-colors hover:bg-primary/20">Sign</button>' +
-                        "</div></div>"
-                    ).join("");
-                }
-
                 function ring(pct, cls) {
                     return (
                         '<div class="relative grid place-items-center ' + cls + '">' +
@@ -12152,7 +12126,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     renderHero();
                     renderSchedule();
                     renderQueue();
-                    renderLabs();
                     renderCensus();
                     renderPerf();
                     renderHeat();
@@ -12163,20 +12136,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 function init() {
-                    // Initial content for the hero, schedule rail, waiting room, labs,
+                    // Initial content for the hero, schedule rail, waiting room,
                     // census, analytics, activity, alerts, tasks and theatre panels is
                     // already present as static markup in the HTML (matching what
                     // renderAll() below would produce for the seed data). renderAll()
                     // stays available for the mutation handlers wired below.
-
-                    $("labs").addEventListener("click", function (e) {
-                        const btn = e.target.closest("[data-sign]");
-                        if (!btn) return;
-                        const l = LABS.splice(parseInt(btn.dataset.sign, 10), 1)[0];
-                        renderHero();
-                        renderLabs();
-                        MC.toast(l.test + " signed for " + l.patient + ".", "success");
-                    });
 
                     $("alerts").addEventListener("click", function (e) {
                         const btn = e.target.closest("[data-dismiss]");
@@ -12228,7 +12192,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             function $(s, r) { return (r || document).querySelector(s); }
                             function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
                             function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
-                            function toast(msg, ic){ var w=$("#lv-toast"); var t=document.createElement("div"); t.className="lv-toast"; t.innerHTML='<i class="ti '+(ic||"ti-check")+' text-emerald-400"></i>'+esc(msg); w.appendChild(t); setTimeout(function(){ t.style.opacity="0"; t.style.transform="translateY(12px)"; t.style.transition="all .3s ease"; setTimeout(function(){ t.remove(); },300); },2600); }
                             function mix(c,p){ return "color-mix(in srgb,"+c+" "+(p||15)+"%,transparent)"; }
                             function ini(n){ return n.replace(/^Dr\.?\s*/i,"").split(" ").map(function(w){return w[0];}).join("").slice(0,2).toUpperCase(); }
                             function detailUrl(r){ return "doctor-leave-request-detail.html?" + new URLSearchParams({ id:r.id, name:r.name, dept:r.dept, status:r.status }).toString(); }
@@ -12364,7 +12327,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     col.addEventListener("drop", function(e){
                                         e.preventDefault(); this.classList.remove("drop");
                                         var st=this.getAttribute("data-col"), r=REQ.filter(function(x){return x.id===dragId;})[0];
-                                        if(r && r.status!==st){ r.status=st; renderKanban(filtered()); renderKPIs(); renderWidgets(); animateRings(); toast(r.id+" moved to "+st, st==="Approved"?"ti-circle-check":st==="Rejected"?"ti-circle-x":"ti-arrows-exchange"); }
+                                        if(r && r.status!==st){ r.status=st; renderKanban(filtered()); renderKPIs(); renderWidgets(); animateRings(); }
                                     });
                                 });
                             }
@@ -12406,19 +12369,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                     return '<div class="lv-calcol"><div class="lv-calhd'+(di===todayIdx?" today":"")+'">'+day+' <span class="opacity-70 font-medium">'+dnum+'</span></div><div class="pb-1 min-h-[80px]">'+(blocks||'<div class="text-[10px] lv-muted text-center py-4">No leave</div>')+more+'</div></div>';
                                 }).join("");
                                 $("#lv-calendar").innerHTML=html;
-                            }
-
-                            /* ================= APPROVAL WORKFLOW ================= */
-                            function renderWorkflow(){
-                                var steps=[
-                                    {n:"Request Submitted",ic:"ti-file-plus",done:1},{n:"Department Review",ic:"ti-building-hospital",done:1},{n:"HR Review",ic:"ti-user-check",done:1},{n:"Coverage Assigned",ic:"ti-user-shield",done:1},{n:"Final Approval",ic:"ti-rubber-stamp",done:0,cur:1},{n:"Leave Activated",ic:"ti-plane-departure",done:0},{n:"Return to Duty",ic:"ti-arrow-back-up",done:0}
-                                ];
-                                $("#lv-workflow").innerHTML=steps.map(function(s,i){
-                                    var c=s.done?"#10b981":s.cur?"var(--color-primary)":"var(--color-gray-300)";
-                                    var tc=s.done||s.cur?"var(--color-gray-900)":"var(--color-gray-400)";
-                                    return '<div class="flex items-center flex-none">'+(i>0?'<div class="w-8 h-.5 rounded" style="height:2px;background:'+(steps[i-1].done?"#10b981":"var(--color-gray-200)")+'"></div>':'')+
-                                        '<div class="flex flex-col items-center gap-1.5 px-1" style="min-width:92px"><div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:'+(s.done||s.cur?mix(s.done?"#10b981":"var(--color-primary)"):"var(--color-gray-100)")+';color:'+c+';'+(s.cur?"box-shadow:0 0 0 4px "+mix("var(--color-primary)",20):"")+'"><i class="ti '+(s.done?"ti-check":s.ic)+'"></i></div><span class="text-[10px] font-bold text-center leading-tight" style="color:'+tc+'">'+esc(s.n)+'</span></div></div>';
-                                }).join("");
                             }
 
                             /* ================= COVERAGE TOOLS + POOL ================= */
@@ -12464,15 +12414,14 @@ document.addEventListener('DOMContentLoaded', function () {
                             }
                             function closeMenu(){ $("#lv-menu").classList.remove("open"); menuReq=null; }
                             function doAction(act){
-                                var r=REQ.filter(function(x){return x.id===menuReq;})[0]; var name=r?r.name:"request";
+                                var r=REQ.filter(function(x){return x.id===menuReq;})[0];
                                 if(act==="view"){ closeMenu(); openDrawer(menuReq); return; }
-                                if(act==="approve" && r){ r.status="Approved"; render(); renderKPIs(); renderWidgets(); animateRings(); toast(r.id+" approved","ti-circle-check"); closeMenu(); return; }
-                                if(act==="reject" && r){ r.status="Rejected"; render(); renderKPIs(); renderWidgets(); animateRings(); toast(r.id+" rejected","ti-circle-x"); closeMenu(); return; }
+                                if(act==="approve" && r){ r.status="Approved"; render(); renderKPIs(); renderWidgets(); animateRings(); closeMenu(); return; }
+                                if(act==="reject" && r){ r.status="Rejected"; render(); renderKPIs(); renderWidgets(); animateRings(); closeMenu(); return; }
                                 if(["edit","replace","shiftcov"].indexOf(act)>=0){ closeMenu(); openModal(act==="edit"?"new":"coverage", r); return; }
                                 if(act==="docs"){ closeMenu(); openModal("docs", r); return; }
                                 if(act==="delete"){ closeMenu(); openModal("delete", r); return; }
-                                var msgs={changes:"Changes requested",sched:"Opening schedule",print:"Printing request",pdf:"Downloading PDF",notify:"Notification sent",email:"Email sent",archive:"Request archived"};
-                                toast((msgs[act]||"Action")+" — "+name.replace("Dr. ","Dr "),"ti-check"); closeMenu();
+                                closeMenu();
                             }
 
                             /* ================= DRAWER ================= */
@@ -12496,10 +12445,10 @@ document.addEventListener('DOMContentLoaded', function () {
                                         '<div class="grid grid-cols-3 gap-2 text-center"><div class="p-3 rounded-xl border border-[var(--color-border-color)]"><div class="text-lg font-extrabold text-[var(--color-gray-900)]">'+r.days+'</div><div class="text-[10px] lv-muted font-semibold">Days</div></div><div class="p-3 rounded-xl border border-[var(--color-border-color)]"><div class="text-sm font-extrabold text-[var(--color-gray-900)]">'+esc(r.start)+'</div><div class="text-[10px] lv-muted font-semibold">Start</div></div><div class="p-3 rounded-xl border border-[var(--color-border-color)]"><div class="text-sm font-extrabold text-[var(--color-gray-900)]">'+esc(r.end)+'</div><div class="text-[10px] lv-muted font-semibold">End</div></div></div>'+
                                         '<div class="flex items-center gap-2.5 p-3 rounded-xl" style="background:'+mix(t.c,8)+';border:1px solid '+mix(t.c,22)+'"><i class="ti '+t.ic+' text-lg" style="color:'+t.c+'"></i><div><div class="text-xs lv-muted font-semibold">Leave Type</div><div class="text-sm font-bold text-[var(--color-gray-900)]">'+esc(r.type)+'</div></div></div>'+
                                         '<div><div class="text-xs lv-muted font-semibold mb-1.5">Reason</div><p class="text-sm lv-muted leading-relaxed p-3 rounded-lg bg-[var(--color-gray-100)]">'+esc(r.reason)+'</p></div>'+
-                                        '<div><div class="text-xs lv-muted font-semibold mb-2">Supporting Documents ('+r.docs+')</div>'+(docs.length?'<div class="space-y-1.5">'+docs.map(function(d){ return '<div class="flex items-center gap-2.5 p-2 rounded-lg border border-[var(--color-border-color)]"><i class="ti ti-file-text text-rose-500"></i><span class="text-xs font-semibold text-[var(--color-gray-900)] flex-1 truncate">'+esc(d)+'</span><button class="lv-btn lv-btn-soft !p-1.5" data-toast="Downloading '+esc(d)+'"><i class="ti ti-download"></i></button></div>'; }).join("")+'</div>':'<p class="text-xs lv-muted">No documents attached.</p>')+'</div>'+
+                                        '<div><div class="text-xs lv-muted font-semibold mb-2">Supporting Documents ('+r.docs+')</div>'+(docs.length?'<div class="space-y-1.5">'+docs.map(function(d){ return '<div class="flex items-center gap-2.5 p-2 rounded-lg border border-[var(--color-border-color)]"><i class="ti ti-file-text text-rose-500"></i><span class="text-xs font-semibold text-[var(--color-gray-900)] flex-1 truncate">'+esc(d)+'</span><button class="lv-btn lv-btn-soft !p-1.5"><i class="ti ti-download"></i></button></div>'; }).join("")+'</div>':'<p class="text-xs lv-muted">No documents attached.</p>')+'</div>'+
                                         '<div><div class="text-xs lv-muted font-semibold mb-2">Assigned Coverage</div>'+(r.covDoc?'<div class="flex items-center gap-2.5 p-2.5 rounded-lg" style="background:'+mix("#10b981",8)+';border:1px solid '+mix("#10b981",22)+'"><i class="ti ti-user-shield text-emerald-500"></i><span class="text-sm font-bold text-[var(--color-gray-900)] flex-1">'+esc(r.covDoc)+'</span><span class="lv-tag" style="background:'+mix("#10b981")+';color:#059669">Covering</span></div>':'<button class="lv-btn lv-btn-soft w-full" data-modal="coverage"><i class="ti ti-user-plus"></i> Assign Coverage</button>')+'</div>'+
                                         '<div><div class="text-xs lv-muted font-semibold mb-2">Approval History / Timeline</div><div class="space-y-2.5">'+hist.map(function(h,i){ return '<div class="flex gap-3"><div class="flex flex-col items-center"><div class="w-6 h-6 rounded-full flex items-center justify-center flex-none" style="background:'+mix(h.c)+';color:'+h.c+'"><i class="ti '+(h.done?"ti-check":"ti-clock")+' text-xs"></i></div>'+(i<hist.length-1?'<div class="w-px flex-1 bg-[var(--color-border-color)] mt-1"></div>':'')+'</div><div class="pb-2"><div class="text-xs font-bold text-[var(--color-gray-900)]">'+esc(h.n)+'</div><div class="text-[11px] lv-muted">'+esc(h.tm)+'</div></div></div>'; }).join("")+'</div></div>'+
-                                        '<div class="grid grid-cols-2 gap-2 pt-1"><button class="lv-btn lv-btn-primary" data-act2="approve" data-id2="'+r.id+'"><i class="ti ti-check"></i> Approve</button><button class="lv-btn lv-btn-soft !text-rose-500" data-act2="reject" data-id2="'+r.id+'"><i class="ti ti-x"></i> Reject</button><button class="lv-btn lv-btn-soft" data-modal="coverage"><i class="ti ti-user-shield"></i> Coverage</button><button class="lv-btn lv-btn-soft" data-toast="Notification sent"><i class="ti ti-bell"></i> Notify</button></div>'+
+                                        '<div class="grid grid-cols-2 gap-2 pt-1"><button class="lv-btn lv-btn-primary" data-act2="approve" data-id2="'+r.id+'"><i class="ti ti-check"></i> Approve</button><button class="lv-btn lv-btn-soft !text-rose-500" data-act2="reject" data-id2="'+r.id+'"><i class="ti ti-x"></i> Reject</button><button class="lv-btn lv-btn-soft" data-modal="coverage"><i class="ti ti-user-shield"></i> Coverage</button><button class="lv-btn lv-btn-soft"><i class="ti ti-bell"></i> Notify</button></div>'+
                                     '</div>';
                                 $("#lv-drawer").classList.add("open");
                                 document.body.style.overflow = "hidden";
@@ -12513,9 +12462,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             var MODALS={
                                 new:{t:"New Leave Request",ic:"ti-calendar-plus",body:function(r){ return '<div class="space-y-3">'+fld("Doctor",selDoc())+'<div class="grid grid-cols-2 gap-3">'+fld("Leave Type",selType())+fld("Priority",'<select class="lv-inp"><option>Low</option><option>Medium</option><option>High</option></select>')+'</div><div class="grid grid-cols-2 gap-3">'+fld("Start Date",'<input type="text" placeholder="dd-mm-yyyy" class="lv-inp" data-provider="flatpickr" data-date-format="d-m-Y">')+fld("End Date",'<input type="text" placeholder="dd-mm-yyyy" class="lv-inp" data-provider="flatpickr" data-date-format="d-m-Y">')+'</div>'+fld("Reason",'<textarea class="lv-inp" rows="3" placeholder="Reason for leave">'+(r?esc(r.reason):"")+'</textarea>')+'</div>'; },cta:"Submit Request"},
                                 coverage:{t:"Assign Coverage",ic:"ti-user-shield",body:function(){ return '<div class="space-y-3">'+fld("Leave Request",'<select class="lv-inp">'+REQ.map(function(r){return '<option>'+esc(r.id)+' — '+esc(r.name)+'</option>';}).join("")+'</select>')+fld("Replacement Doctor",selPool())+fld("Coverage Type",'<select class="lv-inp"><option>Full Shift</option><option>Partial</option><option>On-call only</option><option>Emergency only</option></select>')+fld("Notes",'<input class="lv-inp" placeholder="Optional">')+'</div>'; },cta:"Assign Coverage"},
-                                docs:{t:"Supporting Documents",ic:"ti-files",body:function(r){ var n=r?r.docs:0; var names=["medical-certificate.pdf","leave-form.pdf","itinerary.pdf","approval-letter.pdf"]; var d=[]; for(var i=0;i<n;i++) d.push(names[i]); return '<div class="space-y-2">'+(d.length?d.map(function(x){ return '<div class="flex items-center gap-2.5 p-2.5 rounded-lg border border-[var(--color-border-color)]"><i class="ti ti-file-text text-rose-500 text-lg"></i><span class="text-sm font-semibold text-[var(--color-gray-900)] flex-1 truncate">'+esc(x)+'</span><button class="lv-btn lv-btn-soft !p-1.5" data-toast="Downloading"><i class="ti ti-download"></i></button></div>'; }).join(""):'<p class="text-sm lv-muted text-center py-4">No documents attached.</p>')+'<div class="lv-drop" id="lv-dropzone"><i class="ti ti-cloud-upload text-2xl lv-muted"></i><p class="text-xs font-bold text-[var(--color-gray-900)] mt-1">Upload additional documents</p><input type="file" class="hidden" id="lv-file"></div></div>'; },cta:"Save"},
+                                docs:{t:"Supporting Documents",ic:"ti-files",body:function(r){ var n=r?r.docs:0; var names=["medical-certificate.pdf","leave-form.pdf","itinerary.pdf","approval-letter.pdf"]; var d=[]; for(var i=0;i<n;i++) d.push(names[i]); return '<div class="space-y-2">'+(d.length?d.map(function(x){ return '<div class="flex items-center gap-2.5 p-2.5 rounded-lg border border-[var(--color-border-color)]"><i class="ti ti-file-text text-rose-500 text-lg"></i><span class="text-sm font-semibold text-[var(--color-gray-900)] flex-1 truncate">'+esc(x)+'</span><button class="lv-btn lv-btn-soft !p-1.5"><i class="ti ti-download"></i></button></div>'; }).join(""):'<p class="text-sm lv-muted text-center py-4">No documents attached.</p>')+'<div class="lv-drop" id="lv-dropzone"><i class="ti ti-cloud-upload text-2xl lv-muted"></i><p class="text-xs font-bold text-[var(--color-gray-900)] mt-1">Upload additional documents</p><input type="file" class="hidden" id="lv-file"></div></div>'; },cta:"Save"},
                                 approvebulk:{t:"Approve Requests",ic:"ti-checks",body:function(){ var pend=REQ.filter(function(r){return r.status==="Pending"||r.status==="Under Review";}); return '<div class="space-y-2"><p class="text-sm lv-muted mb-2">'+pend.length+' requests awaiting approval:</p>'+pend.map(function(r){ return '<label class="flex items-center gap-2.5 p-2.5 rounded-lg border border-[var(--color-border-color)] cursor-pointer"><input type="checkbox" class="lv-cb" checked><div class="lv-av" style="width:2rem;height:2rem;overflow:hidden;padding:0"><img src="'+esc(r.photo)+'" alt="'+esc(r.name)+'" class="w-full h-full object-cover"></div><div class="flex-1 min-w-0"><div class="text-xs font-bold text-[var(--color-gray-900)] truncate">'+esc(r.name)+'</div><div class="text-[11px] lv-muted">'+esc(r.type)+' · '+r.days+'d</div></div><span class="lv-tag" style="background:'+mix(STAGEC[r.status])+';color:'+STAGEC[r.status]+'">'+esc(r.status)+'</span></label>'; }).join("")+'</div>'; },cta:"Approve All Selected"},
-                                import:{t:"Import Leave Requests",ic:"ti-upload",body:function(){ return '<div class="space-y-3"><div class="lv-drop" id="lv-dropzone"><i class="ti ti-cloud-upload text-3xl lv-muted"></i><p class="text-sm font-bold text-[var(--color-gray-900)] mt-2">Drag & drop CSV / Excel / Leave Requests</p><p class="text-xs lv-muted">or click to browse files</p><input type="file" class="hidden" id="lv-file"></div><button class="lv-btn lv-btn-soft w-full" data-toast="Sample template downloaded"><i class="ti ti-file-download"></i> Download Sample Template</button><div class="p-3 rounded-lg" style="background:'+mix("#f59e0b",8)+'"><div class="text-xs font-bold text-[var(--color-gray-900)] mb-1">Import Summary</div><div class="text-xs lv-muted" id="lv-import-sum">No file selected yet.</div></div></div>'; },cta:"Start Import"},
+                                import:{t:"Import Leave Requests",ic:"ti-upload",body:function(){ return '<div class="space-y-3"><div class="lv-drop" id="lv-dropzone"><i class="ti ti-cloud-upload text-3xl lv-muted"></i><p class="text-sm font-bold text-[var(--color-gray-900)] mt-2">Drag & drop CSV / Excel / Leave Requests</p><p class="text-xs lv-muted">or click to browse files</p><input type="file" class="hidden" id="lv-file"></div><button class="lv-btn lv-btn-soft w-full"><i class="ti ti-file-download"></i> Download Sample Template</button><div class="p-3 rounded-lg" style="background:'+mix("#f59e0b",8)+'"><div class="text-xs font-bold text-[var(--color-gray-900)] mb-1">Import Summary</div><div class="text-xs lv-muted" id="lv-import-sum">No file selected yet.</div></div></div>'; },cta:"Start Import"},
                                 export:{t:"Export Leave Report",ic:"ti-download",body:function(){ var opts=[["CSV","ti-file-text"],["Excel","ti-file-spreadsheet"],["PDF","ti-file-typography"],["Print","ti-printer"]]; return '<div class="space-y-4"><div><div class="lv-lbl">Format</div><div class="grid grid-cols-2 gap-2">'+opts.map(function(o,i){ return '<button class="lv-btn lv-btn-soft justify-start lv-expfmt'+(i===0?" !border-[var(--color-primary)]":"")+'" data-fmt="'+o[0]+'"><i class="ti '+o[1]+'"></i> '+o[0]+'</button>'; }).join("")+'</div></div><div><div class="lv-lbl">Scope</div><select class="lv-inp"><option>Leave Calendar</option><option>Department Report</option><option>Selected Records</option><option>All Records</option></select></div></div>'; },cta:"Export Now"},
                                 print:{t:"Print Leave Report",ic:"ti-printer",body:function(){ return '<div class="space-y-3">'+fld("Range",'<select class="lv-inp"><option>This Week</option><option>This Month</option><option>Custom</option></select>')+fld("Include",'<select class="lv-inp"><option>All requests</option><option>Approved only</option><option>Pending only</option><option>By department</option></select>')+'</div>'; },cta:"Print"},
                                 delete:{t:"Delete Confirmation",ic:"ti-trash",danger:1,body:function(r){ return '<div class="text-center py-2"><div class="w-14 h-14 rounded-2xl mx-auto flex items-center justify-center mb-3" style="background:'+mix("#ef4444")+';color:#ef4444"><i class="ti ti-alert-triangle text-2xl"></i></div><p class="font-bold text-[var(--color-gray-900)]">Delete '+(r?esc(r.id):"selected requests")+'?</p><p class="text-sm lv-muted mt-1">This leave request will be permanently removed. This action cannot be undone.</p></div>'; },cta:"Delete",danger:1}
@@ -12541,7 +12490,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                     if(key==="delete" && r){ var i=REQ.indexOf(r); if(i>=0) REQ.splice(i,1); render(); renderKPIs(); renderWidgets(); animateRings(); }
                                     if(key==="approvebulk"){ REQ.forEach(function(x){ if(x.status==="Pending"||x.status==="Under Review") x.status="Approved"; }); render(); renderKPIs(); renderWidgets(); animateRings(); }
                                     if(key==="coverage"){ renderWidgets(); }
-                                    toast(m.t+" completed", danger?"ti-trash":"ti-check");
                                 });
                                 var dz=$("#lv-dropzone");
                                 if(dz){ dz.addEventListener("click", function(){ $("#lv-file").click(); }); var fi=$("#lv-file"); if(fi) fi.addEventListener("change", function(){ if(this.files[0] && $("#lv-import-sum")) $("#lv-import-sum").innerHTML='<b class="text-[var(--color-gray-900)]">'+esc(this.files[0].name)+'</b> ready · 18 rows · 0 errors'; });
@@ -12561,17 +12509,16 @@ document.addEventListener('DOMContentLoaded', function () {
                             $("#lv-filter-toggle").addEventListener("click", function(){ $("#lv-filters").classList.toggle("hidden"); });
                             $("#lv-view").addEventListener("click", function(e){ var b=e.target.closest("[data-v]"); if(!b) return; state.view=b.getAttribute("data-v"); $$(".lv-segb",this).forEach(function(x){ x.classList.toggle("active",x===b); }); render(); });
                             $$('[data-f]').forEach(function(sel){ sel.addEventListener("change", function(){ state.filters[this.getAttribute("data-f")]=this.value; updateFilterCount(); render(); }); });
-                            $("#lv-clear").addEventListener("click", function(){ Object.keys(state.filters).forEach(function(k){ if(k!=="sort") state.filters[k]=""; }); $$('[data-f]').forEach(function(s){ if(s.getAttribute("data-f")!=="sort") s.value=""; }); updateFilterCount(); render(); toast("Filters cleared","ti-filter-off"); });
+                            $("#lv-clear").addEventListener("click", function(){ Object.keys(state.filters).forEach(function(k){ if(k!=="sort") state.filters[k]=""; }); $$('[data-f]').forEach(function(s){ if(s.getAttribute("data-f")!=="sort") s.value=""; }); updateFilterCount(); render(); });
                             function updateFilterCount(){ var n=Object.keys(state.filters).filter(function(k){ return k!=="sort" && state.filters[k]; }).length; var el=$("#lv-filter-n"); el.textContent=n; el.classList.toggle("hidden", n===0); }
 
                             document.addEventListener("click", function(e){
                                 var mo=e.target.closest("[data-modal]"); if(mo){ openModal(mo.getAttribute("data-modal")); return; }
                                 var op=e.target.closest("[data-open]"); if(op){ openDrawer(op.getAttribute("data-open")); return; }
-                                var a2=e.target.closest("[data-act2]"); if(a2){ var id=a2.getAttribute("data-id2"), act=a2.getAttribute("data-act2"), r=REQ.filter(function(x){return x.id===id;})[0]; if(r){ r.status=act==="approve"?"Approved":"Rejected"; $("#lv-drawer").classList.remove("open"); if(!$$(".lv-drawer.open,.lv-modal.open").length) document.body.style.overflow=""; render(); renderKPIs(); renderWidgets(); animateRings(); toast(r.id+(act==="approve"?" approved":" rejected"), act==="approve"?"ti-circle-check":"ti-circle-x"); } return; }
+                                var a2=e.target.closest("[data-act2]"); if(a2){ var id=a2.getAttribute("data-id2"), act=a2.getAttribute("data-act2"), r=REQ.filter(function(x){return x.id===id;})[0]; if(r){ r.status=act==="approve"?"Approved":"Rejected"; $("#lv-drawer").classList.remove("open"); if(!$$(".lv-drawer.open,.lv-modal.open").length) document.body.style.overflow=""; render(); renderKPIs(); renderWidgets(); animateRings(); } return; }
                                 var mb=e.target.closest("[data-menu]"); if(mb){ var rc=mb.getBoundingClientRect(); openMenu(mb.getAttribute("data-menu"), rc.right-212, rc.bottom+4); e.stopPropagation(); return; }
                                 var ai=e.target.closest("[data-act]"); if(ai){ doAction(ai.getAttribute("data-act")); return; }
-                                var tt=e.target.closest("[data-toast]"); if(tt){ toast(tt.getAttribute("data-toast"),"ti-info-circle"); return; }
-                                if(e.target.closest("[data-refresh]")){ $("#lv-h-updated").textContent="just now"; render(); renderKPIs(); renderWidgets(); animateRings(); toast("Leave data refreshed","ti-refresh"); return; }
+                                if(e.target.closest("[data-refresh]")){ $("#lv-h-updated").textContent="just now"; render(); renderKPIs(); renderWidgets(); animateRings(); return; }
                                 var rcb=e.target.closest(".lv-rowcb"); if(rcb){ state.sel[rcb.getAttribute("data-id")]=rcb.checked; syncBulk(); syncSelAll(); return; }
                                 var cl=e.target.closest("[data-close]"); if(cl){ var m=cl.closest(".lv-drawer,.lv-modal"); if(m) m.classList.remove("open"); if(!$$(".lv-drawer.open,.lv-modal.open").length) document.body.style.overflow=""; return; }
                                 if(!e.target.closest("#lv-menu")) closeMenu();
@@ -12582,22 +12529,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
                             $("#lv-bulk-x").addEventListener("click", function(){ state.sel={}; render(); syncBulk(); });
                             $$('[data-bulk]').forEach(function(b){ b.addEventListener("click", function(){
-                                var act=this.getAttribute("data-bulk"), n=selCount();
+                                var act=this.getAttribute("data-bulk");
                                 var ids=Object.keys(state.sel).filter(function(k){return state.sel[k];});
-                                if(act==="approve"||act==="reject"){ ids.forEach(function(id){ var r=REQ.filter(function(x){return x.id===id;})[0]; if(r) r.status=act==="approve"?"Approved":"Rejected"; }); render(); renderKPIs(); renderWidgets(); animateRings(); toast(n+" request"+(n>1?"s":"")+" "+(act==="approve"?"approved":"rejected"), act==="approve"?"ti-circle-check":"ti-circle-x"); return; }
-                                if(act==="delete"){ ids.forEach(function(id){ var i=REQ.map(function(r){return r.id;}).indexOf(id); if(i>=0) REQ.splice(i,1); }); state.sel={}; render(); renderKPIs(); renderWidgets(); animateRings(); syncBulk(); toast(n+" request"+(n>1?"s":"")+" deleted","ti-trash"); return; }
-                                var names={coverage:"Coverage assigned for",notify:"Notifications sent to",export:"Exported"};
-                                toast((names[act]||"Updated")+" "+n+" request"+(n>1?"s":""),"ti-check");
+                                if(act==="approve"||act==="reject"){ ids.forEach(function(id){ var r=REQ.filter(function(x){return x.id===id;})[0]; if(r) r.status=act==="approve"?"Approved":"Rejected"; }); render(); renderKPIs(); renderWidgets(); animateRings(); return; }
+                                if(act==="delete"){ ids.forEach(function(id){ var i=REQ.map(function(r){return r.id;}).indexOf(id); if(i>=0) REQ.splice(i,1); }); state.sel={}; render(); renderKPIs(); renderWidgets(); animateRings(); syncBulk(); return; }
                             }); });
 
                             /* ================= RINGS ================= */
                             function animateRings(){ $$(".lv-ring .bar").forEach(function(b){ var p=b.style.getPropertyValue("--p"); b.style.setProperty("--p","0"); requestAnimationFrame(function(){ b.style.setProperty("--p",p); }); }); }
 
                             /* ================= REVEAL =================
-                               KPIs, widgets, the approval workflow strip, coverage tools,
+                               KPIs, widgets, coverage tools,
                                replacement-doctor pool and the default (unfiltered, List
                                view) request table are already static markup in the HTML.
-                               renderKPIs(), renderWidgets(), renderWorkflow(), renderSide()
+                               renderKPIs(), renderWidgets(), renderSide()
                                and render() stay available below for search/filter/sort/view
                                changes and for the mutation handlers (approve, reject,
                                delete, bulk actions). */

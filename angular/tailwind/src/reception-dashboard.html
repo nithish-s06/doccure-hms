@@ -18,7 +18,7 @@
 
                             <div class="flex flex-wrap items-start justify-between gap-5">
                                 <!-- Receptionist identity -->
-                                <div class="flex min-w-0 flex-1 items-start gap-4">
+                                <div class="flex w-full min-w-0 items-start gap-4 xl:w-auto xl:flex-1">
                                     <div class="relative shrink-0">
                                         <span class="grid size-16 place-items-center rounded-2xl bg-white/10 text-lg font-extrabold text-white ring-1 ring-white/20 backdrop-blur-md">LF</span>
                                         <span class="absolute -bottom-1 -right-1 grid size-5 place-items-center rounded-full bg-amber-400 text-[9px] text-amber-950 ring-2 ring-indigo-950"><i class="icon-headset" aria-hidden="true"></i></span>
@@ -43,12 +43,12 @@
                                 </div>
 
                                 <!-- Clock + actions -->
-                                <div class="flex shrink-0 flex-col items-end gap-3">
-                                    <div class="text-right">
+                                <div class="flex w-full shrink-0 flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between xl:w-auto xl:flex-col xl:items-end xl:justify-start">
+                                    <div class="text-left xl:text-right">
                                         <div id="clock" class="rc-clock" role="img" aria-label="Current time"><span class="rc-clock-cell">11</span><span class="rc-clock-sep">:</span><span class="rc-clock-cell">12</span><span class="ml-1 self-end pb-1 text-[11px] font-extrabold text-white/60">AM</span></div>
-                                        <p id="clock-date" class="mt-1.5 text-[10px] font-extrabold uppercase tracking-wider text-white/45 text-right">Friday · July 17, 2026</p>
+                                        <p id="clock-date" class="mt-1.5 text-[10px] font-extrabold uppercase tracking-wider text-white/45 text-left xl:text-right">Friday · July 17, 2026</p>
                                     </div>
-                                    <div class="flex flex-wrap justify-end gap-2" role="group" aria-label="Quick actions">
+                                    <div class="flex flex-wrap justify-start gap-2 sm:justify-end" role="group" aria-label="Quick actions">
                                         <button type="button" id="btn-register" class="rc-action is-primary"><i class="icon-user-plus" aria-hidden="true"></i>Register Patient</button>
                                         <button type="button" id="btn-token" class="rc-action"><i class="icon-ticket" aria-hidden="true"></i>Generate Token</button>
                                         <button type="button" id="btn-checkin" class="rc-action"><i class="icon-calendar-check" aria-hidden="true"></i>Check-in</button>

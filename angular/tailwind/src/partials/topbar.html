@@ -1,6 +1,6 @@
 <header class="navbar-header hc-bar max-lg:justify-between border-b border-border-color dark:border-white/10">
     <!-- ================= LEFT CLUSTER ================= -->
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2 sm:gap-3">
         <!-- Sidebar Mobile Button (preserved hook: #mobile_btn / .mobile-btn) -->
         <button id="mobile_btn" class="mobile-btn hc-icon-btn grid lg:hidden! border-border-color!" aria-label="menu">
             <i class="icon icon-menu"></i>
@@ -49,7 +49,7 @@
     </div>
 
     <!-- ================= RIGHT UTILITY CLUSTER ================= -->
-    <div class="flex items-center gap-2.5 lg:ms-auto">
+    <div class="flex items-center gap-2 sm:gap-2.5 lg:ms-auto">
         <!-- Live clock -->
         <div class="hc-clock" role="group" aria-label="Current time and shift">
             <span id="hc-clock-time" class="hc-clock-time">—</span>
@@ -131,7 +131,7 @@
             </div>
 
             <!-- Appearance Switcher (Light / Dark / System) -->
-            <div class="header-item hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative flex">
+            <div class="header-item hs-dropdown [--placement:bottom-right] [--auto-close:true] relative flex max-[22rem]:hidden">
                 <button type="button" class="hs-dropdown-toggle hc-icon-btn" aria-label="Appearance">
                     <i id="hc-appearance-icon" class="icon-moon text-base!"></i>
                 </button>

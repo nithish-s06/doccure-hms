@@ -18,7 +18,7 @@
 
                             <div class="flex flex-wrap items-start justify-between gap-5">
                                 <!-- Manager identity -->
-                                <div class="flex min-w-0 flex-1 items-start gap-4">
+                                <div class="flex w-full min-w-0 items-start gap-4 xl:w-auto xl:flex-1">
                                     <div class="relative shrink-0">
                                         <img src="assets/img/avatar/avatar-04.jpg" alt="Nadia Rahman" class="size-16 rounded-2xl object-cover ring-1 ring-white/20 backdrop-blur-md">
                                         <span class="absolute -bottom-1 -right-1 grid size-5 place-items-center rounded-full bg-yellow-400 text-[9px] text-yellow-950 ring-2 ring-stone-900"><i class="icon-badge-dollar-sign" aria-hidden="true"></i></span>
@@ -43,13 +43,13 @@
                                 </div>
 
                                 <!-- Revenue ticker + actions -->
-                                <div class="flex w-full flex-col items-end gap-3 sm:w-auto sm:shrink-0">
-                                    <div class="bl-ticker text-right">
+                                <div class="flex w-full shrink-0 flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between xl:w-auto xl:flex-col xl:items-end xl:justify-start">
+                                    <div class="bl-ticker text-left xl:text-right">
                                         <p class="text-[10px] font-extrabold uppercase tracking-wider text-yellow-200/80">Revenue Today</p>
                                         <p id="ticker-val" class="mt-0.5 text-3xl font-extrabold text-white tabular-nums">$26,180</p>
                                         <p id="ticker-sub" class="mt-0.5 text-[10px] font-semibold text-white/50">171 transactions · +9.2% vs yesterday</p>
                                     </div>
-                                    <div class="flex flex-wrap justify-end gap-2" role="group" aria-label="Quick actions">
+                                    <div class="flex flex-wrap justify-start gap-2 sm:justify-end" role="group" aria-label="Quick actions">
                                         <button type="button" id="btn-invoice" class="bl-action is-primary"><i class="icon-file-plus" aria-hidden="true"></i>Create Invoice</button>
                                         <button type="button" id="btn-collect" class="bl-action"><i class="icon-hand-coins" aria-hidden="true"></i>Receive Payment</button>
                                         <button type="button" id="btn-closing" class="bl-action"><i class="icon-lock" aria-hidden="true"></i>Daily Closing</button>
