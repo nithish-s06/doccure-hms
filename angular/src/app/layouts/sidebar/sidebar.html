@@ -92,7 +92,6 @@
                     <ul [style.display]="section.showSubRoute ? 'block' : 'none'">
                         <li class="submenu" *ngFor="let menu of section.menu" [class.active]="isMenuActive(menu)">
                             <a *ngIf="menu.hasSubRoute" href="javascript:void(0);" (click)="toggleMenu(menu)" [class.subdrop]="menu.showSubRoute">
-                                <i *ngIf="menu.icon" class="icon-{{ menu.icon }}"></i>
                                 <span>{{ menu.menuValue }}</span>
                                 <span *ngIf="menu.badgeText" class="badge {{ menu.badgeClass }}">{{ menu.badgeText }}</span>
                                 <span class="menu-arrow"></span>
