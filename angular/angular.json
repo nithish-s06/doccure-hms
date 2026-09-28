@@ -26,7 +26,7 @@
               }
             ],
             "styles": [
-               "src/assets/fonts/lucide-static/font/lucide.css",
+               "node_modules/lucide-static/font/lucide.css",
               "src/assets/fonts/phosphor-icons/duotone/style.css",
               "src/assets/fonts/phosphor-icons/regular/style.css",
               "src/assets/fonts/phosphor-icons/fill/style.css",
