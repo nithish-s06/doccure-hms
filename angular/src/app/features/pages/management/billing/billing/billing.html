@@ -1,1 +1,78 @@
-<p>billing works!</p>
+<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Billing &amp; Invoices</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage patient invoices and payments</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-receipt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$14,130.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Billed</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$5,600.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Paid</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$7,000.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-circle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$890.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Overdue</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Invoices</span>
+                                <span class="text-xs text-gray-400 ml-auto">6 of 6</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Invoice #</th>
+                                            <th>Patient</th>
+                                            <th>Date</th>
+                                            <th>Items</th>
+                                            <th>Amount</th>
+                                            <th>Paid</th>
+                                            <th>Method</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="billing-detail.html">#BIL-10001</a></td><td class="font-medium text-gray-900">James Morrison</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-20</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Consultation, Lab Tests, Medication">Consultation, Lab Tests, Medication</td><td class="font-semibold text-gray-900">$3,200.00</td><td class="text-emerald-600">$3,200.00</td><td class="text-gray-500 dark:text-gray-400">Card</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Paid</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="billing-detail.html">#BIL-10002</a></td><td class="font-medium text-gray-900">Anna Peterson</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-15</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Consultation, X-Ray">Consultation, X-Ray</td><td class="font-semibold text-gray-900">$1,200.00</td><td class="text-emerald-600">$1,200.00</td><td class="text-gray-500 dark:text-gray-400">Cash</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Paid</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="billing-detail.html">#BIL-10003</a></td><td class="font-medium text-gray-900">David Torres</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Inpatient Stay, Surgery">Inpatient Stay, Surgery</td><td class="font-semibold text-gray-900">$5,800.00</td><td class="text-gray-400">—</td><td class="text-gray-500 dark:text-gray-400">Insurance</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Pending</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="billing-detail.html">#BIL-10004</a></td><td class="font-medium text-gray-900">Linda Nguyen</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-10</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Diagnostics, Consultation">Diagnostics, Consultation</td><td class="font-semibold text-gray-900">$890.00</td><td class="text-gray-400">—</td><td class="text-gray-500 dark:text-gray-400">Online</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Overdue</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="billing-detail.html">#BIL-10005</a></td><td class="font-medium text-gray-900">Michael Harris</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-02</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Pharmacy, Follow-up">Pharmacy, Follow-up</td><td class="font-semibold text-gray-900">$2,400.00</td><td class="text-emerald-600">$1,200.00</td><td class="text-gray-500 dark:text-gray-400">Card</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Pending</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="billing-detail.html">#BIL-10006</a></td><td class="font-medium text-gray-900">Sarah Adams</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-56 truncate" title="Consultation">Consultation</td><td class="font-semibold text-gray-900">$640.00</td><td class="text-gray-400">—</td><td class="text-gray-500 dark:text-gray-400">Cash</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-gray-600 bg-gray-100">Cancelled</span></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>

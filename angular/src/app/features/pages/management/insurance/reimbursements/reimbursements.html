@@ -1,1 +1,79 @@
-<p>reimbursements works!</p>
+<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Reimbursement Tracking</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Track insurer payouts from approved amount through to funds received</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$23,840.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Claimed</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$11,980.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Paid</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$10,360.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Outstanding</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">1</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Overdue Payments</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Records</span>
+                                <span class="text-xs text-gray-400 ml-auto">6 of 6</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Reference</th>
+                                            <th>Patient</th>
+                                            <th>Insurer</th>
+                                            <th>Claimed</th>
+                                            <th>Approved</th>
+                                            <th>Paid</th>
+                                            <th>Payment Date</th>
+                                            <th>Method / Reference</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+<tr><td class="text-primary font-mono text-sm"><a href="reimbursement-detail.html">#RB-00001</a></td><td class="font-medium text-gray-900">James Morrison</td><td class="text-gray-600 dark:text-gray-300">BlueCross Health</td><td class="font-semibold text-gray-900">$3,200.00</td><td class="text-gray-600 dark:text-gray-300">$3,200.00</td><td class="text-emerald-600 font-semibold">$3,200.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10</td><td class="text-gray-500 dark:text-gray-400 text-sm">Bank Transfer · TXN-88213401</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Paid</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="reimbursement-detail.html">#RB-00002</a></td><td class="font-medium text-gray-900">Robert Clark</td><td class="text-gray-600 dark:text-gray-300">United Health</td><td class="font-semibold text-gray-900">$12,500.00</td><td class="text-gray-600 dark:text-gray-300">$11,000.00</td><td class="text-emerald-600 font-semibold">$6,000.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-12</td><td class="text-gray-500 dark:text-gray-400 text-sm">EFT · TXN-88213555</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Partially Paid</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="reimbursement-detail.html">#RB-00003</a></td><td class="font-medium text-gray-900">Emily Johnson</td><td class="text-gray-600 dark:text-gray-300">Aetna Insurance</td><td class="font-semibold text-gray-900">$2,100.00</td><td class="text-gray-600 dark:text-gray-300">$2,100.00</td><td class="text-emerald-600 font-semibold">$2,100.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td class="text-gray-500 dark:text-gray-400 text-sm">Cheque · CHQ-004521</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Paid</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="reimbursement-detail.html">#RB-00004</a></td><td class="font-medium text-gray-900">Michael Harris</td><td class="text-gray-600 dark:text-gray-300">Medicare</td><td class="font-semibold text-gray-900">$4,400.00</td><td class="text-gray-600 dark:text-gray-300">$4,400.00</td><td class="text-gray-400">—</td><td class="text-gray-500 dark:text-gray-400 text-sm">—</td><td class="text-gray-500 dark:text-gray-400 text-sm">Bank Transfer</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Overdue</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="reimbursement-detail.html">#RB-00005</a></td><td class="font-medium text-gray-900">Anna Peterson</td><td class="text-gray-600 dark:text-gray-300">United Health</td><td class="font-semibold text-gray-900">$680.00</td><td class="text-gray-600 dark:text-gray-300">$680.00</td><td class="text-emerald-600 font-semibold">$680.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-03</td><td class="text-gray-500 dark:text-gray-400 text-sm">Card Refund · TXN-88209981</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Paid</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="reimbursement-detail.html">#RB-00006</a></td><td class="font-medium text-gray-900">Diego Fernandez</td><td class="text-gray-600 dark:text-gray-300">BlueCross Health</td><td class="font-semibold text-gray-900">$960.00</td><td class="text-gray-600 dark:text-gray-300">$960.00</td><td class="text-gray-400">—</td><td class="text-gray-500 dark:text-gray-400 text-sm">—</td><td class="text-gray-500 dark:text-gray-400 text-sm">Bank Transfer</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Awaiting Payment</span></td></tr>
+</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
