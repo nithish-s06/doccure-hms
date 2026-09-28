@@ -1,1 +1,72 @@
-<p>doctor-performance works!</p>
+<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+
+                        <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Doctor Performance</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Patient load, completion and rating summary for the selected period</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-stethoscope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-doctors">12</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Doctors</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-star text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-rating">4.5</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Avg Rating</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-user-check text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-appointments">1415</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Appointments Completed</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-revenue">$246,500.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Revenue Generated</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Doctor-wise Performance</h3>
+                                <span class="text-xs text-gray-400" id="count">12 doctors</span>
+                            </div>
+
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Doctor Name</th>
+                                            <th>Department</th>
+                                            <th>Patients Seen</th>
+                                            <th>Appointments Completed</th>
+                                            <th>Avg Rating</th>
+                                            <th>Revenue Generated</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr><td class="font-medium text-gray-900">Dr. Helen Ross</td><td class="text-gray-600 dark:text-gray-300">Cardiology</td><td class="text-gray-700 dark:text-gray-300">142</td><td class="text-gray-700 dark:text-gray-300">128</td><td class="text-amber-600 font-medium">4.8</td><td class="text-emerald-600 font-semibold">$24,800.00</td></tr><tr><td class="font-medium text-gray-900">Dr. Marcus Lee</td><td class="text-gray-600 dark:text-gray-300">Orthopedics</td><td class="text-gray-700 dark:text-gray-300">118</td><td class="text-gray-700 dark:text-gray-300">104</td><td class="text-amber-600 font-medium">4.5</td><td class="text-emerald-600 font-semibold">$19,600.00</td></tr><tr><td class="font-medium text-gray-900">Dr. Anita Kapoor</td><td class="text-gray-600 dark:text-gray-300">Pediatrics</td><td class="text-gray-700 dark:text-gray-300">160</td><td class="text-gray-700 dark:text-gray-300">150</td><td class="text-amber-600 font-medium">4.9</td><td class="text-emerald-600 font-semibold">$21,200.00</td></tr><tr><td class="font-medium text-gray-900">Dr. Samuel Okafor</td><td class="text-gray-600 dark:text-gray-300">Neurology</td><td class="text-gray-700 dark:text-gray-300">96</td><td class="text-gray-700 dark:text-gray-300">84</td><td class="text-amber-600 font-medium">4.6</td><td class="text-emerald-600 font-semibold">$26,400.00</td></tr><tr><td class="font-medium text-gray-900">Dr. Priya Nair</td><td class="text-gray-600 dark:text-gray-300">Dermatology</td><td class="text-gray-700 dark:text-gray-300">132</td><td class="text-gray-700 dark:text-gray-300">120</td><td class="text-amber-600 font-medium">4.7</td><td class="text-emerald-600 font-semibold">$15,800.00</td></tr><tr><td class="font-medium text-gray-900">Dr. James Whitfield</td><td class="text-gray-600 dark:text-gray-300">General Medicine</td><td class="text-gray-700 dark:text-gray-300">210</td><td class="text-gray-700 dark:text-gray-300">192</td><td class="text-amber-600 font-medium">4.3</td><td class="text-emerald-600 font-semibold">$28,900.00</td></tr><tr><td class="font-medium text-gray-900">Dr. Fatima Siddiqui</td><td class="text-gray-600 dark:text-gray-300">Gynecology</td><td class="text-gray-700 dark:text-gray-300">104</td><td class="text-gray-700 dark:text-gray-300">93</td><td class="text-amber-600 font-medium">4.8</td><td class="text-emerald-600 font-semibold">$18,300.00</td></tr><tr><td class="font-medium text-gray-900">Dr. Ethan Brooks</td><td class="text-gray-600 dark:text-gray-300">Orthopedics</td><td class="text-gray-700 dark:text-gray-300">87</td><td class="text-gray-700 dark:text-gray-300">75</td><td class="text-amber-600 font-medium">4.2</td><td class="text-emerald-600 font-semibold">$14,200.00</td></tr><tr><td class="font-medium text-gray-900">Dr. Grace Lindqvist</td><td class="text-gray-600 dark:text-gray-300">Cardiology</td><td class="text-gray-700 dark:text-gray-300">121</td><td class="text-gray-700 dark:text-gray-300">110</td><td class="text-amber-600 font-medium">4.6</td><td class="text-emerald-600 font-semibold">$20,700.00</td></tr><tr><td class="font-medium text-gray-900">Dr. Victor Alameda</td><td class="text-gray-600 dark:text-gray-300">Emergency Medicine</td><td class="text-gray-700 dark:text-gray-300">175</td><td class="text-gray-700 dark:text-gray-300">160</td><td class="text-amber-600 font-medium">4.4</td><td class="text-emerald-600 font-semibold">$22,100.00</td></tr><tr><td class="font-medium text-gray-900">Dr. Layla Haddad</td><td class="text-gray-600 dark:text-gray-300">Radiology</td><td class="text-gray-700 dark:text-gray-300">68</td><td class="text-gray-700 dark:text-gray-300">60</td><td class="text-amber-600 font-medium">4.7</td><td class="text-emerald-600 font-semibold">$16,900.00</td></tr><tr><td class="font-medium text-gray-900">Dr. Nathaniel Cross</td><td class="text-gray-600 dark:text-gray-300">General Medicine</td><td class="text-gray-700 dark:text-gray-300">154</td><td class="text-gray-700 dark:text-gray-300">139</td><td class="text-amber-600 font-medium">4.0</td><td class="text-emerald-600 font-semibold">$17,600.00</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
