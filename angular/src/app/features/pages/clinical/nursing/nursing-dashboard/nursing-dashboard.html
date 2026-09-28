@@ -91,4 +91,82 @@
                             </div>
                         </div>
                     </div>
+
+                    <div id="form-modal" class="modal-overlay hidden">
+                        <div class="modal-panel">
+                            <div class="flex items-center justify-between">
+                                <h2 id="m-title" class="text-xl font-bold text-gray-900">New Nursing Task</h2>
+                                <button id="m-close" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500">
+                                    <i class="icon-x"></i>
+                                </button>
+                            </div>
+                            <form id="m-form" onsubmit="return false;">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="f-task" class="form-label">Task <span class="text-danger">*</span></label>
+                                        <input id="f-task" class="form-input" placeholder="Administer IV medication" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="f-patient" class="form-label">Patient</label>
+                                        <input id="f-patient" class="form-input" placeholder="Ravi Kumar" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="f-wardbed" class="form-label">Ward/Bed</label>
+                                        <input id="f-wardbed" class="form-input" placeholder="ICU Bed 4" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="f-priority" class="form-label">Priority</label>
+                                        <select id="f-priority" class="form-select">
+                                            <option>Low</option>
+                                            <option>Medium</option>
+                                            <option>High</option>
+                                            <option>Critical</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="f-nurse" class="form-label">Nurse Assigned</label>
+                                        <input id="f-nurse" class="form-input" placeholder="Fatima Ali" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="f-due" class="form-label">Due Date</label>
+                                        <input id="f-due" type="date" class="form-input" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="f-status" class="form-label">Status</label>
+                                        <select id="f-status" class="form-select">
+                                            <option>Pending</option>
+                                            <option>In Progress</option>
+                                            <option>Completed</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 justify-end">
+                                    <button id="m-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                                    <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Save Task</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="del-modal" class="modal-overlay hidden">
+                        <div class="modal-panel sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                                    <i class="icon-trash-2 text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900 text-lg">Delete Task</h3>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                                Delete task
+                                <strong id="del-name" class="text-gray-900"></strong>
+                                ?
+                            </p>
+                            <div class="flex gap-3 justify-end">
+                                <button id="del-cancel-btn" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                                <button id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Delete</button>
+                            </div>
+                        </div>
+                    </div>
                 </main>
