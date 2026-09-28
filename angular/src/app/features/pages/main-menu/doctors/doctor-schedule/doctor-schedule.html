@@ -94,3 +94,58 @@
                         </div>
                     </div>
                
+
+
+        <!-- ==================== ASSIGN MODAL ==================== -->
+        <div class="ds-modal" id="ds-assignmodal">
+            <div class="ds-mask" data-close></div>
+            <div class="ds-dialog p-5">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-calendar-plus text-[var(--color-primary)]"></i> Assign Shift</h3>
+                    <button class="ds-btn ds-btn-soft btn-icon-sq" data-close><i class="ti ti-x"></i></button>
+                </div>
+                <div class="space-y-3">
+                    <div><label for="ds-a-doc" class="ds-lbl">Doctor</label><select class="ds-inp" id="ds-a-doc"><option value="1">Dr. Sarah Roberts — Cardiology</option><option value="2">Dr. Vikram Nair — Neurology</option><option value="3">Dr. Anita Desai — Orthopedics</option><option value="4">Dr. Meera Iyer — Pediatrics</option><option value="5">Dr. Rajesh Menon — Oncology</option><option value="6">Dr. John Mathew — Emergency</option><option value="7">Dr. Priya Sharma — Gynecology</option><option value="8">Dr. Deepak Nair — Radiology</option><option value="9">Dr. Sunita Rao — ENT</option><option value="10">Dr. Karan Malhotra — Dermatology</option><option value="11">Dr. Arjun Menon — Nephrology</option><option value="12">Dr. Fatima Sheikh — Psychiatry</option></select></div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><label for="ds-a-day" class="ds-lbl">Day</label><select class="ds-inp" id="ds-a-day"><option value="0">Mon</option><option value="1">Tue</option><option value="2">Wed</option><option value="3">Thu</option><option value="4">Fri</option><option value="5">Sat</option><option value="6">Sun</option></select></div>
+                        <div><label for="ds-a-type" class="ds-lbl">Shift Type</label><select class="ds-inp" id="ds-a-type"><option value="M">Morning</option><option value="E">Evening</option><option value="N">Night</option><option value="C">On-Call</option><option value="O">Off</option></select></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><label for="ds-a-start" class="ds-lbl">Start</label><input class="ds-inp" type="text" id="ds-a-start" data-provider="timepickr" data-time-hrs="true" data-default-time="09:00"></div>
+                        <div><label for="ds-a-end" class="ds-lbl">End</label><input class="ds-inp" type="text" id="ds-a-end" data-provider="timepickr" data-time-hrs="true" data-default-time="17:00"></div>
+                    </div>
+                    <div><label for="ds-a-notes" class="ds-lbl">Notes</label><input class="ds-inp" id="ds-a-notes" placeholder="Optional notes"></div>
+                </div>
+                <div class="flex justify-end gap-2 mt-5">
+                    <button class="ds-btn ds-btn-soft" data-close>Cancel</button>
+                    <button class="ds-btn ds-btn-primary" id="ds-a-submit"><i class="ti ti-check"></i> Assign</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== LEAVE MODAL ==================== -->
+        <div class="ds-modal" id="ds-leavemodal">
+            <div class="ds-mask" data-close></div>
+            <div class="ds-dialog p-5">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-plane-departure text-amber-500"></i> Request Leave</h3>
+                    <button class="ds-btn ds-btn-soft btn-icon-sq" data-close><i class="ti ti-x"></i></button>
+                </div>
+                <div class="space-y-3">
+                    <div><label for="ds-l-doc" class="ds-lbl">Doctor</label><select class="ds-inp" id="ds-l-doc"><option value="1">Dr. Sarah Roberts — Cardiology</option><option value="2">Dr. Vikram Nair — Neurology</option><option value="3">Dr. Anita Desai — Orthopedics</option><option value="4">Dr. Meera Iyer — Pediatrics</option><option value="5">Dr. Rajesh Menon — Oncology</option><option value="6">Dr. John Mathew — Emergency</option><option value="7">Dr. Priya Sharma — Gynecology</option><option value="8">Dr. Deepak Nair — Radiology</option><option value="9">Dr. Sunita Rao — ENT</option><option value="10">Dr. Karan Malhotra — Dermatology</option><option value="11">Dr. Arjun Menon — Nephrology</option><option value="12">Dr. Fatima Sheikh — Psychiatry</option></select></div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><label for="ds-l-from" class="ds-lbl">From</label><input class="ds-inp" type="text" id="ds-l-from" data-provider="flatpickr" data-date-format="d-m-Y" placeholder="dd-mm-yyyy"></div>
+                        <div><label for="ds-l-to" class="ds-lbl">To</label><input class="ds-inp" type="text" id="ds-l-to" data-provider="flatpickr" data-date-format="d-m-Y" placeholder="dd-mm-yyyy"></div>
+                    </div>
+                    <div><label for="ds-l-type" class="ds-lbl">Type</label><select class="ds-inp" id="ds-l-type"><option>Annual Leave</option><option>Sick Leave</option><option>Conference</option><option>Emergency</option></select></div>
+                    <div><label for="ds-l-reason" class="ds-lbl">Reason</label><textarea class="ds-inp" rows="2" id="ds-l-reason" placeholder="Reason for leave"></textarea></div>
+                </div>
+                <div class="flex justify-end gap-2 mt-5">
+                    <button class="ds-btn ds-btn-soft" data-close>Cancel</button>
+                    <button class="ds-btn ds-btn-success" id="ds-l-submit"><i class="ti ti-send"></i> Submit Request</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="ds-toast"></div>
+

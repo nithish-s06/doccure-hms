@@ -245,3 +245,86 @@
                         </div>
                     </div>
                
+
+        <!-- Announce / Recall Modal -->
+        <div id="announce-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+          <div class="flex min-h-full items-center justify-center p-4">
+            <div class="modal-panel sm pointer-events-auto">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-11 h-11 rounded-full bg-primary-100 dark:bg-primary-600/20 flex items-center justify-center shrink-0">
+                        <i class="icon-volume-2 text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Announce Token</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Push this token to the waiting-room displays.</p>
+                    </div>
+                </div>
+                <div class="rounded-xl border border-border-color p-5 text-center mb-4">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Now Calling</p>
+                    <p class="text-4xl font-extrabold text-primary mt-1" id="announce-token">—</p>
+                    <p class="text-sm font-medium text-gray-900 mt-2" id="announce-patient"></p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400" id="announce-room"></p>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <p class="form-label mb-2.5">Announce On</p>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" id="an-display" checked class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Waiting-room display</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" id="an-audio" checked class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Audio call-out</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" id="an-sms" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">SMS to patient</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="an-repeat">Repeat Announcement</label>
+                        <select id="an-repeat" class="form-select">
+                            <option>Once</option>
+                            <option>Twice</option>
+                            <option>Three times</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex gap-3 justify-end">
+                    <button type="button" data-hs-overlay="#announce-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                    <button type="button" id="announce-confirm" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold flex items-center gap-2">
+                        <i class="icon-volume-2"></i>
+                        Announce
+                    </button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delete / Remove Modal -->
+        <div id="del-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+          <div class="flex min-h-full items-center justify-center p-4">
+            <div class="modal-panel sm pointer-events-auto">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Remove From Queue</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Remove
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    from the queue?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button type="button" id="del-cancel-btn" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#del-modal">Keep It</button>
+                    <button type="button" id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold" data-hs-overlay="#del-modal">Remove</button>
+                </div>
+            </div>
+          </div>
+        </div>

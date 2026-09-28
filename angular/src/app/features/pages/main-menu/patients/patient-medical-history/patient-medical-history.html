@@ -229,3 +229,336 @@
                         </div>
                     </div>
                
+
+        <!-- ==================== OVERLAYS ==================== -->
+        <!-- The old JS-built detail drawer was deleted: it duplicated the dedicated
+             patient-medical-history-detail.html page, which every "View"/eye-icon
+             action now links to directly. -->
+        <div id="mh-filter-drawer" class="mh-drawer" role="dialog" aria-modal="true" aria-label="Advanced filters">
+            <div class="mh-drawer-back" data-close></div>
+            <div class="mh-drawer-panel">
+                <div class="flex items-center justify-between border-b border-border-color p-4">
+                    <div class="flex items-center gap-2.5"><span class="mh-doc-ico mh-c-primary"><i class="icon-sliders-horizontal"></i></span><div><p class="mh-title">Advanced Filters</p><p class="text-[11px] text-gray-500 dark:text-gray-400">Refine records</p></div></div>
+                    <button class="mh-icobtn" data-close><i class="icon-x"></i></button>
+                </div>
+                <div class="flex-1 overflow-y-auto p-4 space-y-3">
+                    <div><label for="fd-dx" class="mh-lbl">Diagnosis</label><input class="mh-in" id="fd-dx" placeholder="e.g. Hypertension"></div>
+                    <div><label for="fd-doctor" class="mh-lbl">Doctor</label><select class="mh-in" id="fd-doctor"><option value="">Any</option><option>Dr. Chen</option><option>Dr. Kumar</option><option>Dr. Mills</option><option>Dr. Park</option><option>Dr. Wang</option><option>Dr. Rivas</option></select></div>
+                    <div><label for="fd-type" class="mh-lbl">Record Type</label><select class="mh-in" id="fd-type"><option value="">Any</option><option>Consultation</option><option>Diagnosis</option><option>Surgery</option><option>Laboratory</option><option>Radiology</option><option>Prescription</option><option>Vaccination</option><option>Admission</option><option>Discharge</option><option>Follow-up</option></select></div>
+                    <div><label for="fd-status" class="mh-lbl">Status</label><select class="mh-in" id="fd-status"><option value="">Any</option><option>Active</option><option>Resolved</option><option>Ongoing</option><option>Chronic</option></select></div>
+                    <div><label for="fd-att" class="mh-lbl">Attachments</label><select class="mh-in" id="fd-att"><option value="">Any</option><option>With attachments</option><option>Without attachments</option></select></div>
+                    <div class="grid grid-cols-2 gap-3"><div><label for="fd-from" class="mh-lbl">From</label><input class="mh-in" id="fd-from" type="text" data-provider="flatpickr" data-date-format="Y-m-d" data-altFormat="d-m-Y"></div><div><label for="fd-to" class="mh-lbl">To</label><input class="mh-in" id="fd-to" type="text" data-provider="flatpickr" data-date-format="Y-m-d" data-altFormat="d-m-Y"></div></div>
+                </div>
+                <div class="border-t border-border-color p-4 flex gap-2.5">
+                    <button id="fd-reset" class="mh-btn mh-btn-solid flex-1"><i class="icon-rotate-ccw"></i>Reset</button>
+                    <button id="fd-apply" class="mh-btn mh-btn-primary flex-1"><i class="icon-check"></i>Apply</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== ADD RECORD / UPLOAD REPORTS ===================== -->
+        <div id="mh-new-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico mh-c-violet"><i class="icon-file-plus"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Add Medical Record</h3><p class="text-xs text-gray-500 dark:text-gray-400">Create a new EMR entry</p></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-new-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div><label class="mh-lbl">Category</label><select class="mh-in"><option>Consultation</option><option>Diagnosis</option><option>Surgery</option><option>Laboratory</option><option>Radiology</option><option>Prescription</option><option>Vaccination</option><option>Admission</option><option>Discharge</option><option>Follow-up</option></select></div>
+                            <div><label class="mh-lbl">Date</label><input type="text" class="mh-in" placeholder="yyyy-mm-dd" data-provider="flatpickr" data-date-format="Y-m-d"></div>
+                            <div><label class="mh-lbl">Department</label><select class="mh-in"><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>General Medicine</option><option>Radiology</option><option>Pathology</option></select></div>
+                            <div><label class="mh-lbl">Doctor</label><select class="mh-in"><option>Dr. Chen</option><option>Dr. Kumar</option><option>Dr. Mills</option><option>Dr. Park</option><option>Dr. Wang</option><option>Dr. Rivas</option></select></div>
+                            <div><label class="mh-lbl">Status</label><select class="mh-in"><option>Active</option><option>Resolved</option><option>Ongoing</option><option>Chronic</option></select></div>
+                            <div><label class="mh-lbl">Time</label><input class="mh-in" placeholder="e.g. 10:30 AM"></div>
+                        </div>
+                        <div><label class="mh-lbl">Diagnosis / Title</label><input class="mh-in" placeholder="e.g. Hypertension review"></div>
+                        <div><label class="mh-lbl">Clinical notes</label><textarea class="mh-in [resize:vertical]" rows="3"></textarea></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-new-modal">Cancel</button>
+                        <button type="button" class="mh-btn mh-btn-primary" data-hs-overlay="#mh-new-modal" data-toast="Medical record added"><i class="icon-file-plus"></i>Add Record</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mh-upload-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico mh-c-sky"><i class="icon-upload"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Upload Reports</h3><p class="text-xs text-gray-500 dark:text-gray-400">Attach files to the medical record</p></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-upload-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="[border:2px_dashed_var(--color-border-color)] [border-radius:.9rem] [padding:1.5rem] [text-align:center] [color:var(--color-gray-500)]"><i class="icon-cloud-upload text-3xl"></i><p class="text-sm font-bold mt-1">Drag &amp; drop files</p><p class="text-[11px]">PDF, JPG, PNG, DICOM up to 25MB</p></div>
+                        <div><label class="mh-lbl">Attach to record type</label><select class="mh-in"><option>Consultation</option><option>Diagnosis</option><option>Surgery</option><option>Laboratory</option><option>Radiology</option><option>Prescription</option><option>Vaccination</option><option>Admission</option><option>Discharge</option><option>Follow-up</option></select></div>
+                        <div class="flex items-center gap-2"><span class="mh-chip mh-c-emerald">PDF</span><span class="mh-chip mh-c-emerald">DICOM</span><span class="mh-chip mh-c-emerald">Image</span></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-upload-modal">Cancel</button>
+                        <button type="button" class="mh-btn mh-btn-primary" data-hs-overlay="#mh-upload-modal" data-toast="Reports uploaded successfully"><i class="icon-upload"></i>Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== EXPORT / IMPORT ===================== -->
+        <div id="mh-export-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico mh-c-violet"><i class="icon-download"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Export Medical History</h3></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-export-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div>
+                            <label class="mh-lbl">Format</label>
+                            <div class="grid grid-cols-4 gap-2">
+                                <label class="flex items-center justify-center gap-1 rounded-lg border border-border-color p-2 cursor-pointer text-xs font-bold text-gray-700 dark:text-gray-300"><input type="radio" name="mh-exf" value="CSV" checked class="accent-primary">CSV</label>
+                                <label class="flex items-center justify-center gap-1 rounded-lg border border-border-color p-2 cursor-pointer text-xs font-bold text-gray-700 dark:text-gray-300"><input type="radio" name="mh-exf" value="Excel" class="accent-primary">Excel</label>
+                                <label class="flex items-center justify-center gap-1 rounded-lg border border-border-color p-2 cursor-pointer text-xs font-bold text-gray-700 dark:text-gray-300"><input type="radio" name="mh-exf" value="PDF" class="accent-primary">PDF</label>
+                                <label class="flex items-center justify-center gap-1 rounded-lg border border-border-color p-2 cursor-pointer text-xs font-bold text-gray-700 dark:text-gray-300"><input type="radio" name="mh-exf" value="Print" class="accent-primary">Print</label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="mh-lbl">Scope</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-2.5 rounded-xl border border-border-color p-2.5 cursor-pointer text-sm text-gray-700 dark:text-gray-300"><input type="radio" name="mh-exs" value="timeline" class="accent-primary">Timeline report</label>
+                                <label class="flex items-center gap-2.5 rounded-xl border border-border-color p-2.5 cursor-pointer text-sm text-gray-700 dark:text-gray-300"><input type="radio" name="mh-exs" value="complete" checked class="accent-primary">Complete medical history</label>
+                                <label class="flex items-center gap-2.5 rounded-xl border border-border-color p-2.5 cursor-pointer text-sm text-gray-700 dark:text-gray-300"><input type="radio" name="mh-exs" value="filtered" class="accent-primary">Current filters</label>
+                                <label class="flex items-center gap-2.5 rounded-xl border border-border-color p-2.5 cursor-pointer text-sm text-gray-700 dark:text-gray-300"><input type="radio" name="mh-exs" value="selected" class="accent-primary">Selected records</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-export-modal">Cancel</button>
+                        <button type="button" id="mh-export-run" class="mh-btn mh-btn-primary"><i class="icon-download"></i>Export</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mh-import-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico mh-c-sky"><i class="icon-upload"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Import Medical Records</h3><p class="text-xs text-gray-500 dark:text-gray-400">CSV, Excel or EMR export</p></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-import-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="[border:2px_dashed_var(--color-border-color)] [border-radius:.9rem] [padding:1.5rem] [text-align:center] [color:var(--color-gray-500)]"><i class="icon-cloud-upload text-3xl"></i><p class="text-sm font-bold mt-1">Drag &amp; drop files</p><p class="text-[11px]">CSV, Excel, HL7/FHIR up to 10MB</p></div>
+                        <div class="flex items-center gap-2"><span class="mh-chip mh-c-emerald">CSV</span><span class="mh-chip mh-c-emerald">Excel</span><span class="mh-chip mh-c-emerald">HL7 / FHIR</span><a href="#" class="ml-auto text-xs font-bold text-primary hover:underline" data-toast="Template downloaded">Download template</a></div>
+                        <div class="rounded-xl border border-border-color p-3 grid grid-cols-3 text-center">
+                            <div><p class="text-lg font-extrabold text-emerald-600">14</p><p class="text-[10px] text-gray-500">Valid</p></div>
+                            <div><p class="text-lg font-extrabold text-amber-600">1</p><p class="text-[10px] text-gray-500">Warnings</p></div>
+                            <div><p class="text-lg font-extrabold text-rose-600">0</p><p class="text-[10px] text-gray-500">Errors</p></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-import-modal">Cancel</button>
+                        <button type="button" class="mh-btn mh-btn-primary" data-hs-overlay="#mh-import-modal" data-toast="Imported 14 records (1 warning)"><i class="icon-upload"></i>Import</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ PER-RECORD ACTION MODALS ============
+             Generic, non-personalized (no per-record prefill — these actions don't
+             persist anywhere without a backend); each opens/closes purely through
+             Preline's overlay toggle (data-hs-overlay), the Confirm button just
+             toasts via the shared [data-toast] handler before closing. -->
+        <div id="mh-edit-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico"><i class="icon-edit"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Edit Record</h3></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-edit-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div><label class="mh-lbl">Category</label><select class="mh-in"><option>Consultation</option><option>Diagnosis</option><option>Surgery</option><option>Laboratory</option><option>Radiology</option><option>Prescription</option><option>Vaccination</option><option>Admission</option><option>Discharge</option><option>Follow-up</option></select></div>
+                            <div><label class="mh-lbl">Date</label><input type="text" class="mh-in" placeholder="yyyy-mm-dd" data-provider="flatpickr" data-date-format="Y-m-d"></div>
+                            <div><label class="mh-lbl">Department</label><select class="mh-in"><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>General Medicine</option><option>Radiology</option><option>Pathology</option></select></div>
+                            <div><label class="mh-lbl">Doctor</label><select class="mh-in"><option>Dr. Chen</option><option>Dr. Kumar</option><option>Dr. Mills</option><option>Dr. Park</option><option>Dr. Wang</option><option>Dr. Rivas</option></select></div>
+                            <div><label class="mh-lbl">Status</label><select class="mh-in"><option>Active</option><option>Resolved</option><option>Ongoing</option><option>Chronic</option></select></div>
+                            <div><label class="mh-lbl">Time</label><input class="mh-in" placeholder="e.g. 10:30 AM"></div>
+                        </div>
+                        <div><label class="mh-lbl">Diagnosis / Title</label><input class="mh-in" placeholder="e.g. Hypertension review"></div>
+                        <div><label class="mh-lbl">Clinical notes</label><textarea class="mh-in [resize:vertical]" rows="3"></textarea></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-edit-modal">Cancel</button>
+                        <button type="button" class="mh-btn mh-btn-primary" data-hs-overlay="#mh-edit-modal" data-toast="Record updated">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mh-dx-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico mh-c-violet"><i class="icon-clipboard-check"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Add Diagnosis</h3></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-dx-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div><label class="mh-lbl">Diagnosis</label><input class="mh-in" placeholder="e.g. Hypertension review"></div>
+                        <div><label class="mh-lbl">Status</label><select class="mh-in"><option>Active</option><option>Resolved</option><option>Ongoing</option><option>Chronic</option></select></div>
+                        <div><label class="mh-lbl">Clinical findings</label><textarea class="mh-in [resize:vertical]" rows="3"></textarea></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-dx-modal">Cancel</button>
+                        <button type="button" class="mh-btn mh-btn-primary" data-hs-overlay="#mh-dx-modal" data-toast="Diagnosis added">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mh-rx-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico mh-c-emerald"><i class="icon-pill"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Add Prescription</h3></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-rx-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div><label class="mh-lbl">Medication</label><input class="mh-in" placeholder="e.g. Atorvastatin 20mg"></div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div><label class="mh-lbl">Dosage</label><input class="mh-in" placeholder="0-0-1"></div>
+                            <div><label class="mh-lbl">Duration</label><input class="mh-in" placeholder="90 days"></div>
+                        </div>
+                        <div><label class="mh-lbl">Instructions</label><textarea class="mh-in [resize:vertical]" rows="3"></textarea></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-rx-modal">Cancel</button>
+                        <button type="button" class="mh-btn mh-btn-primary" data-hs-overlay="#mh-rx-modal" data-toast="Prescription added"><i class="icon-pill"></i>Prescribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mh-lab-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico mh-c-amber"><i class="icon-flask-conical"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Attach Lab Result</h3></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-lab-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div><label class="mh-lbl">Test</label><select class="mh-in"><option>CBC</option><option>Lipid Panel</option><option>HbA1c</option><option>LFT</option><option>KFT</option><option>Urinalysis</option></select></div>
+                        <div class="[border:2px_dashed_var(--color-border-color)] [border-radius:.9rem] [padding:1.5rem] [text-align:center] [color:var(--color-gray-500)]"><i class="icon-cloud-upload text-3xl"></i><p class="text-sm font-bold mt-1">Drag &amp; drop files</p><p class="text-[11px]">PDF, JPG, PNG up to 25MB</p></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-lab-modal">Cancel</button>
+                        <button type="button" class="mh-btn mh-btn-primary" data-hs-overlay="#mh-lab-modal" data-toast="Lab result attached"><i class="icon-flask-conical"></i>Attach</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mh-rad-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico mh-c-sky"><i class="icon-scan"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Attach Radiology Report</h3></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-rad-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div><label class="mh-lbl">Study</label><select class="mh-in"><option>X-Ray</option><option>CT Scan</option><option>MRI</option><option>Ultrasound</option><option>ECG</option><option>Echo</option></select></div>
+                        <div class="[border:2px_dashed_var(--color-border-color)] [border-radius:.9rem] [padding:1.5rem] [text-align:center] [color:var(--color-gray-500)]"><i class="icon-cloud-upload text-3xl"></i><p class="text-sm font-bold mt-1">Drag &amp; drop files</p><p class="text-[11px]">PDF, JPG, PNG, DICOM up to 25MB</p></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-rad-modal">Cancel</button>
+                        <button type="button" class="mh-btn mh-btn-primary" data-hs-overlay="#mh-rad-modal" data-toast="Radiology report attached"><i class="icon-scan"></i>Attach</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mh-share-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico"><i class="icon-share-2"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Share Record</h3></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-share-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div><label class="mh-lbl">Recipient (email / provider)</label><input class="mh-in" placeholder="doctor@hospital.com"></div>
+                        <div><label class="mh-lbl">Access</label><select class="mh-in"><option>View only</option><option>View &amp; Download</option><option>Full access</option></select></div>
+                        <div><label class="mh-lbl">Message</label><textarea class="mh-in [resize:vertical]" rows="3"></textarea></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-share-modal">Cancel</button>
+                        <button type="button" class="mh-btn mh-btn-primary" data-hs-overlay="#mh-share-modal" data-toast="Record shared securely"><i class="icon-share-2"></i>Share</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mh-email-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico mh-c-sky"><i class="icon-mail"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Send Email</h3></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-email-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div><label class="mh-lbl">Subject</label><input class="mh-in" value="Medical Record Update"></div>
+                        <div><label class="mh-lbl">Message</label><textarea class="mh-in [resize:vertical]" rows="3"></textarea></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-email-modal">Cancel</button>
+                        <button type="button" class="mh-btn mh-btn-primary" data-hs-overlay="#mh-email-modal" data-toast="Email sent"><i class="icon-mail"></i>Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mh-archive-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-sm sm:w-full m-3 sm:mx-auto">
+                <div class="mh-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="mh-doc-ico"><i class="icon-archive"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Archive Record</h3></div>
+                        <button type="button" class="mh-icobtn ml-auto" data-hs-overlay="#mh-archive-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5"><p class="text-sm text-gray-600 dark:text-gray-300">Archive the selected medical record(s)?</p></div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="mh-btn mh-btn-solid" data-hs-overlay="#mh-archive-modal">Cancel</button>
+                        <button type="button" class="mh-btn mh-btn-primary" data-hs-overlay="#mh-archive-modal" data-toast="Record archived"><i class="icon-archive"></i>Archive</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shared delete-confirm modal (MC.confirmDelete / MC.initDeleteModal) —
+             same pattern as patients.html / patient-documents.html: styled with the
+             generic .modal-overlay/.modal-panel classes rather than this page's own
+             mh- component classes, matching every other page that uses this shared
+             utility. -->
+        <div id="del-modal" class="modal-overlay hidden">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0"><i class="icon-trash-2 text-red-600"></i></div>
+                    <div><h3 class="font-bold text-gray-900 dark:text-white text-lg">Delete Medical Record</h3><p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p></div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">Are you sure you want to delete <strong id="del-name" class="text-gray-900 dark:text-white"></strong>?</p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" type="button" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                    <button id="del-confirm-btn" type="button" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Delete</button>
+                </div>
+            </div>
+        </div>

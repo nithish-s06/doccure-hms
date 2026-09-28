@@ -181,3 +181,400 @@
                         </div>
                     </div>
                
+
+        <!-- ==================== OVERLAYS ==================== -->
+        <div id="ins-filter-drawer" class="ins-drawer" role="dialog" aria-modal="true" aria-label="Advanced filters">
+            <div class="ins-drawer-back" data-close></div>
+            <div class="ins-drawer-panel">
+                <div class="flex items-center justify-between border-b border-border-color p-4">
+                    <div class="flex items-center gap-2.5"><span class="ins-doc-ico ins-c-primary"><i class="icon-sliders-horizontal"></i></span><div><p class="ins-t">Advanced Filters</p><p class="text-[11px] text-gray-500 dark:text-gray-400">Refine claims</p></div></div>
+                    <button class="ins-icobtn" data-close><i class="icon-x"></i></button>
+                </div>
+                <div class="flex-1 overflow-y-auto p-4 space-y-3">
+                    <div><label for="fd-type" class="ins-lbl">Claim Type</label><select class="ins-in" id="fd-type"><option value="">Any</option><option>Cashless</option><option>Reimbursement</option></select></div>
+                    <div><label for="fd-tpa" class="ins-lbl">TPA</label><select class="ins-in" id="fd-tpa"><option value="">Any</option><option>Medi Assist</option><option>Paramount</option><option>Family Health Plan</option><option>Direct</option></select></div>
+                    <div><label for="fd-service" class="ins-lbl">Service Type</label><select class="ins-in" id="fd-service"><option value="">Any</option><option>Hospitalization</option><option>Surgery</option><option>Diagnostics</option><option>Consultation</option><option>Pharmacy</option></select></div>
+                    <div class="grid grid-cols-2 gap-3"><div><label for="fd-min" class="ins-lbl">Min Amount</label><input class="ins-in" id="fd-min" type="number" placeholder="0"></div><div><label for="fd-max" class="ins-lbl">Max Amount</label><input class="ins-in" id="fd-max" type="number" placeholder="Any"></div></div>
+                    <div class="grid grid-cols-2 gap-3"><div><label for="fd-from" class="ins-lbl">From</label><input class="ins-in" id="fd-from" type="text" data-provider="flatpickr" data-date-format="Y-m-d" data-altFormat="d-m-Y"></div><div><label for="fd-to" class="ins-lbl">To</label><input class="ins-in" id="fd-to" type="text" data-provider="flatpickr" data-date-format="Y-m-d" data-altFormat="d-m-Y"></div></div>
+                </div>
+                <div class="border-t border-border-color p-4 flex gap-2.5">
+                    <button id="fd-reset" class="ins-btn ins-btn-solid flex-1"><i class="icon-rotate-ccw"></i>Reset</button>
+                    <button id="fd-apply" class="ins-btn ins-btn-primary flex-1"><i class="icon-check"></i>Apply</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== FILE CLAIM / ADD POLICY / VERIFY ===================== -->
+        <div id="ins-file-claim-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-blue"><i class="icon-file-plus"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">File Insurance Claim</h3><p class="text-xs text-gray-500 dark:text-gray-400">Submit a new claim</p></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-file-claim-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div><label class="ins-lbl">Patient</label><input class="ins-in" placeholder="Patient name"></div>
+                            <div><label class="ins-lbl">Provider</label><select class="ins-in"><option>Star Health</option><option>HDFC Ergo</option><option>ICICI Lombard</option><option>Max Bupa</option><option>Care Health</option><option>Aditya Birla</option></select></div>
+                            <div><label class="ins-lbl">Policy No</label><input class="ins-in" placeholder="e.g. SH-88245102"></div>
+                            <div><label class="ins-lbl">Claim Type</label><select class="ins-in"><option>Cashless</option><option>Reimbursement</option></select></div>
+                            <div><label class="ins-lbl">Service</label><select class="ins-in"><option>Hospitalization</option><option>Surgery</option><option>Diagnostics</option><option>Consultation</option><option>Pharmacy</option></select></div>
+                            <div><label class="ins-lbl">TPA</label><select class="ins-in"><option>Medi Assist</option><option>Paramount</option><option>Family Health Plan</option><option>Direct</option></select></div>
+                            <div><label class="ins-lbl">Claimed Amount</label><input class="ins-in" placeholder="e.g. 50000"></div>
+                            <div><label class="ins-lbl">Status</label><select class="ins-in"><option>Submitted</option><option>Pending</option><option>Processing</option><option>Approved</option><option>Rejected</option></select></div>
+                        </div>
+                        <div><label class="ins-lbl">Remarks</label><textarea class="ins-in [resize:vertical]" rows="2"></textarea></div>
+                        <div class="[border:2px_dashed_var(--color-border-color)] [border-radius:.9rem] [padding:1.5rem] [text-align:center] [color:var(--color-gray-500)]"><i class="icon-cloud-upload text-3xl"></i><p class="text-sm font-bold mt-1">Attach supporting documents</p><p class="text-[11px]">Bills, discharge summary, ID — PDF/JPG up to 15MB</p></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-file-claim-modal">Cancel</button>
+                        <button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-file-claim-modal" data-toast="Claim submitted"><i class="icon-file-plus"></i>Submit Claim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ins-add-policy-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-blue"><i class="icon-shield-plus"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Add Insurance Policy</h3><p class="text-xs text-gray-500 dark:text-gray-400">Register a new policy</p></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-add-policy-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div><label class="ins-lbl">Insurer</label><select class="ins-in"><option>Star Health</option><option>HDFC Ergo</option><option>ICICI Lombard</option><option>Max Bupa</option><option>Care Health</option><option>Aditya Birla</option></select></div>
+                            <div><label class="ins-lbl">Plan Name</label><input class="ins-in" placeholder="e.g. Health Optima"></div>
+                            <div><label class="ins-lbl">Policy No</label><input class="ins-in" placeholder="e.g. SH-000000"></div>
+                            <div><label class="ins-lbl">Type</label><select class="ins-in"><option>Individual</option><option>Family</option><option>Corporate</option></select></div>
+                            <div><label class="ins-lbl">Sum Insured</label><input class="ins-in" placeholder="e.g. 500000"></div>
+                            <div><label class="ins-lbl">Valid Till</label><input class="ins-in" type="text" data-provider="flatpickr" data-date-format="Y-m-d" data-altFormat="d-m-Y"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-add-policy-modal">Cancel</button>
+                        <button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-add-policy-modal" data-toast="Policy added"><i class="icon-shield-plus"></i>Add Policy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ins-verify-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-emerald"><i class="icon-badge-check"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Verify Eligibility</h3><p class="text-xs text-gray-500 dark:text-gray-400">Real-time eligibility check</p></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-verify-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div><label class="ins-lbl">Policy</label><select class="ins-in"><option>Star Health · SH-88245102</option><option>HDFC Ergo · HE-42019887</option><option>ICICI Lombard · IL-CORP-3391</option></select></div>
+                        <div><label class="ins-lbl">Service</label><select class="ins-in"><option>Hospitalization</option><option>Surgery</option><option>Diagnostics</option><option>Consultation</option><option>Pharmacy</option></select></div>
+                        <div><label class="ins-lbl">Estimated Amount</label><input class="ins-in" placeholder="e.g. 100000"></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-verify-modal">Cancel</button>
+                        <button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-verify-modal" data-toast="Eligible · Cashless approved up to ₹4,00,000"><i class="icon-badge-check"></i>Check Eligibility</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== EXPORT / IMPORT ===================== -->
+        <div id="ins-export-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-emerald"><i class="icon-download"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Export Claims</h3></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-export-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div>
+                            <label class="ins-lbl">Format</label>
+                            <div class="grid grid-cols-4 gap-2">
+                                <label class="flex items-center justify-center gap-1 rounded-lg border border-border-color p-2 cursor-pointer text-xs font-bold text-gray-700 dark:text-gray-300"><input type="radio" name="ins-exf" value="CSV" checked class="accent-primary">CSV</label>
+                                <label class="flex items-center justify-center gap-1 rounded-lg border border-border-color p-2 cursor-pointer text-xs font-bold text-gray-700 dark:text-gray-300"><input type="radio" name="ins-exf" value="Excel" class="accent-primary">Excel</label>
+                                <label class="flex items-center justify-center gap-1 rounded-lg border border-border-color p-2 cursor-pointer text-xs font-bold text-gray-700 dark:text-gray-300"><input type="radio" name="ins-exf" value="PDF" class="accent-primary">PDF</label>
+                                <label class="flex items-center justify-center gap-1 rounded-lg border border-border-color p-2 cursor-pointer text-xs font-bold text-gray-700 dark:text-gray-300"><input type="radio" name="ins-exf" value="Print" class="accent-primary">Print</label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="ins-lbl">Records</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-2.5 rounded-xl border border-border-color p-2.5 cursor-pointer text-sm text-gray-700 dark:text-gray-300"><input type="radio" name="ins-exs" value="all" checked class="accent-primary">All claims</label>
+                                <label class="flex items-center gap-2.5 rounded-xl border border-border-color p-2.5 cursor-pointer text-sm text-gray-700 dark:text-gray-300"><input type="radio" name="ins-exs" value="approved" class="accent-primary">Approved only</label>
+                                <label class="flex items-center gap-2.5 rounded-xl border border-border-color p-2.5 cursor-pointer text-sm text-gray-700 dark:text-gray-300"><input type="radio" name="ins-exs" value="filtered" class="accent-primary">Current filters</label>
+                                <label class="flex items-center gap-2.5 rounded-xl border border-border-color p-2.5 cursor-pointer text-sm text-gray-700 dark:text-gray-300"><input type="radio" name="ins-exs" value="selected" class="accent-primary">Selected claims</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-export-modal">Cancel</button>
+                        <button type="button" id="ins-export-run" class="ins-btn ins-btn-primary"><i class="icon-download"></i>Export</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ins-import-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-sky"><i class="icon-upload"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Import Claims</h3><p class="text-xs text-gray-500 dark:text-gray-400">CSV or Excel</p></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-import-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="[border:2px_dashed_var(--color-border-color)] [border-radius:.9rem] [padding:1.75rem] [text-align:center] [color:var(--color-gray-500)]"><i class="icon-cloud-upload text-3xl"></i><p class="text-sm font-bold mt-1">Drag &amp; drop your file</p><p class="text-[11px]">CSV, XLSX up to 10MB</p></div>
+                        <div class="rounded-xl border border-border-color p-3 grid grid-cols-3 text-center">
+                            <div><p class="text-lg font-extrabold text-emerald-600">16</p><p class="text-[10px] text-gray-500">Valid</p></div>
+                            <div><p class="text-lg font-extrabold text-amber-600">2</p><p class="text-[10px] text-gray-500">Warnings</p></div>
+                            <div><p class="text-lg font-extrabold text-rose-600">0</p><p class="text-[10px] text-gray-500">Errors</p></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-import-modal">Cancel</button>
+                        <button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-import-modal" data-toast="Imported 16 claims (2 warnings)"><i class="icon-upload"></i>Import</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ PER-CLAIM ACTION MODALS ============
+             Generic, non-personalized (no per-record prefill — these actions don't
+             persist anywhere without a backend); each opens/closes purely through
+             Preline's overlay toggle (data-hs-overlay), the Confirm button just
+             toasts via the shared [data-toast] handler before closing. -->
+        <div id="ins-edit-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-primary"><i class="icon-edit"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Edit Claim</h3></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-edit-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div><label class="ins-lbl">Patient</label><input class="ins-in" placeholder="Patient name"></div>
+                            <div><label class="ins-lbl">Provider</label><select class="ins-in"><option>Star Health</option><option>HDFC Ergo</option><option>ICICI Lombard</option><option>Max Bupa</option><option>Care Health</option><option>Aditya Birla</option></select></div>
+                            <div><label class="ins-lbl">Policy No</label><input class="ins-in" placeholder="e.g. SH-88245102"></div>
+                            <div><label class="ins-lbl">Claim Type</label><select class="ins-in"><option>Cashless</option><option>Reimbursement</option></select></div>
+                            <div><label class="ins-lbl">Service</label><select class="ins-in"><option>Hospitalization</option><option>Surgery</option><option>Diagnostics</option><option>Consultation</option><option>Pharmacy</option></select></div>
+                            <div><label class="ins-lbl">TPA</label><select class="ins-in"><option>Medi Assist</option><option>Paramount</option><option>Family Health Plan</option><option>Direct</option></select></div>
+                            <div><label class="ins-lbl">Claimed Amount</label><input class="ins-in" placeholder="e.g. 50000"></div>
+                            <div><label class="ins-lbl">Status</label><select class="ins-in"><option>Submitted</option><option>Pending</option><option>Processing</option><option>Approved</option><option>Rejected</option></select></div>
+                        </div>
+                        <div><label class="ins-lbl">Remarks</label><textarea class="ins-in [resize:vertical]" rows="2"></textarea></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-edit-modal">Cancel</button>
+                        <button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-edit-modal" data-toast="Claim updated">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ins-approve-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-emerald"><i class="icon-badge-check"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Approve Claim</h3></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-approve-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div><label class="ins-lbl">Approved Amount</label><input class="ins-in" placeholder="e.g. 210000"></div>
+                        <div><label class="ins-lbl">Approval note</label><textarea class="ins-in [resize:vertical]" rows="2"></textarea></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-approve-modal">Cancel</button>
+                        <button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-approve-modal" data-toast="Claim approved"><i class="icon-badge-check"></i>Approve</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ins-reject-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-rose"><i class="icon-x-circle"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Reject Claim</h3><p class="text-xs text-gray-500 dark:text-gray-400">This cannot be undone</p></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-reject-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3"><div><label class="ins-lbl">Reason for rejection</label><textarea class="ins-in [resize:vertical]" rows="2"></textarea></div></div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-reject-modal">Cancel</button>
+                        <button type="button" class="ins-btn ins-btn-danger" data-hs-overlay="#ins-reject-modal" data-toast="Claim rejected"><i class="icon-x-circle"></i>Reject</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ins-preauth-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-blue"><i class="icon-file-check"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Request Pre-Authorization</h3></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-preauth-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div><label class="ins-lbl">Estimated Amount</label><input class="ins-in" placeholder="e.g. 100000"></div>
+                        <div><label class="ins-lbl">Clinical justification</label><textarea class="ins-in [resize:vertical]" rows="2"></textarea></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-preauth-modal">Cancel</button>
+                        <button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-preauth-modal" data-toast="Pre-authorization requested"><i class="icon-file-check"></i>Request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ins-docs-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-sky"><i class="icon-upload"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Upload Documents</h3></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-docs-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5"><div class="[border:2px_dashed_var(--color-border-color)] [border-radius:.9rem] [padding:1.5rem] [text-align:center] [color:var(--color-gray-500)]"><i class="icon-cloud-upload text-3xl"></i><p class="text-sm font-bold mt-1">Attach supporting documents</p><p class="text-[11px]">Bills, discharge summary, ID — PDF/JPG up to 15MB</p></div></div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-docs-modal">Cancel</button>
+                        <button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-docs-modal" data-toast="Documents uploaded"><i class="icon-upload"></i>Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ins-email-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-primary"><i class="icon-mail"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Email Insurer</h3></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-email-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div><label class="ins-lbl">Subject</label><input class="ins-in" placeholder="Claim inquiry"></div>
+                        <div><label class="ins-lbl">Message</label><textarea class="ins-in [resize:vertical]" rows="3"></textarea></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-email-modal">Cancel</button>
+                        <button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-email-modal" data-toast="Email sent"><i class="icon-mail"></i>Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ins-bulk-status-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-sm sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-primary"><i class="icon-activity"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Update Status</h3></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-bulk-status-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5"><label class="ins-lbl">Status</label><select class="ins-in"><option>Submitted</option><option>Pending</option><option>Processing</option><option>Approved</option><option>Rejected</option></select></div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0">
+                        <button type="button" class="ins-btn ins-btn-solid" data-hs-overlay="#ins-bulk-status-modal">Cancel</button>
+                        <button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-bulk-status-modal" data-toast="Status updated"><i class="icon-check"></i>Apply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== POLICY DETAILS (static, one per policy) ===================== -->
+        <div id="ins-policy-1-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-amber"><i class="icon-shield-check"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Family Health Optima</h3><p class="text-xs text-gray-500 dark:text-gray-400">Star Health · SH-88245102</p></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-policy-1-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5">
+                        <div class="rounded-xl border border-border-color p-3">
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Holder</span><span class="text-xs font-bold text-gray-900 dark:text-white">James Morrison</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Type</span><span class="text-xs font-bold text-gray-900 dark:text-white">Family</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Sum Insured</span><span class="text-xs font-bold text-gray-900 dark:text-white">₹10,00,000</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Used</span><span class="text-xs font-bold text-gray-900 dark:text-white">₹3,40,000</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Available</span><span class="text-xs font-bold text-gray-900 dark:text-white">₹6,60,000</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Valid Till</span><span class="text-xs font-bold text-gray-900 dark:text-white">2027-04-12</span></div>
+                            <div class="flex items-center justify-between py-2"><span class="text-xs text-gray-500 dark:text-gray-400">Status</span><span class="text-xs font-bold text-gray-900 dark:text-white">Active</span></div>
+                        </div>
+                        <div class="mt-3"><div class="flex justify-between text-[11px] mb-1"><span class="text-gray-500">Coverage used</span><b class="text-gray-900 dark:text-white">34%</b></div><div class="ins-bar ins-c-amber"><i class="[width:34%]"></i></div></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0"><button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-policy-1-modal">Close</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ins-policy-2-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-rose"><i class="icon-shield-check"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Optima Secure</h3><p class="text-xs text-gray-500 dark:text-gray-400">HDFC Ergo · HE-42019887</p></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-policy-2-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5">
+                        <div class="rounded-xl border border-border-color p-3">
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Holder</span><span class="text-xs font-bold text-gray-900 dark:text-white">James Morrison</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Type</span><span class="text-xs font-bold text-gray-900 dark:text-white">Individual</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Sum Insured</span><span class="text-xs font-bold text-gray-900 dark:text-white">₹5,00,000</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Used</span><span class="text-xs font-bold text-gray-900 dark:text-white">₹1,20,000</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Available</span><span class="text-xs font-bold text-gray-900 dark:text-white">₹3,80,000</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Valid Till</span><span class="text-xs font-bold text-gray-900 dark:text-white">2026-12-18</span></div>
+                            <div class="flex items-center justify-between py-2"><span class="text-xs text-gray-500 dark:text-gray-400">Status</span><span class="text-xs font-bold text-gray-900 dark:text-white">Active</span></div>
+                        </div>
+                        <div class="mt-3"><div class="flex justify-between text-[11px] mb-1"><span class="text-gray-500">Coverage used</span><b class="text-gray-900 dark:text-white">24%</b></div><div class="ins-bar ins-c-rose"><i class="[width:24%]"></i></div></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0"><button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-policy-2-modal">Close</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ins-policy-3-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="ins-modal-panel pointer-events-auto">
+                    <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                        <span class="ins-doc-ico ins-c-blue"><i class="icon-shield-check"></i></span>
+                        <div class="min-w-0"><h3 class="text-lg font-bold text-gray-900 dark:text-white">Corporate Group Med</h3><p class="text-xs text-gray-500 dark:text-gray-400">ICICI Lombard · IL-CORP-3391</p></div>
+                        <button type="button" class="ins-icobtn ml-auto" data-hs-overlay="#ins-policy-3-modal"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="p-5">
+                        <div class="rounded-xl border border-border-color p-3">
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Holder</span><span class="text-xs font-bold text-gray-900 dark:text-white">Dreams Corp</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Type</span><span class="text-xs font-bold text-gray-900 dark:text-white">Corporate</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Sum Insured</span><span class="text-xs font-bold text-gray-900 dark:text-white">₹3,00,000</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Used</span><span class="text-xs font-bold text-gray-900 dark:text-white">₹2,85,000</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Available</span><span class="text-xs font-bold text-gray-900 dark:text-white">₹15,000</span></div>
+                            <div class="flex items-center justify-between py-2 border-b border-border-color [border-bottom-style:dashed]"><span class="text-xs text-gray-500 dark:text-gray-400">Valid Till</span><span class="text-xs font-bold text-gray-900 dark:text-white">2026-10-14</span></div>
+                            <div class="flex items-center justify-between py-2"><span class="text-xs text-gray-500 dark:text-gray-400">Status</span><span class="text-xs font-bold text-gray-900 dark:text-white">Active</span></div>
+                        </div>
+                        <div class="mt-3"><div class="flex justify-between text-[11px] mb-1"><span class="text-gray-500">Coverage used</span><b class="text-gray-900 dark:text-white">95%</b></div><div class="ins-bar ins-c-blue"><i class="[width:95%]"></i></div></div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 p-5 pt-0"><button type="button" class="ins-btn ins-btn-primary" data-hs-overlay="#ins-policy-3-modal">Close</button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== DELETE MODAL ===================== -->
+        <div id="del-modal" class="modal-overlay hidden">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0"><i class="icon-trash-2 text-red-600"></i></div>
+                    <div><h3 class="font-bold text-gray-900 dark:text-white text-lg">Delete Claim</h3><p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p></div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">Are you sure you want to delete claim <strong id="del-name" class="text-gray-900 dark:text-white"></strong>?</p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" type="button" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                    <button id="del-confirm-btn" type="button" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Delete</button>
+                </div>
+            </div>
+        </div>
