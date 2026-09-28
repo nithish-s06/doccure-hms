@@ -1,569 +1,89 @@
+<div class="max-w-4xl mx-auto space-y-5">
+	<nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+		<ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+			<li><a href="index.html" class="hover:text-primary transition-colors">Dashboard</a></li>
+			<li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
 
+			<li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Todo</li>
+		</ol>
+	</nav>
 
-<main class="p-4 lg:p-6 space-y-6 max-w-full mx-auto w-full">
-
-	<!-- ============ Page Title Area ============ -->
-	<div class="flex flex-wrap items-start justify-between gap-4">
+	<div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
 		<div>
-			<h1 class="font-display font-bold text-[21px]">To Do</h1>
-			<p class="text-[12.5px] mt-1 u-color-text-tertiary">10 tasks &middot; 4 in progress &middot; 6 completed</p>
-		</div>
-		<div class="flex flex-wrap items-center gap-2">
-			<button type="button" class="btn btn-primary !text-[12.5px]" data-hs-overlay="#todo-add-modal">
-				<i class="icon-plus text-[13px]"></i>Add Task
-			</button>
+			<h1 class="text-2xl font-bold text-gray-900">To Do</h1>
+			<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Personal and team task tracker.</p>
 		</div>
 	</div>
 
-	<div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-
-		<!-- ============ Sidebar ============ -->
-		<div class="lg:col-span-3">
-			<div class="surface-card p-4">
-
-				<div class="space-y-1 mb-4">
-					<a href="javascript:void(0);" class="flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-[12.5px] font-semibold u-background-surface-sunken_color-color-primary-600">
-						<span class="inline-flex items-center gap-2"><i class="icon-list-checks text-[14px]"></i>All Tasks</span>
-						<span class="badge-soft badge-danger !text-[10px] !py-0 !px-1.5">6</span>
-					</a>
-					<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-star text-[14px]"></i>Starred</a>
-					<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-trash-2 text-[14px]"></i>Trash</a>
-				</div>
-
-				<div class="mb-4 pt-3 border-t u-border-color-border-subtle">
-					<div class="flex items-center justify-between mb-2">
-						<p class="text-[11.5px] font-semibold uppercase tracking-wide u-color-text-tertiary">Priority</p>
-						<button type="button" class="header-icon-btn !size-6" aria-label="Expand"><i class="icon-chevron-down text-[12px]"></i></button>
-					</div>
-					<div class="space-y-1">
-						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-success-500"></span>Low</a>
-						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-warning-500"></span>Medium</a>
-						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-danger-500"></span>High</a>
-					</div>
-				</div>
-
-				<div class="pt-3 border-t u-border-color-border-subtle">
-					<div class="flex items-center justify-between mb-2">
-						<p class="text-[11.5px] font-semibold uppercase tracking-wide u-color-text-tertiary">Categories</p>
-						<button type="button" class="header-icon-btn !size-6" aria-label="Expand"><i class="icon-chevron-down text-[12px]"></i></button>
-					</div>
-					<div class="space-y-1">
-						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-accent-500"></span>Social</a>
-						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-info-500"></span>Research</a>
-						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-accent-500"></span>Web Design</a>
-						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-danger-500"></span>Reminder</a>
-					</div>
-				</div>
-
-			</div>
+	<div class="grid grid-cols-3 gap-3" data-aos="fade-up" data-aos-delay="30">
+		<div class="card p-4">
+			<p class="text-xl font-bold text-gray-900">6</p>
+			<p class="text-xs text-gray-500 dark:text-gray-400">Total Tasks</p>
 		</div>
-
-		<!-- ============ Task List ============ -->
-		<div class="lg:col-span-9 space-y-4">
-
-			<!-- Toolbar -->
-			<div class="surface-card p-3">
-				<div class="flex flex-wrap items-center justify-between gap-2.5">
-					<div class="relative w-64">
-						<i class="icon-search absolute top-1/2 -translate-y-1/2 start-3 text-[14px] u-color-text-tertiary"></i>
-						<input type="text" placeholder="Search" class="w-full ps-9 pe-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
-					</div>
-
-					<div class="flex items-center flex-wrap gap-2">
-						<app-daterangepicker/>
-
-						<div class="hs-dropdown [--placement:bottom-end] relative">
-							<button type="button" class="hs-dropdown-toggle btn btn-outline !text-[12.5px]" aria-haspopup="menu" aria-expanded="false">
-								<i class="icon-arrow-up-down text-[13px]"></i>Sort By <i class="icon-chevron-down text-[11px]"></i>
-							</button>
-							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-								<a href="javascript:void(0);" class="flex items-center px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">A - Z</a>
-								<a href="javascript:void(0);" class="flex items-center px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">Z - A</a>
-								<a href="javascript:void(0);" class="flex items-center px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">Newest</a>
-								<a href="javascript:void(0);" class="flex items-center px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">Oldest</a>
-								<a href="javascript:void(0);" class="flex items-center px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">High</a>
-								<a href="javascript:void(0);" class="flex items-center px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">Low</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Task table -->
-			<div class="surface-card !p-0 overflow-hidden">
-				<div class="overflow-x-auto scroll-thin">
-					<table class="data-table w-full min-w-[900px]">
-						<thead>
-							<tr>
-								<th scope="col">Task Title</th>
-								<th scope="col">Priority</th>
-								<th scope="col">Created Date</th>
-								<th scope="col">Status</th>
-								<th scope="col">Updated Date</th>
-								<th scope="col">Progress</th>
-								<th class="w-10" scope="col"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="font-medium">Update calendar and schedule</td>
-								<td><span class="badge-soft badge-success">Low</span></td>
-								<td class="u-color-text-tertiary">20 Jun 2025</td>
-								<td><span class="badge-soft badge-info">In Progress</span></td>
-								<td class="u-color-text-tertiary">25 Jun 2025</td>
-								<td>
-									<div class="flex items-center gap-2">
-										<div class="relative size-8 shrink-0">
-											<svg class="size-8 -rotate-90" viewBox="0 0 36 36">
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--border-subtle)" stroke-width="3" />
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--color-warning-500)" stroke-width="3" stroke-dasharray="70.4 100" stroke-linecap="round" />
-											</svg>
-										</div>
-										<span class="text-[11px] font-semibold">80%</span>
-									</div>
-								</td>
-								<td>
-									<div class="hs-dropdown [--placement:bottom-end] relative">
-										<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
-										<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#todo-edit-modal"><i class="icon-edit text-[13px]"></i>Edit</a>
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#todo-delete-modal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="font-medium">Finalize project proposal</td>
-								<td><span class="badge-soft badge-warning">Medium</span></td>
-								<td class="u-color-text-tertiary">15 Jun 2025</td>
-								<td><span class="badge-soft badge-neutral">On Hold</span></td>
-								<td class="u-color-text-tertiary">20 Jun 2025</td>
-								<td>
-									<div class="flex items-center gap-2">
-										<div class="relative size-8 shrink-0">
-											<svg class="size-8 -rotate-90" viewBox="0 0 36 36">
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--border-subtle)" stroke-width="3" />
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--color-warning-500)" stroke-width="3" stroke-dasharray="52.8 100" stroke-linecap="round" />
-											</svg>
-										</div>
-										<span class="text-[11px] font-semibold">60%</span>
-									</div>
-								</td>
-								<td>
-									<div class="hs-dropdown [--placement:bottom-end] relative">
-										<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
-										<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#todo-edit-modal"><i class="icon-edit text-[13px]"></i>Edit</a>
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#todo-delete-modal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="font-medium">Submit to supervisor by EOD</td>
-								<td><span class="badge-soft badge-success">Low</span></td>
-								<td class="u-color-text-tertiary">02 Jun 2025</td>
-								<td><span class="badge-soft badge-warning">Pending</span></td>
-								<td class="u-color-text-tertiary">07 Jun 2025</td>
-								<td>
-									<div class="flex items-center gap-2">
-										<div class="relative size-8 shrink-0">
-											<svg class="size-8 -rotate-90" viewBox="0 0 36 36">
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--border-subtle)" stroke-width="3" />
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--color-warning-500)" stroke-width="3" stroke-dasharray="44 100" stroke-linecap="round" />
-											</svg>
-										</div>
-										<span class="text-[11px] font-semibold">50%</span>
-									</div>
-								</td>
-								<td>
-									<div class="hs-dropdown [--placement:bottom-end] relative">
-										<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
-										<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#todo-edit-modal"><i class="icon-edit text-[13px]"></i>Edit</a>
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#todo-delete-modal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="font-medium">Prepare presentation slides</td>
-								<td><span class="badge-soft badge-danger">High</span></td>
-								<td class="u-color-text-tertiary">24 May 2025</td>
-								<td><span class="badge-soft badge-success">Completed</span></td>
-								<td class="u-color-text-tertiary">30 May 2025</td>
-								<td>
-									<div class="flex items-center gap-2">
-										<div class="relative size-8 shrink-0">
-											<svg class="size-8 -rotate-90" viewBox="0 0 36 36">
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--border-subtle)" stroke-width="3" />
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--color-success-500)" stroke-width="3" stroke-dasharray="88 100" stroke-linecap="round" />
-											</svg>
-										</div>
-										<span class="text-[11px] font-semibold">100%</span>
-									</div>
-								</td>
-								<td>
-									<div class="hs-dropdown [--placement:bottom-end] relative">
-										<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
-										<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#todo-edit-modal"><i class="icon-edit text-[13px]"></i>Edit</a>
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#todo-delete-modal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="font-medium">Check and respond to emails</td>
-								<td><span class="badge-soft badge-success">Low</span></td>
-								<td class="u-color-text-tertiary">18 May 2025</td>
-								<td><span class="badge-soft badge-warning">Pending</span></td>
-								<td class="u-color-text-tertiary">25 May 2025</td>
-								<td>
-									<div class="flex items-center gap-2">
-										<div class="relative size-8 shrink-0">
-											<svg class="size-8 -rotate-90" viewBox="0 0 36 36">
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--border-subtle)" stroke-width="3" />
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--color-warning-500)" stroke-width="3" stroke-dasharray="48.4 100" stroke-linecap="round" />
-											</svg>
-										</div>
-										<span class="text-[11px] font-semibold">55%</span>
-									</div>
-								</td>
-								<td>
-									<div class="hs-dropdown [--placement:bottom-end] relative">
-										<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
-										<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#todo-edit-modal"><i class="icon-edit text-[13px]"></i>Edit</a>
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#todo-delete-modal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="font-medium">Daily admin tasks organized</td>
-								<td><span class="badge-soft badge-warning">Medium</span></td>
-								<td class="u-color-text-tertiary">13 May 2025</td>
-								<td><span class="badge-soft badge-info">In Progress</span></td>
-								<td class="u-color-text-tertiary">18 May 2025</td>
-								<td>
-									<div class="flex items-center gap-2">
-										<div class="relative size-8 shrink-0">
-											<svg class="size-8 -rotate-90" viewBox="0 0 36 36">
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--border-subtle)" stroke-width="3" />
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--color-warning-500)" stroke-width="3" stroke-dasharray="61.6 100" stroke-linecap="round" />
-											</svg>
-										</div>
-										<span class="text-[11px] font-semibold">70%</span>
-									</div>
-								</td>
-								<td>
-									<div class="hs-dropdown [--placement:bottom-end] relative">
-										<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
-										<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#todo-edit-modal"><i class="icon-edit text-[13px]"></i>Edit</a>
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#todo-delete-modal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="font-medium">Verify insurance eligibility</td>
-								<td><span class="badge-soft badge-danger">High</span></td>
-								<td class="u-color-text-tertiary">25 Apr 2025</td>
-								<td><span class="badge-soft badge-success">Completed</span></td>
-								<td class="u-color-text-tertiary">27 Apr 2025</td>
-								<td>
-									<div class="flex items-center gap-2">
-										<div class="relative size-8 shrink-0">
-											<svg class="size-8 -rotate-90" viewBox="0 0 36 36">
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--border-subtle)" stroke-width="3" />
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--color-success-500)" stroke-width="3" stroke-dasharray="70.4 100" stroke-linecap="round" />
-											</svg>
-										</div>
-										<span class="text-[11px] font-semibold">80%</span>
-									</div>
-								</td>
-								<td>
-									<div class="hs-dropdown [--placement:bottom-end] relative">
-										<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
-										<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#todo-edit-modal"><i class="icon-edit text-[13px]"></i>Edit</a>
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#todo-delete-modal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="font-medium">Send lab results to patient portal</td>
-								<td><span class="badge-soft badge-success">Low</span></td>
-								<td class="u-color-text-tertiary">17 Apr 2025</td>
-								<td><span class="badge-soft badge-warning">Pending</span></td>
-								<td class="u-color-text-tertiary">20 Apr 2025</td>
-								<td>
-									<div class="flex items-center gap-2">
-										<div class="relative size-8 shrink-0">
-											<svg class="size-8 -rotate-90" viewBox="0 0 36 36">
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--border-subtle)" stroke-width="3" />
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--color-warning-500)" stroke-width="3" stroke-dasharray="44 100" stroke-linecap="round" />
-											</svg>
-										</div>
-										<span class="text-[11px] font-semibold">50%</span>
-									</div>
-								</td>
-								<td>
-									<div class="hs-dropdown [--placement:bottom-end] relative">
-										<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
-										<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#todo-edit-modal"><i class="icon-edit text-[13px]"></i>Edit</a>
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#todo-delete-modal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="font-medium">Keep tasks clear and specific</td>
-								<td><span class="badge-soft badge-warning">Medium</span></td>
-								<td class="u-color-text-tertiary">01 Mar 2025</td>
-								<td><span class="badge-soft badge-success">Completed</span></td>
-								<td class="u-color-text-tertiary">05 Mar 2025</td>
-								<td>
-									<div class="flex items-center gap-2">
-										<div class="relative size-8 shrink-0">
-											<svg class="size-8 -rotate-90" viewBox="0 0 36 36">
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--border-subtle)" stroke-width="3" />
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--color-success-500)" stroke-width="3" stroke-dasharray="88 100" stroke-linecap="round" />
-											</svg>
-										</div>
-										<span class="text-[11px] font-semibold">100%</span>
-									</div>
-								</td>
-								<td>
-									<div class="hs-dropdown [--placement:bottom-end] relative">
-										<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
-										<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#todo-edit-modal"><i class="icon-edit text-[13px]"></i>Edit</a>
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#todo-delete-modal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="font-medium">Use reminders for anything time</td>
-								<td><span class="badge-soft badge-danger">High</span></td>
-								<td class="u-color-text-tertiary">21 Mar 2025</td>
-								<td><span class="badge-soft badge-info">In Progress</span></td>
-								<td class="u-color-text-tertiary">25 Mar 2025</td>
-								<td>
-									<div class="flex items-center gap-2">
-										<div class="relative size-8 shrink-0">
-											<svg class="size-8 -rotate-90" viewBox="0 0 36 36">
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--border-subtle)" stroke-width="3" />
-												<circle cx="18" cy="18" r="14" fill="none" stroke="var(--color-warning-500)" stroke-width="3" stroke-dasharray="35.2 100" stroke-linecap="round" />
-											</svg>
-										</div>
-										<span class="text-[11px] font-semibold">40%</span>
-									</div>
-								</td>
-								<td>
-									<div class="hs-dropdown [--placement:bottom-end] relative">
-										<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
-										<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#todo-edit-modal"><i class="icon-edit text-[13px]"></i>Edit</a>
-											<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#todo-delete-modal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
-				<!-- Pagination -->
-				<div class="flex flex-wrap items-center justify-between gap-3 p-3.5 border-t u-border-color-border-subtle">
-					<div class="flex items-center gap-2">
-						<span class="text-[12px] u-color-text-tertiary">Showing</span>
-						<select class="py-1.5 px-2.5 rounded-lg text-[12px] outline-none w-24 u-background-surface-sunken_border-1px-solid-border-subtle">
-							<option>10 / Page</option>
-							<option>25 / Page</option>
-							<option>50 / Page</option>
-							<option>100 / Page</option>
-						</select>
-					</div>
-					<div class="flex items-center gap-1">
-						<button type="button" class="grid place-items-center size-8 rounded-lg text-[12px] font-semibold u-background-color-primary-600_color-fff">1</button>
-						<button type="button" class="header-icon-btn !size-8 text-[12px] font-semibold">2</button>
-						<button type="button" class="header-icon-btn !size-8 text-[12px] font-semibold">3</button>
-						<button type="button" class="header-icon-btn !size-8" aria-label="Previous"><i class="icon-chevron-left text-[14px]"></i></button>
-						<button type="button" class="header-icon-btn !size-8" aria-label="Next"><i class="icon-chevron-right text-[14px]"></i></button>
-					</div>
-				</div>
-			</div>
-
+		<div class="card p-4">
+			<p class="text-xl font-bold text-amber-600">4</p>
+			<p class="text-xs text-gray-500 dark:text-gray-400">Pending</p>
 		</div>
-
+		<div class="card p-4">
+			<p class="text-xl font-bold text-emerald-600">2</p>
+			<p class="text-xs text-gray-500 dark:text-gray-400">Completed</p>
+		</div>
 	</div>
 
-</main>
- <!-- ============ Add Task Modal ============ -->
-    <div id="todo-add-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-300 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
-        <div class="min-h-screen flex items-center justify-center px-4 py-6">
-            <div class="max-w-[560px] w-full mx-auto">
-                <div class="surface-card pointer-events-auto p-5">
-                    <div class="flex items-center justify-between mb-5">
-                        <h2 class="font-display font-bold text-[15px]">Add To Do</h2>
-                        <button type="button" class="header-icon-btn" data-hs-overlay="#todo-add-modal" aria-label="Close"><i class="icon-x text-[16px]"></i></button>
-                    </div>
-                    <form class="space-y-4">
-                        <div>
-                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Title <span class="u-color-color-danger-600">*</span></label>
-                            <input type="text" class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div>
-                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Status <span class="u-color-color-danger-600">*</span></label>
-                                <select class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
-                                    <option>Select</option>
-                                    <option>Pending</option>
-                                    <option>In Progress</option>
-                                    <option>Completed</option>
-                                    <option>On Hold</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Priority <span class="u-color-color-danger-600">*</span></label>
-                                <select class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
-                                    <option>Select</option>
-                                    <option>Low</option>
-                                    <option>Medium</option>
-                                    <option>High</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div>
-                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Created Date <span class="u-color-color-danger-600">*</span></label>
-                                <app-datepicker/>
-                            </div>
-                            <div>
-                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Due Date <span class="u-color-color-danger-600">*</span></label>
-                                <app-datepicker/>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Description</label>
-                            <textarea rows="4" class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none resize-none u-background-surface-sunken_border-1px-solid-border-subtle"></textarea>
-                        </div>
-                        <div>
-                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Select Assignee <span class="u-color-color-danger-600">*</span></label>
-                            <select class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
-                                <option>Select</option>
-                                <option>Alexander Kenn</option>
-                                <option>Gabriella White</option>
-                                <option>Christopher Rey</option>
-                                <option>Penelope Ton</option>
-                            </select>
-                        </div>
-
-                        <div class="flex items-center justify-between gap-3 mt-5">
-                            <button type="button" class="btn btn-outline !text-[12.5px]" data-hs-overlay="#todo-add-modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary !text-[12.5px]">Create New</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============ Edit Task Modal ============ -->
-    <div id="todo-edit-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-300 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
-        <div class="min-h-screen flex items-center justify-center px-4 py-6">
-            <div class="max-w-[560px] w-full mx-auto">
-                <div class="surface-card pointer-events-auto p-5">
-                    <div class="flex items-center justify-between mb-5">
-                        <h2 class="font-display font-bold text-[15px]">Edit To Do</h2>
-                        <button type="button" class="header-icon-btn" data-hs-overlay="#todo-edit-modal" aria-label="Close"><i class="icon-x text-[16px]"></i></button>
-                    </div>
-                    <form class="space-y-4">
-                        <div>
-                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Title <span class="u-color-color-danger-600">*</span></label>
-                            <input type="text" class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle" value="Update calendar and schedule">
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div>
-                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Status <span class="u-color-color-danger-600">*</span></label>
-                                <select class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
-                                    <option>Select</option>
-                                    <option selected>Pending</option>
-                                    <option>In Progress</option>
-                                    <option>Completed</option>
-                                    <option>On Hold</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Priority <span class="u-color-color-danger-600">*</span></label>
-                                <select class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
-                                    <option>Select</option>
-                                    <option>Low</option>
-                                    <option>Medium</option>
-                                    <option selected>High</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div>
-                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Created Date <span class="u-color-color-danger-600">*</span></label>
-                                <app-datepicker/>
-                            </div>
-                            <div>
-                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Due Date <span class="u-color-color-danger-600">*</span></label>
-                                <app-datepicker/>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Description</label>
-                            <textarea rows="4" class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none resize-none u-background-surface-sunken_border-1px-solid-border-subtle">Research modern design patterns</textarea>
-                        </div>
-                        <div>
-                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Select Assignee <span class="u-color-color-danger-600">*</span></label>
-                            <select class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
-                                <option>Select</option>
-                                <option selected>Alexander Kenn</option>
-                                <option>Gabriella White</option>
-                                <option>Christopher Rey</option>
-                                <option>Penelope Ton</option>
-                            </select>
-                        </div>
-
-                        <div class="flex items-center justify-between gap-3 mt-5">
-                            <button type="button" class="btn btn-outline !text-[12.5px]" data-hs-overlay="#todo-edit-modal">
-                                <i class="icon-x text-[13px]"></i>Cancel
-                            </button>
-                            <button type="submit" class="btn btn-primary !text-[12.5px]">
-                                <i class="icon-check text-[13px]"></i>Save Changes
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============ Delete Confirmation Modal ============ -->
-    <div id="todo-delete-modal" class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
-        <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-sm sm:w-full m-3 max-w-[300px]! mx-auto pointer-events-auto min-h-screen flex items-center justify-center">
-            <div class="surface-card p-6 flex flex-col">
-                <div class="size-10 rounded-xl flex items-center justify-center mx-auto u-background-color-danger-100">
-                    <i class="icon-trash-2 text-[18px] u-color-color-danger-600"></i>
-                </div>
-                <div class="my-5 text-center">
-                    <p class="font-display font-bold text-[14px] mb-1">Delete Confirmation</p>
-                    <p class="text-[12.5px] u-color-text-tertiary">Are you sure you want to delete this task?</p>
-                </div>
-                <div class="flex flex-col gap-2">
-                    <button type="button" id="todo-delete-confirm-btn" class="btn !text-[12.5px] w-full u-background-color-danger-600_color-fff">Yes, Delete</button>
-                    <button type="button" class="btn btn-outline !text-[12.5px] w-full" data-hs-overlay="#todo-delete-modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="card" data-aos="fade-up" data-aos-delay="60">
+		<div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+			<span class="text-sm font-semibold text-gray-900 dark:text-white">All Tasks</span>
+			<span class="text-xs text-gray-400 ml-auto">6 of 6</span>
+		</div>
+		<div class="divide-y divide-border-color">
+			<div class="flex items-center gap-3 p-4">
+				<span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center border-gray-300 dark:border-slate-600"></span>
+				<div class="min-w-0 flex-1">
+					<p class="text-sm font-medium text-gray-900 truncate">Review ICU shift roster</p>
+					<p class="text-xs text-gray-400 truncate">Confirm staffing levels for the weekend.</p>
+				</div>
+				<span class="text-xs text-gray-400 shrink-0 hidden sm:inline">20-08-2026</span>
+				<span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-red-600 bg-red-50 dark:bg-red-900/20">High</span>
+			</div>
+			<div class="flex items-center gap-3 p-4">
+				<span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center border-gray-300 dark:border-slate-600"></span>
+				<div class="min-w-0 flex-1">
+					<p class="text-sm font-medium text-gray-900 truncate">Approve pharmacy purchase order</p>
+				</div>
+				<span class="text-xs text-gray-400 shrink-0 hidden sm:inline">21-08-2026</span>
+				<span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-amber-600 bg-amber-50 dark:bg-amber-900/20">Medium</span>
+			</div>
+			<div class="flex items-center gap-3 p-4">
+				<span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center border-gray-300 dark:border-slate-600"></span>
+				<div class="min-w-0 flex-1">
+					<p class="text-sm font-medium text-gray-900 truncate">Submit monthly compliance report</p>
+				</div>
+				<span class="text-xs text-gray-400 shrink-0 hidden sm:inline">22-08-2026</span>
+				<span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-red-600 bg-red-50 dark:bg-red-900/20">High</span>
+			</div>
+			<div class="flex items-center gap-3 p-4">
+				<span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center bg-primary border-primary text-white"><i class="icon-check text-[10px]"></i></span>
+				<div class="min-w-0 flex-1">
+					<p class="text-sm font-medium line-through text-gray-400 truncate">Update patient discharge template</p>
+				</div>
+				<span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-blue-600 bg-blue-50 dark:bg-blue-900/20">Low</span>
+			</div>
+			<div class="flex items-center gap-3 p-4">
+				<span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center border-gray-300 dark:border-slate-600"></span>
+				<div class="min-w-0 flex-1">
+					<p class="text-sm font-medium text-gray-900 truncate">Schedule CPR refresher training</p>
+					<p class="text-xs text-gray-400 truncate">Book training room B.</p>
+				</div>
+				<span class="text-xs text-gray-400 shrink-0 hidden sm:inline">25-08-2026</span>
+				<span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-amber-600 bg-amber-50 dark:bg-amber-900/20">Medium</span>
+			</div>
+			<div class="flex items-center gap-3 p-4">
+				<span class="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center bg-primary border-primary text-white"><i class="icon-check text-[10px]"></i></span>
+				<div class="min-w-0 flex-1">
+					<p class="text-sm font-medium line-through text-gray-400 truncate">Reconcile petty cash for August</p>
+				</div>
+				<span class="text-[11px] font-semibold px-2 py-1 rounded-full shrink-0 text-blue-600 bg-blue-50 dark:bg-blue-900/20">Low</span>
+			</div>
+		</div>
+	</div>
+</div>

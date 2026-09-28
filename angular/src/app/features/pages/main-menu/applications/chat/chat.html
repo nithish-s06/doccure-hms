@@ -1,438 +1,56 @@
-<main class="p-4 lg:p-6 space-y-6 max-w-full mx-auto w-full">
+<div class="max-w-7xl mx-auto space-y-5">
+	<nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+		<ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+			<li><a href="index.html" class="hover:text-primary transition-colors">Dashboard</a></li>
+			<li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
 
-	<!-- ============ Page Title Area ============ -->
-	<div class="flex flex-wrap items-center justify-between gap-3">
-		<h1 class="font-display font-bold text-[21px]">Chat</h1>
-	</div>
+			<li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Chat</li>
+		</ol>
+	</nav>
 
-	<!-- ============ Chat ============ -->
-	<div class="chat-wrapper flex gap-6 w-full relative">
-
-		<!-- Chats sidebar -->
-		<div class="sidebar-group surface-card !p-0 w-full xl:w-[340px]! shrink-0 chat-user-nav">
-			<div id="chats" class="sidebar-content active overflow-x-hidden" data-simplebar>
-				<div class="w-full xl:w-[340px]! overflow-x-hidden" data-simplebar>
-					<div class="chat-search-header p-5 border-b border-color-subtle">
-						<div class="header-title flex items-center justify-between mb-3">
-							<h2 class="mb-0 text-[16px] font-display font-bold">Chats</h2>
-							<button type="button" class="header-icon-btn !size-8 !rounded-full" aria-label="New chat"><i class="icon-square-pen text-[14px]"></i></button>
-						</div>
-						<!-- Chat Search -->
-						<div class="search-wrap">
-							<form>
-								<div class="relative">
-									<input type="text" name="hs-table-search" id="hs-table-search" class="block w-full py-2 ps-8 pe-3 rounded-full text-[12.5px]! outline-none bg-sunken-bordered" placeholder="Search Agents">
-									<div class="absolute top-1/2 start-3 -translate-y-1/2 pointer-events-none flex">
-										<i class="icon-search text-[13px] text-tertiary"></i>
-									</div>
-								</div>
-							</form>
-						</div>
-						<!-- /Chat Search -->
-						<div class="flex items-center gap-1.5 mt-3.5">
-							<button type="button" class="px-3 py-1.5 rounded-full text-[11px] font-semibold text-white u-background-color-primary-600">All</button>
-							<button type="button" class="px-3 py-1.5 rounded-full text-[11px] font-medium bg-sunken-bordered text-secondary">Unread</button>
-							<button type="button" class="px-3 py-1.5 rounded-full text-[11px] font-medium bg-sunken-bordered text-secondary">Groups</button>
-						</div>
-					</div>
-
-					<!-- Start Users -->
-					<div class="sidebar-body chat-body p-4 sm:p-5" id="chatsidebar">
-						<div class="chat-users-wrap flex flex-col gap-2">
-
-							<!-- User Item 1 -->
-							<div class="user-item flex items-center gap-3 p-3 rounded-xl is-interactive w-full bg-[var(--surface-sunken)] [box-shadow:inset_2px_0_0_var(--color-primary-600)]">
-								<div class="relative shrink-0">
-									<img src="assets/img/avatar/avatar-02.jpg" alt="Jack Michalak" class="w-10 h-10 rounded-full object-cover ring-2 [--tw-ring-color:var(--surface-card)]">
-									<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 u-background-color-success-500_border-color-surface-card"></span>
-								</div>
-								<div class="flex justify-between items-center w-full">
-									<div class="items-baseline">
-										<h3 class="text-sm font-semibold truncate mb-1">Jack Michalak</h3>
-										<span class="text-[11px] truncate font-medium u-color-color-primary-600">Typing...</span>
-									</div>
-									<div class="items-center text-end">
-										<p class="text-[11px] mb-1 text-tertiary">09:20 AM</p>
-										<span class="flex items-center justify-end text-[12px] text-success-500"><i class="icon-check-check"></i></span>
-									</div>
-								</div>
-							</div>
-
-							<!-- User Item 2 -->
-							<div class="user-item flex items-center gap-3 p-3 rounded-xl is-interactive w-full">
-								<div class="relative shrink-0">
-									<img src="assets/img/avatar/avatar-01.jpg" alt="Lara Curtin" class="w-10 h-10 rounded-full object-cover">
-									<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 u-background-color-danger-500_border-color-surface-card"></span>
-								</div>
-								<div class="flex justify-between items-center w-full">
-									<div class="items-baseline">
-										<h3 class="text-sm font-medium truncate mb-1">Lara Curtin</h3>
-										<span class="text-[11px] truncate text-tertiary">Awesome, thanks!</span>
-									</div>
-									<div class="text-end">
-										<p class="text-[11px] mb-1 text-tertiary">5 mins ago</p>
-										<div class="flex items-center justify-center w-4 h-4 ml-auto rounded-full text-white text-[10px] font-medium leading-0 bg-[var(--text-primary)]">
-											2
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- User Item 3 -->
-							<div class="user-item flex items-center gap-3 p-3 rounded-xl is-interactive w-full">
-								<div class="relative shrink-0">
-									<img src="assets/img/avatar/avatar-03.jpg" alt="Brian Fulton" class="w-10 h-10 rounded-full object-cover">
-									<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 u-background-color-success-500_border-color-surface-card"></span>
-								</div>
-								<div class="flex justify-between items-center w-full">
-									<div class="items-baseline">
-										<h3 class="text-sm font-medium truncate mb-1">Brian Fulton</h3>
-										<span class="text-[11px] truncate flex items-center text-tertiary"> <i class="icon-image me-1 text-sm"></i> Image</span>
-									</div>
-									<div class="text-end">
-										<p class="text-[11px] mb-1 text-tertiary">5 mins ago</p>
-										<span class="flex items-center justify-end text-[12px] text-tertiary"><i class="icon-check"></i></span>
-									</div>
-								</div>
-							</div>
-
-							<!-- User Item 4 -->
-							<div class="user-item flex items-center gap-3 p-3 rounded-xl is-interactive w-full">
-								<div class="relative shrink-0">
-									<img src="assets/img/avatar/avatar-04.jpg" alt="Trudy Heintz" class="w-10 h-10 rounded-full object-cover">
-									<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 u-background-color-success-500_border-color-surface-card"></span>
-								</div>
-								<div class="flex justify-between items-start w-full">
-									<div class="items-baseline">
-										<h3 class="text-sm font-medium truncate mb-1">Trudy Heintz</h3>
-										<span class="text-[11px] truncate flex items-center text-tertiary"> <i class="icon-phone-missed me-1 text-sm"></i> Missed Call</span>
-									</div>
-									<div class="text-end">
-										<p class="text-[11px] mb-0 text-tertiary">10 mins ago</p>
-									</div>
-								</div>
-							</div>
-
-							<!-- User Item 5 -->
-							<div class="user-item flex items-center gap-3 p-3 rounded-xl is-interactive w-full">
-								<div class="relative shrink-0">
-									<img src="assets/img/avatar/avatar-06.jpg" alt="Roger Tucker" class="w-10 h-10 rounded-full object-cover">
-									<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 u-background-color-success-500_border-color-surface-card"></span>
-								</div>
-								<div class="flex justify-between items-start w-full">
-									<div class="items-baseline">
-										<h3 class="text-sm font-medium truncate mb-1">Roger Tucker</h3>
-										<span class="text-[11px] truncate flex items-center text-tertiary"> Pease check the design..</span>
-									</div>
-									<div class="text-end">
-										<p class="text-[11px] mb-0 text-tertiary">yesterday</p>
-										<span class="flex items-center justify-end text-[12px] text-success-500"><i class="icon-check-check"></i></span>
-									</div>
-								</div>
-							</div>
-
-							<!-- User Item 6 -->
-							<div class="user-item flex items-center gap-3 p-3 rounded-xl is-interactive w-full">
-								<div class="relative shrink-0">
-									<img src="assets/img/avatar/avatar-05.jpg" alt="Leona Daniels" class="w-10 h-10 rounded-full object-cover">
-									<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 u-background-color-success-500_border-color-surface-card"></span>
-								</div>
-								<div class="flex justify-between items-start w-full">
-									<div class="items-baseline">
-										<h3 class="text-sm font-medium truncate mb-1">Leona Daniels</h3>
-										<span class="text-[11px] truncate flex items-center text-tertiary"> <i class="icon-phone-missed me-1 text-sm"></i> Missed Call</span>
-									</div>
-									<div class="text-end">
-										<p class="text-[11px] mb-0 text-tertiary">yesterday</p>
-										<span class="flex items-center justify-end text-[12px] text-success-500"><i class="icon-check-check"></i></span>
-									</div>
-								</div>
-							</div>
-
-							<!-- User Item 7 -->
-							<div class="user-item flex items-center gap-3 p-3 rounded-xl is-interactive w-full">
-								<div class="relative shrink-0">
-									<img src="assets/img/avatar/avatar-07.jpg" alt="William Bailey" class="w-10 h-10 rounded-full object-cover">
-									<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 u-background-color-danger-500_border-color-surface-card"></span>
-								</div>
-								<div class="flex justify-between items-start w-full">
-									<div class="items-baseline">
-										<h3 class="text-sm font-medium truncate mb-1">William Bailey</h3>
-										<span class="text-[11px] truncate flex items-center text-tertiary"> Shall I submit tomorrow...</span>
-									</div>
-									<div class="text-end">
-										<p class="text-[11px] mb-0 text-tertiary">12 Jan2026</p>
-										<span class="flex items-center justify-end text-[12px] text-success-500"><i class="icon-check-check"></i></span>
-									</div>
-								</div>
-							</div>
-
-							<!-- User Item 8 -->
-							<div class="user-item flex items-center gap-3 p-3 rounded-xl is-interactive w-full">
-								<div class="relative shrink-0">
-									<img src="assets/img/avatar/avatar-08.jpg" alt="Doris Hiller" class="w-10 h-10 rounded-full object-cover">
-									<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 u-background-color-success-500_border-color-surface-card"></span>
-								</div>
-								<div class="flex justify-between items-start w-full">
-									<div class="items-baseline">
-										<h3 class="text-sm font-medium truncate mb-1">Doris Hiller</h3>
-										<span class="text-[11px] truncate flex items-center text-tertiary"><i class="icon-phone-missed me-1 text-sm"></i>Audio Call</span>
-									</div>
-									<div class="text-end">
-										<p class="text-[11px] mb-0 text-tertiary">12 Jan2026</p>
-										<span class="flex items-center justify-end text-[12px] text-success-500"><i class="icon-check-check"></i></span>
-									</div>
-								</div>
-							</div>
-
-							<!-- User Item 9 -->
-							<div class="user-item flex items-center gap-3 p-3 rounded-xl is-interactive w-full">
-								<div class="relative shrink-0">
-									<img src="assets/img/avatar/avatar-09.jpg" alt="Frank Hidalgo" class="w-10 h-10 rounded-full object-cover">
-									<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 bg-[var(--color-warning-500)] border-[var(--surface-card)]"></span>
-								</div>
-								<div class="flex justify-between items-start w-full">
-									<div class="items-baseline">
-										<h3 class="text-sm font-medium truncate mb-1">Frank Hidalgo</h3>
-										<span class="text-[11px] truncate flex items-center text-tertiary"> Complete the pages...</span>
-									</div>
-									<div class="text-end">
-										<p class="text-[11px] mb-0 text-tertiary">11 Jan2026</p>
-										<span class="flex items-center justify-end text-[12px] text-success-500"><i class="icon-check-check"></i></span>
-									</div>
-								</div>
-							</div>
-
-							<!-- User Item 10 -->
-							<div class="user-item flex items-center gap-3 p-3 rounded-xl is-interactive w-full">
-								<div class="relative shrink-0">
-									<img src="assets/img/avatar/avatar-10.jpg" alt="Allison Mayne" class="w-10 h-10 rounded-full object-cover">
-									<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 u-background-color-danger-500_border-color-surface-card"></span>
-								</div>
-								<div class="flex justify-between items-start w-full">
-									<div class="items-baseline">
-										<h3 class="text-sm font-medium truncate mb-1">Allison Mayne</h3>
-										<span class="text-[11px] truncate flex items-center text-tertiary"><i class="icon-mic me-1 text-sm"></i>Audio</span>
-									</div>
-									<div class="text-end">
-										<p class="text-[11px] mb-0 text-tertiary">10 Jan2026</p>
-										<span class="flex items-center justify-end text-[12px] text-success-500"><i class="icon-check-check"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End Users -->
-				</div>
-			</div>
-		</div>
-		<!-- / Chats sidebar -->
-
-		<!-- Start Chat -->
-		<div class="chat chat-messages hide-chatbar show surface-card !p-0 w-full" id="middle">
+	<div class="flex items-center justify-between" data-aos="fade-up">
 		<div>
-			<!-- Chat Header -->
-			<div class="chat-header border-b p-5 border-color-subtle">
-					<div class="px-4 py-3 rounded-sm md:rounded-full flex flex-wrap gap-3 items-center justify-between bg-sunken-bordered">
-						<div class="user-details flex items-center gap-3">
-							<div class="xl:hidden block">
-								<a class="chat-close text-tertiary" href="javascript:void(0);" aria-label="Back">
-									<i class="icon-arrow-left"></i>
-								</a>
-							</div>
-							<div class="flex items-center gap-3">
-								<div class="relative shrink-0">
-									<img src="assets/img/avatar/avatar-02.jpg" alt="Jack Michalak" class="w-10 h-10 rounded-full object-cover">
-									<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 u-background-color-success-500_border-color-surface-card"></span>
-								</div>
-								<div class="flex flex-col justify-center w-full gap-0.5">
-									<h4 class="text-[15px] font-display font-bold truncate mb-0 leading-tight">Jack Michalak</h4>
-									<span class="text-[11px] flex items-center gap-1.5 text-tertiary"><span class="w-1.5 h-1.5 rounded-full block bg-success-500"></span> Online</span>
-								</div>
-							</div>
-						</div>
-						<div class="chat-options flex items-center gap-2">
-							<a [routerLink]="AllRoutes.voiceCall" class="header-icon-btn !size-8 !rounded-full" aria-label="Voice call"><i class="icon-phone text-[14px]"></i></a>
-							<a [routerLink]="AllRoutes.videoCall" class="header-icon-btn !size-8 !rounded-full" aria-label="Video call"><i class="icon-video text-[14px]"></i></a>
-							<button type="button" class="header-icon-btn !size-8 !rounded-full" aria-label="Search in chat"><i class="icon-search text-[13px]"></i></button>
-							<!-- Drop Down -->
-							<div class="hs-dropdown [--placement:bottom-end] relative">
-								<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8 !rounded-full" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-ellipsis-vertical text-[15px]"></i></button>
-								<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-52 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-									<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]"><i class="icon-volume-off text-[13px]"></i>Muted Notification</a>
-									<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]"><i class="icon-clock text-[13px]"></i>Disappearing Message</a>
-									<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]"><i class="icon-circle-x text-[13px]"></i>Clear Message</a>
-									<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-confirm-delete-trigger data-delete-title="Delete this chat?" data-delete-message="This will permanently delete your conversation with Jack Michalak. This action cannot be undone."><i class="icon-trash-2 text-[13px]"></i>Delete Chat</a>
-									<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] text-danger-600"><i class="icon-blocks text-[13px]"></i>Block</a>
-								</div>
-							</div>
-						</div>
+			<h1 class="text-2xl font-bold text-gray-900">Chat</h1>
+			<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Message doctors, nurses and staff in real time.</p>
+		</div>
+	</div>
+
+	<div class="card overflow-hidden" data-aos="fade-up" data-aos-delay="50">
+		<div class="flex h-[70vh] min-h-[520px]">
+			<!-- Contact list -->
+			<div class="w-full sm:w-72 shrink-0 border-r border-border-color flex flex-col">
+				<div class="p-3 border-b border-border-color">
+					<div class="relative">
+						<i class="icon-search absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400"></i>
+						<input id="chat-contact-search" type="text" autocomplete="off" placeholder="Search contacts..." aria-label="Search contacts" class="w-full pl-9 pr-3 py-2 rounded-full bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100">
 					</div>
+				</div>
+				<div id="chat-contact-list" class="flex-1 overflow-y-auto">
+					<div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color bg-primary/5"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-01.jpg" alt="Dr. Jack Michalak" class="w-10 h-10 rounded-full object-cover"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800"></span></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Dr. Jack Michalak</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Sounds good. Let me know if you have questions.</span></span></div>
+					<div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-03.jpg" alt="Nurse Lara Curtin" class="w-10 h-10 rounded-full object-cover"></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Nurse Lara Curtin</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Awesome, thanks!</span></span></div>
+					<div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-25.jpg" alt="Dr. Brian Fulton" class="w-10 h-10 rounded-full object-cover"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800"></span></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Dr. Brian Fulton</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Sent over the scan images for review.</span></span></div>
+					<div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-20.jpg" alt="Trudy Heintz" class="w-10 h-10 rounded-full object-cover"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800"></span></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Trudy Heintz</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Missed call from you, everything okay?</span></span></div>
+					<div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-29.jpg" alt="Dr. Roger Tucker" class="w-10 h-10 rounded-full object-cover"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800"></span></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Dr. Roger Tucker</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Checked, looks good. Approving now.</span></span></div>
+					<div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-23.jpg" alt="Leona Daniels" class="w-10 h-10 rounded-full object-cover"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800"></span></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Leona Daniels</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Stock for amoxicillin is low.</span></span></div>
+					<div class="chat-contact-item w-full text-left flex items-center gap-3 p-3 border-b border-border-color"><span class="relative shrink-0"><img src="assets/img/avatar/avatar-24.jpg" alt="Dr. William Bailey" class="w-10 h-10 rounded-full object-cover"></span><span class="min-w-0 flex-1"><span class="flex items-center justify-between gap-2"><span class="text-sm font-semibold text-gray-900 truncate">Dr. William Bailey</span></span><span class="block text-xs text-gray-500 dark:text-gray-400 truncate">Shall I submit the surgery report tomorrow?</span></span></div>
+					<p id="chat-contact-empty" class="hidden text-center text-xs text-gray-400 py-6">No contacts found.</p>
+				</div>
 			</div>
-				<!-- Chat Body -->
-			<div class="chat-body chat-page-group p-5" data-simplebar>
-				<div class="messages">
-
-						<!-- Chat Messages left 1 -->
-						<div class="chats flex items-start gap-2 ">
-							<div class="chat-avatar shrink-0">
-								<img src="assets/img/avatar/avatar-02.jpg" alt="Jack Michalak" class="w-8 h-8 rounded-full object-cover shrink-0">
-							</div>
-							<div class="chat-content">
-								<div class="chat-info">
-									<div class="message-content p-3 rounded-2xl rounded-bl-md mb-1.5 text-sm bg-sunken-bordered">
-										Hi John, I wanted to update you on a new company policy regarding remote work.
-									</div>
-									<p class="text-[11px] mb-0 text-tertiary">08:40 PM</p>
-								</div>
-							</div>
-						</div>
-						<!--/Chat Messages left 1 -->
-
-						<!-- Line -->
-						<div class="flex items-center my-6">
-							<div class="flex-grow h-px bg-border-subtle"></div>
-							<span class="flex-none mx-4 px-4 py-1 text-sm font-medium rounded-full bg-[var(--surface-sunken)] text-[var(--text-primary)]">
-								Today
-							</span>
-							<div class="flex-grow h-px bg-border-subtle"></div>
-						</div>
-						<!-- Line -->
-
-						<!-- Chat Messages Right 1 -->
-						<div class="chats chats-right flex items-start justify-end gap-2 mb-6">
-							<div class="chat-content">
-								<div class="chat-info">
-									<div class="message-content p-3 rounded-2xl rounded-br-md mb-1.5 text-sm text-white u-background-color-primary-600">
-										Hi John, I wanted to update you on a new company policy regarding remote work.
-									</div>
-									<p class="text-[11px] mb-0 flex items-center justify-end gap-2 text-tertiary"><i class="icon-check-check text-[11px] text-success-500"></i>09:00 PM</p>
-								</div>
-							</div>
-							<div class="chat-avatar shrink-0">
-								<img src="assets/img/avatar/avatar-01.jpg" alt="Jack Michalak" class="w-8 h-8 rounded-full object-cover shrink-0">
-							</div>
-						</div>
-						<!--/Chat Messages Right 1 -->
-
-						<!-- Chat Messages left 2 -->
-						<div class="chats flex items-start gap-2 mb-6">
-							<div class="chat-avatar shrink-0">
-								<img src="assets/img/avatar/avatar-02.jpg" alt="Jack Michalak" class="w-8 h-8 rounded-full object-cover shrink-0">
-							</div>
-							<div class="chat-content">
-								<div class="chat-info">
-									<div class="message-content p-3 rounded-2xl rounded-bl-md mb-1.5 text-sm bg-sunken-bordered">
-										Oh yeah, I noticed that too. I was thinking of shrinking them a bit.
-									</div>
-									<p class="text-[11px] mb-0 text-tertiary">09:01 AM</p>
-								</div>
-							</div>
-						</div>
-						<!--/Chat Messages left 1 -->
-
-						<!-- Chat Messages Right 2 -->
-						<div class="chats chats-right flex items-start justify-end gap-2 mb-6">
-							<div class="chat-content">
-								<div class="chat-info">
-									<div class="message-content p-3 rounded-2xl rounded-br-md mb-1.5 text-sm text-white u-background-color-primary-600">
-										Good idea. Also, the &ldquo;Export&rdquo; button feels kinda hidden. Maybe make it more visible?
-									</div>
-									<p class="text-[11px] mb-0 flex items-center justify-end gap-2 text-tertiary"><i class="icon-check-check text-[11px] text-success-500"></i>09:03 PM</p>
-								</div>
-							</div>
-							<div class="chat-avatar shrink-0">
-								<img src="assets/img/avatar/avatar-01.jpg" alt="Jack Michalak" class="w-8 h-8 rounded-full object-cover shrink-0 block">
-							</div>
-						</div>
-						<!--/Chat Messages Right 2 -->
-
-						<!-- Chat Messages left 3 -->
-						<div class="chats flex items-start gap-2 mb-6">
-							<div class="chat-avatar shrink-0">
-								<img src="assets/img/avatar/avatar-02.jpg" alt="Jack Michalak" class="w-8 h-8 rounded-full object-cover shrink-0">
-							</div>
-							<div class="chat-content">
-								<div class="chat-info">
-									<div class="message-content p-3 rounded-2xl rounded-bl-md mb-1.5 text-sm bg-sunken-bordered">
-										Agreed. I&rsquo;ll try a brighter color and see how it looks.
-									</div>
-									<p class="text-[11px] mb-0 text-tertiary">09:05 AM</p>
-								</div>
-							</div>
-						</div>
-						<!--/Chat Messages left 3 -->
-
-						<!-- Chat Messages Right 4 -->
-						<div class="chats chats-right flex items-start justify-end gap-2 mb-6">
-							<div class="chat-content">
-								<div class="chat-info">
-									<div class="message-content p-3 rounded-2xl rounded-br-md mb-1.5 text-sm text-white u-background-color-primary-600">
-										Cool. By the way, did you test it on mobile yet?
-									</div>
-									<p class="text-[11px] mb-0 flex items-center justify-end gap-2 text-tertiary"><i class="icon-check-check text-[11px] text-success-500"></i>09:03 PM</p>
-								</div>
-							</div>
-							<div class="chat-avatar shrink-0">
-								<img src="assets/img/avatar/avatar-01.jpg" alt="Jack Michalak" class="w-8 h-8 rounded-full object-cover shrink-0">
-							</div>
-						</div>
-						<!--/Chat Messages Right 4 -->
-
-						<!-- Chat Messages left 4 -->
-						<div class="chats flex items-start gap-2 ">
-							<div class="chat-avatar shrink-0">
-								<img src="assets/img/avatar/avatar-02.jpg" alt="Jack Michalak" class="w-8 h-8 rounded-full object-cover shrink-0">
-							</div>
-							<div class="chat-content">
-								<div class="chat-info">
-									<div class="message-content p-3 rounded-2xl rounded-bl-md mb-1.5 text-sm bg-sunken-bordered">
-										Typing...
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--/Chat Messages left 4 -->
-
+			<!-- Conversation -->
+			<div class="flex-1 flex flex-col min-w-0">
+				<div class="p-4 border-b border-border-color flex items-center gap-3"><img src="assets/img/avatar/avatar-01.jpg" alt="Dr. Jack Michalak" class="w-10 h-10 rounded-full object-cover shrink-0"><span class="min-w-0"><span class="block text-sm font-bold text-gray-900 truncate">Dr. Jack Michalak</span><span class="block text-xs text-gray-500 dark:text-gray-400">Cardiology • Online</span></span></div>
+				<div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50 dark:bg-slate-900/40">
+					<div class="flex justify-start"><div class="max-w-[75%]"><div class="bg-white dark:bg-slate-800 border border-border-color text-sm px-4 py-2.5 rounded-2xl rounded-bl-md text-gray-700 dark:text-gray-200">Hi, I wanted to update you on the new remote-consult policy.</div><p class="text-[11px] text-gray-400 mt-1">08:40 PM</p></div></div>
+					<div class="flex justify-end"><div class="max-w-[75%]"><div class="bg-primary text-white text-sm px-4 py-2.5 rounded-2xl rounded-br-md">Thanks for the heads up, I&#39;ll review it today.</div><p class="text-[11px] text-gray-400 text-right mt-1">09:00 PM</p></div></div>
+					<div class="flex justify-start"><div class="max-w-[75%]"><div class="bg-white dark:bg-slate-800 border border-border-color text-sm px-4 py-2.5 rounded-2xl rounded-bl-md text-gray-700 dark:text-gray-200">Sounds good. Let me know if you have questions.</div><p class="text-[11px] text-gray-400 mt-1">09:01 PM</p></div></div>
+				</div>
+				<div class="p-3 border-t border-border-color flex items-center gap-2">
+					<input aria-label="Type your message here..." type="text" autocomplete="off" placeholder="Type your message here..." class="flex-1 px-4 py-2.5 rounded-full bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900">
+					<button type="button" class="w-10 h-10 shrink-0 flex items-center justify-center rounded-full bg-primary hover:bg-primary-hover text-white">
+						<i class="icon-send text-sm"></i>
+					</button>
 				</div>
 			</div>
 		</div>
-
-		<!-- Start Chat Footer -->
-		<div class="chat-footer px-2 sm:px-5 pb-5">
-			<form class="footer-form mt-6 pt-6 border-t border-color-subtle">
-				<div class="flex items-center w-full p-2 mx-auto rounded-full bg-[var(--surface-card)] border u-border-color-border-subtle">
-						<div class="flex items-center space-x-1 px-0 sm:px-2">
-
-							<div class="hs-dropdown [--placement:bottom-start] relative">
-								<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8 !rounded-full" aria-haspopup="menu" aria-expanded="false" aria-label="More options">
-									<i class="icon-ellipsis-vertical text-[14px]"></i>
-								</button>
-								<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden bottom-full mb-1 w-44 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-									<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]"><i class="icon-camera text-[13px]"></i>Camera</a>
-									<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]"><i class="icon-image text-[13px]"></i>Gallery</a>
-									<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]"><i class="icon-headphones text-[13px]"></i>Audio</a>
-									<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]"><i class="icon-map-pin text-[13px]"></i>Location</a>
-									<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]"><i class="icon-contact text-[13px]"></i>Contact</a>
-								</div>
-							</div>
-							<button type="button" class="header-icon-btn !size-8 !rounded-full" aria-label="Add emoji"><i class="icon-smile text-[14px]"></i></button>
-							<button type="button" class="header-icon-btn !size-8 !rounded-full" aria-label="Microphone"><i class="icon-mic text-[14px]"></i></button>
-						</div>
-						<div class="h-4 w-px mx-2 bg-border-subtle"></div>
-						<input type="text" placeholder="Type your message here..." class="flex-1 bg-transparent border-none focus:ring-0 px-2 outline-none text-[13px] text-primary-c">
-						<button type="button" class="flex items-center justify-center w-8 h-8 text-white rounded-full text-[14px] transition-all ml-2 shrink-0 u-background-color-primary-600" aria-label="Send">
-							<i class="icon-send"></i>
-						</button>
-					</div>
-			</form>
-		</div>
-		<!-- End Chat Footer -->
-
-		</div>
-		<!-- Start Chat -->
-
 	</div>
-	<!-- End Grid -->
-
-</main>
+</div>

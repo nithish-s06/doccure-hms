@@ -47,10 +47,6 @@ export class DataService {
             { menuValue: 'File Manager', route: All_Routes.fileManager, base: 'file-manager' },
             { menuValue: 'Notes', route: All_Routes.notes, base: 'notes' },
             { menuValue: 'To Do', route: All_Routes.todo, base: 'todo' },
-            { menuValue: 'Workflow & Approvals', route: All_Routes.workflowApprovals, base: 'workflow-approvals' },
-            { menuValue: 'Workflow Requests', route: All_Routes.workflowRequests, base: 'workflow-requests' },
-            { menuValue: 'Workflow Actions', route: All_Routes.workflowActions, base: 'workflow-actions' },
-            { menuValue: 'Approval Levels', route: All_Routes.workflowApprovalLevels, base: 'workflow-approval-levels' },
           ],
         },
         {

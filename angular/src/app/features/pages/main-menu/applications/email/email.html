@@ -1,281 +1,43 @@
+<div class="max-w-7xl mx-auto space-y-5">
+		<nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+		<ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+			<li><a href="index.html" class="hover:text-primary transition-colors">Dashboard</a></li>
+			<li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
 
-<main class="p-4 lg:p-6 space-y-6 max-w-full mx-auto w-full">
+			<li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Email</li>
+		</ol>
+	</nav>
 
-	<!-- ============ Page Title Area ============ -->
-	<div class="flex flex-wrap items-start justify-between gap-4">
-		<div>
-			<h1 id="emailFolderTitle" class="font-display font-bold text-[21px]">Inbox</h1>
-			<p id="emailFolderSubtitle" class="text-[12.5px] mt-1 u-color-text-tertiary">6 unread messages in your inbox</p>
-		</div>
-		<div class="flex flex-wrap items-center gap-2">
-			<a [routerLink]="AllRoutes.emailCompose" class="btn btn-primary !text-[12.5px]">
-				<i class="icon-edit-3 text-[13px]"></i>Compose New
+		<div class="flex items-center justify-between" data-aos="fade-up">
+			<div>
+				<h1 class="text-2xl font-bold text-gray-900">Email</h1>
+				<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Inbox for hospital correspondence.</p>
+			</div>
+			<a href="email-compose.html" class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+				<i class="icon-square-pen"></i>
+				Compose
 			</a>
 		</div>
-	</div>
 
-	<div class="grid grid-cols-1 xl:grid-cols-12 gap-4 w-full items-start">
-
-		<!-- ============ Folder Sidebar ============ -->
-		<div class="xl:col-span-3">
-			<div class="surface-card p-4">
-				<div class="mb-4">
-					<p class="text-[11.5px] font-semibold uppercase tracking-wide mb-2 u-color-text-tertiary">Mail</p>
-					<div class="space-y-1">
-						<a href="javascript:void(0);" data-email-folder-tab data-folder="Inbox" class="email-folder-tab is-active flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-[12.5px]">
-							<span class="inline-flex items-center gap-2"><i class="icon-inbox text-[14px]"></i> Inbox</span>
-							<span class="badge-soft badge-danger !text-[10px] !py-0 !px-1.5">6</span>
-						</a>
-						<a href="javascript:void(0);" data-email-folder-tab data-folder="Starred" class="email-folder-tab flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px]"><i class="icon-star text-[14px]"></i> Starred</a>
-						<a href="javascript:void(0);" data-email-folder-tab data-folder="Snoozed" class="email-folder-tab flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px]"><i class="icon-alarm-clock text-[14px]"></i> Snoozed</a>
-						<a href="javascript:void(0);" data-email-folder-tab data-folder="Sent" class="email-folder-tab flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px]"><i class="icon-send text-[14px]"></i> Sent</a>
-						<a href="javascript:void(0);" data-email-folder-tab data-folder="Drafts" class="email-folder-tab flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px]"><i class="icon-edit-3 text-[14px]"></i> Drafts</a>
-						<a href="javascript:void(0);" data-email-folder-tab data-folder="Important" class="email-folder-tab flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px]"><i class="icon-flag text-[14px]"></i> Important</a>
-						<a href="javascript:void(0);" data-email-folder-tab data-folder="Chats" class="email-folder-tab flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px]"><i class="icon-message-circle text-[14px]"></i> Chats</a>
-						<a href="javascript:void(0);" data-email-folder-tab data-folder="Scheduled" class="email-folder-tab flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px]"><i class="icon-clock text-[14px]"></i> Scheduled</a>
-					</div>
+		<div class="card overflow-hidden" data-aos="fade-up" data-aos-delay="50">
+			<div class="flex flex-col sm:flex-row">
+				<div class="sm:w-56 shrink-0 border-b sm:border-b-0 sm:border-r border-border-color p-3 space-y-1" id="email-folders">
+					<button data-folder="inbox" class="email-folder-btn w-full text-left rounded-lg px-3 py-2 text-sm font-semibold flex items-center gap-2 bg-primary/10 text-primary"><i class="icon-inbox"></i>Inbox<span class="ml-auto text-xs" id="email-unread-count"></span></button>
+					<button data-folder="starred" class="email-folder-btn w-full text-left rounded-lg px-3 py-2 text-sm font-medium flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"><i class="icon-star"></i>Starred</button>
+					<button data-folder="sent" class="email-folder-btn w-full text-left rounded-lg px-3 py-2 text-sm font-medium flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"><i class="icon-send"></i>Sent</button>
+					<button data-folder="trash" class="email-folder-btn w-full text-left rounded-lg px-3 py-2 text-sm font-medium flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"><i class="icon-trash-2"></i>Trash</button>
 				</div>
-				<div class="mb-4 pt-3 border-t u-border-color-border-subtle">
-					<p class="text-[11.5px] font-semibold uppercase tracking-wide mb-2 u-color-text-tertiary">Others</p>
-					<div class="space-y-1">
-						<a href="javascript:void(0);" data-email-folder-tab data-folder="All Emails" class="email-folder-tab flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px]"><i class="icon-mail text-[14px]"></i> All Emails</a>
-						<a href="javascript:void(0);" data-email-folder-tab data-folder="Spam" class="email-folder-tab flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px]"><i class="icon-alert-triangle text-[14px]"></i> Spam</a>
-						<a href="javascript:void(0);" data-email-folder-tab data-folder="Trash" class="email-folder-tab flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px]"><i class="icon-trash-2 text-[14px]"></i> Trash</a>
-					</div>
-				</div>
-				<div class="pt-3 border-t u-border-color-border-subtle">
-					<p class="text-[11.5px] font-semibold uppercase tracking-wide mb-2 u-color-text-tertiary">Labels</p>
-					<div class="space-y-1">
-						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-success-500"></span> Personal</a>
-						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-accent-500"></span> Client</a>
-						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-info-500"></span> Marketing</a>
-						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-info-500"></span> Office</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- ============ Email List ============ -->
-		<div class="xl:col-span-9">
-			<div class="surface-card !p-0 overflow-hidden">
-
-				<!-- Toolbar -->
-				<div class="flex flex-wrap items-center justify-between gap-3 p-3.5 border-b u-border-color-border-subtle">
-					<div class="flex items-center gap-2">
-						<label class="inline-flex items-center">
-							<input type="checkbox" id="select-all" class="size-4 rounded u-accent-color-color-primary-600">
-						</label>
-						<button type="button" class="header-icon-btn !size-8" data-email-bulk-action="archive" aria-label="Archive"><i class="icon-archive text-[14px]"></i></button>
-						<button type="button" class="header-icon-btn !size-8" data-hs-overlay="#emailDeleteConfirmModal" aria-label="Delete"><i class="icon-trash-2 text-[14px]"></i></button>
-						<div class="hs-dropdown [--placement:bottom-start] relative">
-							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
-							<div id="emailBulkMenu" class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 hidden transition-[opacity,margin] duration mt-1 w-44 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
-								<button type="button" data-email-bulk-action="unread" class="w-full text-start flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]"><i class="icon-mail text-[13px]"></i>Mark as Unread</button>
-								<button type="button" data-email-bulk-action="read" class="w-full text-start flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]"><i class="icon-mail-open text-[13px]"></i>Mark All Read</button>
-								<button type="button" data-email-bulk-action="spam" class="w-full text-start flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]"><i class="icon-flag text-[13px]"></i>Spam</button>
-								<button type="button" data-hs-overlay="#emailDeleteConfirmModal" class="w-full text-start flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600"><i class="icon-trash-2 text-[13px]"></i>Delete All</button>
-							</div>
+				<div class="flex-1 min-w-0">
+					<div class="p-3 border-b border-border-color flex items-center gap-3">
+						<div class="relative flex-1 max-w-sm">
+							<span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="icon-search text-sm"></i></span>
+							<input aria-label="Search mail..." id="email-search" type="text" placeholder="Search mail..." class="w-full pl-9 pr-3 py-2 rounded-lg bg-gray-50 dark:bg-slate-800 text-sm border border-gray-200 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900">
 						</div>
+						<span class="text-xs text-gray-400 ml-auto" id="email-count"></span>
 					</div>
-					<div class="relative max-w-xs">
-						<i class="icon-search absolute top-1/2 -translate-y-1/2 end-3 text-[13px] u-color-text-tertiary"></i>
-						<input type="text" class="w-full ps-3 pe-8 py-2 text-[12.5px] rounded-lg outline-none u-background-surface-sunken_border-1px-solid-border-subtle" placeholder="Search">
-					</div>
+					<div id="email-list" class="divide-y divide-border-color"></div>
+					<div id="email-empty" class="hidden p-10 text-center text-sm text-gray-400">No messages here.</div>
 				</div>
-
-				<!-- Email list -->
-				<div id="emailListPanel" class="overflow-x-auto scroll-thin">
-					<table id="emailListTable" class="data-table w-full min-w-[720px]">
-						<tbody>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="email-checkbox size-4 rounded u-accent-color-color-primary-600"></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-text-tertiary" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-04.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">Sarah, me <span class="font-normal u-color-text-tertiary">(7)</span></span></td>
-								<td class="max-w-40">
-									<span class="truncate block">
-										<span class="font-semibold">[Reminder] Client Meeting at 3 PM Today</span>
-										<span class="ms-1 u-color-text-tertiary">Hi John, just a quick reminder about our meeting with ABC Corp at 3 PM&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">6:15 PM</td>
-							</tr>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="email-checkbox size-4 rounded u-accent-color-color-primary-600"></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-text-tertiary" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-05.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">Mike, team <span class="font-normal u-color-text-tertiary">(5)</span></span></td>
-								<td class="max-w-40">
-									<span class="truncate block">
-										<span class="font-semibold">Submit Project Proposal</span>
-										<span class="ms-1 u-color-text-tertiary">Hi Team, please ensure that your sections of the project proposal are sub&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">5:00 PM</td>
-							</tr>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="email-checkbox size-4 rounded u-accent-color-color-primary-600"></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-text-tertiary" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-06.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">Anna</span></td>
-								<td class="max-w-40">
-									<span class="truncate flex items-center gap-1">
-										<span class="font-semibold shrink-0">[Team Outing Next Friday]</span>
-										<span class="badge-soft badge-warning !text-[10px] !py-0 !px-1.5 shrink-0">Marketing</span>
-										<span class="truncate u-color-text-tertiary">Hello Everyone, we're planning a team outing next Friday. Please RSVP by&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">1:00 PM</td>
-							</tr>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="email-checkbox size-4 rounded u-accent-color-color-primary-600"></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-color-warning-500" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-07.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">Tom</span></td>
-								<td class="max-w-40">
-									<span class="truncate flex items-center gap-1">
-										<span class="font-semibold shrink-0">[Update] New Design Guidelines Available</span>
-										<span class="badge-soft badge-primary !text-[10px] !py-0 !px-1.5 shrink-0">Client</span>
-										<span class="truncate u-color-text-tertiary">Hi all, the new design guidelines have been finalized and are now available&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">10:30 AM</td>
-							</tr>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="email-checkbox size-4 rounded u-accent-color-color-primary-600"></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-text-tertiary" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-08.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">Lisa</span></td>
-								<td class="max-w-40">
-									<span class="truncate block">
-										<span class="font-semibold">[Event] Webinar on Social Media Strategy</span>
-										<span class="ms-1 u-color-text-tertiary">Don't forget to register for our webinar covering advanced social media stra&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">09:45 AM</td>
-							</tr>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="size-4 rounded u-accent-color-color-primary-600" checked></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-text-tertiary" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-09.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">Jason, me <span class="font-normal u-color-text-tertiary">(9)</span></span></td>
-								<td class="max-w-40">
-									<span class="truncate block">
-										<span class="font-semibold">[Reminder] Sales Targets Review</span>
-										<span class="ms-1 u-color-text-tertiary">Hey Team, please prepare your sales reports for the review meeting schedul&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">Yesterday</td>
-							</tr>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="email-checkbox size-4 rounded u-accent-color-color-primary-600"></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-text-tertiary" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-10.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">Emily</span></td>
-								<td class="max-w-40">
-									<span class="truncate flex items-center gap-1">
-										<span class="font-semibold shrink-0">[Alert] System Maintenance Scheduled</span>
-										<span class="badge-soft badge-neutral !text-[10px] !py-0 !px-1.5 shrink-0">Personal</span>
-										<span class="truncate u-color-text-tertiary">Dear Team, please be aware that there will be system maintenance this Satu&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">Yesterday</td>
-							</tr>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="email-checkbox size-4 rounded u-accent-color-color-primary-600"></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-text-tertiary" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-01.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">Kevin</span></td>
-								<td class="max-w-40">
-									<span class="truncate block">
-										<span class="font-semibold">Expense Reports Due</span>
-										<span class="ms-1 u-color-text-tertiary">Hi everyone, please submit all expense reports for Q3 by the end of this week&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">Yesterday</td>
-							</tr>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="email-checkbox size-4 rounded u-accent-color-color-primary-600"></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-text-tertiary" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-04.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">Rachel</span></td>
-								<td class="max-w-40">
-									<span class="truncate block">
-										<span class="font-semibold">Beta Testing</span>
-										<span class="ms-1 u-color-text-tertiary">Hi Team, your feedback on the latest beta release is crucial. Please complete&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">12 Jul</td>
-							</tr>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="email-checkbox size-4 rounded u-accent-color-color-primary-600"></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-text-tertiary" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-05.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">David</span></td>
-								<td class="max-w-40">
-									<span class="truncate block">
-										<span class="font-semibold">[Reminder] Contract Renewals</span>
-										<span class="ms-1 u-color-text-tertiary">Attention all, please ensure that all contract renewals are reviewed and&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">12 Jul</td>
-							</tr>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="email-checkbox size-4 rounded u-accent-color-color-primary-600"></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-text-tertiary" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-06.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">Nina, me <span class="font-normal u-color-text-tertiary">(9)</span></span></td>
-								<td class="max-w-40">
-									<span class="truncate block">
-										<span class="font-semibold">[Notice] Policy Changes</span>
-										<span class="ms-1 u-color-text-tertiary">Hello Team, we have implemented some policy changes effective immediately&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">11 Jul</td>
-							</tr>
-							<tr class="cursor-pointer" [routerLink]="AllRoutes.emailView">
-								<td class="w-10"><input type="checkbox" class="email-checkbox size-4 rounded u-accent-color-color-primary-600"></td>
-								<td class="w-8"><button type="button" class="size-6 inline-flex items-center justify-center fav-icon cursor-pointer u-color-text-tertiary" aria-label="Favorite"><i class="icon-star text-[14px]"></i></button></td>
-								<td class="w-8"><span class="grid place-items-center size-7 rounded-full overflow-hidden shrink-0"><img src="assets/img/avatar/avatar-07.jpg" class="w-full h-full object-cover" alt="user"></span></td>
-								<td class="w-28"><span class="font-semibold truncate">Mark</span></td>
-								<td class="max-w-40">
-									<span class="truncate block">
-										<span class="font-semibold">[Action Needed] Inventory Assessment</span>
-										<span class="ms-1 u-color-text-tertiary">Team, an inventory assessment is required before our next shipment. Please&hellip;</span>
-									</span>
-								</td>
-								<td class="w-20 text-end whitespace-nowrap text-[11px] u-color-text-tertiary">11 Jul</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
-				<!-- Empty state (shown for folders with no demo data) -->
-				<div id="emailFolderEmptyState" class="hidden flex flex-col items-center justify-center text-center py-16 px-4">
-					<span class="grid place-items-center size-14 rounded-full mb-3 u-background-surface-sunken text-[var(--text-tertiary)]"><i class="icon-inbox text-[22px]"></i></span>
-					<p class="font-display font-bold text-[14px]">No emails here</p>
-					<p id="emailFolderEmptyStateText" class="text-[12.5px] mt-1 u-color-text-tertiary">This folder is empty.</p>
-				</div>
-
 			</div>
 		</div>
-
-	</div>
-
-</main>
-
- <!-- ============ Bulk action toast ============ -->
-    <div id="emailToast" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-[60] px-4 py-2.5 rounded-lg text-[12.5px] font-semibold u-background-surface-elevated-1f2421_color-fff_box-shadow-0-8p"></div>
-
-    <!-- ============ Delete Email Confirmation Modal ============ -->
-    <div id="emailDeleteConfirmModal" class="hs-overlay ui-modal hidden">
-        <div class="ui-modal-dialog !max-w-[360px] p-6 flex flex-col items-center text-center">
-            <span class="grid place-items-center size-14 rounded-full mb-3 bg-[color-mix(in_oklab,var(--color-danger-500)_15%,transparent)] text-[var(--color-danger-600)]"><i class="icon-trash-2 text-[22px]"></i></span>
-            <p class="font-display font-bold text-[15px]">Delete Email?</p>
-            <p class="text-[12.5px] mt-1.5 u-color-text-tertiary">Selected emails will be permanently removed. This action cannot be undone.</p>
-            <div class="flex items-center gap-3 w-full mt-5">
-                <button type="button" class="btn btn-outline w-full justify-center !text-[12.5px]" data-hs-overlay="#emailDeleteConfirmModal">Cancel</button>
-                <button type="button" id="emailDeleteConfirmBtn" class="btn btn-danger w-full justify-center !text-[12.5px]">Delete</button>
-            </div>
-        </div>
-    </div>
+</div>
