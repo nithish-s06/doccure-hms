@@ -29,14 +29,6 @@ interface ActivityItem {
   text: string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "Executive Command Center
- * (executive-dashboard.html)". The digital twin, pipeline, briefs,
- * capacity, finance, clinical, workforce, projects, risk and calendar
- * panels ship as static HTML on this page, so only the interactive bits
- * are wired here: the intelligence feed (dismiss/clear), the activity
- * category filter, the hero quick actions, and the floating dock.
- */
 @Component({
   imports: [],
   selector: 'app-executive-dashboard',
@@ -97,6 +89,10 @@ export class ExecutiveDashboard implements AfterViewInit, OnDestroy {
     this.wireActivityFilters();
     this.wireHeroActions();
     this.wireDock();
+    this.renderHero();
+    this.renderTwin();
+    this.renderIntel();
+    this.renderActivity();
   }
 
   ngOnDestroy(): void {
@@ -113,7 +109,7 @@ export class ExecutiveDashboard implements AfterViewInit, OnDestroy {
     );
   }
 
-  private toast(message: string): void {
+  public toast(message: string): void {
     this.toastService.show(message, 'success');
   }
 
