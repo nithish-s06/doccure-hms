@@ -1,1 +1,257 @@
-<p>operation-reports works!</p>
+<main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="or-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="or-skeleton" class="space-y-4">
+                            <div class="or-sk h-[150px] radius-override-100"></div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3"><div class="or-sk h-[150px]"></div><div class="or-sk h-[150px]"></div><div class="or-sk h-[150px]"></div><div class="or-sk h-[150px]"></div><div class="or-sk h-[150px]"></div><div class="or-sk h-[150px]"></div></div>
+                            <div class="grid grid-cols-1 xl:grid-cols-3 gap-4"><div class="or-sk h-[300px]"></div><div class="or-sk h-[300px]"></div><div class="or-sk h-[300px]"></div></div>
+                            <div class="grid grid-cols-1 xl:grid-cols-[320px_minmax(0,1fr)] gap-4"><div class="or-sk h-[340px]"></div><div class="or-sk h-[340px]"></div></div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="or-content" class="hidden space-y-4">
+
+                            <!-- ============ 1. HEADER ============ -->
+                            <section class="or-hero p-5 lg:p-6">
+                                <div class="or-hgrid"></div>
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="or-chip bg-[rgba(13,148,136,.18)] text-[#5eead4]"><span class="or-dot or-live bg-[#2dd4bf]"></span> ANALYTICS</span>
+                                            <span class="or-chip bg-[rgba(148,163,184,.14)] text-[#cbd5e1]"><i class="icon-calendar-range text-[11px]"></i> <span id="or-period">This Month · Jul 2026</span></span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-[26px] font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-chart-column text-teal-300"></i> Operation Reports &amp; Analytics</h1>
+                                        <p class="text-sm text-slate-400 mt-1">Surgical performance, OT efficiency, outcomes &amp; trends · <span id="or-clock" class="tabular-nums"></span></p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 justify-end items-center">
+                                        <div class="or-seg" id="or-periodtabs"><button data-pd="week">Week</button><button data-pd="month" class="on">Month</button><button data-pd="quarter">Quarter</button><button data-pd="year">Year</button></div>
+                                        <button data-modal="generate" class="or-btn bg-teal-600 text-white hover:bg-teal-500"><i class="icon-file-chart-column"></i> Generate</button>
+                                        <button data-modal="export" class="or-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    </div>
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
+                                    <div class="or-hbadge"><p class="text-[11px] text-slate-400">Total Surgeries</p><p class="text-xl font-bold text-white" id="or-h-total">1,284</p></div>
+                                    <div class="or-hbadge"><p class="text-[11px] text-slate-400">OT Utilization</p><p class="text-xl font-bold text-sky-300">82%</p></div>
+                                    <div class="or-hbadge"><p class="text-[11px] text-slate-400">Success Rate</p><p class="text-xl font-bold text-emerald-300">96.4%</p></div>
+                                    <div class="or-hbadge"><p class="text-[11px] text-slate-400">Avg Duration</p><p class="text-xl font-bold text-white">124<span class="text-xs text-slate-400"> min</span></p></div>
+                                </div>
+                            </section>
+
+                            <!-- ============ 2. ANALYTICS OVERVIEW ============ -->
+                            <section id="or-overview" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3"><div class="or-stat [--sc:#0d9488]">
+        <div class="flex items-start justify-between">
+            <span class="or-iconbadge w-9 h-9 [color:#0d9488]"><i class="icon-circle-check"></i></span>
+            <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="or-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--or-track)" stroke-width="3.2"/><circle class="bar [--p:96]" cx="18" cy="18" r="15.9" fill="none" stroke="#0d9488" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#0d9488]">96%</span></div>
+        </div>
+        <p class="text-2xl font-bold or-head mt-2">1,284</p>
+        <div class="flex items-center justify-between"><p class="text-[11px] or-mut">Surgeries Completed</p><span class="or-chip [background:color-mix(in_srgb,#15803d_12%,transparent)] [color:#15803d]"><i class="icon-arrow-up-right text-[9px]"></i> +8.2%</span></div>
+        <div class="mt-1.5"><svg class="or-spark w-full h-6" viewBox="0 0 64 22" preserveAspectRatio="none"><defs><linearGradient id="sp0" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0d9488" stop-opacity=".3"/><stop offset="100%" stop-color="#0d9488" stop-opacity="0"/></linearGradient></defs><polygon points="0,22 0,20.5 10.666666666666666,15.364864864864863 21.333333333333332,16.64864864864865 32,10.743243243243244 42.666666666666664,7.662162162162163 53.333333333333336,3.8108108108108105 64,1.5 64,22" fill="url(#sp0)"/><polyline points="0,20.5 10.666666666666666,15.364864864864863 21.333333333333332,16.64864864864865 32,10.743243243243244 42.666666666666664,7.662162162162163 53.333333333333336,3.8108108108108105 64,1.5" fill="none" stroke="#0d9488" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+    </div><div class="or-stat [--sc:#1d4ed8]">
+        <div class="flex items-start justify-between">
+            <span class="or-iconbadge w-9 h-9 [color:#1d4ed8]"><i class="icon-layout-grid"></i></span>
+            <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="or-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--or-track)" stroke-width="3.2"/><circle class="bar [--p:82]" cx="18" cy="18" r="15.9" fill="none" stroke="#1d4ed8" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#1d4ed8]">82%</span></div>
+        </div>
+        <p class="text-2xl font-bold or-head mt-2">82%</p>
+        <div class="flex items-center justify-between"><p class="text-[11px] or-mut">OT Utilization</p><span class="or-chip [background:color-mix(in_srgb,#15803d_12%,transparent)] [color:#15803d]"><i class="icon-arrow-up-right text-[9px]"></i> +3.1%</span></div>
+        <div class="mt-1.5"><svg class="or-spark w-full h-6" viewBox="0 0 64 22" preserveAspectRatio="none"><defs><linearGradient id="sp1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1d4ed8" stop-opacity=".3"/><stop offset="100%" stop-color="#1d4ed8" stop-opacity="0"/></linearGradient></defs><polygon points="0,22 0,20.5 10.666666666666666,15.75 21.333333333333332,11 32,8.625 42.666666666666664,6.25 53.333333333333336,3.875 64,1.5 64,22" fill="url(#sp1)"/><polyline points="0,20.5 10.666666666666666,15.75 21.333333333333332,11 32,8.625 42.666666666666664,6.25 53.333333333333336,3.875 64,1.5" fill="none" stroke="#1d4ed8" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+    </div><div class="or-stat [--sc:#7c3aed]">
+        <div class="flex items-start justify-between">
+            <span class="or-iconbadge w-9 h-9 [color:#7c3aed]"><i class="icon-clock"></i></span>
+            <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="or-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--or-track)" stroke-width="3.2"/><circle class="bar [--p:68]" cx="18" cy="18" r="15.9" fill="none" stroke="#7c3aed" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#7c3aed]">68%</span></div>
+        </div>
+        <p class="text-2xl font-bold or-head mt-2">124m</p>
+        <div class="flex items-center justify-between"><p class="text-[11px] or-mut">Avg Surgery Duration</p><span class="or-chip [background:color-mix(in_srgb,#15803d_12%,transparent)] [color:#15803d]"><i class="icon-arrow-up-right text-[9px]"></i> -6 min</span></div>
+        <div class="mt-1.5"><svg class="or-spark w-full h-6" viewBox="0 0 64 22" preserveAspectRatio="none"><defs><linearGradient id="sp2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7c3aed" stop-opacity=".3"/><stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/></linearGradient></defs><polygon points="0,22 0,1.5 10.666666666666666,6.681818181818182 21.333333333333332,10.136363636363637 32,13.59090909090909 42.666666666666664,17.045454545454547 53.333333333333336,18.772727272727273 64,20.5 64,22" fill="url(#sp2)"/><polyline points="0,1.5 10.666666666666666,6.681818181818182 21.333333333333332,10.136363636363637 32,13.59090909090909 42.666666666666664,17.045454545454547 53.333333333333336,18.772727272727273 64,20.5" fill="none" stroke="#7c3aed" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+    </div><div class="or-stat [--sc:#e06c1f]">
+        <div class="flex items-start justify-between">
+            <span class="or-iconbadge w-9 h-9 [color:#e06c1f]"><i class="icon-siren"></i></span>
+            <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="or-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--or-track)" stroke-width="3.2"/><circle class="bar [--p:38]" cx="18" cy="18" r="15.9" fill="none" stroke="#e06c1f" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#e06c1f]">38%</span></div>
+        </div>
+        <p class="text-2xl font-bold or-head mt-2">168</p>
+        <div class="flex items-center justify-between"><p class="text-[11px] or-mut">Emergency Surgeries</p><span class="or-chip [background:color-mix(in_srgb,#dc2626_12%,transparent)] [color:#dc2626]"><i class="icon-arrow-down-right text-[9px]"></i> +12%</span></div>
+        <div class="mt-1.5"><svg class="or-spark w-full h-6" viewBox="0 0 64 22" preserveAspectRatio="none"><defs><linearGradient id="sp3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e06c1f" stop-opacity=".3"/><stop offset="100%" stop-color="#e06c1f" stop-opacity="0"/></linearGradient></defs><polygon points="0,22 0,20.5 10.666666666666666,16.541666666666668 21.333333333333332,12.583333333333332 32,8.625 42.666666666666664,5.458333333333334 53.333333333333336,3.0833333333333357 64,1.5 64,22" fill="url(#sp3)"/><polyline points="0,20.5 10.666666666666666,16.541666666666668 21.333333333333332,12.583333333333332 32,8.625 42.666666666666664,5.458333333333334 53.333333333333336,3.0833333333333357 64,1.5" fill="none" stroke="#e06c1f" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+    </div><div class="or-stat [--sc:#dc2626]">
+        <div class="flex items-start justify-between">
+            <span class="or-iconbadge w-9 h-9 [color:#dc2626]"><i class="icon-x-circle"></i></span>
+            <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="or-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--or-track)" stroke-width="3.2"/><circle class="bar [--p:36]" cx="18" cy="18" r="15.9" fill="none" stroke="#dc2626" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#dc2626]">36%</span></div>
+        </div>
+        <p class="text-2xl font-bold or-head mt-2">3.6%</p>
+        <div class="flex items-center justify-between"><p class="text-[11px] or-mut">Cancellation Rate</p><span class="or-chip [background:color-mix(in_srgb,#15803d_12%,transparent)] [color:#15803d]"><i class="icon-arrow-up-right text-[9px]"></i> -0.8%</span></div>
+        <div class="mt-1.5"><svg class="or-spark w-full h-6" viewBox="0 0 64 22" preserveAspectRatio="none"><defs><linearGradient id="sp4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dc2626" stop-opacity=".3"/><stop offset="100%" stop-color="#dc2626" stop-opacity="0"/></linearGradient></defs><polygon points="0,22 0,1.5 10.666666666666666,5.299999999999999 21.333333333333332,10.36666666666666 32,14.166666666666671 42.666666666666664,16.700000000000003 53.333333333333336,19.23333333333333 64,20.5 64,22" fill="url(#sp4)"/><polyline points="0,1.5 10.666666666666666,5.299999999999999 21.333333333333332,10.36666666666666 32,14.166666666666671 42.666666666666664,16.700000000000003 53.333333333333336,19.23333333333333 64,20.5" fill="none" stroke="#dc2626" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+    </div><div class="or-stat [--sc:#15803d]">
+        <div class="flex items-start justify-between">
+            <span class="or-iconbadge w-9 h-9 [color:#15803d]"><i class="icon-heart-pulse"></i></span>
+            <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="or-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--or-track)" stroke-width="3.2"/><circle class="bar [--p:97]" cx="18" cy="18" r="15.9" fill="none" stroke="#15803d" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#15803d]">97%</span></div>
+        </div>
+        <p class="text-2xl font-bold or-head mt-2">97.1%</p>
+        <div class="flex items-center justify-between"><p class="text-[11px] or-mut">Recovery Success</p><span class="or-chip [background:color-mix(in_srgb,#15803d_12%,transparent)] [color:#15803d]"><i class="icon-arrow-up-right text-[9px]"></i> +1.4%</span></div>
+        <div class="mt-1.5"><svg class="or-spark w-full h-6" viewBox="0 0 64 22" preserveAspectRatio="none"><defs><linearGradient id="sp5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#15803d" stop-opacity=".3"/><stop offset="100%" stop-color="#15803d" stop-opacity="0"/></linearGradient></defs><polygon points="0,22 0,20.5 10.666666666666666,14.166666666666668 21.333333333333332,14.166666666666668 32,7.833333333333334 42.666666666666664,7.833333333333334 53.333333333333336,1.5 64,1.5 64,22" fill="url(#sp5)"/><polyline points="0,20.5 10.666666666666666,14.166666666666668 21.333333333333332,14.166666666666668 32,7.833333333333334 42.666666666666664,7.833333333333334 53.333333333333336,1.5 64,1.5" fill="none" stroke="#15803d" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+    </div></section>
+
+                            <!-- ============ 3. SURGERY PERFORMANCE ============ -->
+                            <section class="or-card p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                                    <h2 class="text-base font-bold or-head flex items-center gap-2"><i class="icon-chart-bar or-hicon"></i> Surgery Performance</h2>
+                                    <div class="or-seg" id="or-perftabs"><button data-pf="Department" class="on">Department</button><button data-pf="Procedure">Procedure</button><button data-pf="OT Room">OT Room</button><button data-pf="Priority">Priority</button></div>
+                                </div>
+                                <div id="or-perfbars" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3"><div><div class="flex justify-between text-xs mb-1"><span class="font-medium or-head">Cardiac Surgery</span><span class="or-mut">312 · <span class="[color:#15803d]">96%</span></span></div><div class="or-bar"><span class="[width:100%] [background:#dc2626]"></span></div></div><div><div class="flex justify-between text-xs mb-1"><span class="font-medium or-head">Orthopedics</span><span class="or-mut">286 · <span class="[color:#15803d]">97%</span></span></div><div class="or-bar"><span class="[width:92%] [background:#e06c1f]"></span></div></div><div><div class="flex justify-between text-xs mb-1"><span class="font-medium or-head">General Surgery</span><span class="or-mut">264 · <span class="[color:#15803d]">95%</span></span></div><div class="or-bar"><span class="[width:85%] [background:#0f766e]"></span></div></div><div><div class="flex justify-between text-xs mb-1"><span class="font-medium or-head">Neurosurgery</span><span class="or-mut">198 · <span class="[color:#15803d]">94%</span></span></div><div class="or-bar"><span class="[width:63%] [background:#7c3aed]"></span></div></div><div><div class="flex justify-between text-xs mb-1"><span class="font-medium or-head">Pediatric</span><span class="or-mut">124 · <span class="[color:#15803d]">98%</span></span></div><div class="or-bar"><span class="[width:40%] [background:#1d4ed8]"></span></div></div><div><div class="flex justify-between text-xs mb-1"><span class="font-medium or-head">Urology</span><span class="or-mut">100 · <span class="[color:#15803d]">96%</span></span></div><div class="or-bar"><span class="[width:32%] [background:#0e7490]"></span></div></div></div>
+                            </section>
+
+                            <!-- ============ 4+peak. OT UTILIZATION + HEATMAP ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_420px] gap-4">
+                                <section class="or-card p-5">
+                                    <h2 class="text-base font-bold or-head flex items-center gap-2 mb-4"><i class="icon-layout-grid or-hicon"></i> OT Utilization</h2>
+                                    <div id="or-utilcards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"><div class="or-panel p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold or-head">OT-01</span><span class="or-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">86% used</span></div>
+            <div class="or-bar mb-2 [display:flex] [gap:1px] [background:transparent]"><span class="[width:86%] [background:#0d9488]" title="Usage 86%"></span><span class="[width:6%] [background:#94a3b8]" title="Idle 6%"></span><span class="[width:5%] [background:#b7791f]" title="Cleaning 5%"></span><span class="[width:3%] [background:#dc2626]" title="Maintenance 3%"></span></div>
+            <div class="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[10px]"><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#0d9488]"></span>Usage 86%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#94a3b8]"></span>Idle 6%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#b7791f]"></span>Cleaning 5%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#dc2626]"></span>Maintenance 3%</div></div>
+            <p class="text-[10px] or-mut mt-1.5">Peak: 10:00</p>
+        </div><div class="or-panel p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold or-head">OT-02</span><span class="or-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]">78% used</span></div>
+            <div class="or-bar mb-2 [display:flex] [gap:1px] [background:transparent]"><span class="[width:78%] [background:#0d9488]" title="Usage 78%"></span><span class="[width:12%] [background:#94a3b8]" title="Idle 12%"></span><span class="[width:6%] [background:#b7791f]" title="Cleaning 6%"></span><span class="[width:4%] [background:#dc2626]" title="Maintenance 4%"></span></div>
+            <div class="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[10px]"><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#0d9488]"></span>Usage 78%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#94a3b8]"></span>Idle 12%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#b7791f]"></span>Cleaning 6%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#dc2626]"></span>Maintenance 4%</div></div>
+            <p class="text-[10px] or-mut mt-1.5">Peak: 09:00</p>
+        </div><div class="or-panel p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold or-head">OT-03</span><span class="or-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">72% used</span></div>
+            <div class="or-bar mb-2 [display:flex] [gap:1px] [background:transparent]"><span class="[width:72%] [background:#0d9488]" title="Usage 72%"></span><span class="[width:16%] [background:#94a3b8]" title="Idle 16%"></span><span class="[width:8%] [background:#b7791f]" title="Cleaning 8%"></span><span class="[width:4%] [background:#dc2626]" title="Maintenance 4%"></span></div>
+            <div class="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[10px]"><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#0d9488]"></span>Usage 72%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#94a3b8]"></span>Idle 16%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#b7791f]"></span>Cleaning 8%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#dc2626]"></span>Maintenance 4%</div></div>
+            <p class="text-[10px] or-mut mt-1.5">Peak: 14:00</p>
+        </div><div class="or-panel p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold or-head">Cardiac OT</span><span class="or-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">91% used</span></div>
+            <div class="or-bar mb-2 [display:flex] [gap:1px] [background:transparent]"><span class="[width:91%] [background:#0d9488]" title="Usage 91%"></span><span class="[width:3%] [background:#94a3b8]" title="Idle 3%"></span><span class="[width:4%] [background:#b7791f]" title="Cleaning 4%"></span><span class="[width:2%] [background:#dc2626]" title="Maintenance 2%"></span></div>
+            <div class="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[10px]"><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#0d9488]"></span>Usage 91%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#94a3b8]"></span>Idle 3%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#b7791f]"></span>Cleaning 4%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#dc2626]"></span>Maintenance 2%</div></div>
+            <p class="text-[10px] or-mut mt-1.5">Peak: 11:00</p>
+        </div><div class="or-panel p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold or-head">Neuro OT</span><span class="or-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">68% used</span></div>
+            <div class="or-bar mb-2 [display:flex] [gap:1px] [background:transparent]"><span class="[width:68%] [background:#0d9488]" title="Usage 68%"></span><span class="[width:20%] [background:#94a3b8]" title="Idle 20%"></span><span class="[width:7%] [background:#b7791f]" title="Cleaning 7%"></span><span class="[width:5%] [background:#dc2626]" title="Maintenance 5%"></span></div>
+            <div class="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[10px]"><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#0d9488]"></span>Usage 68%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#94a3b8]"></span>Idle 20%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#b7791f]"></span>Cleaning 7%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#dc2626]"></span>Maintenance 5%</div></div>
+            <p class="text-[10px] or-mut mt-1.5">Peak: 10:00</p>
+        </div><div class="or-panel p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold or-head">OT-04</span><span class="or-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]">80% used</span></div>
+            <div class="or-bar mb-2 [display:flex] [gap:1px] [background:transparent]"><span class="[width:80%] [background:#0d9488]" title="Usage 80%"></span><span class="[width:10%] [background:#94a3b8]" title="Idle 10%"></span><span class="[width:6%] [background:#b7791f]" title="Cleaning 6%"></span><span class="[width:4%] [background:#dc2626]" title="Maintenance 4%"></span></div>
+            <div class="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[10px]"><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#0d9488]"></span>Usage 80%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#94a3b8]"></span>Idle 10%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#b7791f]"></span>Cleaning 6%</div><div class="flex items-center gap-1 or-mut"><span class="or-dot [background:#dc2626]"></span>Maintenance 4%</div></div>
+            <p class="text-[10px] or-mut mt-1.5">Peak: 09:00</p>
+        </div></div>
+                                </section>
+                                <section class="or-card p-5">
+                                    <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold or-head flex items-center gap-2"><i class="icon-clock or-hicon"></i> Peak Hours</h2><span class="or-npill">OT load by hour</span></div>
+                                    <div id="or-heatmap"><div class="grid gap-1 [grid-template-columns:34px_repeat(10,1fr)]"><span></span><span class="text-[8px] or-mut text-center">08</span><span class="text-[8px] or-mut text-center">09</span><span class="text-[8px] or-mut text-center">10</span><span class="text-[8px] or-mut text-center">11</span><span class="text-[8px] or-mut text-center">12</span><span class="text-[8px] or-mut text-center">13</span><span class="text-[8px] or-mut text-center">14</span><span class="text-[8px] or-mut text-center">15</span><span class="text-[8px] or-mut text-center">16</span><span class="text-[8px] or-mut text-center">17</span><span class="text-[10px] or-mut flex items-center">Mon</span><div class="or-heat [background:color-mix(in_srgb,#0f766e_70%,transparent)] [color:transparent]" title="Mon 08:00 · 28%">28</div><div class="or-heat [background:color-mix(in_srgb,#b7791f_70%,transparent)] [color:transparent]" title="Mon 09:00 · 52%">52</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Mon 10:00 · 78%">78</div><div class="or-heat [background:color-mix(in_srgb,#dc2626_70%,transparent)] [color:#fff]" title="Mon 11:00 · 88%">88</div><div class="or-heat [background:color-mix(in_srgb,#dc2626_70%,transparent)] [color:#fff]" title="Mon 12:00 · 92%">92</div><div class="or-heat [background:color-mix(in_srgb,#dc2626_70%,transparent)] [color:#fff]" title="Mon 13:00 · 85%">85</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Mon 14:00 · 70%">70</div><div class="or-heat [background:color-mix(in_srgb,#b7791f_70%,transparent)] [color:transparent]" title="Mon 15:00 · 55%">55</div><div class="or-heat [background:color-mix(in_srgb,#0f766e_70%,transparent)] [color:transparent]" title="Mon 16:00 · 38%">38</div><div class="or-heat [background:color-mix(in_srgb,var(--or-track)_100%,transparent)] [color:transparent]" title="Mon 17:00 · 22%">22</div><span class="text-[10px] or-mut flex items-center">Tue</span><div class="or-heat [background:color-mix(in_srgb,#0f766e_70%,transparent)] [color:transparent]" title="Tue 08:00 · 32%">32</div><div class="or-heat [background:color-mix(in_srgb,#b7791f_70%,transparent)] [color:transparent]" title="Tue 09:00 · 58%">58</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Tue 10:00 · 82%">82</div><div class="or-heat [background:color-mix(in_srgb,#dc2626_70%,transparent)] [color:#fff]" title="Tue 11:00 · 90%">90</div><div class="or-heat [background:color-mix(in_srgb,#dc2626_70%,transparent)] [color:#fff]" title="Tue 12:00 · 95%">95</div><div class="or-heat [background:color-mix(in_srgb,#dc2626_70%,transparent)] [color:#fff]" title="Tue 13:00 · 88%">88</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Tue 14:00 · 74%">74</div><div class="or-heat [background:color-mix(in_srgb,#b7791f_70%,transparent)] [color:transparent]" title="Tue 15:00 · 60%">60</div><div class="or-heat [background:color-mix(in_srgb,#0f766e_70%,transparent)] [color:transparent]" title="Tue 16:00 · 42%">42</div><div class="or-heat [background:color-mix(in_srgb,#0f766e_70%,transparent)] [color:transparent]" title="Tue 17:00 · 26%">26</div><span class="text-[10px] or-mut flex items-center">Wed</span><div class="or-heat [background:color-mix(in_srgb,#0f766e_70%,transparent)] [color:transparent]" title="Wed 08:00 · 25%">25</div><div class="or-heat [background:color-mix(in_srgb,#b7791f_70%,transparent)] [color:transparent]" title="Wed 09:00 · 48%">48</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Wed 10:00 · 75%">75</div><div class="or-heat [background:color-mix(in_srgb,#dc2626_70%,transparent)] [color:#fff]" title="Wed 11:00 · 85%">85</div><div class="or-heat [background:color-mix(in_srgb,#dc2626_70%,transparent)] [color:#fff]" title="Wed 12:00 · 90%">90</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Wed 13:00 · 82%">82</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Wed 14:00 · 68%">68</div><div class="or-heat [background:color-mix(in_srgb,#b7791f_70%,transparent)] [color:transparent]" title="Wed 15:00 · 52%">52</div><div class="or-heat [background:color-mix(in_srgb,#0f766e_70%,transparent)] [color:transparent]" title="Wed 16:00 · 35%">35</div><div class="or-heat [background:color-mix(in_srgb,var(--or-track)_100%,transparent)] [color:transparent]" title="Wed 17:00 · 20%">20</div><span class="text-[10px] or-mut flex items-center">Thu</span><div class="or-heat [background:color-mix(in_srgb,#0f766e_70%,transparent)] [color:transparent]" title="Thu 08:00 · 30%">30</div><div class="or-heat [background:color-mix(in_srgb,#b7791f_70%,transparent)] [color:transparent]" title="Thu 09:00 · 55%">55</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Thu 10:00 · 80%">80</div><div class="or-heat [background:color-mix(in_srgb,#dc2626_70%,transparent)] [color:#fff]" title="Thu 11:00 · 89%">89</div><div class="or-heat [background:color-mix(in_srgb,#dc2626_70%,transparent)] [color:#fff]" title="Thu 12:00 · 93%">93</div><div class="or-heat [background:color-mix(in_srgb,#dc2626_70%,transparent)] [color:#fff]" title="Thu 13:00 · 86%">86</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Thu 14:00 · 72%">72</div><div class="or-heat [background:color-mix(in_srgb,#b7791f_70%,transparent)] [color:transparent]" title="Thu 15:00 · 58%">58</div><div class="or-heat [background:color-mix(in_srgb,#0f766e_70%,transparent)] [color:transparent]" title="Thu 16:00 · 40%">40</div><div class="or-heat [background:color-mix(in_srgb,var(--or-track)_100%,transparent)] [color:transparent]" title="Thu 17:00 · 24%">24</div><span class="text-[10px] or-mut flex items-center">Fri</span><div class="or-heat [background:color-mix(in_srgb,var(--or-track)_100%,transparent)] [color:transparent]" title="Fri 08:00 · 22%">22</div><div class="or-heat [background:color-mix(in_srgb,#0f766e_70%,transparent)] [color:transparent]" title="Fri 09:00 · 40%">40</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Fri 10:00 · 65%">65</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Fri 11:00 · 76%">76</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Fri 12:00 · 84%">84</div><div class="or-heat [background:color-mix(in_srgb,#e06c1f_70%,transparent)] [color:#fff]" title="Fri 13:00 · 79%">79</div><div class="or-heat [background:color-mix(in_srgb,#b7791f_70%,transparent)] [color:transparent]" title="Fri 14:00 · 62%">62</div><div class="or-heat [background:color-mix(in_srgb,#b7791f_70%,transparent)] [color:transparent]" title="Fri 15:00 · 45%">45</div><div class="or-heat [background:color-mix(in_srgb,#0f766e_70%,transparent)] [color:transparent]" title="Fri 16:00 · 30%">30</div><div class="or-heat [background:color-mix(in_srgb,var(--or-track)_100%,transparent)] [color:transparent]" title="Fri 17:00 · 18%">18</div></div><div class="flex items-center justify-between mt-3 text-[10px] or-mut"><span>Low load</span><div class="flex gap-1"><span class="w-4 h-3 rounded [background:#0f766e]"></span><span class="w-4 h-3 rounded [background:#b7791f]"></span><span class="w-4 h-3 rounded [background:#e06c1f]"></span><span class="w-4 h-3 rounded [background:#dc2626]"></span></div><span>Peak load</span></div></div>
+                                </section>
+                            </div>
+
+                            <!-- ============ 5. SURGEON PERFORMANCE ============ -->
+                            <section class="or-card p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold or-head flex items-center gap-2"><i class="icon-award or-hicon"></i> Surgeon Performance</h2><button data-modal="export" class="text-xs font-semibold or-hicon hover:underline"><i class="icon-download text-[11px]"></i> Surgeon Report</button></div>
+                                <div class="overflow-x-auto"><table class="or-tbl"><thead><tr><th>Surgeon</th><th>Specialty</th><th>Surgeries</th><th>Success</th><th>Avg Duration</th><th>Complication</th><th>Satisfaction</th></tr></thead><tbody id="or-surgeons"><tr>
+        <td><div class="flex items-center gap-2.5"><span class="or-avatar [width:32px] [height:32px] [background:#475569] [font-size:11px]">AM</span><span class="font-semibold">Dr. A. Mehta</span></div></td>
+        <td><span class="or-npill">Cardiac</span></td>
+        <td class="font-semibold">312</td>
+        <td><span class="[color:#15803d] [font-weight:600]">96%</span></td>
+        <td>138 min</td>
+        <td><span class="[color:#e06c1f] [font-weight:600]">2.1%</span></td>
+        <td><div class="flex items-center gap-2"><div class="or-bar w-16"><span class="[width:97%] [background:#f59e0b]"></span></div><span class="text-[11px] or-mut">97%</span></div></td>
+    </tr><tr>
+        <td><div class="flex items-center gap-2.5"><span class="or-avatar [width:32px] [height:32px] [background:#0f766e] [font-size:11px]">RN</span><span class="font-semibold">Dr. R. Nair</span></div></td>
+        <td><span class="or-npill">Orthopedic</span></td>
+        <td class="font-semibold">286</td>
+        <td><span class="[color:#15803d] [font-weight:600]">98%</span></td>
+        <td>102 min</td>
+        <td><span class="[color:#15803d] [font-weight:600]">1.4%</span></td>
+        <td><div class="flex items-center gap-2"><div class="or-bar w-16"><span class="[width:96%] [background:#f59e0b]"></span></div><span class="text-[11px] or-mut">96%</span></div></td>
+    </tr><tr>
+        <td><div class="flex items-center gap-2.5"><span class="or-avatar [width:32px] [height:32px] [background:#1e40af] [font-size:11px]">SK</span><span class="font-semibold">Dr. S. Kapoor</span></div></td>
+        <td><span class="or-npill">Neuro</span></td>
+        <td class="font-semibold">198</td>
+        <td><span class="[color:#15803d] [font-weight:600]">94%</span></td>
+        <td>164 min</td>
+        <td><span class="[color:#dc2626] [font-weight:600]">3.2%</span></td>
+        <td><div class="flex items-center gap-2"><div class="or-bar w-16"><span class="[width:93%] [background:#f59e0b]"></span></div><span class="text-[11px] or-mut">93%</span></div></td>
+    </tr><tr>
+        <td><div class="flex items-center gap-2.5"><span class="or-avatar [width:32px] [height:32px] [background:#4338ca] [font-size:11px]">LK</span><span class="font-semibold">Dr. L. Khan</span></div></td>
+        <td><span class="or-npill">General</span></td>
+        <td class="font-semibold">264</td>
+        <td><span class="[color:#15803d] [font-weight:600]">95%</span></td>
+        <td>88 min</td>
+        <td><span class="[color:#e06c1f] [font-weight:600]">1.8%</span></td>
+        <td><div class="flex items-center gap-2"><div class="or-bar w-16"><span class="[width:95%] [background:#f59e0b]"></span></div><span class="text-[11px] or-mut">95%</span></div></td>
+    </tr><tr>
+        <td><div class="flex items-center gap-2.5"><span class="or-avatar [width:32px] [height:32px] [background:#0e7490] [font-size:11px]">PR</span><span class="font-semibold">Dr. P. Rao</span></div></td>
+        <td><span class="or-npill">Pediatric</span></td>
+        <td class="font-semibold">124</td>
+        <td><span class="[color:#15803d] [font-weight:600]">98%</span></td>
+        <td>76 min</td>
+        <td><span class="[color:#15803d] [font-weight:600]">0.9%</span></td>
+        <td><div class="flex items-center gap-2"><div class="or-bar w-16"><span class="[width:98%] [background:#f59e0b]"></span></div><span class="text-[11px] or-mut">98%</span></div></td>
+    </tr><tr>
+        <td><div class="flex items-center gap-2.5"><span class="or-avatar [width:32px] [height:32px] [background:#334155] [font-size:11px]">VI</span><span class="font-semibold">Dr. V. Iyer</span></div></td>
+        <td><span class="or-npill">Urology</span></td>
+        <td class="font-semibold">146</td>
+        <td><span class="[color:#15803d] [font-weight:600]">96%</span></td>
+        <td>94 min</td>
+        <td><span class="[color:#e06c1f] [font-weight:600]">1.6%</span></td>
+        <td><div class="flex items-center gap-2"><div class="or-bar w-16"><span class="[width:96%] [background:#f59e0b]"></span></div><span class="text-[11px] or-mut">96%</span></div></td>
+    </tr></tbody></table></div>
+                            </section>
+
+                            <!-- ============ 7+9. REPORT BUILDER + EXPORT CENTER ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-[340px_minmax(0,1fr)] gap-4">
+                                <section class="or-card p-5">
+                                    <h2 class="text-base font-bold or-head flex items-center gap-2 mb-4"><i class="icon-sliders-horizontal or-hicon"></i> Report Builder</h2>
+                                    <div class="space-y-3">
+                                        <div><label for="fld-date-range" class="or-formlabel">Date Range</label><select id="fld-date-range" class="or-in mt-1" data-rb="range"><option>This Month</option><option>This Week</option><option>This Quarter</option><option>This Year</option><option>Custom</option></select></div>
+                                        <div><label for="fld-department" class="or-formlabel">Department</label><select id="fld-department" class="or-in mt-1" data-rb="dept"><option>All</option><option>Cardiac</option><option>Neuro</option><option>Orthopedic</option><option>General</option></select></div>
+                                        <div class="grid grid-cols-2 gap-3">
+                                            <div><label for="fld-surgeon" class="or-formlabel">Surgeon</label><select id="fld-surgeon" class="or-in mt-1" data-rb="surgeon"><option>All</option><option>Dr. Mehta</option><option>Dr. Nair</option></select></div>
+                                            <div><label for="fld-ot-room" class="or-formlabel">OT Room</label><select id="fld-ot-room" class="or-in mt-1" data-rb="room"><option>All</option><option>OT-01</option><option>Cardiac OT</option></select></div>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-3">
+                                            <div><label for="fld-procedure" class="or-formlabel">Procedure</label><select id="fld-procedure" class="or-in mt-1" data-rb="proc"><option>All</option><option>CABG</option><option>Knee Replacement</option></select></div>
+                                            <div><label for="fld-status" class="or-formlabel">Status</label><select id="fld-status" class="or-in mt-1" data-rb="status"><option>All</option><option>Completed</option><option>Cancelled</option></select></div>
+                                        </div>
+                                        <div class="or-panel p-3">
+                                            <div class="flex items-center justify-between"><span class="text-xs or-mut">Preview matches</span><span class="text-sm font-bold or-head" id="or-rb-count">1,284</span></div>
+                                            <div class="or-bar mt-2"><span id="or-rb-bar" class="bg-[var(--or-accent)] [width:82%]"></span></div>
+                                        </div>
+                                        <div class="flex gap-2"><button data-modal="generate" class="or-btn or-btn-primary flex-1 justify-center"><i class="icon-file-chart-column"></i> Generate</button><button data-modal="save" class="or-btn or-btn-ghost justify-center"><i class="icon-bookmark"></i></button></div>
+                                    </div>
+                                </section>
+                                <section class="or-card p-5">
+                                    <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold or-head flex items-center gap-2"><i class="icon-folder-open or-hicon"></i> Saved Reports</h2><button data-modal="save" class="or-btn or-btn-ghost btn-compact text-xs"><i class="icon-plus"></i> New</button></div>
+                                    <div id="or-reports" class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div class="or-report" data-report="1">
+        <div class="flex items-start justify-between mb-1.5"><span class="or-iconbadge w-9 h-9 [color:#1d4ed8]"><i class="icon-layout-grid"></i></span><button data-report-menu="1" onclick="event.stopPropagation()" class="w-7 h-7 rounded-md hover:bg-[var(--or-hover)] flex items-center justify-center or-mut"><i class="icon-more-vertical text-sm"></i></button></div>
+        <p class="text-sm font-bold or-head">Monthly OT Utilization</p>
+        <p class="text-[11px] or-mut">Utilization · Jul 2026</p>
+        <div class="flex gap-1.5 mt-2"><button data-modal="export" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-download text-[11px]"></i> Export</button><button data-report-menu="1" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-eye text-[11px]"></i> View</button></div>
+    </div><div class="or-report" data-report="2">
+        <div class="flex items-start justify-between mb-1.5"><span class="or-iconbadge w-9 h-9 [color:#dc2626]"><i class="icon-heart-pulse"></i></span><button data-report-menu="2" onclick="event.stopPropagation()" class="w-7 h-7 rounded-md hover:bg-[var(--or-hover)] flex items-center justify-center or-mut"><i class="icon-more-vertical text-sm"></i></button></div>
+        <p class="text-sm font-bold or-head">Cardiac Dept Performance</p>
+        <p class="text-[11px] or-mut">Department · Q2 2026</p>
+        <div class="flex gap-1.5 mt-2"><button data-modal="export" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-download text-[11px]"></i> Export</button><button data-report-menu="2" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-eye text-[11px]"></i> View</button></div>
+    </div><div class="or-report" data-report="3">
+        <div class="flex items-start justify-between mb-1.5"><span class="or-iconbadge w-9 h-9 [color:#0f766e]"><i class="icon-award"></i></span><button data-report-menu="3" onclick="event.stopPropagation()" class="w-7 h-7 rounded-md hover:bg-[var(--or-hover)] flex items-center justify-center or-mut"><i class="icon-more-vertical text-sm"></i></button></div>
+        <p class="text-sm font-bold or-head">Surgeon Scorecard</p>
+        <p class="text-[11px] or-mut">Surgeon · Jul 2026</p>
+        <div class="flex gap-1.5 mt-2"><button data-modal="export" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-download text-[11px]"></i> Export</button><button data-report-menu="3" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-eye text-[11px]"></i> View</button></div>
+    </div><div class="or-report" data-report="4">
+        <div class="flex items-start justify-between mb-1.5"><span class="or-iconbadge w-9 h-9 [color:#e06c1f]"><i class="icon-siren"></i></span><button data-report-menu="4" onclick="event.stopPropagation()" class="w-7 h-7 rounded-md hover:bg-[var(--or-hover)] flex items-center justify-center or-mut"><i class="icon-more-vertical text-sm"></i></button></div>
+        <p class="text-sm font-bold or-head">Emergency Surgery Trends</p>
+        <p class="text-[11px] or-mut">Trends · H1 2026</p>
+        <div class="flex gap-1.5 mt-2"><button data-modal="export" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-download text-[11px]"></i> Export</button><button data-report-menu="4" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-eye text-[11px]"></i> View</button></div>
+    </div><div class="or-report" data-report="5">
+        <div class="flex items-start justify-between mb-1.5"><span class="or-iconbadge w-9 h-9 [color:#7c3aed]"><i class="icon-timer"></i></span><button data-report-menu="5" onclick="event.stopPropagation()" class="w-7 h-7 rounded-md hover:bg-[var(--or-hover)] flex items-center justify-center or-mut"><i class="icon-more-vertical text-sm"></i></button></div>
+        <p class="text-sm font-bold or-head">OT Turnover Time</p>
+        <p class="text-[11px] or-mut">Efficiency · Jul 2026</p>
+        <div class="flex gap-1.5 mt-2"><button data-modal="export" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-download text-[11px]"></i> Export</button><button data-report-menu="5" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-eye text-[11px]"></i> View</button></div>
+    </div><div class="or-report" data-report="6">
+        <div class="flex items-start justify-between mb-1.5"><span class="or-iconbadge w-9 h-9 [color:#b45309]"><i class="icon-shield-alert"></i></span><button data-report-menu="6" onclick="event.stopPropagation()" class="w-7 h-7 rounded-md hover:bg-[var(--or-hover)] flex items-center justify-center or-mut"><i class="icon-more-vertical text-sm"></i></button></div>
+        <p class="text-sm font-bold or-head">Post-Op Complication Rate</p>
+        <p class="text-[11px] or-mut">Outcomes · Q2 2026</p>
+        <div class="flex gap-1.5 mt-2"><button data-modal="export" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-download text-[11px]"></i> Export</button><button data-report-menu="6" onclick="event.stopPropagation()" class="or-npill hover:bg-[var(--or-hover)]"><i class="icon-eye text-[11px]"></i> View</button></div>
+    </div></div>
+                                </section>
+                            </div>
+
+                        </div>
+                    </div>
+                </main>

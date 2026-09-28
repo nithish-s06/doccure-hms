@@ -1,1 +1,740 @@
-<p>critical-alerts works!</p>
+<main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="ca-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="ca-skeleton" class="space-y-4">
+                            <div class="ca-sk h-[166px] radius-override-100"></div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3"><div class="ca-sk h-[118px]"></div><div class="ca-sk h-[118px]"></div><div class="ca-sk h-[118px]"></div><div class="ca-sk h-[118px]"></div><div class="ca-sk h-[118px]"></div><div class="ca-sk h-[118px]"></div></div>
+                            <div class="ca-sk h-[340px] radius-override-100"></div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-3"><div class="ca-sk h-[220px]"></div><div class="ca-sk h-[220px]"></div><div class="ca-sk h-[220px]"></div><div class="ca-sk h-[220px]"></div><div class="ca-sk h-[220px]"></div></div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="ca-content" class="hidden space-y-4">
+
+                            <!-- ============ 1. EMERGENCY OPERATIONS HEADER ============ -->
+                            <section class="ca-hero p-5 lg:p-6">
+                                <div class="ca-hgrid"></div>
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="ca-chip bg-[rgba(220,38,38,.2)] text-[#fca5a5]"><span class="ca-dot ca-live bg-[#f87171]"></span> INCIDENT OPS LIVE</span>
+                                            <span class="ca-chip bg-[rgba(29,78,216,.2)] text-[#93c5fd]"><i class="icon-alert-octagon text-[11px]"></i> <span id="ca-h-code">2</span> Code Blue</span>
+                                            <span class="ca-chip bg-[rgba(148,163,184,.14)] text-[#cbd5e1]"><i class="icon-refresh-cw text-[11px]"></i> Updated <span id="ca-updated">just now</span></span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-[26px] font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-siren text-rose-300"></i> Critical Alerts Command Center</h1>
+                                        <p class="text-sm text-slate-400 mt-1">Hospital-wide real-time incident management · <span id="ca-clock" class="tabular-nums"></span></p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 justify-end">
+                                        <button data-modal="create" class="ca-btn bg-rose-600 text-white hover:bg-rose-500"><i class="icon-plus"></i> Create Alert</button>
+                                        <button data-modal="codeblue" class="ca-btn bg-blue-600 text-white hover:bg-blue-500"><i class="icon-alert-octagon"></i> Code Blue</button>
+                                        <button data-modal="broadcast" class="ca-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-radio"></i> Broadcast</button>
+                                        <button data-modal="export" class="ca-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                        <button data-modal="settings" class="ca-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-settings"></i> Settings</button>
+                                    </div>
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-6 gap-3 mt-5">
+                                    <div class="ca-hbadge"><p class="text-[11px] text-slate-400">Active Alerts</p><p class="text-xl font-bold text-white" id="ca-h-active">0</p></div>
+                                    <div class="ca-hbadge"><p class="text-[11px] text-slate-400">High Priority</p><p class="text-xl font-bold text-orange-300" id="ca-h-high">0</p></div>
+                                    <div class="ca-hbadge"><p class="text-[11px] text-slate-400">Critical</p><p class="text-xl font-bold text-rose-300" id="ca-h-crit">0</p></div>
+                                    <div class="ca-hbadge"><p class="text-[11px] text-slate-400">Escalated</p><p class="text-xl font-bold text-amber-300" id="ca-h-esc">0</p></div>
+                                    <div class="ca-hbadge"><p class="text-[11px] text-slate-400">Resolved Today</p><p class="text-xl font-bold text-emerald-300" id="ca-h-res">42</p></div>
+                                    <div class="ca-hbadge"><p class="text-[11px] text-slate-400">Avg Response</p><p class="text-xl font-bold text-white">3.2<span class="text-xs text-slate-400"> min</span></p></div>
+                                </div>
+                            </section>
+
+                            <!-- ============ 2. HOSPITAL ALERT OVERVIEW ============ -->
+                            <section id="ca-overview" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+      <div class="ca-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ca-iconbadge w-9 h-9 [color:#0d9488]"><i class="icon-bell-ring"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ca-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ca-track)" stroke-width="3.2"/><circle class="bar [--p:72]" cx="18" cy="18" r="15.9" fill="none" stroke="#0d9488" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#0d9488]">72%</span></div>
+        </div>
+        <p class="text-2xl font-bold ca-head mt-2 tabular-nums">20</p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ca-mut">Active Alerts</p><svg class="ca-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,18 10.8,12 21.6,15 32.4,6 43.2,9 54,0" fill="none" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ca-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ca-iconbadge w-9 h-9 [color:#dc2626]"><i class="icon-alert-triangle"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ca-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ca-track)" stroke-width="3.2"/><circle class="bar [--p:30]" cx="18" cy="18" r="15.9" fill="none" stroke="#dc2626" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#dc2626]">30%</span></div>
+        </div>
+        <p class="text-2xl font-bold ca-head mt-2 tabular-nums">5</p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ca-mut">Critical</p><svg class="ca-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,6 10.8,12 21.6,0 32.4,6 43.2,12 54,18" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ca-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ca-iconbadge w-9 h-9 [color:#e06c1f]"><i class="icon-alert-octagon"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ca-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ca-track)" stroke-width="3.2"/><circle class="bar [--p:58]" cx="18" cy="18" r="15.9" fill="none" stroke="#e06c1f" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#e06c1f]">58%</span></div>
+        </div>
+        <p class="text-2xl font-bold ca-head mt-2 tabular-nums">12</p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ca-mut">Warning</p><svg class="ca-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,12 10.8,6 21.6,18 32.4,0 43.2,6 54,0" fill="none" stroke="#e06c1f" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ca-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ca-iconbadge w-9 h-9 [color:#1d4ed8]"><i class="icon-info"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ca-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ca-track)" stroke-width="3.2"/><circle class="bar [--p:40]" cx="18" cy="18" r="15.9" fill="none" stroke="#1d4ed8" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#1d4ed8]">40%</span></div>
+        </div>
+        <p class="text-2xl font-bold ca-head mt-2 tabular-nums">3</p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ca-mut">Information</p><svg class="ca-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,9 10.8,4.5 21.6,9 32.4,0 43.2,4.5 54,18" fill="none" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ca-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ca-iconbadge w-9 h-9 [color:#15803d]"><i class="icon-circle-check"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ca-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ca-track)" stroke-width="3.2"/><circle class="bar [--p:88]" cx="18" cy="18" r="15.9" fill="none" stroke="#15803d" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#15803d]">88%</span></div>
+        </div>
+        <p class="text-2xl font-bold ca-head mt-2 tabular-nums">2</p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ca-mut">Resolved</p><svg class="ca-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,18 10.8,12 21.6,9 32.4,4.5 43.2,3 54,0" fill="none" stroke="#15803d" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ca-card p-3.5">
+        <div class="flex items-start justify-between">
+          <span class="ca-iconbadge w-9 h-9 [color:#7c3aed]"><i class="icon-timer"></i></span>
+          <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="ca-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ca-track)" stroke-width="3.2"/><circle class="bar [--p:64]" cx="18" cy="18" r="15.9" fill="none" stroke="#7c3aed" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#7c3aed]">64%</span></div>
+        </div>
+        <p class="text-2xl font-bold ca-head mt-2 tabular-nums">3.2<span class="text-sm ca-mut"> min</span></p>
+        <div class="flex items-center justify-between mt-1"><p class="text-[11px] ca-mut">Avg Response</p><svg class="ca-trend" width="54" height="18" viewBox="0 0 54 18"><polyline points="0,0 10.8,6 21.6,9.999999999999998 32.4,14.000000000000004 43.2,16.000000000000007 54,18" fill="none" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div></section>
+
+                            <!-- ============ 3. REAL-TIME ALERT WALL ============ -->
+                            <section class="ca-card p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                                    <div class="flex items-center gap-2.5"><span class="ca-iconbadge w-9 h-9"><i class="icon-layout-grid"></i></span><div><h2 class="text-base font-bold ca-head">Real-Time Alert Wall</h2><p class="text-xs ca-mut">Grouped by severity · live countdown to SLA breach · click to open incident</p></div></div>
+                                    <div class="flex flex-wrap items-center gap-2.5">
+                                        <div class="relative"><i class="icon-search absolute left-2.5 top-1/2 -translate-y-1/2 ca-mut text-sm"></i><input aria-label="Filter alerts..." id="ca-wallsearch" class="ca-in !pl-8 !py-1.5 !w-44" placeholder="Filter alerts..."></div>
+                                        <select aria-label="All departments" class="ca-in !w-auto !py-1.5" id="ca-walldept"><option value="">All departments</option><option value="ICU">ICU</option><option value="Emergency">Emergency</option><option value="CCU">CCU</option><option value="NICU">NICU</option><option value="PICU">PICU</option><option value="General Ward">General Ward</option><option value="Operating Theatre">Operating Theatre</option><option value="Recovery Room">Recovery Room</option></select>
+                                        <button class="ca-btn ca-btn-ghost btn-compact" data-collapse-all><i class="icon-chevrons-down-up"></i> Collapse</button>
+                                    </div>
+                                </div>
+                                <div id="ca-wall" class="grid grid-cols-1 xl:grid-cols-5 gap-3 items-start"><div class="ca-sevcol sev-crit">
+            <div class="flex items-center justify-between mb-2 cursor-pointer" data-sevtoggle><span class="text-sm font-bold ca-head flex items-center gap-1.5"><span class="ca-dot [background:#dc2626]"></span> Critical</span><span class="flex items-center gap-1.5"><span class="ca-chip [background:color-mix(in_srgb,#dc2626_14%,transparent)] [color:#dc2626]">5</span><i class="icon-chevron-down text-xs ca-mut ca-caret transition-transform"></i></span></div>
+            <div class="ca-sevbody space-y-2.5"><div class="ca-alert sev-crit " data-alert="1">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="1"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7201</span>
+            <span class="sevpill ca-chip ml-auto"><i class="icon-alert-triangle text-[9px]"></i> Critical</span>
+            <button data-pin="1" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#0f766e] [font-size:11px]">AR</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Anita Reddy</p><p class="text-[10px] ca-mut">MRN-50901 · EME-08</p></div>
+            <button data-menu="1" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Oxygen Desaturation</p>
+        <p class="text-[10px] ca-mut">Emergency · Emergency</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> S</span>
+            <span class="font-bold ca-cd [color:#dc2626]" data-cd="1"><i class="icon-clock text-[10px]"></i> 1m 12s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="1" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="1" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="1" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-crit " data-alert="9">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="9"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7209</span>
+            <span class="sevpill ca-chip ml-auto"><i class="icon-alert-triangle text-[9px]"></i> Critical</span>
+            <button data-pin="9" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#0f766e] [font-size:11px]">NV</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Neha Verma</p><p class="text-[10px] ca-mut">MRN-50909 · EME-04</p></div>
+            <button data-menu="9" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Stroke Alert</p>
+        <p class="text-[10px] ca-mut">Emergency · Emergency</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> P</span>
+            <span class="font-bold ca-cd [color:#dc2626]" data-cd="9"><i class="icon-clock text-[10px]"></i> 33s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="9" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="9" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="9" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-crit " data-alert="10">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="10"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7210</span>
+            <span class="sevpill ca-chip ml-auto"><i class="icon-alert-triangle text-[9px]"></i> Critical</span>
+            <button data-pin="10" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#1e40af] [font-size:11px]">RI</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Rohan Iyer</p><p class="text-[10px] ca-mut">MRN-50910 · CCU-08</p></div>
+            <button data-menu="10" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Seizure</p>
+        <p class="text-[10px] ca-mut">CCU · CCU</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> A</span>
+            <span class="font-bold ca-cd [color:#dc2626]" data-cd="10"><i class="icon-clock text-[10px]"></i> 1m 15s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="10" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="10" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="10" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-crit " data-alert="16">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="16"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7216</span>
+            <span class="sevpill ca-chip ml-auto"><i class="icon-alert-triangle text-[9px]"></i> Critical</span>
+            <button data-pin="16" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#475569] [font-size:11px]">VN</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Vikram Nair</p><p class="text-[10px] ca-mut">MRN-50916 · ICU-01</p></div>
+            <button data-menu="16" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Fall Detected</p>
+        <p class="text-[10px] ca-mut">ICU · ICU-A</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> S</span>
+            <span class="font-bold ca-cd [color:#dc2626]" data-cd="16"><i class="icon-clock text-[10px]"></i> 2m 22s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="16" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="16" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="16" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-crit " data-alert="20">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="20"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7220</span>
+            <span class="sevpill ca-chip ml-auto"><i class="icon-alert-triangle text-[9px]"></i> Critical</span>
+            <button data-pin="20" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#0e7490] [font-size:11px]">AM</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Arjun Menon</p><p class="text-[10px] ca-mut">MRN-50920 · PIC-11</p></div>
+            <button data-menu="20" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">BP Critical</p>
+        <p class="text-[10px] ca-mut">PICU · PICU</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> A</span>
+            <span class="font-bold ca-cd [color:#dc2626]" data-cd="20"><i class="icon-clock text-[10px]"></i> 1m 25s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="20" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="20" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="20" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div></div>
+        </div><div class="ca-sevcol sev-high">
+            <div class="flex items-center justify-between mb-2 cursor-pointer" data-sevtoggle><span class="text-sm font-bold ca-head flex items-center gap-1.5"><span class="ca-dot [background:#e06c1f]"></span> High</span><span class="flex items-center gap-1.5"><span class="ca-chip [background:color-mix(in_srgb,#e06c1f_14%,transparent)] [color:#e06c1f]">7</span><i class="icon-chevron-down text-xs ca-mut ca-caret transition-transform"></i></span></div>
+            <div class="ca-sevbody space-y-2.5"><div class="ca-alert sev-high " data-alert="2">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="2"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7202</span>
+            <span class="sevpill ca-chip ml-auto">High</span>
+            <button data-pin="2" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#1e40af] [font-size:11px]">VN</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Vikram Nair</p><p class="text-[10px] ca-mut">MRN-50902 · CCU-12</p></div>
+            <button data-menu="2" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Ventilator Failure</p>
+        <p class="text-[10px] ca-mut">CCU · CCU</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> R</span>
+            <span class="font-bold ca-cd [color:#e06c1f]" data-cd="2"><i class="icon-clock text-[10px]"></i> 2m 59s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="2" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="2" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="2" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-high " data-alert="3">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="3"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7203</span>
+            <span class="sevpill ca-chip ml-auto">High</span>
+            <button data-pin="3" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#4338ca] [font-size:11px]">PP</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Priya Patel</p><p class="text-[10px] ca-mut">MRN-50903 · NIC-05</p></div>
+            <button data-menu="3" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Sepsis Alert</p>
+        <p class="text-[10px] ca-mut">NICU · NICU</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> L</span>
+            <span class="font-bold ca-cd [color:#e06c1f]" data-cd="3"><i class="icon-clock text-[10px]"></i> 5m 31s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="3" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="3" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="3" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-high " data-alert="4">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="4"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7204</span>
+            <span class="sevpill ca-chip ml-auto">High</span>
+            <button data-pin="4" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#0e7490] [font-size:11px]">SG</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Suresh Gupta</p><p class="text-[10px] ca-mut">MRN-50904 · PIC-08</p></div>
+            <button data-menu="4" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Fall Detected</p>
+        <p class="text-[10px] ca-mut">PICU · PICU</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> P</span>
+            <span class="font-bold ca-cd [color:#e06c1f]" data-cd="4"><i class="icon-clock text-[10px]"></i> 3m 40s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="4" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="4" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="4" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-high " data-alert="6">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="6"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7206</span>
+            <span class="sevpill ca-chip ml-auto">High</span>
+            <button data-pin="6" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#3f6212] [font-size:11px]">AM</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Arjun Menon</p><p class="text-[10px] ca-mut">MRN-50906 · OPE-07</p></div>
+            <button data-menu="6" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Anaphylaxis</p>
+        <p class="text-[10px] ca-mut">Operating Theatre · Operating Theatre</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> S</span>
+            <span class="font-bold ca-cd [color:#e06c1f]" data-cd="6"><i class="icon-clock text-[10px]"></i> 4m 08s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="6" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="6" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="6" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-high " data-alert="8">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="8"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7208</span>
+            <span class="sevpill ca-chip ml-auto">High</span>
+            <button data-pin="8" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#475569] [font-size:11px]">DJ</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Deepak Joshi</p><p class="text-[10px] ca-mut">MRN-50908 · ICU-09</p></div>
+            <button data-menu="8" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">BP Critical</p>
+        <p class="text-[10px] ca-mut">ICU · ICU-A</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> L</span>
+            <span class="font-bold ca-cd [color:#e06c1f]" data-cd="8"><i class="icon-clock text-[10px]"></i> 3m 31s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="8" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="8" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="8" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-high " data-alert="13">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="13"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7213</span>
+            <span class="sevpill ca-chip ml-auto">High</span>
+            <button data-pin="13" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#334155] [font-size:11px]">DM</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Divya Menon</p><p class="text-[10px] ca-mut">MRN-50913 · GEN-05</p></div>
+            <button data-menu="13" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Oxygen Desaturation</p>
+        <p class="text-[10px] ca-mut">General Ward · General Ward</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> L</span>
+            <span class="font-bold ca-cd [color:#e06c1f]" data-cd="13"><i class="icon-clock text-[10px]"></i> 6m 32s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="13" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="13" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="13" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-high " data-alert="17">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="17"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7217</span>
+            <span class="sevpill ca-chip ml-auto">High</span>
+            <button data-pin="17" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#0f766e] [font-size:11px]">PP</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Priya Patel</p><p class="text-[10px] ca-mut">MRN-50917 · EME-03</p></div>
+            <button data-menu="17" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Hemorrhage</p>
+        <p class="text-[10px] ca-mut">Emergency · Emergency</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> R</span>
+            <span class="font-bold ca-cd [color:#e06c1f]" data-cd="17"><i class="icon-clock text-[10px]"></i> 3m 18s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="17" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="17" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="17" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div></div>
+        </div><div class="ca-sevcol sev-med">
+            <div class="flex items-center justify-between mb-2 cursor-pointer" data-sevtoggle><span class="text-sm font-bold ca-head flex items-center gap-1.5"><span class="ca-dot [background:#b7791f]"></span> Medium</span><span class="flex items-center gap-1.5"><span class="ca-chip [background:color-mix(in_srgb,#b7791f_14%,transparent)] [color:#b7791f]">5</span><i class="icon-chevron-down text-xs ca-mut ca-caret transition-transform"></i></span></div>
+            <div class="ca-sevbody space-y-2.5"><div class="ca-alert sev-med " data-alert="7">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="7"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7207</span>
+            <span class="sevpill ca-chip ml-auto">Medium</span>
+            <button data-pin="7" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#7c2d12] [font-size:11px]">KD</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Kavya Das</p><p class="text-[10px] ca-mut">MRN-50907 · REC-01</p></div>
+            <button data-menu="7" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Arrhythmia</p>
+        <p class="text-[10px] ca-mut">Recovery Room · Recovery Room</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> R</span>
+            <span class="font-bold ca-cd [color:#b7791f]" data-cd="7"><i class="icon-clock text-[10px]"></i> 7m 12s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="7" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="7" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="7" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-med " data-alert="12">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="12"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7212</span>
+            <span class="sevpill ca-chip ml-auto">Medium</span>
+            <button data-pin="12" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#0e7490] [font-size:11px]">MR</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Manoj Rao</p><p class="text-[10px] ca-mut">MRN-50912 · PIC-11</p></div>
+            <button data-menu="12" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Cardiac Arrest</p>
+        <p class="text-[10px] ca-mut">PICU · PICU</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> R</span>
+            <span class="font-bold ca-cd [color:#b7791f]" data-cd="12"><i class="icon-clock text-[10px]"></i> 12m 33s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="12" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="12" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="12" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-med " data-alert="14">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="14"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7214</span>
+            <span class="sevpill ca-chip ml-auto">Medium</span>
+            <button data-pin="14" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#3f6212] [font-size:11px]">RS</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Rahul Sharma</p><p class="text-[10px] ca-mut">MRN-50914 · OPE-04</p></div>
+            <button data-menu="14" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Ventilator Failure</p>
+        <p class="text-[10px] ca-mut">Operating Theatre · Operating Theatre</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> P</span>
+            <span class="font-bold ca-cd [color:#b7791f]" data-cd="14"><i class="icon-clock text-[10px]"></i> 11m 17s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="14" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="14" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="14" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-med " data-alert="15">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="15"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7215</span>
+            <span class="sevpill ca-chip ml-auto">Medium</span>
+            <button data-pin="15" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#7c2d12] [font-size:11px]">AR</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Anita Reddy</p><p class="text-[10px] ca-mut">MRN-50915 · REC-05</p></div>
+            <button data-menu="15" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Sepsis Alert</p>
+        <p class="text-[10px] ca-mut">Recovery Room · Recovery Room</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> A</span>
+            <span class="font-bold ca-cd [color:#b7791f]" data-cd="15"><i class="icon-clock text-[10px]"></i> 6m 38s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="15" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="15" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="15" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-med " data-alert="21">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="21"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7221</span>
+            <span class="sevpill ca-chip ml-auto">Medium</span>
+            <button data-pin="21" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#334155] [font-size:11px]">KD</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Kavya Das</p><p class="text-[10px] ca-mut">MRN-50921 · GEN-08</p></div>
+            <button data-menu="21" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Stroke Alert</p>
+        <p class="text-[10px] ca-mut">General Ward · General Ward</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> S</span>
+            <span class="font-bold ca-cd [color:#b7791f]" data-cd="21"><i class="icon-clock text-[10px]"></i> 9m 54s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="21" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="21" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="21" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div></div>
+        </div><div class="ca-sevcol sev-info">
+            <div class="flex items-center justify-between mb-2 cursor-pointer" data-sevtoggle><span class="text-sm font-bold ca-head flex items-center gap-1.5"><span class="ca-dot [background:#1d4ed8]"></span> Information</span><span class="flex items-center gap-1.5"><span class="ca-chip [background:color-mix(in_srgb,#1d4ed8_14%,transparent)] [color:#1d4ed8]">3</span><i class="icon-chevron-down text-xs ca-mut ca-caret transition-transform"></i></span></div>
+            <div class="ca-sevbody space-y-2.5"><div class="ca-alert sev-info " data-alert="11">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="11"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7211</span>
+            <span class="sevpill ca-chip ml-auto">Information</span>
+            <button data-pin="11" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#4338ca] [font-size:11px]">SK</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Sana Khan</p><p class="text-[10px] ca-mut">MRN-50911 · NIC-05</p></div>
+            <button data-menu="11" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Medication Reaction</p>
+        <p class="text-[10px] ca-mut">NICU · NICU</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> S</span>
+            <span class="font-bold ca-cd [color:#1d4ed8]" data-cd="11"><i class="icon-clock text-[10px]"></i> 9m 33s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="11" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="11" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="11" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-info " data-alert="18">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="18"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7218</span>
+            <span class="sevpill ca-chip ml-auto">Information</span>
+            <button data-pin="18" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#1e40af] [font-size:11px]">SG</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Suresh Gupta</p><p class="text-[10px] ca-mut">MRN-50918 · CCU-01</p></div>
+            <button data-menu="18" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Anaphylaxis</p>
+        <p class="text-[10px] ca-mut">CCU · CCU</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> L</span>
+            <span class="font-bold ca-cd [color:#1d4ed8]" data-cd="18"><i class="icon-clock text-[10px]"></i> 12m 13s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="18" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="18" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="18" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div><div class="ca-alert sev-info " data-alert="19">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="19"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7219</span>
+            <span class="sevpill ca-chip ml-auto">Information</span>
+            <button data-pin="19" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#4338ca] [font-size:11px]">MS</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Meera Singh</p><p class="text-[10px] ca-mut">MRN-50919 · NIC-06</p></div>
+            <button data-menu="19" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Arrhythmia</p>
+        <p class="text-[10px] ca-mut">NICU · NICU</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> P</span>
+            <span class="font-bold ca-cd [color:#1d4ed8]" data-cd="19"><i class="icon-clock text-[10px]"></i> 6m 56s</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <button data-quick-ack="19" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-check text-[10px]"></i> Ack</button><button data-quick-esc="19" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-trending-up text-[10px]"></i> Escalate</button><button data-quick-res="19" onclick="event.stopPropagation()" class="ca-npill hover:bg-[var(--ca-hover)]"><i class="icon-circle-check text-[10px]"></i> Resolve</button>
+        </div>
+    </div></div>
+        </div><div class="ca-sevcol sev-res">
+            <div class="flex items-center justify-between mb-2 cursor-pointer" data-sevtoggle><span class="text-sm font-bold ca-head flex items-center gap-1.5"><span class="ca-dot [background:#15803d]"></span> Resolved</span><span class="flex items-center gap-1.5"><span class="ca-chip [background:color-mix(in_srgb,#15803d_14%,transparent)] [color:#15803d]">2</span><i class="icon-chevron-down text-xs ca-mut ca-caret transition-transform"></i></span></div>
+            <div class="ca-sevbody space-y-2.5"><div class="ca-alert sev-res " data-alert="0">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="0"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7200</span>
+            <span class="sevpill ca-chip ml-auto">Resolved</span>
+            <button data-pin="0" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#475569] [font-size:11px]">RS</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Rahul Sharma</p><p class="text-[10px] ca-mut">MRN-50900 · ICU-03</p></div>
+            <button data-menu="0" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Cardiac Arrest</p>
+        <p class="text-[10px] ca-mut">ICU · ICU-A</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> A</span>
+            <span class="ca-npill">Closed</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <span class="ca-npill"><i class="icon-check text-[10px]"></i> Resolved</span>
+        </div>
+    </div><div class="ca-alert sev-res " data-alert="5">
+        <div class="flex items-center gap-2 mb-1.5">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="5"  class="accent-[var(--ca-c)]"></label>
+            <span class="text-[11px] font-bold ca-mut">ALT-7205</span>
+            <span class="sevpill ca-chip ml-auto">Resolved</span>
+            <button data-pin="5" onclick="event.stopPropagation()" class="w-5 h-5 rounded hover:bg-[var(--ca-hover)] flex items-center justify-center"><i class="icon-pin text-[12px] ca-mut"></i></button>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="ca-avatar flex-none [width:30px] [height:30px] [background:#334155] [font-size:11px]">MS</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ca-head truncate leading-tight">Meera Singh</p><p class="text-[10px] ca-mut">MRN-50905 · GEN-11</p></div>
+            <button data-menu="5" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ca-hover)] flex items-center justify-center ca-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-xs font-medium ca-head mt-1.5">Hemorrhage</p>
+        <p class="text-[10px] ca-mut">General Ward · General Ward</p>
+        <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="ca-mut"><i class="icon-stethoscope text-[10px]"></i> A</span>
+            <span class="ca-npill">Closed</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mt-2">
+            <span class="ca-npill"><i class="icon-check text-[10px]"></i> Resolved</span>
+        </div>
+    </div></div>
+        </div></div>
+                            </section>
+
+                            <!-- ============ 4. EMERGENCY RESPONSE WORKFLOW ============ -->
+                            <section class="ca-card p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold ca-head flex items-center gap-2"><i class="icon-git-branch ca-hicon"></i> Emergency Response Workflow</h2><span class="ca-npill">Drag cards between stages</span></div>
+                                <div id="ca-kanban" class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-3"><div class="ca-kcol p-2.5" data-kcol="New">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-sm font-bold ca-head flex items-center gap-1.5"><span class="ca-dot [background:#dc2626]"></span> New</span><span class="ca-npill">6</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="New">
+            <div class="ca-ktask [border-left:3px_solid_#e06c1f]" draggable="true" data-task="6">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7206</span><span class="ca-chip [background:color-mix(in_srgb,#e06c1f_12%,transparent)] [color:#e06c1f]">High</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Anaphylaxis</p>
+                <p class="text-[10px] ca-mut mt-0.5">Arjun Menon · OPE-07</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Pillai</span><span class="[color:#e06c1f]"><i class="icon-clock"></i> 4m 08s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#e06c1f]" draggable="true" data-task="8">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7208</span><span class="ca-chip [background:color-mix(in_srgb,#e06c1f_12%,transparent)] [color:#e06c1f]">High</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">BP Critical</p>
+                <p class="text-[10px] ca-mut mt-0.5">Deepak Joshi · ICU-09</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Das</span><span class="[color:#e06c1f]"><i class="icon-clock"></i> 3m 31s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#dc2626]" draggable="true" data-task="9">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7209</span><span class="ca-chip [background:color-mix(in_srgb,#dc2626_12%,transparent)] [color:#dc2626]">Critical</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Stroke Alert</p>
+                <p class="text-[10px] ca-mut mt-0.5">Neha Verma · EME-04</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Reddy</span><span class="[color:#dc2626]"><i class="icon-clock"></i> 33s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#b7791f]" draggable="true" data-task="15">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7215</span><span class="ca-chip [background:color-mix(in_srgb,#b7791f_12%,transparent)] [color:#b7791f]">Medium</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Sepsis Alert</p>
+                <p class="text-[10px] ca-mut mt-0.5">Anita Reddy · REC-05</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Fernandes</span><span class="[color:#b7791f]"><i class="icon-clock"></i> 6m 38s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#e06c1f]" draggable="true" data-task="17">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7217</span><span class="ca-chip [background:color-mix(in_srgb,#e06c1f_12%,transparent)] [color:#e06c1f]">High</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Hemorrhage</p>
+                <p class="text-[10px] ca-mut mt-0.5">Priya Patel · EME-03</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Sharma</span><span class="[color:#e06c1f]"><i class="icon-clock"></i> 3m 18s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#dc2626]" draggable="true" data-task="20">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7220</span><span class="ca-chip [background:color-mix(in_srgb,#dc2626_12%,transparent)] [color:#dc2626]">Critical</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">BP Critical</p>
+                <p class="text-[10px] ca-mut mt-0.5">Arjun Menon · PIC-11</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Fernandes</span><span class="[color:#dc2626]"><i class="icon-clock"></i> 1m 25s</span></div>
+            </div>
+            </div></div><div class="ca-kcol p-2.5" data-kcol="Acknowledged">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-sm font-bold ca-head flex items-center gap-1.5"><span class="ca-dot [background:#e06c1f]"></span> Acknowledged</span><span class="ca-npill">7</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Acknowledged">
+            <div class="ca-ktask [border-left:3px_solid_#e06c1f]" draggable="true" data-task="2">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7202</span><span class="ca-chip [background:color-mix(in_srgb,#e06c1f_12%,transparent)] [color:#e06c1f]">High</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Ventilator Failure</p>
+                <p class="text-[10px] ca-mut mt-0.5">Vikram Nair · CCU-12</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Sharma</span><span class="[color:#e06c1f]"><i class="icon-clock"></i> 2m 59s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#e06c1f]" draggable="true" data-task="3">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7203</span><span class="ca-chip [background:color-mix(in_srgb,#e06c1f_12%,transparent)] [color:#e06c1f]">High</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Sepsis Alert</p>
+                <p class="text-[10px] ca-mut mt-0.5">Priya Patel · NIC-05</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Das</span><span class="[color:#e06c1f]"><i class="icon-clock"></i> 5m 31s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#b7791f]" draggable="true" data-task="7">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7207</span><span class="ca-chip [background:color-mix(in_srgb,#b7791f_12%,transparent)] [color:#b7791f]">Medium</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Arrhythmia</p>
+                <p class="text-[10px] ca-mut mt-0.5">Kavya Das · REC-01</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Sharma</span><span class="[color:#b7791f]"><i class="icon-clock"></i> 7m 12s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#b7791f]" draggable="true" data-task="14">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7214</span><span class="ca-chip [background:color-mix(in_srgb,#b7791f_12%,transparent)] [color:#b7791f]">Medium</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Ventilator Failure</p>
+                <p class="text-[10px] ca-mut mt-0.5">Rahul Sharma · OPE-04</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Reddy</span><span class="[color:#b7791f]"><i class="icon-clock"></i> 11m 17s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#dc2626]" draggable="true" data-task="16">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7216</span><span class="ca-chip [background:color-mix(in_srgb,#dc2626_12%,transparent)] [color:#dc2626]">Critical</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Fall Detected</p>
+                <p class="text-[10px] ca-mut mt-0.5">Vikram Nair · ICU-01</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Pillai</span><span class="[color:#dc2626]"><i class="icon-clock"></i> 2m 22s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#1d4ed8]" draggable="true" data-task="18">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7218</span><span class="ca-chip [background:color-mix(in_srgb,#1d4ed8_12%,transparent)] [color:#1d4ed8]">Information</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Anaphylaxis</p>
+                <p class="text-[10px] ca-mut mt-0.5">Suresh Gupta · CCU-01</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Das</span><span class="[color:#1d4ed8]"><i class="icon-clock"></i> 12m 13s</span></div>
+            </div>
+            </div></div><div class="ca-kcol p-2.5" data-kcol="In Progress">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-sm font-bold ca-head flex items-center gap-1.5"><span class="ca-dot [background:#1d4ed8]"></span> In Progress</span><span class="ca-npill">5</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="In Progress">
+            <div class="ca-ktask [border-left:3px_solid_#dc2626]" draggable="true" data-task="1">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7201</span><span class="ca-chip [background:color-mix(in_srgb,#dc2626_12%,transparent)] [color:#dc2626]">Critical</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Oxygen Desaturation</p>
+                <p class="text-[10px] ca-mut mt-0.5">Anita Reddy · EME-08</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Pillai</span><span class="[color:#dc2626]"><i class="icon-clock"></i> 1m 12s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#1d4ed8]" draggable="true" data-task="11">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7211</span><span class="ca-chip [background:color-mix(in_srgb,#1d4ed8_12%,transparent)] [color:#1d4ed8]">Information</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Medication Reaction</p>
+                <p class="text-[10px] ca-mut mt-0.5">Sana Khan · NIC-05</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Pillai</span><span class="[color:#1d4ed8]"><i class="icon-clock"></i> 9m 33s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#b7791f]" draggable="true" data-task="12">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7212</span><span class="ca-chip [background:color-mix(in_srgb,#b7791f_12%,transparent)] [color:#b7791f]">Medium</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Cardiac Arrest</p>
+                <p class="text-[10px] ca-mut mt-0.5">Manoj Rao · PIC-11</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Sharma</span><span class="[color:#b7791f]"><i class="icon-clock"></i> 12m 33s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#e06c1f]" draggable="true" data-task="13">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7213</span><span class="ca-chip [background:color-mix(in_srgb,#e06c1f_12%,transparent)] [color:#e06c1f]">High</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Oxygen Desaturation</p>
+                <p class="text-[10px] ca-mut mt-0.5">Divya Menon · GEN-05</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Das</span><span class="[color:#e06c1f]"><i class="icon-clock"></i> 6m 32s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#1d4ed8]" draggable="true" data-task="19">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7219</span><span class="ca-chip [background:color-mix(in_srgb,#1d4ed8_12%,transparent)] [color:#1d4ed8]">Information</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Arrhythmia</p>
+                <p class="text-[10px] ca-mut mt-0.5">Meera Singh · NIC-06</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Reddy</span><span class="[color:#1d4ed8]"><i class="icon-clock"></i> 6m 56s</span></div>
+            </div>
+            </div></div><div class="ca-kcol p-2.5" data-kcol="Escalated">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-sm font-bold ca-head flex items-center gap-1.5"><span class="ca-dot [background:#b7791f]"></span> Escalated</span><span class="ca-npill">2</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Escalated">
+            <div class="ca-ktask [border-left:3px_solid_#e06c1f]" draggable="true" data-task="4">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7204</span><span class="ca-chip [background:color-mix(in_srgb,#e06c1f_12%,transparent)] [color:#e06c1f]">High</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Fall Detected</p>
+                <p class="text-[10px] ca-mut mt-0.5">Suresh Gupta · PIC-08</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Reddy</span><span class="[color:#e06c1f]"><i class="icon-clock"></i> 3m 40s</span></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#dc2626]" draggable="true" data-task="10">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7210</span><span class="ca-chip [background:color-mix(in_srgb,#dc2626_12%,transparent)] [color:#dc2626]">Critical</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Seizure</p>
+                <p class="text-[10px] ca-mut mt-0.5">Rohan Iyer · CCU-08</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Fernandes</span><span class="[color:#dc2626]"><i class="icon-clock"></i> 1m 15s</span></div>
+            </div>
+            </div></div><div class="ca-kcol p-2.5" data-kcol="Resolved">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-sm font-bold ca-head flex items-center gap-1.5"><span class="ca-dot [background:#15803d]"></span> Resolved</span><span class="ca-npill">2</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Resolved">
+            <div class="ca-ktask [border-left:3px_solid_#15803d]" draggable="true" data-task="0">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7200</span><span class="ca-chip [background:color-mix(in_srgb,#15803d_12%,transparent)] [color:#15803d]">Resolved</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Cardiac Arrest</p>
+                <p class="text-[10px] ca-mut mt-0.5">Rahul Sharma · ICU-03</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Fernandes</span><i class="icon-grip-vertical"></i></div>
+            </div><div class="ca-ktask [border-left:3px_solid_#15803d]" draggable="true" data-task="5">
+                <div class="flex items-center justify-between"><span class="text-[11px] font-bold ca-mut">ALT-7205</span><span class="ca-chip [background:color-mix(in_srgb,#15803d_12%,transparent)] [color:#15803d]">Resolved</span></div>
+                <p class="text-xs font-semibold ca-head mt-1 leading-tight">Hemorrhage</p>
+                <p class="text-[10px] ca-mut mt-0.5">Meera Singh · GEN-11</p>
+                <div class="flex items-center justify-between text-[10px] ca-mut mt-1.5"><span><i class="icon-user-check"></i> Fernandes</span><i class="icon-grip-vertical"></i></div>
+            </div>
+            </div></div></div>
+                            </section>
+
+                            <!-- ============ 14. RECENT EMERGENCY ACTIVITY ============ -->
+                            <section class="ca-card p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold ca-head flex items-center gap-2"><i class="icon-radar ca-hicon"></i> Recent Emergency Activity</h2><span class="ca-chip bg-[color-mix(in_srgb,#15803d_14%,transparent)] text-[#15803d]"><span class="ca-dot ca-live bg-[#22c55e]"></span> Live</span></div>
+                                <div id="ca-activity" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3"><div class="ca-panel p-3 flex items-start gap-2.5"><span class="ca-iconbadge w-8 h-8 flex-none [color:#dc2626]"><i class="icon-siren"></i></span><div class="min-w-0"><p class="text-sm font-semibold ca-head">Alert Triggered</p><p class="text-[11px] ca-mut truncate">Cardiac arrest · ICU-A-01</p><p class="text-[10px] ca-mut mt-0.5">3m ago</p></div></div><div class="ca-panel p-3 flex items-start gap-2.5"><span class="ca-iconbadge w-8 h-8 flex-none [color:#1d4ed8]"><i class="icon-alert-octagon"></i></span><div class="min-w-0"><p class="text-sm font-semibold ca-head">Code Blue Activated</p><p class="text-[11px] ca-mut truncate">NICU-02 · team dispatched</p><p class="text-[10px] ca-mut mt-0.5">8m ago</p></div></div><div class="ca-panel p-3 flex items-start gap-2.5"><span class="ca-iconbadge w-8 h-8 flex-none [color:#0e7490]"><i class="icon-stethoscope"></i></span><div class="min-w-0"><p class="text-sm font-semibold ca-head">Doctor Assigned</p><p class="text-[11px] ca-mut truncate">Dr. Mehta → ALT-7203</p><p class="text-[10px] ca-mut mt-0.5">11m ago</p></div></div><div class="ca-panel p-3 flex items-start gap-2.5"><span class="ca-iconbadge w-8 h-8 flex-none [color:#15803d]"><i class="icon-user-check"></i></span><div class="min-w-0"><p class="text-sm font-semibold ca-head">Nurse Responded</p><p class="text-[11px] ca-mut truncate">N. Das · 41s</p><p class="text-[10px] ca-mut mt-0.5">14m ago</p></div></div><div class="ca-panel p-3 flex items-start gap-2.5"><span class="ca-iconbadge w-8 h-8 flex-none [color:#15803d]"><i class="icon-heart"></i></span><div class="min-w-0"><p class="text-sm font-semibold ca-head">Patient Stabilized</p><p class="text-[11px] ca-mut truncate">ICU-A-01 · ROSC</p><p class="text-[10px] ca-mut mt-0.5">19m ago</p></div></div><div class="ca-panel p-3 flex items-start gap-2.5"><span class="ca-iconbadge w-8 h-8 flex-none [color:#e06c1f]"><i class="icon-trending-up"></i></span><div class="min-w-0"><p class="text-sm font-semibold ca-head">Alert Escalated</p><p class="text-[11px] ca-mut truncate">ALT-7208 → Consultant</p><p class="text-[10px] ca-mut mt-0.5">24m ago</p></div></div><div class="ca-panel p-3 flex items-start gap-2.5"><span class="ca-iconbadge w-8 h-8 flex-none [color:#15803d]"><i class="icon-circle-check"></i></span><div class="min-w-0"><p class="text-sm font-semibold ca-head">Alert Resolved</p><p class="text-[11px] ca-mut truncate">ALT-7191 closed</p><p class="text-[10px] ca-mut mt-0.5">33m ago</p></div></div><div class="ca-panel p-3 flex items-start gap-2.5"><span class="ca-iconbadge w-8 h-8 flex-none [color:#64748b]"><i class="icon-file-check"></i></span><div class="min-w-0"><p class="text-sm font-semibold ca-head">Incident Closed</p><p class="text-[11px] ca-mut truncate">INC-3320 documented</p><p class="text-[10px] ca-mut mt-0.5">47m ago</p></div></div></div>
+                            </section>
+
+                            <!-- BULK BAR -->
+                            <div class="ca-bulk items-center gap-2 px-4 py-2.5 flex-wrap">
+                                <span class="text-sm font-semibold"><span id="ca-selcount">0</span> alerts selected</span>
+                                <div class="flex flex-wrap gap-1.5 ml-auto text-xs">
+                                    <button data-bulk="ack" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-check"></i> Acknowledge</button>
+                                    <button data-bulk="escalate" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-trending-up"></i> Escalate</button>
+                                    <button data-bulk="staff" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-user-plus"></i> Assign</button>
+                                    <button data-bulk="resolve" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-circle-check"></i> Resolve</button>
+                                    <button data-bulk="export" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    <button data-bulk="print" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-printer"></i> Print</button>
+                                    <button data-bulk="archive" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-archive"></i> Archive</button>
+                                    <button data-bulk="delete" class="px-2.5 py-1.5 rounded-md bg-rose-600/80 hover:bg-rose-600"><i class="icon-trash-2"></i> Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>

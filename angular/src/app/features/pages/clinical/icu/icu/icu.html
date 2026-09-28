@@ -1,1 +1,596 @@
-<p>icu works!</p>
+<main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="ic-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="ic-content" class="space-y-4">
+
+                            <!-- ============ 1. COMMAND HEADER (dark hero) ============ -->
+                            <section class="ic-hero p-5 lg:p-6">
+                                <div class="ic-hgrid"></div>
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="ic-chip bg-[rgba(239,68,68,.18)] text-[#fca5a5]"><span class="ic-dot ic-live bg-[#ef4444]"></span> LIVE OPS</span>
+                                            <span class="ic-chip bg-[rgba(245,158,11,.18)] text-[#fcd34d]" id="ic-emerglevel"><i class="icon-alert-triangle"></i> Emergency Level: ELEVATED</span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-3xl font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-monitor text-sky-400"></i> ICU Command Center</h1>
+                                        <p class="text-sm text-slate-300 mt-1">Real-time Critical Care Operations · <span id="ic-clock" class="ic-vital">14:32:07</span></p>
+                                    </div>
+
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-5 gap-3 mt-5">
+                                    <div class="ic-hstat"><p class="text-[11px] text-slate-300">ICU Occupancy</p><p class="text-xl font-bold text-white ic-vital">28<span class="text-xs text-slate-400">/34</span></p><div class="ic-stability mt-1 [--ic-track:rgba(148,163,184,.25)]"><span class="w-[82%] bg-[#f97316]"></span></div></div>
+                                    <div class="ic-hstat"><p class="text-[11px] text-slate-300">Ventilators Running</p><p class="text-xl font-bold text-sky-300 ic-vital">19<span class="text-xs text-slate-400">/24</span></p></div>
+                                    <div class="ic-hstat"><p class="text-[11px] text-slate-300">Critical Patients</p><p class="text-xl font-bold text-rose-400 ic-vital" id="ic-critcount">7</p></div>
+                                    <div class="ic-hstat"><p class="text-[11px] text-slate-300">Staff On Duty</p><p class="text-xl font-bold text-white ic-vital">42</p></div>
+                                    <div class="ic-hstat"><p class="text-[11px] text-slate-300">Beds Available</p><p class="text-xl font-bold text-emerald-400 ic-vital">6</p></div>
+                                </div>
+                            </section>
+
+                            <!-- ============ 2. CRITICAL ALERT RIBBON ============ -->
+                            <section id="ic-ribbonwrap" class="ic-canvas ic-ribbon px-3 py-2.5 flex items-center gap-3">
+                                <span class="ic-chip flex-none bg-[color-mix(in_srgb,#ef4444_15%,transparent)] text-[#dc2626]"><span class="ic-dot ic-live bg-[#ef4444]"></span> ALERTS</span>
+                                <div class="ic-ribbon flex-1"><div class="ic-ribbon-track" id="ic-ribbon"><span class="ic-alert [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626] [border-color:color-mix(in_srgb,#dc2626_35%,transparent)]"><i class="icon-alert-triangle"></i> Patient ICU-203 — Oxygen Critical</span><span class="ic-alert [background:color-mix(in_srgb,#ea580c_13%,transparent)] [color:#ea580c] [border-color:color-mix(in_srgb,#ea580c_35%,transparent)]"><i class="icon-wrench"></i> Ventilator VENT-07 maintenance due</span><span class="ic-alert [background:color-mix(in_srgb,#16a34a_13%,transparent)] [color:#16a34a] [border-color:color-mix(in_srgb,#16a34a_35%,transparent)]"><i class="icon-bed"></i> ICU-A Bed 05 now available</span><span class="ic-alert [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626] [border-color:color-mix(in_srgb,#dc2626_35%,transparent)]"><i class="icon-alert-octagon"></i> Code Blue activated — CCU-02</span><span class="ic-alert [background:color-mix(in_srgb,#ca8a04_13%,transparent)] [color:#ca8a04] [border-color:color-mix(in_srgb,#ca8a04_35%,transparent)]"><i class="icon-syringe"></i> Medication due — ICU-B-01</span><span class="ic-alert [background:color-mix(in_srgb,#ea580c_13%,transparent)] [color:#ea580c] [border-color:color-mix(in_srgb,#ea580c_35%,transparent)]"><i class="icon-footprints"></i> Rapid response team dispatched</span><span class="ic-alert [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626] [border-color:color-mix(in_srgb,#dc2626_35%,transparent)]"><i class="icon-alert-triangle"></i> Patient ICU-203 — Oxygen Critical</span><span class="ic-alert [background:color-mix(in_srgb,#ea580c_13%,transparent)] [color:#ea580c] [border-color:color-mix(in_srgb,#ea580c_35%,transparent)]"><i class="icon-wrench"></i> Ventilator VENT-07 maintenance due</span><span class="ic-alert [background:color-mix(in_srgb,#16a34a_13%,transparent)] [color:#16a34a] [border-color:color-mix(in_srgb,#16a34a_35%,transparent)]"><i class="icon-bed"></i> ICU-A Bed 05 now available</span><span class="ic-alert [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626] [border-color:color-mix(in_srgb,#dc2626_35%,transparent)]"><i class="icon-alert-octagon"></i> Code Blue activated — CCU-02</span><span class="ic-alert [background:color-mix(in_srgb,#ca8a04_13%,transparent)] [color:#ca8a04] [border-color:color-mix(in_srgb,#ca8a04_35%,transparent)]"><i class="icon-syringe"></i> Medication due — ICU-B-01</span><span class="ic-alert [background:color-mix(in_srgb,#ea580c_13%,transparent)] [color:#ea580c] [border-color:color-mix(in_srgb,#ea580c_35%,transparent)]"><i class="icon-footprints"></i> Rapid response team dispatched</span></div></div>
+                            </section>
+
+                            <!-- ============ 3. ICU BED COMMAND CENTER ============ -->
+                            <section class="ic-canvas ic-grid-bg p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                                    <div>
+                                        <h2 class="text-lg font-bold ic-head flex items-center gap-2"><i class="icon-layout-grid text-sky-500"></i> ICU Bed Command Center</h2>
+                                        <p class="text-xs ic-mut">Hover a bed to preview attending staff</p>
+                                    </div>
+                                    <div class="flex flex-wrap items-center gap-3">
+                                        <div class="flex flex-wrap gap-2 text-[11px]" id="ic-bedlegend"><span class="flex items-center gap-1 ic-mut"><span class="ic-dot [background:#16a34a]"></span>Stable</span><span class="flex items-center gap-1 ic-mut"><span class="ic-dot [background:#ca8a04]"></span>Observation</span><span class="flex items-center gap-1 ic-mut"><span class="ic-dot [background:#ea580c]"></span>Serious</span><span class="flex items-center gap-1 ic-mut"><span class="ic-dot [background:#dc2626]"></span>Critical</span><span class="flex items-center gap-1 ic-mut"><span class="ic-dot [background:#64748b]"></span>Available</span></div>
+                                    </div>
+                                </div>
+                                <div id="ic-floor" class="space-y-5"><div>
+            <div class="flex items-center gap-2 mb-2"><span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]"><i class="icon-hospital"></i> ICU A</span><span class="text-[11px] ic-mut">6/6 occupied</span><div class="flex-1 h-px [background:var(--ic-border)]"></div></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3"><div class="ic-bed st-yellow" data-bed="0">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">ICU-A-01</span><span class="ic-chip risk">Observation</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#475569] [font-size:12px]">RS</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Rahul Sharma</p><p class="text-[10px] ic-mut">74y · F · Day 19</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Acute MI</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 75</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 95%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. A. Mehta · <i class="icon-user-check"></i> N. Fernandes</p></div>
+    </div><div class="ic-bed st-orange" data-bed="1">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">ICU-A-02</span><span class="ic-chip risk">Serious</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#0f766e] [font-size:12px]">AR</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Anita Reddy</p><p class="text-[10px] ic-mut">59y · M · Day 2</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Septic Shock</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 70</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 90%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. S. Kapoor · <i class="icon-user-check"></i> N. Pillai</p></div>
+    </div><div class="ic-bed st-red" data-bed="2">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">ICU-A-03</span><span class="ic-chip risk"><i class="icon-alert-triangle text-[9px]"></i> Critical</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#1e40af] [font-size:12px]">VN</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Vikram Nair</p><p class="text-[10px] ic-mut">38y · F · Day 8</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">ARDS</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 65</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 88%</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. R. Nair · <i class="icon-user-check"></i> N. Sharma</p></div>
+    </div><div class="ic-bed st-green" data-bed="3">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">ICU-A-04</span><span class="ic-chip risk">Stable</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#4338ca] [font-size:12px]">PP</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Priya Patel</p><p class="text-[10px] ic-mut">43y · M · Day 12</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">TBI</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 87</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 98%</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. L. Khan · <i class="icon-user-check"></i> N. Das</p></div>
+    </div><div class="ic-bed st-red" data-bed="4">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">ICU-A-05</span><span class="ic-chip risk"><i class="icon-alert-triangle text-[9px]"></i> Critical</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#0e7490] [font-size:12px]">SG</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Suresh Gupta</p><p class="text-[10px] ic-mut">45y · F · Day 6</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Post-CABG</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 113</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 92%</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. P. Rao · <i class="icon-user-check"></i> N. Fernandes</p></div>
+    </div><div class="ic-bed st-yellow" data-bed="5">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">ICU-A-06</span><span class="ic-chip risk">Observation</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#334155] [font-size:12px]">MS</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Meera Singh</p><p class="text-[10px] ic-mut">69y · M · Day 4</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Stroke</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 71</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 94%</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. A. Mehta · <i class="icon-user-check"></i> N. Pillai</p></div>
+    </div></div>
+        </div><div>
+            <div class="flex items-center gap-2 mb-2"><span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]"><i class="icon-hospital"></i> ICU B</span><span class="text-[11px] ic-mut">4/5 occupied</span><div class="flex-1 h-px [background:var(--ic-border)]"></div></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3"><div class="ic-bed st-yellow" data-bed="6">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">ICU-B-01</span><span class="ic-chip risk">Observation</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#3f6212] [font-size:12px]">AM</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Arjun Menon</p><p class="text-[10px] ic-mut">78y · F · Day 14</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Multi-Organ Failure</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 86</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 92%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. S. Kapoor · <i class="icon-user-check"></i> N. Sharma</p></div>
+    </div><div class="ic-bed ic-bed-empty st-gray">
+        <div class="flex items-center justify-between"><span class="text-xs font-bold ic-mut">ICU-B-02</span><span class="ic-chip risk">Available</span></div>
+        <div class="flex flex-col items-center justify-center py-3 ic-mut"><i class="icon-bed text-2xl"></i><p class="text-[11px] mt-1">Assign patient</p></div></div><div class="ic-bed st-green" data-bed="8">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">ICU-B-03</span><span class="ic-chip risk">Stable</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#475569] [font-size:12px]">DJ</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Deepak Joshi</p><p class="text-[10px] ic-mut">24y · F · Day 1</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">DKA</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 84</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 97%</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. L. Khan · <i class="icon-user-check"></i> N. Fernandes</p></div>
+    </div><div class="ic-bed st-yellow" data-bed="9">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">ICU-B-04</span><span class="ic-chip risk">Observation</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#0f766e] [font-size:12px]">NV</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Neha Verma</p><p class="text-[10px] ic-mut">79y · M · Day 14</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Cardiac Arrest</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 118</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 86%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. P. Rao · <i class="icon-user-check"></i> N. Pillai</p></div>
+    </div><div class="ic-bed st-yellow" data-bed="10">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">ICU-B-05</span><span class="ic-chip risk">Observation</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#1e40af] [font-size:12px]">RI</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Rohan Iyer</p><p class="text-[10px] ic-mut">54y · F · Day 6</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Acute MI</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 90</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 88%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. A. Mehta · <i class="icon-user-check"></i> N. Sharma</p></div>
+    </div></div>
+        </div><div>
+            <div class="flex items-center gap-2 mb-2"><span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]"><i class="icon-hospital"></i> NICU</span><span class="text-[11px] ic-mut">4/5 occupied</span><div class="flex-1 h-px [background:var(--ic-border)]"></div></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3"><div class="ic-bed st-yellow" data-bed="11">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">NICU-01</span><span class="ic-chip risk">Observation</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#4338ca] [font-size:12px]">SK</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Sana Khan</p><p class="text-[10px] ic-mut">50y · M · Day 21</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Septic Shock</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 126</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 90%</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. S. Kapoor · <i class="icon-user-check"></i> N. Das</p></div>
+    </div><div class="ic-bed st-yellow" data-bed="12">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">NICU-02</span><span class="ic-chip risk">Observation</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#0e7490] [font-size:12px]">RS</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Rahul Sharma</p><p class="text-[10px] ic-mut">84y · F · Day 11</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">ARDS</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 58</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 98%</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. R. Nair · <i class="icon-user-check"></i> N. Fernandes</p></div>
+    </div><div class="ic-bed st-green" data-bed="13">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">NICU-03</span><span class="ic-chip risk">Stable</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#334155] [font-size:12px]">AR</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Anita Reddy</p><p class="text-[10px] ic-mut">80y · M · Day 3</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">TBI</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 117</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 89%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. L. Khan · <i class="icon-user-check"></i> N. Pillai</p></div>
+    </div><div class="ic-bed ic-bed-empty st-gray">
+        <div class="flex items-center justify-between"><span class="text-xs font-bold ic-mut">NICU-04</span><span class="ic-chip risk">Available</span></div>
+        <div class="flex flex-col items-center justify-center py-3 ic-mut"><i class="icon-bed text-2xl"></i><p class="text-[11px] mt-1">Assign patient</p></div></div><div class="ic-bed st-green" data-bed="15">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">NICU-05</span><span class="ic-chip risk">Stable</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#7c2d12] [font-size:12px]">PP</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Priya Patel</p><p class="text-[10px] ic-mut">27y · M · Day 15</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Stroke</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 101</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 87%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. A. Mehta · <i class="icon-user-check"></i> N. Das</p></div>
+    </div></div>
+        </div><div>
+            <div class="flex items-center gap-2 mb-2"><span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]"><i class="icon-hospital"></i> PICU</span><span class="text-[11px] ic-mut">4/4 occupied</span><div class="flex-1 h-px [background:var(--ic-border)]"></div></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3"><div class="ic-bed st-green" data-bed="16">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">PICU-01</span><span class="ic-chip risk">Stable</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#475569] [font-size:12px]">SG</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Suresh Gupta</p><p class="text-[10px] ic-mut">78y · F · Day 12</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Multi-Organ Failure</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 89</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 92%</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. S. Kapoor · <i class="icon-user-check"></i> N. Fernandes</p></div>
+    </div><div class="ic-bed st-yellow" data-bed="17">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">PICU-02</span><span class="ic-chip risk">Observation</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#0f766e] [font-size:12px]">MS</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Meera Singh</p><p class="text-[10px] ic-mut">42y · M · Day 16</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Pneumonia</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 119</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 91%</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. R. Nair · <i class="icon-user-check"></i> N. Pillai</p></div>
+    </div><div class="ic-bed st-yellow" data-bed="18">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">PICU-03</span><span class="ic-chip risk">Observation</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#1e40af] [font-size:12px]">AM</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Arjun Menon</p><p class="text-[10px] ic-mut">51y · F · Day 16</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">DKA</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 90</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 89%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. L. Khan · <i class="icon-user-check"></i> N. Sharma</p></div>
+    </div><div class="ic-bed st-green" data-bed="19">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">PICU-04</span><span class="ic-chip risk">Stable</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#4338ca] [font-size:12px]">KD</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Kavya Das</p><p class="text-[10px] ic-mut">55y · M · Day 7</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Cardiac Arrest</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 99</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 95%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. P. Rao · <i class="icon-user-check"></i> N. Das</p></div>
+    </div></div>
+        </div><div>
+            <div class="flex items-center gap-2 mb-2"><span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]"><i class="icon-hospital"></i> CCU</span><span class="text-[11px] ic-mut">5/6 occupied</span><div class="flex-1 h-px [background:var(--ic-border)]"></div></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3"><div class="ic-bed st-green" data-bed="20">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">CCU-01</span><span class="ic-chip risk">Stable</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#0e7490] [font-size:12px]">DJ</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Deepak Joshi</p><p class="text-[10px] ic-mut">82y · F · Day 12</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Acute MI</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 68</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 91%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. A. Mehta · <i class="icon-user-check"></i> N. Fernandes</p></div>
+    </div><div class="ic-bed ic-bed-empty st-gray">
+        <div class="flex items-center justify-between"><span class="text-xs font-bold ic-mut">CCU-02</span><span class="ic-chip risk">Available</span></div>
+        <div class="flex flex-col items-center justify-center py-3 ic-mut"><i class="icon-bed text-2xl"></i><p class="text-[11px] mt-1">Assign patient</p></div></div><div class="ic-bed st-red" data-bed="22">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">CCU-03</span><span class="ic-chip risk"><i class="icon-alert-triangle text-[9px]"></i> Critical</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#3f6212] [font-size:12px]">RI</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Rohan Iyer</p><p class="text-[10px] ic-mut">53y · F · Day 6</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">ARDS</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 112</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 91%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. R. Nair · <i class="icon-user-check"></i> N. Sharma</p></div>
+    </div><div class="ic-bed st-green" data-bed="23">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">CCU-04</span><span class="ic-chip risk">Stable</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#7c2d12] [font-size:12px]">SK</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Sana Khan</p><p class="text-[10px] ic-mut">83y · M · Day 2</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">TBI</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 103</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 96%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. L. Khan · <i class="icon-user-check"></i> N. Das</p></div>
+    </div><div class="ic-bed st-yellow" data-bed="24">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">CCU-05</span><span class="ic-chip risk">Observation</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#475569] [font-size:12px]">RS</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Rahul Sharma</p><p class="text-[10px] ic-mut">42y · F · Day 11</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Post-CABG</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 107</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 86%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. P. Rao · <i class="icon-user-check"></i> N. Fernandes</p></div>
+    </div><div class="ic-bed st-yellow" data-bed="25">
+        <div class="flex items-center justify-between mb-1.5"><span class="text-xs font-bold ic-head">CCU-06</span><span class="ic-chip risk">Observation</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#0f766e] [font-size:12px]">AR</span>
+            <div class="min-w-0"><p class="text-sm font-semibold ic-head truncate">Anita Reddy</p><p class="text-[10px] ic-mut">27y · M · Day 13</p></div>
+        </div>
+        <p class="text-[11px] ic-mut mt-1.5 truncate">Stroke</p>
+        <div class="flex items-center gap-2 mt-2 text-[10px]">
+            <span class="ic-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><i class="icon-heart-pulse"></i> 86</span>
+            <span class="ic-chip [background:color-mix(in_srgb,#0ea5e9_13%,transparent)] [color:#0284c7]"><i class="icon-air-vent"></i> 87%</span>
+            
+        </div>
+        <div class="preview px-2 py-1.5 text-[10px] left-2 right-2 rounded-md [background:var(--ic-elev)] [border:1px_solid_var(--ic-border)]"><p class="ic-mut"><i class="icon-stethoscope"></i> Dr. A. Mehta · <i class="icon-user-check"></i> N. Pillai</p></div>
+    </div></div>
+        </div></div>
+                            </section>
+
+                            <!-- ============ 4. LIVE MONITORING WALL ============ -->
+                            <section class="ic-canvas p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h2 class="text-lg font-bold ic-head flex items-center gap-2"><i class="icon-heart-pulse text-rose-500"></i> Live Patient Monitoring Wall</h2>
+                                    <span class="ic-chip bg-[color-mix(in_srgb,#22c55e_15%,transparent)] text-[#16a34a]"><span class="ic-dot ic-live bg-[#22c55e]"></span> Streaming</span>
+                                </div>
+                                <div id="ic-monitors" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"><div class="ic-monitor" data-mon="2">
+            <div class="flex items-center justify-between px-3 py-2 border-b [border-color:var(--ic-border)]">
+                <div class="flex items-center gap-2"><span class="ic-dot ic-live [background:#dc2626]"></span><span class="text-sm font-bold ic-head">ICU-A-03</span><span class="text-[11px] ic-mut">Vikram Nair</span></div>
+                </div>
+            <div class="px-3 pt-3"><div class="ic-screen px-2 py-1"><svg class="ic-ecg w-full h-11 [color:#34d399]" viewBox="0 0 260 44"><polyline points="0.0,23.8 4.4,22.9 8.8,21.5 13.2,6.6 17.6,37.4 22.0,15.4 26.4,21.8 30.8,23.2 35.3,23.9 39.7,23.8 44.1,22.8 48.5,21.5 52.9,20.3 57.3,20.0 61.7,20.6 66.1,21.9 70.5,23.2 74.9,23.9 79.3,6.6 83.7,37.4 88.1,15.4 92.5,20.3 96.9,20.0 101.4,20.6 105.8,21.9 110.2,23.2 114.6,24.0 119.0,23.8 123.4,22.8 127.8,21.4 132.2,20.3 136.6,20.0 141.0,20.7 145.4,6.6 149.8,37.4 154.2,15.4 158.6,23.8 163.1,22.7 167.5,21.4 171.9,20.3 176.3,20.0 180.7,20.7 185.1,22.0 189.5,23.3 193.9,24.0 198.3,23.7 202.7,22.7 207.1,21.3 211.5,6.6 215.9,37.4 220.3,15.4 224.7,22.0 229.2,23.3 233.6,24.0 238.0,23.7 242.4,22.7 246.8,21.3 251.2,20.3 255.6,20.0 260.0,20.7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div></div>
+            <div class="grid grid-cols-3 gap-2 px-3 pt-2">
+                
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">HR</p><p class="text-base font-bold ic-vital [color:#ef4444]" data-v="hr" data-bid="2">65<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">SpO₂</p><p class="text-base font-bold ic-vital [color:#0ea5e9]" data-v="spo2" data-bid="2">88<span class="text-[9px] ic-mut ml-0.5">%</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">BP</p><p class="text-base font-bold ic-vital [color:#a855f7]" data-v="bp" data-bid="2">137/56<span class="text-[9px] ic-mut ml-0.5"></span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Temp</p><p class="text-base font-bold ic-vital [color:#f59e0b]" data-v="temp" data-bid="2">36.0<span class="text-[9px] ic-mut ml-0.5">°C</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Resp</p><p class="text-base font-bold ic-vital [color:#22c55e]" data-v="rr" data-bid="2">25<span class="text-[9px] ic-mut ml-0.5">/m</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Pulse</p><p class="text-base font-bold ic-vital [color:#ec4899]" data-v="pulse" data-bid="2">65<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+            </div>
+            <div class="px-3 py-2.5"><div class="flex items-center justify-between text-[10px] mb-1"><span class="ic-mut">Stability</span><span class="font-bold [color:#dc2626]" data-stabtxt="2">20%</span></div><div class="ic-stability"><span class="[width:20%] [background:#dc2626]" data-stab="2"></span></div></div>
+        </div><div class="ic-monitor" data-mon="4">
+            <div class="flex items-center justify-between px-3 py-2 border-b [border-color:var(--ic-border)]">
+                <div class="flex items-center gap-2"><span class="ic-dot ic-live [background:#dc2626]"></span><span class="text-sm font-bold ic-head">ICU-A-05</span><span class="text-[11px] ic-mut">Suresh Gupta</span></div>
+                </div>
+            <div class="px-3 pt-3"><div class="ic-screen px-2 py-1"><svg class="ic-ecg w-full h-11 [color:#34d399]" viewBox="0 0 260 44"><polyline points="0.0,20.5 4.4,6.6 8.8,37.4 13.2,15.4 17.6,23.0 22.0,23.9 26.4,23.9 30.8,23.0 35.3,21.7 39.7,20.5 44.1,20.0 48.5,20.5 52.9,21.7 57.3,23.0 61.7,23.9 66.1,23.9 70.5,6.6 74.9,37.4 79.3,15.4 83.7,20.0 88.1,20.5 92.5,21.7 96.9,23.0 101.4,23.9 105.8,23.9 110.2,22.9 114.6,21.6 119.0,20.4 123.4,20.0 127.8,20.5 132.2,21.7 136.6,6.6 141.0,37.4 145.4,15.4 149.8,22.9 154.2,21.6 158.6,20.4 163.1,20.0 167.5,20.5 171.9,21.8 176.3,23.1 180.7,23.9 185.1,23.8 189.5,22.9 193.9,21.5 198.3,20.4 202.7,6.6 207.1,37.4 211.5,15.4 215.9,23.1 220.3,23.9 224.7,23.8 229.2,22.9 233.6,21.5 238.0,20.4 242.4,20.0 246.8,20.6 251.2,21.8 255.6,23.2 260.0,23.9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div></div>
+            <div class="grid grid-cols-3 gap-2 px-3 pt-2">
+                
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">HR</p><p class="text-base font-bold ic-vital [color:#ef4444]" data-v="hr" data-bid="4">113<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">SpO₂</p><p class="text-base font-bold ic-vital [color:#0ea5e9]" data-v="spo2" data-bid="4">92<span class="text-[9px] ic-mut ml-0.5">%</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">BP</p><p class="text-base font-bold ic-vital [color:#a855f7]" data-v="bp" data-bid="4">93/70<span class="text-[9px] ic-mut ml-0.5"></span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Temp</p><p class="text-base font-bold ic-vital [color:#f59e0b]" data-v="temp" data-bid="4">39.4<span class="text-[9px] ic-mut ml-0.5">°C</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Resp</p><p class="text-base font-bold ic-vital [color:#22c55e]" data-v="rr" data-bid="4">27<span class="text-[9px] ic-mut ml-0.5">/m</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Pulse</p><p class="text-base font-bold ic-vital [color:#ec4899]" data-v="pulse" data-bid="4">113<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+            </div>
+            <div class="px-3 py-2.5"><div class="flex items-center justify-between text-[10px] mb-1"><span class="ic-mut">Stability</span><span class="font-bold [color:#dc2626]" data-stabtxt="4">27%</span></div><div class="ic-stability"><span class="[width:27%] [background:#dc2626]" data-stab="4"></span></div></div>
+        </div><div class="ic-monitor" data-mon="22">
+            <div class="flex items-center justify-between px-3 py-2 border-b [border-color:var(--ic-border)]">
+                <div class="flex items-center gap-2"><span class="ic-dot ic-live [background:#dc2626]"></span><span class="text-sm font-bold ic-head">CCU-03</span><span class="text-[11px] ic-mut">Rohan Iyer</span></div>
+                </div>
+            <div class="px-3 pt-3"><div class="ic-screen px-2 py-1"><svg class="ic-ecg w-full h-11 [color:#34d399]" viewBox="0 0 260 44"><polyline points="0.0,15.4 4.4,20.7 8.8,20.0 13.2,20.3 17.6,21.3 22.0,22.7 26.4,23.8 30.8,24.0 35.3,23.2 39.7,21.9 44.1,20.7 48.5,20.0 52.9,20.3 57.3,6.6 61.7,37.4 66.1,15.4 70.5,24.0 74.9,23.2 79.3,21.9 83.7,20.6 88.1,20.0 92.5,20.3 96.9,21.4 101.4,22.8 105.8,23.8 110.2,23.9 114.6,23.2 119.0,21.9 123.4,6.6 127.8,37.4 132.2,15.4 136.6,21.4 141.0,22.8 145.4,23.8 149.8,23.9 154.2,23.2 158.6,21.8 163.1,20.6 167.5,20.0 171.9,20.4 176.3,21.5 180.7,22.8 185.1,23.8 189.5,6.6 193.9,37.4 198.3,15.4 202.7,20.6 207.1,20.0 211.5,20.4 215.9,21.5 220.3,22.9 224.7,23.8 229.2,23.9 233.6,23.1 238.0,21.8 242.4,20.6 246.8,20.0 251.2,20.4 255.6,6.6 260.0,37.4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div></div>
+            <div class="grid grid-cols-3 gap-2 px-3 pt-2">
+                
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">HR</p><p class="text-base font-bold ic-vital [color:#ef4444]" data-v="hr" data-bid="22">112<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">SpO₂</p><p class="text-base font-bold ic-vital [color:#0ea5e9]" data-v="spo2" data-bid="22">91<span class="text-[9px] ic-mut ml-0.5">%</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">BP</p><p class="text-base font-bold ic-vital [color:#a855f7]" data-v="bp" data-bid="22">122/88<span class="text-[9px] ic-mut ml-0.5"></span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Temp</p><p class="text-base font-bold ic-vital [color:#f59e0b]" data-v="temp" data-bid="22">36.9<span class="text-[9px] ic-mut ml-0.5">°C</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Resp</p><p class="text-base font-bold ic-vital [color:#22c55e]" data-v="rr" data-bid="22">21<span class="text-[9px] ic-mut ml-0.5">/m</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Pulse</p><p class="text-base font-bold ic-vital [color:#ec4899]" data-v="pulse" data-bid="22">112<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+            </div>
+            <div class="px-3 py-2.5"><div class="flex items-center justify-between text-[10px] mb-1"><span class="ic-mut">Stability</span><span class="font-bold [color:#dc2626]" data-stabtxt="22">29%</span></div><div class="ic-stability"><span class="[width:29%] [background:#dc2626]" data-stab="22"></span></div></div>
+        </div><div class="ic-monitor" data-mon="1">
+            <div class="flex items-center justify-between px-3 py-2 border-b [border-color:var(--ic-border)]">
+                <div class="flex items-center gap-2"><span class="ic-dot ic-live [background:#ea580c]"></span><span class="text-sm font-bold ic-head">ICU-A-02</span><span class="text-[11px] ic-mut">Anita Reddy</span></div>
+                </div>
+            <div class="px-3 pt-3"><div class="ic-screen px-2 py-1"><svg class="ic-ecg w-full h-11 [color:#34d399]" viewBox="0 0 260 44"><polyline points="0.0,23.7 4.4,24.0 8.8,23.4 13.2,22.1 17.6,6.6 22.0,37.4 26.4,15.4 30.8,21.3 35.3,22.6 39.7,23.7 44.1,24.0 48.5,23.3 52.9,22.0 57.3,20.7 61.7,20.0 66.1,20.2 70.5,21.3 74.9,22.7 79.3,23.7 83.7,6.6 88.1,37.4 92.5,15.4 96.9,20.7 101.4,20.0 105.8,20.3 110.2,21.3 114.6,22.7 119.0,23.7 123.4,24.0 127.8,23.3 132.2,22.0 136.6,20.7 141.0,20.0 145.4,20.3 149.8,6.6 154.2,37.4 158.6,15.4 163.1,24.0 167.5,23.2 171.9,21.9 176.3,20.7 180.7,20.0 185.1,20.3 189.5,21.4 193.9,22.7 198.3,23.8 202.7,24.0 207.1,23.2 211.5,21.9 215.9,6.6 220.3,37.4 224.7,15.4 229.2,21.4 233.6,22.8 238.0,23.8 242.4,23.9 246.8,23.2 251.2,21.9 255.6,20.6 260.0,20.0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div></div>
+            <div class="grid grid-cols-3 gap-2 px-3 pt-2">
+                
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">HR</p><p class="text-base font-bold ic-vital [color:#ef4444]" data-v="hr" data-bid="1">70<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">SpO₂</p><p class="text-base font-bold ic-vital [color:#0ea5e9]" data-v="spo2" data-bid="1">90<span class="text-[9px] ic-mut ml-0.5">%</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">BP</p><p class="text-base font-bold ic-vital [color:#a855f7]" data-v="bp" data-bid="1">109/75<span class="text-[9px] ic-mut ml-0.5"></span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Temp</p><p class="text-base font-bold ic-vital [color:#f59e0b]" data-v="temp" data-bid="1">39.7<span class="text-[9px] ic-mut ml-0.5">°C</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Resp</p><p class="text-base font-bold ic-vital [color:#22c55e]" data-v="rr" data-bid="1">17<span class="text-[9px] ic-mut ml-0.5">/m</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Pulse</p><p class="text-base font-bold ic-vital [color:#ec4899]" data-v="pulse" data-bid="1">70<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+            </div>
+            <div class="px-3 py-2.5"><div class="flex items-center justify-between text-[10px] mb-1"><span class="ic-mut">Stability</span><span class="font-bold [color:#ea580c]" data-stabtxt="1">47%</span></div><div class="ic-stability"><span class="[width:47%] [background:#ea580c]" data-stab="1"></span></div></div>
+        </div><div class="ic-monitor" data-mon="11">
+            <div class="flex items-center justify-between px-3 py-2 border-b [border-color:var(--ic-border)]">
+                <div class="flex items-center gap-2"><span class="ic-dot ic-live [background:#ca8a04]"></span><span class="text-sm font-bold ic-head">NICU-01</span><span class="text-[11px] ic-mut">Sana Khan</span></div>
+                </div>
+            <div class="px-3 pt-3"><div class="ic-screen px-2 py-1"><svg class="ic-ecg w-full h-11 [color:#34d399]" viewBox="0 0 260 44"><polyline points="0.0,20.0 4.4,20.5 8.8,21.7 13.2,23.0 17.6,23.9 22.0,23.9 26.4,23.0 30.8,21.6 35.3,20.4 39.7,6.6 44.1,37.4 48.5,15.4 52.9,23.0 57.3,23.9 61.7,23.9 66.1,22.9 70.5,21.6 74.9,20.4 79.3,20.0 83.7,20.5 88.1,21.7 92.5,23.1 96.9,23.9 101.4,23.8 105.8,6.6 110.2,37.4 114.6,15.4 119.0,20.0 123.4,20.5 127.8,21.8 132.2,23.1 136.6,23.9 141.0,23.8 145.4,22.9 149.8,21.5 154.2,20.4 158.6,20.0 163.1,20.6 167.5,21.8 171.9,6.6 176.3,37.4 180.7,15.4 185.1,22.9 189.5,21.5 193.9,20.4 198.3,20.0 202.7,20.6 207.1,21.8 211.5,23.2 215.9,23.9 220.3,23.8 224.7,22.8 229.2,21.5 233.6,20.3 238.0,6.6 242.4,37.4 246.8,15.4 251.2,23.2 255.6,23.9 260.0,23.8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div></div>
+            <div class="grid grid-cols-3 gap-2 px-3 pt-2">
+                
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">HR</p><p class="text-base font-bold ic-vital [color:#ef4444]" data-v="hr" data-bid="11">126<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">SpO₂</p><p class="text-base font-bold ic-vital [color:#0ea5e9]" data-v="spo2" data-bid="11">90<span class="text-[9px] ic-mut ml-0.5">%</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">BP</p><p class="text-base font-bold ic-vital [color:#a855f7]" data-v="bp" data-bid="11">132/72<span class="text-[9px] ic-mut ml-0.5"></span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Temp</p><p class="text-base font-bold ic-vital [color:#f59e0b]" data-v="temp" data-bid="11">38.7<span class="text-[9px] ic-mut ml-0.5">°C</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Resp</p><p class="text-base font-bold ic-vital [color:#22c55e]" data-v="rr" data-bid="11">27<span class="text-[9px] ic-mut ml-0.5">/m</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Pulse</p><p class="text-base font-bold ic-vital [color:#ec4899]" data-v="pulse" data-bid="11">126<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+            </div>
+            <div class="px-3 py-2.5"><div class="flex items-center justify-between text-[10px] mb-1"><span class="ic-mut">Stability</span><span class="font-bold [color:#ca8a04]" data-stabtxt="11">66%</span></div><div class="ic-stability"><span class="[width:66%] [background:#ca8a04]" data-stab="11"></span></div></div>
+        </div><div class="ic-monitor" data-mon="6">
+            <div class="flex items-center justify-between px-3 py-2 border-b [border-color:var(--ic-border)]">
+                <div class="flex items-center gap-2"><span class="ic-dot ic-live [background:#ca8a04]"></span><span class="text-sm font-bold ic-head">ICU-B-01</span><span class="text-[11px] ic-mut">Arjun Menon</span></div>
+                </div>
+            <div class="px-3 pt-3"><div class="ic-screen px-2 py-1"><svg class="ic-ecg w-full h-11 [color:#34d399]" viewBox="0 0 260 44"><polyline points="0.0,37.4 4.4,15.4 8.8,23.8 13.2,23.9 17.6,23.2 22.0,21.8 26.4,20.6 30.8,20.0 35.3,20.4 39.7,21.5 44.1,22.8 48.5,23.8 52.9,23.9 57.3,23.1 61.7,6.6 66.1,37.4 70.5,15.4 74.9,20.4 79.3,21.5 83.7,22.9 88.1,23.8 92.5,23.9 96.9,23.1 101.4,21.8 105.8,20.6 110.2,20.0 114.6,20.4 119.0,21.5 123.4,22.9 127.8,6.6 132.2,37.4 136.6,15.4 141.0,21.7 145.4,20.5 149.8,20.0 154.2,20.4 158.6,21.6 163.1,22.9 167.5,23.9 171.9,23.9 176.3,23.1 180.7,21.7 185.1,20.5 189.5,20.0 193.9,6.6 198.3,37.4 202.7,15.4 207.1,23.9 211.5,23.9 215.9,23.0 220.3,21.7 224.7,20.5 229.2,20.0 233.6,20.5 238.0,21.6 242.4,23.0 246.8,23.9 251.2,23.9 255.6,23.0 260.0,6.6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div></div>
+            <div class="grid grid-cols-3 gap-2 px-3 pt-2">
+                
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">HR</p><p class="text-base font-bold ic-vital [color:#ef4444]" data-v="hr" data-bid="6">86<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">SpO₂</p><p class="text-base font-bold ic-vital [color:#0ea5e9]" data-v="spo2" data-bid="6">92<span class="text-[9px] ic-mut ml-0.5">%</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">BP</p><p class="text-base font-bold ic-vital [color:#a855f7]" data-v="bp" data-bid="6">105/86<span class="text-[9px] ic-mut ml-0.5"></span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Temp</p><p class="text-base font-bold ic-vital [color:#f59e0b]" data-v="temp" data-bid="6">36.0<span class="text-[9px] ic-mut ml-0.5">°C</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Resp</p><p class="text-base font-bold ic-vital [color:#22c55e]" data-v="rr" data-bid="6">30<span class="text-[9px] ic-mut ml-0.5">/m</span></p></div>
+                    <div class="rounded-lg text-center py-1.5 [background:var(--ic-panel)]"><p class="text-[9px] ic-mut uppercase">Pulse</p><p class="text-base font-bold ic-vital [color:#ec4899]" data-v="pulse" data-bid="6">86<span class="text-[9px] ic-mut ml-0.5">bpm</span></p></div>
+            </div>
+            <div class="px-3 py-2.5"><div class="flex items-center justify-between text-[10px] mb-1"><span class="ic-mut">Stability</span><span class="font-bold [color:#ca8a04]" data-stabtxt="6">67%</span></div><div class="ic-stability"><span class="[width:67%] [background:#ca8a04]" data-stab="6"></span></div></div>
+        </div></div>
+                            </section>
+
+                            <!-- ============ 5 + 6. EMERGENCY OPS + VENTILATORS ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-[380px_minmax(0,1fr)] gap-4">
+                                <section class="ic-canvas p-5">
+                                    <h2 class="text-lg font-bold ic-head flex items-center gap-2 mb-4"><i class="icon-alert-triangle text-rose-500"></i> Emergency Operations</h2>
+                                    <div id="ic-emergops" class="grid grid-cols-2 gap-3"><div class="ic-glass2 p-3 [border-color:color-mix(in_srgb,#3b82f6_40%,var(--ic-border))]">
+        <div class="flex items-center justify-between"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#3b82f6_15%,transparent)] [color:#3b82f6]"><i class="icon-alert-octagon"></i></span><span class="ic-dot ic-live [background:#3b82f6]"></span></div>
+        <p class="text-2xl font-bold ic-head mt-2 ic-vital">2</p><p class="text-[11px] ic-mut">Code Blue</p></div><div class="ic-glass2 p-3 [border-color:color-mix(in_srgb,#ef4444_40%,var(--ic-border))]">
+        <div class="flex items-center justify-between"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#ef4444_15%,transparent)] [color:#ef4444]"><i class="icon-flame"></i></span><span class="ic-dot ic-live [background:#ef4444]"></span></div>
+        <p class="text-2xl font-bold ic-head mt-2 ic-vital">1</p><p class="text-[11px] ic-mut">Code Red</p></div><div class="ic-glass2 p-3 [border-color:color-mix(in_srgb,#f97316_40%,var(--ic-border))]">
+        <div class="flex items-center justify-between"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#f97316_15%,transparent)] [color:#f97316]"><i class="icon-footprints"></i></span></div>
+        <p class="text-2xl font-bold ic-head mt-2 ic-vital">1</p><p class="text-[11px] ic-mut">Rapid Response</p></div><div class="ic-glass2 p-3 [border-color:color-mix(in_srgb,#eab308_40%,var(--ic-border))]">
+        <div class="flex items-center justify-between"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#eab308_15%,transparent)] [color:#eab308]"><i class="icon-ambulance"></i></span></div>
+        <p class="text-2xl font-bold ic-head mt-2 ic-vital">3</p><p class="text-[11px] ic-mut">Emergency Admits</p></div><div class="ic-glass2 p-3 [border-color:color-mix(in_srgb,#a855f7_40%,var(--ic-border))]">
+        <div class="flex items-center justify-between"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#a855f7]"><i class="icon-arrow-left-right"></i></span></div>
+        <p class="text-2xl font-bold ic-head mt-2 ic-vital">3</p><p class="text-[11px] ic-mut">Critical Transfers</p></div><div class="ic-glass2 p-3 [border-color:color-mix(in_srgb,#14b8a6_40%,var(--ic-border))]">
+        <div class="flex items-center justify-between"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#14b8a6_15%,transparent)] [color:#14b8a6]"><i class="icon-door-open"></i></span></div>
+        <p class="text-2xl font-bold ic-head mt-2 ic-vital">3</p><p class="text-[11px] ic-mut">Isolation Patients</p></div></div>
+                                </section>
+                                <section class="ic-canvas p-5">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h2 class="text-lg font-bold ic-head flex items-center gap-2"><i class="icon-air-vent text-sky-500"></i> Ventilator Command Center</h2>
+                                        <span class="ic-chip bg-[color-mix(in_srgb,#0ea5e9_15%,transparent)] text-[#0284c7]">19 running</span>
+                                    </div>
+                                    <div id="ic-vents" class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div class="ic-glass2 p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold ic-head flex items-center gap-1.5"><i class="icon-air-vent text-sky-500"></i> VENT-01</span><span class="ic-chip [background:color-mix(in_srgb,#22c55e_15%,transparent)] [color:#16a34a]">Normal</span></div>
+            <p class="text-[11px] ic-mut mb-2">ICU-A-03 · Vikram Nair</p>
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div><p class="text-[9px] ic-mut">MODE</p><p class="text-xs font-bold ic-head">AC/VC</p></div>
+                <div><p class="text-[9px] ic-mut">O₂</p><p class="text-xs font-bold text-sky-500">50%</p></div>
+                <div><p class="text-[9px] ic-mut">RUNTIME</p><p class="text-xs font-bold ic-head">18h</p></div>
+            </div>
+            <div class="flex items-center gap-2 mt-2"><i class="icon-battery text-xs [color:#22c55e]"></i><div class="ic-stability flex-1"><span class="[width:94%] [background:#22c55e]"></span></div><span class="text-[10px] ic-mut">94%</span></div>
+        </div><div class="ic-glass2 p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold ic-head flex items-center gap-1.5"><i class="icon-air-vent text-sky-500"></i> VENT-02</span><span class="ic-chip [background:color-mix(in_srgb,#22c55e_15%,transparent)] [color:#16a34a]">Normal</span></div>
+            <p class="text-[11px] ic-mut mb-2">ICU-A-04 · Priya Patel</p>
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div><p class="text-[9px] ic-mut">MODE</p><p class="text-xs font-bold ic-head">SIMV</p></div>
+                <div><p class="text-[9px] ic-mut">O₂</p><p class="text-xs font-bold text-sky-500">94%</p></div>
+                <div><p class="text-[9px] ic-mut">RUNTIME</p><p class="text-xs font-bold ic-head">2h</p></div>
+            </div>
+            <div class="flex items-center gap-2 mt-2"><i class="icon-battery text-xs [color:#22c55e]"></i><div class="ic-stability flex-1"><span class="[width:61%] [background:#22c55e]"></span></div><span class="text-[10px] ic-mut">61%</span></div>
+        </div><div class="ic-glass2 p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold ic-head flex items-center gap-1.5"><i class="icon-air-vent text-sky-500"></i> VENT-03</span><span class="ic-chip [background:color-mix(in_srgb,#22c55e_15%,transparent)] [color:#16a34a]">Normal</span></div>
+            <p class="text-[11px] ic-mut mb-2">ICU-A-05 · Suresh Gupta</p>
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div><p class="text-[9px] ic-mut">MODE</p><p class="text-xs font-bold ic-head">PSV</p></div>
+                <div><p class="text-[9px] ic-mut">O₂</p><p class="text-xs font-bold text-sky-500">74%</p></div>
+                <div><p class="text-[9px] ic-mut">RUNTIME</p><p class="text-xs font-bold ic-head">38h</p></div>
+            </div>
+            <div class="flex items-center gap-2 mt-2"><i class="icon-battery text-xs [color:#22c55e]"></i><div class="ic-stability flex-1"><span class="[width:52%] [background:#22c55e]"></span></div><span class="text-[10px] ic-mut">52%</span></div>
+        </div><div class="ic-glass2 p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold ic-head flex items-center gap-1.5"><i class="icon-air-vent text-sky-500"></i> VENT-04</span><span class="ic-chip [background:color-mix(in_srgb,#22c55e_15%,transparent)] [color:#16a34a]">Normal</span></div>
+            <p class="text-[11px] ic-mut mb-2">ICU-A-06 · Meera Singh</p>
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div><p class="text-[9px] ic-mut">MODE</p><p class="text-xs font-bold ic-head">CPAP</p></div>
+                <div><p class="text-[9px] ic-mut">O₂</p><p class="text-xs font-bold text-sky-500">76%</p></div>
+                <div><p class="text-[9px] ic-mut">RUNTIME</p><p class="text-xs font-bold ic-head">90h</p></div>
+            </div>
+            <div class="flex items-center gap-2 mt-2"><i class="icon-battery text-xs [color:#22c55e]"></i><div class="ic-stability flex-1"><span class="[width:79%] [background:#22c55e]"></span></div><span class="text-[10px] ic-mut">79%</span></div>
+        </div><div class="ic-glass2 p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold ic-head flex items-center gap-1.5"><i class="icon-air-vent text-sky-500"></i> VENT-05</span><span class="ic-chip [background:color-mix(in_srgb,#22c55e_15%,transparent)] [color:#16a34a]">Normal</span></div>
+            <p class="text-[11px] ic-mut mb-2">ICU-B-03 · Deepak Joshi</p>
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div><p class="text-[9px] ic-mut">MODE</p><p class="text-xs font-bold ic-head">APRV</p></div>
+                <div><p class="text-[9px] ic-mut">O₂</p><p class="text-xs font-bold text-sky-500">100%</p></div>
+                <div><p class="text-[9px] ic-mut">RUNTIME</p><p class="text-xs font-bold ic-head">77h</p></div>
+            </div>
+            <div class="flex items-center gap-2 mt-2"><i class="icon-battery text-xs [color:#22c55e]"></i><div class="ic-stability flex-1"><span class="[width:53%] [background:#22c55e]"></span></div><span class="text-[10px] ic-mut">53%</span></div>
+        </div><div class="ic-glass2 p-3">
+            <div class="flex items-center justify-between mb-2"><span class="text-sm font-bold ic-head flex items-center gap-1.5"><i class="icon-air-vent text-sky-500"></i> VENT-06</span><span class="ic-chip [background:color-mix(in_srgb,#22c55e_15%,transparent)] [color:#16a34a]">Normal</span></div>
+            <p class="text-[11px] ic-mut mb-2">NICU-01 · Sana Khan</p>
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div><p class="text-[9px] ic-mut">MODE</p><p class="text-xs font-bold ic-head">AC/VC</p></div>
+                <div><p class="text-[9px] ic-mut">O₂</p><p class="text-xs font-bold text-sky-500">72%</p></div>
+                <div><p class="text-[9px] ic-mut">RUNTIME</p><p class="text-xs font-bold ic-head">94h</p></div>
+            </div>
+            <div class="flex items-center gap-2 mt-2"><i class="icon-battery text-xs [color:#22c55e]"></i><div class="ic-stability flex-1"><span class="[width:53%] [background:#22c55e]"></span></div><span class="text-[10px] ic-mut">53%</span></div>
+        </div></div>
+                                </section>
+                            </div>
+
+                            <!-- ============ 7. ICU WORKLOAD HEATMAP ============ -->
+                            <section class="ic-canvas p-5">
+                                <h2 class="text-lg font-bold ic-head flex items-center gap-2 mb-4"><i class="icon-layout-dashboard text-amber-500"></i> ICU Workload Map</h2>
+                                <div id="ic-workload" class="space-y-3 overflow-x-auto"><div class="grid grid-cols-[140px_repeat(5,1fr)] gap-2 items-center min-w-[520px]">
+        <span></span><span class="text-[10px] ic-mut text-center">06:00</span><span class="text-[10px] ic-mut text-center">10:00</span><span class="text-[10px] ic-mut text-center">14:00</span><span class="text-[10px] ic-mut text-center">18:00</span><span class="text-[10px] ic-mut text-center">22:00</span>
+        <span class="text-xs font-medium ic-head">Doctors</span><div class="ic-heat [background:color-mix(in_srgb,#f97316_16%,transparent)] [border-color:color-mix(in_srgb,#f97316_45%,transparent)]"><span class="text-xs font-bold [color:#f97316]">72%</span></div><div class="ic-heat [background:color-mix(in_srgb,#ef4444_16%,transparent)] [border-color:color-mix(in_srgb,#ef4444_45%,transparent)]"><span class="text-xs font-bold [color:#ef4444]">88%</span></div><div class="ic-heat [background:color-mix(in_srgb,#eab308_16%,transparent)] [border-color:color-mix(in_srgb,#eab308_45%,transparent)]"><span class="text-xs font-bold [color:#eab308]">65%</span></div><div class="ic-heat [background:color-mix(in_srgb,#ef4444_16%,transparent)] [border-color:color-mix(in_srgb,#ef4444_45%,transparent)]"><span class="text-xs font-bold [color:#ef4444]">90%</span></div><div class="ic-heat [background:color-mix(in_srgb,#eab308_16%,transparent)] [border-color:color-mix(in_srgb,#eab308_45%,transparent)]"><span class="text-xs font-bold [color:#eab308]">55%</span></div><span class="text-xs font-medium ic-head">Nurses</span><div class="ic-heat [background:color-mix(in_srgb,#f97316_16%,transparent)] [border-color:color-mix(in_srgb,#f97316_45%,transparent)]"><span class="text-xs font-bold [color:#f97316]">80%</span></div><div class="ic-heat [background:color-mix(in_srgb,#ef4444_16%,transparent)] [border-color:color-mix(in_srgb,#ef4444_45%,transparent)]"><span class="text-xs font-bold [color:#ef4444]">92%</span></div><div class="ic-heat [background:color-mix(in_srgb,#f97316_16%,transparent)] [border-color:color-mix(in_srgb,#f97316_45%,transparent)]"><span class="text-xs font-bold [color:#f97316]">70%</span></div><div class="ic-heat [background:color-mix(in_srgb,#ef4444_16%,transparent)] [border-color:color-mix(in_srgb,#ef4444_45%,transparent)]"><span class="text-xs font-bold [color:#ef4444]">85%</span></div><div class="ic-heat [background:color-mix(in_srgb,#eab308_16%,transparent)] [border-color:color-mix(in_srgb,#eab308_45%,transparent)]"><span class="text-xs font-bold [color:#eab308]">60%</span></div><span class="text-xs font-medium ic-head">Resp. Therapists</span><div class="ic-heat [background:color-mix(in_srgb,#eab308_16%,transparent)] [border-color:color-mix(in_srgb,#eab308_45%,transparent)]"><span class="text-xs font-bold [color:#eab308]">60%</span></div><div class="ic-heat [background:color-mix(in_srgb,#f97316_16%,transparent)] [border-color:color-mix(in_srgb,#f97316_45%,transparent)]"><span class="text-xs font-bold [color:#f97316]">75%</span></div><div class="ic-heat [background:color-mix(in_srgb,#ef4444_16%,transparent)] [border-color:color-mix(in_srgb,#ef4444_45%,transparent)]"><span class="text-xs font-bold [color:#ef4444]">88%</span></div><div class="ic-heat [background:color-mix(in_srgb,#f97316_16%,transparent)] [border-color:color-mix(in_srgb,#f97316_45%,transparent)]"><span class="text-xs font-bold [color:#f97316]">70%</span></div><div class="ic-heat [background:color-mix(in_srgb,#eab308_16%,transparent)] [border-color:color-mix(in_srgb,#eab308_45%,transparent)]"><span class="text-xs font-bold [color:#eab308]">50%</span></div><span class="text-xs font-medium ic-head">Bed Utilization</span><div class="ic-heat [background:color-mix(in_srgb,#f97316_16%,transparent)] [border-color:color-mix(in_srgb,#f97316_45%,transparent)]"><span class="text-xs font-bold [color:#f97316]">82%</span></div><div class="ic-heat [background:color-mix(in_srgb,#ef4444_16%,transparent)] [border-color:color-mix(in_srgb,#ef4444_45%,transparent)]"><span class="text-xs font-bold [color:#ef4444]">90%</span></div><div class="ic-heat [background:color-mix(in_srgb,#f97316_16%,transparent)] [border-color:color-mix(in_srgb,#f97316_45%,transparent)]"><span class="text-xs font-bold [color:#f97316]">78%</span></div><div class="ic-heat [background:color-mix(in_srgb,#ef4444_16%,transparent)] [border-color:color-mix(in_srgb,#ef4444_45%,transparent)]"><span class="text-xs font-bold [color:#ef4444]">95%</span></div><div class="ic-heat [background:color-mix(in_srgb,#eab308_16%,transparent)] [border-color:color-mix(in_srgb,#eab308_45%,transparent)]"><span class="text-xs font-bold [color:#eab308]">68%</span></div><span class="text-xs font-medium ic-head">Shift Coverage</span><div class="ic-heat [background:color-mix(in_srgb,#f97316_16%,transparent)] [border-color:color-mix(in_srgb,#f97316_45%,transparent)]"><span class="text-xs font-bold [color:#f97316]">70%</span></div><div class="ic-heat [background:color-mix(in_srgb,#eab308_16%,transparent)] [border-color:color-mix(in_srgb,#eab308_45%,transparent)]"><span class="text-xs font-bold [color:#eab308]">65%</span></div><div class="ic-heat [background:color-mix(in_srgb,#ef4444_16%,transparent)] [border-color:color-mix(in_srgb,#ef4444_45%,transparent)]"><span class="text-xs font-bold [color:#ef4444]">85%</span></div><div class="ic-heat [background:color-mix(in_srgb,#ef4444_16%,transparent)] [border-color:color-mix(in_srgb,#ef4444_45%,transparent)]"><span class="text-xs font-bold [color:#ef4444]">88%</span></div><div class="ic-heat [background:color-mix(in_srgb,#f97316_16%,transparent)] [border-color:color-mix(in_srgb,#f97316_45%,transparent)]"><span class="text-xs font-bold [color:#f97316]">72%</span></div>
+    </div></div>
+                            </section>
+
+                            <!-- ============ 9. EQUIPMENT ============ -->
+                            <section class="ic-canvas p-5">
+                                <h2 class="text-lg font-bold ic-head flex items-center gap-2 mb-4"><i class="icon-cpu text-emerald-500"></i> Equipment Status</h2>
+                                <div id="ic-equipment" class="grid grid-cols-2 sm:grid-cols-4 gap-3"><div class="ic-glass2 p-3 text-left">
+        <div class="flex items-center justify-between mb-1.5"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0ea5e9]"><i class="icon-air-vent"></i></span><span class="text-xs font-bold [color:#ef4444]">92%</span></div>
+        <p class="text-sm font-semibold ic-head">Ventilators</p><p class="text-[10px] ic-mut">24 units · Healthy</p>
+        <div class="ic-stability mt-1.5"><span class="[width:92%] [background:#ef4444]"></span></div></div><div class="ic-glass2 p-3 text-left">
+        <div class="flex items-center justify-between mb-1.5"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#ef4444_14%,transparent)] [color:#ef4444]"><i class="icon-zap"></i></span><span class="text-xs font-bold [color:#ef4444]">88%</span></div>
+        <p class="text-sm font-semibold ic-head">Defibrillators</p><p class="text-[10px] ic-mut">12 units · Healthy</p>
+        <div class="ic-stability mt-1.5"><span class="[width:88%] [background:#ef4444]"></span></div></div><div class="ic-glass2 p-3 text-left">
+        <div class="flex items-center justify-between mb-1.5"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#22c55e_14%,transparent)] [color:#22c55e]"><i class="icon-monitor"></i></span><span class="text-xs font-bold [color:#ef4444]">96%</span></div>
+        <p class="text-sm font-semibold ic-head">Monitors</p><p class="text-[10px] ic-mut">34 units · Healthy</p>
+        <div class="ic-stability mt-1.5"><span class="[width:96%] [background:#ef4444]"></span></div></div><div class="ic-glass2 p-3 text-left">
+        <div class="flex items-center justify-between mb-1.5"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#a855f7_14%,transparent)] [color:#a855f7]"><i class="icon-activity"></i></span><span class="text-xs font-bold [color:#f97316]">84%</span></div>
+        <p class="text-sm font-semibold ic-head">ECG Machines</p><p class="text-[10px] ic-mut">10 units · Service soon</p>
+        <div class="ic-stability mt-1.5"><span class="[width:84%] [background:#f97316]"></span></div></div><div class="ic-glass2 p-3 text-left">
+        <div class="flex items-center justify-between mb-1.5"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0ea5e9]"><i class="icon-droplet"></i></span><span class="text-xs font-bold [color:#ef4444]">90%</span></div>
+        <p class="text-sm font-semibold ic-head">Infusion Pumps</p><p class="text-[10px] ic-mut">48 units · Healthy</p>
+        <div class="ic-stability mt-1.5"><span class="[width:90%] [background:#ef4444]"></span></div></div><div class="ic-glass2 p-3 text-left">
+        <div class="flex items-center justify-between mb-1.5"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#14b8a6_14%,transparent)] [color:#14b8a6]"><i class="icon-wind"></i></span><span class="text-xs font-bold [color:#f97316]">78%</span></div>
+        <p class="text-sm font-semibold ic-head">Oxygen Supply</p><p class="text-[10px] ic-mut">1 units · Service soon</p>
+        <div class="ic-stability mt-1.5"><span class="[width:78%] [background:#f97316]"></span></div></div><div class="ic-glass2 p-3 text-left">
+        <div class="flex items-center justify-between mb-1.5"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#ec4899_14%,transparent)] [color:#ec4899]"><i class="icon-syringe"></i></span><span class="text-xs font-bold [color:#ef4444]">94%</span></div>
+        <p class="text-sm font-semibold ic-head">Syringe Pumps</p><p class="text-[10px] ic-mut">30 units · Healthy</p>
+        <div class="ic-stability mt-1.5"><span class="[width:94%] [background:#ef4444]"></span></div></div><div class="ic-glass2 p-3 text-left">
+        <div class="flex items-center justify-between mb-1.5"><span class="w-9 h-9 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#f59e0b_14%,transparent)] [color:#f59e0b]"><i class="icon-filter"></i></span><span class="text-xs font-bold [color:#f97316]">70%</span></div>
+        <p class="text-sm font-semibold ic-head">Dialysis Units</p><p class="text-[10px] ic-mut">6 units · Service soon</p>
+        <div class="ic-stability mt-1.5"><span class="[width:70%] [background:#f97316]"></span></div></div></div>
+                            </section>
+
+                            <!-- ============ 12. RECENT ICU EVENTS ============ -->
+                            <section class="ic-canvas p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-lg font-bold ic-head flex items-center gap-2"><i class="icon-radar text-emerald-500"></i> Recent ICU Events</h2><span class="ic-chip bg-[color-mix(in_srgb,#22c55e_15%,transparent)] text-[#16a34a]"><span class="ic-dot ic-live bg-[#22c55e]"></span> Live stream</span></div>
+                                <div id="ic-events" class="space-y-2"><div class="flex items-center gap-3 ic-glass2 px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0ea5e9]"><i class="icon-user-plus"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ic-head">Patient admitted</p><p class="text-[11px] ic-mut truncate">ICU-203 · Acute MI</p></div><span class="text-[10px] ic-mut">12m</span></div><div class="flex items-center gap-3 ic-glass2 px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#a855f7_14%,transparent)] [color:#a855f7]"><i class="icon-air-vent"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ic-head">Ventilator assigned</p><p class="text-[11px] ic-mut truncate">VENT-04 → ICU-A-02</p></div><span class="text-[10px] ic-mut">12m</span></div><div class="flex items-center gap-3 ic-glass2 px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#ec4899_14%,transparent)] [color:#ec4899]"><i class="icon-syringe"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ic-head">Medication updated</p><p class="text-[11px] ic-mut truncate">Noradrenaline ↑ ICU-B-01</p></div><span class="text-[10px] ic-mut">12m</span></div><div class="flex items-center gap-3 ic-glass2 px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#ef4444_14%,transparent)] [color:#ef4444]"><i class="icon-alert-triangle"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ic-head">Critical alert</p><p class="text-[11px] ic-mut truncate">SpO₂ drop ICU-203</p></div><span class="text-[10px] ic-mut">12m</span></div><div class="flex items-center gap-3 ic-glass2 px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#22c55e_14%,transparent)] [color:#22c55e]"><i class="icon-stethoscope"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ic-head">Doctor review</p><p class="text-[11px] ic-mut truncate">Dr. Mehta · Round complete</p></div><span class="text-[10px] ic-mut">12m</span></div><div class="flex items-center gap-3 ic-glass2 px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#f59e0b_14%,transparent)] [color:#f59e0b]"><i class="icon-arrow-left-right"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ic-head">Bed transfer</p><p class="text-[11px] ic-mut truncate">PICU-03 → ICU-A-04</p></div><span class="text-[10px] ic-mut">12m</span></div><div class="flex items-center gap-3 ic-glass2 px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0ea5e9]"><i class="icon-flask-conical"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ic-head">Lab completed</p><p class="text-[11px] ic-mut truncate">ABG results · ICU-A-01</p></div><span class="text-[10px] ic-mut">12m</span></div></div>
+                            </section>
+                        </div>
+                    </div>
+                </main>

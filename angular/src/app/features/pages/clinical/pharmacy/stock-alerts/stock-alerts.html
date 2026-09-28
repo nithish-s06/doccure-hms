@@ -1,1 +1,82 @@
-<p>stock-alerts works!</p>
+                <main class="ph-scope hms-scope flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-6">
+                        <!-- Breadcrumb -->
+
+                        <!-- Hero -->
+                        <section class="ph-hero" aria-labelledby="hero-title" data-aos="fade-up">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="min-w-0">
+                                    <div class="flex flex-wrap items-center gap-3">
+                                        <h1 id="hero-title" class="ph-hero-title">Stock Alerts</h1>
+                                        <span id="ph-flag" class="hms-chip tone-critical">
+                                            <i class="icon-bell-ring text-[9px]" aria-hidden="true"></i>
+                                            <span id="ph-flag-text">4 Critical Alerts</span>
+                                        </span>
+                                    </div>
+                                    <p class="ph-hero-sub">
+                                        <span class="inline-flex items-center gap-1.5"><i class="icon-bell-ring text-[13px]" aria-hidden="true"></i><span id="hero-summary">5 open alerts · 2 resolved today</span></span>
+                                        <span aria-hidden="true">•</span>
+                                        <span class="inline-flex items-center gap-1.5"><i class="icon-user-round text-[13px]" aria-hidden="true"></i>On duty: <span class="font-semibold text-white/90">Dr. Aisha Bello, PharmD</span></span>
+                                        <span aria-hidden="true">•</span>
+                                        <span class="inline-flex items-center gap-1.5"><i class="icon-refresh-cw text-[13px]" aria-hidden="true"></i>Monitoring <time datetime="2026-07-17T09:42" class="font-semibold text-white/90">Live</time></span>
+                                    </p>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Alert actions">
+                                    <button type="button" id="btn-ack-all" class="ph-action is-primary"><i class="icon-check-check" aria-hidden="true"></i>Acknowledge All</button>
+                                    <button type="button" id="btn-rules" class="ph-action" data-hs-overlay="#rules-modal"><i class="icon-settings" aria-hidden="true"></i>Alert Rules</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- KPIs -->
+                        <section aria-labelledby="kpi-title" data-aos="fade-up" data-aos-delay="50">
+                            <h2 id="kpi-title" class="sr-only">Alert indicators</h2>
+                            <div id="kpi-row" class="ph-kpis">
+                                <article class="ph-kpi ph-danger"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-bell-ring" aria-hidden="true"></i></span></div>
+                                    <p class="ph-kpi-value"><span id="kpi-open">5</span></p><p class="ph-kpi-label">Open Alerts</p>
+                                    <p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>need action</p></article>
+                                <article class="ph-kpi ph-danger"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-circle-x" aria-hidden="true"></i></span></div>
+                                    <p class="ph-kpi-value"><span id="kpi-out">1</span></p><p class="ph-kpi-label">Out of Stock</p>
+                                    <p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>dispensing blocked</p></article>
+                                <article class="ph-kpi ph-amber"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-triangle-alert" aria-hidden="true"></i></span></div>
+                                    <p class="ph-kpi-value"><span id="kpi-low">2</span></p><p class="ph-kpi-label">Low Stock</p>
+                                    <p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>reorder due</p></article>
+                                <article class="ph-kpi ph-sky"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-calendar-clock" aria-hidden="true"></i></span></div>
+                                    <p class="ph-kpi-value"><span id="kpi-expiry">2</span></p><p class="ph-kpi-label">Expiry</p>
+                                    <p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>rotation / withdrawal</p></article>
+                                <article class="ph-kpi ph-violet"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-thermometer" aria-hidden="true"></i></span></div>
+                                    <p class="ph-kpi-value"><span id="kpi-cold">1</span></p><p class="ph-kpi-label">Cold Chain</p>
+                                    <p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>temperature events</p></article>
+                                <article class="ph-kpi ph-primary"><div class="ph-kpi-head"><span class="ph-kpi-icon"><i class="icon-shield" aria-hidden="true"></i></span></div>
+                                    <p class="ph-kpi-value"><span id="kpi-controlled">1</span></p><p class="ph-kpi-label">Controlled</p>
+                                    <p class="ph-kpi-meta"><i class="icon-circle-dot text-[8px]" aria-hidden="true"></i>count variances</p></article>
+                            </div>
+                        </section>
+
+                        <!-- Alert feed -->
+                        <section class="hms-panel" aria-labelledby="feed-title" data-aos="fade-up" data-aos-delay="100">
+                            <div class="hms-panel-head">
+                                <span class="hms-panel-icon ph-danger"><i class="icon-bell-ring" aria-hidden="true"></i></span>
+                                <h2 id="feed-title" class="hms-panel-title mr-auto">Alert Feed</h2>
+                                <label for="filter-type" class="sr-only">Filter by type</label>
+                                <select id="filter-type" class="form-select w-auto! py-1.5! text-xs!">
+                                    <option value="">All Types</option>
+                                    <option value="out">Out of Stock</option>
+                                    <option value="low">Low Stock</option>
+                                    <option value="expiry">Expiry</option>
+                                    <option value="cold">Cold Chain</option>
+                                    <option value="controlled">Controlled Count</option>
+                                </select>
+                                <label for="filter-state" class="sr-only">Filter by state</label>
+                                <select id="filter-state" class="form-select w-auto! py-1.5! text-xs!">
+                                    <option value="">Open + Acknowledged</option>
+                                    <option value="open">Open Only</option>
+                                    <option value="ack">Acknowledged</option>
+                                    <option value="resolved">Resolved</option>
+                                </select>
+                                <span id="feed-count" class="hms-chip ph-danger">0 open</span>
+                            </div>
+                            <div id="feed" class="divide-y divide-border-color dark:divide-white/10" aria-live="polite"><article class="flex gap-3 p-4" data-row-id="AL-101"><span class="ph-kpi-icon ph-danger shrink-0"><i class="icon-circle-x" aria-hidden="true"></i></span><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2"><p class="text-xs font-bold text-gray-900 mr-auto">Xanax 0.5 mg out of stock</p><span class="hms-chip tone-critical">Out of Stock</span><span class="badge badge-red">Open</span></div><p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Main Pharmacy shows zero on hand. 3 scripts waiting. Reorder level 250.</p><div class="mt-2 flex flex-wrap items-center gap-2"><span class="text-[10px] font-semibold text-gray-400 tabular-nums mr-auto">09:36 AM · AL-101</span><button type="button" data-reorder="AL-101" class="px-2.5 py-1.5 rounded-lg bg-primary/10 text-primary text-[10px] font-bold hover:bg-primary/20 transition-colors">Raise PO</button><button type="button" data-ack="AL-101" class="px-2.5 py-1.5 rounded-lg bg-warning/10 text-warning text-[10px] font-bold hover:bg-warning/20 transition-colors">Acknowledge</button></div></div></article><article class="flex gap-3 p-4" data-row-id="AL-102"><span class="ph-kpi-icon ph-violet shrink-0"><i class="icon-shield" aria-hidden="true"></i></span><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2"><p class="text-xs font-bold text-gray-900 mr-auto">C-II count variance — OxyContin</p><span class="hms-chip tone-critical">Controlled Count</span><span class="badge badge-red">Open</span></div><p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Witness count found 318 tablets; register expects 320. Variance of 2 requires investigation and DEA log entry.</p><div class="mt-2 flex flex-wrap items-center gap-2"><span class="text-[10px] font-semibold text-gray-400 tabular-nums mr-auto">09:20 AM · AL-102</span><button type="button" data-ack="AL-102" class="px-2.5 py-1.5 rounded-lg bg-warning/10 text-warning text-[10px] font-bold hover:bg-warning/20 transition-colors">Acknowledge</button></div></div></article><article class="flex gap-3 p-4" data-row-id="AL-103"><span class="ph-kpi-icon ph-sky shrink-0"><i class="icon-thermometer" aria-hidden="true"></i></span><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2"><p class="text-xs font-bold text-gray-900 mr-auto">Cold room excursion — 22 minutes</p><span class="hms-chip tone-info">Cold Chain</span><span class="badge badge-red">Open</span></div><p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Cold Chain store logged 9.4 °C peak overnight. Insulin stock quarantined pending stability check.</p><div class="mt-2 flex flex-wrap items-center gap-2"><span class="text-[10px] font-semibold text-gray-400 tabular-nums mr-auto">08:47 AM · AL-103</span><button type="button" data-ack="AL-103" class="px-2.5 py-1.5 rounded-lg bg-warning/10 text-warning text-[10px] font-bold hover:bg-warning/20 transition-colors">Acknowledge</button></div></div></article><article class="flex gap-3 p-4" data-row-id="AL-105"><span class="ph-kpi-icon ph-amber shrink-0"><i class="icon-calendar-clock" aria-hidden="true"></i></span><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2"><p class="text-xs font-bold text-gray-900 mr-auto">Adrenaline 1:1000 expired</p><span class="hms-chip tone-medium">Expiry</span><span class="badge badge-red">Open</span></div><p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Batch ADR25X9 in ED Satellite passed expiry 4 days ago — 25 ampoules to withdraw.</p><div class="mt-2 flex flex-wrap items-center gap-2"><span class="text-[10px] font-semibold text-gray-400 tabular-nums mr-auto">07:58 AM · AL-105</span><button type="button" data-ack="AL-105" class="px-2.5 py-1.5 rounded-lg bg-warning/10 text-warning text-[10px] font-bold hover:bg-warning/20 transition-colors">Acknowledge</button></div></div></article><article class="flex gap-3 p-4" data-row-id="AL-107"><span class="ph-kpi-icon ph-amber shrink-0"><i class="icon-calendar-clock" aria-hidden="true"></i></span><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2"><p class="text-xs font-bold text-gray-900 mr-auto">Zofran batch inside 30 days</p><span class="hms-chip tone-medium">Expiry</span><span class="badge badge-red">Open</span></div><p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Batch ZOF25Q1 expires 08 Aug — 90 units. Rotate to front and use first.</p><div class="mt-2 flex flex-wrap items-center gap-2"><span class="text-[10px] font-semibold text-gray-400 tabular-nums mr-auto">07:12 AM · AL-107</span><button type="button" data-ack="AL-107" class="px-2.5 py-1.5 rounded-lg bg-warning/10 text-warning text-[10px] font-bold hover:bg-warning/20 transition-colors">Acknowledge</button></div></div></article><article class="flex gap-3 p-4" data-row-id="AL-104"><span class="ph-kpi-icon ph-amber shrink-0"><i class="icon-triangle-alert" aria-hidden="true"></i></span><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2"><p class="text-xs font-bold text-gray-900 mr-auto">Adderall 20 mg below reorder</p><span class="hms-chip tone-medium">Low Stock</span><span class="badge badge-amber">Acknowledged</span></div><p class="mt-1 text-xs text-gray-500 dark:text-gray-400">180 on hand against a reorder level of 300. Preferred supplier Cardinal Health, lead time 3 days.</p><div class="mt-2 flex flex-wrap items-center gap-2"><span class="text-[10px] font-semibold text-gray-400 tabular-nums mr-auto">08:15 AM · AL-104</span><button type="button" data-reorder="AL-104" class="px-2.5 py-1.5 rounded-lg bg-primary/10 text-primary text-[10px] font-bold hover:bg-primary/20 transition-colors">Raise PO</button><button type="button" data-resolve="AL-104" class="px-2.5 py-1.5 rounded-lg bg-success/10 text-success text-[10px] font-bold hover:bg-success/20 transition-colors">Resolve</button></div></div></article><article class="flex gap-3 p-4" data-row-id="AL-106"><span class="ph-kpi-icon ph-amber shrink-0"><i class="icon-triangle-alert" aria-hidden="true"></i></span><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2"><p class="text-xs font-bold text-gray-900 mr-auto">Ativan injection below reorder</p><span class="hms-chip tone-medium">Low Stock</span><span class="badge badge-amber">Acknowledged</span></div><p class="mt-1 text-xs text-gray-500 dark:text-gray-400">140 on hand against a reorder level of 180 in OR Store.</p><div class="mt-2 flex flex-wrap items-center gap-2"><span class="text-[10px] font-semibold text-gray-400 tabular-nums mr-auto">07:40 AM · AL-106</span><button type="button" data-reorder="AL-106" class="px-2.5 py-1.5 rounded-lg bg-primary/10 text-primary text-[10px] font-bold hover:bg-primary/20 transition-colors">Raise PO</button><button type="button" data-resolve="AL-106" class="px-2.5 py-1.5 rounded-lg bg-success/10 text-success text-[10px] font-bold hover:bg-success/20 transition-colors">Resolve</button></div></div></article><article class="flex gap-3 p-4 hidden opacity-60" data-row-id="AL-108"><span class="ph-kpi-icon ph-sky shrink-0"><i class="icon-thermometer" aria-hidden="true"></i></span><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2"><p class="text-xs font-bold text-gray-900 mr-auto">Fridge 2 door ajar 6 minutes</p><span class="hms-chip tone-info">Cold Chain</span><span class="badge badge-green">Resolved</span></div><p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Within the 15-minute tolerance. Logged for trend only, no action needed.</p><div class="mt-2 flex flex-wrap items-center gap-2"><span class="text-[10px] font-semibold text-gray-400 tabular-nums mr-auto">06:50 AM · AL-108</span></div></div></article><article class="flex gap-3 p-4 hidden opacity-60" data-row-id="AL-109"><span class="ph-kpi-icon ph-amber shrink-0"><i class="icon-triangle-alert" aria-hidden="true"></i></span><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2"><p class="text-xs font-bold text-gray-900 mr-auto">Codeine Linctus near reorder</p><span class="hms-chip tone-medium">Low Stock</span><span class="badge badge-green">Resolved</span></div><p class="mt-1 text-xs text-gray-500 dark:text-gray-400">260 on hand, reorder at 150 — approaching threshold at current usage.</p><div class="mt-2 flex flex-wrap items-center gap-2"><span class="text-[10px] font-semibold text-gray-400 tabular-nums mr-auto">06:31 AM · AL-109</span></div></div></article><div id="feed-empty-row" class="hidden py-14 text-center"><i class="icon-check-check text-3xl text-success" aria-hidden="true"></i><p class="mt-2 text-sm font-semibold text-gray-500 dark:text-gray-400">Nothing to action</p><p class="text-xs text-gray-400">All alerts in this view are handled.</p></div></div>
+                        </section>
+                    </div>
+                </main>

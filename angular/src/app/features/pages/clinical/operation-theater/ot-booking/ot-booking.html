@@ -1,1 +1,490 @@
-<p>ot-booking works!</p>
+<main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="ob-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="ob-skeleton" class="space-y-4">
+                            <div class="ob-sk h-[150px] radius-override-100"></div>
+                            <div class="ob-sk h-[56px]"></div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"><div class="ob-sk h-[190px]"></div><div class="ob-sk h-[190px]"></div><div class="ob-sk h-[190px]"></div></div>
+                            <div class="ob-sk h-[300px] radius-override-100"></div>
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-4"><div class="ob-sk h-[280px]"></div><div class="ob-sk h-[280px]"></div></div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="ob-content" class="hidden space-y-4">
+
+                            <!-- ============ 1. HEADER ============ -->
+                            <section class="ob-hero p-5 lg:p-6">
+                                <div class="ob-hgrid"></div>
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="ob-chip bg-[rgba(13,148,136,.18)] text-[#5eead4]"><span class="ob-dot ob-live bg-[#2dd4bf]"></span> BOOKING DESK</span>
+                                            <span class="ob-chip bg-[rgba(224,108,31,.2)] text-[#fdba74]"><i class="icon-clock text-[11px]"></i> <span id="ob-h-pend">2</span> Pending</span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-[26px] font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-clipboard-check text-teal-300"></i> OT Booking Center</h1>
+                                        <p class="text-sm text-slate-400 mt-1">Create, approve &amp; track operation theater reservations · <span id="ob-clock" class="tabular-nums"></span></p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 justify-end">
+                                        <button data-modal="new" class="ob-btn bg-teal-600 text-white hover:bg-teal-500"><i class="icon-plus"></i> New Booking</button>
+                                        <button data-modal="emergency" class="ob-btn bg-rose-600 text-white hover:bg-rose-500"><i class="icon-alert-triangle"></i> Emergency</button>
+                                        <button data-modal="allocate" class="ob-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-layout-grid"></i> Assign OT</button>
+                                        <button data-modal="import" class="ob-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-upload"></i> Import</button>
+                                        <button data-modal="export" class="ob-btn bg-white/10 border border-white/15 text-white hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    </div>
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
+                                    <div class="ob-hbadge"><p class="text-[11px] text-slate-400">Today's Bookings</p><p class="text-xl font-bold text-white" id="ob-h-today">12</p></div>
+                                    <div class="ob-hbadge"><p class="text-[11px] text-slate-400">Pending Approvals</p><p class="text-xl font-bold text-amber-300" id="ob-h-pend2">2</p></div>
+                                    <div class="ob-hbadge"><p class="text-[11px] text-slate-400">Emergency Bookings</p><p class="text-xl font-bold text-rose-300" id="ob-h-emerg">2</p></div>
+                                    <div class="ob-hbadge"><p class="text-[11px] text-slate-400">Available OT Rooms</p><p class="text-xl font-bold text-emerald-300" id="ob-h-avail">1</p></div>
+                                </div>
+                            </section>
+
+                            <!-- ============ 2. BOOKING BOARD ============ -->
+                            <section class="ob-card p-3">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <div class="relative flex-1 min-w-[180px]"><i class="icon-search absolute left-2.5 top-1/2 -translate-y-1/2 ob-mut text-sm"></i><input aria-label="Search booking, patient, surgeon..." id="ob-search" class="ob-in !pl-8" placeholder="Search booking, patient, surgeon..."></div>
+                                    <select aria-label="Any status" class="ob-in !w-auto" id="ob-fstatus"><option value="">Any status</option><option>Draft</option><option>Pending Approval</option><option>Approved</option><option>Scheduled</option><option>In Progress</option><option>Completed</option><option>Cancelled</option></select>
+                                    <select aria-label="Any priority" class="ob-in !w-auto" id="ob-fprio"><option value="">Any priority</option><option value="emerg">Emergency</option><option value="high">High</option><option value="med">Medium</option><option value="routine">Routine</option></select>
+                                    <div class="ob-seg ml-auto" id="ob-viewtabs"><button data-vw="card" class="on"><i class="icon-layout-grid text-[13px]"></i> Cards</button><button data-vw="timeline"><i class="icon-gantt-chart text-[13px]"></i> Timeline</button><button data-vw="list"><i class="icon-list text-[13px]"></i> List</button></div>
+                                </div>
+                                <p class="text-xs ob-mut mt-2"><i class="icon-clipboard-list text-[11px]"></i> <span id="ob-count">12</span> bookings</p>
+                            </section>
+
+                            <section id="ob-board"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"><div class="ob-book pr-emerg" data-book="0">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="0"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4300</a>
+            <span class="prpill ob-chip ml-auto"><i class="icon-alert-triangle text-[9px]"></i> Emergency</span>
+            <button data-menu="0" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-01.jpg" alt="Rahul Sharma">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Rahul Sharma</p><p class="text-[11px] ob-mut truncate">MRN-80500 · CABG</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> A</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> OT-01</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 20 · 08:00</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~1h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]"><span class="ob-dot [background:#e06c1f]"></span> Pending Approval</span>
+            <span class="text-[10px] ob-mut"><i class="icon-clock text-[10px]"></i> Awaiting approval</span>
+        </div>
+        <div class="flex gap-1.5 mt-2"><button data-quick-approve="0" onclick="event.stopPropagation()" class="ob-npill hover:bg-[var(--ob-hover)]"><i class="icon-check text-[11px] [color:#15803d]"></i> Approve</button><button data-quick-reject="0" onclick="event.stopPropagation()" class="ob-npill hover:bg-[var(--ob-hover)]"><i class="icon-x text-[11px] [color:#dc2626]"></i> Reject</button></div>
+    </div><div class="ob-book pr-high" data-book="1">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="1"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4301</a>
+            <span class="prpill ob-chip ml-auto">High</span>
+            <button data-menu="1" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-03.jpg" alt="Anita Reddy">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Anita Reddy</p><p class="text-[11px] ob-mut truncate">MRN-80501 · Knee Replacement</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> S</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> OT-02</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 21 · 10:30</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~2h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#0f766e_13%,transparent)] [color:#0f766e]"><span class="ob-dot [background:#0f766e]"></span> Scheduled</span>
+            <span class="text-[10px] ob-mut"><i class="icon-shield-check text-[10px]"></i> Approved</span>
+        </div>
+        
+    </div><div class="ob-book pr-med" data-book="2">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="2"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4302</a>
+            <span class="prpill ob-chip ml-auto">Medium</span>
+            <button data-menu="2" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-02.jpg" alt="Vikram Nair">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Vikram Nair</p><p class="text-[11px] ob-mut truncate">MRN-80502 · Craniotomy</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> R</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> OT-03</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 22 · 13:00</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~2h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#7c3aed_13%,transparent)] [color:#7c3aed]"><span class="ob-dot [background:#7c3aed]"></span> In Progress</span>
+            <span class="text-[10px] ob-mut"><i class="icon-shield-check text-[10px]"></i> Approved</span>
+        </div>
+        
+    </div><div class="ob-book pr-routine" data-book="3">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="3"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4303</a>
+            <span class="prpill ob-chip ml-auto">Routine</span>
+            <button data-menu="3" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-04.jpg" alt="Priya Patel">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Priya Patel</p><p class="text-[11px] ob-mut truncate">MRN-80503 · Appendectomy</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> L</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> OT-04</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 23 · 15:30</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~3h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]"><span class="ob-dot [background:#1d4ed8]"></span> Approved</span>
+            <span class="text-[10px] ob-mut"><i class="icon-shield-check text-[10px]"></i> Approved</span>
+        </div>
+        
+    </div><div class="ob-book pr-routine" data-book="4">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="4"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4304</a>
+            <span class="prpill ob-chip ml-auto">Routine</span>
+            <button data-menu="4" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-06.jpg" alt="Suresh Gupta">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Suresh Gupta</p><p class="text-[11px] ob-mut truncate">MRN-80504 · Cholecystectomy</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> P</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> Cardiac OT</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 24 · 08:00</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~1h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#64748b_13%,transparent)] [color:#64748b]"><span class="ob-dot [background:#64748b]"></span> Draft</span>
+            <span class="text-[10px] ob-mut"><i class="icon-shield-check text-[10px]"></i> Not submitted</span>
+        </div>
+        
+    </div><div class="ob-book pr-med" data-book="5">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="5"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4305</a>
+            <span class="prpill ob-chip ml-auto">Medium</span>
+            <button data-menu="5" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-05.jpg" alt="Meera Singh">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Meera Singh</p><p class="text-[11px] ob-mut truncate">MRN-80505 · Hip Replacement</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> V</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> Neuro OT</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 25 · 10:30</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~2h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]"><span class="ob-dot [background:#15803d]"></span> Completed</span>
+            <span class="text-[10px] ob-mut"><i class="icon-shield-check text-[10px]"></i> Approved</span>
+        </div>
+        
+    </div><div class="ob-book pr-high" data-book="6">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="6"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4306</a>
+            <span class="prpill ob-chip ml-auto">High</span>
+            <button data-menu="6" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-07.jpg" alt="Arjun Menon">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Arjun Menon</p><p class="text-[11px] ob-mut truncate">MRN-80506 · C-Section</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> A</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> OT-01</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 26 · 13:00</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~2h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]"><span class="ob-dot [background:#e06c1f]"></span> Pending Approval</span>
+            <span class="text-[10px] ob-mut"><i class="icon-clock text-[10px]"></i> Awaiting approval</span>
+        </div>
+        <div class="flex gap-1.5 mt-2"><button data-quick-approve="6" onclick="event.stopPropagation()" class="ob-npill hover:bg-[var(--ob-hover)]"><i class="icon-check text-[11px] [color:#15803d]"></i> Approve</button><button data-quick-reject="6" onclick="event.stopPropagation()" class="ob-npill hover:bg-[var(--ob-hover)]"><i class="icon-x text-[11px] [color:#dc2626]"></i> Reject</button></div>
+    </div><div class="ob-book pr-routine" data-book="7">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="7"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4307</a>
+            <span class="prpill ob-chip ml-auto">Routine</span>
+            <button data-menu="7" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-08.jpg" alt="Kavya Das">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Kavya Das</p><p class="text-[11px] ob-mut truncate">MRN-80507 · Spinal Fusion</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> S</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> OT-02</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 27 · 15:30</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~3h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#0f766e_13%,transparent)] [color:#0f766e]"><span class="ob-dot [background:#0f766e]"></span> Scheduled</span>
+            <span class="text-[10px] ob-mut"><i class="icon-shield-check text-[10px]"></i> Approved</span>
+        </div>
+        
+    </div><div class="ob-book pr-med" data-book="8">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="8"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4308</a>
+            <span class="prpill ob-chip ml-auto">Medium</span>
+            <button data-menu="8" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-11.jpg" alt="Deepak Joshi">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Deepak Joshi</p><p class="text-[11px] ob-mut truncate">MRN-80508 · Angioplasty</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> R</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> OT-03</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 20 · 08:00</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~1h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#7c3aed_13%,transparent)] [color:#7c3aed]"><span class="ob-dot [background:#7c3aed]"></span> In Progress</span>
+            <span class="text-[10px] ob-mut"><i class="icon-shield-check text-[10px]"></i> Approved</span>
+        </div>
+        
+    </div><div class="ob-book pr-high" data-book="9">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="9"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4309</a>
+            <span class="prpill ob-chip ml-auto">High</span>
+            <button data-menu="9" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-09.jpg" alt="Neha Verma">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Neha Verma</p><p class="text-[11px] ob-mut truncate">MRN-80509 · Thyroidectomy</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> L</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> OT-04</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 21 · 10:30</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~2h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]"><span class="ob-dot [background:#1d4ed8]"></span> Approved</span>
+            <span class="text-[10px] ob-mut"><i class="icon-shield-check text-[10px]"></i> Approved</span>
+        </div>
+        
+    </div><div class="ob-book pr-emerg" data-book="10">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="10"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4310</a>
+            <span class="prpill ob-chip ml-auto"><i class="icon-alert-triangle text-[9px]"></i> Emergency</span>
+            <button data-menu="10" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-12.jpg" alt="Rohan Iyer">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Rohan Iyer</p><p class="text-[11px] ob-mut truncate">MRN-80510 · CABG</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> P</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> Cardiac OT</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 22 · 13:00</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~2h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#64748b_13%,transparent)] [color:#64748b]"><span class="ob-dot [background:#64748b]"></span> Draft</span>
+            <span class="text-[10px] ob-mut"><i class="icon-shield-check text-[10px]"></i> Not submitted</span>
+        </div>
+        
+    </div><div class="ob-book pr-high" data-book="11">
+        <div class="flex items-center gap-2 mb-2">
+            <label onclick="event.stopPropagation()" class="flex items-center"><input type="checkbox" data-sel="11"  class="accent-[var(--ob-c)]"></label>
+            <a href="ot-booking-detail.html" onclick="event.stopPropagation()" class="text-[11px] font-bold ob-mut hover:underline">BKG-4311</a>
+            <span class="prpill ob-chip ml-auto">High</span>
+            <button data-menu="11" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ob-hover)] flex items-center justify-center ob-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <div class="flex items-center gap-2.5">
+            <img class="ob-avatar flex-none [width:36px] [height:36px]" src="assets/img/avatar/avatar-10.jpg" alt="Sana Khan">
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ob-head truncate">Sana Khan</p><p class="text-[11px] ob-mut truncate">MRN-80511 · Knee Replacement</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1 mt-2.5 text-[11px]">
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-stethoscope text-[11px]"></i> V</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-layout-grid text-[11px]"></i> Neuro OT</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-calendar text-[11px]"></i> Jul 23 · 15:30</div>
+            <div class="flex items-center gap-1 ob-mut"><i class="icon-clock text-[11px]"></i> ~3h</div>
+        </div>
+        <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t [border-color:var(--ob-border)]">
+            <span class="ob-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]"><span class="ob-dot [background:#15803d]"></span> Completed</span>
+            <span class="text-[10px] ob-mut"><i class="icon-shield-check text-[10px]"></i> Approved</span>
+        </div>
+        
+    </div></div></section>
+
+                            <!-- ============ 3. OT AVAILABILITY ============ -->
+                            <section class="ob-card p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold ob-head flex items-center gap-2"><i class="icon-layout-grid ob-hicon"></i> OT Availability</h2><div class="flex flex-wrap gap-3 text-[11px]" id="ob-otlegend"><span class="flex items-center gap-1.5 ob-mut"><span class="ob-dot [background:#15803d]"></span>Available</span><span class="flex items-center gap-1.5 ob-mut"><span class="ob-dot [background:#1d4ed8]"></span>Reserved</span><span class="flex items-center gap-1.5 ob-mut"><span class="ob-dot [background:#e06c1f]"></span>In Use</span><span class="flex items-center gap-1.5 ob-mut"><span class="ob-dot [background:#b7791f]"></span>Cleaning</span><span class="flex items-center gap-1.5 ob-mut"><span class="ob-dot [background:#64748b]"></span>Maintenance</span></div></div>
+                                <div id="ob-otrooms" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3"><div class="ob-otc rs-avail">
+            <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold ob-head">OT-01</span><span class="ob-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Available</span></div>
+            <p class="text-[11px] ob-mut">Ready for booking</p>
+            <div class="flex items-center justify-between mt-2 text-[11px]"><span class="ob-mut">Next available</span><span class="font-semibold [color:#15803d]">Now</span></div>
+            <button data-modal="allocate" class="ob-btn ob-btn-ghost w-full justify-center mt-2 !py-1 text-xs"><i class="icon-calendar-plus"></i> Book</button>
+        </div><div class="ob-otc rs-inuse">
+            <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold ob-head">OT-02</span><span class="ob-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">In Use</span></div>
+            <p class="text-[11px] ob-mut">Current: Knee Replacement</p>
+            <div class="flex items-center justify-between mt-2 text-[11px]"><span class="ob-mut">Next available</span><span class="font-semibold [color:#e06c1f]">14:00</span></div>
+            <button data-modal="allocate" class="ob-btn ob-btn-ghost w-full justify-center mt-2 !py-1 text-xs"><i class="icon-calendar-plus"></i> Book</button>
+        </div><div class="ob-otc rs-clean">
+            <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold ob-head">OT-03</span><span class="ob-chip [background:color-mix(in_srgb,#b7791f_13%,transparent)] [color:#b7791f]">Cleaning</span></div>
+            <p class="text-[11px] ob-mut">Turnover in progress</p>
+            <div class="flex items-center justify-between mt-2 text-[11px]"><span class="ob-mut">Next available</span><span class="font-semibold [color:#b7791f]">11:30</span></div>
+            <button data-modal="allocate" class="ob-btn ob-btn-ghost w-full justify-center mt-2 !py-1 text-xs"><i class="icon-calendar-plus"></i> Book</button>
+        </div><div class="ob-otc rs-reserved">
+            <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold ob-head">OT-04</span><span class="ob-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]">Reserved</span></div>
+            <p class="text-[11px] ob-mut">Held for R</p>
+            <div class="flex items-center justify-between mt-2 text-[11px]"><span class="ob-mut">Next available</span><span class="font-semibold [color:#1d4ed8]">15:45</span></div>
+            <button data-modal="allocate" class="ob-btn ob-btn-ghost w-full justify-center mt-2 !py-1 text-xs"><i class="icon-calendar-plus"></i> Book</button>
+        </div></div>
+                            </section>
+
+                            <!-- ============ 4. BOOKING WORKFLOW ============ -->
+                            <section class="ob-card p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold ob-head flex items-center gap-2"><i class="icon-git-branch ob-hicon"></i> Booking Workflow</h2><span class="ob-npill">Drag cards between stages</span></div>
+                                <div id="ob-kanban" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-7 gap-3"><div class="ob-kcol p-2.5" data-kcol="Draft">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-xs font-bold ob-head flex items-center gap-1.5"><span class="ob-dot [background:#64748b]"></span> Draft</span><span class="ob-npill">2</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Draft">
+            <div class="ob-ktask [border-left:3px_solid_#0f766e]" draggable="true" data-task="4">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4304</span><span class="ob-chip [background:color-mix(in_srgb,#0f766e_12%,transparent)] [color:#0f766e]">Routine</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">Cholecystectomy</p>
+                <p class="text-[10px] ob-mut mt-0.5">Suresh Gupta · Cardiac OT</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 24</span><i class="icon-grip-vertical"></i></div>
+            </div><div class="ob-ktask [border-left:3px_solid_#dc2626]" draggable="true" data-task="10">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4310</span><span class="ob-chip [background:color-mix(in_srgb,#dc2626_12%,transparent)] [color:#dc2626]">Emergency</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">CABG</p>
+                <p class="text-[10px] ob-mut mt-0.5">Rohan Iyer · Cardiac OT</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 22</span><i class="icon-grip-vertical"></i></div>
+            </div>
+            </div></div><div class="ob-kcol p-2.5" data-kcol="Pending Approval">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-xs font-bold ob-head flex items-center gap-1.5"><span class="ob-dot [background:#e06c1f]"></span> Pending Approval</span><span class="ob-npill">2</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Pending Approval">
+            <div class="ob-ktask [border-left:3px_solid_#dc2626]" draggable="true" data-task="0">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4300</span><span class="ob-chip [background:color-mix(in_srgb,#dc2626_12%,transparent)] [color:#dc2626]">Emergency</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">CABG</p>
+                <p class="text-[10px] ob-mut mt-0.5">Rahul Sharma · OT-01</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 20</span><i class="icon-grip-vertical"></i></div>
+            </div><div class="ob-ktask [border-left:3px_solid_#e06c1f]" draggable="true" data-task="6">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4306</span><span class="ob-chip [background:color-mix(in_srgb,#e06c1f_12%,transparent)] [color:#e06c1f]">High</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">C-Section</p>
+                <p class="text-[10px] ob-mut mt-0.5">Arjun Menon · OT-01</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 26</span><i class="icon-grip-vertical"></i></div>
+            </div>
+            </div></div><div class="ob-kcol p-2.5" data-kcol="Approved">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-xs font-bold ob-head flex items-center gap-1.5"><span class="ob-dot [background:#1d4ed8]"></span> Approved</span><span class="ob-npill">2</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Approved">
+            <div class="ob-ktask [border-left:3px_solid_#0f766e]" draggable="true" data-task="3">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4303</span><span class="ob-chip [background:color-mix(in_srgb,#0f766e_12%,transparent)] [color:#0f766e]">Routine</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">Appendectomy</p>
+                <p class="text-[10px] ob-mut mt-0.5">Priya Patel · OT-04</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 23</span><i class="icon-grip-vertical"></i></div>
+            </div><div class="ob-ktask [border-left:3px_solid_#e06c1f]" draggable="true" data-task="9">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4309</span><span class="ob-chip [background:color-mix(in_srgb,#e06c1f_12%,transparent)] [color:#e06c1f]">High</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">Thyroidectomy</p>
+                <p class="text-[10px] ob-mut mt-0.5">Neha Verma · OT-04</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 21</span><i class="icon-grip-vertical"></i></div>
+            </div>
+            </div></div><div class="ob-kcol p-2.5" data-kcol="Scheduled">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-xs font-bold ob-head flex items-center gap-1.5"><span class="ob-dot [background:#0f766e]"></span> Scheduled</span><span class="ob-npill">2</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Scheduled">
+            <div class="ob-ktask [border-left:3px_solid_#e06c1f]" draggable="true" data-task="1">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4301</span><span class="ob-chip [background:color-mix(in_srgb,#e06c1f_12%,transparent)] [color:#e06c1f]">High</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">Knee Replacement</p>
+                <p class="text-[10px] ob-mut mt-0.5">Anita Reddy · OT-02</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 21</span><i class="icon-grip-vertical"></i></div>
+            </div><div class="ob-ktask [border-left:3px_solid_#0f766e]" draggable="true" data-task="7">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4307</span><span class="ob-chip [background:color-mix(in_srgb,#0f766e_12%,transparent)] [color:#0f766e]">Routine</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">Spinal Fusion</p>
+                <p class="text-[10px] ob-mut mt-0.5">Kavya Das · OT-02</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 27</span><i class="icon-grip-vertical"></i></div>
+            </div>
+            </div></div><div class="ob-kcol p-2.5" data-kcol="In Progress">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-xs font-bold ob-head flex items-center gap-1.5"><span class="ob-dot [background:#7c3aed]"></span> In Progress</span><span class="ob-npill">2</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="In Progress">
+            <div class="ob-ktask [border-left:3px_solid_#1d4ed8]" draggable="true" data-task="2">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4302</span><span class="ob-chip [background:color-mix(in_srgb,#1d4ed8_12%,transparent)] [color:#1d4ed8]">Medium</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">Craniotomy</p>
+                <p class="text-[10px] ob-mut mt-0.5">Vikram Nair · OT-03</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 22</span><i class="icon-grip-vertical"></i></div>
+            </div><div class="ob-ktask [border-left:3px_solid_#1d4ed8]" draggable="true" data-task="8">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4308</span><span class="ob-chip [background:color-mix(in_srgb,#1d4ed8_12%,transparent)] [color:#1d4ed8]">Medium</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">Angioplasty</p>
+                <p class="text-[10px] ob-mut mt-0.5">Deepak Joshi · OT-03</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 20</span><i class="icon-grip-vertical"></i></div>
+            </div>
+            </div></div><div class="ob-kcol p-2.5" data-kcol="Completed">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-xs font-bold ob-head flex items-center gap-1.5"><span class="ob-dot [background:#15803d]"></span> Completed</span><span class="ob-npill">2</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Completed">
+            <div class="ob-ktask [border-left:3px_solid_#1d4ed8]" draggable="true" data-task="5">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4305</span><span class="ob-chip [background:color-mix(in_srgb,#1d4ed8_12%,transparent)] [color:#1d4ed8]">Medium</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">Hip Replacement</p>
+                <p class="text-[10px] ob-mut mt-0.5">Meera Singh · Neuro OT</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 25</span><i class="icon-grip-vertical"></i></div>
+            </div><div class="ob-ktask [border-left:3px_solid_#e06c1f]" draggable="true" data-task="11">
+                <div class="flex items-center justify-between"><span class="text-[10px] font-bold ob-mut">BKG-4311</span><span class="ob-chip [background:color-mix(in_srgb,#e06c1f_12%,transparent)] [color:#e06c1f]">High</span></div>
+                <p class="text-xs font-semibold ob-head mt-1 leading-tight">Knee Replacement</p>
+                <p class="text-[10px] ob-mut mt-0.5">Sana Khan · Neuro OT</p>
+                <div class="flex items-center justify-between text-[10px] ob-mut mt-1"><span><i class="icon-calendar"></i> Jul 23</span><i class="icon-grip-vertical"></i></div>
+            </div>
+            </div></div><div class="ob-kcol p-2.5" data-kcol="Cancelled">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-xs font-bold ob-head flex items-center gap-1.5"><span class="ob-dot [background:#dc2626]"></span> Cancelled</span><span class="ob-npill">0</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Cancelled">
+            <p class="text-[11px] ob-mut text-center py-2">Drop here</p>
+            </div></div></div>
+                            </section>
+
+                            <!-- ============ 5+6. EMERGENCY + PLANNING SUMMARY ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-[360px_minmax(0,1fr)] gap-4">
+                                <section class="ob-card p-5">
+                                    <h2 class="text-base font-bold ob-head flex items-center gap-2 mb-4"><i class="icon-siren ob-hicon"></i> Emergency Booking Panel</h2>
+                                    <div id="ob-emergency" class="space-y-2.5"><div class="ob-panel p-3 [border-left:3px_solid_#dc2626]">
+        <div class="flex items-center justify-between mb-1"><span class="ob-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="ob-dot ob-live [background:#dc2626]"></span> Emergency</span><span class="text-[11px] ob-mut">ETA 8 min</span></div>
+        <p class="text-sm font-semibold ob-head">CABG</p><p class="text-[11px] ob-mut">Rahul Sharma · Suggested: OT-01 · Dr. A. Mehta</p>
+        <div class="flex gap-1.5 mt-2"><button data-quick-approve="0" class="ob-npill hover:bg-[var(--ob-hover)]"><i class="icon-check text-[11px] [color:#15803d]"></i> Approve</button><button data-modal="allocate" class="ob-npill hover:bg-[var(--ob-hover)]"><i class="icon-layout-grid text-[11px]"></i> Assign OT</button></div>
+    </div><div class="ob-panel p-3 [border-left:3px_solid_#dc2626]">
+        <div class="flex items-center justify-between mb-1"><span class="ob-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="ob-dot ob-live [background:#dc2626]"></span> Emergency</span><span class="text-[11px] ob-mut">ETA 15 min</span></div>
+        <p class="text-sm font-semibold ob-head">CABG</p><p class="text-[11px] ob-mut">Rohan Iyer · Suggested: Cardiac OT · Dr. P. Rao</p>
+        <div class="flex gap-1.5 mt-2"><button data-quick-approve="10" class="ob-npill hover:bg-[var(--ob-hover)]"><i class="icon-check text-[11px] [color:#15803d]"></i> Approve</button><button data-modal="allocate" class="ob-npill hover:bg-[var(--ob-hover)]"><i class="icon-layout-grid text-[11px]"></i> Assign OT</button></div>
+    </div></div>
+                                </section>
+                                <section class="ob-card p-5">
+                                    <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold ob-head flex items-center gap-2"><i class="icon-clipboard-list ob-hicon"></i> Surgery Planning Summary</h2><span class="ob-npill" id="ob-plan-id">BKG-4300</span></div>
+                                    <div id="ob-planning">
+        <div class="flex items-center gap-3 mb-3">
+            <img class="ob-avatar flex-none [width:42px] [height:42px]" src="assets/img/avatar/avatar-01.jpg" alt="Rahul Sharma">
+            <div class="min-w-0 flex-1"><p class="font-bold ob-head">Rahul Sharma</p><p class="text-[11px] ob-mut">MRN-80500 · CABG</p></div>
+            <span class="ob-chip pr-emerg [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]">Emergency</span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-x-4">
+            <div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">Procedure</span><span class="font-medium ob-head">CABG</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">Surgeon</span><span class="font-medium ob-head">Dr. A. Mehta</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">Anesthesiologist</span><span class="font-medium ob-head">Dr. K. Menon</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">OT Team</span><span class="font-medium ob-head">N. Fernandes +2</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">Priority</span><span class="font-medium ob-head">Emergency</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">MRN</span><span class="font-medium ob-head">MRN-80500</span></div></div>
+            <div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">OT Room</span><span class="font-medium ob-head">OT-01</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">Date / Time</span><span class="font-medium ob-head">Jul 20 · 08:00</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">Est. Duration</span><span class="font-medium ob-head">1h</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">Status</span><span class="font-medium ob-head">Pending Approval</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">Recovery Bed</span><span class="font-medium ob-head">RB-03</span></div><div class="flex justify-between text-xs py-1 border-b [border-color:var(--ob-border)]"><span class="ob-mut">Equipment</span><span class="font-medium ob-head">Anesthesia Machine, Electrocautery</span></div></div>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-3">
+            <button data-modal="approve" class="ob-btn ob-btn-primary"><i class="icon-check"></i> Approve</button><button data-modal="reject" class="ob-btn ob-btn-ghost"><i class="icon-x"></i> Reject</button>
+            <button data-modal="team" class="ob-btn ob-btn-ghost"><i class="icon-users"></i> Assign Team</button>
+            <button data-open-drawer="0" class="ob-btn ob-btn-ghost"><i class="icon-eye"></i> Details</button>
+        </div></div>
+                                </section>
+                            </div>
+
+                            <!-- BULK BAR -->
+                            <div class="ob-bulk items-center gap-2 px-4 py-2.5 flex-wrap">
+                                <span class="text-sm font-semibold"><span id="ob-selcount">0</span> selected</span>
+                                <div class="flex flex-wrap gap-1.5 ml-auto text-xs">
+                                    <button data-bulk="approve" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-check"></i> Approve</button>
+                                    <button data-bulk="allocate" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-layout-grid"></i> Assign OT</button>
+                                    <button data-bulk="team" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-users"></i> Team</button>
+                                    <button data-bulk="export" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-download"></i> Export</button>
+                                    <button data-bulk="print" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-printer"></i> Print</button>
+                                    <button data-bulk="archive" class="px-2.5 py-1.5 rounded-md bg-white/10 hover:bg-white/15"><i class="icon-archive"></i> Archive</button>
+                                    <button data-bulk="delete" class="px-2.5 py-1.5 rounded-md bg-rose-600/80 hover:bg-rose-600"><i class="icon-trash-2"></i> Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>

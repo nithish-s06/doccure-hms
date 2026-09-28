@@ -49,6 +49,89 @@ export const Pages_Routes: Routes = [
             { path: 'doctor-leave-requests', loadComponent: () => import('./main-menu/doctors/doctor-leave-requests/doctor-leave-requests').then((m) => m.DoctorLeaveRequests)},
             { path: 'consultation-fees', loadComponent: () => import('./main-menu/doctors/consultation-fees/consultation-fees').then((m) => m.ConsultationFees)},
 
+            // Appointments
+            { path: 'appointments', loadComponent: () => import('./main-menu/appointments/appointments/appointments').then((m) => m.Appointments)},
+            { path: 'appointment-calendar', loadComponent: () => import('./main-menu/appointments/appointment-calendar/appointment-calendar').then((m) => m.AppointmentCalendar)},
+            { path: 'book-appointment', loadComponent: () => import('./main-menu/appointments/book-appointment/book-appointment').then((m) => m.BookAppointment)},
+            { path: 'queue-management', loadComponent: () => import('./main-menu/appointments/queue-management/queue-management').then((m) => m.QueueManagement)},
+            { path: 'walk-in-patients', loadComponent: () => import('./main-menu/appointments/walk-in-patients/walk-in-patients').then((m) => m.WalkInPatients)},
+            { path: 'follow-up-appointments', loadComponent: () => import('./main-menu/appointments/follow-up-appointments/follow-up-appointments').then((m) => m.FollowUpAppointments)},
+            { path: 'appointment-requests', loadComponent: () => import('./main-menu/appointments/appointment-requests/appointment-requests').then((m) => m.AppointmentRequests)},
+            { path: 'cancelled-appointments', loadComponent: () => import('./main-menu/appointments/cancelled-appointments/cancelled-appointments').then((m) => m.CancelledAppointments)},
+
+            // Clinical - Pharmacy
+            { path: 'pharmacy', loadComponent: () => import('./clinical/pharmacy/pharmacy/pharmacy').then((m) => m.Pharmacy)},
+            { path: 'medicines', loadComponent: () => import('./clinical/pharmacy/medicines/medicines').then((m) => m.Medicines)},
+            { path: 'medicine-categories', loadComponent: () => import('./clinical/pharmacy/medicine-categories/medicine-categories').then((m) => m.MedicineCategories)},
+            { path: 'pharmacy-suppliers', loadComponent: () => import('./clinical/pharmacy/pharmacy-suppliers/pharmacy-suppliers').then((m) => m.PharmacySuppliers)},
+            { path: 'pharmacy-purchase-orders', loadComponent: () => import('./clinical/pharmacy/pharmacy-purchase-orders/pharmacy-purchase-orders').then((m) => m.PharmacyPurchaseOrders)},
+            { path: 'pharmacy-inventory', loadComponent: () => import('./clinical/pharmacy/pharmacy-inventory/pharmacy-inventory').then((m) => m.PharmacyInventory)},
+            { path: 'prescriptions', loadComponent: () => import('./clinical/pharmacy/prescriptions/prescriptions').then((m) => m.Prescriptions)},
+            { path: 'pharmacy-sales', loadComponent: () => import('./clinical/pharmacy/pharmacy-sales/pharmacy-sales').then((m) => m.PharmacySales)},
+            { path: 'expiry-tracking', loadComponent: () => import('./clinical/pharmacy/expiry-tracking/expiry-tracking').then((m) => m.ExpiryTracking)},
+            { path: 'stock-alerts', loadComponent: () => import('./clinical/pharmacy/stock-alerts/stock-alerts').then((m) => m.StockAlerts)},
+
+            // Clinical - Laboratory
+            { path: 'laboratory', loadComponent: () => import('./clinical/laboratory/laboratory/laboratory').then((m) => m.Laboratory)},
+            { path: 'lab-tests', loadComponent: () => import('./clinical/laboratory/lab-tests/lab-tests').then((m) => m.LabTests)},
+            { path: 'lab-test-categories', loadComponent: () => import('./clinical/laboratory/lab-test-categories/lab-test-categories').then((m) => m.LabTestCategories)},
+            { path: 'lab-test-requests', loadComponent: () => import('./clinical/laboratory/lab-test-requests/lab-test-requests').then((m) => m.LabTestRequests)},
+            { path: 'sample-collection', loadComponent: () => import('./clinical/laboratory/sample-collection/sample-collection').then((m) => m.SampleCollection)},
+            { path: 'sample-tracking', loadComponent: () => import('./clinical/laboratory/sample-tracking/sample-tracking').then((m) => m.SampleTracking)},
+            { path: 'lab-test-results', loadComponent: () => import('./clinical/laboratory/lab-test-results/lab-test-results').then((m) => m.LabTestResults)},
+
+            // Clinical - Emergency
+            { path: 'emergency-dashboard', loadComponent: () => import('./clinical/emergency/emergency-dashboard/emergency-dashboard').then((m) => m.EmergencyDashboard)},
+            { path: 'triage', loadComponent: () => import('./clinical/emergency/triage/triage').then((m) => m.Triage)},
+            { path: 'emergency', loadComponent: () => import('./clinical/emergency/emergency/emergency').then((m) => m.Emergency)},
+            { path: 'trauma-cases', loadComponent: () => import('./clinical/emergency/trauma-cases/trauma-cases').then((m) => m.TraumaCases)},
+            { path: 'critical-care', loadComponent: () => import('./clinical/emergency/critical-care/critical-care').then((m) => m.CriticalCare)},
+
+            // Clinical - Wards & Beds
+            { path: 'wards', loadComponent: () => import('./clinical/wards-beds/wards/wards').then((m) => m.Wards)},
+            { path: 'bed-status', loadComponent: () => import('./clinical/wards-beds/bed-status/bed-status').then((m) => m.BedStatus)},
+            { path: 'bed-allocation', loadComponent: () => import('./clinical/wards-beds/bed-allocation/bed-allocation').then((m) => m.BedAllocation)},
+            { path: 'bed-transfer', loadComponent: () => import('./clinical/wards-beds/bed-transfer/bed-transfer').then((m) => m.BedTransfer)},
+            { path: 'bed-occupancy', loadComponent: () => import('./clinical/wards-beds/bed-occupancy/bed-occupancy').then((m) => m.BedOccupancy)},
+
+            // Clinical - ICU
+            { path: 'icu', loadComponent: () => import('./clinical/icu/icu/icu').then((m) => m.Icu)},
+            { path: 'icu-patients', loadComponent: () => import('./clinical/icu/icu-patients/icu-patients').then((m) => m.IcuPatients)},
+            { path: 'icu-beds', loadComponent: () => import('./clinical/icu/icu-beds/icu-beds').then((m) => m.IcuBeds)},
+            { path: 'icu-monitoring', loadComponent: () => import('./clinical/icu/icu-monitoring/icu-monitoring').then((m) => m.IcuMonitoring)},
+            { path: 'critical-alerts', loadComponent: () => import('./clinical/icu/critical-alerts/critical-alerts').then((m) => m.CriticalAlerts)},
+
+            // Clinical - Operation Theater
+            { path: 'operation-theater', loadComponent: () => import('./clinical/operation-theater/operation-theater/operation-theater').then((m) => m.OperationTheater)},
+            { path: 'ot-calendar', loadComponent: () => import('./clinical/operation-theater/ot-calendar/ot-calendar').then((m) => m.OtCalendar)},
+            { path: 'surgeons', loadComponent: () => import('./clinical/operation-theater/surgeons/surgeons').then((m) => m.Surgeons)},
+            { path: 'ot-booking', loadComponent: () => import('./clinical/operation-theater/ot-booking/ot-booking').then((m) => m.OtBooking)},
+            { path: 'operation-reports', loadComponent: () => import('./clinical/operation-theater/operation-reports/operation-reports').then((m) => m.OperationReports)},
+
+            // Clinical - Radiology
+            { path: 'radiology', loadComponent: () => import('./clinical/radiology/radiology/radiology').then((m) => m.Radiology)},
+            { path: 'x-ray', loadComponent: () => import('./clinical/radiology/x-ray/x-ray').then((m) => m.XRay)},
+            { path: 'mri', loadComponent: () => import('./clinical/radiology/mri/mri').then((m) => m.Mri)},
+            { path: 'ct-scan', loadComponent: () => import('./clinical/radiology/ct-scan/ct-scan').then((m) => m.CtScan)},
+            { path: 'ultrasound', loadComponent: () => import('./clinical/radiology/ultrasound/ultrasound').then((m) => m.Ultrasound)},
+            { path: 'scan-requests', loadComponent: () => import('./clinical/radiology/scan-requests/scan-requests').then((m) => m.ScanRequests)},
+            { path: 'radiology-reports', loadComponent: () => import('./clinical/radiology/radiology-reports/radiology-reports').then((m) => m.RadiologyReports)},
+
+            // Clinical - Blood Bank
+            { path: 'blood-bank', loadComponent: () => import('./clinical/blood-bank/blood-bank/blood-bank').then((m) => m.BloodBank)},
+            { path: 'blood-donors', loadComponent: () => import('./clinical/blood-bank/blood-donors/blood-donors').then((m) => m.BloodDonors)},
+            { path: 'blood-requests', loadComponent: () => import('./clinical/blood-bank/blood-requests/blood-requests').then((m) => m.BloodRequests)},
+            { path: 'blood-issue', loadComponent: () => import('./clinical/blood-bank/blood-issue/blood-issue').then((m) => m.BloodIssue)},
+            { path: 'blood-camps', loadComponent: () => import('./clinical/blood-bank/blood-camps/blood-camps').then((m) => m.BloodCamps)},
+
+            // Clinical - Nursing
+            { path: 'nursing-dashboard', loadComponent: () => import('./clinical/nursing/nursing-dashboard/nursing-dashboard').then((m) => m.NursingDashboard)},
+            { path: 'nursing-notes', loadComponent: () => import('./clinical/nursing/nursing-notes/nursing-notes').then((m) => m.NursingNotes)},
+            { path: 'vital-signs', loadComponent: () => import('./clinical/nursing/vital-signs/vital-signs').then((m) => m.VitalSigns)},
+            { path: 'medication-administration', loadComponent: () => import('./clinical/nursing/medication-administration/medication-administration').then((m) => m.MedicationAdministration)},
+            { path: 'care-plans', loadComponent: () => import('./clinical/nursing/care-plans/care-plans').then((m) => m.CarePlans)},
+            { path: 'shift-reports', loadComponent: () => import('./clinical/nursing/shift-reports/shift-reports').then((m) => m.ShiftReports)},
+
             // Applications
             { path: 'chat', loadComponent: () => import('./main-menu/applications/chat/chat').then((m) => m.Chat)},
             { path: 'voice-call', loadComponent: () => import('./main-menu/applications/calls/voice-call/voice-call').then((m) => m.VoiceCall)},

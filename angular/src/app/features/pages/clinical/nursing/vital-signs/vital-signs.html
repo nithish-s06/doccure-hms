@@ -1,1 +1,89 @@
-<p>vital-signs works!</p>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Vital Signs Log</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Recorded patient vitals across wards and shifts</p>
+                            </div>
+                            <button id="btn-add" class="flex items-center gap-2 bg-primary hover:bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                <i class="icon-plus"></i>
+                                Record Vitals
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-activity text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-total">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Readings</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-normal">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Normal</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-abnormal">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Abnormal</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-users text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-patients">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Patients Monitored</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                               <div class="relative flex-1 max-w-100 max-sm:min-w-full">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                                        <i class="icon-search text-gray-400"></i>
+                                    </span>
+                                    <input aria-label="Search patient, ward..." id="search" type="text" placeholder="Search patient, ward..." class="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-slate-600 rounded-lg bg-gray-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" >
+                                </div>
+                                <select aria-label="All Flags" id="filter-flag" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Flags</option>
+                                    <option>Normal</option>
+                                    <option>Abnormal</option>
+                                </select>
+                                <span class="text-xs text-gray-400 ml-auto" id="count"></span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient</th>
+                                            <th>Ward/Bed</th>
+                                            <th>BP</th>
+                                            <th>Pulse</th>
+                                            <th>Temp (°F)</th>
+                                            <th>SpO2 (%)</th>
+                                            <th>Recorded By</th>
+                                            <th>Time</th>
+                                            <th>Flag</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr data-row-id="1"><td class="font-medium text-gray-900">Ravi Kumar</td><td class="text-gray-500 dark:text-gray-400">ICU Bed 4</td><td class="text-gray-600 dark:text-gray-300">150/95</td><td class="text-gray-600 dark:text-gray-300">102</td><td class="text-gray-600 dark:text-gray-300">99.8</td><td class="text-gray-600 dark:text-gray-300">94</td><td class="text-gray-600 dark:text-gray-300">Fatima Ali</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 08:10</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Abnormal</span></td><td><div class="flex gap-1"><button onclick="vsOpenEdit(1)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="vsDelete(1,'Ravi Kumar')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="2"><td class="font-medium text-gray-900">Sunita Rao</td><td class="text-gray-500 dark:text-gray-400">Surgery Bed 1</td><td class="text-gray-600 dark:text-gray-300">118/76</td><td class="text-gray-600 dark:text-gray-300">74</td><td class="text-gray-600 dark:text-gray-300">98.4</td><td class="text-gray-600 dark:text-gray-300">98</td><td class="text-gray-600 dark:text-gray-300">Grace Lim</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 09:00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Normal</span></td><td><div class="flex gap-1"><button onclick="vsOpenEdit(2)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="vsDelete(2,'Sunita Rao')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="3"><td class="font-medium text-gray-900">James Miller</td><td class="text-gray-500 dark:text-gray-400">Ortho Ward 2</td><td class="text-gray-600 dark:text-gray-300">122/80</td><td class="text-gray-600 dark:text-gray-300">80</td><td class="text-gray-600 dark:text-gray-300">98.6</td><td class="text-gray-600 dark:text-gray-300">97</td><td class="text-gray-600 dark:text-gray-300">Omar Farid</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 07:45</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Normal</span></td><td><div class="flex gap-1"><button onclick="vsOpenEdit(3)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="vsDelete(3,'James Miller')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="4"><td class="font-medium text-gray-900">Aisha Khan</td><td class="text-gray-500 dark:text-gray-400">Oncology Ward</td><td class="text-gray-600 dark:text-gray-300">108/68</td><td class="text-gray-600 dark:text-gray-300">96</td><td class="text-gray-600 dark:text-gray-300">100.4</td><td class="text-gray-600 dark:text-gray-300">95</td><td class="text-gray-600 dark:text-gray-300">Priya Das</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 10:15</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Abnormal</span></td><td><div class="flex gap-1"><button onclick="vsOpenEdit(4)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="vsDelete(4,'Aisha Khan')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="5"><td class="font-medium text-gray-900">Carlos Diaz</td><td class="text-gray-500 dark:text-gray-400">ICU Bed 7</td><td class="text-gray-600 dark:text-gray-300">160/100</td><td class="text-gray-600 dark:text-gray-300">110</td><td class="text-gray-600 dark:text-gray-300">101.2</td><td class="text-gray-600 dark:text-gray-300">91</td><td class="text-gray-600 dark:text-gray-300">Fatima Ali</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 06:30</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Abnormal</span></td><td><div class="flex gap-1"><button onclick="vsOpenEdit(5)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="vsDelete(5,'Carlos Diaz')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="6"><td class="font-medium text-gray-900">Lena Fischer</td><td class="text-gray-500 dark:text-gray-400">Maternity Ward</td><td class="text-gray-600 dark:text-gray-300">116/74</td><td class="text-gray-600 dark:text-gray-300">82</td><td class="text-gray-600 dark:text-gray-300">98.2</td><td class="text-gray-600 dark:text-gray-300">99</td><td class="text-gray-600 dark:text-gray-300">Grace Lim</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05 22:00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Normal</span></td><td><div class="flex gap-1"><button onclick="vsOpenEdit(6)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="vsDelete(6,'Lena Fischer')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="7"><td class="font-medium text-gray-900">Tom Baker</td><td class="text-gray-500 dark:text-gray-400">Emergency Bay 2</td><td class="text-gray-600 dark:text-gray-300">124/82</td><td class="text-gray-600 dark:text-gray-300">88</td><td class="text-gray-600 dark:text-gray-300">98.9</td><td class="text-gray-600 dark:text-gray-300">97</td><td class="text-gray-600 dark:text-gray-300">Omar Farid</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 11:50</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Normal</span></td><td><div class="flex gap-1"><button onclick="vsOpenEdit(7)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="vsDelete(7,'Tom Baker')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr data-row-id="8"><td class="font-medium text-gray-900">Hana Suzuki</td><td class="text-gray-500 dark:text-gray-400">General Ward 3</td><td class="text-gray-600 dark:text-gray-300">130/85</td><td class="text-gray-600 dark:text-gray-300">92</td><td class="text-gray-600 dark:text-gray-300">99.1</td><td class="text-gray-600 dark:text-gray-300">96</td><td class="text-gray-600 dark:text-gray-300">Priya Das</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06 12:40</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Normal</span></td><td><div class="flex gap-1"><button onclick="vsOpenEdit(8)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button onclick="vsDelete(8,'Hana Suzuki')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Delete"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr id="tbody-empty" class="hidden"><td colspan="9" class="text-center py-10 text-gray-400">No vitals found</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>

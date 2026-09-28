@@ -1,1 +1,349 @@
-<p>wards works!</p>
+<main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="wd-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="wd-skeleton" class="space-y-5">
+                            <div class="wd-sk h-[190px] radius-override-150"></div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+                                <div class="wd-sk h-[130px]"></div><div class="wd-sk h-[130px]"></div><div class="wd-sk h-[130px]"></div>
+                                <div class="wd-sk h-[130px]"></div><div class="wd-sk h-[130px]"></div><div class="wd-sk h-[130px]"></div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                                <div class="wd-sk h-[160px]"></div><div class="wd-sk h-[160px]"></div><div class="wd-sk h-[160px]"></div><div class="wd-sk h-[160px]"></div>
+                            </div>
+                            <div class="wd-sk h-[64px]"></div>
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-5"><div class="wd-sk h-[520px]"></div><div class="wd-sk h-[520px]"></div></div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="wd-content" class="hidden space-y-5">
+
+                            <!-- ---------- HERO ---------- -->
+                            <section class="wd-hero">
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                                            <span class="wd-chip bg-[rgba(34,197,94,.2)] text-[#86efac]"><i class="ti ti-circle text-[8px]"></i> 18 Active Wards</span>
+                                            <span class="wd-chip bg-[rgba(245,158,11,.2)] text-[#fcd34d]"><i class="ti ti-bed text-xs"></i> 82% Occupancy</span>
+                                            <span class="wd-chip bg-[rgba(255,255,255,.14)] text-[#e2e8f0]"><i class="ti ti-refresh text-xs"></i> Updated <span id="wd-sync">just now</span></span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-3xl font-bold tracking-tight">Ward Management Center</h1>
+                                        <p class="text-sm text-slate-300 mt-1 max-w-xl">Real-time ward occupancy, bed allocation, patient flow and staff assignment across the entire facility.</p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 justify-end">
+                                        <button data-modal="ward" class="inline-flex items-center gap-1.5 bg-white text-slate-900 text-sm font-semibold px-3.5 py-2 rounded-lg hover:bg-slate-100 transition"><i class="ti ti-plus"></i> Add Ward</button>
+                                        <button data-modal="allocate" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="ti ti-bed"></i> Allocate Bed</button>
+                                        <button data-modal="transfer" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="ti ti-transfer"></i> Transfer</button>
+                                        <button data-modal="export" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="ti ti-download"></i> Export Report</button>
+                                    </div>
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-5 gap-3 mt-5">
+                                    <div class="wd-hstat"><p class="text-[11px] text-slate-300">Active Wards</p><p class="text-xl font-bold">18</p></div>
+                                    <div class="wd-hstat"><p class="text-[11px] text-slate-300">Occupancy Rate</p><p class="text-xl font-bold text-amber-300">82%</p></div>
+                                    <div class="wd-hstat"><p class="text-[11px] text-slate-300">Available Beds</p><p class="text-xl font-bold text-emerald-300">92</p></div>
+                                    <div class="wd-hstat"><p class="text-[11px] text-slate-300">Critical Care Beds</p><p class="text-xl font-bold text-rose-300">14</p></div>
+                                    <div class="wd-hstat"><p class="text-[11px] text-slate-300">Total Beds</p><p class="text-xl font-bold">510</p></div>
+                                </div>
+                            </section>
+
+                            <!-- ---------- KPI ---------- -->
+                            <section id="wd-kpis" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="wd-kpi [--k1:#6366f1] [--k2:#818cf8]">
+                                    <div class="glow"></div>
+                                    <div class="flex items-start justify-between">
+                                        <div class="w-10 h-10 rounded-xl flex items-center justify-center [background:color-mix(in_srgb,_#6366f1_15%,_transparent)] [color:#6366f1]"><i class="ti ti-building-hospital text-lg"></i></div>
+                                        <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="wd-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3.2"/><circle class="bar [--p:90]" cx="18" cy="18" r="15.9" fill="none" stroke="#6366f1" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#6366f1]">90%</span></div>
+                                    </div>
+                                    <p class="text-2xl font-bold mt-3 wd-count" data-to="18">0</p>
+                                    <p class="text-xs wd-muted">Total Wards</p>
+                                    <div class="flex items-center justify-between mt-2"><span class="wd-b [background:color-mix(in_srgb,_#6366f1_12%,_transparent)] [color:#6366f1]">6 departments</span><svg width="52" height="18" viewBox="0 0 52 18" class="overflow-visible"><polyline points="0,18 8.666666666666666,13.5 17.333333333333332,9 26,9 34.666666666666664,4.5 43.333333333333336,0 52,0" fill="none" stroke="#6366f1" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+                                </div>
+                                <div class="wd-kpi [--k1:#ef4444] [--k2:#f87171]">
+                                    <div class="glow"></div>
+                                    <div class="flex items-start justify-between">
+                                        <div class="w-10 h-10 rounded-xl flex items-center justify-center [background:color-mix(in_srgb,_#ef4444_15%,_transparent)] [color:#ef4444]"><i class="ti ti-heart-rate-monitor text-lg"></i></div>
+                                        <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="wd-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3.2"/><circle class="bar [--p:88]" cx="18" cy="18" r="15.9" fill="none" stroke="#ef4444" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#ef4444]">88%</span></div>
+                                    </div>
+                                    <p class="text-2xl font-bold mt-3 wd-count" data-to="50">0</p>
+                                    <p class="text-xs wd-muted">ICU Beds</p>
+                                    <div class="flex items-center justify-between mt-2"><span class="wd-b [background:color-mix(in_srgb,_#ef4444_12%,_transparent)] [color:#ef4444]">44 occupied</span><svg width="52" height="18" viewBox="0 0 52 18" class="overflow-visible"><polyline points="0,18 8.666666666666666,13.5 17.333333333333332,9 26,4.5 34.666666666666664,0 43.333333333333336,0 52,0" fill="none" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+                                </div>
+                                <div class="wd-kpi [--k1:#a855f7] [--k2:#c084fc]">
+                                    <div class="glow"></div>
+                                    <div class="flex items-start justify-between">
+                                        <div class="w-10 h-10 rounded-xl flex items-center justify-center [background:color-mix(in_srgb,_#a855f7_15%,_transparent)] [color:#a855f7]"><i class="ti ti-door text-lg"></i></div>
+                                        <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="wd-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3.2"/><circle class="bar [--p:64]" cx="18" cy="18" r="15.9" fill="none" stroke="#a855f7" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#a855f7]">64%</span></div>
+                                    </div>
+                                    <p class="text-2xl font-bold mt-3 wd-count" data-to="22">0</p>
+                                    <p class="text-xs wd-muted">Isolation Rooms</p>
+                                    <div class="flex items-center justify-between mt-2"><span class="wd-b [background:color-mix(in_srgb,_#a855f7_12%,_transparent)] [color:#a855f7]">14 in use</span><svg width="52" height="18" viewBox="0 0 52 18" class="overflow-visible"><polyline points="0,18 8.666666666666666,13.5 17.333333333333332,9 26,4.5 34.666666666666664,0 43.333333333333336,0 52,0" fill="none" stroke="#a855f7" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+                                </div>
+                                <div class="wd-kpi [--k1:#0ea5e9] [--k2:#38bdf8]">
+                                    <div class="glow"></div>
+                                    <div class="flex items-start justify-between">
+                                        <div class="w-10 h-10 rounded-xl flex items-center justify-center [background:color-mix(in_srgb,_#0ea5e9_15%,_transparent)] [color:#0ea5e9]"><i class="ti ti-spray text-lg"></i></div>
+                                        <div class="relative w-11 h-11"><svg viewBox="0 0 36 36" class="wd-ring w-11 h-11"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3.2"/><circle class="bar [--p:36]" cx="18" cy="18" r="15.9" fill="none" stroke="#0ea5e9" stroke-width="3.2" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold [color:#0ea5e9]">36%</span></div>
+                                    </div>
+                                    <p class="text-2xl font-bold mt-3 wd-count" data-to="9">0</p>
+                                    <p class="text-xs wd-muted">Cleaning In Progress</p>
+                                    <div class="flex items-center justify-between mt-2"><span class="wd-b [background:color-mix(in_srgb,_#0ea5e9_12%,_transparent)] [color:#0ea5e9]">sanitizing</span><svg width="52" height="18" viewBox="0 0 52 18" class="overflow-visible"><polyline points="0,0 8.666666666666666,6 17.333333333333332,12 26,12 34.666666666666664,18 43.333333333333336,18 52,18" fill="none" stroke="#0ea5e9" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+                                </div>
+                            </section>
+
+                            <!-- ---------- EXECUTIVE DASHBOARD ---------- -->
+                            <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                                <div class="wd-card p-4">
+                                    <div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold">Occupancy Overview</h3><span class="wd-b wd-b-warn">82%</span></div>
+                                    <div class="relative w-28 h-28 mx-auto"><svg viewBox="0 0 36 36" class="wd-ring w-28 h-28"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3"/><circle class="bar [--p:82]" cx="18" cy="18" r="15.9" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" pathLength="100"/></svg><div class="absolute inset-0 flex flex-col items-center justify-center"><span class="text-xl font-bold">418</span><span class="text-[10px] wd-muted">/ 510</span></div></div>
+                                </div>
+                                <div class="wd-card p-4"><h3 class="text-sm font-bold mb-3">Department Usage</h3><div id="wd-deptuse" class="space-y-2.5"><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Cardiology</span><span class="wd-muted">92%</span></div><div class="wd-barwrap"><span class="[width:92%] [background:#ef4444]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Neurology</span><span class="wd-muted">84%</span></div><div class="wd-barwrap"><span class="[width:84%] [background:#a855f7]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Orthopedics</span><span class="wd-muted">76%</span></div><div class="wd-barwrap"><span class="[width:76%] [background:#0ea5e9]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Pediatrics</span><span class="wd-muted">68%</span></div><div class="wd-barwrap"><span class="[width:68%] [background:#22c55e]"></span></div></div></div></div>
+                                <div class="wd-card p-4"><h3 class="text-sm font-bold mb-3">Bed Utilization</h3><div id="wd-util" class="space-y-2.5"><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">ICU</span><span class="wd-muted">88%</span></div><div class="wd-barwrap"><span class="[width:88%] [background:#ef4444]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">General</span><span class="wd-muted">80%</span></div><div class="wd-barwrap"><span class="[width:80%] [background:#0ea5e9]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Maternity</span><span class="wd-muted">72%</span></div><div class="wd-barwrap"><span class="[width:72%] [background:#ec4899]"></span></div></div><div><div class="flex justify-between text-[11px] mb-1"><span class="font-medium">Isolation</span><span class="wd-muted">64%</span></div><div class="wd-barwrap"><span class="[width:64%] [background:#a855f7]"></span></div></div></div></div>
+                                <div class="wd-card p-4">
+                                    <div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold">ICU Capacity</h3><span class="wd-b wd-b-danger">88%</span></div>
+                                    <div class="relative w-28 h-28 mx-auto"><svg viewBox="0 0 36 36" class="wd-ring w-28 h-28"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-gray-200)" stroke-width="3"/><circle class="bar [--p:88]" cx="18" cy="18" r="15.9" fill="none" stroke="#ef4444" stroke-width="3" stroke-linecap="round" pathLength="100"/></svg><div class="absolute inset-0 flex flex-col items-center justify-center"><span class="text-xl font-bold">44</span><span class="text-[10px] wd-muted">/ 50 ICU</span></div></div>
+                                </div>
+                            </section>
+
+                            <!-- ---------- TOOLBAR ---------- -->
+                            <section class="wd-surface p-3">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <div class="relative flex-1 min-w-[200px]">
+                                        <i class="ti ti-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                        <input aria-label="Search ward, code, department..." id="wd-search" class="wd-input !pl-9" placeholder="Search ward, code, department...">
+                                    </div>
+                                    <select aria-label="Ward Type" class="wd-input !w-auto" data-filter="type"><option value="">Ward Type</option><option>General</option><option>ICU</option><option>NICU</option><option>Isolation</option><option>Emergency</option><option>Maternity</option></select>
+                                    <select aria-label="Department" class="wd-input !w-auto" data-filter="dept"><option value="">Department</option><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Oncology</option><option>Pediatrics</option><option>Emergency</option><option>Maternity</option><option>Nephrology</option></select>
+                                    <select aria-label="Floor" class="wd-input !w-auto" data-filter="floor"><option value="">Floor</option><option>Ground</option><option>First</option><option>Second</option></select>
+                                    <select aria-label="Occupancy" class="wd-input !w-auto" data-filter="status"><option value="">Occupancy</option><option>Full</option><option>Near Full</option><option>Available</option></select>
+                                    <select aria-label="Sort" class="wd-input !w-auto" data-filter="sort"><option value="">Sort</option><option value="name">Name</option><option value="occ">Occupancy</option><option value="avail">Available</option></select>
+                                    <div class="relative"><button class="wd-tbtn" data-cols-btn><i class="ti ti-columns"></i> Columns</button><div id="wd-colmenu" class="wd-menu hidden"></div></div>
+                                    <button class="wd-tbtn" data-refresh><i class="ti ti-refresh"></i></button>
+                                    <button class="wd-tbtn" data-modal="import"><i class="ti ti-upload"></i> Import</button>
+                                    <button class="wd-tbtn" data-modal="export"><i class="ti ti-download"></i> Export</button>
+                                    <button class="wd-tbtn" data-print><i class="ti ti-printer"></i> Print</button>
+                                    <div class="wd-seg ml-auto" id="wd-viewtoggle">
+                                        <button data-view="dashboard" class="on"><i class="ti ti-layout-dashboard"></i> Dashboard</button>
+                                        <button data-view="floor"><i class="ti ti-map-2"></i> Floor Map</button>
+                                        <button data-view="grid"><i class="ti ti-layout-grid"></i> Grid</button>
+                                        <button data-view="list"><i class="ti ti-list"></i> List</button>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2 mt-2 text-xs wd-muted"><i class="ti ti-filter"></i> <span id="wd-count">0</span> wards · <button data-clear class="text-[var(--wd-c)] font-semibold hover:underline">Clear filters</button></div>
+                            </section>
+
+                            <!-- ==================== WORKSPACE ==================== -->
+
+                            <!-- DASHBOARD VIEW -->
+                            <div class="wd-view active" data-viewpanel="dashboard">
+                                <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-5">
+                                    <div class="space-y-5">
+                                        <div class="grid grid-cols-2 lg:grid-cols-3 gap-3" id="wd-dashwidgets">
+                                            <div class="wd-card p-3"><div class="flex items-center gap-2 mb-1"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#f59e0b_14%,_transparent)] [color:#f59e0b]"><i class="ti ti-bed"></i></span></div><p class="text-xl font-bold">82%</p><p class="text-[11px] wd-muted">Ward Occupancy</p></div>
+                                            <div class="wd-card p-3"><div class="flex items-center gap-2 mb-1"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#22c55e_14%,_transparent)] [color:#22c55e]"><i class="ti ti-bed-off"></i></span></div><p class="text-xl font-bold">92</p><p class="text-[11px] wd-muted">Available Beds</p></div>
+                                            <div class="wd-card p-3"><div class="flex items-center gap-2 mb-1"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#ef4444_14%,_transparent)] [color:#ef4444]"><i class="ti ti-urgent"></i></span></div><p class="text-xl font-bold">14</p><p class="text-[11px] wd-muted">Critical Patients</p></div>
+                                            <div class="wd-card p-3"><div class="flex items-center gap-2 mb-1"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#6366f1_14%,_transparent)] [color:#6366f1]"><i class="ti ti-users"></i></span></div><p class="text-xl font-bold">86</p><p class="text-[11px] wd-muted">Staff Assigned</p></div>
+                                            <div class="wd-card p-3"><div class="flex items-center gap-2 mb-1"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#0ea5e9_14%,_transparent)] [color:#0ea5e9]"><i class="ti ti-spray"></i></span></div><p class="text-xl font-bold">9</p><p class="text-[11px] wd-muted">Cleaning Schedule</p></div>
+                                            <div class="wd-card p-3"><div class="flex items-center gap-2 mb-1"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,_#a855f7_14%,_transparent)] [color:#a855f7]"><i class="ti ti-transfer"></i></span></div><p class="text-xl font-bold">7</p><p class="text-[11px] wd-muted">Pending Transfers</p></div>
+                                        </div>
+
+                                        <!-- Bed Management Center -->
+                                        <div class="wd-card p-4">
+                                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                                <h3 class="text-sm font-bold">Bed Management Center</h3>
+                                                <select aria-label="ICU-A — Intensive Care A" class="wd-input !py-1.5 !w-auto text-xs" id="wd-bedward">
+                                                    <option value="0">ICU-A — Intensive Care A</option>
+                                                    <option value="1">ICU-B — Intensive Care B</option>
+                                                    <option value="2">GEN-1 — General Ward 1</option>
+                                                    <option value="3">GEN-2 — General Ward 2</option>
+                                                    <option value="4">CARD-1 — Cardiac Care</option>
+                                                    <option value="5">NEURO-1 — Neuro Ward</option>
+                                                    <option value="6">ORTHO-1 — Orthopedic Ward</option>
+                                                    <option value="7">ONCO-1 — Oncology Ward</option>
+                                                    <option value="8">PEDS-1 — Pediatric Ward</option>
+                                                    <option value="9">NICU-1 — Neonatal ICU</option>
+                                                    <option value="10">MAT-1 — Maternity Ward</option>
+                                                    <option value="11">ISO-1 — Isolation Unit</option>
+                                                    <option value="12">ER-1 — Emergency Bay</option>
+                                                    <option value="13">GEN-3 — General Ward 3</option>
+                                                    <option value="14">ICU-A-14 — Intensive Care A</option>
+                                                    <option value="15">ICU-B-15 — Intensive Care B</option>
+                                                    <option value="16">GEN-1-16 — General Ward 1</option>
+                                                    <option value="17">GEN-2-17 — General Ward 2</option>
+                                                </select>
+                                            </div>
+                                            <div class="grid grid-cols-3 md:grid-cols-6 gap-2 mb-4" id="wd-bedstats">
+                                                <div class="rounded-lg border wd-hairline p-2 text-center"><p class="text-lg font-bold [color:#64748b]">12</p><p class="text-[10px] wd-muted">Total</p></div>
+                                                <div class="rounded-lg border wd-hairline p-2 text-center"><p class="text-lg font-bold [color:#ef4444]">7</p><p class="text-[10px] wd-muted">Occupied</p></div>
+                                                <div class="rounded-lg border wd-hairline p-2 text-center"><p class="text-lg font-bold [color:#22c55e]">3</p><p class="text-[10px] wd-muted">Available</p></div>
+                                                <div class="rounded-lg border wd-hairline p-2 text-center"><p class="text-lg font-bold [color:#6366f1]">0</p><p class="text-[10px] wd-muted">Reserved</p></div>
+                                                <div class="rounded-lg border wd-hairline p-2 text-center"><p class="text-lg font-bold [color:#0ea5e9]">1</p><p class="text-[10px] wd-muted">Cleaning</p></div>
+                                                <div class="rounded-lg border wd-hairline p-2 text-center"><p class="text-lg font-bold [color:#f59e0b]">1</p><p class="text-[10px] wd-muted">Maintenance</p></div>
+                                            </div>
+                                            <div class="flex flex-wrap gap-2 mb-3 text-[11px]" id="wd-bedlegend">
+                                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full [background:#ef4444]"></span>Occupied</span>
+                                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full [background:#22c55e]"></span>Available</span>
+                                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full [background:#6366f1]"></span>Reserved</span>
+                                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full [background:#0ea5e9]"></span>Cleaning</span>
+                                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full [background:#f59e0b]"></span>Maintenance</span>
+                                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full [background:#a855f7]"></span>Isolation</span>
+                                            </div>
+                                            <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-2" id="wd-bedgrid">
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#ef4444_8%,_transparent)] [border-color:color-mix(in_srgb,_#ef4444_30%,_transparent)]" data-bed="0" title="ICU-A-B1 · Occupied · R. Sharma">
+                                                    <i class="ti ti-user ico [color:#ef4444]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B1</p>
+                                                    <p class="text-[9px] wd-muted truncate">R. Sharma</p>
+                                                </button>
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#ef4444_8%,_transparent)] [border-color:color-mix(in_srgb,_#ef4444_30%,_transparent)]" data-bed="1" title="ICU-A-B2 · Occupied · A. Reddy">
+                                                    <i class="ti ti-user ico [color:#ef4444]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B2</p>
+                                                    <p class="text-[9px] wd-muted truncate">A. Reddy</p>
+                                                </button>
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#ef4444_8%,_transparent)] [border-color:color-mix(in_srgb,_#ef4444_30%,_transparent)]" data-bed="2" title="ICU-A-B3 · Occupied · V. Nair">
+                                                    <i class="ti ti-user ico [color:#ef4444]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B3</p>
+                                                    <p class="text-[9px] wd-muted truncate">V. Nair</p>
+                                                </button>
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#ef4444_8%,_transparent)] [border-color:color-mix(in_srgb,_#ef4444_30%,_transparent)]" data-bed="3" title="ICU-A-B4 · Occupied · P. Patel">
+                                                    <i class="ti ti-user ico [color:#ef4444]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B4</p>
+                                                    <p class="text-[9px] wd-muted truncate">P. Patel</p>
+                                                </button>
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#ef4444_8%,_transparent)] [border-color:color-mix(in_srgb,_#ef4444_30%,_transparent)]" data-bed="4" title="ICU-A-B5 · Occupied · S. Gupta">
+                                                    <i class="ti ti-user ico [color:#ef4444]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B5</p>
+                                                    <p class="text-[9px] wd-muted truncate">S. Gupta</p>
+                                                </button>
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#ef4444_8%,_transparent)] [border-color:color-mix(in_srgb,_#ef4444_30%,_transparent)]" data-bed="5" title="ICU-A-B6 · Occupied · M. Singh">
+                                                    <i class="ti ti-user ico [color:#ef4444]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B6</p>
+                                                    <p class="text-[9px] wd-muted truncate">M. Singh</p>
+                                                </button>
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#ef4444_8%,_transparent)] [border-color:color-mix(in_srgb,_#ef4444_30%,_transparent)]" data-bed="6" title="ICU-A-B7 · Occupied · K. Menon">
+                                                    <i class="ti ti-user ico [color:#ef4444]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B7</p>
+                                                    <p class="text-[9px] wd-muted truncate">K. Menon</p>
+                                                </button>
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#0ea5e9_8%,_transparent)] [border-color:color-mix(in_srgb,_#0ea5e9_30%,_transparent)]" data-bed="7" title="ICU-A-B8 · Cleaning">
+                                                    <i class="ti ti-spray ico [color:#0ea5e9]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B8</p>
+                                                    <p class="text-[9px] wd-muted truncate">Cleaning</p>
+                                                </button>
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#f59e0b_8%,_transparent)] [border-color:color-mix(in_srgb,_#f59e0b_30%,_transparent)]" data-bed="8" title="ICU-A-B9 · Maintenance">
+                                                    <i class="ti ti-tool ico [color:#f59e0b]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B9</p>
+                                                    <p class="text-[9px] wd-muted truncate">Maintenance</p>
+                                                </button>
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#22c55e_8%,_transparent)] [border-color:color-mix(in_srgb,_#22c55e_30%,_transparent)]" data-bed="9" title="ICU-A-B10 · Available">
+                                                    <i class="ti ti-bed ico [color:#22c55e]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B10</p>
+                                                    <p class="text-[9px] wd-muted truncate">Available</p>
+                                                </button>
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#22c55e_8%,_transparent)] [border-color:color-mix(in_srgb,_#22c55e_30%,_transparent)]" data-bed="10" title="ICU-A-B11 · Available">
+                                                    <i class="ti ti-bed ico [color:#22c55e]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B11</p>
+                                                    <p class="text-[9px] wd-muted truncate">Available</p>
+                                                </button>
+                                                <button class="wd-bed [background:color-mix(in_srgb,_#22c55e_8%,_transparent)] [border-color:color-mix(in_srgb,_#22c55e_30%,_transparent)]" data-bed="11" title="ICU-A-B12 · Available">
+                                                    <i class="ti ti-bed ico [color:#22c55e]"></i>
+                                                    <p class="text-[10px] font-bold mt-0.5">B12</p>
+                                                    <p class="text-[9px] wd-muted truncate">Available</p>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- RIGHT RAIL -->
+                                    <div class="space-y-5">
+                                        <div class="wd-card p-4">
+                                            <div class="flex items-center justify-between mb-3"><h3 class="text-sm font-bold">Patient Allocation Board</h3><span class="wd-b wd-b-warn">Queue</span></div>
+                                            <div class="flex flex-wrap gap-1.5 mb-3" id="wd-alloctabs">
+                                                <button class="wd-b wd-b-info" data-alloctab="All">All</button><button class="wd-b [background:var(--color-gray-100)]" data-alloctab="New">New</button><button class="wd-b [background:var(--color-gray-100)]" data-alloctab="Waiting">Waiting</button><button class="wd-b [background:var(--color-gray-100)]" data-alloctab="ICU">ICU</button><button class="wd-b [background:var(--color-gray-100)]" data-alloctab="Isolation">Isolation</button>
+                                            </div>
+                                            <div id="wd-alloc" class="space-y-2.5">
+                                                <div class="rounded-xl border wd-hairline p-2.5 flex items-center gap-2.5 hover:shadow-md transition">
+                                                    <span class="wd-av [width:38px] [height:38px] [background:#ef4444] [font-size:13px]">RS</span>
+                                                    <div class="min-w-0 flex-1"><p class="text-sm font-semibold truncate">Rahul Sharma</p><p class="text-[11px] wd-muted">MRN-10428 · Cardiology</p><p class="text-[10px] wd-muted">Requested: ICU-A</p></div>
+                                                    <div class="text-right"><span class="wd-b wd-b-danger">Critical</span><button data-modal="allocate" class="block mt-1 text-[11px] font-semibold text-[var(--wd-c)] hover:underline">Allocate</button></div>
+                                                </div>
+                                                <div class="rounded-xl border wd-hairline p-2.5 flex items-center gap-2.5 hover:shadow-md transition">
+                                                    <span class="wd-av [width:38px] [height:38px] [background:#a855f7] [font-size:13px]">AR</span>
+                                                    <div class="min-w-0 flex-1"><p class="text-sm font-semibold truncate">Anita Reddy</p><p class="text-[11px] wd-muted">MRN-10431 · Neurology</p><p class="text-[10px] wd-muted">Requested: NEURO-1</p></div>
+                                                    <div class="text-right"><span class="wd-b wd-b-warn">High</span><button data-modal="allocate" class="block mt-1 text-[11px] font-semibold text-[var(--wd-c)] hover:underline">Allocate</button></div>
+                                                </div>
+                                                <div class="rounded-xl border wd-hairline p-2.5 flex items-center gap-2.5 hover:shadow-md transition">
+                                                    <span class="wd-av [width:38px] [height:38px] [background:#0ea5e9] [font-size:13px]">VN</span>
+                                                    <div class="min-w-0 flex-1"><p class="text-sm font-semibold truncate">Vikram Nair</p><p class="text-[11px] wd-muted">MRN-10433 · Orthopedics</p><p class="text-[10px] wd-muted">Requested: ORTHO-1</p></div>
+                                                    <div class="text-right"><span class="wd-b wd-b-info">Medium</span><button data-modal="allocate" class="block mt-1 text-[11px] font-semibold text-[var(--wd-c)] hover:underline">Allocate</button></div>
+                                                </div>
+                                                <div class="rounded-xl border wd-hairline p-2.5 flex items-center gap-2.5 hover:shadow-md transition">
+                                                    <span class="wd-av [width:38px] [height:38px] [background:#f59e0b] [font-size:13px]">PP</span>
+                                                    <div class="min-w-0 flex-1"><p class="text-sm font-semibold truncate">Priya Patel</p><p class="text-[11px] wd-muted">MRN-10435 · Oncology</p><p class="text-[10px] wd-muted">Requested: ISO-1</p></div>
+                                                    <div class="text-right"><span class="wd-b wd-b-warn">High</span><button data-modal="allocate" class="block mt-1 text-[11px] font-semibold text-[var(--wd-c)] hover:underline">Allocate</button></div>
+                                                </div>
+                                                <div class="rounded-xl border wd-hairline p-2.5 flex items-center gap-2.5 hover:shadow-md transition">
+                                                    <span class="wd-av [width:38px] [height:38px] [background:#22c55e] [font-size:13px]">SG</span>
+                                                    <div class="min-w-0 flex-1"><p class="text-sm font-semibold truncate">Suresh Gupta</p><p class="text-[11px] wd-muted">MRN-10438 · Emergency</p><p class="text-[10px] wd-muted">Requested: ICU-B</p></div>
+                                                    <div class="text-right"><span class="wd-b wd-b-danger">Critical</span><button data-modal="allocate" class="block mt-1 text-[11px] font-semibold text-[var(--wd-c)] hover:underline">Allocate</button></div>
+                                                </div>
+                                                <div class="rounded-xl border wd-hairline p-2.5 flex items-center gap-2.5 hover:shadow-md transition">
+                                                    <span class="wd-av [width:38px] [height:38px] [background:#ec4899] [font-size:13px]">MS</span>
+                                                    <div class="min-w-0 flex-1"><p class="text-sm font-semibold truncate">Meera Singh</p><p class="text-[11px] wd-muted">MRN-10440 · Maternity</p><p class="text-[10px] wd-muted">Requested: MAT-1</p></div>
+                                                    <div class="text-right"><span class="wd-b wd-b-info">Medium</span><button data-modal="allocate" class="block mt-1 text-[11px] font-semibold text-[var(--wd-c)] hover:underline">Allocate</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FLOOR MAP VIEW -->
+                            <div class="wd-view" data-viewpanel="floor">
+                                <div class="wd-surface p-4">
+                                    <div class="flex items-center justify-between mb-4"><h3 class="font-bold">Hospital Floor Map</h3><div class="flex flex-wrap gap-2 text-[11px] wd-muted" id="wd-floorlegend"></div></div>
+                                    <div id="wd-floors" class="space-y-4"></div>
+                                </div>
+                            </div>
+
+                            <!-- GRID VIEW -->
+                            <div class="wd-view" data-viewpanel="grid">
+                                <div id="wd-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                            </div>
+
+                            <!-- LIST VIEW -->
+                            <div class="wd-view" data-viewpanel="list">
+                                <div class="wd-surface overflow-hidden"><div class="overflow-x-auto"><table class="wd-tbl"><thead><tr id="wd-listhead"></tr></thead><tbody id="wd-listbody"></tbody></table></div></div>
+                            </div>
+
+                            <!-- ---------- ACTIVITY FEED ---------- -->
+                            <section class="wd-surface p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-lg font-bold">Ward Activity Feed</h2><span class="wd-b wd-b-info">Live</span></div>
+                                <div id="wd-feed" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                                    <div class="rounded-xl border wd-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#6366f1_14%,_transparent)] [color:#6366f1]"><i class="ti ti-building-plus"></i></span><div class="min-w-0"><p class="text-sm font-semibold">New Ward Created</p><p class="text-[11px] wd-muted truncate">GEN-3 added · 30 beds</p><p class="text-[10px] wd-muted mt-0.5">5m ago</p></div></div>
+                                    <div class="rounded-xl border wd-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#22c55e_14%,_transparent)] [color:#22c55e]"><i class="ti ti-user-plus"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Patient Admitted</p><p class="text-[11px] wd-muted truncate">R. Sharma → ICU-A</p><p class="text-[10px] wd-muted mt-0.5">12m ago</p></div></div>
+                                    <div class="rounded-xl border wd-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#0ea5e9_14%,_transparent)] [color:#0ea5e9]"><i class="ti ti-bed"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Bed Allocated</p><p class="text-[11px] wd-muted truncate">Bed ICU-A-B3 assigned</p><p class="text-[10px] wd-muted mt-0.5">18m ago</p></div></div>
+                                    <div class="rounded-xl border wd-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#a855f7_14%,_transparent)] [color:#a855f7]"><i class="ti ti-transfer"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Transfer Completed</p><p class="text-[11px] wd-muted truncate">V. Nair → NEURO-1</p><p class="text-[10px] wd-muted mt-0.5">26m ago</p></div></div>
+                                    <div class="rounded-xl border wd-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#f59e0b_14%,_transparent)] [color:#f59e0b]"><i class="ti ti-bed-off"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Bed Released</p><p class="text-[11px] wd-muted truncate">GEN-1-B8 now available</p><p class="text-[10px] wd-muted mt-0.5">40m ago</p></div></div>
+                                    <div class="rounded-xl border wd-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#14b8a6_14%,_transparent)] [color:#14b8a6]"><i class="ti ti-spray"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Ward Sanitized</p><p class="text-[11px] wd-muted truncate">ISO-1 fully sanitized</p><p class="text-[10px] wd-muted mt-0.5">1h ago</p></div></div>
+                                    <div class="rounded-xl border wd-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#ef4444_14%,_transparent)] [color:#ef4444]"><i class="ti ti-tool"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Maintenance Done</p><p class="text-[11px] wd-muted truncate">ICU-B monitor fixed</p><p class="text-[10px] wd-muted mt-0.5">2h ago</p></div></div>
+                                    <div class="rounded-xl border wd-hairline p-3 flex items-start gap-2.5 hover:shadow-md transition"><span class="w-9 h-9 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,_#0ea5e9_14%,_transparent)] [color:#0ea5e9]"><i class="ti ti-logout"></i></span><div class="min-w-0"><p class="text-sm font-semibold">Patient Discharged</p><p class="text-[11px] wd-muted truncate">M. Singh discharged</p><p class="text-[10px] wd-muted mt-0.5">3h ago</p></div></div>
+                                </div>
+                            </section>
+
+                            <!-- BULK BAR -->
+                            <div class="wd-bulk items-center gap-2 px-4 py-2.5 flex-wrap">
+                                <span class="text-sm font-semibold"><span id="wd-selcount">0</span> selected</span>
+                                <div class="flex flex-wrap gap-1.5 ml-auto text-xs">
+                                    <button data-bulk="allocate" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-bed"></i> Allocate</button>
+                                    <button data-bulk="transfer" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-transfer"></i> Transfer</button>
+                                    <button data-bulk="staff" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-user-plus"></i> Staff</button>
+                                    <button data-bulk="export" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-download"></i> Export</button>
+                                    <button data-bulk="print" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-printer"></i> Print</button>
+                                    <button data-bulk="status" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-refresh"></i> Status</button>
+                                    <button data-bulk="archive" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="ti ti-archive"></i> Archive</button>
+                                    <button data-bulk="delete" class="px-2.5 py-1.5 rounded-lg bg-rose-500/80 hover:bg-rose-500"><i class="ti ti-trash"></i> Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
