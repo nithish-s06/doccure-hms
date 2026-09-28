@@ -37,11 +37,16 @@ export class Sidebar implements OnInit, AfterViewInit {
   }
 
   toggleSection(section: SideBar): void {
-    section.showSubRoute = !section.showSubRoute;
+    const opening = !section.showSubRoute;
+    this.sidebarData.forEach((s) => (s.showSubRoute = false));
+    section.showSubRoute = opening;
   }
 
   toggleMenu(menu: SideBarMenu): void {
-    menu.showSubRoute = !menu.showSubRoute;
+    const opening = !menu.showSubRoute;
+    const section = this.sidebarData.find((s) => s.menu.includes(menu));
+    section?.menu.forEach((m) => (m.showSubRoute = false));
+    menu.showSubRoute = opening;
   }
 
   isMenuActive(menu: SideBarMenu): boolean {
