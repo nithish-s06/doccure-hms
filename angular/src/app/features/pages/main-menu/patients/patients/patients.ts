@@ -202,6 +202,7 @@ export class Patients implements AfterViewInit {
     }
 
     this.initDeleteModal();
+    this.wireSelectionAndBulk();
     this.document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         this.qsa('.pm-drawer.open').forEach((d) => d.classList.remove('open'));
@@ -280,6 +281,61 @@ export class Patients implements AfterViewInit {
       const input = sa as HTMLInputElement;
       input.checked = boxes.length > 0 && checked === boxes.length;
       input.indeterminate = checked > 0 && checked < boxes.length;
+    });
+    this.syncBulkBar();
+  }
+
+  private syncBulkBar(): void {
+    const ids = new Set<string>();
+    this.qsa('[data-row-select]').forEach((b) => {
+      if ((b as HTMLInputElement).checked) ids.add((b as HTMLInputElement).dataset['rowSelect'] || '');
+    });
+    this.qsa('[data-bulk-bar]').forEach((bar) => {
+      (bar as HTMLElement).hidden = ids.size === 0;
+      const count = bar.querySelector('[data-bulk-count]');
+      if (count) count.textContent = String(ids.size);
+    });
+  }
+
+  private wireSelectionAndBulk(): void {
+    [this.byId('pm-select-all'), this.byId('pm-select-all-2')].forEach((sa) => {
+      if (!sa) return;
+      sa.addEventListener('change', () => {
+        const on = (sa as HTMLInputElement).checked;
+        this.visibleRowChecks().forEach((b) => {
+          b.checked = on;
+          this.qsa('[data-row-select="' + b.dataset['rowSelect'] + '"]').forEach((dup) => ((dup as HTMLInputElement).checked = on));
+        });
+        this.syncSelectAll();
+      });
+    });
+
+    this.document.addEventListener('change', (e) => {
+      const box = (e.target as HTMLElement).closest('[data-row-select]') as HTMLInputElement | null;
+      if (!box) return;
+      const id = box.dataset['rowSelect'];
+      this.qsa('[data-row-select="' + id + '"]').forEach((b) => ((b as HTMLInputElement).checked = box.checked));
+      this.syncSelectAll();
+    });
+
+    this.document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('[data-clear-selection]')) {
+        this.qsa('[data-row-select]').forEach((b) => ((b as HTMLInputElement).checked = false));
+        this.syncSelectAll();
+        return;
+      }
+      const rm = target.closest('[data-remove-selected]');
+      if (rm) {
+        const ids = new Set<string>();
+        this.qsa('[data-row-select]').forEach((b) => {
+          if ((b as HTMLInputElement).checked) ids.add((b as HTMLInputElement).dataset['rowSelect'] || '');
+        });
+        ids.forEach((id) => {
+          this.qsa('[id$="-item-' + id + '"]').forEach((el) => el.remove());
+        });
+        this.syncSelectAll();
+      }
     });
   }
 
