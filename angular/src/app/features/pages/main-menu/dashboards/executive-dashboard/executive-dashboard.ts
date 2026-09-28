@@ -1,5 +1,15 @@
 import { AfterViewInit, Component, DOCUMENT, Inject, OnDestroy } from '@angular/core';
 
+interface Dept {
+  name: string;
+  icon: string;
+  state: 'optimal' | 'busy' | 'critical';
+  cap: string;
+  load: number;
+  alerts: number;
+  perf: string;
+}
+
 interface IntelItem {
   id: string;
   kind: string;
@@ -33,6 +43,25 @@ interface ActivityItem {
   templateUrl: './executive-dashboard.html',
 })
 export class ExecutiveDashboard implements AfterViewInit, OnDestroy {
+  private depts: Dept[] = [
+    { name: 'Emergency', icon: 'icon-siren', state: 'critical', cap: '28 bays', load: 92, alerts: 2, perf: 'Surge protocol ready' },
+    { name: 'OPD', icon: 'icon-stethoscope', state: 'busy', cap: '14 clinics', load: 78, alerts: 0, perf: 'Avg wait 22 min' },
+    { name: 'IPD', icon: 'icon-bed', state: 'optimal', cap: '412 beds', load: 81, alerts: 0, perf: 'Discharges on track' },
+    { name: 'ICU', icon: 'icon-heart-pulse', state: 'busy', cap: '48 beds', load: 88, alerts: 1, perf: '2 step-downs pending' },
+    { name: 'Operation Theatre', icon: 'icon-scissors', state: 'optimal', cap: '9 suites', load: 67, alerts: 0, perf: 'On schedule' },
+    { name: 'Laboratory', icon: 'icon-flask-conical', state: 'optimal', cap: '6 benches', load: 74, alerts: 0, perf: 'TAT 2h 04m' },
+    { name: 'Pharmacy', icon: 'icon-pill', state: 'busy', cap: '4 counters', load: 83, alerts: 1, perf: 'Insulin restock inbound' },
+    { name: 'Radiology', icon: 'icon-scan-line', state: 'optimal', cap: '5 modalities', load: 58, alerts: 0, perf: 'MRI slots open' },
+    { name: 'Billing', icon: 'icon-receipt', state: 'optimal', cap: '6 counters', load: 62, alerts: 0, perf: '93% collection' },
+    { name: 'Reception', icon: 'icon-headset', state: 'busy', cap: '5 desks', load: 76, alerts: 0, perf: 'Queue 12 min' },
+  ];
+
+  private readonly deptMeta: Record<Dept['state'], [string, string]> = {
+    optimal: ['Optimal', 'ex-emerald'],
+    busy: ['Busy', 'ex-amber'],
+    critical: ['Critical', 'ex-rose'],
+  };
+
   private intel: IntelItem[] = [
     { id: 'i1', kind: 'Emergency Alert', urgent: true, icon: 'icon-siren', tone: 'ex-rose', text: 'ED at 92% capacity — surge wing decision needed within the hour.', time: '5:12 PM' },
     { id: 'i2', kind: 'VIP Admission', icon: 'icon-crown', tone: 'ex-fuchsia', text: "Board member's family admitted to Suite 7 — concierge protocol active.", time: '4:48 PM' },
@@ -91,9 +120,20 @@ export class ExecutiveDashboard implements AfterViewInit, OnDestroy {
   /* ---------------- Hero alert strip ---------------- */
 
   private renderHero(): void {
-    const crit = this.intel.filter((i) => i.urgent).length;
+    const crit = this.depts.filter((d) => d.state === 'critical').length;
     const fact = this.byId('fact-emerg');
     if (fact) fact.textContent = crit ? `${crit} dept critical` : 'Stable';
+
+    const loads = this.depts.reduce((s, d) => s + d.load, 0) / this.depts.length;
+    const health = Math.round(100 - (loads - 60) * 0.9 - crit * 4);
+    const C = 2 * Math.PI * 52;
+    const fill = this.byId('health-fill');
+    if (fill) {
+      fill.setAttribute('stroke-dasharray', C.toFixed(1));
+      fill.setAttribute('stroke-dashoffset', (C * (1 - health / 100)).toFixed(1));
+    }
+    const healthVal = this.byId('health-val');
+    if (healthVal) healthVal.textContent = `${health}%`;
 
     const strip = this.byId('alert-strip');
     if (!strip) return;
@@ -107,7 +147,15 @@ export class ExecutiveDashboard implements AfterViewInit, OnDestroy {
         '<button type="button" id="btn-approve-surge" class="ex-action shrink-0"><i class="icon-check" aria-hidden="true"></i>Approve surge wing</button>';
       this.byId('btn-approve-surge')?.addEventListener('click', () => {
         this.intel = this.intel.filter((i) => !i.urgent);
+        const ed = this.depts.find((d) => d.name === 'Emergency');
+        if (ed) {
+          ed.state = 'busy';
+          ed.load = 74;
+          ed.alerts = 0;
+          ed.perf = 'Surge wing open · 8 bays added';
+        }
         this.renderHero();
+        this.renderTwin();
         this.renderIntel();
         this.toast('Surge wing approved — 8 bays opening, bed management notified.');
       });
@@ -117,6 +165,45 @@ export class ExecutiveDashboard implements AfterViewInit, OnDestroy {
         '<span class="grid size-9 shrink-0 place-items-center rounded-xl bg-emerald-400/20 text-emerald-200"><i class="icon-shield-check" aria-hidden="true"></i></span>' +
         '<div class="min-w-0 flex-1"><p class="text-xs font-extrabold uppercase tracking-wider text-emerald-200">Network stable — no executive decisions pending</p>' +
         '<p class="mt-0.5 text-xs font-medium text-white/70">All campuses operating within thresholds. Next scheduled review: 6:00 PM ops call.</p></div>';
+    }
+  }
+
+  /* ---------------- Digital twin ---------------- */
+
+  private renderTwin(): void {
+    const legend = this.byId('twin-legend');
+    if (legend) {
+      legend.innerHTML = (Object.entries(this.deptMeta) as [Dept['state'], [string, string]][])
+        .map(
+          ([state, [label, tone]]) =>
+            `<span class="ex-chip ${tone} text-[9px]">${label} · ${this.depts.filter((d) => d.state === state).length}</span>`
+        )
+        .join('');
+    }
+    const twin = this.byId('twin');
+    if (twin) {
+      twin.innerHTML = this.depts
+        .map((d) => {
+          const [label] = this.deptMeta[d.state];
+          return (
+            `<div class="ex-dept is-${d.state}">` +
+            `<div class="flex items-center gap-2"><span class="ex-panel-icon !size-8 shrink-0 text-xs" style="--ex-accent:var(--ex-dept-c)"><i class="${d.icon}" aria-hidden="true"></i></span>` +
+            `<div class="min-w-0 flex-1"><p class="truncate text-xs font-extrabold text-gray-900">${this.escapeHtml(d.name)}</p>` +
+            `<p class="text-[9px] font-bold text-gray-400">${this.escapeHtml(d.cap)}</p></div>` +
+            (d.alerts ? `<span class="ex-chip ex-rose shrink-0 text-[9px]">${d.alerts}</span>` : '') +
+            '</div>' +
+            `<div class="mt-2 flex items-center justify-between"><span class="ex-dept-status">${label}</span>` +
+            `<span class="text-[10px] font-extrabold text-gray-500 tabular-nums">${d.load}% load</span></div>` +
+            `<div class="ex-dept-track"><span class="ex-dept-fill" style="width:0%" data-w="${d.load}"></span></div>` +
+            `<p class="mt-1.5 truncate text-[9px] font-semibold text-gray-400">${this.escapeHtml(d.perf)}</p></div>`
+          );
+        })
+        .join('');
+      requestAnimationFrame(() =>
+        this.document.querySelectorAll<HTMLElement>('.ex-dept-fill').forEach((f) => {
+          f.style.width = `${f.dataset['w']}%`;
+        })
+      );
     }
   }
 
