@@ -64,6 +64,7 @@ export class Discharges implements AfterViewInit {
   private nextId = 1;
 
   private state: {
+    view: 'grid' | 'list';
     q: string;
     dept: string;
     status: string;
@@ -72,7 +73,7 @@ export class Discharges implements AfterViewInit {
     size: number;
     adv: Record<string, string>;
     sel: Record<number, boolean>;
-  } = { q: '', dept: '', status: '', sort: 'newest', page: 1, size: 12, adv: {}, sel: {} };
+  } = { view: 'grid', q: '', dept: '', status: '', sort: 'newest', page: 1, size: 12, adv: {}, sel: {} };
 
   /* ---- Patient Clearance ---- */
   private clearItems: [string, string, string, boolean][] = [
@@ -287,10 +288,31 @@ export class Discharges implements AfterViewInit {
     );
   }
 
+  private rowHTML(r: Discharge): string {
+    const sel = this.state.sel[r.id] ? ' is-selected' : '';
+    return (
+      `<tr data-id="${r.id}" class="${sel.trim()}">` +
+      `<td><input type="checkbox" class="dc-check dc-rowcheck" data-id="${r.id}"${this.state.sel[r.id] ? ' checked' : ''}></td>` +
+      `<td class="font-mono text-primary"><a href="${this.detailUrl()}" class="hover:underline">${this.did(r.id)}</a></td>` +
+      `<td class="font-semibold text-gray-900 dark:text-white">${this.esc(r.name)}</td>` +
+      `<td>${this.esc(r.dept)}</td>` +
+      `<td>${this.esc(r.doctor)}</td>` +
+      `<td>${r.admit}</td>` +
+      `<td>${r.discharge}</td>` +
+      `<td>${r.los}d</td>` +
+      `<td>${r.fu ? r.followUp : '—'}</td>` +
+      `<td>${this.statusBadge(r.status)}</td>` +
+      `<td class="text-right"><div class="flex gap-1.5 justify-end"><button class="dc-mini dc-view" data-id="${r.id}" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="${r.id}" title="Edit"><i class="icon-edit text-sm"></i></button></div></td>` +
+      '</tr>'
+    );
+  }
+
   private render(): void {
     const grid = this.byId('dc-gridview');
     const empty = this.byId('dc-empty');
     const pager = this.byId('dc-pager');
+    const listView = this.byId('dc-listview');
+    const tbody = this.byId('dc-tbody');
     if (!grid || !empty || !pager) return;
 
     const rows = this.filtered();
@@ -304,7 +326,15 @@ export class Discharges implements AfterViewInit {
     if (count) count.textContent = `${total} of ${this.data.length} discharges`;
     empty.classList.toggle('hidden', total !== 0);
     pager.classList.toggle('hidden', total === 0);
+    if (this.state.view === 'grid') {
+      grid.classList.remove('hidden');
+      if (listView) listView.classList.add('hidden');
+    } else {
+      grid.classList.add('hidden');
+      if (listView) listView.classList.remove('hidden');
+    }
     grid.innerHTML = pageRows.map((r) => this.cardHTML(r)).join('');
+    if (tbody) tbody.innerHTML = pageRows.map((r) => this.rowHTML(r)).join('');
     const pageInfo = this.byId('dc-page-info');
     if (pageInfo) pageInfo.textContent = total ? `Showing ${start + 1}–${start + pageRows.length} of ${total}` : 'No records';
     this.pageNav(pages);
@@ -988,6 +1018,18 @@ export class Discharges implements AfterViewInit {
       this.state.sort = (e.target as HTMLSelectElement).value;
       this.render();
     });
+    this.on('dc-view-grid', 'click', (e: Event) => {
+      this.state.view = 'grid';
+      (e.currentTarget as HTMLElement).classList.add('is-active');
+      this.byId('dc-view-list')?.classList.remove('is-active');
+      this.render();
+    });
+    this.on('dc-view-list', 'click', (e: Event) => {
+      this.state.view = 'list';
+      (e.currentTarget as HTMLElement).classList.add('is-active');
+      this.byId('dc-view-grid')?.classList.remove('is-active');
+      this.render();
+    });
     this.on('dc-refresh', 'click', () => {
       this.toast('Refreshed');
       const updated = this.byId('dc-updated');
@@ -1074,6 +1116,7 @@ export class Discharges implements AfterViewInit {
       if (card) this.openDetail(+(card.getAttribute('data-id') || 0));
     };
     this.byId('dc-gridview')?.addEventListener('click', delegate);
+    this.byId('dc-listview')?.addEventListener('click', delegate);
   }
 
   private wireWidgetsDelegation(): void {
