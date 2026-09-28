@@ -24,6 +24,31 @@ export const Pages_Routes: Routes = [
             // { path: 'layout-two-column', loadComponent: () => import('./main/layout-pages/layout-pages').then((m) => m.LayoutPages)},
             // { path: 'layout-rtl', loadComponent: () => import('./main/layout-pages/layout-pages').then((m) => m.LayoutPages)},
 
+            // Patients
+            { path: 'patients', loadComponent: () => import('./main-menu/patients/patients/patients').then((m) => m.Patients)},
+            { path: 'add-patient', loadComponent: () => import('./main-menu/patients/add-patient/add-patient').then((m) => m.AddPatient)},
+            { path: 'patient-profile', loadComponent: () => import('./main-menu/patients/patient-profile/patient-profile').then((m) => m.PatientProfile)},
+            { path: 'admissions', loadComponent: () => import('./main-menu/patients/admissions/admissions').then((m) => m.Admissions)},
+            { path: 'discharges', loadComponent: () => import('./main-menu/patients/discharges/discharges').then((m) => m.Discharges)},
+            { path: 'opd-patients', loadComponent: () => import('./main-menu/patients/opd-patients/opd-patients').then((m) => m.OpdPatients)},
+            { path: 'ipd-patients', loadComponent: () => import('./main-menu/patients/ipd-patients/ipd-patients').then((m) => m.IpdPatients)},
+            { path: 'patient-visits', loadComponent: () => import('./main-menu/patients/patient-visits/patient-visits').then((m) => m.PatientVisits)},
+            { path: 'patient-medical-history', loadComponent: () => import('./main-menu/patients/patient-medical-history/patient-medical-history').then((m) => m.PatientMedicalHistory)},
+            { path: 'patient-documents', loadComponent: () => import('./main-menu/patients/patient-documents/patient-documents').then((m) => m.PatientDocuments)},
+            { path: 'patient-insurance', loadComponent: () => import('./main-menu/patients/patient-insurance/patient-insurance').then((m) => m.PatientInsurance)},
+            { path: 'patient-family-members', loadComponent: () => import('./main-menu/patients/patient-family-members/patient-family-members').then((m) => m.PatientFamilyMembers)},
+            { path: 'patient-feedback', loadComponent: () => import('./main-menu/patients/patient-feedback/patient-feedback').then((m) => m.PatientFeedback)},
+
+            // Doctors
+            { path: 'doctors', loadComponent: () => import('./main-menu/doctors/doctors/doctors').then((m) => m.Doctors)},
+            { path: 'add-doctor', loadComponent: () => import('./main-menu/doctors/add-doctor/add-doctor').then((m) => m.AddDoctor)},
+            { path: 'doctor-profile', loadComponent: () => import('./main-menu/doctors/doctor-profile/doctor-profile').then((m) => m.DoctorProfile)},
+            { path: 'specializations', loadComponent: () => import('./main-menu/doctors/specializations/specializations').then((m) => m.Specializations)},
+            { path: 'doctor-schedule', loadComponent: () => import('./main-menu/doctors/doctor-schedule/doctor-schedule').then((m) => m.DoctorSchedule)},
+            { path: 'doctor-availability', loadComponent: () => import('./main-menu/doctors/doctor-availability/doctor-availability').then((m) => m.DoctorAvailability)},
+            { path: 'doctor-leave-requests', loadComponent: () => import('./main-menu/doctors/doctor-leave-requests/doctor-leave-requests').then((m) => m.DoctorLeaveRequests)},
+            { path: 'consultation-fees', loadComponent: () => import('./main-menu/doctors/consultation-fees/consultation-fees').then((m) => m.ConsultationFees)},
+
             // Applications
             { path: 'chat', loadComponent: () => import('./main-menu/applications/chat/chat').then((m) => m.Chat)},
             { path: 'voice-call', loadComponent: () => import('./main-menu/applications/calls/voice-call/voice-call').then((m) => m.VoiceCall)},

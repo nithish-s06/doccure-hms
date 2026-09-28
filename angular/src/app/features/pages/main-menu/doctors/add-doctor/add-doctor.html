@@ -1,1 +1,160 @@
-<p>add-doctor works!</p>
+                <main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="adr-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="adr-skeleton" class="space-y-5">
+                            <div class="adr-sk h-[160px] radius-override-150"></div>
+                            <div class="adr-sk h-[90px] radius-override-125"></div>
+                            <div class="adr-layout">
+                                <div class="adr-sk h-[520px] radius-override-125"></div>
+                                <div class="space-y-5"><div class="adr-sk h-[280px] radius-override-125"></div><div class="adr-sk h-[180px] radius-override-125"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="adr-content" class="hidden space-y-5">
+
+                            <!-- HERO -->
+                            <section class="adr-hero">
+                                <div class="flex flex-wrap items-start justify-between gap-6">
+                                    <div class="min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2.5">
+                                            <span class="adr-hbadge"><span class="adr-dot"></span>New Registration</span>
+                                            <span class="adr-hbadge adr-hbadge-sky"><i class="icon-shield-check text-[11px]"></i>Verified Onboarding</span>
+                                        </div>
+                                        <h1 class="mt-3 text-2xl lg:text-3xl font-extrabold tracking-tight">Add New Doctor</h1>
+                                        <p class="mt-1.5 max-w-xl text-sm text-white/70">Onboard a physician in a few guided steps — personal details, credentials, schedule and documents.</p>
+                                        <div class="mt-4 flex flex-wrap items-center gap-2.5 text-white/85">
+                                            <span class="adr-hmeta"><i class="icon-list-checks text-[13px] text-sky-300"></i>Step <span id="adr-step-badge">1</span> of 7</span>
+                                            <span class="adr-hmeta"><i class="icon-check-circle text-[13px] text-emerald-300"></i><span id="adr-pct-badge">0</span>% complete</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2.5 w-full sm:w-auto adr-print-hide">
+                                        <button type="button" class="adr-btn adr-btn-glass" id="adr-save-draft"><i class="icon-save"></i>Save Draft</button>
+                                        <a href="doctors.html" class="adr-btn adr-btn-glass"><i class="icon-x"></i>Cancel</a>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- STEPPER -->
+                            <section class="adr-surface p-3 lg:p-4">
+                                <div class="adr-steps" id="adr-stepper"></div>
+                            </section>
+
+                            <!-- FORM + SIDE -->
+                            <div class="adr-layout">
+                                <div class="adr-surface overflow-hidden">
+                                    <div class="adr-head" id="adr-form-head"><span class="ico"><i class="icon-user"></i></span><div><p class="adr-t" id="adr-form-title">Personal Information</p><p class="text-[11px] text-gray-500 dark:text-gray-400" id="adr-form-sub">Basic identity and contact details</p></div><span class="ml-auto text-xs font-bold text-gray-400" id="adr-form-count">1 / 7</span></div>
+                                    <form id="adr-form" class="p-4 lg:p-5">
+
+                                        <!-- STEP 1: PERSONAL -->
+                                        <div class="adr-panel active" data-panel="0">
+                                            <div class="flex flex-col sm:flex-row gap-4 items-start">
+                                                <label class="adr-avaup" id="adr-avaup"><input type="file" accept="image/*" id="adr-photo" class="hidden"><div id="adr-avaup-inner" class="text-center text-gray-400"><i class="icon-camera text-xl"></i><p class="text-[10px] mt-1 font-bold">Photo</p></div></label>
+                                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1 w-full">
+                                                    <div><label for="f-first" class="adr-lbl">First Name <span class="text-danger">*</span></label><div class="adr-field-ico"><i class="icon-user"></i><input class="adr-in adr-live" data-k="first" id="f-first" placeholder="e.g. Ethan"></div></div>
+                                                    <div><label for="f-last" class="adr-lbl">Last Name <span class="text-danger">*</span></label><input class="adr-in adr-live" data-k="last" id="f-last" placeholder="e.g. Chen"></div>
+                                                    <div><label for="f-gender" class="adr-lbl">Gender</label><select class="adr-sel adr-live" data-k="gender" id="f-gender"><option>Male</option><option>Female</option><option>Other</option></select></div>
+                                                    <div><label for="f-dob" class="adr-lbl">Date of Birth</label><input type="text" class="adr-in adr-live" data-k="dob" id="f-dob" data-provider="flatpickr" data-date-format="d M Y"></div>
+                                                </div>
+                                            </div>
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+                                                <div><label for="f-phone" class="adr-lbl">Phone <span class="text-danger">*</span></label><div class="adr-field-ico"><i class="icon-phone"></i><input class="adr-in adr-live" data-k="phone" id="f-phone" placeholder="+91 …"></div></div>
+                                                <div><label for="f-email" class="adr-lbl">Email <span class="text-danger">*</span></label><div class="adr-field-ico"><i class="icon-mail"></i><input class="adr-in adr-live" data-k="email" id="f-email" placeholder="name@dreamshms.com"></div></div>
+                                                <div class="sm:col-span-2"><label for="f-address" class="adr-lbl">Address</label><input class="adr-in adr-live" data-k="address" id="f-address" placeholder="Street, City, State"></div>
+                                                <div><label for="f-blood" class="adr-lbl">Blood Group</label><select class="adr-sel adr-live" data-k="blood" id="f-blood"><option value="">Select</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div>
+                                                <div><label for="f-langs" class="adr-lbl">Languages</label><input class="adr-in adr-live" data-k="langs" id="f-langs" placeholder="English, Hindi, Tamil"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- STEP 2: PROFESSIONAL -->
+                                        <div class="adr-panel" data-panel="1">
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                <div><label for="f-spec" class="adr-lbl">Specialty <span class="text-danger">*</span></label><div class="adr-field-ico"><i class="icon-stethoscope"></i><input class="adr-in adr-live" data-k="spec" id="f-spec" placeholder="e.g. Cardiologist"></div></div>
+                                                <div><label for="f-dept" class="adr-lbl">Department <span class="text-danger">*</span></label><select class="adr-sel adr-live" data-k="dept" id="f-dept"><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>General Medicine</option><option>Dermatology</option><option>ENT</option><option>Oncology</option></select></div>
+                                                <div><label for="f-desig" class="adr-lbl">Designation</label><select class="adr-sel adr-live" data-k="desig" id="f-desig"><option>Consultant</option><option>Senior Consultant</option><option>Head of Department</option><option>Resident</option><option>Visiting Specialist</option></select></div>
+                                                <div><label for="f-exp" class="adr-lbl">Experience (years) <span class="text-danger">*</span></label><div class="adr-field-ico"><i class="icon-award"></i><input type="number" min="0" class="adr-in adr-live" data-k="exp" id="f-exp" placeholder="e.g. 12"></div></div>
+                                                <div><label for="f-reg" class="adr-lbl">Medical Reg. Number</label><input class="adr-in adr-live" data-k="reg" id="f-reg" placeholder="e.g. MCI-123456"></div>
+                                                <div><label for="f-license" class="adr-lbl">License Number</label><input class="adr-in adr-live" data-k="license" id="f-license" placeholder="e.g. LIC-998877"></div>
+                                                <div class="sm:col-span-2"><label class="adr-lbl">Employment Type</label><div class="adr-seg" id="f-emp"><button type="button" class="on" data-emp="Full-time">Full-time</button><button type="button" data-emp="Part-time">Part-time</button><button type="button" data-emp="Visiting">Visiting</button><button type="button" data-emp="On-call">On-call</button></div></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- STEP 3: QUALIFICATIONS -->
+                                        <div class="adr-panel" data-panel="2">
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                <div><label for="f-degree" class="adr-lbl">Primary Degree <span class="text-danger">*</span></label><div class="adr-field-ico"><i class="icon-graduation-cap"></i><input class="adr-in adr-live" data-k="degree" id="f-degree" placeholder="e.g. MBBS"></div></div>
+                                                <div><label for="f-higher" class="adr-lbl">Higher Qualification</label><input class="adr-in adr-live" data-k="higher" id="f-higher" placeholder="e.g. MD, DM Cardiology"></div>
+                                                <div><label for="f-univ" class="adr-lbl">University / Institute</label><input class="adr-in adr-live" data-k="univ" id="f-univ" placeholder="e.g. AIIMS Delhi"></div>
+                                                <div><label for="f-gradyear" class="adr-lbl">Year of Completion</label><input type="number" class="adr-in adr-live" data-k="gradyear" id="f-gradyear" placeholder="e.g. 2010"></div>
+                                                <div class="sm:col-span-2"><label for="f-certs" class="adr-lbl">Certifications</label><input class="adr-in adr-live" data-k="certs" id="f-certs" placeholder="ACLS, BLS, Fellowship (comma separated)"></div>
+                                                <div class="sm:col-span-2"><label for="f-awards" class="adr-lbl">Awards & Memberships</label><textarea class="adr-area" rows="2" data-k="awards" id="f-awards" placeholder="Professional bodies, awards, publications…"></textarea></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- STEP 4: SCHEDULE -->
+                                        <div class="adr-panel" data-panel="3">
+                                            <label class="adr-lbl">Working Days</label>
+                                            <div class="grid grid-cols-7 gap-2" id="adr-days"></div>
+                                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+                                                <div><label for="f-start" class="adr-lbl">Start Time</label><input class="adr-in adr-live" data-k="start" id="f-start" value="09:00 AM"></div>
+                                                <div><label for="f-end" class="adr-lbl">End Time</label><input class="adr-in adr-live" data-k="end" id="f-end" value="05:00 PM"></div>
+                                                <div><label for="f-slot" class="adr-lbl">Slot Duration</label><select class="adr-sel adr-live" data-k="slot" id="f-slot"><option>15 min</option><option selected>20 min</option><option>30 min</option><option>45 min</option></select></div>
+                                            </div>
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+                                                <div><label for="f-maxpat" class="adr-lbl">Max Patients / Day</label><input type="number" class="adr-in adr-live" data-k="maxpat" id="f-maxpat" placeholder="e.g. 30"></div>
+                                                <div><label for="f-break" class="adr-lbl">Break Time</label><input class="adr-in adr-live" data-k="break" id="f-break" placeholder="e.g. 01:00 PM – 02:00 PM"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- STEP 5: CONSULTATION -->
+                                        <div class="adr-panel" data-panel="4">
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                <div><label for="f-fee" class="adr-lbl">Consultation Fee <span class="text-danger">*</span></label><div class="adr-field-ico"><i class="icon-wallet"></i><input type="number" class="adr-in adr-live" data-k="fee" id="f-fee" placeholder="e.g. 800"></div></div>
+                                                <div><label for="f-fufee" class="adr-lbl">Follow-up Fee</label><input type="number" class="adr-in adr-live" data-k="fufee" id="f-fufee" placeholder="e.g. 400"></div>
+                                                <div class="sm:col-span-2"><label class="adr-lbl">Consultation Type</label><div class="adr-seg" id="f-ctype"><button type="button" class="on" data-ctype="In-person"><i class="icon-user"></i>In-person</button><button type="button" data-ctype="Telemedicine"><i class="icon-video"></i>Telemedicine</button><button type="button" data-ctype="Both"><i class="icon-monitor-smartphone"></i>Both</button></div></div>
+                                                <div class="sm:col-span-2"><label class="adr-lbl">Services Offered</label><div class="flex flex-wrap gap-2" id="adr-services"></div></div>
+                                                <div class="sm:col-span-2"><label for="f-bio" class="adr-lbl">Professional Bio</label><textarea class="adr-area adr-live" data-k="bio" id="f-bio" rows="3" placeholder="Short professional summary shown on the doctor's public profile…"></textarea></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- STEP 6: DOCUMENTS -->
+                                        <div class="adr-panel" data-panel="5">
+                                            <div class="adr-drop" id="adr-drop"><i class="icon-cloud-upload text-3xl"></i><p class="text-sm font-bold mt-1 text-gray-700 dark:text-gray-200">Drag &amp; drop or click to upload</p><p class="text-[11px]">Medical license, degree certificates, ID proof, photo — PDF/JPG up to 15MB</p><input type="file" multiple class="hidden" id="adr-files" aria-label="Upload documents"></div>
+                                            <div class="mt-3 space-y-2" id="adr-doclist"></div>
+                                            <div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2" id="adr-reqdocs"></div>
+                                        </div>
+
+                                        <!-- STEP 7: REVIEW -->
+                                        <div class="adr-panel" data-panel="6">
+                                            <div class="space-y-3" id="adr-review"></div>
+                                            <label class="flex items-start gap-2.5 mt-4 cursor-pointer"><input type="checkbox" id="adr-consent" class="mt-0.5 w-[1.05rem] h-[1.05rem] accent-[var(--color-primary)]"><span class="text-xs text-gray-600 dark:text-gray-300">I confirm the information provided is accurate and the doctor's credentials have been verified per hospital onboarding policy.</span></label>
+                                        </div>
+
+                                    </form>
+                                    <!-- STICKY ACTION BAR -->
+                                    <div class="p-4 lg:p-5 pt-0">
+                                        <div class="adr-sticky adr-print-hide">
+                                            <button type="button" class="adr-btn adr-btn-solid" id="adr-back" disabled><i class="icon-arrow-left"></i>Back</button>
+                                            <div class="flex items-center gap-2 mr-auto text-xs text-gray-500 dark:text-gray-400"><div class="w-24 adr-meter"><i class="[width:0%]" id="adr-mini-meter"></i></div><span id="adr-mini-pct">0%</span></div>
+                                            <button type="button" class="adr-btn adr-btn-solid" id="adr-save-draft-2"><i class="icon-save"></i>Save Draft</button>
+                                            <button type="button" class="adr-btn adr-btn-primary" id="adr-next">Next<i class="icon-arrow-right"></i></button>
+                                            <button type="button" class="adr-btn adr-btn-success hidden" id="adr-submit"><i class="icon-user-check"></i>Register Doctor</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- RIGHT: Completion -->
+                                <aside class="space-y-5 xl:sticky xl:top-4">
+                                    <div class="adr-surface overflow-hidden">
+                                        <div class="adr-head"><span class="ico adr-c-emerald"><i class="icon-check-circle"></i></span><p class="adr-t">Completion</p><span class="ml-auto text-sm font-extrabold text-emerald-600" id="adr-big-pct">0%</span></div>
+                                        <div class="p-4">
+                                            <div class="adr-meter mb-3"><i class="[width:0%]" id="adr-big-meter"></i></div>
+                                            <div class="space-y-1.5" id="adr-checklist"></div>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </main>
