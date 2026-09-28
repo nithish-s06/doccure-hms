@@ -1,1 +1,102 @@
-<p>emergency works!</p>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Emergency Department</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Triage, emergency queue and critical case management</p>
+                            </div>
+                            <button id="btn-add" data-hs-overlay="#form-modal" class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                                <i class="icon-siren"></i>
+                                Register Emergency
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-siren text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-total">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active Cases</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-zap text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-critical">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Critical</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-urgent">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Urgent</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900" id="stat-stable">0</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Stable / Discharged</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                               <div class="relative flex-1 max-w-100 max-sm:min-w-full">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                                        <i class="icon-search text-gray-400"></i>
+                                    </span>
+                                    <input aria-label="Search patient, complaint..." id="search" type="text" placeholder="Search patient, complaint..." class="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-slate-600 rounded-lg bg-gray-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" >
+                                </div>
+                                <select aria-label="All Triage" id="filter-triage" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Triage</option>
+                                    <option>Red (Critical)</option>
+                                    <option>Orange (Urgent)</option>
+                                    <option>Yellow (Semi-urgent)</option>
+                                    <option>Green (Non-urgent)</option>
+                                </select>
+                                <select aria-label="All Status" id="filter-status" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-800 text-gray-900 focus:outline-none">
+                                    <option value="">All Status</option>
+                                    <option>Waiting</option>
+                                    <option>In Treatment</option>
+                                    <option>Admitted</option>
+                                    <option>Discharged</option>
+                                </select>
+                                <span class="text-xs text-gray-400 ml-auto" id="count">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Case ID</th>
+                                            <th>Patient</th>
+                                            <th>Complaint</th>
+                                            <th>Triage</th>
+                                            <th>Doctor</th>
+                                            <th>Arrival</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr data-row-id="1"><td class="text-primary font-mono text-sm"><a href="emergency-detail.html">#ER-0001</a></td><td><p class="font-medium text-gray-900">Carlos Vega</p><p class="text-xs text-gray-400">52/M</p></td><td class="text-gray-600 dark:text-gray-300 max-w-xs">Severe chest pain, sweating</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10 text-xs">Red (Critical)</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Tom Rivas</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 08:15</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">In Treatment</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="emergencyOpenEdit(1)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="emergencyDeleteRecord(1,'Carlos Vega')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Close"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="2"><td class="text-primary font-mono text-sm"><a href="emergency-detail.html">#ER-0002</a></td><td><p class="font-medium text-gray-900">Diana Park</p><p class="text-xs text-gray-400">34/F</p></td><td class="text-gray-600 dark:text-gray-300 max-w-xs">Difficulty breathing, high fever</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10 text-xs">Orange (Urgent)</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Sarah Chen</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 09:00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">In Treatment</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="emergencyOpenEdit(2)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="emergencyDeleteRecord(2,'Diana Park')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Close"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="3"><td class="text-primary font-mono text-sm"><a href="emergency-detail.html">#ER-0003</a></td><td><p class="font-medium text-gray-900">Brian Lee</p><p class="text-xs text-gray-400">28/M</p></td><td class="text-gray-600 dark:text-gray-300 max-w-xs">Deep laceration on forearm</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-info bg-info/10 text-xs">Yellow (Semi-urgent)</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Alice Mills</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 09:30</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Waiting</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="emergencyOpenEdit(3)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="emergencyDeleteRecord(3,'Brian Lee')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Close"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="4"><td class="text-primary font-mono text-sm"><a href="emergency-detail.html">#ER-0004</a></td><td><p class="font-medium text-gray-900">Sophie Turner</p><p class="text-xs text-gray-400">19/F</p></td><td class="text-gray-600 dark:text-gray-300 max-w-xs">Allergic reaction, hives</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10 text-xs">Orange (Urgent)</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. James Park</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 10:00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Admitted</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="emergencyOpenEdit(4)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="emergencyDeleteRecord(4,'Sophie Turner')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Close"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="5"><td class="text-primary font-mono text-sm"><a href="emergency-detail.html">#ER-0005</a></td><td><p class="font-medium text-gray-900">Mark Davis</p><p class="text-xs text-gray-400">67/M</p></td><td class="text-gray-600 dark:text-gray-300 max-w-xs">Fall, suspected hip fracture</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10 text-xs">Orange (Urgent)</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Felix Osei</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 10:45</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Waiting</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="emergencyOpenEdit(5)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="emergencyDeleteRecord(5,'Mark Davis')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Close"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="6"><td class="text-primary font-mono text-sm"><a href="emergency-detail.html">#ER-0006</a></td><td><p class="font-medium text-gray-900">Aisha Kofi</p><p class="text-xs text-gray-400">8/F</p></td><td class="text-gray-600 dark:text-gray-300 max-w-xs">High fever, seizure</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10 text-xs">Red (Critical)</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. James Park</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 11:00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">In Treatment</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="emergencyOpenEdit(6)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="emergencyDeleteRecord(6,'Aisha Kofi')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Close"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="7"><td class="text-primary font-mono text-sm"><a href="emergency-detail.html">#ER-0007</a></td><td><p class="font-medium text-gray-900">Peter Walsh</p><p class="text-xs text-gray-400">45/M</p></td><td class="text-gray-600 dark:text-gray-300 max-w-xs">Minor burn on hand</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10 text-xs">Green (Non-urgent)</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Tom Rivas</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 11:30</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Discharged</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="emergencyOpenEdit(7)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="emergencyDeleteRecord(7,'Peter Walsh')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Close"><i class="icon-trash-2 text-base"></i></button></div></td></tr>
+<tr data-row-id="8"><td class="text-primary font-mono text-sm"><a href="emergency-detail.html">#ER-0008</a></td><td><p class="font-medium text-gray-900">Hannah Cruz</p><p class="text-xs text-gray-400">38/F</p></td><td class="text-gray-600 dark:text-gray-300 max-w-xs">Abdominal pain</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-info bg-info/10 text-xs">Yellow (Semi-urgent)</span></td><td class="text-gray-500 dark:text-gray-400 text-sm">Dr. Li Wang</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-10 12:00</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Waiting</span></td><td><div class="flex gap-1"><button data-hs-overlay="#form-modal" onclick="emergencyOpenEdit(8)" class="p-1.5 size-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 dark:text-gray-400" title="Edit"><i class="icon-edit text-base"></i></button><button data-hs-overlay="#del-modal" onclick="emergencyDeleteRecord(8,'Hannah Cruz')" class="p-1.5 size-7 flex items-center justify-center rounded hover:bg-danger/20 dark:hover:bg-red-900/20 text-danger" title="Close"><i class="icon-trash-2 text-base"></i></button></div></td></tr><tr id="tbody-empty" class="hidden"><td colspan="8" class="text-center py-10 text-gray-400">No cases found</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>

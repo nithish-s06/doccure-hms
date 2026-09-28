@@ -1,1 +1,571 @@
-<p>icu-beds works!</p>
+<main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
+                    <div id="ib-page" class="max-w-[1500px] mx-auto">
+
+                        <!-- ==================== SKELETON ==================== -->
+                        <div id="ib-skeleton" class="space-y-4">
+                            <div class="ib-sk h-[170px] radius-override-125"></div>
+                            <div class="ib-sk h-[46px]"></div>
+                            <div class="ib-sk h-[380px] radius-override-125"></div>
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_380px] gap-4"><div class="ib-sk h-[420px]"></div><div class="ib-sk h-[420px]"></div></div>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3"><div class="ib-sk h-[150px]"></div><div class="ib-sk h-[150px]"></div><div class="ib-sk h-[150px]"></div><div class="ib-sk h-[150px]"></div></div>
+                        </div>
+
+                        <!-- ==================== CONTENT ==================== -->
+                        <div id="ib-content" class="hidden space-y-4">
+
+                            <!-- ============ 1. BED OPERATIONS HEADER ============ -->
+                            <section class="ib-hero p-5 lg:p-6">
+                                <div class="ib-hgrid"></div>
+                                <div class="relative flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="ib-chip bg-[rgba(99,102,241,.2)] text-[#c7d2fe]"><span class="ib-dot ib-live bg-[#818cf8]"></span> FLOOR LIVE</span>
+                                            <span class="ib-chip bg-[rgba(245,158,11,.2)] text-[#fcd34d]"><i class="icon-bed"></i> <span id="ib-h-occrate">59%</span> Occupancy</span>
+                                        </div>
+                                        <h1 class="text-2xl lg:text-3xl font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-layout-grid text-indigo-300"></i> ICU Bed Command Center</h1>
+                                        <p class="text-sm text-slate-300 mt-1">Interactive floor management · allocation, cleaning, transfers & capacity · <span id="ib-clock" class="font-variant-numeric"></span></p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 justify-end">
+                                        <button data-modal="allocate" class="inline-flex items-center gap-1.5 bg-indigo-500 text-white text-sm font-semibold px-3.5 py-2 rounded-lg hover:bg-indigo-400 transition"><i class="icon-bed"></i> Allocate</button>
+                                        <button data-modal="reserve" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="icon-bookmark"></i> Reserve</button>
+                                        <button data-modal="release" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="icon-bed"></i> Release</button>
+                                        <button data-modal="transfer" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="icon-arrow-left-right"></i> Transfer</button>
+                                        <button data-modal="emergency" class="inline-flex items-center gap-1.5 bg-rose-500 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-rose-400 transition"><i class="icon-alert-triangle"></i> Emergency</button>
+                                        <button data-modal="export" class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/20 transition"><i class="icon-download"></i> Export</button>
+                                    </div>
+                                </div>
+                                <div class="relative grid grid-cols-2 md:grid-cols-6 gap-3 mt-5" id="ib-herostats"><div class="ib-hstat"><p class="text-[11px] text-slate-300">Total ICU Beds</p><p class="text-xl font-bold [color:#818cf8]">29</p></div><div class="ib-hstat"><p class="text-[11px] text-slate-300">Occupied</p><p class="text-xl font-bold [color:#f87171]">17</p></div><div class="ib-hstat"><p class="text-[11px] text-slate-300">Available</p><p class="text-xl font-bold [color:#34d399]">6</p></div><div class="ib-hstat"><p class="text-[11px] text-slate-300">Reserved</p><p class="text-xl font-bold [color:#60a5fa]">3</p></div><div class="ib-hstat"><p class="text-[11px] text-slate-300">Cleaning</p><p class="text-xl font-bold [color:#fcd34d]">1</p></div><div class="ib-hstat"><p class="text-[11px] text-slate-300">Isolation</p><p class="text-xl font-bold [color:#5eead4]">4</p></div></div>
+                            </section>
+
+                            <!-- ============ 2. CAPACITY RIBBON ============ -->
+                            <section id="ib-ribbonwrap" class="ib-card ib-ribbon px-3 py-2.5 flex items-center gap-3">
+                                <span class="ib-chip flex-none bg-[color-mix(in_srgb,#6366f1_15%,transparent)] text-[#4f46e5]"><span class="ib-dot ib-live bg-[#6366f1]"></span> CAPACITY</span>
+                                <div class="ib-seg flex-none" id="ib-capfilter"><button data-cap="all" class="on">All</button><button data-cap="avail">Available</button><button data-cap="crit">Critical</button><button data-cap="clean">Cleaning</button></div>
+                                <div class="ib-ribbon flex-1"><div class="ib-ribbon-track" id="ib-ribbon"><span class="ib-alert [background:color-mix(in_srgb,#16a34a_13%,transparent)] [color:#16a34a] [border-color:color-mix(in_srgb,#16a34a_35%,transparent)]"><i class="icon-bed"></i> Bed ICU-A12 Available</span><span class="ib-alert [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626] [border-color:color-mix(in_srgb,#dc2626_35%,transparent)]"><i class="icon-alert-triangle"></i> ICU-B07 Critical Occupancy</span><span class="ib-alert [background:color-mix(in_srgb,#ca8a04_13%,transparent)] [color:#ca8a04] [border-color:color-mix(in_srgb,#ca8a04_35%,transparent)]"><i class="icon-spray-can"></i> Bed Cleaning Completed — CCU-03</span><span class="ib-alert [background:color-mix(in_srgb,#2563eb_13%,transparent)] [color:#2563eb] [border-color:color-mix(in_srgb,#2563eb_35%,transparent)]"><i class="icon-arrow-left-right"></i> Patient Transfer Scheduled — PICU-03</span><span class="ib-alert [background:color-mix(in_srgb,#ea580c_13%,transparent)] [color:#ea580c] [border-color:color-mix(in_srgb,#ea580c_35%,transparent)]"><i class="icon-shield"></i> Isolation Bed Reserved — ISO-02</span><span class="ib-alert [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626] [border-color:color-mix(in_srgb,#dc2626_35%,transparent)]"><i class="icon-ambulance"></i> Emergency bed requested — ICU-A</span><span class="ib-alert [background:color-mix(in_srgb,#16a34a_13%,transparent)] [color:#16a34a] [border-color:color-mix(in_srgb,#16a34a_35%,transparent)]"><i class="icon-bed"></i> Bed ICU-A12 Available</span><span class="ib-alert [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626] [border-color:color-mix(in_srgb,#dc2626_35%,transparent)]"><i class="icon-alert-triangle"></i> ICU-B07 Critical Occupancy</span><span class="ib-alert [background:color-mix(in_srgb,#ca8a04_13%,transparent)] [color:#ca8a04] [border-color:color-mix(in_srgb,#ca8a04_35%,transparent)]"><i class="icon-spray-can"></i> Bed Cleaning Completed — CCU-03</span><span class="ib-alert [background:color-mix(in_srgb,#2563eb_13%,transparent)] [color:#2563eb] [border-color:color-mix(in_srgb,#2563eb_35%,transparent)]"><i class="icon-arrow-left-right"></i> Patient Transfer Scheduled — PICU-03</span><span class="ib-alert [background:color-mix(in_srgb,#ea580c_13%,transparent)] [color:#ea580c] [border-color:color-mix(in_srgb,#ea580c_35%,transparent)]"><i class="icon-shield"></i> Isolation Bed Reserved — ISO-02</span><span class="ib-alert [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626] [border-color:color-mix(in_srgb,#dc2626_35%,transparent)]"><i class="icon-ambulance"></i> Emergency bed requested — ICU-A</span></div></div>
+                                <button data-dismiss-alerts class="flex-none w-7 h-7 rounded-lg ib-mut hover:bg-[var(--ib-hover)] flex items-center justify-center" title="Dismiss"><i class="icon-x"></i></button>
+                            </section>
+
+                            <!-- ============ 3. INTERACTIVE FLOOR MAP ============ -->
+                            <section class="ib-card p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                                    <div><h2 class="text-lg font-bold ib-head flex items-center gap-2"><i class="icon-map text-indigo-500"></i> Interactive ICU Floor Map</h2><p class="text-xs ib-mut">Digital twin · click a bed to open its workspace · hover to preview</p></div>
+                                    <div class="flex flex-wrap items-center gap-3">
+                                        <div class="relative"><i class="icon-search absolute left-2.5 top-1/2 -translate-y-1/2 ib-mut text-sm"></i><input aria-label="Filter beds..." id="ib-bedsearch" class="ib-in !pl-8 !py-1.5 !w-44" placeholder="Filter beds..."></div>
+                                        <select aria-label="All statuses" class="ib-in !w-auto !py-1.5" id="ib-statusfilter"><option value="">All statuses</option><option value="occupied">Occupied</option><option value="available">Available</option><option value="reserved">Reserved</option><option value="cleaning">Cleaning</option><option value="maintenance">Maintenance</option></select>
+                                        <div class="ib-seg" id="ib-zonetabs"><button data-zone="ALL" class="on">All</button><button data-zone="ICU-A" class="">ICU A</button><button data-zone="ICU-B" class="">ICU B</button><button data-zone="CCU" class="">CCU</button><button data-zone="NICU" class="">NICU</button><button data-zone="PICU" class="">PICU</button><button data-zone="ISO" class="">Isolation ICU</button></div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-2 text-[11px] mb-4" id="ib-bedlegend"><span class="flex items-center gap-1 ib-mut"><span class="ib-dot [background:#dc2626]"></span>Occupied</span><span class="flex items-center gap-1 ib-mut"><span class="ib-dot [background:#16a34a]"></span>Available</span><span class="flex items-center gap-1 ib-mut"><span class="ib-dot [background:#2563eb]"></span>Reserved</span><span class="flex items-center gap-1 ib-mut"><span class="ib-dot [background:#ca8a04]"></span>Cleaning</span><span class="flex items-center gap-1 ib-mut"><span class="ib-dot [background:#ea580c]"></span>Maintenance</span><span class="flex items-center gap-1 ib-mut"><span class="ib-dot [background:#64748b]"></span>Inactive</span></div>
+                                <div id="ib-floor" class="space-y-5"><div>
+            <div class="flex items-center gap-2 mb-2"><span class="ib-chip [background:color-mix(in_srgb,#6366f1_14%,transparent)] [color:#4f46e5]"><i class="icon-hospital"></i> ICU A</span><span class="text-[11px] ib-mut">2/6 occupied</span><div class="flex-1 h-px [background:var(--ib-border)]"></div></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><div class="ib-bed bs-red sel" data-bed="0">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="0"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-A-01</span></label><span class="ib-chip stat"><i class="icon-alert-triangle text-[9px]"></i> Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#475569] [font-size:12px]">RS</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Rahul Sharma</p><p class="text-[10px] ib-mut">MRN-30500 · 30y · F · Day 12</p></div>
+            <button data-menu="0" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">Acute MI · Standard ICU</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><span class="ib-monidot ib-live [background:#ef4444]"></span> 102 · 88%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. A. Mehta</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Fernandes · Disc. Jul 28</p></div>
+    </div><div class="ib-bed bs-orange " data-bed="1">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="1"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-A-02</span></label><span class="ib-chip stat">Maintenance</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-wrench text-2xl [color:#ea580c]"></i><p class="text-[11px] ib-mut mt-1">High-Dependency</p></div>
+            <p class="text-[10px] ib-mut mt-1">Bio-medical servicing</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-bed"></i> ICU A</span><button data-menu="1" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div><div class="ib-bed bs-green " data-bed="2">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="2"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-A-03</span></label><span class="ib-chip stat">Available</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-bed text-2xl [color:#16a34a]"></i><p class="text-[11px] ib-mut mt-1">Ventilator Bed</p></div>
+            <p class="text-[10px] ib-mut mt-1">Ready for allocation</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-bed"></i> ICU A</span><button data-menu="2" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div><div class="ib-bed bs-green " data-bed="3">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="3"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-A-04</span></label><span class="ib-chip stat">Available</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-bed text-2xl [color:#16a34a]"></i><p class="text-[11px] ib-mut mt-1">Isolation</p></div>
+            <p class="text-[10px] ib-mut mt-1">Ready for allocation</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-bed"></i> ICU A</span><button data-menu="3" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div><div class="ib-bed bs-red " data-bed="4">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="4"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-A-05</span></label><span class="ib-chip stat">Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#0e7490] [font-size:12px]">SG</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Suresh Gupta</p><p class="text-[10px] ib-mut">MRN-30504 · 31y · F · Day 1</p></div>
+            <button data-menu="4" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">Post-CABG · Cardiac</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#22c55e_13%,transparent)] [color:#16a34a]"><span class="ib-monidot ib-live [background:#22c55e]"></span> 108 · 92%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. P. Rao</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Reddy · Disc. Jul 22</p></div>
+    </div><div class="ib-bed bs-yellow " data-bed="5">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="5"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-A-06</span></label><span class="ib-chip stat">Cleaning</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-spray-can text-2xl [color:#ca8a04]"></i><p class="text-[11px] ib-mut mt-1">Neonatal</p></div>
+            <div class="ib-stab mt-2"><span class="[width:27%] [background:#ca8a04]"></span></div><p class="text-[10px] ib-mut mt-1">Turnover 27%</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-bed"></i> ICU A</span><button data-menu="5" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div></div>
+        </div><div>
+            <div class="flex items-center gap-2 mb-2"><span class="ib-chip [background:color-mix(in_srgb,#6366f1_14%,transparent)] [color:#4f46e5]"><i class="icon-hospital"></i> ICU B</span><span class="text-[11px] ib-mut">4/6 occupied</span><div class="flex-1 h-px [background:var(--ib-border)]"></div></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><div class="ib-bed bs-red " data-bed="6">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="6"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-B-01</span></label><span class="ib-chip stat">Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#3f6212] [font-size:12px]">AM</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Arjun Menon</p><p class="text-[10px] ib-mut">MRN-30506 · 48y · F · Day 8</p></div>
+            <button data-menu="6" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">Severe Pneumonia · Standard ICU</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#22c55e_13%,transparent)] [color:#16a34a]"><span class="ib-monidot ib-live [background:#22c55e]"></span> 92 · 96%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. S. Kapoor</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Pillai · Disc. Jul 28</p></div>
+    </div><div class="ib-bed bs-green " data-bed="7">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="7"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-B-02</span></label><span class="ib-chip stat">Available</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-bed text-2xl [color:#16a34a]"></i><p class="text-[11px] ib-mut mt-1">High-Dependency</p></div>
+            <p class="text-[10px] ib-mut mt-1">Ready for allocation</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-bed"></i> ICU B</span><button data-menu="7" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div><div class="ib-bed bs-red " data-bed="8">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="8"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-B-03</span></label><span class="ib-chip stat">Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#475569] [font-size:12px]">DJ</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Deepak Joshi</p><p class="text-[10px] ib-mut">MRN-30508 · 35y · F · Day 6</p></div>
+            <button data-menu="8" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">Cardiac Arrest · Ventilator Bed</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#22c55e_13%,transparent)] [color:#16a34a]"><span class="ib-monidot ib-live [background:#22c55e]"></span> 62 · 98%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. L. Khan</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Das · Disc. Jul 26</p></div>
+    </div><div class="ib-bed bs-red " data-bed="9">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="9"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-B-04</span></label><span class="ib-chip stat"><i class="icon-alert-triangle text-[9px]"></i> Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#0f766e] [font-size:12px]">NV</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Neha Verma</p><p class="text-[10px] ib-mut">MRN-30509 · 54y · M · Day 16</p></div>
+            <button data-menu="9" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">GI Bleed · Isolation</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><span class="ib-monidot ib-live [background:#ef4444]"></span> 69 · 97%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. P. Rao</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Reddy · Disc. Jul 27</p></div>
+    </div><div class="ib-bed bs-red " data-bed="10">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="10"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-B-05</span></label><span class="ib-chip stat"><i class="icon-alert-triangle text-[9px]"></i> Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#1e40af] [font-size:12px]">RI</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Rohan Iyer</p><p class="text-[10px] ib-mut">MRN-30510 · 80y · F · Day 17</p></div>
+            <button data-menu="10" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">Acute MI · Cardiac</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><span class="ib-monidot ib-live [background:#ef4444]"></span> 81 · 97%</span>
+            
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. A. Mehta</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Fernandes · Disc. Jul 28</p></div>
+    </div><div class="ib-bed bs-blue " data-bed="11">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="11"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ICU-B-06</span></label><span class="ib-chip stat">Reserved</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-bookmark text-2xl [color:#2563eb]"></i><p class="text-[11px] ib-mut mt-1">Neonatal</p></div>
+            <p class="text-[10px] ib-mut mt-1">Reserved for Vikram Nair · ETA 4h</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-bed"></i> ICU B</span><button data-menu="11" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div></div>
+        </div><div>
+            <div class="flex items-center gap-2 mb-2"><span class="ib-chip [background:color-mix(in_srgb,#6366f1_14%,transparent)] [color:#4f46e5]"><i class="icon-hospital"></i> CCU</span><span class="text-[11px] ib-mut">4/5 occupied</span><div class="flex-1 h-px [background:var(--ib-border)]"></div></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><div class="ib-bed bs-green " data-bed="12">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="12"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">CCU-01</span></label><span class="ib-chip stat">Available</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-bed text-2xl [color:#16a34a]"></i><p class="text-[11px] ib-mut mt-1">Cardiac</p></div>
+            <p class="text-[10px] ib-mut mt-1">Ready for allocation</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-bed"></i> CCU</span><button data-menu="12" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div><div class="ib-bed bs-red " data-bed="13">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="13"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">CCU-02</span></label><span class="ib-chip stat">Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#334155] [font-size:12px]">AR</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Anita Reddy</p><p class="text-[10px] ib-mut">MRN-30513 · 54y · M · Day 15</p></div>
+            <button data-menu="13" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">TBI · Cardiac</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#22c55e_13%,transparent)] [color:#16a34a]"><span class="ib-monidot ib-live [background:#22c55e]"></span> 82 · 88%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. L. Khan</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Das · Disc. Jul 24</p></div>
+    </div><div class="ib-bed bs-red " data-bed="14">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="14"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">CCU-03</span></label><span class="ib-chip stat"><i class="icon-alert-triangle text-[9px]"></i> Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#3f6212] [font-size:12px]">VN</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Vikram Nair</p><p class="text-[10px] ib-mut">MRN-30514 · 77y · F · Day 17</p></div>
+            <button data-menu="14" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">Post-CABG · Cardiac</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><span class="ib-monidot ib-live [background:#ef4444]"></span> 124 · 89%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. P. Rao</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Reddy · Disc. Jul 24</p></div>
+    </div><div class="ib-bed bs-red " data-bed="15">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="15"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">CCU-04</span></label><span class="ib-chip stat"><i class="icon-alert-triangle text-[9px]"></i> Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#7c2d12] [font-size:12px]">PP</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Priya Patel</p><p class="text-[10px] ib-mut">MRN-30515 · 41y · M · Day 17</p></div>
+            <button data-menu="15" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">Ischemic Stroke · Cardiac</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><span class="ib-monidot ib-live [background:#ef4444]"></span> 105 · 99%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. A. Mehta</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Fernandes · Disc. Jul 22</p></div>
+    </div><div class="ib-bed bs-red " data-bed="16">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="16"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">CCU-05</span></label><span class="ib-chip stat"><i class="icon-alert-triangle text-[9px]"></i> Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#475569] [font-size:12px]">SG</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Suresh Gupta</p><p class="text-[10px] ib-mut">MRN-30516 · 34y · F · Day 14</p></div>
+            <button data-menu="16" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">Severe Pneumonia · Cardiac</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><span class="ib-monidot ib-live [background:#ef4444]"></span> 99 · 90%</span>
+            
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. S. Kapoor</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Pillai · Disc. Jul 21</p></div>
+    </div></div>
+        </div><div>
+            <div class="flex items-center gap-2 mb-2"><span class="ib-chip [background:color-mix(in_srgb,#6366f1_14%,transparent)] [color:#4f46e5]"><i class="icon-hospital"></i> NICU</span><span class="text-[11px] ib-mut">2/4 occupied</span><div class="flex-1 h-px [background:var(--ib-border)]"></div></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><div class="ib-bed bs-red " data-bed="17">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="17"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">NICU-01</span></label><span class="ib-chip stat">Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#0f766e] [font-size:12px]">MS</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Meera Singh</p><p class="text-[10px] ib-mut">MRN-30517 · 33y · M · Day 15</p></div>
+            <button data-menu="17" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">DKA · Neonatal</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#22c55e_13%,transparent)] [color:#16a34a]"><span class="ib-monidot ib-live [background:#22c55e]"></span> 77 · 99%</span>
+            
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. R. Nair</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Sharma · Disc. Jul 21</p></div>
+    </div><div class="ib-bed bs-orange " data-bed="18">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="18"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">NICU-02</span></label><span class="ib-chip stat">Maintenance</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-wrench text-2xl [color:#ea580c]"></i><p class="text-[11px] ib-mut mt-1">Neonatal</p></div>
+            <p class="text-[10px] ib-mut mt-1">Bio-medical servicing</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-bed"></i> NICU</span><button data-menu="18" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div><div class="ib-bed bs-red " data-bed="19">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="19"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">NICU-03</span></label><span class="ib-chip stat">Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#4338ca] [font-size:12px]">KD</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Kavya Das</p><p class="text-[10px] ib-mut">MRN-30519 · 39y · M · Day 12</p></div>
+            <button data-menu="19" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">GI Bleed · Neonatal</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#22c55e_13%,transparent)] [color:#16a34a]"><span class="ib-monidot ib-live [background:#22c55e]"></span> 93 · 95%</span>
+            
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. P. Rao</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Reddy · Disc. Jul 20</p></div>
+    </div><div class="ib-bed bs-green " data-bed="20">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="20"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">NICU-04</span></label><span class="ib-chip stat">Available</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-bed text-2xl [color:#16a34a]"></i><p class="text-[11px] ib-mut mt-1">Neonatal</p></div>
+            <p class="text-[10px] ib-mut mt-1">Ready for allocation</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-bed"></i> NICU</span><button data-menu="20" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div></div>
+        </div><div>
+            <div class="flex items-center gap-2 mb-2"><span class="ib-chip [background:color-mix(in_srgb,#6366f1_14%,transparent)] [color:#4f46e5]"><i class="icon-hospital"></i> PICU</span><span class="text-[11px] ib-mut">2/4 occupied</span><div class="flex-1 h-px [background:var(--ib-border)]"></div></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><div class="ib-bed bs-blue " data-bed="21">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="21"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">PICU-01</span></label><span class="ib-chip stat">Reserved</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-bookmark text-2xl [color:#2563eb]"></i><p class="text-[11px] ib-mut mt-1">Isolation</p></div>
+            <p class="text-[10px] ib-mut mt-1">Reserved for Rahul Sharma · ETA 2h</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-bed"></i> PICU</span><button data-menu="21" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div><div class="ib-bed bs-red " data-bed="22">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="22"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">PICU-02</span></label><span class="ib-chip stat">Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#3f6212] [font-size:12px]">RI</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Rohan Iyer</p><p class="text-[10px] ib-mut">MRN-30522 · 30y · F · Day 9</p></div>
+            <button data-menu="22" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">ARDS · Cardiac</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#22c55e_13%,transparent)] [color:#16a34a]"><span class="ib-monidot ib-live [background:#22c55e]"></span> 110 · 91%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. R. Nair</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Sharma · Disc. Jul 23</p></div>
+    </div><div class="ib-bed bs-green " data-bed="23">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="23"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">PICU-03</span></label><span class="ib-chip stat">Available</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-bed text-2xl [color:#16a34a]"></i><p class="text-[11px] ib-mut mt-1">Neonatal</p></div>
+            <p class="text-[10px] ib-mut mt-1">Ready for allocation</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-bed"></i> PICU</span><button data-menu="23" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div><div class="ib-bed bs-red " data-bed="24">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="24"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">PICU-04</span></label><span class="ib-chip stat"><i class="icon-alert-triangle text-[9px]"></i> Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#475569] [font-size:12px]">RS</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Rahul Sharma</p><p class="text-[10px] ib-mut">MRN-30524 · 82y · F · Day 5</p></div>
+            <button data-menu="24" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">Post-CABG · Standard ICU</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><span class="ib-monidot ib-live [background:#ef4444]"></span> 75 · 98%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. P. Rao</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Reddy · Disc. Jul 25</p></div>
+    </div></div>
+        </div><div>
+            <div class="flex items-center gap-2 mb-2"><span class="ib-chip [background:color-mix(in_srgb,#6366f1_14%,transparent)] [color:#4f46e5]"><i class="icon-hospital"></i> Isolation ICU</span><span class="text-[11px] ib-mut">3/4 occupied</span><div class="flex-1 h-px [background:var(--ib-border)]"></div></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><div class="ib-bed bs-red " data-bed="25">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="25"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ISO-01</span></label><span class="ib-chip stat">Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#0f766e] [font-size:12px]">AR</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Anita Reddy</p><p class="text-[10px] ib-mut">MRN-30525 · 74y · M · Day 4</p></div>
+            <button data-menu="25" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">Ischemic Stroke · Isolation</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#22c55e_13%,transparent)] [color:#16a34a]"><span class="ib-monidot ib-live [background:#22c55e]"></span> 126 · 93%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#14b8a6_15%,transparent)] [color:#0d9488]"><i class="icon-shield"></i> Iso</span>
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. A. Mehta</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Fernandes · Disc. Jul 24</p></div>
+    </div><div class="ib-bed bs-red " data-bed="26">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="26"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ISO-02</span></label><span class="ib-chip stat"><i class="icon-alert-triangle text-[9px]"></i> Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#1e40af] [font-size:12px]">VN</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Vikram Nair</p><p class="text-[10px] ib-mut">MRN-30526 · 46y · F · Day 5</p></div>
+            <button data-menu="26" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">Severe Pneumonia · Isolation</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#ef4444_13%,transparent)] [color:#dc2626]"><span class="ib-monidot ib-live [background:#ef4444]"></span> 70 · 88%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#14b8a6_15%,transparent)] [color:#0d9488]"><i class="icon-shield"></i> Iso</span>
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. S. Kapoor</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Pillai · Disc. Jul 22</p></div>
+    </div><div class="ib-bed bs-red " data-bed="27">
+        <div class="flex items-center justify-between mb-1.5"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="27"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ISO-03</span></label><span class="ib-chip stat">Occupied</span></div>
+        <div class="flex items-center gap-2">
+            <span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#4338ca] [font-size:12px]">PP</span>
+            <div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Priya Patel</p><p class="text-[10px] ib-mut">MRN-30527 · 44y · M · Day 11</p></div>
+            <button data-menu="27" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center ib-mut"><i class="icon-more-vertical text-sm"></i></button>
+        </div>
+        <p class="text-[11px] ib-mut mt-1.5 truncate">DKA · Isolation</p>
+        <div class="flex items-center gap-1.5 mt-1.5 text-[10px] flex-wrap">
+            <span class="ib-chip [background:color-mix(in_srgb,#22c55e_13%,transparent)] [color:#16a34a]"><span class="ib-monidot ib-live [background:#22c55e]"></span> 99 · 93%</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#9333ea]"><i class="icon-wind"></i> Vent</span>
+            <span class="ib-chip [background:color-mix(in_srgb,#14b8a6_15%,transparent)] [color:#0d9488]"><i class="icon-shield"></i> Iso</span>
+        </div>
+        <div class="prev mt-1.5 pt-1.5 border-t [border-color:var(--ib-border)]"><p class="text-[10px] ib-mut"><i class="icon-stethoscope"></i> Dr. R. Nair</p><p class="text-[10px] ib-mut"><i class="icon-user-check"></i> N. Sharma · Disc. Jul 23</p></div>
+    </div><div class="ib-bed bs-blue " data-bed="28">
+            <div class="flex items-center justify-between mb-1"><label onclick="event.stopPropagation()" class="flex items-center gap-1.5"><input type="checkbox" data-sel="28"  class="accent-[var(--ib-c)]"><span class="text-xs font-bold ib-head">ISO-04</span></label><span class="ib-chip stat">Reserved</span></div>
+            <div class="flex flex-col items-center justify-center py-2 text-center"><i class="icon-bookmark text-2xl [color:#2563eb]"></i><p class="text-[11px] ib-mut mt-1">Isolation</p></div>
+            <p class="text-[10px] ib-mut mt-1">Reserved for Kavya Das · ETA 2h</p>
+            <div class="flex items-center justify-between mt-2 text-[10px] ib-mut"><span><i class="icon-shield"></i> Iso</span><button data-menu="28" onclick="event.stopPropagation()" class="w-6 h-6 rounded-md hover:bg-[var(--ib-hover)] flex items-center justify-center"><i class="icon-more-vertical"></i></button></div>
+        </div></div>
+        </div></div>
+                            </section>
+
+                            <!-- ============ 4+5. BED WORKSPACE + STATUS MATRIX ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_380px] gap-4">
+                                <section class="ib-card p-5" id="ib-workspace">
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+                <span class="rounded-xl flex items-center justify-center flex-none [width:48px] [height:48px] [background:color-mix(in_srgb,#dc2626_16%,transparent)] [color:#dc2626]"><i class="icon-bed text-2xl"></i></span>
+                <div><p class="text-lg font-bold ib-head">ICU-A-01</p><p class="text-[11px] ib-mut">ICU A · Standard ICU</p></div>
+            </div>
+            <div class="flex items-center gap-2"><span class="ib-chip [background:color-mix(in_srgb,#dc2626_16%,transparent)] [color:#dc2626]">Occupied</span><button data-menu="0" class="w-8 h-8 rounded-lg border flex items-center justify-center ib-mut [border-color:var(--ib-border)]"><i class="icon-more-vertical"></i></button></div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-3">
+            <div class="ib-panel p-3"><p class="text-[11px] font-bold ib-mut uppercase tracking-wide mb-2 flex items-center gap-1.5"><i class="icon-info text-indigo-500"></i> Bed Information</p><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Bed No</span><span class="font-medium ib-head">ICU-A-01</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Zone</span><span class="font-medium ib-head">ICU A</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Type</span><span class="font-medium ib-head">Standard ICU</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Isolation</span><span class="font-medium ib-head">No</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Status</span><span class="font-medium ib-head">Occupied</span></div></div>
+            <div class="ib-panel p-3"><p class="text-[11px] font-bold ib-mut uppercase tracking-wide mb-2 flex items-center gap-1.5"><i class="icon-user text-indigo-500"></i> Patient Information</p><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Name</span><span class="font-medium ib-head">Rahul Sharma</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">MRN</span><span class="font-medium ib-head">MRN-30500</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Age / Sex</span><span class="font-medium ib-head">30y / Female</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Blood</span><span class="font-medium ib-head">O+</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Diagnosis</span><span class="font-medium ib-head">Acute MI</span></div></div>
+            <div class="ib-panel p-3"><p class="text-[11px] font-bold ib-mut uppercase tracking-wide mb-2 flex items-center gap-1.5"><i class="icon-calendar text-indigo-500"></i> Admission & Discharge</p><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Admitted</span><span class="font-medium ib-head">Day 12</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Expected Discharge</span><span class="font-medium ib-head">Jul 28</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Consultant</span><span class="font-medium ib-head">Dr. A. Mehta</span></div></div>
+            <div class="ib-panel p-3"><p class="text-[11px] font-bold ib-mut uppercase tracking-wide mb-2 flex items-center gap-1.5"><i class="icon-spray-can text-indigo-500"></i> Cleaning Schedule</p><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Status</span><span class="font-medium ib-head">Completed</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Last Clean</span><span class="font-medium ib-head">Today 06:20</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Next Due</span><span class="font-medium ib-head">On discharge</span></div></div>
+            <div class="ib-panel p-3"><p class="text-[11px] font-bold ib-mut uppercase tracking-wide mb-2 flex items-center gap-1.5"><i class="icon-wrench text-indigo-500"></i> Maintenance History</p><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Status</span><span class="font-medium ib-head">Operational</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Last Service</span><span class="font-medium ib-head">Jul 12</span></div><div class="flex justify-between text-xs py-0.5"><span class="ib-mut">Next Check</span><span class="font-medium ib-head">Aug 12</span></div></div>
+            <div class="ib-panel p-3"><p class="text-[11px] font-bold ib-mut uppercase tracking-wide mb-2 flex items-center gap-1.5"><i class="icon-cpu text-indigo-500"></i> Assigned Equipment</p><div class="flex flex-wrap gap-1"><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_12%,transparent)] [color:#0284c7]">Ventilator</span><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_12%,transparent)] [color:#0284c7]">ECG Monitor</span><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_12%,transparent)] [color:#0284c7]">Infusion Pump</span></div></div>
+        </div></section>
+                                <section class="ib-card p-5">
+                                    <h2 class="text-lg font-bold ib-head flex items-center gap-2 mb-4"><i class="icon-layout-dashboard text-emerald-500"></i> Bed Status Matrix</h2>
+                                    <div id="ib-matrix" class="grid grid-cols-2 gap-3"><div class="ib-panel p-3 flex flex-col items-center text-center">
+    <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="ib-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ib-track)" stroke-width="3.4"/><circle class="bar [--p:59]" cx="18" cy="18" r="15.9" fill="none" stroke="#ef4444" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-sm font-bold [color:#ef4444]">17</span></div>
+    <p class="text-[11px] font-semibold ib-head mt-1.5">Occupied</p></div><div class="ib-panel p-3 flex flex-col items-center text-center">
+    <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="ib-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ib-track)" stroke-width="3.4"/><circle class="bar [--p:21]" cx="18" cy="18" r="15.9" fill="none" stroke="#22c55e" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-sm font-bold [color:#22c55e]">6</span></div>
+    <p class="text-[11px] font-semibold ib-head mt-1.5">Available</p></div><div class="ib-panel p-3 flex flex-col items-center text-center">
+    <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="ib-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ib-track)" stroke-width="3.4"/><circle class="bar [--p:10]" cx="18" cy="18" r="15.9" fill="none" stroke="#3b82f6" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-sm font-bold [color:#3b82f6]">3</span></div>
+    <p class="text-[11px] font-semibold ib-head mt-1.5">Reserved</p></div><div class="ib-panel p-3 flex flex-col items-center text-center">
+    <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="ib-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ib-track)" stroke-width="3.4"/><circle class="bar [--p:3]" cx="18" cy="18" r="15.9" fill="none" stroke="#eab308" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-sm font-bold [color:#eab308]">1</span></div>
+    <p class="text-[11px] font-semibold ib-head mt-1.5">Cleaning</p></div><div class="ib-panel p-3 flex flex-col items-center text-center">
+    <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="ib-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ib-track)" stroke-width="3.4"/><circle class="bar [--p:7]" cx="18" cy="18" r="15.9" fill="none" stroke="#f97316" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-sm font-bold [color:#f97316]">2</span></div>
+    <p class="text-[11px] font-semibold ib-head mt-1.5">Maintenance</p></div><div class="ib-panel p-3 flex flex-col items-center text-center">
+    <div class="relative w-16 h-16"><svg viewBox="0 0 36 36" class="ib-ring w-16 h-16"><circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--ib-track)" stroke-width="3.4"/><circle class="bar [--p:14]" cx="18" cy="18" r="15.9" fill="none" stroke="#14b8a6" stroke-width="3.4" stroke-linecap="round" pathLength="100"/></svg><span class="absolute inset-0 flex items-center justify-center text-sm font-bold [color:#14b8a6]">4</span></div>
+    <p class="text-[11px] font-semibold ib-head mt-1.5">Isolation</p></div></div>
+                                </section>
+                            </div>
+
+                            <!-- ============ 6. CLEANING & TURNOVER KANBAN ============ -->
+                            <section class="ib-card p-5">
+                                <div class="flex items-center justify-between mb-4"><h2 class="text-lg font-bold ib-head flex items-center gap-2"><i class="icon-spray-can text-sky-500"></i> Cleaning & Turnover Board</h2><span class="ib-chip bg-[color-mix(in_srgb,var(--ib-c)_14%,transparent)] text-[var(--ib-c)]">Drag to move</span></div>
+                                <div id="ib-kanban" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3"><div class="ib-kcol p-2.5" data-kcol="Pending Cleaning">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-sm font-bold ib-head flex items-center gap-1.5"><span class="ib-dot [background:#f59e0b]"></span> Pending Cleaning</span><span class="ib-chip [background:color-mix(in_srgb,#f59e0b_15%,transparent)] [color:#f59e0b]">2</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Pending Cleaning">
+            <div class="ib-ktask [border-left:3px_solid_#ea580c]" draggable="true" data-task="1">
+                <div class="flex items-center justify-between"><span class="text-sm font-bold ib-head"><i class="icon-bed text-sm [color:#ea580c]"></i> ICU-A-04</span><span class="ib-chip [background:color-mix(in_srgb,#ea580c_13%,transparent)] [color:#ea580c]">High</span></div>
+                <div class="flex items-center justify-between text-[10px] ib-mut mt-1.5"><span><i class="icon-user"></i> H. Kumar</span><span><i class="icon-clock"></i> ETA 15m</span></div>
+                <div class="flex items-center justify-between mt-1"><span class="text-[10px] ib-mut"><i class="icon-list-checks"></i> Checklist 3/6</span><i class="icon-grip-vertical ib-mut text-xs"></i></div>
+            </div><div class="ib-ktask [border-left:3px_solid_#16a34a]" draggable="true" data-task="5">
+                <div class="flex items-center justify-between"><span class="text-sm font-bold ib-head"><i class="icon-bed text-sm [color:#16a34a]"></i> NICU-02</span><span class="ib-chip [background:color-mix(in_srgb,#16a34a_13%,transparent)] [color:#16a34a]">Low</span></div>
+                <div class="flex items-center justify-between text-[10px] ib-mut mt-1.5"><span><i class="icon-user"></i> H. Sunita</span><span><i class="icon-clock"></i> ETA 20m</span></div>
+                <div class="flex items-center justify-between mt-1"><span class="text-[10px] ib-mut"><i class="icon-list-checks"></i> Checklist 0/6</span><i class="icon-grip-vertical ib-mut text-xs"></i></div>
+            </div>
+            </div></div><div class="ib-kcol p-2.5" data-kcol="Cleaning">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-sm font-bold ib-head flex items-center gap-1.5"><span class="ib-dot [background:#0ea5e9]"></span> Cleaning</span><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_15%,transparent)] [color:#0ea5e9]">3</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Cleaning">
+            <div class="ib-ktask [border-left:3px_solid_#dc2626]" draggable="true" data-task="2">
+                <div class="flex items-center justify-between"><span class="text-sm font-bold ib-head"><i class="icon-bed text-sm [color:#dc2626]"></i> ICU-B-02</span><span class="ib-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]">Critical</span></div>
+                <div class="flex items-center justify-between text-[10px] ib-mut mt-1.5"><span><i class="icon-user"></i> H. Bibi</span><span><i class="icon-clock"></i> ETA 8m</span></div>
+                <div class="flex items-center justify-between mt-1"><span class="text-[10px] ib-mut"><i class="icon-list-checks"></i> Checklist 4/6</span><i class="icon-grip-vertical ib-mut text-xs"></i></div>
+            </div><div class="ib-ktask [border-left:3px_solid_#ca8a04]" draggable="true" data-task="3">
+                <div class="flex items-center justify-between"><span class="text-sm font-bold ib-head"><i class="icon-bed text-sm [color:#ca8a04]"></i> ICU-A-06</span><span class="ib-chip [background:color-mix(in_srgb,#ca8a04_13%,transparent)] [color:#ca8a04]">Medium</span></div>
+                <div class="flex items-center justify-between text-[10px] ib-mut mt-1.5"><span><i class="icon-user"></i> H. Raju</span><span><i class="icon-clock"></i> ETA 12m</span></div>
+                <div class="flex items-center justify-between mt-1"><span class="text-[10px] ib-mut"><i class="icon-list-checks"></i> Checklist 2/6</span><i class="icon-grip-vertical ib-mut text-xs"></i></div>
+            </div><div class="ib-ktask [border-left:3px_solid_#dc2626]" draggable="true" data-task="7">
+                <div class="flex items-center justify-between"><span class="text-sm font-bold ib-head"><i class="icon-bed text-sm [color:#dc2626]"></i> ISO-02</span><span class="ib-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]">Critical</span></div>
+                <div class="flex items-center justify-between text-[10px] ib-mut mt-1.5"><span><i class="icon-user"></i> H. Bibi</span><span><i class="icon-clock"></i> ETA 25m</span></div>
+                <div class="flex items-center justify-between mt-1"><span class="text-[10px] ib-mut"><i class="icon-list-checks"></i> Checklist 1/6</span><i class="icon-grip-vertical ib-mut text-xs"></i></div>
+            </div>
+            </div></div><div class="ib-kcol p-2.5" data-kcol="Inspection">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-sm font-bold ib-head flex items-center gap-1.5"><span class="ib-dot [background:#a855f7]"></span> Inspection</span><span class="ib-chip [background:color-mix(in_srgb,#a855f7_15%,transparent)] [color:#a855f7]">1</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Inspection">
+            <div class="ib-ktask [border-left:3px_solid_#ea580c]" draggable="true" data-task="4">
+                <div class="flex items-center justify-between"><span class="text-sm font-bold ib-head"><i class="icon-bed text-sm [color:#ea580c]"></i> ICU-A-01</span><span class="ib-chip [background:color-mix(in_srgb,#ea580c_13%,transparent)] [color:#ea580c]">High</span></div>
+                <div class="flex items-center justify-between text-[10px] ib-mut mt-1.5"><span><i class="icon-user"></i> Supervisor</span><span><i class="icon-clock"></i> ETA 5m</span></div>
+                <div class="flex items-center justify-between mt-1"><span class="text-[10px] ib-mut"><i class="icon-list-checks"></i> Checklist 6/6</span><i class="icon-grip-vertical ib-mut text-xs"></i></div>
+            </div>
+            </div></div><div class="ib-kcol p-2.5" data-kcol="Ready">
+            <div class="flex items-center justify-between mb-2 px-1"><span class="text-sm font-bold ib-head flex items-center gap-1.5"><span class="ib-dot [background:#22c55e]"></span> Ready</span><span class="ib-chip [background:color-mix(in_srgb,#22c55e_15%,transparent)] [color:#22c55e]">1</span></div>
+            <div class="space-y-2 min-h-[40px]" data-kbody="Ready">
+            <div class="ib-ktask [border-left:3px_solid_#16a34a]" draggable="true" data-task="6">
+                <div class="flex items-center justify-between"><span class="text-sm font-bold ib-head"><i class="icon-bed text-sm [color:#16a34a]"></i> PICU-01</span><span class="ib-chip [background:color-mix(in_srgb,#16a34a_13%,transparent)] [color:#16a34a]">Low</span></div>
+                <div class="flex items-center justify-between text-[10px] ib-mut mt-1.5"><span><i class="icon-user"></i> H. Kumar</span><span><i class="icon-clock"></i> ETA —</span></div>
+                <div class="flex items-center justify-between mt-1"><span class="text-[10px] ib-mut"><i class="icon-list-checks"></i> Checklist 6/6</span><i class="icon-grip-vertical ib-mut text-xs"></i></div>
+            </div>
+            </div></div></div>
+                            </section>
+
+                            <!-- ============ 7. TRANSFER MANAGEMENT ============ -->
+                            <section class="ib-card p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                                    <h2 class="text-lg font-bold ib-head flex items-center gap-2"><i class="icon-arrow-left-right text-violet-500"></i> Transfer Management</h2>
+                                    <div class="ib-seg" id="ib-transtabs"><button data-trtab="All" class="on">All</button><button data-trtab="Incoming">Incoming</button><button data-trtab="Outgoing">Outgoing</button><button data-trtab="Emergency">Emergency</button><button data-trtab="Completed">Completed</button></div>
+                                </div>
+                                <div id="ib-transfers" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"><div class="ib-panel p-3 [border-left:3px_solid_#22c55e]">
+        <div class="flex items-center gap-2 mb-2"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#ef4444] [font-size:11px]">RS</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Rahul Sharma</p><p class="text-[10px] ib-mut">Dr. Mehta</p></div><span class="ib-chip [background:color-mix(in_srgb,#22c55e_14%,transparent)] [color:#22c55e]">Incoming</span></div>
+        <div class="flex items-center gap-1.5 text-[11px] ib-head"><span class="ib-chip [background:var(--ib-hover)]">ER</span><i class="icon-arrow-right ib-mut"></i><span class="ib-chip [background:var(--ib-hover)]">ICU-A-05</span></div>
+        <div class="flex items-center justify-between mt-2 text-[11px]"><span class="ib-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]">Critical</span><span class="ib-mut"><i class="icon-clock"></i> ETA 10m</span></div>
+    </div><div class="ib-panel p-3 [border-left:3px_solid_#0ea5e9]">
+        <div class="flex items-center gap-2 mb-2"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#a855f7] [font-size:11px]">AR</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Anita Reddy</p><p class="text-[10px] ib-mut">Dr. Kapoor</p></div><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0ea5e9]">Outgoing</span></div>
+        <div class="flex items-center gap-1.5 text-[11px] ib-head"><span class="ib-chip [background:var(--ib-hover)]">CCU-02</span><i class="icon-arrow-right ib-mut"></i><span class="ib-chip [background:var(--ib-hover)]">General Ward</span></div>
+        <div class="flex items-center justify-between mt-2 text-[11px]"><span class="ib-chip [background:color-mix(in_srgb,#ca8a04_13%,transparent)] [color:#ca8a04]">Medium</span><span class="ib-mut"><i class="icon-clock"></i> ETA 30m</span></div>
+    </div><div class="ib-panel p-3 [border-left:3px_solid_#22c55e]">
+        <div class="flex items-center gap-2 mb-2"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#0ea5e9] [font-size:11px]">VN</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Vikram Nair</p><p class="text-[10px] ib-mut">Dr. Nair</p></div><span class="ib-chip [background:color-mix(in_srgb,#22c55e_14%,transparent)] [color:#22c55e]">Incoming</span></div>
+        <div class="flex items-center gap-1.5 text-[11px] ib-head"><span class="ib-chip [background:var(--ib-hover)]">PICU-03</span><i class="icon-arrow-right ib-mut"></i><span class="ib-chip [background:var(--ib-hover)]">ICU-A-04</span></div>
+        <div class="flex items-center justify-between mt-2 text-[11px]"><span class="ib-chip [background:color-mix(in_srgb,#ea580c_13%,transparent)] [color:#ea580c]">High</span><span class="ib-mut"><i class="icon-clock"></i> ETA 15m</span></div>
+    </div><div class="ib-panel p-3 [border-left:3px_solid_#ef4444]">
+        <div class="flex items-center gap-2 mb-2"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#f97316] [font-size:11px]">PP</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Priya Patel</p><p class="text-[10px] ib-mut">Dr. Khan</p></div><span class="ib-chip [background:color-mix(in_srgb,#ef4444_14%,transparent)] [color:#ef4444]">Emergency</span></div>
+        <div class="flex items-center gap-1.5 text-[11px] ib-head"><span class="ib-chip [background:var(--ib-hover)]">ICU-A-01</span><i class="icon-arrow-right ib-mut"></i><span class="ib-chip [background:var(--ib-hover)]">Isolation ICU</span></div>
+        <div class="flex items-center justify-between mt-2 text-[11px]"><span class="ib-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]">Critical</span><span class="ib-mut"><i class="icon-clock"></i> ETA 5m</span></div>
+    </div><div class="ib-panel p-3 [border-left:3px_solid_#64748b]">
+        <div class="flex items-center gap-2 mb-2"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#22c55e] [font-size:11px]">SG</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Suresh Gupta</p><p class="text-[10px] ib-mut">Dr. Rao</p></div><span class="ib-chip [background:color-mix(in_srgb,#64748b_14%,transparent)] [color:#64748b]">Completed</span></div>
+        <div class="flex items-center gap-1.5 text-[11px] ib-head"><span class="ib-chip [background:var(--ib-hover)]">CCU-02</span><i class="icon-arrow-right ib-mut"></i><span class="ib-chip [background:var(--ib-hover)]">Cardiac Step-down</span></div>
+        <div class="flex items-center justify-between mt-2 text-[11px]"><span class="ib-chip [background:color-mix(in_srgb,#16a34a_13%,transparent)] [color:#16a34a]">Low</span><span class="ib-mut"><i class="icon-clock"></i> ETA —</span></div>
+    </div><div class="ib-panel p-3 [border-left:3px_solid_#0ea5e9]">
+        <div class="flex items-center gap-2 mb-2"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:34px] [height:34px] [background:#ec4899] [font-size:11px]">MS</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Meera Singh</p><p class="text-[10px] ib-mut">Dr. Mehta</p></div><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0ea5e9]">Outgoing</span></div>
+        <div class="flex items-center gap-1.5 text-[11px] ib-head"><span class="ib-chip [background:var(--ib-hover)]">ICU-B-04</span><i class="icon-arrow-right ib-mut"></i><span class="ib-chip [background:var(--ib-hover)]">ICU-A-06</span></div>
+        <div class="flex items-center justify-between mt-2 text-[11px]"><span class="ib-chip [background:color-mix(in_srgb,#ca8a04_13%,transparent)] [color:#ca8a04]">Medium</span><span class="ib-mut"><i class="icon-clock"></i> ETA 20m</span></div>
+    </div></div>
+                            </section>
+
+                            <!-- ============ 8+9. EQUIPMENT + CARE TEAM ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                                <section class="ib-card p-5">
+                                    <h2 class="text-lg font-bold ib-head flex items-center gap-2 mb-4"><i class="icon-cpu text-amber-500"></i> Equipment Assignment</h2>
+                                    <div id="ib-equipment" class="grid sm:grid-cols-2 gap-3"><div class="ib-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ib-head flex items-center gap-1.5"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0ea5e9]"><i class="icon-air-vent"></i></span> Ventilator</span><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]">In Use</span></div>
+        <div class="flex justify-between text-[11px] ib-mut mt-1"><span>VENT-04</span><span><i class="icon-bed"></i> ICU-A-01</span></div>
+        <div class="flex items-center justify-between mt-1.5"><span class="text-[10px] ib-mut">Maintenance OK</span><button data-modal="equipment" class="text-[10px] font-semibold text-[var(--ib-c)] hover:underline">Assign</button></div>
+    </div><div class="ib-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ib-head flex items-center gap-1.5"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#22c55e_14%,transparent)] [color:#22c55e]"><i class="icon-activity"></i></span> ECG Monitor</span><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]">In Use</span></div>
+        <div class="flex justify-between text-[11px] ib-mut mt-1"><span>MON-12</span><span><i class="icon-bed"></i> ICU-A-01</span></div>
+        <div class="flex items-center justify-between mt-1.5"><span class="text-[10px] ib-mut">Maintenance OK</span><button data-modal="equipment" class="text-[10px] font-semibold text-[var(--ib-c)] hover:underline">Assign</button></div>
+    </div><div class="ib-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ib-head flex items-center gap-1.5"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#a855f7_14%,transparent)] [color:#a855f7]"><i class="icon-droplet"></i></span> Infusion Pump</span><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]">In Use</span></div>
+        <div class="flex justify-between text-[11px] ib-mut mt-1"><span>INF-28</span><span><i class="icon-bed"></i> ICU-B-02</span></div>
+        <div class="flex items-center justify-between mt-1.5"><span class="text-[10px] ib-mut">Maintenance OK</span><button data-modal="equipment" class="text-[10px] font-semibold text-[var(--ib-c)] hover:underline">Assign</button></div>
+    </div><div class="ib-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ib-head flex items-center gap-1.5"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#ef4444_14%,transparent)] [color:#ef4444]"><i class="icon-zap"></i></span> Defibrillator</span><span class="ib-chip [background:color-mix(in_srgb,#22c55e_14%,transparent)] [color:#16a34a]">Available</span></div>
+        <div class="flex justify-between text-[11px] ib-mut mt-1"><span>DEF-05</span><span><i class="icon-bed"></i> Standby</span></div>
+        <div class="flex items-center justify-between mt-1.5"><span class="text-[10px] ib-mut">Maintenance OK</span><button data-modal="equipment" class="text-[10px] font-semibold text-[var(--ib-c)] hover:underline">Assign</button></div>
+    </div><div class="ib-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ib-head flex items-center gap-1.5"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#14b8a6_14%,transparent)] [color:#14b8a6]"><i class="icon-wind"></i></span> Oxygen</span><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]">In Use</span></div>
+        <div class="flex justify-between text-[11px] ib-mut mt-1"><span>O2-19</span><span><i class="icon-bed"></i> ICU-A-05</span></div>
+        <div class="flex items-center justify-between mt-1.5"><span class="text-[10px] ib-mut">Maintenance OK</span><button data-modal="equipment" class="text-[10px] font-semibold text-[var(--ib-c)] hover:underline">Assign</button></div>
+    </div><div class="ib-panel p-3">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold ib-head flex items-center gap-1.5"><span class="w-8 h-8 rounded-lg flex items-center justify-center [background:color-mix(in_srgb,#ec4899_14%,transparent)] [color:#ec4899]"><i class="icon-syringe"></i></span> Syringe Pump</span><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]">In Use</span></div>
+        <div class="flex justify-between text-[11px] ib-mut mt-1"><span>SYR-33</span><span><i class="icon-bed"></i> CCU-03</span></div>
+        <div class="flex items-center justify-between mt-1.5"><span class="text-[10px] ib-mut">Maintenance OK</span><button data-modal="equipment" class="text-[10px] font-semibold text-[var(--ib-c)] hover:underline">Assign</button></div>
+    </div></div>
+                                </section>
+                                <section class="ib-card p-5">
+                                    <h2 class="text-lg font-bold ib-head flex items-center gap-2 mb-4"><i class="icon-users text-indigo-500"></i> Care Team Assignment</h2>
+                                    <div id="ib-team" class="space-y-3">
+        <div><p class="text-[11px] font-bold ib-mut uppercase tracking-wide mb-2">Doctors</p><div class="grid sm:grid-cols-2 gap-2">
+        <div class="ib-panel p-3"><div class="flex items-center gap-2.5"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#475569] [font-size:12px]">AM</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Dr. A. Mehta</p><p class="text-[10px] ib-mut">5 beds · Day</p></div><span class="ib-chip [background:color-mix(in_srgb,#22c55e_15%,transparent)] [color:#16a34a]">Available</span></div><p class="text-[10px] ib-mut mt-1.5">3 critical patients</p></div><div class="ib-panel p-3"><div class="flex items-center gap-2.5"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#0f766e] [font-size:12px]">SK</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">Dr. S. Kapoor</p><p class="text-[10px] ib-mut">4 beds · Day</p></div><span class="ib-chip [background:color-mix(in_srgb,#f59e0b_15%,transparent)] [color:#d97706]">In Round</span></div><p class="text-[10px] ib-mut mt-1.5">2 critical patients</p></div>
+        </div></div>
+        <div><p class="text-[11px] font-bold ib-mut uppercase tracking-wide mb-2">Nurses</p><div class="grid sm:grid-cols-2 gap-2">
+        <div class="ib-panel p-3"><div class="flex items-center gap-2.5"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#4338ca] [font-size:11px]">NF</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">N. Fernandes</p><p class="text-[10px] ib-mut">6 beds · Day</p></div><span class="ib-chip [background:color-mix(in_srgb,#22c55e_15%,transparent)] [color:#16a34a]">Available</span></div><p class="text-[10px] text-amber-500 mt-1.5">2 medications due</p></div><div class="ib-panel p-3"><div class="flex items-center gap-2.5"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#0e7490] [font-size:11px]">ND</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">N. Das</p><p class="text-[10px] ib-mut">5 beds · Day</p></div><span class="ib-chip [background:color-mix(in_srgb,#f59e0b_15%,transparent)] [color:#d97706]">With Patient</span></div><p class="text-[10px] text-amber-500 mt-1.5">3 medications due</p></div>
+        </div></div>
+        <div><p class="text-[11px] font-bold ib-mut uppercase tracking-wide mb-2">Housekeeping</p><div class="grid sm:grid-cols-2 gap-2">
+        <div class="ib-panel p-3"><div class="flex items-center gap-2.5"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#3f6212] [font-size:11px]">HK</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">H. Kumar</p><p class="text-[10px] ib-mut">3 in queue</p></div><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]">Cleaning</span></div><p class="text-[10px] ib-mut mt-1.5 truncate">ICU-A-04, NICU-02</p></div><div class="ib-panel p-3"><div class="flex items-center gap-2.5"><span class="rounded-lg flex items-center justify-center text-white font-bold flex-none [width:36px] [height:36px] [background:#7c2d12] [font-size:11px]">HB</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head truncate">H. Bibi</p><p class="text-[10px] ib-mut">2 in queue</p></div><span class="ib-chip [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0284c7]">Cleaning</span></div><p class="text-[10px] ib-mut mt-1.5 truncate">ICU-B-02, ISO-02</p></div>
+        </div></div></div>
+                                </section>
+                            </div>
+
+                            <!-- ============ 10+14. TIMELINE + ACTIVITIES ============ -->
+                            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                                <section class="ib-card p-5">
+                                    <div class="flex items-center justify-between mb-4"><h2 class="text-lg font-bold ib-head flex items-center gap-2"><i class="icon-activity text-teal-500"></i> Bed Utilization Timeline</h2><span class="ib-chip bg-[color-mix(in_srgb,#0ea5e9_15%,transparent)] text-[#0284c7]" id="ib-tl-bed">ICU-A-01</span></div>
+                                    <div id="ib-timeline" class="ib-tl"><div class="ib-tl-item [--tc:#6366f1]"><div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head flex items-center gap-1.5"><i class="icon-bed [color:#6366f1]"></i> Bed Allocated</p><p class="text-[11px] ib-mut mt-0.5">Assigned to R. Sharma</p><p class="text-[10px] ib-mut">Charge Nurse</p></div><span class="text-[11px] ib-mut whitespace-nowrap">Day 1 · 02:14</span></div></div><div class="ib-tl-item [--tc:#0ea5e9]"><div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head flex items-center gap-1.5"><i class="icon-user-plus [color:#0ea5e9]"></i> Patient Admitted</p><p class="text-[11px] ib-mut mt-0.5">From ER · Acute MI</p><p class="text-[10px] ib-mut">Dr. Mehta</p></div><span class="text-[11px] ib-mut whitespace-nowrap">Day 1 · 02:20</span></div></div><div class="ib-tl-item [--tc:#a855f7]"><div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head flex items-center gap-1.5"><i class="icon-cpu [color:#a855f7]"></i> Equipment Assigned</p><p class="text-[11px] ib-mut mt-0.5">Ventilator VENT-04</p><p class="text-[10px] ib-mut">RT Thomas</p></div><span class="text-[11px] ib-mut whitespace-nowrap">Day 1 · 02:35</span></div></div><div class="ib-tl-item [--tc:#eab308]"><div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head flex items-center gap-1.5"><i class="icon-spray-can [color:#eab308]"></i> Cleaning Started</p><p class="text-[11px] ib-mut mt-0.5">Post-procedure clean</p><p class="text-[10px] ib-mut">H. Kumar</p></div><span class="text-[11px] ib-mut whitespace-nowrap">Day 3 · 10:00</span></div></div><div class="ib-tl-item [--tc:#22c55e]"><div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head flex items-center gap-1.5"><i class="icon-check [color:#22c55e]"></i> Cleaning Completed</p><p class="text-[11px] ib-mut mt-0.5">Turnover 48 min</p><p class="text-[10px] ib-mut">H. Kumar</p></div><span class="text-[11px] ib-mut whitespace-nowrap">Day 3 · 10:48</span></div></div><div class="ib-tl-item [--tc:#f97316]"><div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head flex items-center gap-1.5"><i class="icon-wrench [color:#f97316]"></i> Maintenance</p><p class="text-[11px] ib-mut mt-0.5">Monitor calibration</p><p class="text-[10px] ib-mut">Bio-medical</p></div><span class="text-[11px] ib-mut whitespace-nowrap">Day 4 · 09:00</span></div></div><div class="ib-tl-item [--tc:#ec4899]"><div class="flex items-start gap-2"><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head flex items-center gap-1.5"><i class="icon-arrow-left-right [color:#ec4899]"></i> Patient Transfer</p><p class="text-[11px] ib-mut mt-0.5">→ ICU-A-06</p><p class="text-[10px] ib-mut">Dr. Kapoor</p></div><span class="text-[11px] ib-mut whitespace-nowrap">Day 5 · 14:20</span></div></div></div>
+                                </section>
+                                <section class="ib-card p-5">
+                                    <div class="flex items-center justify-between mb-4"><h2 class="text-lg font-bold ib-head flex items-center gap-2"><i class="icon-radar text-emerald-500"></i> Recent Bed Activities</h2><span class="ib-chip bg-[color-mix(in_srgb,#22c55e_15%,transparent)] text-[#16a34a]"><span class="ib-dot ib-live bg-[#22c55e]"></span> Live</span></div>
+                                    <div id="ib-activities" class="space-y-2"><div class="flex items-center gap-3 ib-panel px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#6366f1_14%,transparent)] [color:#6366f1]"><i class="icon-bed"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head">Bed Allocated</p><p class="text-[11px] ib-mut truncate">ICU-A-05 → R. Sharma</p></div><span class="text-[10px] ib-mut">6m</span></div><div class="flex items-center gap-3 ib-panel px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#22c55e_14%,transparent)] [color:#22c55e]"><i class="icon-spray-can"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head">Cleaning Completed</p><p class="text-[11px] ib-mut truncate">ICU-B-02 · 42 min turnover</p></div><span class="text-[10px] ib-mut">11m</span></div><div class="flex items-center gap-3 ib-panel px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#a855f7_14%,transparent)] [color:#a855f7]"><i class="icon-cpu"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head">Equipment Assigned</p><p class="text-[11px] ib-mut truncate">VENT-04 → ICU-A-03</p></div><span class="text-[10px] ib-mut">18m</span></div><div class="flex items-center gap-3 ib-panel px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#0ea5e9_14%,transparent)] [color:#0ea5e9]"><i class="icon-arrow-left-right"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head">Patient Transfer</p><p class="text-[11px] ib-mut truncate">PICU-03 → ICU-A-04</p></div><span class="text-[10px] ib-mut">24m</span></div><div class="flex items-center gap-3 ib-panel px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#f59e0b_14%,transparent)] [color:#f59e0b]"><i class="icon-wrench"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head">Maintenance Finished</p><p class="text-[11px] ib-mut truncate">CCU-01 monitor serviced</p></div><span class="text-[10px] ib-mut">33m</span></div><div class="flex items-center gap-3 ib-panel px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#14b8a6_14%,transparent)] [color:#14b8a6]"><i class="icon-shield"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head">Isolation Activated</p><p class="text-[11px] ib-mut truncate">ISO-02 · airborne precautions</p></div><span class="text-[10px] ib-mut">41m</span></div><div class="flex items-center gap-3 ib-panel px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#3b82f6_14%,transparent)] [color:#3b82f6]"><i class="icon-bookmark"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head">Reservation Created</p><p class="text-[11px] ib-mut truncate">ICU-B-05 · ETA 3h</p></div><span class="text-[10px] ib-mut">47m</span></div><div class="flex items-center gap-3 ib-panel px-3 py-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center flex-none [background:color-mix(in_srgb,#ef4444_14%,transparent)] [color:#ef4444]"><i class="icon-bed"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-semibold ib-head">Bed Released</p><p class="text-[11px] ib-mut truncate">ICU-A-01 now available</p></div><span class="text-[10px] ib-mut">55m</span></div></div>
+                                </section>
+                            </div>
+
+                            <!-- BULK BAR -->
+                            <div class="ib-bulk items-center gap-2 px-4 py-2.5 flex-wrap">
+                                <span class="text-sm font-semibold"><span id="ib-selcount">0</span> beds selected</span>
+                                <div class="flex flex-wrap gap-1.5 ml-auto text-xs">
+                                    <button data-bulk="allocate" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="icon-bed"></i> Allocate</button>
+                                    <button data-bulk="reserve" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="icon-bookmark"></i> Reserve</button>
+                                    <button data-bulk="release" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="icon-bed"></i> Release</button>
+                                    <button data-bulk="cleaning" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="icon-spray-can"></i> Cleaning</button>
+                                    <button data-bulk="maintenance" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="icon-wrench"></i> Maintenance</button>
+                                    <button data-bulk="staff" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="icon-user-plus"></i> Staff</button>
+                                    <button data-bulk="export" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="icon-download"></i> Export</button>
+                                    <button data-bulk="print" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20"><i class="icon-printer"></i> Print</button>
+                                    <button data-bulk="delete" class="px-2.5 py-1.5 rounded-lg bg-rose-500/80 hover:bg-rose-500"><i class="icon-trash-2"></i> Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>

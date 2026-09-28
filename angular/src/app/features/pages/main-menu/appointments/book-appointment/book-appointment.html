@@ -1,1 +1,339 @@
-<p>book-appointment works!</p>
+                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-5xl mx-auto space-y-5">
+                        <!-- Breadcrumb -->
+
+                        <!-- Page Header -->
+                        <div class="flex flex-wrap items-center justify-between gap-3" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Book Appointment</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Register a new appointment for an existing or new patient</p>
+                            </div>
+                            <a href="appointments.html" class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-border-color text-gray-900 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                                <i class="icon-arrow-left"></i>
+                                Back to List
+                            </a>
+                        </div>
+
+                        <!-- Appointment Statistics (module-exclusive component) -->
+                        <div id="stats-row" class="appt-stats cols-4" data-aos="fade-up" data-aos-delay="50"></div>
+
+                        <form id="book-form" onsubmit="return false;" class="space-y-5">
+                            <!-- Patient Information -->
+                            <section class="card" data-aos="fade-up" aria-labelledby="sec-patient">
+                                <div class="p-4 border-b border-border-color flex items-center gap-3">
+                                    <span class="size-9 flex items-center justify-center rounded-lg bg-primary-100 dark:bg-primary-600/20 shrink-0">
+                                        <i class="icon-user text-primary text-sm"></i>
+                                    </span>
+                                    <div>
+                                        <h2 id="sec-patient" class="font-semibold text-gray-900">Patient Information</h2>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Search for an existing record or register a new patient</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 space-y-4">
+                                    <!-- Patient Mode -->
+                                    <div class="flex gap-1 bg-gray-100 dark:bg-slate-700 p-1 rounded-xl w-fit" role="tablist" aria-label="Patient type">
+                                        <button type="button" role="tab" aria-selected="true" class="pt-btn px-4 py-1.5 rounded-lg text-sm font-medium bg-white dark:bg-slate-600 text-gray-900 shadow-sm" data-mode="existing">Existing Patient</button>
+                                        <button type="button" role="tab" aria-selected="false" class="pt-btn px-4 py-1.5 rounded-lg text-sm font-medium text-gray-500 dark:text-gray-400" data-mode="new">New Patient</button>
+                                    </div>
+
+                                    <!-- Existing Patient -->
+                                    <div id="pane-existing" class="space-y-4">
+                                        <div class="form-group">
+                                            <label class="form-label" for="p-search">Search Patient</label>
+                                            <div class="relative">
+                                                <i class="icon-search absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                                <input type="search" id="p-search" class="form-input pl-10!" placeholder="Search by name, phone or patient ID...">
+                                            </div>
+                                            <p class="text-xs text-gray-400 dark:text-gray-500">Try &ldquo;James&rdquo;, &ldquo;Linda&rdquo; or a phone number.</p>
+                                        </div>
+                                        <div id="p-results" class="border border-border-color rounded-lg divide-y divide-border-color max-h-56 overflow-y-auto"></div>
+                                        <div id="p-selected" class="hidden p-4 rounded-lg bg-primary-100 dark:bg-primary-600/20 border border-primary/20"></div>
+                                    </div>
+
+                                    <!-- New Patient -->
+                                    <div id="pane-new" class="hidden form-grid">
+                                        <div class="form-group">
+                                            <label class="form-label" for="n-first">First Name <span class="text-danger">*</span></label>
+                                            <input id="n-first" class="form-input" placeholder="James">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="n-last">Last Name <span class="text-danger">*</span></label>
+                                            <input id="n-last" class="form-input" placeholder="Morrison">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="n-phone">Phone <span class="text-danger">*</span></label>
+                                            <input id="n-phone" type="tel" class="form-input" placeholder="(212) 555-0147">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="n-email">Email</label>
+                                            <input id="n-email" type="email" class="form-input" placeholder="j.morrison@mail.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="n-dob">Date of Birth</label>
+                                            <div class="relative">
+                                                <input type="text" id="n-dob" class="form-input pr-9!" data-provider="flatpickr" data-date-format="d M Y" data-maxDate="today" placeholder="Select date">
+                                                <i class="icon-calendar-days absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="n-gender">Gender</label>
+                                            <select id="n-gender" class="form-select">
+                                                <option>Female</option>
+                                                <option>Male</option>
+                                                <option>Prefer not to say</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="n-blood">Blood Group</label>
+                                            <select id="n-blood" class="form-select">
+                                                <option>A+</option>
+                                                <option>A-</option>
+                                                <option>B+</option>
+                                                <option>B-</option>
+                                                <option>O+</option>
+                                                <option>O-</option>
+                                                <option>AB+</option>
+                                                <option>AB-</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="n-address">Address</label>
+                                            <input id="n-address" class="form-input" placeholder="1420 Lexington Ave, New York, NY">
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Doctor Information -->
+                            <section class="card" data-aos="fade-up" aria-labelledby="sec-doctor">
+                                <div class="p-4 border-b border-border-color flex items-center gap-3">
+                                    <span class="size-9 flex items-center justify-center rounded-lg bg-sky-50 dark:bg-sky-500/10 shrink-0">
+                                        <i class="icon-stethoscope text-sky-600 text-sm"></i>
+                                    </span>
+                                    <div>
+                                        <h2 id="sec-doctor" class="font-semibold text-gray-900">Doctor Information</h2>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Choose the department, doctor and consultation type</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label" for="d-dept">Department <span class="text-danger">*</span></label>
+                                        <select id="d-dept" class="form-select">
+                                            <option>Cardiology</option>
+                                            <option>Neurology</option>
+                                            <option>Orthopedics</option>
+                                            <option>Pediatrics</option>
+                                            <option>Oncology</option>
+                                            <option>Emergency</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="d-doctor">Doctor <span class="text-danger">*</span></label>
+                                        <select id="d-doctor" class="form-select"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="d-consult">Consultation Type</label>
+                                        <select id="d-consult" class="form-select">
+                                            <option>In-Person</option>
+                                            <option>Video Consultation</option>
+                                            <option>Phone Consultation</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="d-fee">Consultation Fee</label>
+                                        <div class="flex">
+                                            <span class="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-border-color bg-gray-50 dark:bg-slate-800 text-sm text-gray-500 dark:text-gray-400">$</span>
+                                            <input id="d-fee" type="number" class="form-input rounded-l-none!" value="180">
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Appointment Details -->
+                            <section class="card" data-aos="fade-up" aria-labelledby="sec-appt">
+                                <div class="p-4 border-b border-border-color flex items-center gap-3">
+                                    <span class="size-9 flex items-center justify-center rounded-lg bg-amber-50 dark:bg-amber-500/10 shrink-0">
+                                        <i class="icon-calendar-days text-amber-600 text-sm"></i>
+                                    </span>
+                                    <div>
+                                        <h2 id="sec-appt" class="font-semibold text-gray-900">Appointment Details</h2>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Pick a date, then an available time slot</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 space-y-4">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label class="form-label" for="a-date">Date <span class="text-danger">*</span></label>
+                                            <div class="relative">
+                                                <input type="text" id="a-date" class="form-input pr-9!" data-provider="flatpickr" data-date-format="d M Y" data-minDate="today" data-default-date="2026-07-17">
+                                                <i class="icon-calendar-days absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="a-visit">Visit Type</label>
+                                            <select id="a-visit" class="form-select">
+                                                <option>Consultation</option>
+                                                <option>Follow-Up</option>
+                                                <option>Emergency</option>
+                                                <option>Procedure</option>
+                                                <option>Check-Up</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <p class="form-label mb-2.5">Time Slot <span class="text-danger">*</span></p>
+                                        <div class="flex flex-wrap gap-2" id="slots" role="radiogroup" aria-label="Available time slots"></div>
+                                        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Greyed-out slots are already booked.</p>
+                                    </div>
+
+                                    <div>
+                                        <p class="form-label mb-2.5">Priority</p>
+                                        <div class="flex flex-wrap gap-4">
+                                            <label class="flex items-center gap-2.5">
+                                                <input type="radio" name="priority" value="Normal" checked class="w-4 h-4 border-gray-300 text-primary focus:ring-primary">
+                                                <span class="text-sm text-gray-600 dark:text-gray-400">Normal</span>
+                                            </label>
+                                            <label class="flex items-center gap-2.5">
+                                                <input type="radio" name="priority" value="Urgent" class="w-4 h-4 border-gray-300 text-amber-500 focus:ring-amber-500">
+                                                <span class="text-sm text-gray-600 dark:text-gray-400">Urgent</span>
+                                            </label>
+                                            <label class="flex items-center gap-2.5">
+                                                <input type="radio" name="priority" value="Critical" class="w-4 h-4 border-gray-300 text-danger focus:ring-danger">
+                                                <span class="text-sm text-gray-600 dark:text-gray-400">Critical</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Payment Information -->
+                            <section class="card" data-aos="fade-up" aria-labelledby="sec-pay">
+                                <div class="p-4 border-b border-border-color flex items-center gap-3">
+                                    <span class="size-9 flex items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-500/10 shrink-0">
+                                        <i class="icon-wallet text-emerald-600 text-sm"></i>
+                                    </span>
+                                    <div>
+                                        <h2 id="sec-pay" class="font-semibold text-gray-900">Payment Information</h2>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">How this visit will be settled</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label" for="pay-method">Payment Method</label>
+                                        <select id="pay-method" class="form-select">
+                                            <option>Insurance</option>
+                                            <option>Cash</option>
+                                            <option>Credit Card</option>
+                                            <option>Debit Card</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="pay-status">Payment Status</label>
+                                        <select id="pay-status" class="form-select">
+                                            <option>Unpaid</option>
+                                            <option>Paid</option>
+                                            <option>Partially Paid</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="pay-provider">Insurance Provider</label>
+                                        <select id="pay-provider" class="form-select">
+                                            <option>Blue Cross Blue Shield</option>
+                                            <option>UnitedHealthcare</option>
+                                            <option>Aetna</option>
+                                            <option>Cigna</option>
+                                            <option>Medicare</option>
+                                            <option>Self-Pay</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="pay-policy">Policy Number</label>
+                                        <input id="pay-policy" class="form-input" placeholder="BCBS-4471-88210">
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Emergency Contact -->
+                            <section class="card" data-aos="fade-up" aria-labelledby="sec-emg">
+                                <div class="p-4 border-b border-border-color flex items-center gap-3">
+                                    <span class="size-9 flex items-center justify-center rounded-lg bg-red-50 dark:bg-red-500/10 shrink-0">
+                                        <i class="icon-phone text-danger text-sm"></i>
+                                    </span>
+                                    <div>
+                                        <h2 id="sec-emg" class="font-semibold text-gray-900">Emergency Contact</h2>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Who to reach if the patient cannot be contacted</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label" for="e-name">Contact Name</label>
+                                        <input id="e-name" class="form-input" placeholder="Maria Morrison">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="e-rel">Relationship</label>
+                                        <select id="e-rel" class="form-select">
+                                            <option>Spouse</option>
+                                            <option>Parent</option>
+                                            <option>Sibling</option>
+                                            <option>Child</option>
+                                            <option>Friend</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="e-phone">Contact Phone</label>
+                                        <input id="e-phone" type="tel" class="form-input" placeholder="(212) 555-0169">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="e-alt">Alternate Phone</label>
+                                        <input id="e-alt" type="tel" class="form-input" placeholder="(917) 555-0132">
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Notes -->
+                            <section class="card" data-aos="fade-up" aria-labelledby="sec-notes">
+                                <div class="p-4 border-b border-border-color flex items-center gap-3">
+                                    <span class="size-9 flex items-center justify-center rounded-lg bg-purple-50 dark:bg-purple-500/10 shrink-0">
+                                        <i class="icon-clipboard-list text-purple text-sm"></i>
+                                    </span>
+                                    <div>
+                                        <h2 id="sec-notes" class="font-semibold text-gray-900">Notes &amp; Medical History</h2>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Reason for visit, allergies and clinical context</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="note-reason">Reason for Visit</label>
+                                        <textarea id="note-reason" class="form-textarea" rows="2" placeholder="Chest tightness on exertion for the past three weeks..."></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="note-medical">Medical Notes</label>
+                                        <textarea id="note-medical" class="form-textarea" rows="3" placeholder="Known conditions, current medication, previous procedures..."></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="note-allergy">Known Allergies</label>
+                                        <input id="note-allergy" class="form-input" placeholder="Penicillin, Latex">
+                                    </div>
+                                    <label class="flex items-start gap-2.5 cursor-pointer">
+                                        <input type="checkbox" id="note-consent" checked class="w-4 h-4 mt-0.5 rounded border-gray-300 text-primary focus:ring-primary">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">Patient consents to being contacted about this appointment by SMS and email.</span>
+                                    </label>
+                                </div>
+                            </section>
+
+                            <!-- Actions -->
+                            <div class="flex flex-col sm:flex-row items-center justify-end gap-3 pb-2" data-aos="fade-up">
+                                <a href="appointments.html" class="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-border-color text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors text-center">Cancel</a>
+                                <button type="button" id="btn-save-print" class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-white dark:bg-slate-800 border border-border-color text-gray-900 text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                                    <i class="icon-printer"></i>
+                                    Save &amp; Print
+                                </button>
+                                <button type="button" id="btn-save" class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-colors">
+                                    <i class="icon-circle-check"></i>
+                                    Save Appointment
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </main>
