@@ -1,1 +1,79 @@
-<p>insurance-claims works!</p>
+<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Claims Management</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Detailed register of every claim across all insurers</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-file-text text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">8</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Claims</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$37,930.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Billed</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">5</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Avg. Turnaround (days)</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">1</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Denied Claims</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Claims</span>
+                                <span class="text-xs text-gray-400 ml-auto">8 of 8</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Claim ID</th>
+                                            <th>Patient</th>
+                                            <th>Insurer</th>
+                                            <th>Type</th>
+                                            <th>Billed</th>
+                                            <th>Approved</th>
+                                            <th>Submitted</th>
+                                            <th>TAT (days)</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-primary font-mono text-sm"><a href="insurance-claim-detail.html">#CLM-00001</a></td><td class="font-medium text-gray-900">James Morrison</td><td class="text-gray-600 dark:text-gray-300">BlueCross Health</td><td class="text-gray-500 dark:text-gray-400">Inpatient</td><td class="font-semibold text-gray-900">$3,200.00</td><td class="text-emerald-600">$3,200.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-02</td><td class="text-gray-500 dark:text-gray-400 text-sm">4</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Paid</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-claim-detail.html">#CLM-00002</a></td><td class="font-medium text-gray-900">Robert Clark</td><td class="text-gray-600 dark:text-gray-300">United Health</td><td class="text-gray-500 dark:text-gray-400">Inpatient</td><td class="font-semibold text-gray-900">$12,500.00</td><td class="text-emerald-600">$11,000.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td><td class="text-gray-500 dark:text-gray-400 text-sm">9</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Approved</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-claim-detail.html">#CLM-00003</a></td><td class="font-medium text-gray-900">Emily Johnson</td><td class="text-gray-600 dark:text-gray-300">Aetna Insurance</td><td class="text-gray-500 dark:text-gray-400">Outpatient</td><td class="font-semibold text-gray-900">$2,100.00</td><td class="text-emerald-600">$2,100.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-30</td><td class="text-gray-500 dark:text-gray-400 text-sm">3</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Paid</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-claim-detail.html">#CLM-00004</a></td><td class="font-medium text-gray-900">David Torres</td><td class="text-gray-600 dark:text-gray-300">Cigna Health</td><td class="text-gray-500 dark:text-gray-400">Diagnostics</td><td class="font-semibold text-gray-900">$5,800.00</td><td class="text-gray-400">—</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td class="text-gray-500 dark:text-gray-400 text-sm">6</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Under Review</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-claim-detail.html">#CLM-00005</a></td><td class="font-medium text-gray-900">Linda Nguyen</td><td class="text-gray-600 dark:text-gray-300">BlueCross Health</td><td class="text-gray-500 dark:text-gray-400">Inpatient</td><td class="font-semibold text-gray-900">$8,400.00</td><td class="text-gray-400">—</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td><td class="text-gray-500 dark:text-gray-400 text-sm">1</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Submitted</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-claim-detail.html">#CLM-00006</a></td><td class="font-medium text-gray-900">Michael Harris</td><td class="text-gray-600 dark:text-gray-300">Medicare</td><td class="text-gray-500 dark:text-gray-400">Outpatient</td><td class="font-semibold text-gray-900">$4,400.00</td><td class="text-emerald-600">$4,400.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-02</td><td class="text-gray-500 dark:text-gray-400 text-sm">5</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Paid</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-claim-detail.html">#CLM-00007</a></td><td class="font-medium text-gray-900">Sarah Adams</td><td class="text-gray-600 dark:text-gray-300">Aetna Insurance</td><td class="text-gray-500 dark:text-gray-400">Pharmacy</td><td class="font-semibold text-gray-900">$850.00</td><td class="text-gray-400">—</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-03</td><td class="text-gray-500 dark:text-gray-400 text-sm">8</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Rejected</span></td></tr>
+<tr><td class="text-primary font-mono text-sm"><a href="insurance-claim-detail.html">#CLM-00008</a></td><td class="font-medium text-gray-900">Anna Peterson</td><td class="text-gray-600 dark:text-gray-300">United Health</td><td class="text-gray-500 dark:text-gray-400">Pharmacy</td><td class="font-semibold text-gray-900">$680.00</td><td class="text-emerald-600">$680.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td class="text-gray-500 dark:text-gray-400 text-sm">2</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-purple bg-purple/10">Paid</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>

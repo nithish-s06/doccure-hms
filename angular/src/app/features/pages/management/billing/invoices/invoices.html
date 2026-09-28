@@ -1,1 +1,78 @@
-<p>invoices works!</p>
+<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Invoices</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Patient billing invoices and payment status</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-file-text text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">9</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Invoices</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">$34,580.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Billed</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Unpaid</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-triangle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Overdue</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Invoices</span>
+                                <span class="text-xs text-gray-400 ml-auto">9 of 9</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Invoice #</th>
+                                            <th>Patient</th>
+                                            <th>Amount</th>
+                                            <th>Issue Date</th>
+                                            <th>Due Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="text-primary font-mono text-sm"><a href="invoice-detail.html">#INV-10001</a></td><td class="font-medium text-gray-900">Anna Peterson</td><td class="font-semibold text-gray-900">$1,200.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-15</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-30</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Paid</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="invoice-detail.html">#INV-10002</a></td><td class="font-medium text-gray-900">David Torres</td><td class="font-semibold text-gray-900">$5,800.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-01</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-15</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Unpaid</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="invoice-detail.html">#INV-10003</a></td><td class="font-medium text-gray-900">Linda Nguyen</td><td class="font-semibold text-gray-900">$890.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-10</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-25</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Overdue</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="invoice-detail.html">#INV-10004</a></td><td class="font-medium text-gray-900">Michael Harris</td><td class="font-semibold text-gray-900">$2,400.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-02</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-16</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Partial</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="invoice-detail.html">#INV-10005</a></td><td class="font-medium text-gray-900">Sarah Adams</td><td class="font-semibold text-gray-900">$640.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-05</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-19</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Unpaid</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="invoice-detail.html">#INV-10006</a></td><td class="font-medium text-gray-900">James Morrison</td><td class="font-semibold text-gray-900">$3,200.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-20</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-04</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Paid</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="invoice-detail.html">#INV-10007</a></td><td class="font-medium text-gray-900">Robert Clark</td><td class="font-semibold text-gray-900">$12,500.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-28</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-12</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-primary bg-primary/10">Partial</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="invoice-detail.html">#INV-10008</a></td><td class="font-medium text-gray-900">Emily Johnson</td><td class="font-semibold text-gray-900">$450.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-10-30</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-11-14</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-danger bg-danger/10">Overdue</span></td></tr>
+                                        <tr><td class="text-primary font-mono text-sm"><a href="invoice-detail.html">#INV-10009</a></td><td class="font-medium text-gray-900">Priya Nair</td><td class="font-semibold text-gray-900">$7,500.00</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-06</td><td class="text-gray-500 dark:text-gray-400 text-sm">2024-12-20</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Unpaid</span></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>

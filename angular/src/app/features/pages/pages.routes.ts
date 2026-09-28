@@ -132,6 +132,97 @@ export const Pages_Routes: Routes = [
             { path: 'care-plans', loadComponent: () => import('./clinical/nursing/care-plans/care-plans').then((m) => m.CarePlans)},
             { path: 'shift-reports', loadComponent: () => import('./clinical/nursing/shift-reports/shift-reports').then((m) => m.ShiftReports)},
 
+            // Patient Care - Medical Records
+            { path: 'medical-records', loadComponent: () => import('./patient-care/medical-records/medical-records/medical-records').then((m) => m.MedicalRecords)},
+            { path: 'medical-history', loadComponent: () => import('./patient-care/medical-records/medical-history/medical-history').then((m) => m.MedicalHistory)},
+            { path: 'diagnoses', loadComponent: () => import('./patient-care/medical-records/diagnoses/diagnoses').then((m) => m.Diagnoses)},
+            { path: 'emr-prescriptions', loadComponent: () => import('./patient-care/medical-records/emr-prescriptions/emr-prescriptions').then((m) => m.EmrPrescriptions)},
+            { path: 'allergies', loadComponent: () => import('./patient-care/medical-records/allergies/allergies').then((m) => m.Allergies)},
+            { path: 'progress-notes', loadComponent: () => import('./patient-care/medical-records/progress-notes/progress-notes').then((m) => m.ProgressNotes)},
+            { path: 'emr-documents', loadComponent: () => import('./patient-care/medical-records/emr-documents/emr-documents').then((m) => m.EmrDocuments)},
+
+            // Patient Care - Telemedicine
+            { path: 'telemedicine', loadComponent: () => import('./patient-care/telemedicine/telemedicine/telemedicine').then((m) => m.Telemedicine)},
+            { path: 'consultation-history', loadComponent: () => import('./patient-care/telemedicine/consultation-history/consultation-history').then((m) => m.ConsultationHistory)},
+            { path: 'waiting-room', loadComponent: () => import('./patient-care/telemedicine/waiting-room/waiting-room').then((m) => m.WaitingRoom)},
+            { path: 'scheduled-sessions', loadComponent: () => import('./patient-care/telemedicine/scheduled-sessions/scheduled-sessions').then((m) => m.ScheduledSessions)},
+
+            // Patient Care - Diet & Nutrition
+            { path: 'diet', loadComponent: () => import('./patient-care/diet-nutrition/diet/diet').then((m) => m.Diet)},
+            { path: 'meal-planning', loadComponent: () => import('./patient-care/diet-nutrition/meal-planning/meal-planning').then((m) => m.MealPlanning)},
+            { path: 'nutrition-assessment', loadComponent: () => import('./patient-care/diet-nutrition/nutrition-assessment/nutrition-assessment').then((m) => m.NutritionAssessment)},
+            { path: 'dietician', loadComponent: () => import('./patient-care/diet-nutrition/dietician/dietician').then((m) => m.Dietician)},
+
+            // Management - Billing
+            { path: 'billing', loadComponent: () => import('./management/billing/billing/billing').then((m) => m.Billing)},
+            { path: 'invoices', loadComponent: () => import('./management/billing/invoices/invoices').then((m) => m.Invoices)},
+            { path: 'payments', loadComponent: () => import('./management/billing/payments/payments').then((m) => m.Payments)},
+            { path: 'estimates', loadComponent: () => import('./management/billing/estimates/estimates').then((m) => m.Estimates)},
+            { path: 'refunds', loadComponent: () => import('./management/billing/refunds/refunds').then((m) => m.Refunds)},
+            { path: 'discounts', loadComponent: () => import('./management/billing/discounts/discounts').then((m) => m.Discounts)},
+            { path: 'tax-settings', loadComponent: () => import('./management/billing/tax-settings/tax-settings').then((m) => m.TaxSettings)},
+
+            // Management - Insurance
+            { path: 'insurance', loadComponent: () => import('./management/insurance/insurance/insurance').then((m) => m.Insurance)},
+            { path: 'insurance-claims', loadComponent: () => import('./management/insurance/insurance-claims/insurance-claims').then((m) => m.InsuranceClaims)},
+            { path: 'pre-authorization', loadComponent: () => import('./management/insurance/pre-authorization/pre-authorization').then((m) => m.PreAuthorization)},
+            { path: 'insurance-approvals', loadComponent: () => import('./management/insurance/insurance-approvals/insurance-approvals').then((m) => m.InsuranceApprovals)},
+            { path: 'reimbursements', loadComponent: () => import('./management/insurance/reimbursements/reimbursements').then((m) => m.Reimbursements)},
+
+            // Management - HR & Staff
+            { path: 'hr', loadComponent: () => import('./management/hr-staff/hr/hr').then((m) => m.Hr)},
+            { path: 'attendance', loadComponent: () => import('./management/hr-staff/attendance/attendance').then((m) => m.Attendance)},
+            { path: 'leave-management', loadComponent: () => import('./management/hr-staff/leave-management/leave-management').then((m) => m.LeaveManagement)},
+            { path: 'payroll', loadComponent: () => import('./management/hr-staff/payroll/payroll').then((m) => m.Payroll)},
+            { path: 'hr-departments', loadComponent: () => import('./management/hr-staff/hr-departments/hr-departments').then((m) => m.HrDepartments)},
+            { path: 'designations', loadComponent: () => import('./management/hr-staff/designations/designations').then((m) => m.Designations)},
+            { path: 'shifts', loadComponent: () => import('./management/hr-staff/shifts/shifts').then((m) => m.Shifts)},
+            { path: 'recruitment', loadComponent: () => import('./management/hr-staff/recruitment/recruitment').then((m) => m.Recruitment)},
+            { path: 'performance', loadComponent: () => import('./management/hr-staff/performance/performance').then((m) => m.Performance)},
+
+            // Management - Inventory
+            { path: 'inventory', loadComponent: () => import('./management/inventory/inventory/inventory').then((m) => m.Inventory)},
+            { path: 'products', loadComponent: () => import('./management/inventory/products/products').then((m) => m.Products)},
+            { path: 'inventory-categories', loadComponent: () => import('./management/inventory/inventory-categories/inventory-categories').then((m) => m.InventoryCategories)},
+            { path: 'inventory-suppliers', loadComponent: () => import('./management/inventory/inventory-suppliers/inventory-suppliers').then((m) => m.InventorySuppliers)},
+            { path: 'inventory-purchase-orders', loadComponent: () => import('./management/inventory/inventory-purchase-orders/inventory-purchase-orders').then((m) => m.InventoryPurchaseOrders)},
+            { path: 'stock-in', loadComponent: () => import('./management/inventory/stock-in/stock-in').then((m) => m.StockIn)},
+            { path: 'stock-out', loadComponent: () => import('./management/inventory/stock-out/stock-out').then((m) => m.StockOut)},
+            { path: 'stock-transfers', loadComponent: () => import('./management/inventory/stock-transfers/stock-transfers').then((m) => m.StockTransfers)},
+            { path: 'asset-tracking', loadComponent: () => import('./management/inventory/stock-tracking/stock-tracking').then((m) => m.StockTracking)},
+            { path: 'low-stock', loadComponent: () => import('./management/inventory/low-stock/low-stock').then((m) => m.LowStock)},
+
+            // Management - Ambulance
+            { path: 'ambulance', loadComponent: () => import('./management/ambulance/ambulance/ambulance').then((m) => m.Ambulance)},
+            { path: 'ambulance-vehicles', loadComponent: () => import('./management/ambulance/ambulance-vehicles/ambulance-vehicles').then((m) => m.AmbulanceVehicles)},
+            { path: 'ambulance-drivers', loadComponent: () => import('./management/ambulance/ambulance-drivers/ambulance-drivers').then((m) => m.AmbulanceDrivers)},
+            { path: 'emergency-calls', loadComponent: () => import('./management/ambulance/ambulance-calls/ambulance-calls').then((m) => m.AmbulanceCalls)},
+            { path: 'ambulance-trips', loadComponent: () => import('./management/ambulance/ambulance-trips/ambulance-trips').then((m) => m.AmbulanceTrips)},
+            { path: 'ambulance-maintenance', loadComponent: () => import('./management/ambulance/ambulance-maintenance/ambulance-maintenance').then((m) => m.AmbulanceMaintenance)},
+
+            // Management - Finance
+            { path: 'income', loadComponent: () => import('./management/finance/income/income').then((m) => m.Income)},
+            { path: 'expenses', loadComponent: () => import('./management/finance/expenses/expenses').then((m) => m.Expenses)},
+            { path: 'transactions', loadComponent: () => import('./management/finance/transactions/transactions').then((m) => m.Transactions)},
+            { path: 'accounts', loadComponent: () => import('./management/finance/accounts/accounts').then((m) => m.Accounts)},
+            { path: 'bank-accounts', loadComponent: () => import('./management/finance/bank-accounts/bank-accounts').then((m) => m.BankAccounts)},
+            { path: 'profit-loss', loadComponent: () => import('./management/finance/profit-loss/profit-loss').then((m) => m.ProfitLoss)},
+
+            // Management - Administration
+            { path: 'branches', loadComponent: () => import('./management/administration/branches/branches').then((m) => m.Branches)},
+            { path: 'admin-departments', loadComponent: () => import('./management/administration/admin-departments/admin-departments').then((m) => m.AdminDepartments)},
+            { path: 'notice-board', loadComponent: () => import('./management/administration/notice-board/notice-board').then((m) => m.NoticeBoard)},
+            { path: 'announcements', loadComponent: () => import('./management/administration/announcements/announcements').then((m) => m.Announcements)},
+            { path: 'visitors', loadComponent: () => import('./management/administration/visitors/visitors').then((m) => m.Visitors)},
+            { path: 'complaints', loadComponent: () => import('./management/administration/complaints/complaints').then((m) => m.Complaints)},
+
+            // Management - Assets
+            { path: 'equipment', loadComponent: () => import('./management/assets/equipment/equipment').then((m) => m.Equipment)},
+            { path: 'asset-maintenance', loadComponent: () => import('./management/assets/asset-maintenance/asset-maintenance').then((m) => m.AssetMaintenance)},
+            { path: 'repairs', loadComponent: () => import('./management/assets/repairs/repairs').then((m) => m.Repairs)},
+            { path: 'vendors', loadComponent: () => import('./management/assets/vendors/vendors').then((m) => m.Vendors)},
+            { path: 'asset-categories', loadComponent: () => import('./management/assets/asset-categories/asset-categories').then((m) => m.AssetCategories)},
+
             // Applications
             { path: 'chat', loadComponent: () => import('./main-menu/applications/chat/chat').then((m) => m.Chat)},
             { path: 'voice-call', loadComponent: () => import('./main-menu/applications/calls/voice-call/voice-call').then((m) => m.VoiceCall)},
