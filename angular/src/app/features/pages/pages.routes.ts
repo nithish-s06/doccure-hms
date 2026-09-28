@@ -223,6 +223,46 @@ export const Pages_Routes: Routes = [
             { path: 'vendors', loadComponent: () => import('./management/assets/vendors/vendors').then((m) => m.Vendors)},
             { path: 'asset-categories', loadComponent: () => import('./management/assets/asset-categories/asset-categories').then((m) => m.AssetCategories)},
 
+            // System - Reports
+            { path: 'reports', loadComponent: () => import('./system/reports/reports/reports').then((m) => m.Reports)},
+            { path: 'patient-reports', loadComponent: () => import('./system/reports/patient-reports/patient-reports').then((m) => m.PatientReports)},
+            { path: 'appointment-reports', loadComponent: () => import('./system/reports/appointment-reports/appointment-reports').then((m) => m.AppointmentReports)},
+            { path: 'revenue-reports', loadComponent: () => import('./system/reports/revenue-reports/revenue-reports').then((m) => m.RevenueReports)},
+            { path: 'pharmacy-reports', loadComponent: () => import('./system/reports/pharmacy-reports/pharmacy-reports').then((m) => m.PharmacyReports)},
+            { path: 'laboratory-reports', loadComponent: () => import('./system/reports/laboratory-reports/laboratory-reports').then((m) => m.LaboratoryReports)},
+            { path: 'doctor-performance', loadComponent: () => import('./system/reports/doctor-performance/doctor-performance').then((m) => m.DoctorPerformance)},
+            { path: 'bed-occupancy-report', loadComponent: () => import('./system/reports/bed-occupancy-report/bed-occupancy-report').then((m) => m.BedOccupancyReport)},
+            { path: 'inventory-reports', loadComponent: () => import('./system/reports/inventory-reports/inventory-reports').then((m) => m.InventoryReports)},
+            { path: 'hr-reports', loadComponent: () => import('./system/reports/hr-reports/hr-reports').then((m) => m.HrReports)},
+
+            // System - misc
+            { path: 'notifications', loadComponent: () => import('./system/notifications/notifications').then((m) => m.Notifications)},
+            { path: 'activity-logs', loadComponent: () => import('./system/activity-logs/activity-logs').then((m) => m.ActivityLogs)},
+            { path: 'audit-logs', loadComponent: () => import('./system/audit-logs/audit-logs').then((m) => m.AuditLogs)},
+            { path: 'users', loadComponent: () => import('./system/users/users').then((m) => m.Users)},
+            { path: 'roles', loadComponent: () => import('./system/roles/roles').then((m) => m.Roles)},
+            { path: 'permissions', loadComponent: () => import('./system/permissions/permissions').then((m) => m.Permissions)},
+            { path: 'backup-restore', loadComponent: () => import('./system/backup-restore/backup-restore').then((m) => m.BackupRestore)},
+            { path: 'email-templates', loadComponent: () => import('./system/email-templates/email-templates').then((m) => m.EmailTemplates)},
+            { path: 'sms-templates', loadComponent: () => import('./system/sms-templates/sms-templates').then((m) => m.SmsTemplates)},
+            { path: 'settings', loadComponent: () => import('./system/settings/settings').then((m) => m.Settings)},
+
+            // General Pages
+            { path: 'profile', loadComponent: () => import('./general-pages/profile/profile').then((m) => m.Profile)},
+            { path: 'my-account', loadComponent: () => import('./general-pages/my-account/my-account').then((m) => m.MyAccount)},
+            { path: 'activity', loadComponent: () => import('./general-pages/activity/activity').then((m) => m.Activity)},
+            { path: 'gallery', loadComponent: () => import('./general-pages/gallery/gallery').then((m) => m.Gallery)},
+            { path: 'help-center', loadComponent: () => import('./general-pages/help-center/help-center').then((m) => m.HelpCenter)},
+            { path: 'knowledge-base', loadComponent: () => import('./general-pages/knowledge-base/knowledge-base').then((m) => m.KnowledgeBase)},
+            { path: 'support-tickets', loadComponent: () => import('./general-pages/support-tickets/support-tickets').then((m) => m.SupportTickets)},
+            { path: 'contact-us', loadComponent: () => import('./general-pages/contact-us/contact-us').then((m) => m.ContactUs)},
+            { path: 'search-results', loadComponent: () => import('./general-pages/search-results/search-results').then((m) => m.SearchResults)},
+            { path: 'pricing', loadComponent: () => import('./general-pages/pricing/pricing').then((m) => m.Pricing)},
+            { path: 'faq', loadComponent: () => import('./general-pages/faq/faq').then((m) => m.Faq)},
+            { path: 'privacy-policy', loadComponent: () => import('./general-pages/privacy-policy/privacy-policy').then((m) => m.PrivacyPolicy)},
+            { path: 'terms-conditions', loadComponent: () => import('./general-pages/terms-conditions/terms-conditions').then((m) => m.TermsConditions)},
+            { path: 'starter-page', loadComponent: () => import('./general-pages/starter-page/starter-page').then((m) => m.StarterPage)},
+
             // Applications
             { path: 'chat', loadComponent: () => import('./main-menu/applications/chat/chat').then((m) => m.Chat)},
             { path: 'voice-call', loadComponent: () => import('./main-menu/applications/calls/voice-call/voice-call').then((m) => m.VoiceCall)},

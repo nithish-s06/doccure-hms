@@ -1,1 +1,80 @@
-<p>laboratory-reports works!</p>
+<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+
+                        <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Laboratory Reports</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Test volume, turnaround time and revenue summary for the selected period</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-clipboard text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-tests">12</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Tests Performed</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-turnaround">16.7h</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Avg Turnaround</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-dollar-sign text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-revenue">$1,560.00</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Revenue</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                                    <i class="icon-alert-circle text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-pending">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Pending Tests</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color">
+                                <h3 class="font-semibold text-gray-900">By Test Category</h3>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead><tr><th>Category</th><th>Tests Performed</th><th>Avg Turnaround</th><th>Revenue</th></tr></thead>
+                                    <tbody id="tbody-category"><tr><td class="font-medium text-gray-900">Blood</td><td>3</td><td>4.3h</td><td>$145.00</td></tr><tr><td class="font-medium text-gray-900">Urine</td><td>2</td><td>11.5h</td><td>$70.00</td></tr><tr><td class="font-medium text-gray-900">Imaging</td><td>3</td><td>8.7h</td><td>$750.00</td></tr><tr><td class="font-medium text-gray-900">Pathology</td><td>2</td><td>42.0h</td><td>$420.00</td></tr><tr><td class="font-medium text-gray-900">Microbiology</td><td>2</td><td>27.0h</td><td>$175.00</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="card" data-aos="fade-up" data-aos-delay="150">
+                            <div class="p-4 border-b border-border-color flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Monthly Trend</h3>
+                                <span class="text-xs text-gray-400" id="count">12 records</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Month</th>
+                                            <th>Tests Performed</th>
+                                            <th>Revenue</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr><td class="font-medium text-gray-900">December 2024</td><td>12</td><td>$1,560.00</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>

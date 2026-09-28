@@ -1,1 +1,81 @@
-<p>patient-reports works!</p>
+<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+
+                        <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">Patient Reports</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Registration, admission and discharge summary for the selected period</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-user-plus text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-registrations">5</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">New Registrations</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-user-check text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-admissions">4</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Admissions</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-log-out text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-discharges">3</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Discharges</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-users text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900" id="stat-active">6</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active Patients</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color">
+                                <h3 class="font-semibold text-gray-900">Demographics by Age Group</h3>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead><tr><th>Age Group</th><th>Male</th><th>Female</th><th>Total</th></tr></thead>
+                                    <tbody id="tbody-demo"><tr><td class="text-gray-700 dark:text-gray-300">0-18</td><td>1</td><td>1</td><td class="font-medium text-gray-900">2</td></tr><tr><td class="text-gray-700 dark:text-gray-300">19-35</td><td>2</td><td>1</td><td class="font-medium text-gray-900">3</td></tr><tr><td class="text-gray-700 dark:text-gray-300">36-55</td><td>2</td><td>1</td><td class="font-medium text-gray-900">3</td></tr><tr><td class="text-gray-700 dark:text-gray-300">56-75</td><td>1</td><td>2</td><td class="font-medium text-gray-900">3</td></tr><tr><td class="text-gray-700 dark:text-gray-300">75+</td><td>0</td><td>1</td><td class="font-medium text-gray-900">1</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="card" data-aos="fade-up" data-aos-delay="150">
+                            <div class="p-4 border-b border-border-color flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Monthly Trend</h3>
+                                <span class="text-xs text-gray-400" id="count">12 records</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Month</th>
+                                            <th>New Registrations</th>
+                                            <th>Admissions</th>
+                                            <th>Discharges</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"><tr><td class="font-medium text-gray-900">December 2024</td><td>5</td><td>4</td><td>3</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>

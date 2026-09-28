@@ -1,1 +1,75 @@
-<p>sms-templates works!</p>
+<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
+                    <div class="max-w-7xl mx-auto space-y-5">
+
+                        <div class="flex items-center justify-between" data-aos="fade-up">
+                            <div>
+                                <h1 class="text-2xl font-bold text-gray-900">SMS Templates</h1>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage short-message templates sent to patients and staff</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <i class="icon-message-square text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">7</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Templates</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                                    <i class="icon-check-circle text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">5</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Active</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                                    <i class="icon-edit-3 text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">2</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Draft</p>
+                                </div>
+                            </div>
+                            <div class="card p-4 flex items-center gap-4">
+                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                                    <i class="icon-hash text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-gray-900">85</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Avg. Character Count</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-4 border-b border-border-color flex flex-wrap gap-3 items-center">
+                                <span class="text-sm font-semibold text-gray-900 dark:text-white">All Templates</span>
+                                <span class="text-xs text-gray-400 ml-auto">7 of 7</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table" ngNonBindable>
+                                    <thead>
+                                        <tr>
+                                            <th>Template Name</th>
+                                            <th>Message Content</th>
+                                            <th>Category</th>
+                                            <th>Characters</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr><td class="font-medium text-gray-900">Appointment Reminder</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Hi {{name}}, reminder: your appointment is on {{date}} at {{time}}. Reply STOP to opt out.">Hi {{name}}, reminder: your appointment is on {{date}} at {{time}}. Reply STOP to opt out.</td><td class="text-gray-500 dark:text-gray-400">Appointment Reminder</td><td class="text-gray-600 dark:text-gray-300">90</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">OTP Verification</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Your Dreams HMS verification code is {{otp}}. Valid for 5 minutes. Do not share this code.">Your Dreams HMS verification code is {{otp}}. Valid for 5 minutes. Do not share this code.</td><td class="text-gray-500 dark:text-gray-400">OTP</td><td class="text-gray-600 dark:text-gray-300">90</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Bed Availability Alert</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Alert: ICU bed occupancy has reached 90%. Please review capacity dashboard.">Alert: ICU bed occupancy has reached 90%. Please review capacity dashboard.</td><td class="text-gray-500 dark:text-gray-400">Alert</td><td class="text-gray-600 dark:text-gray-300">75</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Payment Due Reminder</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Hi {{name}}, your invoice of {{amount}} is due on {{due_date}}. Pay online at the patient portal.">Hi {{name}}, your invoice of {{amount}} is due on {{due_date}}. Pay online at the patient portal.</td><td class="text-gray-500 dark:text-gray-400">Billing</td><td class="text-gray-600 dark:text-gray-300">97</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Lab Result Notification</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Hi {{name}}, your lab results are ready. View them in your patient portal.">Hi {{name}}, your lab results are ready. View them in your patient portal.</td><td class="text-gray-500 dark:text-gray-400">General</td><td class="text-gray-600 dark:text-gray-300">74</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Active</span></td></tr>
+<tr><td class="font-medium text-gray-900">Discharge Notice</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Hi {{name}}, you have been discharged. Follow-up instructions were sent to your email.">Hi {{name}}, you have been discharged. Follow-up instructions were sent to your email.</td><td class="text-gray-500 dark:text-gray-400">General</td><td class="text-gray-600 dark:text-gray-300">86</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Draft</span></td></tr>
+<tr><td class="font-medium text-gray-900">Vaccination Reminder</td><td class="text-gray-500 dark:text-gray-400 text-sm max-w-80 truncate" title="Hi {{name}}, your next vaccination dose is due on {{date}}. Please schedule a visit.">Hi {{name}}, your next vaccination dose is due on {{date}}. Please schedule a visit.</td><td class="text-gray-500 dark:text-gray-400">Appointment Reminder</td><td class="text-gray-600 dark:text-gray-300">84</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-warning bg-warning/10">Draft</span></td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
