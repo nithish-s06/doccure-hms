@@ -1,0 +1,233 @@
+<!-- Start grid -->
+				<div class="grid grid-cols-12 gap-6 items-baseline ng-slider">
+					<div class="preview-card col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Basic Range Slider</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div>
+						<div class="preview-content">
+							<div class="rangeslider_basic">
+								<mat-slider min="0" max="400">
+								<input matSliderThumb value="100">
+								</mat-slider>
+							</div>
+						</div>  
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">&lt;mat-slider&gt;
+&lt;input matSliderThumb/&gt;
+&lt;/mat-slider&gt;
+</code>
+</pre>
+					</div> <!-- end card -->
+
+					<div class="preview-card col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Multi Elements Range</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div>
+						<div class="preview-content">
+							<div id="rangeslider_multielement">
+								<mat-slider min="200" max="500">
+  <input value="300" matSliderStartThumb>
+  <input value="400" matSliderEndThumb>
+</mat-slider>
+							</div>
+						</div> 
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;mat-slider min="200" max="500"&gt;
+  &lt;input value="300" matSliderStartThumb&gt;
+  &lt;input value="400" matSliderEndThumb&gt;
+&lt;/mat-slider&gt;
+</code>
+</pre>
+					</div> <!-- end card -->
+
+					<div class="preview-card col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Formatting the thumb label</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div>  
+						<div class="preview-content">
+							<div id="nonlinear">
+								<mat-slider min="0" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel">
+  <input matSliderThumb value="30000">
+</mat-slider>
+							</div>
+						</div> 
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;mat-slider min="0" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel"&gt;
+  &lt;input matSliderThumb value="30000"&gt;
+&lt;/mat-slider&gt;
+</code>
+</pre>
+					</div> <!-- end card -->
+
+					<div class="preview-card col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Color Scheme</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div>  
+						<div class="preview-content">
+							<div class="mb-4">
+								<h6 class="mb-2 text-sm">Primary</h6>
+								<div class="primary-range rangeslider_basic">
+									<mat-slider min="0" max="300">
+										<input matSliderThumb value="100">
+									</mat-slider>
+								</div> 
+							</div>
+
+							<div class="mb-4">
+								<h6 class="mb-2 text-sm">Success</h6>
+								<div class="success-range rangeslider_basic">
+									<mat-slider min="0" max="300">
+										<input matSliderThumb value="100">
+									</mat-slider>
+								</div> 
+							</div>
+
+							<div class="mb-4">
+								<h6 class="mb-2 text-sm">Info</h6>
+								<div class="info-range rangeslider_basic">
+									<mat-slider min="0" max="300">
+										<input matSliderThumb value="100">
+									</mat-slider>
+								</div> 
+							</div>
+
+							<div class="mb-4">
+								<h6 class="mb-2 text-sm">Warning</h6>
+								<div class="warning-range rangeslider_basic">
+									<mat-slider min="0" max="300">
+										<input matSliderThumb value="100">
+									</mat-slider>
+								</div> 
+							</div>
+
+							<div>
+								<h6 class="mb-2 text-sm">Danger</h6>
+								<div class="danger-range rangeslider_basic">
+									<mat-slider min="0" max="300">
+										<input matSliderThumb value="100">
+									</mat-slider>
+								</div> 
+							</div>
+
+						</div>
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;div class="preview-content"&gt;
+    &lt;div class="mb-4"&gt;
+        &lt;h6 class="mb-2 text-sm"&gt;Primary&lt;/h6&gt;
+        &lt;div class="primary-range rangeslider_basic"&gt;
+            &lt;mat-slider min="0" max="300"&gt;
+                &lt;input matSliderThumb value="100"&gt;
+            &lt;/mat-slider&gt;
+        &lt;/div&gt; 
+    &lt;/div&gt;
+
+    &lt;div class="mb-4"&gt;
+        &lt;h6 class="mb-2 text-sm"&gt;Success&lt;/h6&gt;
+        &lt;div class="success-range rangeslider_basic"&gt;
+            &lt;mat-slider min="0" max="300"&gt;
+                &lt;input matSliderThumb value="100"&gt;
+            &lt;/mat-slider&gt;
+        &lt;/div&gt; 
+    &lt;/div&gt;
+
+    &lt;div class="mb-4"&gt;
+        &lt;h6 class="mb-2 text-sm"&gt;Info&lt;/h6&gt;
+        &lt;div class="info-range rangeslider_basic"&gt;
+            &lt;mat-slider min="0" max="300"&gt;
+                &lt;input matSliderThumb value="100"&gt;
+            &lt;/mat-slider&gt;
+        &lt;/div&gt; 
+    &lt;/div&gt;
+
+    &lt;div class="mb-4"&gt;
+        &lt;h6 class="mb-2 text-sm"&gt;Warning&lt;/h6&gt;
+        &lt;div class="warning-range rangeslider_basic"&gt;
+            &lt;mat-slider min="0" max="300"&gt;
+                &lt;input matSliderThumb value="100"&gt;
+            &lt;/mat-slider&gt;
+        &lt;/div&gt; 
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;h6 class="mb-2 text-sm"&gt;Danger&lt;/h6&gt;
+        &lt;div class="danger-range rangeslider_basic"&gt;
+            &lt;mat-slider min="0" max="300"&gt;
+                &lt;input matSliderThumb value="100"&gt;
+            &lt;/mat-slider&gt;
+        &lt;/div&gt; 
+    &lt;/div&gt;
+&lt;/div&gt;
+</code>
+</pre>
+					</div> <!-- end card -->
+
+
+
+					<div class="preview-card lg:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Multi Range Prime</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div>
+						<div class="preview-content">
+							<div id="slider-vertical" class="mx-auto flex justify-center">
+								 <p-slider [(ngModel)]="rangeValues" orientation="vertical" [range]="true" class="h-56" />
+							</div>
+						</div>
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;p-slider [(ngModel)]="rangeValues" orientation="vertical" [range]="true" class="h-56"&gt;&lt;/p-slider&gt;
+</code>
+</pre>   
+					</div> <!-- end card -->
+
+					<div class="preview-card lg:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Vertical Range Prime</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div>  
+						<div class="preview-content"> 
+							<div id="slider-connect-upper" class="mx-auto flex justify-center">
+								 <p-slider [(ngModel)]="value" orientation="vertical" class="h-56" />
+							</div>
+						</div> 
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;p-slider [(ngModel)]="value" orientation="vertical" class="h-56"&gt;&lt;/p-slider&gt;
+</code>
+</pre>
+					</div> <!-- end card -->
+
+
+				</div> 
+				<!-- End grid -->  

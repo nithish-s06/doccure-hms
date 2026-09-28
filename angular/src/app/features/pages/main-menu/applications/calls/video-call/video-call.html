@@ -1,0 +1,100 @@
+<main class="p-4 lg:p-6 space-y-6 max-w-full mx-auto w-full">
+
+	<!-- ============ Page Title Area ============ -->
+	<div class="flex flex-wrap items-center justify-between gap-3">
+		<h1 class="font-display font-bold text-[21px]">Video Call</h1>
+		<button type="button" class="btn btn-primary !text-[12.5px]" data-hs-overlay="#newVideoCallModal">
+			<i class="icon-plus text-[13px]"></i>Add New
+		</button>
+	</div>
+
+	<!-- ============ Video Call Panel ============ -->
+	<div class="surface-card p-4 flex flex-col gap-4 sm:h-[calc(100vh-200px)]">
+
+		<!-- Main speaker tile -->
+		<div class="relative rounded-md overflow-hidden aspect-video flex items-center justify-center sm:h-[calc(100vh-364px)] h-full">
+			<img src="assets/img/avatar/avatar-06.jpg" alt="Rachael Thomas" class="absolute inset-0 w-full h-full object-cover">
+			<div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.35)_100%)]"></div>
+			<!-- Top-left badges -->
+			<div class="absolute top-3 left-3 flex items-center gap-2">
+				<span class="badge-soft badge-neutral shadow-sm">Rachael Thomas</span>
+				<span class="badge-soft badge-neutral shadow-sm">01:45</span>
+			</div>
+			<!-- Top-right fullscreen -->
+			<button type="button" class="header-icon-btn absolute top-3 right-3 shadow-sm u-background-surface-base" aria-label="Expand"><i class="icon-maximize"></i></button>
+		</div>
+
+		<!-- Participant strip -->
+		<div class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-3">
+			<div class="relative lg:aspect-4/2 aspect-[4/3] rounded-md overflow-hidden flex items-center justify-center">
+				<img src="assets/img/avatar/avatar-08.jpg" alt="Ethan Cooper" class="absolute inset-0 w-full h-full object-cover">
+				<div class="absolute inset-0 bg-black/10"></div>
+				<span class="absolute bottom-2 left-1/2 -translate-x-1/2 badge-soft badge-neutral !text-[11px] shadow-sm whitespace-nowrap">Ethan Cooper</span>
+			</div>
+			<div class="relative lg:aspect-4/2 aspect-[4/3] rounded-md overflow-hidden flex items-center justify-center">
+				<img src="assets/img/avatar/avatar-05.jpg" alt="Sophia Carter" class="absolute inset-0 w-full h-full object-cover">
+				<div class="absolute inset-0 bg-black/10"></div>
+				<span class="absolute top-2 left-2 size-6 rounded-full bg-white/90 flex items-center justify-center"><i class="icon-audio-lines u-color-color-accent-600"></i></span>
+				<span class="absolute bottom-2 left-1/2 -translate-x-1/2 badge-soft badge-neutral !text-[11px] shadow-sm whitespace-nowrap">Sophia Carter</span>
+			</div>
+			<div class="relative lg:aspect-4/2 aspect-[4/3] rounded-md overflow-hidden flex items-center justify-center">
+				<img src="assets/img/avatar/avatar-07.jpg" alt="Daniel Brooks" class="absolute inset-0 w-full h-full object-cover">
+				<div class="absolute inset-0 bg-black/10"></div>
+				<span class="absolute bottom-2 left-1/2 -translate-x-1/2 badge-soft badge-neutral !text-[11px] shadow-sm whitespace-nowrap">Daniel Brooks</span>
+			</div>
+			<div class="relative lg:aspect-4/2 aspect-[4/3] rounded-md overflow-hidden flex items-center justify-center">
+				<img src="assets/img/avatar/avatar-03.jpg" alt="Emily Hayes" class="absolute inset-0 w-full h-full object-cover">
+				<div class="absolute inset-0 bg-black/10"></div>
+				<span class="absolute bottom-2 left-1/2 -translate-x-1/2 badge-soft badge-neutral !text-[11px] shadow-sm whitespace-nowrap">Emily Hayes</span>
+			</div>
+			<div class="relative lg:aspect-4/2 aspect-[4/3] rounded-md overflow-hidden flex items-center justify-center">
+				<img src="assets/img/avatar/avatar-04.jpg" alt="Olivia Bennett" class="absolute inset-0 w-full h-full object-cover">
+				<div class="absolute inset-0 bg-black/10"></div>
+				<span class="absolute bottom-2 left-1/2 -translate-x-1/2 badge-soft badge-neutral !text-[11px] shadow-sm whitespace-nowrap">Olivia Bennett</span>
+			</div>
+		</div>
+
+		<!-- Control bar -->
+		<div class="border-t pt-4 flex items-center justify-center gap-3 u-border-color-border-subtle">
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Mute"><i class="icon-mic"></i></button>
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Video"><i class="icon-video"></i></button>
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Chat"><i class="icon-message-circle"></i></button>
+			<button type="button" class="size-8 sm:size-11 rounded-full inline-flex items-center justify-center text-white cursor-pointer u-background-color-danger-600" aria-label="End call"><i class="icon-phone-off"></i></button>
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Volume"><i class="icon-volume-2"></i></button>
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Emoji"><i class="icon-smile"></i></button>
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Screen share"><i class="icon-monitor-up"></i></button>
+		</div>
+
+	</div>
+
+</main>
+
+ <!-- ============ New Video Call Modal ============ -->
+    <div id="newVideoCallModal" class="hs-overlay ui-modal hidden">
+        <div class="ui-modal-dialog !max-w-[380px] p-5">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="font-display font-bold text-[15px]">New Video Call</h2>
+                <button type="button" class="header-icon-btn" data-hs-overlay="#newVideoCallModal" aria-label="Close"><i class="icon-x text-[16px]"></i></button>
+            </div>
+            <div class="space-y-3">
+                <div>
+                    <label class="text-[11.5px] font-semibold uppercase tracking-wide mb-1.5 u-color-text-tertiary">Call Title</label>
+                    <input type="text" placeholder="e.g. Weekly Sync" class="w-full field-control">
+                </div>
+                <div>
+                    <label class="text-[11.5px] font-semibold uppercase tracking-wide mb-1.5 u-color-text-tertiary">Invite Participants</label>
+                    <select class="w-full field-control" multiple>
+                        <option>Rachael Thomas</option>
+                        <option>Amelia Hart</option>
+                        <option>Marcus Lee</option>
+                        <option>Renee Foster</option>
+                        <option>Priya Nair</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 w-full mt-5">
+                <button type="button" class="btn btn-outline !text-[12.5px] flex-1" data-hs-overlay="#newVideoCallModal">Cancel</button>
+                <button type="button" class="btn btn-primary !text-[12.5px] flex-1"><i class="icon-video text-[13px]"></i>Start Call</button>
+            </div>
+        </div>
+    </div>

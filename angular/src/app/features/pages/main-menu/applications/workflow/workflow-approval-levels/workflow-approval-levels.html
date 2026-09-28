@@ -1,0 +1,284 @@
+
+                    
+
+<main class="p-4 lg:p-6 space-y-6 max-w-full mx-auto w-full">
+
+                <!-- ============ Page Title Area ============ -->
+                <div class="flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                        <h1 class="font-display font-bold text-[21px]">Workflow &amp; Approvals</h1>
+                        <p class="text-[12.5px] mt-1 u-color-text-tertiary">Configure approval workflows and routing rules across modules</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button type="button" class="btn btn-outline !text-[12.5px]">
+                            <i class="icon-printer text-[13px]"></i>Print
+                        </button>
+                        <div class="hs-dropdown [--placement:bottom-end] relative">
+                            <button type="button" class="hs-dropdown-toggle btn btn-outline !text-[12.5px]" aria-haspopup="menu" aria-expanded="false">
+                                <i class="icon-file-down text-[13px]"></i>Export<i class="icon-chevron-down text-[11px]"></i>
+                            </button>
+                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                <a href="javascript:void(0);" data-quick-export="PDF" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">Export as PDF</a>
+                                <a href="javascript:void(0);" data-quick-export="Excel" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">Export as Excel</a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary !text-[12.5px]" data-hs-overlay="#addLevelModal">
+                            <i class="icon-plus text-[13px]"></i>Add New
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ============ Tabs ============ -->
+                <div class="flex items-center flex-wrap gap-1 border-b u-border-color-border-subtle">
+                    <a [routerLink]="AllRoutes.workflowApprovals" class="px-4 py-2 text-[12.5px] u-color-text-tertiary">Workflow</a>
+                    <a [routerLink]="AllRoutes.workflowApprovalLevels" class="px-4 py-2 text-[12.5px] font-semibold u-color-color-primary-600_border-bottom-2px-solid-color-primar">Approval Levels</a>
+                    <a [routerLink]="AllRoutes.workflowRequests" class="px-4 py-2 text-[12.5px] u-color-text-tertiary">Requests</a>
+                    <a [routerLink]="AllRoutes.workflowActions" class="px-4 py-2 text-[12.5px] u-color-text-tertiary">Actions / Audit</a>
+                </div>
+
+                <!-- ============ Toolbar ============ -->
+                <div class="surface-card p-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2.5">
+                        <div class="relative flex-1 min-w-[220px] max-w-xs">
+                            <i class="icon-search absolute top-1/2 -translate-y-1/2 start-3 text-[14px] u-color-text-tertiary"></i>
+                            <input type="text" placeholder="Search" class="w-full ps-9 pe-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <div class="hs-dropdown [--placement:bottom-end] relative">
+                                <button type="button" class="hs-dropdown-toggle btn btn-outline !text-[12.5px]" aria-haspopup="menu" aria-expanded="false">
+                                    <i class="icon-filter text-[13px]"></i>Filter<i class="icon-chevron-down text-[11px]"></i>
+                                </button>
+                                <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-48 surface-card !p-2 z-50 space-y-1" role="menu" aria-orientation="vertical">
+                                    <label class="flex items-center gap-2 text-[12.5px] px-2 py-1.5 rounded-md hover:bg-[var(--surface-sunken)]"><input type="checkbox" checked class="size-4 rounded u-accent-color-color-primary-600">Dept Manager</label>
+                                    <label class="flex items-center gap-2 text-[12.5px] px-2 py-1.5 rounded-md hover:bg-[var(--surface-sunken)]"><input type="checkbox" class="size-4 rounded u-accent-color-color-primary-600">Finance Manager</label>
+                                    <label class="flex items-center gap-2 text-[12.5px] px-2 py-1.5 rounded-md hover:bg-[var(--surface-sunken)]"><input type="checkbox" class="size-4 rounded u-accent-color-color-primary-600">Procurement Officer</label>
+                                    <label class="flex items-center gap-2 text-[12.5px] px-2 py-1.5 rounded-md hover:bg-[var(--surface-sunken)]"><input type="checkbox" class="size-4 rounded u-accent-color-color-primary-600">CFO</label>
+                                    <label class="flex items-center gap-2 text-[12.5px] px-2 py-1.5 rounded-md hover:bg-[var(--surface-sunken)]"><input type="checkbox" class="size-4 rounded u-accent-color-color-primary-600">Line Manager</label>
+                                    <div class="flex items-center gap-2 pt-2 mt-1 border-t u-border-color-border-subtle">
+                                        <button type="button" class="btn btn-outline !text-[11.5px] !py-1 flex-1">Cancel</button>
+                                        <button type="button" class="btn btn-primary !text-[11.5px] !py-1 flex-1">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hs-dropdown [--placement:bottom-end] relative">
+                                <button type="button" class="hs-dropdown-toggle btn btn-outline !text-[12.5px]" aria-haspopup="menu" aria-expanded="false">
+                                    <i class="icon-arrow-up-down text-[13px]"></i>Sort By<i class="icon-chevron-down text-[11px]"></i>
+                                </button>
+                                <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                    <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">A - Z</a>
+                                    <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">Z - A</a>
+                                    <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">Newest</a>
+                                    <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">Oldest</a>
+                                    <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">High</a>
+                                    <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">Low</a>
+                                </div>
+                            </div>
+                            <button type="button" class="header-icon-btn" aria-label="Manage columns"><i class="icon-columns text-[15px]"></i></button>
+                            <button type="button" class="header-icon-btn" aria-label="Rotate"><i class="icon-rotate-cw text-[15px]"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============ Data Table ============ -->
+                <div class="surface-card !p-0 overflow-hidden">
+                    <div class="overflow-x-auto scroll-thin">
+                        <table class="data-table w-full min-w-[880px]">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Workflow ID</th>
+                                    <th scope="col">Approval Role</th>
+                                    <th scope="col">Level</th>
+                                    <th scope="col">Escalation</th>
+                                    <th class="w-10" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="javascript:void(0);" class="u-color-color-primary-600">#APL0020</a></td>
+                                    <td class="u-color-text-tertiary">#WFL0020</td>
+                                    <td class="font-semibold">Dept Manager</td>
+                                    <td>1</td>
+                                    <td class="u-color-text-tertiary">24 hrs</td>
+                                    <td>
+                                        <div class="hs-dropdown [--placement:bottom-end] relative">
+                                            <button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
+                                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#editLevelModal"><i class="icon-edit text-[13px]"></i>Edit</a>
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#deleteLevelModal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="javascript:void(0);" class="u-color-color-primary-600">#APL0019</a></td>
+                                    <td class="u-color-text-tertiary">#WFL0019</td>
+                                    <td class="font-semibold">Finance Manager</td>
+                                    <td>2</td>
+                                    <td class="u-color-text-tertiary">36 hrs</td>
+                                    <td>
+                                        <div class="hs-dropdown [--placement:bottom-end] relative">
+                                            <button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
+                                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#editLevelModal"><i class="icon-edit text-[13px]"></i>Edit</a>
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#deleteLevelModal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="javascript:void(0);" class="u-color-color-primary-600">#APL0018</a></td>
+                                    <td class="u-color-text-tertiary">#WFL0018</td>
+                                    <td class="font-semibold">Procurement Officer</td>
+                                    <td>1</td>
+                                    <td class="u-color-text-tertiary">48 hrs</td>
+                                    <td>
+                                        <div class="hs-dropdown [--placement:bottom-end] relative">
+                                            <button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
+                                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#editLevelModal"><i class="icon-edit text-[13px]"></i>Edit</a>
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#deleteLevelModal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="javascript:void(0);" class="u-color-color-primary-600">#APL0017</a></td>
+                                    <td class="u-color-text-tertiary">#WFL0017</td>
+                                    <td class="font-semibold">CFO</td>
+                                    <td>2</td>
+                                    <td class="u-color-text-tertiary">12 hrs</td>
+                                    <td>
+                                        <div class="hs-dropdown [--placement:bottom-end] relative">
+                                            <button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
+                                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#editLevelModal"><i class="icon-edit text-[13px]"></i>Edit</a>
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#deleteLevelModal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="javascript:void(0);" class="u-color-color-primary-600">#APL0016</a></td>
+                                    <td class="u-color-text-tertiary">#WFL0016</td>
+                                    <td class="font-semibold">Line Manager</td>
+                                    <td>1</td>
+                                    <td class="u-color-text-tertiary">24 hrs</td>
+                                    <td>
+                                        <div class="hs-dropdown [--placement:bottom-end] relative">
+                                            <button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
+                                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#editLevelModal"><i class="icon-edit text-[13px]"></i>Edit</a>
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#deleteLevelModal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="javascript:void(0);" class="u-color-color-primary-600">#APL0015</a></td>
+                                    <td class="u-color-text-tertiary">#WFL0015</td>
+                                    <td class="font-semibold">HR Manager</td>
+                                    <td>1</td>
+                                    <td class="u-color-text-tertiary">48 hrs</td>
+                                    <td>
+                                        <div class="hs-dropdown [--placement:bottom-end] relative">
+                                            <button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
+                                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#editLevelModal"><i class="icon-edit text-[13px]"></i>Edit</a>
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#deleteLevelModal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="javascript:void(0);" class="u-color-color-primary-600">#APL0014</a></td>
+                                    <td class="u-color-text-tertiary">#WFL0014</td>
+                                    <td class="font-semibold">Sales Manager</td>
+                                    <td>2</td>
+                                    <td class="u-color-text-tertiary">36 hrs</td>
+                                    <td>
+                                        <div class="hs-dropdown [--placement:bottom-end] relative">
+                                            <button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
+                                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#editLevelModal"><i class="icon-edit text-[13px]"></i>Edit</a>
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#deleteLevelModal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="javascript:void(0);" class="u-color-color-primary-600">#APL0013</a></td>
+                                    <td class="u-color-text-tertiary">#WFL0013</td>
+                                    <td class="font-semibold">Project Manager</td>
+                                    <td>1</td>
+                                    <td class="u-color-text-tertiary">12 hrs</td>
+                                    <td>
+                                        <div class="hs-dropdown [--placement:bottom-end] relative">
+                                            <button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
+                                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#editLevelModal"><i class="icon-edit text-[13px]"></i>Edit</a>
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#deleteLevelModal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="javascript:void(0);" class="u-color-color-primary-600">#APL0012</a></td>
+                                    <td class="u-color-text-tertiary">#WFL0012</td>
+                                    <td class="font-semibold">Asset Manager</td>
+                                    <td>2</td>
+                                    <td class="u-color-text-tertiary">24 hrs</td>
+                                    <td>
+                                        <div class="hs-dropdown [--placement:bottom-end] relative">
+                                            <button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
+                                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#editLevelModal"><i class="icon-edit text-[13px]"></i>Edit</a>
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#deleteLevelModal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="javascript:void(0);" class="u-color-color-primary-600">#APL0011</a></td>
+                                    <td class="u-color-text-tertiary">#WFL0011</td>
+                                    <td class="font-semibold">CFO</td>
+                                    <td>1</td>
+                                    <td class="u-color-text-tertiary">48 hrs</td>
+                                    <td>
+                                        <div class="hs-dropdown [--placement:bottom-end] relative">
+                                            <button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[15px]"></i></button>
+                                            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" data-hs-overlay="#editLevelModal"><i class="icon-edit text-[13px]"></i>Edit</a>
+                                                <a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" data-hs-overlay="#deleteLevelModal"><i class="icon-trash-2 text-[13px]"></i>Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 p-3.5 border-t u-border-color-border-subtle">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[12px] u-color-text-tertiary">Showing</span>
+                            <select class="py-1.5 px-2 rounded-lg text-[12px] outline-none w-28 u-background-surface-sunken_border-1px-solid-border-subtle">
+                                <option>10 / Page</option>
+                                <option>25 / Page</option>
+                                <option>50 / Page</option>
+                                <option>100 / Page</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <button type="button" class="grid place-items-center size-8 rounded-lg text-[12px] font-semibold u-background-color-primary-600_color-fff">1</button>
+                            <button type="button" class="header-icon-btn !size-8 text-[12px] font-semibold">2</button>
+                            <button type="button" class="header-icon-btn !size-8 text-[12px] font-semibold">3</button>
+                            <button type="button" class="header-icon-btn !size-8" aria-label="Previous"><i class="icon-chevron-left text-[14px]"></i></button>
+                            <button type="button" class="header-icon-btn !size-8" aria-label="Next"><i class="icon-chevron-right text-[14px]"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+<app-workflow-modal/>

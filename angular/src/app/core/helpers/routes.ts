@@ -36,7 +36,8 @@ export const All_Routes={
     workflowApprovalLevels:'/workflow-approval-levels',
     workflowRequests:'/workflow-requests',
     workflowActions:'/workflow-actions',
-
+    taskAdd:'add-task',
+    emailView:'email-view',
     // Layouts
     layoutMini:'/layout-mini',
     layoutHoverview:'/layout-hoverview',

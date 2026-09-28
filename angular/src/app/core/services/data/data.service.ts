@@ -9,75 +9,7 @@ import { All_Routes } from '../../helpers/routes';
 })
 export class DataService {
   private readonly initialSidebarData: SideBar[] = [
-    {
-      tittle: 'Overview',
-      icon: 'layout-dashboard',
-      showSubRoute: true,
-      menu: [
-        {
-          menuValue: 'Dashboard',
-          route: All_Routes.index,
-          hasSubRoute: false,
-          showSubRoute: false,
-          icon: 'layout-dashboard',
-          base: 'index',
-          subMenus: [],
-        },
-      ],
-    },
-    {
-      tittle: 'Applications',
-      icon: 'layout-grid',
-      menu: [
-        {
-          menuValue: 'Applications',
-          route: 'javascript:void(0);',
-          hasSubRoute: true,
-          showSubRoute: false,
-          icon: 'layout-grid',
-          base: 'applications',
-          subMenus: [
-            { menuValue: 'Chat', route: All_Routes.chat, base: 'chat' },
-            { menuValue: 'Calls', base: 'calls'
-              ,subMenusTwo:[
-                { menuValue: 'Voice Call', route: All_Routes.voiceCall, base: 'voice-call' },
-                { menuValue: 'Video Call', route: All_Routes.videoCall, base: 'video-call' },
-              ]
-             },
-            { menuValue: 'Calendar', route: All_Routes.calendar, base: 'calendar' },
-            { menuValue: 'Email', route: All_Routes.email, base: 'email' },
-            { menuValue: 'File Manager', route: All_Routes.fileManager, base: 'file-manager' },
-            { menuValue: 'Notes', route: All_Routes.notes, base: 'notes' },
-            { menuValue: 'To Do', route: All_Routes.todo, base: 'todo' },
-            { menuValue: 'Workflow & Approvals', route: All_Routes.workflowApprovals, base: 'workflow-approvals' },
-            { menuValue: 'Workflow Requests', route: All_Routes.workflowRequests, base: 'workflow-requests' },
-            { menuValue: 'Workflow Actions', route: All_Routes.workflowActions, base: 'workflow-actions' },
-            { menuValue: 'Approval Levels', route: All_Routes.workflowApprovalLevels, base: 'workflow-approval-levels' },
-          ],
-        },
-      ]
-    },
-    {
-      tittle: 'Layouts',
-      icon: 'cuboid',
-      menu: [
-        {
-          menuValue: 'Layouts',
-          route: 'javascript:void(0);',
-          hasSubRoute: true,
-          showSubRoute: false,
-          icon: 'cuboid',
-          base: 'layouts',
-          subMenus: [
-            { menuValue: 'Mini Sidebar', route: All_Routes.layoutMini,base:'layout-mini' },
-            { menuValue: 'Hover View', route: All_Routes.layoutHoverview,base:'layout-hoverview' },
-            { menuValue: 'Hidden Menu', route: All_Routes.layoutHidden,base:'layout-hidden' },
-            { menuValue: 'Full Width', route: All_Routes.layoutFullwidth,base:'layout-fullwidth' },
-            { menuValue: 'RTL', route: All_Routes.layoutRTL,base:'layout-rtl' },
-          ],
-        },
-      ],
-    },
+
     {
       tittle: 'Main Menu',
       icon: 'layout-list',
@@ -99,6 +31,41 @@ export class DataService {
             { menuValue: 'Laboratory Dashboard', route: All_Routes.laboratoryDashboard, base: 'laboratory-dashboard' },
             { menuValue: 'Pharmacy Dashboard', route: All_Routes.pharmacyDashboard, base: 'pharmacy-dashboard' },
             { menuValue: 'Billing Dashboard', route: All_Routes.billingDashboard, base: 'billing-dashboard' },
+          ],
+        },
+        {
+          menuValue: 'Applications',
+          route: 'javascript:void(0);',
+          hasSubRoute: true,
+          showSubRoute: false,
+          icon: 'layout-dashboard',
+          base: 'applications',
+          subMenus: [
+            { menuValue: 'Chat', route: All_Routes.chat, base: 'chat' },
+            { menuValue: 'Calendar', route: All_Routes.calendar, base: 'calendar' },
+            { menuValue: 'Email', route: All_Routes.email, base: 'email' },
+            { menuValue: 'File Manager', route: All_Routes.fileManager, base: 'file-manager' },
+            { menuValue: 'Notes', route: All_Routes.notes, base: 'notes' },
+            { menuValue: 'To Do', route: All_Routes.todo, base: 'todo' },
+            { menuValue: 'Workflow & Approvals', route: All_Routes.workflowApprovals, base: 'workflow-approvals' },
+            { menuValue: 'Workflow Requests', route: All_Routes.workflowRequests, base: 'workflow-requests' },
+            { menuValue: 'Workflow Actions', route: All_Routes.workflowActions, base: 'workflow-actions' },
+            { menuValue: 'Approval Levels', route: All_Routes.workflowApprovalLevels, base: 'workflow-approval-levels' },
+          ],
+        },
+        {
+          menuValue: 'Layouts',
+          route: 'javascript:void(0);',
+          hasSubRoute: true,
+          showSubRoute: false,
+          icon: 'cuboid',
+          base: 'layouts',
+          subMenus: [
+            { menuValue: 'Mini Sidebar', route: All_Routes.layoutMini,base:'layout-mini' },
+            { menuValue: 'Hover View', route: All_Routes.layoutHoverview,base:'layout-hoverview' },
+            { menuValue: 'Hidden Menu', route: All_Routes.layoutHidden,base:'layout-hidden' },
+            { menuValue: 'Full Width', route: All_Routes.layoutFullwidth,base:'layout-fullwidth' },
+            { menuValue: 'RTL', route: All_Routes.layoutRTL,base:'layout-rtl' },
           ],
         },
         {

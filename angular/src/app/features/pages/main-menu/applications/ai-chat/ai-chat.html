@@ -1,0 +1,110 @@
+<main class="p-4 lg:p-6 max-w-full mx-auto w-full flex flex-col flex-1 min-h-0">
+
+    <div class="grid grid-cols-1 xl:grid-cols-12 gap-4 items-stretch flex-1 min-h-0">
+
+        <!-- ============ AI Chat Sidebar ============ -->
+        <div class="xl:col-span-3 h-full">
+            <div class="surface-card !p-3 flex flex-col h-full">
+
+                <button type="button" class="w-full btn btn-outline !text-[12.5px] !justify-center mb-3 shrink-0" id="aiChatNewChatBtn"><i class="icon-plus text-[13px]"></i>New Chat</button>
+
+                <div class="flex-1 min-h-0 pe-1" data-simplebar>
+
+                    <nav class="space-y-0.5" aria-label="Quick actions">
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] font-semibold u-background-surface-sunken"><i class="icon-message-circle text-[14px]"></i>Start Chat</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-search text-[14px]"></i>Find Threads</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-bookmark text-[14px]"></i>Saved Sessions</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-brain-circuit text-[14px]"></i>AI Tools</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-video text-[14px]"></i>AI Vision</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] font-semibold u-background-surface-sunken"><i class="icon-layout-grid text-[14px]"></i>Explore Models</a>
+                    </nav>
+
+                    <p class="px-3 pt-4 pb-1.5 text-[10.5px] font-semibold uppercase tracking-wide u-color-text-tertiary">Workspaces</p>
+                    <nav class="space-y-0.5" aria-label="Workspaces">
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] u-color-color-primary-600"><i class="icon-square-plus text-[14px]"></i>New Workspace</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-folder text-[14px]"></i>Marketing</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-folder text-[14px]"></i>Design Team</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-folder text-[14px]"></i>DevOps</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-folder text-[14px]"></i>Legal</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-folder text-[14px]"></i>Freelancers</a>
+                    </nav>
+
+                    <p class="px-3 pt-4 pb-1.5 text-[10.5px] font-semibold uppercase tracking-wide u-color-text-tertiary">Recent Conversations</p>
+                    <nav class="space-y-0.5" id="aiChatRecentList" aria-label="Recent conversations">
+                        <a href="javascript:void(0);" class="ai-chat-thread-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] truncate u-color-text-secondary" data-thread="Q3 marketing copy ideas"><i class="icon-message-square text-[13px] shrink-0"></i><span class="truncate">Q3 marketing copy ideas</span></a>
+                        <a href="javascript:void(0);" class="ai-chat-thread-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] truncate u-color-text-secondary" data-thread="Refactor onboarding flow"><i class="icon-message-square text-[13px] shrink-0"></i><span class="truncate">Refactor onboarding flow</span></a>
+                        <a href="javascript:void(0);" class="ai-chat-thread-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] truncate u-color-text-secondary" data-thread="Summarize support tickets"><i class="icon-message-square text-[13px] shrink-0"></i><span class="truncate">Summarize support tickets</span></a>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ AI Chat Main ============ -->
+        <div class="xl:col-span-9 h-full">
+            <div class="surface-card flex flex-col h-full">
+
+                <!-- Welcome / empty state -->
+                <div id="aiChatWelcome" class="flex-1 flex flex-col items-center justify-center px-4 py-10 text-center overflow-y-auto">
+                    <span class="grid place-items-center size-11 rounded-full mb-4 u-background-color-neutral-900">
+                        <i class="icon-sparkles text-[18px] u-color-fff"></i>
+                    </span>
+                    <h1 class="font-display font-bold text-[24px]">How can I help, Amelia <span aria-hidden="true">&#128075;</span>?</h1>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-7 max-w-3xl w-full">
+                        <button type="button" class="ai-suggestion-card surface-card is-interactive p-4 text-center" data-prompt="Generate AI-powered insights from customer reviews">
+                            <span class="grid place-items-center size-9 rounded-full mx-auto u-background-surface-sunken"><i class="icon-brain-circuit text-[15px] u-color-text-secondary"></i></span>
+                            <span class="block text-[12px] mt-2.5 u-color-text-tertiary">Generate AI-powered insights from customer reviews</span>
+                        </button>
+                        <button type="button" class="ai-suggestion-card surface-card is-interactive p-4 text-center" data-prompt="Create chatbot responses for common support questions">
+                            <span class="grid place-items-center size-9 rounded-full mx-auto u-background-surface-sunken"><i class="icon-bot text-[15px] u-color-text-secondary"></i></span>
+                            <span class="block text-[12px] mt-2.5 u-color-text-tertiary">Create chatbot responses for common support questions</span>
+                        </button>
+                        <button type="button" class="ai-suggestion-card surface-card is-interactive p-4 text-center" data-prompt="Summarize lengthy documents using AI">
+                            <span class="grid place-items-center size-9 rounded-full mx-auto u-background-surface-sunken"><i class="icon-scan-text text-[15px] u-color-text-secondary"></i></span>
+                            <span class="block text-[12px] mt-2.5 u-color-text-tertiary">Summarize lengthy documents using AI</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Active thread state -->
+                <div id="aiChatThread" class="hidden flex-1 flex flex-col overflow-hidden">
+                    <div class="flex items-center gap-2.5 px-4 py-3 border-b shrink-0 u-border-color-border-subtle">
+                        <span class="grid place-items-center size-8 rounded-full shrink-0 u-background-color-neutral-900">
+                            <i class="icon-sparkles text-[13px] u-color-fff"></i>
+                        </span>
+                        <h2 id="aiChatThreadTitle" class="text-[13.5px] font-semibold truncate mb-0">Conversation</h2>
+                    </div>
+                    <div class="flex-1 min-h-0 px-4 py-5 space-y-5" data-simplebar>
+                        <div class="flex items-start justify-end gap-2.5">
+                            <div class="max-w-[75%] p-3 rounded-xl text-[12.5px] text-white u-background-color-primary-600">Can you help me with this?</div>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                            <span class="grid place-items-center size-7 rounded-full shrink-0 u-background-color-neutral-900"><i class="icon-sparkles text-[12px] u-color-fff"></i></span>
+                            <div class="max-w-[75%] p-3 rounded-xl text-[12.5px] u-background-surface-sunken">Sure — here's a quick summary and next steps to keep this moving.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Composer -->
+                <div class="p-4 border-t shrink-0 u-border-color-border-subtle">
+                    <div class="max-w-3xl mx-auto">
+                        <textarea id="aiChatInput" rows="3" placeholder="Enter message" class="w-full p-3 rounded-xl text-[12.5px] outline-none resize-none u-background-surface-sunken_border-1px-solid-border-subtle"></textarea>
+                        <div class="flex items-center justify-between mt-2.5">
+                            <div class="flex items-center gap-1.5">
+                                <button type="button" class="header-icon-btn !size-8" aria-label="Attach file"><i class="icon-paperclip text-[14px]"></i></button>
+                                <button type="button" class="header-icon-btn !size-8" aria-label="Attach link"><i class="icon-link text-[14px]"></i></button>
+                                <button type="button" class="header-icon-btn !size-8" aria-label="Attach image"><i class="icon-image text-[14px]"></i></button>
+                                <button type="button" class="header-icon-btn !size-8" aria-label="Voice input"><i class="icon-mic text-[14px]"></i></button>
+                            </div>
+                            <button type="button" class="btn btn-primary !text-[12.5px]" id="aiChatSendBtn"><i class="icon-send text-[13px]"></i>Send</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</main>

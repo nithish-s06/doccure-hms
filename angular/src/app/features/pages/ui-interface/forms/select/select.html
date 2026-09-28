@@ -1,0 +1,117 @@
+<!-- Start Grid -->
+				<div class="grid grid-cols-1 gap-6">
+					<div class="preview-card bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Choices</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div> 
+						<div class="preview-content grid grid-cols-12 gap-5">
+							<div class="col-span-12 sm:col-span-6">
+								<label for="choices-single-no-sorting" class="block text-sm font-medium mb-2 text-dark">Default</label>
+								<app-common-select
+                                            [options]="selectOptions"
+                                            optionLabel="label"
+                                            optionValue="value"
+                                            class="custom-select bg-white"
+                                            placeholder="Select"
+                                            [(model)]="selectedData">
+                                            </app-common-select>
+							</div>  
+							<div class="col-span-12 sm:col-span-6">
+								<label for="choices-single-no-search" class="block text-sm font-medium mb-2 text-dark">Options added</label>
+								<mat-select placeholder="Zero" class="custom-mat-select form-input block w-full bg-white border-border-color rounded-lg focus:border-primary disabled:opacity-50 disabled:pointer-events-none" id="choices-single-no-search" name="choices-single-no-search" data-choices data-choices-search-false data-choices-removeItem >
+									<mat-option value="Zero">Zero</mat-option>
+									<mat-option value="One">One</mat-option>
+									<mat-option value="Two">Two</mat-option>
+									<mat-option value="Three">Three</mat-option>
+									<mat-option value="Four">Four</mat-option>
+									<mat-option value="Five">Five</mat-option>
+									<mat-option value="Six">Six</mat-option>
+								</mat-select>
+							</div>  
+							<div class="col-span-12 sm:col-span-6">
+								<label for="choices-multiple-remove-button" class="block text-sm font-medium mb-2 text-dark">Multiple Select With Remove</label>
+								<p-multiselect [options]="cities" [(ngModel)]="selectedCities" placeholder="Select choices" optionLabel="name" display="chip" class="w-full custom-select" />
+							</div>  
+							<div class="col-span-12 sm:col-span-6">
+								<label for="choices-text-unique-values" class="block text-sm font-medium mb-2 text-dark">Text Inputs Add </label>
+								<tag-input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="tags" [placeholder]="'Add new'"></tag-input>
+								
+							</div>  
+						</div> 
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;div class="preview-content grid grid-cols-1 lg:grid-cols-2 gap-6"&gt;
+	&lt;div class="mb-4"&gt;
+		&lt;label class="block text-sm font-medium mb-2 text-dark"&gt;Default&lt;/label&gt;
+		&lt;select class="form-input block w-full bg-white border-border-color rounded-lg focus:border-primary disabled:opacity-50 disabled:pointer-events-none" id="choices-single-no-sorting" name="choices-single-no-sorting" data-choices data-choices-sorting-false&gt;
+			&lt;option value="Madrid"&gt;Madrid&lt;/option&gt;
+			&lt;option value="Toronto"&gt;Toronto&lt;/option&gt;
+			&lt;option value="Vancouver"&gt;Vancouver&lt;/option&gt;
+			&lt;option value="London"&gt;London&lt;/option&gt;
+			&lt;option value="Manchester"&gt;Manchester&lt;/option&gt;
+			&lt;option value="Liverpool"&gt;Liverpool&lt;/option&gt;
+			&lt;option value="Paris"&gt;Paris&lt;/option&gt;
+			&lt;option value="Malaga"&gt;Malaga&lt;/option&gt;
+			&lt;option value="Washington" disabled&gt;Washington&lt;/option&gt;
+			&lt;option value="Lyon"&gt;Lyon&lt;/option&gt;
+			&lt;option value="Marseille"&gt;Marseille&lt;/option&gt;
+			&lt;option value="Hamburg"&gt;Hamburg&lt;/option&gt;
+			&lt;option value="Munich"&gt;Munich&lt;/option&gt;
+			&lt;option value="Barcelona"&gt;Barcelona&lt;/option&gt;
+			&lt;option value="Berlin"&gt;Berlin&lt;/option&gt;
+			&lt;option value="Montreal"&gt;Montreal&lt;/option&gt;
+			&lt;option value="New York"&gt;New York&lt;/option&gt;
+			&lt;option value="Michigan"&gt;Michigan&lt;/option&gt;
+		&lt;/select&gt; 
+	&lt;/div&gt;  
+	&lt;div class="mb-4"&gt;
+		&lt;label class="block text-sm font-medium mb-2 text-dark"&gt;Options added&lt;/label&gt;
+		&lt;select class="form-input block w-full bg-white border-border-color rounded-lg focus:border-primary disabled:opacity-50 disabled:pointer-events-none" id="choices-single-no-search" name="choices-single-no-search" data-choices data-choices-search-false data-choices-removeItem&gt;
+			&lt;option value="Zero"&gt;Zero&lt;/option&gt;
+			&lt;option value="One"&gt;One&lt;/option&gt;
+			&lt;option value="Two"&gt;Two&lt;/option&gt;
+			&lt;option value="Three"&gt;Three&lt;/option&gt;
+			&lt;option value="Four"&gt;Four&lt;/option&gt;
+			&lt;option value="Five"&gt;Five&lt;/option&gt;
+			&lt;option value="Six"&gt;Six&lt;/option&gt;
+		&lt;/select&gt;
+	&lt;/div&gt;  
+	&lt;div class="mb-4"&gt;
+		&lt;label class="block text-sm font-medium mb-2 text-dark"&gt;Multiple Select&lt;/label&gt;
+		&lt;select class="form-control" id="choices-multiple-default" data-choices name="choices-multiple-default" multiple&gt;
+			&lt;option value="Choice 1" selected&gt;Choice 1&lt;/option&gt;
+			&lt;option value="Choice 2"&gt;Choice 2&lt;/option&gt;
+			&lt;option value="Choice 3"&gt;Choice 3&lt;/option&gt;
+			&lt;option value="Choice 4"&gt;Choice 4&lt;/option&gt;
+		&lt;/select&gt;
+	&lt;/div&gt; 
+	&lt;div class="mb-4"&gt;
+		&lt;label class="block text-sm font-medium mb-2 text-dark"&gt;Multiple Select With Remove&lt;/label&gt;
+		&lt;select class="form-control" id="choices-multiple-remove-button" data-choices data-choices-removeItem name="choices-multiple-remove-button" multiple&gt;
+			&lt;option value="Choice 1" selected&gt;Choice 1&lt;/option&gt;
+			&lt;option value="Choice 2"&gt;Choice 2&lt;/option&gt;
+			&lt;option value="Choice 3"&gt;Choice 3&lt;/option&gt;
+			&lt;option value="Choice 4"&gt;Choice 4&lt;/option&gt;
+		&lt;/select&gt;
+	&lt;/div&gt;  
+	&lt;div class="mb-4"&gt;
+		&lt;label class="block text-sm font-medium mb-2 text-dark"&gt;Text Inputs With Remove&lt;/label&gt;
+		&lt;input class="form-control" id="choices-text-remove-button" data-choices data-choices-limit="3" data-choices-removeItem type="text" value="Task-1"&gt;
+	&lt;/div&gt; 
+	&lt;div class="mb-4"&gt;
+		&lt;label class="block text-sm font-medium mb-2 text-dark"&gt;Text Inputs Add &lt;/label&gt;
+		&lt;input class="form-control" id="choices-text-unique-values" data-choices data-choices-text-unique-true type="text" value="Project-A, Project-B"&gt;
+	&lt;/div&gt;  
+&lt;/div&gt;
+</code>
+</pre>
+
+					</div>    
+					
+				</div> 
+				<!-- End grid --> 

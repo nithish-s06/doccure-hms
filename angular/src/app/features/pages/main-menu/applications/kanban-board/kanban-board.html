@@ -1,0 +1,314 @@
+ <main class="p-4 lg:p-6 space-y-6 max-w-full mx-auto w-full">
+
+                <!-- ============ Page Title ============ -->
+                <div class="flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                        <h1 class="font-display font-bold text-[21px]">Kanban Board</h1>
+                        <p class="text-[12.5px] mt-1 u-color-text-tertiary">Sprint 14 &middot; Northwind POS Rollout</p>
+                    </div>
+                    <a [routerLink]="AllRoutes.taskAdd" class="btn btn-primary !text-[12.5px]"><i class="icon-plus text-[13px]"></i>Add Card</a>
+                </div>
+
+                <!-- ============ Sprint Widgets ============ -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="surface-card p-4">
+                        <p class="text-[11px] u-color-text-tertiary">Sprint Progress</p>
+                        <p class="text-[19px] font-display font-bold mt-1">62%</p>
+                        <div class="h-1.5 rounded-full overflow-hidden mt-2 u-background-surface-sunken"><div class="h-full rounded-full u-width-62_background-color-primary-500"></div></div>
+                    </div>
+                    <div class="surface-card p-4">
+                        <p class="text-[11px] u-color-text-tertiary">Velocity</p>
+                        <p class="text-[19px] font-display font-bold mt-1">38 pts</p>
+                        <span class="badge-soft badge-success !text-[10.5px] mt-1.5"><i class="icon-arrow-up-right text-[9px]"></i>4pt vs last sprint</span>
+                    </div>
+                    <div class="surface-card p-4">
+                        <p class="text-[11px] u-color-text-tertiary">Burndown</p>
+                        <div class="flex items-end gap-1 h-8 mt-1">
+                            <div class="flex-1 rounded-t h-[90%] bg-[var(--color-neutral-300)]"></div>
+                            <div class="flex-1 rounded-t u-height-70_background-color-neutral-300"></div>
+                            <div class="flex-1 rounded-t u-height-55_background-color-neutral-300"></div>
+                            <div class="flex-1 rounded-t h-[30%] bg-[var(--color-primary-500)]"></div>
+                        </div>
+                    </div>
+                    <div class="surface-card p-4">
+                        <p class="text-[11px] u-color-text-tertiary">Team Workload</p>
+                        <p class="text-[19px] font-display font-bold mt-1">86%</p>
+                        <span class="badge-soft badge-warning !text-[10.5px] mt-1.5">Near capacity</span>
+                    </div>
+                </div>
+
+                <!-- ============ Kanban Columns (drag & drop) ============ -->
+                <div class="overflow-x-auto scroll-thin pb-2">
+                    <div class="flex items-start gap-4 min-w-[1400px]" id="kanbanBoard">
+
+                        <div class="flex-1 min-w-[220px] kanban-col" data-stage="Backlog">
+                            <div class="flex items-center justify-between mb-2.5 px-1">
+                                <span class="text-[11.5px] font-semibold uppercase tracking-wide u-color-text-tertiary">Backlog &middot; <span class="kanban-count">8</span></span>
+                            </div>
+                            <div class="space-y-2.5 kanban-list" data-stage="Backlog">
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-neutral !text-[10px]">Design</span></div>
+                                    <p class="font-semibold text-[12.5px]">Design self-checkout flow</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary"><i class="icon-message-circle text-[11px]"></i> 2</span>
+                                        <img src="assets/img/avatar/avatar-12.jpg" class="size-6 rounded-full" alt="Assignee avatar for Design self-checkout flow">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-info !text-[10px]">Backend</span></div>
+                                    <p class="font-semibold text-[12.5px]">Set up inventory sync webhook</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Jul 30</span>
+                                        <img src="assets/img/avatar/avatar-03.jpg" class="size-6 rounded-full" alt="Assignee avatar for Set up inventory sync webhook">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-accent !text-[10px]">Marketing</span></div>
+                                    <p class="font-semibold text-[12.5px]">Draft launch campaign brief</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Aug 2</span>
+                                        <img src="assets/img/avatar/avatar-19.jpg" class="size-6 rounded-full" alt="Assignee avatar for Draft launch campaign brief">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-neutral !text-[10px]">Design</span></div>
+                                    <p class="font-semibold text-[12.5px]">Wireframe loyalty rewards screen</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary"><i class="icon-message-circle text-[11px]"></i> 1</span>
+                                        <img src="assets/img/avatar/avatar-07.jpg" class="size-6 rounded-full" alt="Assignee avatar for Wireframe loyalty rewards screen">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-info !text-[10px]">Backend</span></div>
+                                    <p class="font-semibold text-[12.5px]">Evaluate barcode scanner SDKs</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Aug 4</span>
+                                        <img src="assets/img/avatar/avatar-11.jpg" class="size-6 rounded-full" alt="Assignee avatar for Evaluate barcode scanner SDKs">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-neutral !text-[10px]">POS</span></div>
+                                    <p class="font-semibold text-[12.5px]">Spec multi-till cash reconciliation</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Aug 6</span>
+                                        <img src="assets/img/avatar/avatar-14.jpg" class="size-6 rounded-full" alt="Assignee avatar for Spec multi-till cash reconciliation">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-accent !text-[10px]">Marketing</span></div>
+                                    <p class="font-semibold text-[12.5px]">Collect store manager feedback</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary"><i class="icon-message-circle text-[11px]"></i> 4</span>
+                                        <img src="assets/img/avatar/avatar-02.jpg" class="size-6 rounded-full" alt="Assignee avatar for Collect store manager feedback">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-info !text-[10px]">Backend</span></div>
+                                    <p class="font-semibold text-[12.5px]">Draft data retention policy</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Aug 9</span>
+                                        <img src="assets/img/avatar/avatar-16.jpg" class="size-6 rounded-full" alt="Assignee avatar for Draft data retention policy">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-1 min-w-[220px] kanban-col" data-stage="To Do">
+                            <div class="flex items-center justify-between mb-2.5 px-1">
+                                <span class="text-[11.5px] font-semibold uppercase tracking-wide u-color-text-tertiary">To Do &middot; <span class="kanban-count">5</span></span>
+                            </div>
+                            <div class="space-y-2.5 kanban-list" data-stage="To Do">
+                                <div class="surface-card p-3.5 u-border-color-color-info-400" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-danger !text-[10px]">High</span><span class="badge-soft badge-neutral !text-[10px]">POS</span></div>
+                                    <p class="font-semibold text-[12.5px]">Terminal hardware pairing test</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Jul 22</span>
+                                        <img src="assets/img/avatar/avatar-15.jpg" class="size-6 rounded-full" alt="Assignee avatar for Terminal hardware pairing test">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-warning !text-[10px]">Medium</span><span class="badge-soft badge-info !text-[10px]">Backend</span></div>
+                                    <p class="font-semibold text-[12.5px]">Configure tax rules per region</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Jul 24</span>
+                                        <img src="assets/img/avatar/avatar-09.jpg" class="size-6 rounded-full" alt="Assignee avatar for Configure tax rules per region">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-neutral !text-[10px]">Design</span></div>
+                                    <p class="font-semibold text-[12.5px]">Finalize receipt template layout</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Jul 25</span>
+                                        <img src="assets/img/avatar/avatar-06.jpg" class="size-6 rounded-full" alt="Assignee avatar for Finalize receipt template layout">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-danger !text-[10px]">High</span></div>
+                                    <p class="font-semibold text-[12.5px]">Set up staging environment</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Jul 26</span>
+                                        <img src="assets/img/avatar/avatar-18.jpg" class="size-6 rounded-full" alt="Assignee avatar for Set up staging environment">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-info !text-[10px]">Backend</span></div>
+                                    <p class="font-semibold text-[12.5px]">Migrate legacy SKU mappings</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Jul 28</span>
+                                        <img src="assets/img/avatar/avatar-04.jpg" class="size-6 rounded-full" alt="Assignee avatar for Migrate legacy SKU mappings">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-1 min-w-[220px] kanban-col" data-stage="In Progress">
+                            <div class="flex items-center justify-between mb-2.5 px-1">
+                                <span class="text-[11.5px] font-semibold uppercase tracking-wide u-color-text-tertiary">In Progress &middot; <span class="kanban-count">6</span></span>
+                            </div>
+                            <div class="space-y-2.5 kanban-list" data-stage="In Progress">
+                                <div class="surface-card p-3.5 border-[var(--color-accent-400)]" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-warning !text-[10px]">Medium</span></div>
+                                    <p class="font-semibold text-[12.5px]">Build receipt printer integration</p>
+                                    <div class="h-1 rounded-full overflow-hidden mt-2.5 u-background-surface-sunken"><div class="h-full rounded-full u-width-45_background-color-accent-500"></div></div>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary"><i class="icon-paperclip text-[11px]"></i> 3</span>
+                                        <img src="assets/img/avatar/avatar-12.jpg" class="size-6 rounded-full" alt="Assignee avatar for Build receipt printer integration">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-danger !text-[10px]">High</span><span class="badge-soft badge-neutral !text-[10px]">POS</span></div>
+                                    <p class="font-semibold text-[12.5px]">Card reader firmware update</p>
+                                    <div class="h-1 rounded-full overflow-hidden mt-2.5 u-background-surface-sunken"><div class="h-full rounded-full w-[70%] bg-[var(--color-danger-500)]"></div></div>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Jul 21</span>
+                                        <img src="assets/img/avatar/avatar-20.jpg" class="size-6 rounded-full" alt="Assignee avatar for Card reader firmware update">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-info !text-[10px]">Backend</span></div>
+                                    <p class="font-semibold text-[12.5px]">Build promo code engine</p>
+                                    <div class="h-1 rounded-full overflow-hidden mt-2.5 u-background-surface-sunken"><div class="h-full rounded-full u-width-30_background-color-info-500"></div></div>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary"><i class="icon-paperclip text-[11px]"></i> 1</span>
+                                        <img src="assets/img/avatar/avatar-05.jpg" class="size-6 rounded-full" alt="Assignee avatar for Build promo code engine">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-neutral !text-[10px]">Design</span></div>
+                                    <p class="font-semibold text-[12.5px]">Polish checkout confirmation screen</p>
+                                    <div class="h-1 rounded-full overflow-hidden mt-2.5 u-background-surface-sunken"><div class="h-full rounded-full w-[60%] bg-[var(--color-neutral-500)]"></div></div>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Jul 23</span>
+                                        <img src="assets/img/avatar/avatar-13.jpg" class="size-6 rounded-full" alt="Assignee avatar for Polish checkout confirmation screen">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-warning !text-[10px]">Medium</span></div>
+                                    <p class="font-semibold text-[12.5px]">Wire up loyalty points ledger</p>
+                                    <div class="h-1 rounded-full overflow-hidden mt-2.5 u-background-surface-sunken"><div class="h-full rounded-full u-width-20_background-color-accent-500"></div></div>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">Jul 27</span>
+                                        <img src="assets/img/avatar/avatar-10.jpg" class="size-6 rounded-full" alt="Assignee avatar for Wire up loyalty points ledger">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-info !text-[10px]">Backend</span></div>
+                                    <p class="font-semibold text-[12.5px]">Sync store hours across locations</p>
+                                    <div class="h-1 rounded-full overflow-hidden mt-2.5 u-background-surface-sunken"><div class="h-full rounded-full w-[55%] bg-[var(--color-info-500)]"></div></div>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary"><i class="icon-paperclip text-[11px]"></i> 2</span>
+                                        <img src="assets/img/avatar/avatar-17.jpg" class="size-6 rounded-full" alt="Assignee avatar for Sync store hours across locations">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-1 min-w-[220px] kanban-col" data-stage="Review">
+                            <div class="flex items-center justify-between mb-2.5 px-1">
+                                <span class="text-[11.5px] font-semibold uppercase tracking-wide u-color-text-tertiary">Review &middot; <span class="kanban-count">3</span></span>
+                            </div>
+                            <div class="space-y-2.5 kanban-list" data-stage="Review">
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-info !text-[10px]">Backend</span></div>
+                                    <p class="font-semibold text-[12.5px]">API rate limiting for POS sync</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">In review</span>
+                                        <img src="assets/img/avatar/avatar-05.jpg" class="size-6 rounded-full" alt="Assignee avatar for API rate limiting for POS sync">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-neutral !text-[10px]">Design</span></div>
+                                    <p class="font-semibold text-[12.5px]">Homepage banner rotation review</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">In review</span>
+                                        <img src="assets/img/avatar/avatar-01.jpg" class="size-6 rounded-full" alt="Assignee avatar for Homepage banner rotation review">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-neutral !text-[10px]">POS</span></div>
+                                    <p class="font-semibold text-[12.5px]">Cash drawer audit trail PR</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary">In review</span>
+                                        <img src="assets/img/avatar/avatar-22.jpg" class="size-6 rounded-full" alt="Assignee avatar for Cash drawer audit trail PR">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-1 min-w-[220px] kanban-col" data-stage="Testing">
+                            <div class="flex items-center justify-between mb-2.5 px-1">
+                                <span class="text-[11.5px] font-semibold uppercase tracking-wide u-color-text-tertiary">Testing &middot; <span class="kanban-count">2</span></span>
+                            </div>
+                            <div class="space-y-2.5 kanban-list" data-stage="Testing">
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-danger !text-[10px]">High</span></div>
+                                    <p class="font-semibold text-[12.5px]">QA &ndash; offline mode fallback</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary"><i class="icon-square-check-big text-[11px]"></i> 4/6</span>
+                                        <img src="assets/img/avatar/avatar-21.jpg" class="size-6 rounded-full" alt="Assignee avatar for QA offline mode fallback">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5" draggable="true">
+                                    <div class="flex items-center gap-1.5 mb-2"><span class="badge-soft badge-warning !text-[10px]">Medium</span></div>
+                                    <p class="font-semibold text-[12.5px]">Regression suite &ndash; checkout flow</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="text-[10.5px] u-color-text-tertiary"><i class="icon-square-check-big text-[11px]"></i> 9/12</span>
+                                        <img src="assets/img/avatar/avatar-08.jpg" class="size-6 rounded-full" alt="Assignee avatar for Regression suite checkout flow">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-1 min-w-[220px] kanban-col" data-stage="Completed">
+                            <div class="flex items-center justify-between mb-2.5 px-1">
+                                <span class="text-[11.5px] font-semibold uppercase tracking-wide u-color-color-success-600">Completed &middot; <span class="kanban-count">3</span></span>
+                            </div>
+                            <div class="space-y-2.5 kanban-list" data-stage="Completed">
+                                <div class="surface-card p-3.5 u-opacity-8" draggable="true">
+                                    <p class="font-semibold text-[12.5px]">Vendor contract signed</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="badge-soft badge-success !text-[10px]"><i class="icon-check text-[9px]"></i>Done</span>
+                                        <img src="assets/img/avatar/avatar-12.jpg" class="size-6 rounded-full" alt="Assignee avatar for Vendor contract signed">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5 u-opacity-8" draggable="true">
+                                    <p class="font-semibold text-[12.5px]">Store locator map integration</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="badge-soft badge-success !text-[10px]"><i class="icon-check text-[9px]"></i>Done</span>
+                                        <img src="assets/img/avatar/avatar-23.jpg" class="size-6 rounded-full" alt="Assignee avatar for Store locator map integration">
+                                    </div>
+                                </div>
+                                <div class="surface-card p-3.5 u-opacity-8" draggable="true">
+                                    <p class="font-semibold text-[12.5px]">Employee onboarding checklist</p>
+                                    <div class="flex items-center justify-between mt-2.5">
+                                        <span class="badge-soft badge-success !text-[10px]"><i class="icon-check text-[9px]"></i>Done</span>
+                                        <img src="assets/img/avatar/avatar-24.jpg" class="size-6 rounded-full" alt="Assignee avatar for Employee onboarding checklist">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </main>

@@ -1,0 +1,110 @@
+<main class="p-4 lg:p-6 space-y-6 max-w-full mx-auto w-full">
+
+    <!-- ============ Page Title Area ============ -->
+    <div class="flex flex-wrap items-start justify-between gap-4">
+        <div>
+            <h1 class="font-display font-bold text-[21px]">Email View</h1>
+            <p class="text-[12.5px] mt-1 u-color-text-tertiary">View message and reply</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+            <a [routerLink]="AllRoutes.email" class="btn btn-outline !text-[12.5px]">
+                <i class="icon-arrow-left text-[13px]"></i>Back to Inbox
+            </a>
+            <a [routerLink]="AllRoutes.emailCompose" class="btn btn-primary !text-[12.5px]">
+                <i class="icon-edit-3 text-[13px]"></i>Compose New
+            </a>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 xl:grid-cols-12 gap-4 w-full items-start">
+
+        <!-- ============ Folder Sidebar ============ -->
+        <div class="xl:col-span-3">
+            <div class="surface-card p-4">
+                <div class="mb-4">
+                    <p class="text-[11.5px] font-semibold uppercase tracking-wide mb-2 u-color-text-tertiary">Mail</p>
+                    <div class="space-y-1">
+                        <a [routerLink]="AllRoutes.email" class="flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-[12.5px] font-semibold u-background-surface-sunken_color-color-primary-600">
+                            <span class="inline-flex items-center gap-2"><i class="icon-inbox text-[14px]"></i> Inbox</span>
+                            <span class="badge-soft badge-danger !text-[10px] !py-0 !px-1.5">6</span>
+                        </a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-star text-[14px]"></i> Starred</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-alarm-clock text-[14px]"></i> Snoozed</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-send text-[14px]"></i> Sent</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-edit-3 text-[14px]"></i> Drafts</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-flag text-[14px]"></i> Important</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-message-circle text-[14px]"></i> Chats</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-clock text-[14px]"></i> Scheduled</a>
+                    </div>
+                </div>
+                <div class="mb-4 pt-3 border-t u-border-color-border-subtle">
+                    <p class="text-[11.5px] font-semibold uppercase tracking-wide mb-2 u-color-text-tertiary">Others</p>
+                    <div class="space-y-1">
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-mail text-[14px]"></i> All Emails</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-alert-triangle text-[14px]"></i> Spam</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-trash-2 text-[14px]"></i> Trash</a>
+                    </div>
+                </div>
+                <div class="pt-3 border-t u-border-color-border-subtle">
+                    <p class="text-[11.5px] font-semibold uppercase tracking-wide mb-2 u-color-text-tertiary">Labels</p>
+                    <div class="space-y-1">
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-success-500"></span> Personal</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-accent-500"></span> Client</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-info-500"></span> Marketing</a>
+                        <a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-info-500"></span> Office</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ Email View Panel ============ -->
+        <div class="xl:col-span-9">
+            <div class="surface-card !p-0 flex flex-col">
+
+                <!-- Subject & toolbar -->
+                <div class="flex flex-wrap items-center justify-between gap-3 px-4 py-3.5 border-b u-border-color-border-subtle">
+                    <h2 class="font-display font-bold text-[15px]">[Reminder] Client Meeting at 3 PM Today</h2>
+                    <div class="flex items-center gap-1.5">
+                        <button type="button" class="header-icon-btn !size-8" aria-label="Archive"><i class="icon-archive text-[14px]"></i></button>
+                        <button type="button" class="header-icon-btn !size-8" aria-label="Star"><i class="icon-star text-[14px]"></i></button>
+                        <button type="button" class="header-icon-btn !size-8" aria-label="Delete" data-confirm-delete-trigger data-delete-title="Delete this email?" data-delete-message="This message will be permanently deleted. This action cannot be undone."><i class="icon-trash-2 text-[14px]"></i></button>
+                    </div>
+                </div>
+
+                <!-- Sender info -->
+                <div class="flex items-start gap-3 px-4 py-4 border-b u-border-color-border-subtle">
+                    <span class="grid place-items-center size-10 rounded-full overflow-hidden shrink-0">
+                        <img src="assets/img/avatar/avatar-04.jpg" class="w-full h-full object-cover" alt="Sarah">
+                    </span>
+                    <div class="min-w-0 flex-1">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <p class="text-[13px] font-semibold">Sarah Johnson <span class="font-normal u-color-text-tertiary">&lt;sarah.johnson@example.com&gt;</span></p>
+                            <span class="text-[11px] shrink-0 u-color-text-tertiary">6:15 PM</span>
+                        </div>
+                        <p class="text-[11.5px] mt-0.5 u-color-text-tertiary">To: me</p>
+                    </div>
+                </div>
+
+                <!-- Body -->
+                <div class="p-4 text-[13px] leading-relaxed space-y-3">
+                    <p>Hi John,</p>
+                    <p>Just a quick reminder about our meeting with ABC Corp at 3 PM today. Please make sure you have the latest deck ready and the numbers from last quarter on hand &mdash; they'll likely ask about the renewal terms again.</p>
+                    <p>Let me know if you need anything before the call.</p>
+                    <p>Thanks,<br>Sarah</p>
+                </div>
+
+                <!-- Reply box -->
+                <div class="border-t p-4 u-border-color-border-subtle">
+                    <label class="text-[12.5px] font-semibold mb-1 inline-block">Reply</label>
+                    <textarea rows="4" placeholder="Type your reply&hellip;" class="w-full py-2 px-2.5 rounded-lg text-[12.5px] outline-none resize-none u-background-surface-sunken_border-1px-solid-border-subtle"></textarea>
+                    <div class="flex flex-wrap items-center justify-end gap-2 mt-3">
+                        <button type="button" class="btn btn-outline !text-[12.5px]"><i class="icon-paperclip text-[13px]"></i>Attach</button>
+                        <button type="button" class="btn btn-primary !text-[12.5px]"><i class="icon-send text-[13px]"></i>Send Reply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>

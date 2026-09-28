@@ -1,11 +1,11 @@
 <div class="main-wrapper">
-    <div class="sidebar-overlay"></div>
+    <!-- <div class="sidebar-overlay"></div> -->
     <app-sidebar/>
-    <div id="main" [class.expanded]="(settings.sidebarMini$ | async)">
-        <app-header/>
+    <app-header/>
         <!-- CONTENT -->
-            <main class="flex-1 p-6 dash-main">
+         <div>
+            <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
                 <router-outlet/>
             </main>
-    </div>
+        </div>
 </div>

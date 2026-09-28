@@ -1,0 +1,108 @@
+<main class="p-4 lg:p-6 space-y-6 max-w-full mx-auto w-full">
+
+	<!-- ============ Page Title Area ============ -->
+	<div class="flex flex-wrap items-center justify-between gap-3">
+		<h1 class="font-display font-bold text-[21px]">Voice Call</h1>
+		<button type="button" class="btn btn-primary !text-[12.5px]" data-hs-overlay="#newCallModal">
+			<i class="icon-plus text-[13px]"></i>Add New
+		</button>
+	</div>
+
+	<!-- ============ Voice Call Panel ============ -->
+	<div class="surface-card p-4 h-[calc(100vh-200px)]">
+		<!-- Caller bar -->
+		<div class="flex items-center justify-between gap-3 mb-4">
+			<div class="flex items-center gap-2 min-w-0">
+				<img src="assets/img/avatar/avatar-04.jpg" class="size-10 rounded-full shrink-0 u-border-1px-solid-border-subtle" alt="user">
+				<div class="min-w-0">
+					<p class="text-[12.5px] font-semibold truncate mb-0">Edward Lietz</p>
+					<p class="text-[11px] mb-0 u-color-text-tertiary">+22 555 345 11</p>
+				</div>
+			</div>
+			<div class="hs-dropdown [--placement:bottom-end] relative">
+				<button type="button" class="hs-dropdown-toggle header-icon-btn !size-8" aria-label="Dropdown" aria-haspopup="menu" aria-expanded="false"><i class="icon-more-vertical text-[15px]"></i></button>
+				<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-48 surface-card !p-1.5 z-50" role="menu" aria-orientation="vertical">
+					<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">
+						<i class="icon-plus text-[13px]"></i> Add Participant
+					</a>
+					<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">
+						<i class="icon-pause-circle text-[13px]"></i> Hold Call
+					</a>
+					<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]">
+						<i class="icon-refresh-cw text-[13px]"></i> Transfer Call
+					</a>
+					<a href="javascript:void(0);" class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600">
+						<i class="icon-phone-off text-[13px]"></i> End Call
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Voice call canvas -->
+		<div class="relative rounded-md overflow-hidden flex items-center justify-center h-[calc(100vh-364px)] u-background-surface-sunken">
+			<!-- Caller avatar centered -->
+			<div class="size-40 sm:size-48 rounded-full shadow-lg overflow-hidden bg-[var(--surface-base)] border-2 border-[var(--surface-base)]">
+				<img src="assets/img/avatar/avatar-04.jpg" class="size-full object-cover" alt="user">
+			</div>
+
+			<!-- Timer below avatar -->
+			<span class="absolute left-1/2 -translate-x-1/2 bottom-3 badge-soft badge-neutral shadow-sm">01:45</span>
+
+			<!-- Self thumbnail bottom-right -->
+			<div class="absolute bottom-3 right-3 size-10 sm:size-16 rounded-md overflow-hidden shadow-md border-2 border-[var(--surface-base)]">
+				<img src="assets/img/avatar/avatar-05.jpg" class="size-full object-cover" alt="user">
+			</div>
+		</div>
+
+		<!-- Control bar -->
+		<div class="border-t pt-4 mt-4 flex items-center justify-center gap-3 u-border-color-border-subtle">
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Mute"><i class="icon-mic"></i></button>
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Video"><i class="icon-video"></i></button>
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Chat"><i class="icon-message-circle"></i></button>
+			<button type="button" class="size-8 sm:size-11 rounded-full inline-flex items-center justify-center text-white cursor-pointer u-background-color-danger-600" aria-label="End call"><i class="icon-phone-off"></i></button>
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Volume"><i class="icon-volume-2"></i></button>
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Emoji"><i class="icon-smile"></i></button>
+			<button type="button" class="header-icon-btn size-7 sm:size-10" aria-label="Screen share"><i class="icon-monitor-up"></i></button>
+		</div>
+	</div>
+
+</main>
+
+ <!-- ============ New Call Modal ============ -->
+    <div id="newCallModal" class="hs-overlay ui-modal hidden">
+        <div class="ui-modal-dialog !max-w-[380px] p-5">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="font-display font-bold text-[15px]">New Call</h2>
+                <button type="button" class="header-icon-btn" data-hs-overlay="#newCallModal" aria-label="Close"><i class="icon-x text-[16px]"></i></button>
+            </div>
+            <div class="space-y-3">
+                <div>
+                    <label class="text-[11.5px] font-semibold uppercase tracking-wide mb-1.5 u-color-text-tertiary">Contact</label>
+                    <select id="newCallContact" class="w-full field-control">
+                        <option data-phone="+1 (415) 555-0148">Amelia Hart</option>
+                        <option data-phone="+1 (312) 555-0122">Marcus Lee</option>
+                        <option data-phone="+44 20 5550 1893">Renee Foster</option>
+                        <option data-phone="+91 98200 12345">Priya Nair</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[11.5px] font-semibold uppercase tracking-wide mb-1.5 u-color-text-tertiary">Or dial a number</label>
+                    <input type="text" id="newCallNumber" placeholder="+1 (415) 555-0148" class="w-full field-control">
+                </div>
+            </div>
+            <div class="flex items-center gap-2 w-full mt-5">
+                <button type="button" class="btn btn-outline !text-[12.5px] flex-1" data-hs-overlay="#newCallModal">Cancel</button>
+                <button type="button" id="startCallBtn" class="btn btn-primary !text-[12.5px] flex-1"><i class="icon-phone text-[13px]"></i>Start Call</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ Success Toast Modal (generic) ============ -->
+    <div id="successModal" class="hs-overlay ui-modal hidden">
+        <div class="ui-modal-dialog !max-w-[360px] p-6 flex flex-col items-center text-center">
+            <span class="grid place-items-center size-14 rounded-full mb-3 badge-solid-success"><i class="icon-check text-[24px]"></i></span>
+            <p id="successModalTitle" class="font-display font-bold text-[15px]">Done</p>
+            <p id="successModalMessage" class="text-[12.5px] mt-1.5 u-color-text-tertiary"></p>
+            <button type="button" class="btn btn-primary w-full justify-center !text-[12.5px] mt-5" data-hs-overlay="#successModal">Okay</button>
+        </div>
+    </div>

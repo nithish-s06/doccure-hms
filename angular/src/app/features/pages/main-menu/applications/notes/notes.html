@@ -1,0 +1,551 @@
+
+
+<main class="p-4 lg:p-6 space-y-6 max-w-full mx-auto w-full">
+
+	<!-- ============ Page Title Area ============ -->
+	<div class="flex flex-wrap items-start justify-between gap-4">
+		<div>
+			<h1 class="font-display font-bold text-[21px]">Notes</h1>
+			<p class="text-[12.5px] mt-1 u-color-text-tertiary">12 notes across 3 priority labels</p>
+		</div>
+	</div>
+
+	<div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
+
+		<!-- Left sidebar -->
+		<div class="xl:col-span-3">
+			<div class="surface-card p-4">
+				<div class="space-y-1 mb-4">
+					<a href="javascript:void(0);" class="flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-[12.5px] font-semibold badge-soft badge-primary">
+						<span class="inline-flex items-center gap-2">
+							<i class="icon-list-checks text-[14px]"></i> All Tasks</span>
+						<span class="grid place-items-center size-5 rounded-full text-[10px] font-semibold u-background-color-danger-600_color-fff">6</span>
+					</a>
+					<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-star text-[14px]"></i> Starred</a>
+					<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-trash-2 text-[14px]"></i> Trash</a>
+					<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><i class="icon-edit text-[14px]"></i> Draft</a>
+				</div>
+				<div class="pt-3 border-t u-border-color-border-subtle">
+					<div class="flex items-center justify-between mb-2">
+						<p class="text-[11.5px] font-semibold uppercase tracking-wide u-color-text-tertiary">Labels</p>
+					</div>
+					<div class="space-y-1">
+						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-success-600"></span> Low</a>
+						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-warning-500"></span> Medium</a>
+						<a href="javascript:void(0);" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[12.5px] u-color-text-secondary"><span class="size-2 rounded-full u-background-color-danger-600"></span> High</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Right main: notes grid -->
+		<div class="xl:col-span-9">
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-success">Low</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">Meeting with Product Team</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">Discuss dashboard revamp and analytics tracking.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px]"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-09.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+				<!-- Submit Quarterly Report -->
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-success">Low</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">Submit Quarterly Report</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">Compile a comprehensive report for covering sales performance.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px] u-color-color-warning-500"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-04.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+				<!-- Follow up with HR -->
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-warning">Medium</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">Follow up with HR</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">Review and verify the current onboarding status of all hires.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px]"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-15.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+				<!-- Design Feedback Notes -->
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-warning">Medium</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">Design Feedback Notes</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">Adjust the form layout to reduce vertical and horizontal spacing.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px] u-color-color-warning-500"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-05.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+				<!-- Call Vendor Support -->
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-danger">High</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">Call Vendor Support</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">The printer maintenance issue is still pending requires attention.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px]"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-06.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+				<!-- Give me the staff guide -->
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-success">Low</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">Give me the staff guide</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">The patient contacted us to request a rescheduling.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px]"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-12.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+				<!-- Insurance Update -->
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-danger">High</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">Insurance Update</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">We have received the updated insurance card from the patient.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px]"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-04.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+				<!-- Staff Reminder -->
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-warning">Medium</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">Staff Reminder</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">A reminder was sent to the team regarding the scheduled meeting.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px]"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-08.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+				<!-- General Task Tracking -->
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-danger">High</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">General Task Tracking</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">Printer cartridges and paper stock have been ordered.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px] u-color-color-warning-500"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-14.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+				<!-- Insurance Inquiry -->
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-success">Low</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">Insurance Inquiry</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">Patient called to check status of last insurance claim for lab tests.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px] u-color-color-warning-500"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-06.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+				<!-- Maintenance Request -->
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-danger">High</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">Maintenance Request</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">Noted recurring jam in front desk printer. Called vendor support.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px]"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-04.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+				<!-- Internal Task -->
+				<div class="surface-card is-interactive p-4 animate-rise-in">
+					<div class="flex items-center justify-between mb-3">
+						<span class="badge-soft badge-warning">Medium</span>
+						<div class="hs-dropdown [--placement:bottom-end] relative z-10">
+							<button type="button" class="hs-dropdown-toggle header-icon-btn !size-7" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="icon-more-vertical text-[14px]"></i></button>
+							<div class="hs-dropdown-menu hs-dropdown-open:opacity-100 opacity-0 transition-[opacity,margin] duration hidden mt-1 w-40 surface-card !p-1.5 z-[60]" role="menu" aria-orientation="vertical">
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)]" href="javascript:void(0);" data-hs-overlay="#edit-modal">
+									<i class="icon-edit text-[13px]"></i> Edit
+								</a>
+								<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[12px] font-medium hover:bg-[var(--surface-sunken)] u-color-color-danger-600" href="javascript:void(0);" data-hs-overlay="#delete-modal">
+									<i class="icon-trash-2 text-[13px]"></i> Delete
+								</a>
+							</div>
+						</div>
+					</div>
+					<p class="text-[13px] font-semibold mb-1">Internal Task</p>
+					<p class="text-[12.5px] mb-3 u-color-text-tertiary">Ordered toner, copy paper, and cleaning supplies.</p>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-1">
+							<button type="button" class="header-icon-btn !size-6 fav-icon" aria-label="Favorite">
+								<i class="icon-star text-[13px]"></i>
+							</button>
+							<button type="button" class="header-icon-btn !size-6" data-hs-overlay="#delete-modal" aria-label="Delete">
+								<i class="icon-trash-2 text-[13px]"></i>
+							</button>
+						</div>
+						<img src="assets/img/avatar/avatar-07.jpg" class="size-6 rounded-full border u-border-color-border-subtle" alt="user">
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+</main>
+
+
+<!-- Add Note modal -->
+    <div id="notes-add-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-300 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+        <div class="min-h-screen flex items-center justify-center px-4 py-6">
+            <div class="max-w-[520px] w-full mx-auto">
+                <div class="surface-card p-5">
+                    <div class="flex items-center justify-between mb-5">
+                        <h2 class="font-display font-bold text-[15px]">Add Note</h2>
+                        <button type="button" class="header-icon-btn" data-hs-overlay="#notes-add-modal" aria-label="Close"><i class="icon-x text-[15px]"></i></button>
+                    </div>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Title <span class="u-color-color-danger-600">*</span></label>
+                            <input type="text" class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
+                        </div>
+                        <div>
+                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Priority <span class="u-color-color-danger-600">*</span></label>
+                            <select class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
+                                <option>Select</option>
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Created Date <span class="u-color-color-danger-600">*</span></label>
+                                <app-datepicker/>
+                            </div>
+                            <div>
+                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Due Date <span class="u-color-color-danger-600">*</span></label>
+                                <app-datepicker/>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Description</label>
+                            <textarea rows="4" class="w-full text-[12.5px] px-3 py-2 outline-none resize-none rounded-lg block u-background-surface-sunken_border-1px-solid-border-subtle"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Select Assignee <span class="u-color-color-danger-600">*</span></label>
+                            <select class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
+                                <option>Select</option>
+                                <option>Alexander Kenn</option>
+                                <option>Gabriella White</option>
+                                <option>Christopher Rey</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 mt-5">
+                            <button type="button" class="btn btn-outline !text-[12.5px]" data-hs-overlay="#notes-add-modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary !text-[12.5px]">Create New</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Note modal -->
+    <div id="edit-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-300 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+        <div class="min-h-screen flex items-center justify-center px-4 py-6">
+            <div class="max-w-[520px] w-full mx-auto">
+                <div class="surface-card p-5">
+                    <div class="flex items-center justify-between mb-5">
+                        <h2 class="font-display font-bold text-[15px]">Edit Note</h2>
+                        <button type="button" class="header-icon-btn" data-hs-overlay="#edit-modal" aria-label="Close"><i class="icon-x text-[15px]"></i></button>
+                    </div>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Title <span class="u-color-color-danger-600">*</span></label>
+                            <input type="text" class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle" value="Follow up with HR">
+                        </div>
+                        <div>
+                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Priority <span class="u-color-color-danger-600">*</span></label>
+                            <select class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
+                                <option>Select</option>
+                                <option selected>Low</option>
+                                <option>Medium</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Created Date <span class="u-color-color-danger-600">*</span></label>
+                                <app-datepicker/>
+                            </div>
+                            <div>
+                                <label class="text-[12.5px] font-semibold mb-1 inline-block">Due Date <span class="u-color-color-danger-600">*</span></label>
+                                <app-datepicker/>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Description</label>
+                            <textarea rows="4" class="w-full text-[12.5px] px-3 py-2 outline-none resize-none rounded-lg block u-background-surface-sunken_border-1px-solid-border-subtle">Follow up with HR regarding the new employee onboarding process.</textarea>
+                        </div>
+                        <div>
+                            <label class="text-[12.5px] font-semibold mb-1 inline-block">Select Assignee <span class="u-color-color-danger-600">*</span></label>
+                            <select class="w-full px-3 py-2 rounded-lg text-[12.5px] outline-none u-background-surface-sunken_border-1px-solid-border-subtle">
+                                <option>Select</option>
+                                <option selected>Alexander Kenn</option>
+                                <option>Gabriella White</option>
+                                <option>Christopher Rey</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 mt-5">
+                            <button type="button" class="btn btn-outline !text-[12.5px]" data-hs-overlay="#edit-modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary !text-[12.5px]">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Note confirmation modal -->
+    <div id="delete-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-300 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+        <div class="min-h-screen flex items-center justify-center px-4 py-6">
+            <div class="max-w-[360px] w-full mx-auto">
+                <div class="surface-card p-6 flex flex-col items-center text-center">
+                    <span class="grid place-items-center size-14 rounded-full mb-3 bg-[color-mix(in_oklab,var(--color-danger-500)_15%,transparent)] text-[var(--color-danger-600)]"><i class="icon-trash-2 text-[22px]"></i></span>
+                    <p class="font-display font-bold text-[15px]">Delete Note?</p>
+                    <p class="text-[12.5px] mt-1.5 u-color-text-tertiary">This note will be permanently removed. This action cannot be undone.</p>
+                    <div class="flex items-center gap-3 w-full mt-5">
+                        <button type="button" class="btn btn-outline w-full justify-center !text-[12.5px]" data-hs-overlay="#delete-modal">Cancel</button>
+                        <button type="button" class="btn btn-danger w-full justify-center !text-[12.5px]" data-hs-overlay="#delete-modal">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

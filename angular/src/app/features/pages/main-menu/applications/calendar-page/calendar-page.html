@@ -1,0 +1,199 @@
+ <main class="p-4 lg:p-6 space-y-6 max-w-full mx-auto w-full">
+
+	<!-- ============ Page Title Area ============ -->
+	<div class="flex flex-wrap items-start justify-between gap-4">
+		<div>
+			<h1 class="font-display font-bold text-[21px]">Calendar</h1>
+			<p class="text-[12.5px] mt-1 text-tertiary">Track meetings, deadlines and events in one place</p>
+		</div>
+	</div>
+
+	<!-- ============ Calendar ============ -->
+	<div class="grid grid-cols-1 calendar-wrapper">
+		<div class="surface-card p-5">
+			<div id="calendar"></div>
+		</div>
+	</div>
+
+</main>	
+
+	<!-- Add Event Start -->
+	<div id="add-event" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+		<div class="min-h-screen flex items-center justify-center px-4"> 
+			<div class="max-w-[800px] w-full mx-auto"> 
+				<div class="flex flex-col bg-[var(--card)] border p-6 border-[var(--border)] rounded-lg pointer-events-auto m-5">
+					<div class="flex justify-between items-center mb-5 pb-5 border-b border-[var(--border)] ">
+						<h2 class="text-gray-900 text-xl font-bold mb-0">Add Event</h2>
+						<button type="button" class="size-7 inline-flex justify-center items-center rounded-full border border-[var(--border)] bg-[var(--card)] text-gray-900 text-base hover:bg-danger hover:border-danger hover:text-white dark:hover:text-dark focus:outline-hidden focus:bg-danger cursor-pointer" aria-label="Close" data-hs-overlay="#add-event">
+							<i class="icon-x"></i>
+						</button>
+					</div> 
+					<form action="#">
+						<!-- Start grid -->
+						<div class="grid md:grid-cols-12 gap-4 mb-5"> 
+							<div class="col-span-12">
+								<label for="event-name" class="mb-1 block text-sm font-semibold text-dark">Event Name 
+									<span class="text-danger">*</span>
+								</label>
+								<div class="relative">
+									<input id="event-name" type="text" class="w-full px-3 py-2 text-sm border border-[var(--border)] rounded-md bg-[var(--card)] focus:outline-none focus:ring-0">
+								</div>
+							</div>
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="event-category" class="mb-1 block text-sm font-semibold text-dark">Category  
+									<span class="text-danger">*</span>
+								</label>
+								<select id="event-category" class="w-full px-3 py-2 text-sm border border-[var(--border)] rounded-md bg-[var(--card)] focus:outline-none focus:ring-0">
+									<option>Select</option>
+									<option>Deadline</option>
+									<option>Interview</option>
+									<option>Business Trip</option>
+									<option>Client Call</option>
+									<option>Presentation</option>
+								</select>
+							</div>	
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="event-date" class="mb-1 block text-sm font-semibold text-dark">Event Date 
+									<span class="text-danger">*</span>
+								</label>
+								<input id="event-date" type="text" class="w-full px-3 py-2 text-sm border border-[var(--border)] rounded-md bg-[var(--card)] focus:outline-none focus:ring-0" data-provider="flatpickr" data-date-format="d M, Y" placeholder="dd-mm-yy">
+							</div> 
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="event-start-time" class="mb-1 block text-sm font-semibold text-dark">Start Time 
+									<span class="text-danger">*</span>
+								</label>
+								<input id="event-start-time" type="text" class="w-full px-3 py-2 text-sm border border-[var(--border)] rounded-md bg-[var(--card)] focus:outline-none focus:ring-0" data-provider="timepickr" data-time-basic="true" placeholder="hh:mm">
+							</div>	
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="event-end-time" class="mb-1 block text-sm font-semibold text-dark">End Time 
+									<span class="text-danger">*</span>
+								</label>
+								<input id="event-end-time" type="text" class="w-full px-3 py-2 text-sm border border-[var(--border)] rounded-md bg-[var(--card)] focus:outline-none focus:ring-0" data-provider="timepickr" data-time-basic="true" placeholder="hh:mm">
+							</div> 
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="event-location" class="mb-1 block text-sm font-semibold text-dark">Event Location
+								</label>
+								<input id="event-location" type="text" class="w-full px-3 py-2 text-sm border border-[var(--border)] rounded-md bg-[var(--card)] focus:outline-none focus:ring-0">
+							</div>	
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="event-participants" class="mb-1 block text-sm font-semibold text-dark">Participants  </label>
+								<select id="event-participants" class="w-full px-3 py-2 text-sm border border-[var(--border)] rounded-md bg-[var(--card)] focus:outline-none focus:ring-0">
+									<option>Select</option>
+									<option>Jack Michalak</option>
+									<option>Ryan Cooper</option>
+									<option>Daniel Kim</option>
+									<option>Sarah Johnson</option>
+									<option>Edward Peltonn</option>
+								</select>
+							</div> 
+							 
+							<div class="col-span-12">
+								<label for="event-description" class="mb-1 block text-sm font-semibold text-dark">Description
+								</label>
+								<textarea id="event-description" class="py-2 px-3 sm:py-3 sm:px-4 block text-dark w-full bg-[var(--card)] border-[var(--border)] rounded-lg sm:text-sm text-sm focus:ring-0 disabled:opacity-50 disabled:pointer-events-none" rows="3" placeholder=""></textarea>
+								<p class="text-sm text-gray-600 mt-1">Minimum 50 Characters Required</p>
+							</div>
+						</div>
+						<!-- End grid --> 
+					</form> 
+					<div class="flex justify-end items-center gap-x-2 pt-5 border-t border-[var(--border)]">
+						<button type="button" class="btn bg-[var(--card)] border border-[var(--border)] font-semibold text-gray-900 text-center inline-flex items-center justify-center gap-x-2  hover:bg-primary hover:border-primary hover:text-white" data-hs-overlay="#add-event">
+							Cancel
+						</button>
+						<button type="button" class="btn inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-primary text-white hover:bg-primary-800 focus:outline-hidden focus:bg-primary-800 disabled:opacity-50 disabled:pointer-events-none">
+							Add Event
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>  
+	</div>
+	<!-- Add Event End -->
+
+	<!-- Edit Event Start -->
+	<div id="edit-event" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1">
+		<div class="min-h-screen flex items-center justify-center px-4"> 
+			<div class="max-w-[800px] w-full mx-auto">
+				<div class="flex flex-col bg-[var(--card)] border p-6 border-[var(--border)] rounded-lg pointer-events-auto m-5">
+					<div class="flex justify-between items-center mb-5 pb-5 border-b border-[var(--border)] ">
+						<h3 class="text-gray-900 text-xl font-bold mb-0">Event Details</h3>
+						<button type="button" class="size-7 inline-flex justify-center items-center rounded-full border border-[var(--border)] bg-[var(--card)] text-gray-900 text-base hover:bg-danger hover:border-danger hover:text-white dark:hover:text-dark focus:outline-hidden focus:bg-danger cursor-pointer" aria-label="Close" data-hs-overlay="#edit-event">
+							<i class="icon-x"></i>
+						</button>
+					</div>
+					<form action="#">
+						<!-- Start grid -->
+						<div class="grid md:grid-cols-12 gap-4 mb-5">
+							<div class="col-span-12">
+								<label for="edit-event-name" class="mb-1 block text-sm font-semibold text-dark">Event Name
+									<span class="text-danger">*</span>
+								</label>
+								<div class="relative">
+									<input id="edit-event-name" type="text" class="form-input text-dark bg-[var(--card)] block w-full border border-[var(--border)] rounded-lg focus:ring-0" [(ngModel)]="eventDetails.title" name="editEventName">
+								</div>
+							</div>
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="edit-event-category" class="mb-1 block text-sm font-semibold text-dark">Category  <span class="text-danger">*</span>
+								</label>
+								<select id="edit-event-category" class="w-full px-3 py-2 text-sm border border-[var(--border)] rounded-md bg-[var(--card)] focus:outline-none focus:ring-0">
+									<option>Select</option>
+									<option>Deadline</option>
+									<option selected>Interview</option>
+									<option>Business Trip</option>
+									<option>Client Call</option>
+									<option>Presentation</option>
+								</select>
+							</div>
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="edit-event-date" class="mb-1 block text-sm font-semibold text-dark">Event Date
+									<span class="text-danger">*</span>
+								</label>
+								<input id="edit-event-date" type="date" class="form-input text-dark bg-[var(--card)] block w-full border border-[var(--border)] rounded-lg focus:ring-0" [(ngModel)]="eventDetails.date" name="editEventDate">
+							</div>
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="edit-event-start-time" class="mb-1 block text-sm font-semibold text-dark">Start Time <span class="text-danger">*</span>
+								</label>
+								<input id="edit-event-start-time" type="text" class="form-input text-dark bg-[var(--card)] block w-full border border-[var(--border)] rounded-lg focus:ring-0" placeholder="09:00" [(ngModel)]="eventDetails.startTime" name="editStartTime">
+							</div>
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="edit-event-end-time" class="mb-1 block text-sm font-semibold text-dark">End Time <span class="text-danger">*</span>
+								</label>
+								<input id="edit-event-end-time" type="text" class="form-input text-dark bg-[var(--card)] block w-full border border-[var(--border)] rounded-lg focus:ring-0" placeholder="12:00" [(ngModel)]="eventDetails.endTime" name="editEndTime">
+							</div>
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="edit-event-location" class="mb-1 block text-sm font-semibold text-dark">Event Location </label>
+								<input id="edit-event-location" type="text" class="form-input text-dark bg-[var(--card)] block w-full border border-[var(--border)] rounded-lg focus:ring-0">
+							</div>	
+							<div class="lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+								<label for="edit-event-participants" class="mb-1 block text-sm font-semibold text-dark">Participants  </label>
+								<select id="edit-event-participants" class="w-full px-3 py-2 text-sm border border-[var(--border)] rounded-md bg-[var(--card)] focus:outline-none focus:ring-0" multiple="multiple">
+									<option>Select</option>
+									<option>Jack Michalak</option>
+									<option selected>Ryan Cooper</option>
+									<option>Daniel Kim</option>
+									<option>Sarah Johnson</option>
+									<option>Edward Peltonn</option>
+								</select>
+							</div> 
+							 
+							<div class="col-span-12">
+								<label for="edit-event-description" class="mb-1 block text-sm font-semibold text-dark">Description</label>
+								<textarea id="edit-event-description" class="py-2 px-3 sm:py-3 sm:px-4 block text-dark w-full bg-[var(--card)] border-[var(--border)] rounded-lg sm:text-sm text-sm focus:ring-0 disabled:opacity-50 disabled:pointer-events-none" rows="3" placeholder=""></textarea>
+								<p class="text-sm text-gray-600 mt-1">Minimum 50 Characters Required</p>
+							</div>
+						</div>
+						<!-- End grid --> 
+					</form> 
+					<div class="flex justify-end items-center gap-x-2 pt-5 border-t border-[var(--border)]">
+						<button type="button" class="btn bg-[var(--card)] border border-[var(--border)] font-semibold text-gray-900 text-center inline-flex items-center justify-center gap-x-2  hover:bg-primary hover:border-primary hover:text-white" data-hs-overlay="#edit-event">
+							Cancel
+						</button>
+						<button type="button" class="btn inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-primary text-white hover:bg-primary-800 focus:outline-hidden focus:bg-primary-800 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#edit-event">
+							Update Event
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>  
+	</div>
+	<!-- Edit Event End -->

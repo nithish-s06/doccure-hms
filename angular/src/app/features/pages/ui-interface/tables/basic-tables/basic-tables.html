@@ -1,0 +1,764 @@
+<!-- Start grid -->
+				<div class="grid grid-cols-12 gap-6">
+					<div class="preview-card sm:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Basic Example</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div> 
+						<div class="preview-content overflow-auto">
+							<table class="table-auto mb-0 w-full">
+								<thead class="border border-border-color">
+									<tr>
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Firstname</th> 
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Email</th> 
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Status</th> 
+									</tr>
+								</thead>
+								<tbody class="border border-border-color">
+									<tr class="border-b border-border-color">
+										<td class="inline-flex items-center gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-18.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-dark">Mary</span>
+										</td> 
+										<td class="px-4 py-3 text-start">john@example.com</td>
+										<td class="px-4 py-3 text-start">
+											<span class="badge rounded-lg text-xs font-medium bg-success-50 text-success border border-success">Active</span>
+										</td>
+									</tr> 
+									<tr class="border-b border-border-color">
+										<td class="inline-flex items-center gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-10.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-dark">Moe</span>
+										</td> 
+										<td class="px-4 py-3 text-start">mary@example.com</td>
+										<td class="px-4 py-3 text-start">
+											<span class="badge rounded-lg text-xs font-medium bg-success-50 text-success border border-success">Active</span>
+										</td>
+									</tr> 
+									<tr class="border-b border-border-color">
+										<td class="inline-flex items-center gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-03.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-dark">Dooley</span>
+										</td> 
+										<td class="px-4 py-3 text-start">july@example.com</td>
+										<td class="px-4 py-3 text-start">
+											<span class="badge rounded-lg text-xs font-medium bg-danger-50 text-danger border border-danger">Inactive</span>
+										</td>
+									</tr> 
+								</tbody>
+							</table>
+						</div>
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;div class="overflow-auto"&gt;
+	&lt;table class="table-auto mb-0 w-full"&gt;
+		&lt;thead class="border border-border-color"&gt;
+			&lt;tr&gt;
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Firstname&lt;/th&gt; 
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Email&lt;/th&gt; 
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Status&lt;/th&gt; 
+			&lt;/tr&gt;
+		&lt;/thead&gt;
+		&lt;tbody class="border border-border-color"&gt;
+			&lt;tr class="border-b border-border-color"&gt;
+				&lt;td class="inline-flex items-center gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-18.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-dark"&gt;Mary&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;john@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;
+					&lt;span class="badge rounded-lg text-xs font-medium bg-success-50 text-success border border-success"&gt;Active&lt;/span&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr class="border-b border-border-color"&gt;
+				&lt;td class="inline-flex items-center gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-10.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-dark"&gt;Moe&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;mary@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;
+					&lt;span class="badge rounded-lg text-xs font-medium bg-success-50 text-success border border-success"&gt;Active&lt;/span&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr class="border-b border-border-color"&gt;
+				&lt;td class="inline-flex items-center gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-03.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-dark"&gt;Dooley&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;july@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;
+					&lt;span class="badge rounded-lg text-xs font-medium bg-danger-50 text-danger border border-danger"&gt;Inactive&lt;/span&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+		&lt;/tbody&gt;
+	&lt;/table&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+					</div>
+					<div class="preview-card sm:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Dark Table</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div> 
+						<div class="preview-content overflow-auto">
+							<table class="table-auto mb-0 w-full">
+								<thead class="border border-border-color">
+									<tr class="bg-dark text-white dark:text-white!">
+										<th class="px-4 py-2 text-start">Firstname</th> 
+										<th class="px-4 py-2 text-start">Email</th> 
+										<th class="px-4 py-2 text-start">Action</th> 
+									</tr>
+								</thead>
+								<tbody class="border border-border-color">
+									<tr class="border-b border-border-color bg-dark text-white dark:text-white!">
+										<td class="inline-flex  w-full items-center gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-18.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-white dark:text-white!">Mary</span>
+										</td> 
+										<td class="px-4 py-3 text-start">john@example.com</td>
+										<td class="px-4 py-3 text-start">
+											<div class="hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative inline-flex">
+												<button type="button" class="hs-dropdown-toggle cursor-pointer size-8 rounded-full inline-flex items-center justify-center text-sm font-normal border border-border-color bg-white text-gray-800 hover:bg-white focus:outline-hidden focus:white" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+													<i class="icon-ellipsis-vertical"></i>
+												</button>
+
+												<div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-50 bg-white border border-border-color rounded-lg mt-2 z-1" role="menu" aria-orientation="vertical">
+													<div class="p-2 space-y-1">
+														<a class="flex items-center px-4 py-1.75 rounded-lg text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);">
+															<i class="icon-eye me-2"></i>View Details
+														</a>
+														<a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);">
+															<i class="icon-pencil-line me-2"></i>Edit
+														</a>
+														<a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);">
+															<i class="icon-trash-2 me-2"></i>Delete
+														</a>
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr> 
+									<tr class="border-b border-border-color bg-dark text-white">
+										<td class="inline-flex items-center w-full gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-10.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-white dark:text-white!">Moe</span>
+										</td> 
+										<td class="px-4 py-3 text-white dark:text-white!">mary@example.com</td>
+										<td class="px-4 py-3 text-white">
+											<div class="hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative inline-flex">
+												<button type="button" class="hs-dropdown-toggle cursor-pointer size-8 rounded-full inline-flex items-center justify-center text-sm font-normal border border-border-color bg-white text-gray-800 hover:bg-white focus:outline-hidden focus:white" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+													<i class="icon-ellipsis-vertical"></i>
+												</button>
+
+												<div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-50 bg-white border border-border-color rounded-lg mt-2 z-1" role="menu" aria-orientation="vertical">
+													<div class="p-2 space-y-1">
+														<a class="flex items-center px-4 py-1.75 rounded-lg text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);">
+															<i class="icon-eye me-2"></i>View Details
+														</a>
+														<a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);">
+															<i class="icon-pencil-line me-2"></i>Edit
+														</a>
+														<a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);">
+															<i class="icon-trash-2 me-2"></i>Delete
+														</a>
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr> 
+									<tr class="border-b border-border-color bg-dark text-white">
+										<td class="inline-flex items-center w-full gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-03.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-white dark:text-white!" >Dooley</span>
+										</td> 
+										<td class="px-4 py-3 text-white dark:text-white!">july@example.com</td>
+										<td class="px-4 py-3 text-white">
+											<div class="hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative inline-flex">
+												<button type="button" class="hs-dropdown-toggle cursor-pointer size-8 rounded-full inline-flex items-center justify-center text-sm font-normal border border-border-color bg-white text-gray-800 hover:bg-white focus:outline-hidden focus:white" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+													<i class="icon-ellipsis-vertical"></i>
+												</button> 
+												<div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-50 bg-white border border-border-color rounded-lg mt-2 z-1" role="menu" aria-orientation="vertical">
+													<div class="p-2 space-y-1">
+														<a class="flex items-center px-4 py-1.75 rounded-lg text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);">
+															<i class="icon-eye me-2"></i>View Details
+														</a>
+														<a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);">
+															<i class="icon-pencil-line me-2"></i>Edit
+														</a>
+														<a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);">
+															<i class="icon-trash-2 me-2"></i>Delete
+														</a>
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr> 
+								</tbody>
+							</table>
+						</div>
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;div class="overflow-auto"&gt;
+	&lt;table class="table-auto mb-0 w-full"&gt;
+		&lt;thead class="border border-border-color"&gt;
+			&lt;tr class="bg-dark text-white"&gt;
+				&lt;th class="px-4 py-2 text-start"&gt;Firstname&lt;/th&gt; 
+				&lt;th class="px-4 py-2 text-start"&gt;Email&lt;/th&gt; 
+				&lt;th class="px-4 py-2 text-start"&gt;Action&lt;/th&gt; 
+			&lt;/tr&gt;
+		&lt;/thead&gt;
+		&lt;tbody class="border border-border-color"&gt;
+			&lt;tr class="border-b border-border-color bg-dark text-white"&gt;
+				&lt;td class="inline-flex  w-full items-center gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-18.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-white"&gt;Mary&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;john@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;
+					&lt;div class="hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative inline-flex"&gt;
+						&lt;button type="button" class="hs-dropdown-toggle cursor-pointer size-8 rounded-full inline-flex items-center justify-center text-sm font-normal border border-border-color bg-white text-gray-800 hover:bg-white focus:outline-hidden focus:white" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown"&gt;
+							&lt;i class="icon-ellipsis-vertical"&gt;&lt;/i&gt;
+						&lt;/button&gt;
+
+						&lt;div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-50 bg-white border border-border-color rounded-lg mt-2 z-1" role="menu" aria-orientation="vertical"&gt;
+							&lt;div class="p-2 space-y-1"&gt;
+								&lt;a class="flex items-center px-4 py-1.75 rounded-lg text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);"&gt;
+									&lt;i class="icon-eye text-gray-900 me-2"&gt;&lt;/i&gt;View Details
+								&lt;/a&gt;
+								&lt;a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);"&gt;
+									&lt;i class="icon-pencil-line me-2"&gt;&lt;/i&gt;Edit
+								&lt;/a&gt;
+								&lt;a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);"&gt;
+									&lt;i class="icon-trash-2 text-gray-900 me-2"&gt;&lt;/i&gt;Delete
+								&lt;/a&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr class="border-b border-border-color bg-dark text-white"&gt;
+				&lt;td class="inline-flex items-center w-full gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-10.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-white"&gt;Moe&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-white"&gt;mary@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-white"&gt;
+					&lt;div class="hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative inline-flex"&gt;
+						&lt;button type="button" class="hs-dropdown-toggle cursor-pointer size-8 rounded-full inline-flex items-center justify-center text-sm font-normal border border-border-color bg-white text-gray-800 hover:bg-white focus:outline-hidden focus:white" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown"&gt;
+							&lt;i class="icon-ellipsis-vertical"&gt;&lt;/i&gt;
+						&lt;/button&gt;
+
+						&lt;div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-50 bg-white border border-border-color rounded-lg mt-2 z-1" role="menu" aria-orientation="vertical"&gt;
+							&lt;div class="p-2 space-y-1"&gt;
+								&lt;a class="flex items-center px-4 py-1.75 rounded-lg text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);"&gt;
+									&lt;i class="icon-eye text-gray-900 me-2"&gt;&lt;/i&gt;View Details
+								&lt;/a&gt;
+								&lt;a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);"&gt;
+									&lt;i class="icon-pencil-line me-2"&gt;&lt;/i&gt;Edit
+								&lt;/a&gt;
+								&lt;a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);"&gt;
+									&lt;i class="icon-trash-2 text-gray-900 me-2"&gt;&lt;/i&gt;Delete
+								&lt;/a&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr class="border-b border-border-color bg-dark text-white"&gt;
+				&lt;td class="inline-flex items-center w-full gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-03.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-white"&gt;Dooley&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-white"&gt;july@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-white"&gt;
+					&lt;div class="hs-dropdown [--placement:bottom-right] [--auto-close:inside] relative inline-flex"&gt;
+						&lt;button type="button" class="hs-dropdown-toggle cursor-pointer size-8 rounded-full inline-flex items-center justify-center text-sm font-normal border border-border-color bg-white text-gray-800 hover:bg-white focus:outline-hidden focus:white" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown"&gt;
+							&lt;i class="icon-ellipsis-vertical"&gt;&lt;/i&gt;
+						&lt;/button&gt; 
+						&lt;div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-50 bg-white border border-border-color rounded-lg mt-2 z-1" role="menu" aria-orientation="vertical"&gt;
+							&lt;div class="p-2 space-y-1"&gt;
+								&lt;a class="flex items-center px-4 py-1.75 rounded-lg text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);"&gt;
+									&lt;i class="icon-eye text-gray-900 me-2"&gt;&lt;/i&gt;View Details
+								&lt;/a&gt;
+								&lt;a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);"&gt;
+									&lt;i class="icon-pencil-line me-2"&gt;&lt;/i&gt;Edit
+								&lt;/a&gt;
+								&lt;a class="flex items-center px-4 py-1.75 rounded-lg text-sm text-default hover:bg-[var(--card2)] hover:text-primary focus:outline-hidden focus:bg-white hover:bg-primary-50" href="javascript:void(0);"&gt;
+									&lt;i class="icon-trash-2 text-gray-900 me-2"&gt;&lt;/i&gt;Delete
+								&lt;/a&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+		&lt;/tbody&gt;
+	&lt;/table&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+					</div>   
+					<div class="preview-card sm:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Bordered Table</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div> 
+						<div class="preview-content overflow-auto">
+							<table class="table-auto mb-0 w-full">
+								<thead class="border border-border-color">
+									<tr>
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Firstname</th> 
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Email</th> 
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Action</th> 
+									</tr>
+								</thead>
+								<tbody class="border border-border-color">
+									<tr class="border border-border-color">
+										<td class="border border-border-color px-4 py-3 text-start">John</td> 
+										<td class="border border-border-color px-4 py-3 text-start">john@example.com</td>
+										<td class="border border-border-color px-4 py-3 text-start">
+											<button type="button" class="btn-small bg-[var(--card2)] border border-border-color text-dark text-center hover:bg-[var(--card2)]-800 hover:text-dark">View</button>
+										</td>
+									</tr> 
+									<tr class="border border-border-color">
+										<td class="border border-border-color px-4 py-3 text-start">Mary</td> 
+										<td class="border border-border-color px-4 py-3 text-start">mary@example.com</td>
+										<td class="border border-border-color px-4 py-3 text-start">
+											<button type="button" class="btn-small bg-[var(--card2)] border border-border-color text-dark text-center hover:bg-[var(--card2)]-800 hover:text-dark">View</button>
+										</td>
+									</tr> 
+									<tr class="border border-border-color">
+										<td class="border border-border-color px-4 py-3 text-start">July</td> 
+										<td class="border border-border-color px-4 py-3 text-start">july@example.com</td>
+										<td class="border border-border-color px-4 py-3 text-start">
+											<button type="button" class="btn-small bg-[var(--card2)] border border-border-color text-dark text-center hover:bg-[var(--card2)]-800 hover:text-dark">View</button>
+										</td>
+									</tr> 
+								</tbody>
+							</table>
+						</div>
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;div class="overflow-auto"&gt;
+	&lt;table class="table-auto mb-0 w-full"&gt;
+		&lt;thead class="border border-border-color"&gt;
+			&lt;tr&gt;
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Firstname&lt;/th&gt; 
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Email&lt;/th&gt; 
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Action&lt;/th&gt; 
+			&lt;/tr&gt;
+		&lt;/thead&gt;
+		&lt;tbody class="border border-border-color"&gt;
+			&lt;tr class="border border-border-color"&gt;
+				&lt;td class="border border-border-color px-4 py-3 text-start"&gt;John&lt;/td&gt; 
+				&lt;td class="border border-border-color px-4 py-3 text-start"&gt;john@example.com&lt;/td&gt;
+				&lt;td class="border border-border-color px-4 py-3 text-start"&gt;
+					&lt;button type="button" class="btn-small bg-[var(--card2)] border border-border-color text-dark text-center hover:bg-[var(--card2)]-800 hover:text-dark"&gt;View&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr class="border border-border-color"&gt;
+				&lt;td class="border border-border-color px-4 py-3 text-start"&gt;Mary&lt;/td&gt; 
+				&lt;td class="border border-border-color px-4 py-3 text-start"&gt;mary@example.com&lt;/td&gt;
+				&lt;td class="border border-border-color px-4 py-3 text-start"&gt;
+					&lt;button type="button" class="btn-small bg-[var(--card2)] border border-border-color text-dark text-center hover:bg-[var(--card2)]-800 hover:text-dark"&gt;View&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr class="border border-border-color"&gt;
+				&lt;td class="border border-border-color px-4 py-3 text-start"&gt;July&lt;/td&gt; 
+				&lt;td class="border border-border-color px-4 py-3 text-start"&gt;july@example.com&lt;/td&gt;
+				&lt;td class="border border-border-color px-4 py-3 text-start"&gt;
+					&lt;button type="button" class="btn-small bg-[var(--card2)] border border-border-color text-dark text-center hover:bg-[var(--card2)]-800 hover:text-dark"&gt;View&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+		&lt;/tbody&gt;
+	&lt;/table&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+					</div>
+					<div class="preview-card sm:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Striped Rows</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div> 
+						<div class="preview-content overflow-auto">
+							<table class="table-auto mb-0 w-full">
+								<thead>
+									<tr>
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Firstname</th>
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Lastname</th>
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Action</th> 
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="bg-[var(--card2)]">
+										<td class="px-4 py-3 text-start">John</td> 
+										<td class="px-4 py-3 text-start">john@example.com</td>
+										<td class="px-4 py-3 text-start">
+											<button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-success border border-success text-white text-center hover:bg-success-800 hover:text-white"><i class="icon icon-download"></i>Success</button>
+										</td>
+									</tr> 
+									<tr>    
+										<td class="px-4 py-3 text-start">Mary</td> 
+										<td class="px-4 py-3 text-start">mary@example.com</td>
+										<td class="px-4 py-3 text-start">
+											<button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-success border border-success text-white text-center hover:bg-success-800 hover:text-white"><i class="icon icon-download"></i>Success</button>
+										</td>
+									</tr> 
+									<tr  class="bg-[var(--card2)]">
+										<td class="px-4 py-3 text-start">July</td> 
+										<td class="px-4 py-3 text-start">july@example.com</td>
+										<td class="px-4 py-3 text-start">
+											<button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-success border border-success text-white text-center hover:bg-success-800 hover:text-white"><i class="icon icon-download"></i>Success</button>
+										</td>
+									</tr> 
+								</tbody>
+							</table>
+						</div>
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;div class="overflow-auto"&gt;
+	&lt;table class="table-auto mb-0 w-full"&gt;
+		&lt;thead&gt;
+			&lt;tr&gt;
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Firstname&lt;/th&gt;
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Lastname&lt;/th&gt;
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Action&lt;/th&gt; 
+			&lt;/tr&gt;
+		&lt;/thead&gt;
+		&lt;tbody&gt;
+			&lt;tr class="bg-[var(--card2)]"&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;John&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;john@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-success border border-success text-white text-center hover:bg-success-800 hover:text-white"&gt;&lt;i class="icon icon-download"&gt;&lt;/i&gt;Success&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr&gt;    
+				&lt;td class="px-4 py-3 text-start"&gt;Mary&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;mary@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-success border border-success text-white text-center hover:bg-success-800 hover:text-white"&gt;&lt;i class="icon icon-download"&gt;&lt;/i&gt;Success&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr  class="bg-[var(--card2)]"&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;July&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;july@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-success border border-success text-white text-center hover:bg-success-800 hover:text-white"&gt;&lt;i class="icon icon-download"&gt;&lt;/i&gt;Success&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+		&lt;/tbody&gt;
+	&lt;/table&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+					</div> 
+					<div class="preview-card sm:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Actions Tables</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div> 
+						<div class="preview-content overflow-auto">
+							<table class="table-auto mb-0 w-full">
+								<thead class="border border-border-color">
+									<tr>
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Firstname</th> 
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Email</th> 
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Action</th> 
+									</tr>
+								</thead>
+								<tbody class="border border-border-color">
+									<tr class="border-b border-border-color">
+										<td class="inline-flex items-center gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-18.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-dark">Mary</span>
+										</td> 
+										<td class="px-4 py-3 text-start">john@example.com</td>
+										<td class="px-4 py-3 text-start flex gap-2">
+											<button type="button" class="btn-small flex items-center justify-center bg-primary-100 border border-primary text-primary text-center hover:bg-primary-200 rounded-full"><i class="icon icon-square-pen"></i></button>
+											<button type="button" class="btn-small flex items-center justify-center bg-success-100 border border-success text-success text-center hover:bg-success-200 rounded-full"><i class="icon icon-download"></i></button>
+											<button type="button" class="btn-small flex items-center justify-center bg-danger-100 border border-danger text-danger text-center hover:bg-danger-200 rounded-full"><i class="icon icon-trash-2"></i></button>
+										</td>
+									</tr> 
+									<tr class="border-b border-border-color">
+										<td class="inline-flex items-center gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-10.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-dark">Moe</span>
+										</td> 
+										<td class="px-4 py-3 text-start">mary@example.com</td>
+										<td class="px-4 py-3 text-start flex gap-2">
+											<button type="button" class="btn-small flex items-center justify-center bg-primary-100 border border-primary text-primary text-center hover:bg-primary-200 rounded-full"><i class="icon icon-square-pen"></i></button>
+											<button type="button" class="btn-small flex items-center justify-center bg-success-100 border border-success text-success text-center hover:bg-success-200 rounded-full"><i class="icon icon-download"></i></button>
+											<button type="button" class="btn-small flex items-center justify-center bg-danger-100 border border-danger text-danger text-center hover:bg-danger-200 rounded-full"><i class="icon icon-trash-2"></i></button>
+										</td>
+									</tr> 
+									<tr class="border-b border-border-color">
+										<td class="inline-flex items-center gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-03.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-dark">Dooley</span>
+										</td> 
+										<td class="px-4 py-3 text-start">july@example.com</td>
+										<td class="px-4 py-3 text-start flex gap-2">
+											<button type="button" class="btn-small flex items-center justify-center bg-primary-100 border border-primary text-primary text-center hover:bg-primary-200 rounded-full"><i class="icon icon-square-pen"></i></button>
+											<button type="button" class="btn-small flex items-center justify-center bg-success-100 border border-success text-success text-center hover:bg-success-200 rounded-full"><i class="icon icon-download"></i></button>
+											<button type="button" class="btn-small flex items-center justify-center bg-danger-100 border border-danger text-danger text-center hover:bg-danger-200 rounded-full"><i class="icon icon-trash-2"></i></button>
+										</td>
+									</tr> 
+								</tbody>
+							</table>
+						</div>
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;div class="overflow-auto"&gt;
+	&lt;table class="table-auto mb-0 w-full"&gt;
+		&lt;thead class="border border-border-color"&gt;
+			&lt;tr&gt;
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Firstname&lt;/th&gt; 
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Email&lt;/th&gt; 
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Action&lt;/th&gt; 
+			&lt;/tr&gt;
+		&lt;/thead&gt;
+		&lt;tbody class="border border-border-color"&gt;
+			&lt;tr class="border-b border-border-color"&gt;
+				&lt;td class="inline-flex items-center gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-18.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-dark"&gt;Mary&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;john@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start flex gap-2"&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center bg-primary-100 border border-primary text-primary text-center hover:bg-primary-200 rounded-full"&gt;&lt;i class="icon icon-square-pen"&gt;&lt;/i&gt;&lt;/button&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center bg-success-100 border border-success text-success text-center hover:bg-success-200 rounded-full"&gt;&lt;i class="icon icon-download"&gt;&lt;/i&gt;&lt;/button&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center bg-danger-100 border border-danger text-danger text-center hover:bg-danger-200 rounded-full"&gt;&lt;i class="icon icon-trash-2"&gt;&lt;/i&gt;&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr class="border-b border-border-color"&gt;
+				&lt;td class="inline-flex items-center gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-10.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-dark"&gt;Moe&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;mary@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start flex gap-2"&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center bg-primary-100 border border-primary text-primary text-center hover:bg-primary-200 rounded-full"&gt;&lt;i class="icon icon-square-pen"&gt;&lt;/i&gt;&lt;/button&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center bg-success-100 border border-success text-success text-center hover:bg-success-200 rounded-full"&gt;&lt;i class="icon icon-download"&gt;&lt;/i&gt;&lt;/button&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center bg-danger-100 border border-danger text-danger text-center hover:bg-danger-200 rounded-full"&gt;&lt;i class="icon icon-trash-2"&gt;&lt;/i&gt;&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr class="border-b border-border-color"&gt;
+				&lt;td class="inline-flex items-center gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-03.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-dark"&gt;Dooley&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;july@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start flex gap-2"&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center bg-primary-100 border border-primary text-primary text-center hover:bg-primary-200 rounded-full"&gt;&lt;i class="icon icon-square-pen"&gt;&lt;/i&gt;&lt;/button&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center bg-success-100 border border-success text-success text-center hover:bg-success-200 rounded-full"&gt;&lt;i class="icon icon-download"&gt;&lt;/i&gt;&lt;/button&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center bg-danger-100 border border-danger text-danger text-center hover:bg-danger-200 rounded-full"&gt;&lt;i class="icon icon-trash-2"&gt;&lt;/i&gt;&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+		&lt;/tbody&gt;
+	&lt;/table&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+					</div>
+					<div class="preview-card sm:col-span-6 col-span-12 bg-white rounded-md border border-border-color p-5">
+						<div class="pb-5 mb-5 flex items-center xxl:gap-0 gap-3 justify-between flex-wrap border-b border-border-color">
+							<h2 class="text-lg font-bold c-text mb-0">Button Tables</h2>
+							<button type="button" data-toggle="code" class="flex items-center gap-2 border py-1.5 px-2.5 text-xs border-border-color font-semibold rounded-md bg-[var(--card2)]  focus:bg-primary focus:border-primary focus:text-white text-gray-900 dark:text-dark dark:focus:text-dark">
+								<i class="icon icon-eye"></i>
+								<span class="code-btn">Show Code</span>
+							</button>
+						</div> 
+						<div class="preview-content overflow-auto">
+							<table class="table-auto mb-0 w-full">
+								<thead class="border border-border-color">
+									<tr>
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Firstname</th> 
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Email</th> 
+										<th class="px-4 py-2 bg-[var(--card2)] text-dark text-start">Action</th> 
+									</tr>
+								</thead>
+								<tbody class="border border-border-color">
+									<tr class="border-b border-border-color">
+										<td class="inline-flex items-center gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-18.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-dark">Mary</span>
+										</td> 
+										<td class="px-4 py-3 text-start">john@example.com</td>
+										<td class="px-4 py-3 text-start">
+											<button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-danger border border-danger text-white text-center hover:bg-danger-800 hover:text-white"><i class="icon icon-trash-2"></i>Delete</button>
+										</td>
+									</tr> 
+									<tr class="border-b border-border-color">
+										<td class="inline-flex items-center gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-10.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-dark">Moe</span>
+										</td> 
+										<td class="px-4 py-3 text-start">mary@example.com</td>
+										<td class="px-4 py-3 text-start">
+											<button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-danger border border-danger text-white text-center hover:bg-danger-800 hover:text-white"><i class="icon icon-trash-2"></i>Delete</button>
+										</td>
+									</tr> 
+									<tr class="border-b border-border-color">
+										<td class="inline-flex items-center gap-2 px-4 py-3 text-start">
+											<span class="relative flex shrink-0">
+												<img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-03.jpg" alt="avatar">
+												<span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"></span>
+											</span>
+											<span class="text-dark">Dooley</span>
+										</td> 
+										<td class="px-4 py-3 text-start">july@example.com</td>
+										<td class="px-4 py-3 text-start">
+											<button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-danger border border-danger text-white text-center hover:bg-danger-800 hover:text-white"><i class="icon icon-trash-2"></i>Delete</button>
+										</td>
+									</tr> 
+								</tbody>
+							</table>
+						</div>
+<pre class="code hidden relative mt-4 p-0! bg-dark text-gray-100 text-sm  overflow-hidden">
+<button type="button" data-copy class="sticky float-end top-3 right-3 z-10 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-gray-700 flex items-center gap-1"><i class="icon icon-copy"></i><span>Copy</span></button>
+<code class="language-html block w-full max-h-[250px] mb-[-42px] mt-[-10px]! overflow-auto p-4 pr-16">
+&lt;div class="overflow-auto"&gt;
+	&lt;table class="table-auto mb-0 w-full"&gt;
+		&lt;thead class="border border-border-color"&gt;
+			&lt;tr&gt;
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Firstname&lt;/th&gt; 
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Email&lt;/th&gt; 
+				&lt;th class="px-4 py-2 bg-[var(--card2)] text-dark text-start"&gt;Action&lt;/th&gt; 
+			&lt;/tr&gt;
+		&lt;/thead&gt;
+		&lt;tbody class="border border-border-color"&gt;
+			&lt;tr class="border-b border-border-color"&gt;
+				&lt;td class="inline-flex items-center gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-18.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-dark"&gt;Mary&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;john@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-danger border border-danger text-white text-center hover:bg-danger-800 hover:text-white"&gt;&lt;i class="icon icon-trash-2"&gt;&lt;/i&gt;Delete&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr class="border-b border-border-color"&gt;
+				&lt;td class="inline-flex items-center gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-10.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-dark"&gt;Moe&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;mary@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-danger border border-danger text-white text-center hover:bg-danger-800 hover:text-white"&gt;&lt;i class="icon icon-trash-2"&gt;&lt;/i&gt;Delete&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+			&lt;tr class="border-b border-border-color"&gt;
+				&lt;td class="inline-flex items-center gap-2 px-4 py-3 text-start"&gt;
+					&lt;span class="relative flex shrink-0"&gt;
+						&lt;img class="w-8 h-8 border border-border-color rounded-full" src="assets/img/avatar/avatar-03.jpg" alt="avatar"&gt;
+						&lt;span class="bottom-0 end-0.5 absolute  size-2 bg-success border border-white rounded-full"&gt;&lt;/span&gt;
+					&lt;/span&gt;
+					&lt;span class="text-dark"&gt;Dooley&lt;/span&gt;
+				&lt;/td&gt; 
+				&lt;td class="px-4 py-3 text-start"&gt;july@example.com&lt;/td&gt;
+				&lt;td class="px-4 py-3 text-start"&gt;
+					&lt;button type="button" class="btn-small flex items-center justify-center gap-1.5 cursor-pointer bg-danger border border-danger text-white text-center hover:bg-danger-800 hover:text-white"&gt;&lt;i class="icon icon-trash-2"&gt;&lt;/i&gt;Delete&lt;/button&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt; 
+		&lt;/tbody&gt;
+	&lt;/table&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+					</div> 
+				</div>
+			    <!-- End grid -->   
