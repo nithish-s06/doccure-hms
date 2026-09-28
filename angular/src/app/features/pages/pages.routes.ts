@@ -7,7 +7,14 @@ export const Pages_Routes: Routes = [
          children:[
             //Dashboards
             { path: 'index', loadComponent: () => import('./main-menu/dashboards/dashboard/dashboard').then((m) => m.Dashboard)},
-           
+            { path: 'executive-dashboard', loadComponent: () => import('./main-menu/dashboards/executive-dashboard/executive-dashboard').then((m) => m.ExecutiveDashboard)},
+            { path: 'doctor-dashboard', loadComponent: () => import('./main-menu/dashboards/doctor-dashboard/doctor-dashboard').then((m) => m.DoctorDashboard)},
+            { path: 'nurse-dashboard', loadComponent: () => import('./main-menu/dashboards/nurse-dashboard/nurse-dashboard').then((m) => m.NurseDashboard)},
+            { path: 'reception-dashboard', loadComponent: () => import('./main-menu/dashboards/reception-dashboard/reception-dashboard').then((m) => m.ReceptionDashboard)},
+            { path: 'laboratory-dashboard', loadComponent: () => import('./main-menu/dashboards/laboratory-dashboard/laboratory-dashboard').then((m) => m.LaboratoryDashboard)},
+            { path: 'pharmacy-dashboard', loadComponent: () => import('./main-menu/dashboards/pharmacy-dashboard/pharmacy-dashboard').then((m) => m.PharmacyDashboard)},
+            { path: 'billing-dashboard', loadComponent: () => import('./main-menu/dashboards/billing-dashboard/billing-dashboard').then((m) => m.BillingDashboard)},
+
 
              // Layouts
             // { path: 'layout-mini', loadComponent: () => import('./main/layout-pages/layout-pages').then((m) => m.LayoutPages)},

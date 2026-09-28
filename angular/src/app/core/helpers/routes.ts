@@ -21,6 +21,13 @@ export const All_Routes={
 
     //Dashboard
     index:'/index',
+    executiveDashboard:'/executive-dashboard',
+    doctorDashboard:'/doctor-dashboard',
+    nurseDashboard:'/nurse-dashboard',
+    receptionDashboard:'/reception-dashboard',
+    laboratoryDashboard:'/laboratory-dashboard',
+    pharmacyDashboard:'/pharmacy-dashboard',
+    billingDashboard:'/billing-dashboard',
 
     // Applications
     chat:'/chat',
@@ -90,14 +97,6 @@ export const All_Routes={
     uilucide:'/icons/lucide',
     uiphosphor:'/icons/phosphor',
 
-    // Dashboards
-    executiveDashboard:'/executive-dashboard',
-    doctorDashboard:'/doctor-dashboard',
-    nurseDashboard:'/nurse-dashboard',
-    receptionDashboard:'/reception-dashboard',
-    laboratoryDashboard:'/laboratory-dashboard',
-    pharmacyDashboard:'/pharmacy-dashboard',
-    billingDashboard:'/billing-dashboard',
 
     // Patients
     patients:'/patients',
