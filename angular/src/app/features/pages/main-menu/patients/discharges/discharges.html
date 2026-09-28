@@ -1,187 +1,227 @@
-                
-                    <div id="dc-page" class="max-w-[1500px] mx-auto">
 
-                        <!-- ==================== SKELETON ==================== -->
-                        <div id="dc-skeleton" class="space-y-5">
-                            <div class="dc-sk h-[170px] dc-sk-r150"></div>
-                            <div class="dc-grid dc-g6">
-                                <div class="dc-sk h-[130px]"></div><div class="dc-sk h-[130px]"></div><div class="dc-sk h-[130px]"></div>
-                                <div class="dc-sk h-[130px]"></div><div class="dc-sk h-[130px]"></div><div class="dc-sk h-[130px]"></div>
-                            </div>
-                            <div class="dc-grid dc-g3">
-                                <div class="dc-sk h-[160px]"></div><div class="dc-sk h-[160px]"></div><div class="dc-sk h-[160px]"></div>
-                            </div>
-                            <div class="dc-sk h-[64px] dc-sk-r125"></div>
-                            <div class="dc-layout">
-                                <div class="dc-cards">
-                                    <div class="dc-sk h-[240px]"></div><div class="dc-sk h-[240px]"></div><div class="dc-sk h-[240px]"></div>
-                                </div>
-                                <div class="space-y-5">
-                                    <div class="dc-sk h-[300px] dc-sk-r125"></div>
-                                    <div class="dc-sk h-[200px] dc-sk-r125"></div>
-                                </div>
-                            </div>
-                        </div>
+<div id="dc-page" class="max-w-[1500px] mx-auto">
 
-                        <!-- ==================== CONTENT ==================== -->
-                        <div id="dc-content" class="hidden space-y-5">
+    <!-- ==================== SKELETON ==================== -->
+    <div id="dc-skeleton" class="space-y-5">
+        <div class="dc-sk h-[170px] dc-sk-r150"></div>
+        <div class="dc-grid dc-g6">
+            <div class="dc-sk h-[130px]"></div><div class="dc-sk h-[130px]"></div><div class="dc-sk h-[130px]"></div>
+            <div class="dc-sk h-[130px]"></div><div class="dc-sk h-[130px]"></div><div class="dc-sk h-[130px]"></div>
+        </div>
+        <div class="dc-grid dc-g3">
+            <div class="dc-sk h-[160px]"></div><div class="dc-sk h-[160px]"></div><div class="dc-sk h-[160px]"></div>
+        </div>
+        <div class="dc-sk h-[64px] dc-sk-r125"></div>
+        <div class="dc-layout">
+            <div class="dc-cards">
+                <div class="dc-sk h-[240px]"></div><div class="dc-sk h-[240px]"></div><div class="dc-sk h-[240px]"></div>
+            </div>
+            <div class="space-y-5">
+                <div class="dc-sk h-[300px] dc-sk-r125"></div>
+                <div class="dc-sk h-[200px] dc-sk-r125"></div>
+            </div>
+        </div>
+    </div>
 
-                            <!-- HERO -->
-                            <section class="dc-hero">
-                                <div class="flex flex-wrap items-center justify-between gap-6">
-                                    <div class="min-w-0">
-                                        <div class="flex flex-wrap items-center gap-2.5">
-                                            <span class="dc-hbadge"><span class="dc-dot"></span><span id="dc-today-badge">3</span> Discharges Today</span>
-                                            <span class="dc-hbadge dc-hbadge-amber"><i class="icon-clock text-[11px]"></i><span id="dc-pending-badge">3</span> Pending</span>
-                                            <span class="dc-hbadge dc-hbadge-emerald"><i class="icon-bed text-[11px]"></i><span id="dc-beds-badge">18</span> Beds Free</span>
-                                        </div>
-                                        <h1 class="mt-3 text-2xl lg:text-3xl font-extrabold tracking-tight">Patient Discharge Center</h1>
-                                        <p class="mt-1.5 max-w-xl text-sm text-white/70">Approve clearances, generate summaries and release beds through one seamless discharge workflow.</p>
-                                        <div class="mt-4 flex flex-wrap items-center gap-2.5 text-white/85">
-                                            <span class="dc-hmeta"><i class="icon-clock text-[13px] text-sky-300"></i>Last updated <span id="dc-updated">just now</span></span>
-                                            <span class="dc-hmeta"><i class="icon-timer text-[13px] text-emerald-300"></i>Avg. stay <span id="dc-avg-los">4.6</span> days</span>
-                                        </div>
-                                    </div>
-                                    <div class="grid grid-cols-2 gap-2.5 w-full sm:w-auto dc-print-hide">
-                                        <button type="button" class="dc-btn dc-btn-primary" data-open="new"><i class="icon-user-check"></i>New Discharge</button>
-                                        <button type="button" class="dc-btn dc-btn-success" data-act="approve-pending"><i class="icon-badge-check"></i>Approve</button>
-                                        <button type="button" class="dc-btn dc-btn-glass" data-act="print-summary"><i class="icon-printer"></i>Print Summary</button>
-                                        <button type="button" class="dc-btn dc-btn-glass" data-open="export"><i class="icon-download"></i>Export Reports</button>
-                                    </div>
-                                </div>
-                            </section>
+    <!-- ==================== CONTENT ==================== -->
+    <div id="dc-content" class="hidden space-y-5">
 
-                            <!-- KPI CARDS -->
-                            <section class="dc-grid dc-g6" id="dc-kpis"><div class="dc-stat dc-c-primary"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-user-check"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="62"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">3</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Today's Discharges</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">+12%</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="dc-stat dc-c-amber"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-clock"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="40"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">3</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Pending Approval</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">Queue</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="dc-stat dc-c-teal"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-clipboard-check"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="55"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">2</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Ready for Discharge</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">Ready</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="dc-stat dc-c-emerald"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-badge-check"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="84"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">6</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Completed</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">Done</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="dc-stat dc-c-violet"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-calendar-clock"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="48"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">10</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Follow-up Required</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">Care</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="dc-stat dc-c-sky"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-bed"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="33"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">6</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Beds Released Today</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">Free</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></section>
-
-                            <!-- DASHBOARD WIDGETS -->
-                            <section class="dc-grid dc-g3">
-                                <div class="dc-surface dc-c-primary">
-                                    <div class="dc-head"><span class="ico"><i class="icon-trending-up"></i></span><p class="dc-title">Daily Discharge Trend</p><span class="ml-auto dc-chip">7 days</span></div>
-                                    <div class="p-4">
-                                        <div class="flex items-end justify-between gap-1.5 h-[100px]">
-                                            <span class="w-full h-[50%] bg-[color-mix(in_oklab,var(--color-primary)_30%,transparent)] rounded-[.4rem]"></span>
-                                            <span class="w-full h-[66%] bg-[color-mix(in_oklab,var(--color-primary)_40%,transparent)] rounded-[.4rem]"></span>
-                                            <span class="w-full h-[42%] bg-[color-mix(in_oklab,var(--color-primary)_30%,transparent)] rounded-[.4rem]"></span>
-                                            <span class="w-full h-[82%] bg-[color-mix(in_oklab,var(--color-primary)_55%,transparent)] rounded-[.4rem]"></span>
-                                            <span class="w-full h-[60%] bg-[color-mix(in_oklab,var(--color-primary)_40%,transparent)] rounded-[.4rem]"></span>
-                                            <span class="w-full h-[92%] bg-[linear-gradient(180deg,var(--color-primary),#6366f1)] rounded-[.4rem]"></span>
-                                            <span class="w-full h-[72%] bg-[color-mix(in_oklab,var(--color-primary)_45%,transparent)] rounded-[.4rem]"></span>
-                                        </div>
-                                        <div class="flex items-center justify-between mt-3 text-xs"><span class="text-gray-500 dark:text-gray-400">This week</span><span class="dc-chip"><i class="icon-trending-up text-[10px]"></i>+12%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dc-surface dc-c-violet">
-                                    <div class="dc-head"><span class="ico"><i class="icon-building-2"></i></span><p class="dc-title">Department-wise</p></div>
-                                    <div class="p-4 space-y-2.5" id="dc-deptwidget"><div class="dc-c-rose"><div class="flex justify-between text-xs mb-1"><span class="text-gray-500 dark:text-gray-400">Cardiology</span><b class="text-gray-900 dark:text-white">28%</b></div><div class="dc-bar"><i class="[width:89.60000000000001%]"></i></div></div><div class="dc-c-amber"><div class="flex justify-between text-xs mb-1"><span class="text-gray-500 dark:text-gray-400">Orthopedics</span><b class="text-gray-900 dark:text-white">22%</b></div><div class="dc-bar"><i class="[width:70.4%]"></i></div></div><div class="dc-c-violet"><div class="flex justify-between text-xs mb-1"><span class="text-gray-500 dark:text-gray-400">Neurology</span><b class="text-gray-900 dark:text-white">16%</b></div><div class="dc-bar"><i class="[width:51.2%]"></i></div></div></div>
-                                </div>
-                                <div class="dc-surface dc-c-teal">
-                                    <div class="dc-head"><span class="ico"><i class="icon-timer"></i></span><p class="dc-title">Average Length of Stay</p></div>
-                                    <div class="p-4">
-                                        <div class="flex items-end gap-3"><p class="text-3xl font-extrabold text-gray-900 dark:text-white">4.2</p><span class="text-xs text-gray-500 dark:text-gray-400 mb-1.5">days / patient</span><span class="ml-auto dc-chip dc-c-emerald"><i class="icon-trending-down text-[10px]"></i>-0.4</span></div>
-                                        <div class="mt-3 space-y-2" id="dc-loswidget"><div class="flex items-center gap-2 dc-c-emerald"><span class="text-[11px] text-gray-500 dark:text-gray-400 [width:4.5rem]">0–2 days</span><div class="dc-bar flex-1"><i class="[width:34%]"></i></div><b class="text-xs text-gray-900 dark:text-white">34%</b></div><div class="flex items-center gap-2 dc-c-primary"><span class="text-[11px] text-gray-500 dark:text-gray-400 [width:4.5rem]">3–5 days</span><div class="dc-bar flex-1"><i class="[width:42%]"></i></div><b class="text-xs text-gray-900 dark:text-white">42%</b></div><div class="flex items-center gap-2 dc-c-amber"><span class="text-[11px] text-gray-500 dark:text-gray-400 [width:4.5rem]">6–10 days</span><div class="dc-bar flex-1"><i class="[width:18%]"></i></div><b class="text-xs text-gray-900 dark:text-white">18%</b></div><div class="flex items-center gap-2 dc-c-rose"><span class="text-[11px] text-gray-500 dark:text-gray-400 [width:4.5rem]">10+ days</span><div class="dc-bar flex-1"><i class="[width:6%]"></i></div><b class="text-xs text-gray-900 dark:text-white">6%</b></div></div>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- TOOLBAR -->
-                            <section class="dc-surface dc-c-primary">
-                                <div class="p-3 lg:p-4 space-y-3">
-                                    <div class="flex flex-wrap items-center gap-2.5">
-                                        <div class="dc-search"><i class="ico icon-search"></i><input aria-label="Search patient, ID, doctor, department…" id="dc-search" type="text" placeholder="Search patient, ID, doctor, department…"></div>
-                                        <select aria-label="All Departments" id="dc-f-dept" class="dc-tool"><option value="">All Departments</option><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>ICU</option><option>Maternity</option><option>Oncology</option></select>
-                                        <select aria-label="All Status" id="dc-f-status" class="dc-tool"><option value="">All Status</option><option>Pending</option><option>Ready</option><option>Approved</option><option>Completed</option><option>Cancelled</option></select>
-                                        <button type="button" id="dc-filters" class="dc-tool"><i class="icon-sliders-horizontal"></i>Filters<span id="dc-filter-badge" class="hidden ml-0.5 grid place-items-center size-4 rounded-full bg-primary text-white text-[9px]">0</span></button>
-                                        <select aria-label="Sort: Newest" id="dc-sort" class="dc-tool ml-auto"><option value="newest">Sort: Newest</option><option value="oldest">Oldest</option><option value="name">Patient A–Z</option><option value="los">Length of Stay</option><option value="status">Status</option></select>
-                                        <button type="button" id="dc-cols" class="dc-icobtn" title="Columns"><i class="icon-columns-3"></i></button>
-                                        <button type="button" id="dc-refresh" class="dc-icobtn" title="Refresh"><i class="icon-refresh-cw"></i></button>
-                                        <button type="button" id="dc-import" class="dc-icobtn" title="Import"><i class="icon-upload"></i></button>
-                                        <button type="button" id="dc-export" class="dc-icobtn" title="Export"><i class="icon-download"></i></button>
-                                        <div class="dc-seg">
-                                            <button type="button" id="dc-view-grid" class="is-active"><i class="icon-layout-grid"></i>Grid</button>
-                                            <button type="button" id="dc-view-list"><i class="icon-list"></i>List</button>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <label class="flex items-center gap-2 text-gray-500 dark:text-gray-400 font-semibold cursor-pointer"><input type="checkbox" id="dc-select-all" class="dc-check"> Select all on page</label>
-                                        <span id="dc-count" class="text-gray-400 dark:text-gray-500 font-medium">14 of 14 discharges</span>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- Bulk selection bar — appears under the toolbar once a row is checked -->
-                            <div id="dc-bulkbar" class="dc-bulk" hidden>
-                                <span class="flex items-center gap-2 pr-1 mr-auto"><span class="grid size-8 place-items-center rounded-lg bg-primary text-white text-xs font-extrabold" id="dc-bulk-count">0</span><span class="text-xs font-bold text-gray-900 dark:text-white">selected</span></span>
-                                <button class="dc-bulk-btn" data-bulk="approve"><i class="icon-badge-check"></i>Approve</button>
-                                <button class="dc-bulk-btn" data-bulk="followup"><i class="icon-calendar-plus"></i>Follow-up</button>
-                                <button class="dc-bulk-btn" data-bulk="status"><i class="icon-activity"></i>Status</button>
-                                <button class="dc-bulk-btn" data-bulk="export"><i class="icon-download"></i>Export</button>
-                                <button class="dc-bulk-btn" data-bulk="print"><i class="icon-printer"></i>Print</button>
-                                <button class="dc-bulk-btn danger" data-bulk="delete"><i class="icon-trash-2"></i>Delete</button>
-                                <button class="dc-bulk-btn" data-bulk="clear"><i class="icon-x"></i>Clear</button>
-                            </div>
-
-                            <!-- DISCHARGE WORKFLOW -->
-                            <section class="dc-surface dc-c-primary">
-                                <div class="dc-head"><span class="ico"><i class="icon-git-commit-horizontal"></i></span><p class="dc-title">Discharge Workflow</p><span class="ml-auto dc-chip">Clearance process</span></div>
-                                <div class="p-4">
-                                    <div class="dc-wf">
-                                        <div class="dc-wf-step done"><span class="dc-wf-node"><i class="icon-stethoscope"></i></span><span class="text-[11px] font-semibold text-gray-700 dark:text-gray-200">Doctor Approval</span></div>
-                                        <span class="dc-wf-line done"></span>
-                                        <div class="dc-wf-step done"><span class="dc-wf-node"><i class="icon-heart-pulse"></i></span><span class="text-[11px] font-semibold text-gray-700 dark:text-gray-200">Nursing</span></div>
-                                        <span class="dc-wf-line done"></span>
-                                        <div class="dc-wf-step done"><span class="dc-wf-node"><i class="icon-pill"></i></span><span class="text-[11px] font-semibold text-gray-700 dark:text-gray-200">Pharmacy</span></div>
-                                        <span class="dc-wf-line"></span>
-                                        <div class="dc-wf-step active"><span class="dc-wf-node"><i class="icon-receipt"></i></span><span class="text-[11px] font-semibold text-primary">Billing</span></div>
-                                        <span class="dc-wf-line"></span>
-                                        <div class="dc-wf-step"><span class="dc-wf-node"><i class="icon-clipboard-check"></i></span><span class="text-[11px] font-semibold text-gray-500">Final Review</span></div>
-                                        <span class="dc-wf-line"></span>
-                                        <div class="dc-wf-step"><span class="dc-wf-node"><i class="icon-badge-check"></i></span><span class="text-[11px] font-semibold text-gray-500">Completed</span></div>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- RESULTS + SIDE -->
-                            <div class="dc-layout">
-                                <div class="min-w-0 space-y-4">
-                                    <div id="dc-gridview" class="dc-cards"><article class="dc-card dc-c-rose" data-id="1" data-row-id="1"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="1"><span class="dc-c-rose dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-01.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">James Morrison</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0001</a></p></div><button class="dc-mini dc-menu-btn" data-id="1"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge completed">Completed</span><span class="dc-tag dc-c-amber"><i class="icon-calendar-clock text-[10px]"></i>Follow-up</span><span class="dc-chip dc-c-emerald"><i class="icon-badge-check text-[10px]"></i>Verified</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">Cardiology</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Chen</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-07</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-12</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">5d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>2026-09-19</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 5-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="1" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="1" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dc-card dc-c-violet" data-id="2" data-row-id="2"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="2"><span class="dc-c-violet dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-02.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">Sarah Adams</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0002</a></p></div><button class="dc-mini dc-menu-btn" data-id="2"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge ready">Ready</span><span class="dc-tag dc-c-amber"><i class="icon-calendar-clock text-[10px]"></i>Follow-up</span><span class="dc-chip dc-c-emerald"><i class="icon-badge-check text-[10px]"></i>Verified</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">Neurology</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Kumar</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-09</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-12</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">3d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>2026-09-22</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 3-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="2" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="2" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dc-card dc-c-rose" data-id="3" data-row-id="3"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="3"><span class="dc-c-rose dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-03.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">Robert Clark</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0003</a></p></div><button class="dc-mini dc-menu-btn" data-id="3"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge pending">Pending</span><span class="dc-tag dc-c-amber"><i class="icon-calendar-clock text-[10px]"></i>Follow-up</span><span class="dc-chip dc-c-amber"><i class="icon-clock text-[10px]"></i>Pending</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">ICU</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Mills</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-03</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-12</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">9d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>2026-09-15</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 9-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="3" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="3" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dc-card dc-c-teal" data-id="4" data-row-id="4"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="4"><span class="dc-c-teal dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-04.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">Emily Johnson</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0004</a></p></div><button class="dc-mini dc-menu-btn" data-id="4"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge completed">Completed</span><span class="dc-tag dc-c-emerald"><i class="icon-check text-[10px]"></i>No follow-up</span><span class="dc-chip dc-c-emerald"><i class="icon-badge-check text-[10px]"></i>Verified</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">Maternity</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Park</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-08</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-11</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">3d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>—</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 3-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="4" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="4" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dc-card dc-c-amber" data-id="5" data-row-id="5"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="5"><span class="dc-c-amber dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-05.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">David Torres</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0005</a></p></div><button class="dc-mini dc-menu-btn" data-id="5"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge approved">Approved</span><span class="dc-tag dc-c-amber"><i class="icon-calendar-clock text-[10px]"></i>Follow-up</span><span class="dc-chip dc-c-emerald"><i class="icon-badge-check text-[10px]"></i>Verified</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">Orthopedics</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Wang</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-05</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-11</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">6d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>2026-10-03</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 6-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="5" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="5" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dc-card dc-c-indigo" data-id="6" data-row-id="6"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="6"><span class="dc-c-indigo dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-06.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">Linda Nguyen</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0006</a></p></div><button class="dc-mini dc-menu-btn" data-id="6"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge pending">Pending</span><span class="dc-tag dc-c-amber"><i class="icon-calendar-clock text-[10px]"></i>Follow-up</span><span class="dc-chip dc-c-amber"><i class="icon-clock text-[10px]"></i>Pending</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">Oncology</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Rivas</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-06</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-11</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">5d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>2026-09-17</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 5-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="6" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="6" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article></div>
-                                    <div id="dc-listview" class="hidden dc-surface overflow-hidden">
-                                        <div class="overflow-x-auto"><table class="dc-table">
-                                            <thead><tr>
-                                                <th class="w-10"><input aria-label="Select all" type="checkbox" id="dc-select-all-2" class="dc-check"></th>
-                                                <th data-col="id">Discharge ID</th><th data-col="patient">Patient</th><th data-col="dept">Department</th><th data-col="doctor">Doctor</th><th data-col="admit">Admission</th><th data-col="discharge">Discharge</th><th data-col="stay">Stay</th><th data-col="followup">Follow-up</th><th data-col="status">Status</th><th class="text-right">Actions</th>
-                                            </tr></thead>
-                                            <tbody id="dc-tbody"></tbody>
-                                        </table></div>
-                                    </div>
-                                    <div id="dc-empty" class="hidden dc-surface py-16 flex flex-col items-center text-center">
-                                        <span class="grid size-16 place-items-center rounded-2xl bg-primary/10 text-primary mb-4"><i class="icon-user-check text-2xl"></i></span>
-                                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">No discharges found</h3>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-sm">Adjust your search or filters, or start a new discharge.</p>
-                                        <div class="mt-4 flex gap-2.5"><button id="dc-empty-clear" class="dc-btn dc-btn-solid"><i class="icon-x"></i>Clear filters</button><button data-open="new" class="dc-btn dc-btn-primary"><i class="icon-user-check"></i>New Discharge</button></div>
-                                    </div>
-
-                                    <div id="dc-pager" class="dc-surface p-3 lg:p-4 flex flex-wrap items-center justify-between gap-3">
-                                        <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                                            <span>Rows</span><select aria-label="Rows per page" id="dc-size" class="dc-tool dc-tool-compact"><option>12</option><option>24</option><option>36</option><option>48</option></select>
-                                            <span id="dc-page-info" class="ml-1 font-medium">Showing 1–6 of 14</span>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <div class="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mr-1"><span>Jump</span><input aria-label="#" id="dc-jump" type="number" min="1" class="dc-tool w-16 text-center dc-tool-compact-sm" placeholder="#"></div>
-                                            <div id="dc-page-nav" class="flex items-center gap-1.5"><button class="dc-pg" data-pg="prev" disabled><i class="icon-chevron-left"></i></button><button class="dc-pg is-active" data-pg="1">1</button><button class="dc-pg" data-pg="2">2</button><button class="dc-pg" data-pg="3">3</button><button class="dc-pg" data-pg="next"><i class="icon-chevron-right"></i></button></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!-- RIGHT: Patient Clearance -->
-                                <aside class="space-y-5 xl:sticky xl:top-4">
-                                    <div class="dc-surface overflow-hidden">
-                                        <div class="dc-head"><span class="ico dc-c-emerald"><i class="icon-clipboard-check"></i></span><p class="dc-title">Patient Clearance</p><span class="ml-auto dc-chip" id="dc-clear-count">5/8</span></div>
-                                        <div class="p-3 space-y-2" id="dc-clearance"><button class="dc-clear dc-c-rose done" data-clear="0"><span class="dc-clear-ico"><i class="icon-stethoscope"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Doctor Approval</span><span class="dc-clear-badge"><i class="icon-check"></i>Cleared</span></button><button class="dc-clear dc-c-teal done" data-clear="1"><span class="dc-clear-ico"><i class="icon-heart-pulse"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Nurse Clearance</span><span class="dc-clear-badge"><i class="icon-check"></i>Cleared</span></button><button class="dc-clear dc-c-emerald done" data-clear="2"><span class="dc-clear-ico"><i class="icon-pill"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Pharmacy</span><span class="dc-clear-badge"><i class="icon-check"></i>Cleared</span></button><button class="dc-clear dc-c-sky" data-clear="3"><span class="dc-clear-ico"><i class="icon-flask-conical"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Laboratory</span><span class="dc-clear-badge"><i class="icon-clock"></i>Pending</span></button><button class="dc-clear dc-c-violet done" data-clear="4"><span class="dc-clear-ico"><i class="icon-scan"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Radiology</span><span class="dc-clear-badge"><i class="icon-check"></i>Cleared</span></button><button class="dc-clear dc-c-amber" data-clear="5"><span class="dc-clear-ico"><i class="icon-receipt"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Billing</span><span class="dc-clear-badge"><i class="icon-clock"></i>Pending</span></button><button class="dc-clear dc-c-emerald done" data-clear="6"><span class="dc-clear-ico"><i class="icon-shield-check"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Insurance</span><span class="dc-clear-badge"><i class="icon-check"></i>Cleared</span></button><button class="dc-clear dc-c-indigo" data-clear="7"><span class="dc-clear-ico"><i class="icon-building"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Administration</span><span class="dc-clear-badge"><i class="icon-clock"></i>Pending</span></button></div>
-                                    </div>
-                                </aside>
-                            </div>
-                        </div>
+        <!-- HERO -->
+        <section class="dc-hero">
+            <div class="flex flex-wrap items-center justify-between gap-6">
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <span class="dc-hbadge"><span class="dc-dot"></span><span id="dc-today-badge">3</span> Discharges Today</span>
+                        <span class="dc-hbadge dc-hbadge-amber"><i class="icon-clock text-[11px]"></i><span id="dc-pending-badge">3</span> Pending</span>
+                        <span class="dc-hbadge dc-hbadge-emerald"><i class="icon-bed text-[11px]"></i><span id="dc-beds-badge">18</span> Beds Free</span>
                     </div>
-               
+                    <h1 class="mt-3 text-2xl lg:text-3xl font-extrabold tracking-tight">Patient Discharge Center</h1>
+                    <p class="mt-1.5 max-w-xl text-sm text-white/70">Approve clearances, generate summaries and release beds through one seamless discharge workflow.</p>
+                    <div class="mt-4 flex flex-wrap items-center gap-2.5 text-white/85">
+                        <span class="dc-hmeta"><i class="icon-clock text-[13px] text-sky-300"></i>Last updated <span id="dc-updated">just now</span></span>
+                        <span class="dc-hmeta"><i class="icon-timer text-[13px] text-emerald-300"></i>Avg. stay <span id="dc-avg-los">4.6</span> days</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2.5 w-full sm:w-auto dc-print-hide">
+                    <button type="button" class="dc-btn dc-btn-primary" data-open="new"><i class="icon-user-check"></i>New Discharge</button>
+                    <button type="button" class="dc-btn dc-btn-success" data-act="approve-pending"><i class="icon-badge-check"></i>Approve</button>
+                    <button type="button" class="dc-btn dc-btn-glass" data-act="print-summary"><i class="icon-printer"></i>Print Summary</button>
+                    <button type="button" class="dc-btn dc-btn-glass" data-open="export"><i class="icon-download"></i>Export Reports</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI CARDS -->
+        <section class="dc-grid dc-g6" id="dc-kpis"><div class="dc-stat dc-c-primary"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-user-check"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="62"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">3</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Today's Discharges</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">+12%</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="dc-stat dc-c-amber"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-clock"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="40"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">3</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Pending Approval</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">Queue</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="dc-stat dc-c-teal"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-clipboard-check"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="55"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">2</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Ready for Discharge</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">Ready</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="dc-stat dc-c-emerald"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-badge-check"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="84"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">6</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Completed</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">Done</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="dc-stat dc-c-violet"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-calendar-clock"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="48"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">10</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Follow-up Required</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">Care</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="dc-stat dc-c-sky"><div class="flex items-start justify-between"><span class="dc-stat-ico"><i class="icon-bed"></i></span><svg class="dc-ring" viewBox="0 0 36 36" data-p="33"><circle class="trk" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg></div><p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white">6</p><p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Beds Released Today</p><div class="mt-2.5 flex items-center justify-between gap-2"><span class="dc-chip">Free</span><svg class="[color:var(--dc-c)]" width="54" height="18" viewBox="0 0 54 18" fill="none"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></section>
+
+        <!-- DASHBOARD WIDGETS -->
+        <section class="dc-grid dc-g3">
+            <div class="dc-surface dc-c-primary">
+                <div class="dc-head"><span class="ico"><i class="icon-trending-up"></i></span><p class="dc-title">Daily Discharge Trend</p><span class="ml-auto dc-chip">7 days</span></div>
+                <div class="p-4">
+                    <div class="flex items-end justify-between gap-1.5 h-[100px]">
+                        <span class="w-full h-[50%] bg-[color-mix(in_oklab,var(--color-primary)_30%,transparent)] rounded-[.4rem]"></span>
+                        <span class="w-full h-[66%] bg-[color-mix(in_oklab,var(--color-primary)_40%,transparent)] rounded-[.4rem]"></span>
+                        <span class="w-full h-[42%] bg-[color-mix(in_oklab,var(--color-primary)_30%,transparent)] rounded-[.4rem]"></span>
+                        <span class="w-full h-[82%] bg-[color-mix(in_oklab,var(--color-primary)_55%,transparent)] rounded-[.4rem]"></span>
+                        <span class="w-full h-[60%] bg-[color-mix(in_oklab,var(--color-primary)_40%,transparent)] rounded-[.4rem]"></span>
+                        <span class="w-full h-[92%] bg-[linear-gradient(180deg,var(--color-primary),#6366f1)] rounded-[.4rem]"></span>
+                        <span class="w-full h-[72%] bg-[color-mix(in_oklab,var(--color-primary)_45%,transparent)] rounded-[.4rem]"></span>
+                    </div>
+                    <div class="flex items-center justify-between mt-3 text-xs"><span class="text-gray-500 dark:text-gray-400">This week</span><span class="dc-chip"><i class="icon-trending-up text-[10px]"></i>+12%</span></div>
+                </div>
+            </div>
+            <div class="dc-surface dc-c-violet">
+                <div class="dc-head"><span class="ico"><i class="icon-building-2"></i></span><p class="dc-title">Department-wise</p></div>
+                <div class="p-4 space-y-2.5" id="dc-deptwidget"><div class="dc-c-rose"><div class="flex justify-between text-xs mb-1"><span class="text-gray-500 dark:text-gray-400">Cardiology</span><b class="text-gray-900 dark:text-white">28%</b></div><div class="dc-bar"><i class="[width:89.60000000000001%]"></i></div></div><div class="dc-c-amber"><div class="flex justify-between text-xs mb-1"><span class="text-gray-500 dark:text-gray-400">Orthopedics</span><b class="text-gray-900 dark:text-white">22%</b></div><div class="dc-bar"><i class="[width:70.4%]"></i></div></div><div class="dc-c-violet"><div class="flex justify-between text-xs mb-1"><span class="text-gray-500 dark:text-gray-400">Neurology</span><b class="text-gray-900 dark:text-white">16%</b></div><div class="dc-bar"><i class="[width:51.2%]"></i></div></div></div>
+            </div>
+            <div class="dc-surface dc-c-teal">
+                <div class="dc-head"><span class="ico"><i class="icon-timer"></i></span><p class="dc-title">Average Length of Stay</p></div>
+                <div class="p-4">
+                    <div class="flex items-end gap-3"><p class="text-3xl font-extrabold text-gray-900 dark:text-white">4.2</p><span class="text-xs text-gray-500 dark:text-gray-400 mb-1.5">days / patient</span><span class="ml-auto dc-chip dc-c-emerald"><i class="icon-trending-down text-[10px]"></i>-0.4</span></div>
+                    <div class="mt-3 space-y-2" id="dc-loswidget"><div class="flex items-center gap-2 dc-c-emerald"><span class="text-[11px] text-gray-500 dark:text-gray-400 [width:4.5rem]">0–2 days</span><div class="dc-bar flex-1"><i class="[width:34%]"></i></div><b class="text-xs text-gray-900 dark:text-white">34%</b></div><div class="flex items-center gap-2 dc-c-primary"><span class="text-[11px] text-gray-500 dark:text-gray-400 [width:4.5rem]">3–5 days</span><div class="dc-bar flex-1"><i class="[width:42%]"></i></div><b class="text-xs text-gray-900 dark:text-white">42%</b></div><div class="flex items-center gap-2 dc-c-amber"><span class="text-[11px] text-gray-500 dark:text-gray-400 [width:4.5rem]">6–10 days</span><div class="dc-bar flex-1"><i class="[width:18%]"></i></div><b class="text-xs text-gray-900 dark:text-white">18%</b></div><div class="flex items-center gap-2 dc-c-rose"><span class="text-[11px] text-gray-500 dark:text-gray-400 [width:4.5rem]">10+ days</span><div class="dc-bar flex-1"><i class="[width:6%]"></i></div><b class="text-xs text-gray-900 dark:text-white">6%</b></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLBAR -->
+        <section class="dc-surface dc-c-primary">
+            <div class="p-3 lg:p-4 space-y-3">
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <div class="dc-search"><i class="ico icon-search"></i><input aria-label="Search patient, ID, doctor, department…" id="dc-search" type="text" placeholder="Search patient, ID, doctor, department…"></div>
+                    <select aria-label="All Departments" id="dc-f-dept" class="dc-tool"><option value="">All Departments</option><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>ICU</option><option>Maternity</option><option>Oncology</option></select>
+                    <select aria-label="All Status" id="dc-f-status" class="dc-tool"><option value="">All Status</option><option>Pending</option><option>Ready</option><option>Approved</option><option>Completed</option><option>Cancelled</option></select>
+                    <button type="button" id="dc-filters" class="dc-tool"><i class="icon-sliders-horizontal"></i>Filters<span id="dc-filter-badge" class="hidden ml-0.5 grid place-items-center size-4 rounded-full bg-primary text-white text-[9px]">0</span></button>
+                    <select aria-label="Sort: Newest" id="dc-sort" class="dc-tool ml-auto"><option value="newest">Sort: Newest</option><option value="oldest">Oldest</option><option value="name">Patient A–Z</option><option value="los">Length of Stay</option><option value="status">Status</option></select>
+                    <button type="button" id="dc-cols" class="dc-icobtn" title="Columns"><i class="icon-columns-3"></i></button>
+                    <button type="button" id="dc-refresh" class="dc-icobtn" title="Refresh"><i class="icon-refresh-cw"></i></button>
+                    <button type="button" id="dc-import" class="dc-icobtn" title="Import"><i class="icon-upload"></i></button>
+                    <button type="button" id="dc-export" class="dc-icobtn" title="Export"><i class="icon-download"></i></button>
+                    <div class="dc-seg">
+                        <button type="button" id="dc-view-grid" class="is-active"><i class="icon-layout-grid"></i>Grid</button>
+                        <button type="button" id="dc-view-list"><i class="icon-list"></i>List</button>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                    <label class="flex items-center gap-2 text-gray-500 dark:text-gray-400 font-semibold cursor-pointer"><input type="checkbox" id="dc-select-all" class="dc-check"> Select all on page</label>
+                    <span id="dc-count" class="text-gray-400 dark:text-gray-500 font-medium">14 of 14 discharges</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bulk selection bar — appears under the toolbar once a row is checked -->
+        <div id="dc-bulkbar" class="dc-bulk" hidden>
+            <span class="flex items-center gap-2 pr-1 mr-auto"><span class="grid size-8 place-items-center rounded-lg bg-primary text-white text-xs font-extrabold" id="dc-bulk-count">0</span><span class="text-xs font-bold text-gray-900 dark:text-white">selected</span></span>
+            <button class="dc-bulk-btn" data-bulk="approve"><i class="icon-badge-check"></i>Approve</button>
+            <button class="dc-bulk-btn" data-bulk="followup"><i class="icon-calendar-plus"></i>Follow-up</button>
+            <button class="dc-bulk-btn" data-bulk="status"><i class="icon-activity"></i>Status</button>
+            <button class="dc-bulk-btn" data-bulk="export"><i class="icon-download"></i>Export</button>
+            <button class="dc-bulk-btn" data-bulk="print"><i class="icon-printer"></i>Print</button>
+            <button class="dc-bulk-btn danger" data-bulk="delete"><i class="icon-trash-2"></i>Delete</button>
+            <button class="dc-bulk-btn" data-bulk="clear"><i class="icon-x"></i>Clear</button>
+        </div>
+
+        <!-- DISCHARGE WORKFLOW -->
+        <section class="dc-surface dc-c-primary">
+            <div class="dc-head"><span class="ico"><i class="icon-git-commit-horizontal"></i></span><p class="dc-title">Discharge Workflow</p><span class="ml-auto dc-chip">Clearance process</span></div>
+            <div class="p-4">
+                <div class="dc-wf">
+                    <div class="dc-wf-step done"><span class="dc-wf-node"><i class="icon-stethoscope"></i></span><span class="text-[11px] font-semibold text-gray-700 dark:text-gray-200">Doctor Approval</span></div>
+                    <span class="dc-wf-line done"></span>
+                    <div class="dc-wf-step done"><span class="dc-wf-node"><i class="icon-heart-pulse"></i></span><span class="text-[11px] font-semibold text-gray-700 dark:text-gray-200">Nursing</span></div>
+                    <span class="dc-wf-line done"></span>
+                    <div class="dc-wf-step done"><span class="dc-wf-node"><i class="icon-pill"></i></span><span class="text-[11px] font-semibold text-gray-700 dark:text-gray-200">Pharmacy</span></div>
+                    <span class="dc-wf-line"></span>
+                    <div class="dc-wf-step active"><span class="dc-wf-node"><i class="icon-receipt"></i></span><span class="text-[11px] font-semibold text-primary">Billing</span></div>
+                    <span class="dc-wf-line"></span>
+                    <div class="dc-wf-step"><span class="dc-wf-node"><i class="icon-clipboard-check"></i></span><span class="text-[11px] font-semibold text-gray-500">Final Review</span></div>
+                    <span class="dc-wf-line"></span>
+                    <div class="dc-wf-step"><span class="dc-wf-node"><i class="icon-badge-check"></i></span><span class="text-[11px] font-semibold text-gray-500">Completed</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTS + SIDE -->
+        <div class="dc-layout">
+            <div class="min-w-0 space-y-4">
+                <div id="dc-gridview" class="dc-cards"><article class="dc-card dc-c-rose" data-id="1" data-row-id="1"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="1"><span class="dc-c-rose dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-01.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">James Morrison</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0001</a></p></div><button class="dc-mini dc-menu-btn" data-id="1"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge completed">Completed</span><span class="dc-tag dc-c-amber"><i class="icon-calendar-clock text-[10px]"></i>Follow-up</span><span class="dc-chip dc-c-emerald"><i class="icon-badge-check text-[10px]"></i>Verified</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">Cardiology</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Chen</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-07</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-12</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">5d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>2026-09-19</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 5-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="1" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="1" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dc-card dc-c-violet" data-id="2" data-row-id="2"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="2"><span class="dc-c-violet dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-02.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">Sarah Adams</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0002</a></p></div><button class="dc-mini dc-menu-btn" data-id="2"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge ready">Ready</span><span class="dc-tag dc-c-amber"><i class="icon-calendar-clock text-[10px]"></i>Follow-up</span><span class="dc-chip dc-c-emerald"><i class="icon-badge-check text-[10px]"></i>Verified</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">Neurology</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Kumar</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-09</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-12</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">3d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>2026-09-22</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 3-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="2" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="2" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dc-card dc-c-rose" data-id="3" data-row-id="3"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="3"><span class="dc-c-rose dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-03.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">Robert Clark</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0003</a></p></div><button class="dc-mini dc-menu-btn" data-id="3"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge pending">Pending</span><span class="dc-tag dc-c-amber"><i class="icon-calendar-clock text-[10px]"></i>Follow-up</span><span class="dc-chip dc-c-amber"><i class="icon-clock text-[10px]"></i>Pending</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">ICU</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Mills</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-03</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-12</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">9d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>2026-09-15</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 9-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="3" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="3" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dc-card dc-c-teal" data-id="4" data-row-id="4"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="4"><span class="dc-c-teal dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-04.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">Emily Johnson</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0004</a></p></div><button class="dc-mini dc-menu-btn" data-id="4"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge completed">Completed</span><span class="dc-tag dc-c-emerald"><i class="icon-check text-[10px]"></i>No follow-up</span><span class="dc-chip dc-c-emerald"><i class="icon-badge-check text-[10px]"></i>Verified</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">Maternity</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Park</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-08</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-11</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">3d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>—</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 3-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="4" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="4" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dc-card dc-c-amber" data-id="5" data-row-id="5"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="5"><span class="dc-c-amber dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-05.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">David Torres</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0005</a></p></div><button class="dc-mini dc-menu-btn" data-id="5"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge approved">Approved</span><span class="dc-tag dc-c-amber"><i class="icon-calendar-clock text-[10px]"></i>Follow-up</span><span class="dc-chip dc-c-emerald"><i class="icon-badge-check text-[10px]"></i>Verified</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">Orthopedics</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Wang</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-05</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-11</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">6d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>2026-10-03</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 6-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="5" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="5" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article><article class="dc-card dc-c-indigo" data-id="6" data-row-id="6"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="dc-check mt-1 dc-rowcheck" data-id="6"><span class="dc-c-indigo dc-ava-ring"><img class="dc-ava object-cover" src="assets/img/avatar/avatar-06.jpg" alt=""></span><div class="min-w-0 flex-1"><p class="font-bold text-gray-900 dark:text-white truncate">Linda Nguyen</p><p class="text-[11px] font-mono text-primary"><a href="discharge-detail.html" class="hover:underline">DIS-0006</a></p></div><button class="dc-mini dc-menu-btn" data-id="6"><i class="icon-ellipsis-vertical"></i></button></div><div class="flex flex-wrap gap-1.5 mt-3"><span class="dc-badge pending">Pending</span><span class="dc-tag dc-c-amber"><i class="icon-calendar-clock text-[10px]"></i>Follow-up</span><span class="dc-chip dc-c-amber"><i class="icon-clock text-[10px]"></i>Pending</span></div><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3"><span class="dc-kv"><i class="icon-building-2 text-primary/70"></i><b class="truncate">Oncology</b></span><span class="dc-kv"><i class="icon-stethoscope text-primary/70"></i><b class="truncate">Dr. Rivas</b></span><span class="dc-kv"><i class="icon-log-in text-primary/70"></i>Adm 2026-09-06</span><span class="dc-kv"><i class="icon-log-out text-primary/70"></i>Dis 2026-09-11</span><span class="dc-kv"><i class="icon-timer text-primary/70"></i>Stay <span class="dc-los">5d</span></span><span class="dc-kv"><i class="icon-calendar-clock text-primary/70"></i>2026-09-17</span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="text-[11px] text-gray-400"><i class="icon-timer"></i> 5-day stay</span><div class="flex gap-1.5"><button class="dc-mini dc-view" data-id="6" title="Details"><i class="icon-eye text-sm"></i></button><button class="dc-mini dc-edit" data-id="6" title="Edit"><i class="icon-edit text-sm"></i></button></div></div></div></article></div>
+                <div id="dc-listview" class="hidden dc-surface overflow-hidden">
+                    <div class="overflow-x-auto"><table class="dc-table">
+                        <thead><tr>
+                            <th class="w-10"><input aria-label="Select all" type="checkbox" id="dc-select-all-2" class="dc-check"></th>
+                            <th data-col="id">Discharge ID</th><th data-col="patient">Patient</th><th data-col="dept">Department</th><th data-col="doctor">Doctor</th><th data-col="admit">Admission</th><th data-col="discharge">Discharge</th><th data-col="stay">Stay</th><th data-col="followup">Follow-up</th><th data-col="status">Status</th><th class="text-right">Actions</th>
+                        </tr></thead>
+                        <tbody id="dc-tbody"></tbody>
+                    </table></div>
+                </div>
+                <div id="dc-empty" class="hidden dc-surface py-16 flex flex-col items-center text-center">
+                    <span class="grid size-16 place-items-center rounded-2xl bg-primary/10 text-primary mb-4"><i class="icon-user-check text-2xl"></i></span>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">No discharges found</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-sm">Adjust your search or filters, or start a new discharge.</p>
+                    <div class="mt-4 flex gap-2.5"><button id="dc-empty-clear" class="dc-btn dc-btn-solid"><i class="icon-x"></i>Clear filters</button><button data-open="new" class="dc-btn dc-btn-primary"><i class="icon-user-check"></i>New Discharge</button></div>
+                </div>
+
+                <div id="dc-pager" class="dc-surface p-3 lg:p-4 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                        <span>Rows</span><select aria-label="Rows per page" id="dc-size" class="dc-tool dc-tool-compact"><option>12</option><option>24</option><option>36</option><option>48</option></select>
+                        <span id="dc-page-info" class="ml-1 font-medium">Showing 1–6 of 14</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mr-1"><span>Jump</span><input aria-label="#" id="dc-jump" type="number" min="1" class="dc-tool w-16 text-center dc-tool-compact-sm" placeholder="#"></div>
+                        <div id="dc-page-nav" class="flex items-center gap-1.5"><button class="dc-pg" data-pg="prev" disabled><i class="icon-chevron-left"></i></button><button class="dc-pg is-active" data-pg="1">1</button><button class="dc-pg" data-pg="2">2</button><button class="dc-pg" data-pg="3">3</button><button class="dc-pg" data-pg="next"><i class="icon-chevron-right"></i></button></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT: Patient Clearance -->
+            <aside class="space-y-5 xl:sticky xl:top-4">
+                <div class="dc-surface overflow-hidden">
+                    <div class="dc-head"><span class="ico dc-c-emerald"><i class="icon-clipboard-check"></i></span><p class="dc-title">Patient Clearance</p><span class="ml-auto dc-chip" id="dc-clear-count">5/8</span></div>
+                    <div class="p-3 space-y-2" id="dc-clearance"><button class="dc-clear dc-c-rose done" data-clear="0"><span class="dc-clear-ico"><i class="icon-stethoscope"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Doctor Approval</span><span class="dc-clear-badge"><i class="icon-check"></i>Cleared</span></button><button class="dc-clear dc-c-teal done" data-clear="1"><span class="dc-clear-ico"><i class="icon-heart-pulse"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Nurse Clearance</span><span class="dc-clear-badge"><i class="icon-check"></i>Cleared</span></button><button class="dc-clear dc-c-emerald done" data-clear="2"><span class="dc-clear-ico"><i class="icon-pill"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Pharmacy</span><span class="dc-clear-badge"><i class="icon-check"></i>Cleared</span></button><button class="dc-clear dc-c-sky" data-clear="3"><span class="dc-clear-ico"><i class="icon-flask-conical"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Laboratory</span><span class="dc-clear-badge"><i class="icon-clock"></i>Pending</span></button><button class="dc-clear dc-c-violet done" data-clear="4"><span class="dc-clear-ico"><i class="icon-scan"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Radiology</span><span class="dc-clear-badge"><i class="icon-check"></i>Cleared</span></button><button class="dc-clear dc-c-amber" data-clear="5"><span class="dc-clear-ico"><i class="icon-receipt"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Billing</span><span class="dc-clear-badge"><i class="icon-clock"></i>Pending</span></button><button class="dc-clear dc-c-emerald done" data-clear="6"><span class="dc-clear-ico"><i class="icon-shield-check"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Insurance</span><span class="dc-clear-badge"><i class="icon-check"></i>Cleared</span></button><button class="dc-clear dc-c-indigo" data-clear="7"><span class="dc-clear-ico"><i class="icon-building"></i></span><span class="text-xs font-bold text-gray-900 dark:text-white">Administration</span><span class="dc-clear-badge"><i class="icon-clock"></i>Pending</span></button></div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+
+  <!-- ==================== OVERLAYS ==================== -->
+        <div id="dc-detail-drawer" class="dc-drawer" role="dialog" aria-modal="true" aria-label="Discharge details">
+            <div class="dc-drawer-back" data-close></div>
+            <div class="dc-drawer-panel"><div id="dc-detail-body" class="flex flex-col h-full overflow-y-auto"></div></div>
+        </div>
+
+        <div id="dc-filter-drawer" class="dc-drawer" role="dialog" aria-modal="true" aria-label="Advanced filters">
+            <div class="dc-drawer-back" data-close></div>
+            <div class="dc-drawer-panel">
+                <div class="flex items-center justify-between border-b border-border-color p-4">
+                    <div class="flex items-center gap-2.5"><span class="dc-doc-ico dc-c-primary"><i class="icon-sliders-horizontal"></i></span><div><p class="dc-title">Advanced Filters</p><p class="text-[11px] text-gray-500 dark:text-gray-400">Refine discharges</p></div></div>
+                    <button class="dc-icobtn" data-close><i class="icon-x"></i></button>
+                </div>
+                <div class="flex-1 overflow-y-auto p-4 space-y-3">
+                    <div><label for="fd-doctor" class="dc-lbl">Doctor</label><select class="dc-in" id="fd-doctor"><option value="">Any</option><option>Dr. Chen</option><option>Dr. Kumar</option><option>Dr. Mills</option><option>Dr. Park</option><option>Dr. Wang</option><option>Dr. Rivas</option></select></div>
+                    <div><label for="fd-ward" class="dc-lbl">Ward</label><select class="dc-in" id="fd-ward"><option value="">Any</option><option>General 2F</option><option>ICU</option><option>Maternity</option><option>Isolation</option></select></div>
+                    <div><label for="fd-fu" class="dc-lbl">Follow-up Status</label><select class="dc-in" id="fd-fu"><option value="">Any</option><option>Required</option><option>Not required</option></select></div>
+                    <div><label for="fd-ins" class="dc-lbl">Insurance</label><select class="dc-in" id="fd-ins"><option value="">Any</option><option>Verified</option><option>Pending</option><option>Uninsured</option></select></div>
+                    <div class="grid grid-cols-2 gap-3"><div><label for="fd-from" class="dc-lbl">From</label><input class="dc-in" id="fd-from" type="text" data-provider="flatpickr" data-date-format="Y-m-d" data-altFormat="d-m-Y"></div><div><label for="fd-to" class="dc-lbl">To</label><input class="dc-in" id="fd-to" type="text" data-provider="flatpickr" data-date-format="Y-m-d" data-altFormat="d-m-Y"></div></div>
+                </div>
+                <div class="border-t border-border-color p-4 flex gap-2.5">
+                    <button id="fd-reset" class="dc-btn dc-btn-solid flex-1"><i class="icon-rotate-ccw"></i>Reset</button>
+                    <button id="fd-apply" class="dc-btn dc-btn-primary flex-1"><i class="icon-check"></i>Apply</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="dc-modal" class="dc-modal" role="dialog" aria-modal="true">
+            <div class="dc-modal-back" data-close></div>
+            <div class="dc-modal-panel">
+                <div class="flex items-center gap-3 p-5 border-b border-border-color">
+                    <span id="dc-modal-ico" class="dc-doc-ico"><i class="icon-user-check"></i></span>
+                    <div class="min-w-0"><h3 id="dc-modal-title" class="text-lg font-bold text-gray-900 dark:text-white">Action</h3><p id="dc-modal-sub" class="text-xs text-gray-500 dark:text-gray-400"></p></div>
+                    <button class="dc-icobtn ml-auto" data-close><i class="icon-x"></i></button>
+                </div>
+                <div id="dc-modal-body" class="p-5 space-y-3"></div>
+                <div class="flex justify-end gap-2.5 p-5 pt-0"><button class="dc-btn dc-btn-solid" data-close>Cancel</button><button id="dc-modal-confirm" class="dc-btn dc-btn-primary">Confirm</button></div>
+            </div>
+        </div>
+

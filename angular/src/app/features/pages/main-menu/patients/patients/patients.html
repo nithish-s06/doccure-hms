@@ -1,166 +1,166 @@
                 
-                    <div id="pm-page" class="pm-shell max-w-[1500px] mx-auto space-y-5">
+<div id="pm-page" class="pm-shell max-w-[1500px] mx-auto space-y-5">
 
-                        <!-- Breadcrumb -->
+    <!-- Breadcrumb -->
 
-                        <!-- ============================ HERO ============================ -->
-                        <section class="ap-hero" data-aos="fade-up">
-                            <div class="flex flex-wrap items-start justify-between gap-6">
-                                <div class="min-w-0">
-                                    <div class="flex flex-wrap items-center gap-2.5">
-                                        <span class="ap-hero-badge"><span class="dot"></span><span id="pm-active-count">13</span> Active Patients</span>
-                                        <span class="ap-hero-badge ap-hero-badge-sky"><i class="icon-refresh-cw text-[11px]"></i>Live Sync</span>
-                                    </div>
-                                    <h1 class="mt-3 text-2xl lg:text-3xl font-extrabold tracking-tight">Patient Management</h1>
-                                    <div class="mt-4 flex flex-wrap items-center gap-2.5 text-xs font-semibold text-white/85">
-                                        <span class="ap-hero-meta"><i class="icon-clock text-[13px] text-sky-300"></i>Last updated <span id="pm-updated">just now</span></span>
-                                        <span class="ap-hero-meta"><i class="icon-database text-[13px] text-indigo-300"></i><span id="pm-total-meta">15</span> total records</span>
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 w-full sm:w-auto">
-                                    <button type="button" id="pm-add" data-hs-overlay="#form-modal" class="ap-btn ap-btn-primary col-span-2 sm:col-span-1"><i class="icon-user-plus"></i>Add Patient</button>
-                                    <button type="button" id="pm-import" data-hs-overlay="#pm-import-modal" class="ap-btn ap-btn-glass"><i class="icon-upload"></i>Import</button>
-                                    <button type="button" id="pm-export" data-hs-overlay="#pm-export-modal" class="ap-btn ap-btn-glass"><i class="icon-download"></i>Export</button>
-                                    <button type="button" id="pm-print" data-print-trigger="1" class="ap-btn ap-btn-ghost"><i class="icon-printer"></i>Print</button>
-                                    <button type="button" id="pm-bulk-open" class="ap-btn ap-btn-ghost"><i class="icon-list-checks"></i>Bulk</button>
-                                </div>
-                            </div>
-                        </section>
+    <!-- ============================ HERO ============================ -->
+    <section class="ap-hero" data-aos="fade-up">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="min-w-0">
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <span class="ap-hero-badge"><span class="dot"></span><span id="pm-active-count">13</span> Active Patients</span>
+                    <span class="ap-hero-badge ap-hero-badge-sky"><i class="icon-refresh-cw text-[11px]"></i>Live Sync</span>
+                </div>
+                <h1 class="mt-3 text-2xl lg:text-3xl font-extrabold tracking-tight">Patient Management</h1>
+                <div class="mt-4 flex flex-wrap items-center gap-2.5 text-xs font-semibold text-white/85">
+                    <span class="ap-hero-meta"><i class="icon-clock text-[13px] text-sky-300"></i>Last updated <span id="pm-updated">just now</span></span>
+                    <span class="ap-hero-meta"><i class="icon-database text-[13px] text-indigo-300"></i><span id="pm-total-meta">15</span> total records</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 w-full sm:w-auto">
+                <button type="button" id="pm-add" data-hs-overlay="#form-modal" class="ap-btn ap-btn-primary col-span-2 sm:col-span-1"><i class="icon-user-plus"></i>Add Patient</button>
+                <button type="button" id="pm-import" data-hs-overlay="#pm-import-modal" class="ap-btn ap-btn-glass"><i class="icon-upload"></i>Import</button>
+                <button type="button" id="pm-export" data-hs-overlay="#pm-export-modal" class="ap-btn ap-btn-glass"><i class="icon-download"></i>Export</button>
+                <button type="button" id="pm-print" data-print-trigger="1" class="ap-btn ap-btn-ghost"><i class="icon-printer"></i>Print</button>
+                <button type="button" id="pm-bulk-open" class="ap-btn ap-btn-ghost"><i class="icon-list-checks"></i>Bulk</button>
+            </div>
+        </div>
+    </section>
 
-                        <!-- ===================== KPI CARDS ===================== -->
-                        <section class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3.5" data-aos="fade-up" data-aos-delay="50">
-                            <div class="ap-stat ap-c-indigo">
-                                <div class="flex items-start justify-between">
-                                    <span class="ap-stat-ico"><i class="icon-users"></i></span>
-                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="100" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
-                                </div>
-                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-total">15</p>
-                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Total Patients</p>
-                                <div class="mt-2.5 flex items-center justify-between gap-2">
-                                    <span class="ap-stat-chip"><i class="icon-trending-up text-[10px]"></i>+6%</span>
-                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </div>
-                            </div>
-                            <div class="ap-stat ap-c-sky">
-                                <div class="flex items-start justify-between">
-                                    <span class="ap-stat-ico"><i class="icon-user-plus"></i></span>
-                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="48" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
-                                </div>
-                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-today">4</p>
-                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Today's Registrations</p>
-                                <div class="mt-2.5 flex items-center justify-between gap-2">
-                                    <span class="ap-stat-chip">Today</span>
-                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,13 9,10 17,11 25,6 33,8 41,5 53,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </div>
-                            </div>
-                            <div class="ap-stat ap-c-amber">
-                                <div class="flex items-start justify-between">
-                                    <span class="ap-stat-ico"><i class="icon-bed"></i></span>
-                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="62" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
-                                </div>
-                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-admitted">6</p>
-                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Admitted Patients</p>
-                                <div class="mt-2.5 flex items-center justify-between gap-2">
-                                    <span class="ap-stat-chip"><i class="icon-bed text-[10px]"></i>IPD</span>
-                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,6 9,8 17,5 25,10 33,8 41,12 53,9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </div>
-                            </div>
-                            <div class="ap-stat ap-c-emerald">
-                                <div class="flex items-start justify-between">
-                                    <span class="ap-stat-ico"><i class="icon-activity"></i></span>
-                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="70" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
-                                </div>
-                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-out">4</p>
-                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Outpatients</p>
-                                <div class="mt-2.5 flex items-center justify-between gap-2">
-                                    <span class="ap-stat-chip"><i class="icon-trending-up text-[10px]"></i>OPD</span>
-                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,11 9,9 17,10 25,7 33,6 41,4 53,3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </div>
-                            </div>
-                            <div class="ap-stat ap-c-rose">
-                                <div class="flex items-start justify-between">
-                                    <span class="ap-stat-ico"><i class="icon-siren"></i></span>
-                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="30" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
-                                </div>
-                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-emergency">4</p>
-                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Emergency Cases</p>
-                                <div class="mt-2.5 flex items-center justify-between gap-2">
-                                    <span class="ap-stat-chip"><i class="icon-activity text-[10px]"></i>Critical</span>
-                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,12 9,6 17,9 25,4 33,10 41,5 53,3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </div>
-                            </div>
-                            <div class="ap-stat ap-c-violet">
-                                <div class="flex items-start justify-between">
-                                    <span class="ap-stat-ico"><i class="icon-log-out"></i></span>
-                                    <svg class="ap-ring" viewBox="0 0 36 36" data-p="44" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
-                                </div>
-                                <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-discharge">1</p>
-                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Pending Discharges</p>
-                                <div class="mt-2.5 flex items-center justify-between gap-2">
-                                    <span class="ap-stat-chip"><i class="icon-clock text-[10px]"></i>Queue</span>
-                                    <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,5 9,7 17,6 25,9 33,8 41,11 53,10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </div>
-                            </div>
-                        </section>
+    <!-- ===================== KPI CARDS ===================== -->
+    <section class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3.5" data-aos="fade-up" data-aos-delay="50">
+        <div class="ap-stat ap-c-indigo">
+            <div class="flex items-start justify-between">
+                <span class="ap-stat-ico"><i class="icon-users"></i></span>
+                <svg class="ap-ring" viewBox="0 0 36 36" data-p="100" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
+            </div>
+            <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-total">15</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Total Patients</p>
+            <div class="mt-2.5 flex items-center justify-between gap-2">
+                <span class="ap-stat-chip"><i class="icon-trending-up text-[10px]"></i>+6%</span>
+                <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,14 9,11 17,13 25,7 33,9 41,4 53,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </div>
+        <div class="ap-stat ap-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="ap-stat-ico"><i class="icon-user-plus"></i></span>
+                <svg class="ap-ring" viewBox="0 0 36 36" data-p="48" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
+            </div>
+            <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-today">4</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Today's Registrations</p>
+            <div class="mt-2.5 flex items-center justify-between gap-2">
+                <span class="ap-stat-chip">Today</span>
+                <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,13 9,10 17,11 25,6 33,8 41,5 53,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </div>
+        <div class="ap-stat ap-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="ap-stat-ico"><i class="icon-bed"></i></span>
+                <svg class="ap-ring" viewBox="0 0 36 36" data-p="62" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
+            </div>
+            <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-admitted">6</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Admitted Patients</p>
+            <div class="mt-2.5 flex items-center justify-between gap-2">
+                <span class="ap-stat-chip"><i class="icon-bed text-[10px]"></i>IPD</span>
+                <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,6 9,8 17,5 25,10 33,8 41,12 53,9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </div>
+        <div class="ap-stat ap-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="ap-stat-ico"><i class="icon-activity"></i></span>
+                <svg class="ap-ring" viewBox="0 0 36 36" data-p="70" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
+            </div>
+            <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-out">4</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Outpatients</p>
+            <div class="mt-2.5 flex items-center justify-between gap-2">
+                <span class="ap-stat-chip"><i class="icon-trending-up text-[10px]"></i>OPD</span>
+                <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,11 9,9 17,10 25,7 33,6 41,4 53,3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </div>
+        <div class="ap-stat ap-c-rose">
+            <div class="flex items-start justify-between">
+                <span class="ap-stat-ico"><i class="icon-siren"></i></span>
+                <svg class="ap-ring" viewBox="0 0 36 36" data-p="30" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
+            </div>
+            <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-emergency">4</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Emergency Cases</p>
+            <div class="mt-2.5 flex items-center justify-between gap-2">
+                <span class="ap-stat-chip"><i class="icon-activity text-[10px]"></i>Critical</span>
+                <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,12 9,6 17,9 25,4 33,10 41,5 53,3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </div>
+        <div class="ap-stat ap-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="ap-stat-ico"><i class="icon-log-out"></i></span>
+                <svg class="ap-ring" viewBox="0 0 36 36" data-p="44" aria-hidden="true"><circle class="track" cx="18" cy="18" r="15.915" pathLength="100"></circle><circle class="bar" cx="18" cy="18" r="15.915" pathLength="100"></circle></svg>
+            </div>
+            <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white" id="kpi-discharge">1</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Pending Discharges</p>
+            <div class="mt-2.5 flex items-center justify-between gap-2">
+                <span class="ap-stat-chip"><i class="icon-clock text-[10px]"></i>Queue</span>
+                <svg width="54" height="18" viewBox="0 0 54 18" fill="none" class="text-[color:var(--ap-c)]" aria-hidden="true"><polyline points="1,5 9,7 17,6 25,9 33,8 41,11 53,10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </div>
+    </section>
 
-                        <!-- ===================== TOOLBAR ===================== -->
-                        <section class="ap-card ap-c-primary" data-aos="fade-up" data-aos-delay="100">
-                            <div class="p-3 lg:p-4 space-y-3">
-                                <div class="pm-toolbar flex flex-wrap items-center gap-2.5">
-                                    <div class="pm-search">
-                                        <i class="ico icon-search"></i>
-                                        <input id="pm-search" type="text" placeholder="Search by name, ID, phone, doctor…" aria-label="Search patients">
-                                    </div>
-                                    <select aria-label="All Departments" id="pm-f-dept" class="pm-tool"><option value="">All Departments</option><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>ICU</option><option>Maternity</option><option>Oncology</option><option>Geriatrics</option><option>Emergency</option></select>
-                                    <select aria-label="All Status" id="pm-f-status" class="pm-tool"><option value="">All Status</option><option>Admitted</option><option>Outpatient</option><option>Discharged</option><option>Critical</option></select>
-                                    <button type="button" id="pm-filters" class="pm-tool"><i class="icon-sliders-horizontal"></i>Filters<span id="pm-filter-badge" class="hidden ml-0.5 grid place-items-center size-4 rounded-full bg-primary text-white text-[9px]">0</span></button>
-                                    <select aria-label="Sort: Name A–Z" id="pm-sort" class="pm-tool ml-auto"><option value="name">Sort: Name A–Z</option><option value="name-desc">Name Z–A</option><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="age">Age</option><option value="status">Status</option></select>
-                                    <div class="hs-dropdown relative inline-flex" data-cols-menu>
+    <!-- ===================== TOOLBAR ===================== -->
+    <section class="ap-card ap-c-primary" data-aos="fade-up" data-aos-delay="100">
+        <div class="p-3 lg:p-4 space-y-3">
+            <div class="pm-toolbar flex flex-wrap items-center gap-2.5">
+                <div class="pm-search">
+                    <i class="ico icon-search"></i>
+                    <input id="pm-search" type="text" placeholder="Search by name, ID, phone, doctor…" aria-label="Search patients">
+                </div>
+                <select aria-label="All Departments" id="pm-f-dept" class="pm-tool"><option value="">All Departments</option><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>ICU</option><option>Maternity</option><option>Oncology</option><option>Geriatrics</option><option>Emergency</option></select>
+                <select aria-label="All Status" id="pm-f-status" class="pm-tool"><option value="">All Status</option><option>Admitted</option><option>Outpatient</option><option>Discharged</option><option>Critical</option></select>
+                <button type="button" id="pm-filters" class="pm-tool"><i class="icon-sliders-horizontal"></i>Filters<span id="pm-filter-badge" class="hidden ml-0.5 grid place-items-center size-4 rounded-full bg-primary text-white text-[9px]">0</span></button>
+                <select aria-label="Sort: Name A–Z" id="pm-sort" class="pm-tool ml-auto"><option value="name">Sort: Name A–Z</option><option value="name-desc">Name Z–A</option><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="age">Age</option><option value="status">Status</option></select>
+                <div class="hs-dropdown relative inline-flex" data-cols-menu>
 <button type="button" id="pm-cols-btn" class="hs-dropdown-toggle pm-tool-icon" title="Column visibility" aria-label="Columns"><i class="icon-columns-3"></i></button>
 <div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-52 bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu">
 <p class="pm-menu-lbl">Toggle columns</p><label class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg cursor-pointer hover:bg-primary/5 text-sm font-semibold text-gray-700 dark:text-gray-300"><input type="checkbox" class="pm-check" data-col-toggle="id" checked>Patient ID</label><label class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg cursor-pointer hover:bg-primary/5 text-sm font-semibold text-gray-700 dark:text-gray-300"><input type="checkbox" class="pm-check" data-col-toggle="patient" checked>Patient</label><label class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg cursor-pointer hover:bg-primary/5 text-sm font-semibold text-gray-700 dark:text-gray-300"><input type="checkbox" class="pm-check" data-col-toggle="dept" checked>Department</label><label class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg cursor-pointer hover:bg-primary/5 text-sm font-semibold text-gray-700 dark:text-gray-300"><input type="checkbox" class="pm-check" data-col-toggle="doctor" checked>Doctor</label><label class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg cursor-pointer hover:bg-primary/5 text-sm font-semibold text-gray-700 dark:text-gray-300"><input type="checkbox" class="pm-check" data-col-toggle="blood" checked>Blood</label><label class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg cursor-pointer hover:bg-primary/5 text-sm font-semibold text-gray-700 dark:text-gray-300"><input type="checkbox" class="pm-check" data-col-toggle="admission" checked>Admission</label><label class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg cursor-pointer hover:bg-primary/5 text-sm font-semibold text-gray-700 dark:text-gray-300"><input type="checkbox" class="pm-check" data-col-toggle="status" checked>Status</label>
 </div></div>
-                                    <button type="button" id="pm-refresh" class="pm-tool-icon" title="Refresh" aria-label="Refresh"><i class="icon-refresh-cw"></i></button>
-                                    <div class="pm-seg" role="tablist" aria-label="View">
-                                        <button type="button" id="pm-view-grid" class="is-active" aria-label="Grid view"><i class="icon-layout-grid"></i>Grid</button>
-                                        <button type="button" id="pm-view-list" aria-label="List view"><i class="icon-list"></i>List</button>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between text-xs">
-                                    <label class="flex items-center gap-2 text-gray-500 dark:text-gray-400 font-semibold cursor-pointer">
-                                        <input type="checkbox" id="pm-select-all" class="pm-check"> Select all on page
-                                    </label>
-                                    <span id="pm-count" class="text-gray-400 dark:text-gray-500 font-medium">15 of 15 patients</span>
-                                </div>
-                            </div>
-                        </section>
+                <button type="button" id="pm-refresh" class="pm-tool-icon" title="Refresh" aria-label="Refresh"><i class="icon-refresh-cw"></i></button>
+                <div class="pm-seg" role="tablist" aria-label="View">
+                    <button type="button" id="pm-view-grid" class="is-active" aria-label="Grid view"><i class="icon-layout-grid"></i>Grid</button>
+                    <button type="button" id="pm-view-list" aria-label="List view"><i class="icon-list"></i>List</button>
+                </div>
+            </div>
+            <div class="flex items-center justify-between text-xs">
+                <label class="flex items-center gap-2 text-gray-500 dark:text-gray-400 font-semibold cursor-pointer">
+                    <input type="checkbox" id="pm-select-all" class="pm-check"> Select all on page
+                </label>
+                <span id="pm-count" class="text-gray-400 dark:text-gray-500 font-medium">15 of 15 patients</span>
+            </div>
+        </div>
+    </section>
 
-                        <!-- Bulk selection bar — appears under the toolbar once a row is checked -->
-                        <div id="pm-bulkbar" class="pm-bulk" hidden data-bulk-bar>
-                            <span class="flex items-center gap-2 pr-1 mr-auto">
-                                <span class="grid size-8 place-items-center rounded-lg bg-primary text-white text-xs font-extrabold" id="pm-bulk-count" data-bulk-count>0</span>
-                                <span class="text-xs font-bold text-gray-900 dark:text-white">selected</span>
-                            </span>
-                            <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-export-modal"><i class="icon-download"></i>Export</button>
-                            <button type="button" class="pm-bulk-btn" data-print-trigger="1"><i class="icon-printer"></i>Print</button>
-                            <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-assign-modal"><i class="icon-stethoscope"></i>Assign</button>
-                            <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-dept-modal"><i class="icon-building-2"></i>Dept</button>
-                            <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-status-modal"><i class="icon-activity"></i>Status</button>
-                            <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-sms-modal"><i class="icon-message-circle"></i>SMS</button>
-                            <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-email-modal"><i class="icon-mail"></i>Email</button>
-                            <button type="button" class="pm-bulk-btn danger" data-remove-selected="1"><i class="icon-trash-2"></i>Delete</button>
-                            <button type="button" class="pm-bulk-btn" data-clear-selection="1"><i class="icon-x"></i>Clear</button>
-                        </div>
+    <!-- Bulk selection bar — appears under the toolbar once a row is checked -->
+    <div id="pm-bulkbar" class="pm-bulk" hidden data-bulk-bar>
+        <span class="flex items-center gap-2 pr-1 mr-auto">
+            <span class="grid size-8 place-items-center rounded-lg bg-primary text-white text-xs font-extrabold" id="pm-bulk-count" data-bulk-count>0</span>
+            <span class="text-xs font-bold text-gray-900 dark:text-white">selected</span>
+        </span>
+        <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-export-modal"><i class="icon-download"></i>Export</button>
+        <button type="button" class="pm-bulk-btn" data-print-trigger="1"><i class="icon-printer"></i>Print</button>
+        <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-assign-modal"><i class="icon-stethoscope"></i>Assign</button>
+        <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-dept-modal"><i class="icon-building-2"></i>Dept</button>
+        <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-status-modal"><i class="icon-activity"></i>Status</button>
+        <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-sms-modal"><i class="icon-message-circle"></i>SMS</button>
+        <button type="button" class="pm-bulk-btn" data-hs-overlay="#pm-email-modal"><i class="icon-mail"></i>Email</button>
+        <button type="button" class="pm-bulk-btn danger" data-remove-selected="1"><i class="icon-trash-2"></i>Delete</button>
+        <button type="button" class="pm-bulk-btn" data-clear-selection="1"><i class="icon-x"></i>Clear</button>
+    </div>
 
-                        <!-- ===================== RESULTS ===================== -->
-                        <section data-aos="fade-up" data-aos-delay="120">
-                            <div id="pm-skeleton" class="hidden grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                                <div class="pm-skel"></div><div class="pm-skel"></div><div class="pm-skel"></div>
-                                <div class="pm-skel"></div><div class="pm-skel"></div><div class="pm-skel"></div>
-                            </div>
+    <!-- ===================== RESULTS ===================== -->
+    <section data-aos="fade-up" data-aos-delay="120">
+        <div id="pm-skeleton" class="hidden grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            <div class="pm-skel"></div><div class="pm-skel"></div><div class="pm-skel"></div>
+            <div class="pm-skel"></div><div class="pm-skel"></div><div class="pm-skel"></div>
+        </div>
 
-                            <!-- Grid view -->
-                            <div id="pm-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+        <!-- Grid view -->
+        <div id="pm-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
 <article id="grid-item-8" class="pm-card ap-c-sky" data-id="8" data-name="anna peterson" data-dept="Pediatrics" data-status="Discharged" data-doctor="Dr. Osei" data-blood="O+" data-gender="Female" data-insurance="Uninsured" data-admission-type="Elective" data-age="19" data-admission="2026-09-07"><div class="p-4"><div class="flex items-start gap-3"><input aria-label="Select row" type="checkbox" class="pm-check mt-1 pm-row-check" data-id="8" data-row-select="8"><span class="ap-c-sky pm-ava-ring inline-block"><img class="pm-ava" src="assets/img/avatar/avatar-08.jpg" alt="" loading="lazy"></span><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5"><p class="font-bold text-gray-900 dark:text-white truncate" data-name-text>Anna Peterson</p><i class="icon-star pm-star pm-fav  text-sm" data-fav-toggle="8" title="Favorite"></i></div><a href="patient-profile.html?id=8&name=Anna+Peterson&dept=Pediatrics&doctor=Dr.+Osei&status=Discharged" class="text-[11px] font-mono text-primary hover:underline">PAT-0008</a><p class="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">19 yrs · Female</p></div><div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
 <button type="button" id="grid-menu-8" aria-label="Actions" class="hs-dropdown-toggle pm-mini-act"><i class="icon-ellipsis-vertical"></i></button>
 <div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-52 max-h-96 overflow-y-auto bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu" aria-labelledby="grid-menu-8">
@@ -598,24 +598,24 @@
 </div></div></div><div class="grid grid-cols-2 gap-x-3 gap-y-2 mt-3 text-[11px]"><span class="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 min-w-0"><i class="icon-droplet text-primary/70"></i><span class="truncate text-gray-700 dark:text-gray-300 font-semibold"><span class="pm-blood">O+</span></span></span><span class="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 min-w-0"><i class="icon-building-2 text-primary/70"></i><span class="truncate text-gray-700 dark:text-gray-300 font-semibold">Neurology</span></span><span class="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 min-w-0"><i class="icon-stethoscope text-primary/70"></i><span class="truncate text-gray-700 dark:text-gray-300 font-semibold">Dr. Kumar</span></span><span class="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 min-w-0"><i class="icon-bed text-primary/70"></i><span class="truncate text-gray-700 dark:text-gray-300 font-semibold">208-B</span></span></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-border-color"><span class="pm-badge admitted">Admitted</span><span class="ap-stat-chip ap-c-emerald"><i class="icon-badge-check text-[10px]"></i>Verified</span></div><div class="flex items-center justify-between mt-3"><span class="text-[10px] text-gray-400">Last visit 2026-09-10</span><div class="flex gap-1.5"><a class="pm-mini-act" href="patient-profile.html?id=11&name=William+Davis&dept=Neurology&doctor=Dr.+Kumar&status=Admitted" title="Profile"><i class="icon-eye text-sm"></i></a><button type="button" class="pm-mini-act" data-hs-overlay="#form-modal" title="Edit"><i class="icon-edit text-sm"></i></button><a class="pm-mini-act" href="tel:+1 555 213 4050" title="Call"><i class="icon-phone text-sm"></i></a></div></div></div></article>
 </div>
 
-                            <!-- List view -->
-                            <div id="pm-list" class="hidden ap-card overflow-hidden">
-                                <div class="overflow-x-auto">
-                                    <table class="pm-table">
-                                        <thead>
-                                            <tr>
-                                                <th class="w-10"><input aria-label="Select all" type="checkbox" id="pm-select-all-2" class="pm-check"></th>
-                                                <th data-col="id">Patient ID</th>
-                                                <th data-col="patient">Patient</th>
-                                                <th data-col="dept">Department</th>
-                                                <th data-col="doctor">Doctor</th>
-                                                <th data-col="blood">Blood</th>
-                                                <th data-col="admission">Admission</th>
-                                                <th data-col="status">Status</th>
-                                                <th class="text-right">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="pm-tbody">
+        <!-- List view -->
+        <div id="pm-list" class="hidden ap-card overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="pm-table">
+                    <thead>
+                        <tr>
+                            <th class="w-10"><input aria-label="Select all" type="checkbox" id="pm-select-all-2" class="pm-check"></th>
+                            <th data-col="id">Patient ID</th>
+                            <th data-col="patient">Patient</th>
+                            <th data-col="dept">Department</th>
+                            <th data-col="doctor">Doctor</th>
+                            <th data-col="blood">Blood</th>
+                            <th data-col="admission">Admission</th>
+                            <th data-col="status">Status</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pm-tbody">
 <tr id="row-item-8" data-id="8" data-name="anna peterson" data-dept="Pediatrics" data-status="Discharged" data-doctor="Dr. Osei" data-blood="O+" data-gender="Female" data-insurance="Uninsured" data-admission-type="Elective" data-age="19" data-admission="2026-09-07"><td><input aria-label="Select row" type="checkbox" class="pm-check pm-row-check" data-id="8" data-row-select="8"></td><td data-col="id"><a href="patient-profile.html?id=8&name=Anna+Peterson&dept=Pediatrics&doctor=Dr.+Osei&status=Discharged" class="font-mono text-primary font-semibold hover:underline">PAT-0008</a></td><td data-col="patient"><div class="flex items-center gap-2.5"><span class="ap-c-sky pm-ava-ring inline-block"><img class="pm-ava" src="assets/img/avatar/avatar-08.jpg" alt="" loading="lazy"></span><div class="min-w-0"><p class="font-bold text-gray-900 dark:text-white truncate flex items-center gap-1" data-name-text>Anna Peterson</p><p class="text-[11px] text-gray-400">19 · Female</p></div></div></td><td data-col="dept">Pediatrics</td><td data-col="doctor">Dr. Osei</td><td data-col="blood"><span class="pm-blood">O+</span></td><td data-col="admission" class="text-gray-500 dark:text-gray-400">2026-09-07</td><td data-col="status"><span class="pm-badge discharged">Discharged</span></td><td class="text-right"><div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
 <button type="button" id="row-menu-8" aria-label="Actions" class="hs-dropdown-toggle pm-mini-act"><i class="icon-ellipsis-vertical"></i></button>
 <div class="hs-dropdown-menu transition-[opacity,margin] duration-150 hs-dropdown-open:opacity-100 opacity-0 hidden z-50 min-w-52 max-h-96 overflow-y-auto bg-white dark:bg-slate-800 shadow-lg rounded-lg p-1 border border-border-color" role="menu" aria-labelledby="row-menu-8">
@@ -1052,42 +1052,371 @@
 <button type="button" role="menuitem" data-remove-item="row-item-11" class="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-danger hover:bg-danger/10"><i class="icon-trash-2 text-sm"></i>Delete</button>
 </div></div></td></tr>
 </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                </table>
+            </div>
+        </div>
 
-                            <!-- Empty state -->
-                            <div id="pm-empty" class="hidden ap-card py-16 flex flex-col items-center text-center">
-                                <span class="grid size-16 place-items-center rounded-2xl bg-primary/10 text-primary mb-4"><i class="icon-users text-2xl"></i></span>
-                                <h3 class="text-lg font-bold text-gray-900 dark:text-white">No patients found</h3>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-sm">Try adjusting your search or filters, or add a new patient to get started.</p>
-                                <div class="mt-4 flex gap-2.5">
-                                    <button type="button" id="pm-empty-clear" class="ap-btn ap-btn-solid"><i class="icon-x"></i>Clear filters</button>
-                                    <button type="button" id="pm-empty-add" data-hs-overlay="#form-modal" class="ap-btn ap-btn-primary"><i class="icon-user-plus"></i>Add Patient</button>
-                                </div>
-                            </div>
-                        </section>
+        <!-- Empty state -->
+        <div id="pm-empty" class="hidden ap-card py-16 flex flex-col items-center text-center">
+            <span class="grid size-16 place-items-center rounded-2xl bg-primary/10 text-primary mb-4"><i class="icon-users text-2xl"></i></span>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white">No patients found</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-sm">Try adjusting your search or filters, or add a new patient to get started.</p>
+            <div class="mt-4 flex gap-2.5">
+                <button type="button" id="pm-empty-clear" class="ap-btn ap-btn-solid"><i class="icon-x"></i>Clear filters</button>
+                <button type="button" id="pm-empty-add" data-hs-overlay="#form-modal" class="ap-btn ap-btn-primary"><i class="icon-user-plus"></i>Add Patient</button>
+            </div>
+        </div>
+    </section>
 
-                        <!-- ===================== PAGINATION ===================== -->
-                        <section id="pm-pager" class="ap-card p-3 lg:p-4 flex flex-wrap items-center justify-between gap-3" data-aos="fade-up">
-                            <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                                <span>Rows per page</span>
-                                <select aria-label="Rows per page" id="pm-page-size" class="pm-tool !py-1.5"><option>12</option><option>24</option><option>36</option><option>48</option></select>
-                                <span id="pm-page-info" class="ml-1 font-medium">Showing 1–9 of 15</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mr-1">
-                                    <span>Jump</span>
-                                    <input aria-label="#" id="pm-jump" type="number" min="1" class="pm-tool !py-1.5 w-16 text-center" placeholder="#">
-                                </div>
-                                <div id="pm-page-nav" class="flex items-center gap-1.5">
+    <!-- ===================== PAGINATION ===================== -->
+    <section id="pm-pager" class="ap-card p-3 lg:p-4 flex flex-wrap items-center justify-between gap-3" data-aos="fade-up">
+        <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <span>Rows per page</span>
+            <select aria-label="Rows per page" id="pm-page-size" class="pm-tool !py-1.5"><option>12</option><option>24</option><option>36</option><option>48</option></select>
+            <span id="pm-page-info" class="ml-1 font-medium">Showing 1–9 of 15</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mr-1">
+                <span>Jump</span>
+                <input aria-label="#" id="pm-jump" type="number" min="1" class="pm-tool !py-1.5 w-16 text-center" placeholder="#">
+            </div>
+            <div id="pm-page-nav" class="flex items-center gap-1.5">
 <button type="button" class="pm-page-btn" aria-label="Previous page" disabled><i class="icon-chevron-left"></i></button>
 <button type="button" class="pm-page-btn is-active" aria-current="page">1</button>
 <button type="button" class="pm-page-btn">2</button>
 <button type="button" class="pm-page-btn" aria-label="Next page"><i class="icon-chevron-right"></i></button>
 </div>
-                            </div>
-                        </section>
+        </div>
+    </section>
 
+</div>
+<!-- ===================== ADVANCED FILTER DRAWER ===================== -->
+        <div id="pm-filter-drawer" class="pm-drawer" role="dialog" aria-modal="true" aria-label="Advanced filters">
+            <div class="pm-drawer-back" data-drawer-close></div>
+            <div class="pm-drawer-panel">
+                <div class="flex items-center justify-between border-b border-border-color p-4">
+                    <div class="flex items-center gap-2.5">
+                        <span class="grid size-9 place-items-center rounded-xl bg-primary/10 text-primary"><i class="icon-sliders-horizontal"></i></span>
+                        <div><p class="text-sm font-extrabold text-gray-900 dark:text-white">Advanced Filters</p><p class="text-[11px] text-gray-500 dark:text-gray-400">Refine the patient list</p></div>
                     </div>
-               
+                    <button type="button" class="pm-tool-icon" data-drawer-close aria-label="Close"><i class="icon-x"></i></button>
+                </div>
+                <div class="flex-1 overflow-y-auto p-4 space-y-4">
+                    <div class="ap-field is-filled"><select class="ap-in" id="fd-dept"><option value="">Any department</option><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>ICU</option><option>Maternity</option><option>Oncology</option><option>Geriatrics</option><option>Emergency</option></select><label for="fd-dept" class="ap-lb">Department</label></div>
+                    <div class="ap-field is-filled"><select class="ap-in" id="fd-doctor"><option value="">Any doctor</option><option>Dr. Chen</option><option>Dr. Kumar</option><option>Dr. Mills</option><option>Dr. Park</option><option>Dr. Wang</option><option>Dr. Rivas</option><option>Dr. Nair</option><option>Dr. Osei</option></select><label for="fd-doctor" class="ap-lb">Doctor</label></div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="ap-field is-filled"><select class="ap-in" id="fd-status"><option value="">Any status</option><option>Admitted</option><option>Outpatient</option><option>Discharged</option><option>Critical</option></select><label for="fd-status" class="ap-lb">Status</label></div>
+                        <div class="ap-field is-filled"><select class="ap-in" id="fd-admission"><option value="">Any type</option><option>Elective</option><option>Emergency</option><option>Transfer</option><option>Observation</option></select><label for="fd-admission" class="ap-lb">Admission Type</label></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="ap-field is-filled"><select class="ap-in" id="fd-blood"><option value="">Any group</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select><label for="fd-blood" class="ap-lb">Blood Group</label></div>
+                        <div class="ap-field is-filled"><select class="ap-in" id="fd-gender"><option value="">Any gender</option><option>Male</option><option>Female</option><option>Other</option></select><label for="fd-gender" class="ap-lb">Gender</label></div>
+                    </div>
+                    <div>
+                        <p class="form-label mb-2">Age range</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="ap-field"><input class="ap-in" id="fd-age-min" type="number" min="0" placeholder=" "><label for="fd-age-min" class="ap-lb">Min age</label></div>
+                            <div class="ap-field"><input class="ap-in" id="fd-age-max" type="number" min="0" placeholder=" "><label for="fd-age-max" class="ap-lb">Max age</label></div>
+                        </div>
+                    </div>
+                    <div class="ap-field is-filled"><select class="ap-in" id="fd-insurance"><option value="">Any insurance</option><option>Verified</option><option>Pending</option><option>Uninsured</option></select><label for="fd-insurance" class="ap-lb">Insurance</label></div>
+                    <div>
+                        <p class="form-label mb-2">Admission date range</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="ap-field is-filled"><input class="ap-in" id="fd-from" type="text" placeholder=" " data-provider="flatpickr" data-date-format="Y-m-d" data-altFormat="d-m-Y"><label for="fd-from" class="ap-lb">From</label></div>
+                            <div class="ap-field is-filled"><input class="ap-in" id="fd-to" type="text" placeholder=" " data-provider="flatpickr" data-date-format="Y-m-d" data-altFormat="d-m-Y"><label for="fd-to" class="ap-lb">To</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-border-color p-4 flex gap-2.5">
+                    <button type="button" id="fd-reset" class="ap-btn ap-btn-solid flex-1"><i class="icon-rotate-ccw"></i>Reset</button>
+                    <button type="button" id="fd-apply" class="ap-btn ap-btn-primary flex-1"><i class="icon-check"></i>Apply Filters</button>
+                </div>
+            </div>
+        </div>
+        <!-- ===================== ADD / EDIT PATIENT MODAL ===================== -->
+        <div id="form-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="m-title" tabindex="-1">
+            <div class="md:max-w-xl m-3 md:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3 pb-5 border-b border-border-color dark:border-neutral-700">
+                        <span class="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary shrink-0"><i class="icon-user-plus"></i></span>
+                        <div>
+                            <h2 id="m-title" class="text-lg font-bold text-gray-900 dark:text-white">Add Patient</h2>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Create a new patient record</p>
+                        </div>
+                        <button id="m-close" data-hs-overlay="#form-modal" class="ml-auto p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x"></i></button>
+                    </div>
+                    <form id="m-form" data-noop-submit class="py-5 overflow-y-auto">
+                        <div class="form-grid">
+                            <div class="form-group"><label for="f-fname" class="form-label">First Name <span class="text-danger">*</span></label><input id="f-fname" class="form-input" placeholder="e.g. James"></div>
+                            <div class="form-group"><label for="f-lname" class="form-label">Last Name <span class="text-danger">*</span></label><input id="f-lname" class="form-input" placeholder="e.g. Morrison"></div>
+                            <div class="form-group"><label for="f-email" class="form-label">Email</label><input id="f-email" type="email" class="form-input" placeholder="patient@example.com"></div>
+                            <div class="form-group"><label for="f-phone" class="form-label">Phone</label><input id="f-phone" class="form-input" placeholder="+1 555 000 0000"></div>
+                            <div class="form-group"><label for="f-age" class="form-label">Age <span class="text-danger">*</span></label><input id="f-age" type="number" min="0" max="150" class="form-input" placeholder="45"></div>
+                            <div class="form-group"><label for="f-gender" class="form-label">Gender</label><select id="f-gender" class="form-select"><option>Male</option><option>Female</option><option>Other</option></select></div>
+                            <div class="form-group"><label for="f-blood" class="form-label">Blood Group</label><select id="f-blood" class="form-select"><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div>
+                            <div class="form-group"><label for="f-dept" class="form-label">Department</label><select id="f-dept" class="form-select"><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>ICU</option><option>Maternity</option><option>Oncology</option><option>Geriatrics</option><option>Emergency</option><option>Surgery</option></select></div>
+                            <div class="form-group"><label for="f-doctor" class="form-label">Assigned Doctor</label><input id="f-doctor" class="form-input" placeholder="Dr. Chen"></div>
+                            <div class="form-group"><label for="f-room" class="form-label">Room / Bed</label><input id="f-room" class="form-input" placeholder="e.g. 204-B"></div>
+                            <div class="form-group"><label for="f-status" class="form-label">Status</label><select id="f-status" class="form-select"><option>Admitted</option><option>Outpatient</option><option>Discharged</option><option>Critical</option></select></div>
+                            <div class="form-group"><label for="f-insurance" class="form-label">Insurance</label><select id="f-insurance" class="form-select"><option>Verified</option><option>Pending</option><option>Uninsured</option></select></div>
+                            <div class="form-group"><label for="f-date" class="form-label">Admission Date</label><input type="text" id="f-date" class="form-input" placeholder="dd-mm-yyyy" data-provider="flatpickr" data-date-format="Y-m-d" data-altFormat="d-m-Y"></div>
+                            <div class="form-group span-2"><label for="f-notes" class="form-label">Notes</label><textarea id="f-notes" class="form-textarea" placeholder="Clinical notes or observations..."></textarea></div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-border-color flex gap-3 justify-end">
+                            <button id="m-cancel" type="button" data-hs-overlay="#form-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                            <button id="btn-save" type="button" data-hs-overlay="#form-modal" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Save Patient</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== DELETE MODAL ===================== -->
+        <div id="del-modal" class="modal-overlay hidden">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0"><i class="icon-trash-2 text-red-600"></i></div>
+                    <div><h3 class="font-bold text-gray-900 dark:text-white text-lg">Delete Patient</h3><p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p></div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">Are you sure you want to delete <strong id="del-name" class="text-gray-900 dark:text-white"></strong>?</p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                    <button id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== IMPORT MODAL ===================== -->
+        <div id="pm-import-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="md:max-w-xl m-3 md:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-start gap-3">
+                        <span class="grid size-11 place-items-center rounded-2xl text-white shrink-0 [background:linear-gradient(135deg,#0ea5e9,#6366f1)] [box-shadow:0_10px_20px_-10px_#0ea5e9]"><i class="icon-upload text-lg"></i></span>
+                        <div class="flex-1 min-w-0 pt-0.5">
+                            <h2 class="text-lg font-bold text-gray-900 dark:text-white">Import Patients</h2>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Bulk upload records from a CSV or Excel file</p>
+                        </div>
+                        <button data-hs-overlay="#pm-import-modal" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500 shrink-0"><i class="icon-x"></i></button>
+                    </div>
+
+                    <div class="ap-upload ap-c-sky !py-8 mt-4" id="pm-import-drop">
+                        <input type="file" accept=".csv,.xlsx,.xls" class="hidden" aria-label="Upload patient import file">
+                        <span class="u-ico !size-14 !text-xl"><i class="icon-cloud-upload"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white" data-u-label data-default="Drag &amp; drop your file here">Drag &amp; drop your file here</p>
+                        <p class="text-[11px] text-gray-500 dark:text-gray-400">or <span class="text-primary font-semibold">click to browse</span> · CSV, XLSX up to 10MB</p>
+                    </div>
+
+                    <div class="mt-3.5 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center gap-2">
+                            <span class="pm-imp-filetype"><i class="icon-file-type-2"></i>CSV</span>
+                            <span class="pm-imp-filetype"><i class="icon-file-spreadsheet"></i>XLSX</span>
+                        </div>
+                        <a href="#" id="pm-import-template" class="pm-imp-template-link"><i class="icon-download"></i>Download sample template</a>
+                    </div>
+
+                    <div class="pm-imp-steps mt-4">
+                        <div class="pm-imp-step"><span class="n">1</span><span>Upload file</span></div>
+                        <div class="pm-imp-step-line"></div>
+                        <div class="pm-imp-step"><span class="n">2</span><span>We validate rows</span></div>
+                        <div class="pm-imp-step-line"></div>
+                        <div class="pm-imp-step"><span class="n">3</span><span>Confirm &amp; import</span></div>
+                    </div>
+
+                    <div id="pm-import-summary" class="hidden mt-4 pm-imp-summary">
+                        <p class="text-xs font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-1.5"><i class="icon-clipboard-check text-primary"></i>Import Summary</p>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="pm-imp-stat pm-imp-stat-ok"><p class="v" id="imp-ok">0</p><p class="l">Valid</p></div>
+                            <div class="pm-imp-stat pm-imp-stat-warn"><p class="v" id="imp-warn">0</p><p class="l">Warnings</p></div>
+                            <div class="pm-imp-stat pm-imp-stat-err"><p class="v" id="imp-err">0</p><p class="l">Errors</p></div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 justify-end mt-5 pt-4 border-t border-border-color">
+                        <button data-hs-overlay="#pm-import-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button id="pm-import-run" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold inline-flex items-center gap-1.5"><i class="icon-upload text-sm"></i>Import</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== EXPORT MODAL ===================== -->
+        <div id="pm-export-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="grid size-10 place-items-center rounded-xl bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 shrink-0"><i class="icon-download"></i></span>
+                        <div><h2 class="text-lg font-bold text-gray-900 dark:text-white">Export Patients</h2><p class="text-xs text-gray-500 dark:text-gray-400">Choose format &amp; scope</p></div>
+                        <button data-hs-overlay="#pm-export-modal" class="ml-auto p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x"></i></button>
+                    </div>
+                    <p class="form-label mb-2">Format</p>
+                    <div class="grid grid-cols-4 gap-2 mb-4">
+                        <label class="ap-chip-choice ap-c-emerald w-full"><input type="radio" name="exp-fmt" value="CSV" checked><span class="w-full justify-center">CSV</span></label>
+                        <label class="ap-chip-choice ap-c-emerald w-full"><input type="radio" name="exp-fmt" value="Excel"><span class="w-full justify-center">Excel</span></label>
+                        <label class="ap-chip-choice ap-c-emerald w-full"><input type="radio" name="exp-fmt" value="PDF"><span class="w-full justify-center">PDF</span></label>
+                        <label class="ap-chip-choice ap-c-emerald w-full"><input type="radio" name="exp-fmt" value="Print"><span class="w-full justify-center">Print</span></label>
+                    </div>
+                    <p class="form-label mb-2">Records</p>
+                    <div class="space-y-2 mb-4">
+                        <label class="flex items-center gap-2.5 rounded-xl border border-border-color p-3 cursor-pointer hover:border-primary text-sm text-gray-700 dark:text-gray-300"><input type="radio" name="exp-scope" value="all" checked class="accent-primary">All records</label>
+                        <label class="flex items-center gap-2.5 rounded-xl border border-border-color p-3 cursor-pointer hover:border-primary text-sm text-gray-700 dark:text-gray-300"><input type="radio" name="exp-scope" value="filtered" class="accent-primary">Current filters only</label>
+                        <label class="flex items-center gap-2.5 rounded-xl border border-border-color p-3 cursor-pointer hover:border-primary text-sm text-gray-700 dark:text-gray-300"><input type="radio" name="exp-scope" value="selected" class="accent-primary">Selected records (<span id="exp-sel-count">0</span>)</label>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button data-hs-overlay="#pm-export-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button id="pm-export-run" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Export</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ CLINICAL OPS / COMMUNICATE ACTION MODALS ============
+             Generic, non-personalized (no per-record prefill — these actions don't
+             persist anywhere without a backend); each opens/closes purely through
+             Preline's overlay toggle (data-hs-overlay), no JS wiring required. -->
+        <div id="pm-admit-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary shrink-0"><i class="icon-bed"></i></span>
+                        <div><h2 class="text-lg font-bold text-gray-900 dark:text-white">Admit Patient</h2><p class="text-xs text-gray-500 dark:text-gray-400">Assign a ward and bed</p></div>
+                        <button data-hs-overlay="#pm-admit-modal" class="ml-auto p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="space-y-3.5">
+                        <div class="ap-field is-filled"><select class="ap-in"><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>ICU</option><option>Maternity</option><option>Oncology</option><option>Geriatrics</option><option>Emergency</option><option>Surgery</option></select><label class="ap-lb">Ward / Department</label></div>
+                        <div class="ap-field is-filled"><select class="ap-in"><option>Elective</option><option>Emergency</option><option>Transfer</option><option>Observation</option></select><label class="ap-lb">Admission Type</label></div>
+                        <div class="ap-field"><input class="ap-in" placeholder=" "><label class="ap-lb">Room / Bed</label></div>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-5">
+                        <button data-hs-overlay="#pm-admit-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button data-hs-overlay="#pm-admit-modal" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Admit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pm-transfer-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary shrink-0"><i class="icon-arrow-left-right"></i></span>
+                        <div><h2 class="text-lg font-bold text-gray-900 dark:text-white">Transfer Patient</h2><p class="text-xs text-gray-500 dark:text-gray-400">Move to another ward or bed</p></div>
+                        <button data-hs-overlay="#pm-transfer-modal" class="ml-auto p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="space-y-3.5">
+                        <div class="ap-field is-filled"><select class="ap-in"><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>ICU</option><option>Maternity</option><option>Oncology</option><option>Geriatrics</option><option>Emergency</option><option>Surgery</option></select><label class="ap-lb">To Department</label></div>
+                        <div class="ap-field"><input class="ap-in" placeholder=" "><label class="ap-lb">To Room / Bed</label></div>
+                        <div class="ap-field"><textarea class="ap-in" placeholder=" "></textarea><label class="ap-lb">Reason</label></div>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-5">
+                        <button data-hs-overlay="#pm-transfer-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button data-hs-overlay="#pm-transfer-modal" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Transfer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pm-assign-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary shrink-0"><i class="icon-stethoscope"></i></span>
+                        <div><h2 class="text-lg font-bold text-gray-900 dark:text-white">Assign Doctor</h2><p class="text-xs text-gray-500 dark:text-gray-400">Choose the attending physician</p></div>
+                        <button data-hs-overlay="#pm-assign-modal" class="ml-auto p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="ap-field is-filled"><select class="ap-in"><option>Dr. Chen</option><option>Dr. Kumar</option><option>Dr. Mills</option><option>Dr. Park</option><option>Dr. Wang</option><option>Dr. Rivas</option><option>Dr. Nair</option><option>Dr. Osei</option></select><label class="ap-lb">Doctor</label></div>
+                    <div class="flex gap-3 justify-end mt-5">
+                        <button data-hs-overlay="#pm-assign-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button data-hs-overlay="#pm-assign-modal" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Assign</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pm-dept-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary shrink-0"><i class="icon-building-2"></i></span>
+                        <div><h2 class="text-lg font-bold text-gray-900 dark:text-white">Change Department</h2><p class="text-xs text-gray-500 dark:text-gray-400">Applies to the selected patients</p></div>
+                        <button data-hs-overlay="#pm-dept-modal" class="ml-auto p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="ap-field is-filled"><select class="ap-in"><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>ICU</option><option>Maternity</option><option>Oncology</option><option>Geriatrics</option><option>Emergency</option><option>Surgery</option></select><label class="ap-lb">Department</label></div>
+                    <div class="flex gap-3 justify-end mt-5">
+                        <button data-hs-overlay="#pm-dept-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button data-hs-overlay="#pm-dept-modal" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pm-status-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary shrink-0"><i class="icon-activity"></i></span>
+                        <div><h2 class="text-lg font-bold text-gray-900 dark:text-white">Update Status</h2><p class="text-xs text-gray-500 dark:text-gray-400">Applies to the selected patients</p></div>
+                        <button data-hs-overlay="#pm-status-modal" class="ml-auto p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="ap-field is-filled"><select class="ap-in"><option>Admitted</option><option>Outpatient</option><option>Discharged</option><option>Critical</option></select><label class="ap-lb">Status</label></div>
+                    <div class="flex gap-3 justify-end mt-5">
+                        <button data-hs-overlay="#pm-status-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button data-hs-overlay="#pm-status-modal" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pm-sms-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary shrink-0"><i class="icon-message-circle"></i></span>
+                        <div><h2 class="text-lg font-bold text-gray-900 dark:text-white">Send SMS</h2><p class="text-xs text-gray-500 dark:text-gray-400">Sends to the recipient's phone on file</p></div>
+                        <button data-hs-overlay="#pm-sms-modal" class="ml-auto p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="ap-field"><textarea class="ap-in" placeholder=" "></textarea><label class="ap-lb">Message</label></div>
+                    <div class="flex gap-3 justify-end mt-5">
+                        <button data-hs-overlay="#pm-sms-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button data-hs-overlay="#pm-sms-modal" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Send SMS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pm-email-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary shrink-0"><i class="icon-mail"></i></span>
+                        <div><h2 class="text-lg font-bold text-gray-900 dark:text-white">Send Email</h2><p class="text-xs text-gray-500 dark:text-gray-400">Sends to the recipient's email on file</p></div>
+                        <button data-hs-overlay="#pm-email-modal" class="ml-auto p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x"></i></button>
+                    </div>
+                    <div class="space-y-3.5">
+                        <div class="ap-field"><input class="ap-in" placeholder=" "><label class="ap-lb">Subject</label></div>
+                        <div class="ap-field"><textarea class="ap-in" placeholder=" "></textarea><label class="ap-lb">Message</label></div>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-5">
+                        <button data-hs-overlay="#pm-email-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button data-hs-overlay="#pm-email-modal" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Send Email</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pm-archive-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary shrink-0"><i class="icon-archive"></i></span>
+                        <div><h2 class="text-lg font-bold text-gray-900 dark:text-white">Archive Patient</h2><p class="text-xs text-gray-500 dark:text-gray-400">Hides the record from the active list</p></div>
+                        <button data-hs-overlay="#pm-archive-modal" class="ml-auto p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x"></i></button>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Move this patient to the archive? They will be hidden from the active list.</p>
+                    <div class="flex gap-3 justify-end mt-5">
+                        <button data-hs-overlay="#pm-archive-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button data-hs-overlay="#pm-archive-modal" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Archive</button>
+                    </div>
+                </div>
+            </div>
+        </div>  
