@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Invoice {
   no: string;
@@ -122,7 +123,7 @@ export class BillingDashboard implements AfterViewInit {
     { time: '1:20 PM', cat: 'Refunds', text: 'RFD-312 requested — duplicate lab charge flagged by front desk' },
   ];
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private toastService: ToastService) {}
 
   ngAfterViewInit(): void {
     this.renderHero();
@@ -151,8 +152,7 @@ export class BillingDashboard implements AfterViewInit {
   }
 
   private toast(message: string, tone: string = 'info'): void {
-    const mc = (window as any).MC;
-    if (mc?.toast) mc.toast(message, tone);
+    this.toastService.show(message, tone as any);
   }
 
   private money(n: number): string {

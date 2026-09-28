@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface RxItem {
   id: string;
@@ -259,7 +260,7 @@ export class PharmacyDashboard implements AfterViewInit {
   private actFilter = 'All';
   private dragRxId: string | null = null;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private toastService: ToastService) {}
 
   ngAfterViewInit(): void {
     this.wireKanbanOps();
@@ -292,8 +293,7 @@ export class PharmacyDashboard implements AfterViewInit {
   }
 
   private toast(message: string, tone: 'success' | 'info' | 'error' = 'info'): void {
-    const mc = (window as any).MC;
-    if (mc?.toast) mc.toast(message, tone);
+    this.toastService.show(message, tone);
   }
 
   /* ---------------- Hero (emergency strip) ---------------- */

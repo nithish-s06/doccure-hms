@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject, OnDestroy } from '@angular/core';
+import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Step {
   name: string;
@@ -250,7 +251,7 @@ export class ReceptionDashboard implements AfterViewInit, OnDestroy {
   private clockTimer: ReturnType<typeof setInterval> | null = null;
   private outsideClickHandler = (e: MouseEvent) => this.onOutsideDockClick(e);
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private toastService: ToastService) {}
 
   ngAfterViewInit(): void {
     this.renderHero();
@@ -290,9 +291,7 @@ export class ReceptionDashboard implements AfterViewInit, OnDestroy {
   }
 
   private toast(message: string, tone: 'info' | 'success' | 'error' = 'info'): void {
-    const mc = (window as any).MC;
-    if (mc?.toast) mc.toast(message, tone);
-    else console.log(message);
+    this.toastService.show(message, tone);
   }
 
   /* ---------------- Hero / serving strip ---------------- */

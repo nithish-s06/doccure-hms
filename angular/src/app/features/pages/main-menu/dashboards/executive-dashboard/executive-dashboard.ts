@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject, OnDestroy } from '@angular/core';
+import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Dept {
   name: string;
@@ -89,7 +90,7 @@ export class ExecutiveDashboard implements AfterViewInit, OnDestroy {
   private actFilter = 'All';
   private outsideClickHandler = (e: MouseEvent) => this.onOutsideDockClick(e);
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private toastService: ToastService) {}
 
   ngAfterViewInit(): void {
     this.wireIntelFeed();
@@ -113,8 +114,7 @@ export class ExecutiveDashboard implements AfterViewInit, OnDestroy {
   }
 
   private toast(message: string): void {
-    const mc = (window as any).MC;
-    if (mc?.toast) mc.toast(message, 'success');
+    this.toastService.show(message, 'success');
   }
 
   /* ---------------- Hero alert strip ---------------- */

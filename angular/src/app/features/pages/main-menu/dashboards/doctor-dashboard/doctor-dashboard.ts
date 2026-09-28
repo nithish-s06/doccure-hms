@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface ScheduleSlot {
   time: string;
@@ -136,7 +137,7 @@ export class DoctorDashboard implements AfterViewInit {
     { id: 'T4', text: 'Renew BLS certification', due: 'Jul 30', done: true },
   ];
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private toastService: ToastService) {}
 
   ngAfterViewInit(): void {
     this.wireLabs();
@@ -156,8 +157,7 @@ export class DoctorDashboard implements AfterViewInit {
   }
 
   private toast(message: string, tone: 'success' | 'info' = 'info'): void {
-    const mc = (window as any).MC;
-    if (mc?.toast) mc.toast(message, tone);
+    this.toastService.show(message, tone);
   }
 
   /* ---------------- Hero ---------------- */

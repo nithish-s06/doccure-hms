@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Vital {
   v: number | string;
@@ -294,7 +295,7 @@ export class NurseDashboard implements AfterViewInit {
   private medTab = 'upcoming';
   private actFilter = 'All';
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private toastService: ToastService) {}
 
   ngAfterViewInit(): void {
     // NOTE: the patient selector options, shift steps, patient workspace,
@@ -421,8 +422,7 @@ export class NurseDashboard implements AfterViewInit {
   }
 
   private toast(message: string, tone: 'success' | 'info' | 'error' = 'info'): void {
-    const mc = (window as any).MC;
-    if (mc?.toast) mc.toast(message, tone);
+    this.toastService.show(message, tone);
   }
 
   private initials(n: string): string {
