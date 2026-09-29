@@ -1,0 +1,222 @@
+
+<div id="dad-page" class="max-w-[1500px] mx-auto space-y-5">
+
+   <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+    <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+        <li><a href="index.html" class="hover:text-primary transition-colors">Dashboard</a></li>
+        <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+        <li><a href="doctor-availability.html" class="hover:text-primary transition-colors">Doctor Availability</a></li>
+        <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+        <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Availability Details</li>
+    </ol>
+</nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="dad-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="dad-hero-ico">SR</div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Dr. Sarah Roberts</h1>
+                        <span class="dad-hbadge"><span class="dad-dot"></span>Available</span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="dad-hmeta"><i class="ti ti-hash text-sky-300"></i>DAV-0001</span>
+                        <span class="dad-hmeta"><i class="ti ti-stethoscope text-emerald-300"></i>Interventional Cardiology</span>
+                        <span class="dad-hmeta"><i class="ti ti-building-hospital text-violet-300"></i>Cardiology</span>
+                        <span class="dad-hmeta"><i class="ti ti-clock-hour-4 text-amber-300"></i>Morning Shift · 09:00–17:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 dad-actions-print-hide">
+                <button type="button" class="dad-btn dad-btn-glass" data-action="print"><i class="ti ti-printer"></i>Print</button>
+                <button type="button" class="dad-btn dad-btn-glass" id="dad-download-btn"><i class="ti ti-download"></i>Download PDF</button>
+                <a href="doctor-availability.html" class="dad-btn dad-btn-primary"><i class="ti ti-arrow-left"></i>Back to Schedule</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="dad-grid">
+        <div class="dad-vital dad-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="ti ti-briefcase"></i></span>
+                <span class="dad-chip">Experience</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">14 yrs</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Years of Practice</p>
+        </div>
+        <div class="dad-vital dad-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="ti ti-calendar-check"></i></span>
+                <span class="dad-chip">Slots</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">6 Free</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">of 12 Today</p>
+        </div>
+        <div class="dad-vital dad-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="ti ti-hourglass"></i></span>
+                <span class="dad-chip">Duration</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">20 min</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Per Consultation</p>
+        </div>
+        <div class="dad-vital dad-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="ti ti-door"></i></span>
+                <span class="dad-chip">Room</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">OPD-204</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Consulting Room</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="dad-layout">
+        <div class="space-y-5">
+
+            <!-- Weekly schedule -->
+            <div class="dad-surface">
+                <div class="dad-head">
+                    <span class="ico"><i class="ti ti-calendar-week"></i></span>
+                    <h2 class="dad-title">Weekly Availability</h2>
+                </div>
+                <div class="p-5">
+                    <div class="dad-week">
+                        <div class="dad-daycol">
+                            <div class="dad-dayhd">Mon</div>
+                            <div class="dad-daybody"><i class="ti ti-check text-emerald-500"></i><span class="text-[11px] font-semibold text-gray-500">09:00–17:00</span></div>
+                        </div>
+                        <div class="dad-daycol">
+                            <div class="dad-dayhd">Tue</div>
+                            <div class="dad-daybody"><i class="ti ti-check text-emerald-500"></i><span class="text-[11px] font-semibold text-gray-500">09:00–17:00</span></div>
+                        </div>
+                        <div class="dad-daycol">
+                            <div class="dad-dayhd">Wed</div>
+                            <div class="dad-daybody"><i class="ti ti-check text-emerald-500"></i><span class="text-[11px] font-semibold text-gray-500">09:00–17:00</span></div>
+                        </div>
+                        <div class="dad-daycol">
+                            <div class="dad-dayhd today">Thu</div>
+                            <div class="dad-daybody"><i class="ti ti-check text-emerald-500"></i><span class="text-[11px] font-semibold text-gray-500">09:00–17:00</span></div>
+                        </div>
+                        <div class="dad-daycol">
+                            <div class="dad-dayhd">Fri</div>
+                            <div class="dad-daybody"><i class="ti ti-check text-emerald-500"></i><span class="text-[11px] font-semibold text-gray-500">09:00–17:00</span></div>
+                        </div>
+                        <div class="dad-daycol">
+                            <div class="dad-dayhd">Sat</div>
+                            <div class="dad-daybody"><i class="ti ti-x text-gray-400"></i><span class="text-[11px] font-semibold text-gray-400">Off</span></div>
+                        </div>
+                        <div class="dad-daycol">
+                            <div class="dad-dayhd">Sun</div>
+                            <div class="dad-daybody"><i class="ti ti-x text-gray-400"></i><span class="text-[11px] font-semibold text-gray-400">Off</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Time slots -->
+            <div class="dad-surface">
+                <div class="dad-head">
+                    <span class="ico"><i class="ti ti-clock"></i></span>
+                    <h2 class="dad-title">Today's Time Slots</h2>
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="dad-slot free"><i class="ti ti-circle-check"></i>09:00</span>
+                        <span class="dad-slot free"><i class="ti ti-circle-check"></i>09:20</span>
+                        <span class="dad-slot booked"><i class="ti ti-circle-x"></i>09:40</span>
+                        <span class="dad-slot booked"><i class="ti ti-circle-x"></i>10:00</span>
+                        <span class="dad-slot free"><i class="ti ti-circle-check"></i>10:20</span>
+                        <span class="dad-slot booked"><i class="ti ti-circle-x"></i>10:40</span>
+                        <span class="dad-slot free"><i class="ti ti-circle-check"></i>11:00</span>
+                        <span class="dad-slot booked"><i class="ti ti-circle-x"></i>11:20</span>
+                        <span class="dad-slot booked"><i class="ti ti-circle-x"></i>14:00</span>
+                        <span class="dad-slot free"><i class="ti ti-circle-check"></i>14:30</span>
+                        <span class="dad-slot booked"><i class="ti ti-circle-x"></i>15:00</span>
+                        <span class="dad-slot free"><i class="ti ti-circle-check"></i>15:30</span>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3">6 slots free of 12 total · 20-minute consultation blocks · appointments beyond 15:30 continue on request.</p>
+                </div>
+            </div>
+
+            <!-- Schedule activity / exceptions -->
+            <div class="dad-surface">
+                <div class="dad-head">
+                    <span class="ico"><i class="ti ti-route"></i></span>
+                    <h2 class="dad-title">Schedule Activity &amp; Exceptions</h2>
+                </div>
+                <div class="dad-tl p-5">
+                    <div class="dad-tl-item done">
+                        <span class="dad-tl-node"><i class="ti ti-calendar-plus"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Availability activated</p>
+                        <p class="text-xs text-gray-500">Morning shift · 09:00–17:00 · effective 2026-01-05</p>
+                    </div>
+                    <div class="dad-tl-item warn">
+                        <span class="dad-tl-node"><i class="ti ti-plane"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Leave exception — Aug 15, 2026</p>
+                        <p class="text-xs text-gray-500">Public holiday · schedule suspended for the day</p>
+                    </div>
+                    <div class="dad-tl-item done">
+                        <span class="dad-tl-node"><i class="ti ti-clock-share"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Shift confirmed for current week</p>
+                        <p class="text-xs text-gray-500">Jul 13 – Jul 19, 2026 · no changes</p>
+                    </div>
+                    <div class="dad-tl-item">
+                        <span class="dad-tl-node"><i class="ti ti-refresh"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Next review</p>
+                        <p class="text-xs text-gray-500">Schedule renews automatically on 2026-10-01</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 dad-sidebar">
+            <!-- Doctor highlight -->
+            <div class="dad-surface dad-side-hero rounded-[1.25rem]">
+                <div class="flex items-center gap-3">
+                    <span class="dad-avatar">SR</span>
+                    <div class="min-w-0">
+                        <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Doctor</p>
+                        <h3 class="text-lg font-extrabold truncate">Dr. Sarah Roberts</h3>
+                    </div>
+                </div>
+                <p class="text-sm text-white/80 mt-3">Cardiology · Interventional Cardiology</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="dad-hmeta"><i class="ti ti-phone text-[12px]"></i>+91 98765 43210</span>
+                </div>
+            </div>
+
+            <!-- Availability key-value card -->
+            <div class="dad-surface p-5">
+                <h3 class="dad-title mb-3">Availability Details</h3>
+                <div class="dad-kv"><span class="k"><i class="ti ti-building-hospital text-[13px]"></i>Department</span><span class="v">Cardiology</span></div>
+                <div class="dad-kv"><span class="k"><i class="ti ti-clock-hour-4 text-[13px]"></i>Shift</span><span class="v">Morning · 09:00–17:00</span></div>
+                <div class="dad-kv"><span class="k"><i class="ti ti-calendar-event text-[13px]"></i>Effective From</span><span class="v">05 Jan 2026</span></div>
+                <div class="dad-kv"><span class="k"><i class="ti ti-calendar-x text-[13px]"></i>Effective To</span><span class="v">01 Oct 2026</span></div>
+                <div class="dad-kv"><span class="k"><i class="ti ti-video text-[13px]"></i>Consultation</span><span class="v">In-person &amp; Video</span></div>
+                <div class="dad-kv"><span class="k"><i class="ti ti-phone-call text-[13px]"></i>On-call</span><span class="v">No</span></div>
+                <div class="dad-kv"><span class="k"><i class="ti ti-door text-[13px]"></i>Room</span><span class="v">OPD-204, 2nd Floor</span></div>
+                <div class="dad-kv"><span class="k"><i class="ti ti-mail text-[13px]"></i>Email</span><span class="v">sarah.roberts@dreamshms.com</span></div>
+            </div>
+
+            <!-- Notes -->
+            <div class="dad-surface p-5">
+                <h3 class="dad-title mb-2">Leave / Exception Notes</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">No approved leave scheduled this month. Public holiday on 15 Aug 2026 will suspend availability for the day; the schedule resumes automatically the following working day.</p>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="dad-surface p-5 space-y-2.5 dad-actions-print-hide">
+                <h3 class="dad-title mb-1">Quick Actions</h3>
+                <button type="button" class="dad-btn dad-btn-solid w-full justify-start" data-action="print"><i class="ti ti-printer"></i>Print</button>
+                <button type="button" class="dad-btn dad-btn-solid w-full justify-start" id="dad-side-download"><i class="ti ti-download"></i>Download PDF</button>
+                <a href="doctor-availability.html" class="dad-btn dad-btn-solid w-full justify-start"><i class="ti ti-list"></i>All Schedules</a>
+            </div>
+        </div>
+    </div>
+</div>

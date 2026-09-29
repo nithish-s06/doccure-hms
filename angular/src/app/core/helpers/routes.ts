@@ -127,8 +127,10 @@ export const All_Routes={
     addDoctor:'/add-doctor',
     doctorProfile:'/doctor-profile',
     specializations:'/specializations',
+    specializationDetail:'/specialization-detail',
     doctorSchedule:'/doctor-schedule',
     doctorAvailability:'/doctor-availability',
+    doctorAvailabilityDetail:'/doctor-availability-detail',
     doctorLeaveRequests:'/doctor-leave-requests',
     consultationFees:'/consultation-fees',
 

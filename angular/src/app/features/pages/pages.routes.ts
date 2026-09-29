@@ -53,8 +53,10 @@ export const Pages_Routes: Routes = [
             { path: 'add-doctor', loadComponent: () => import('./main-menu/doctors/add-doctor/add-doctor').then((m) => m.AddDoctor)},
             { path: 'doctor-profile', loadComponent: () => import('./main-menu/doctors/doctor-profile/doctor-profile').then((m) => m.DoctorProfile)},
             { path: 'specializations', loadComponent: () => import('./main-menu/doctors/specializations/specializations').then((m) => m.Specializations)},
+            { path: 'specialization-detail', loadComponent: () => import('./main-menu/doctors/specialization-detail/specialization-detail').then((m) => m.SpecializationDetail)},
             { path: 'doctor-schedule', loadComponent: () => import('./main-menu/doctors/doctor-schedule/doctor-schedule').then((m) => m.DoctorSchedule)},
             { path: 'doctor-availability', loadComponent: () => import('./main-menu/doctors/doctor-availability/doctor-availability').then((m) => m.DoctorAvailability)},
+            { path: 'doctor-availability-detail', loadComponent: () => import('./main-menu/doctors/doctor-availability-detail/doctor-availability-detail').then((m) => m.DoctorAvailabilityDetail)},
             { path: 'doctor-leave-requests', loadComponent: () => import('./main-menu/doctors/doctor-leave-requests/doctor-leave-requests').then((m) => m.DoctorLeaveRequests)},
             { path: 'consultation-fees', loadComponent: () => import('./main-menu/doctors/consultation-fees/consultation-fees').then((m) => m.ConsultationFees)},
 
