@@ -1,0 +1,140 @@
+<div id="bid-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb"><ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"><li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li><a routerLink="/blood-issue" class="hover:text-primary transition-colors">Blood Issue</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Blood Issue Details</li></ol></nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="bid-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="bid-hero-ico"><i class="icon-hand-heart"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="bid-issued-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Ravi Kumar</h1>
+                        <span id="bid-crossmatch-badge" class="inline-block px-2 py-1 text-xs font-bold rounded-lg whitespace-nowrap">Compatible</span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="bid-hbadge"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="bid-issue-id">#BI-00001</span></span>
+                        <span class="bid-hbadge"><i class="icon-droplet text-[13px] text-rose-300"></i><span id="bid-group-meta">O+</span></span>
+                        <span class="bid-hbadge"><i class="icon-map-pin text-[13px] text-sky-300"></i><span id="bid-location-meta">ICU Bed 4</span></span>
+                        <span class="bid-hbadge"><i class="icon-calendar text-[13px] text-emerald-300"></i><span id="bid-date">2024-12-06 09:20</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 bid-actions-print-hide">
+                <button type="button" id="bid-print" class="bid-btn bid-btn-glass"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/blood-issue" class="bid-btn bid-btn-primary"><i class="icon-arrow-left"></i>Back to Issue Records</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="bid-grid">
+        <div class="bid-vital bid-c-rose bid-featured">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-droplet"></i></span>
+                <span class="bid-chip">Group</span>
+            </div>
+            <p class="mt-3 text-2xl font-black text-gray-900 dark:text-white" id="bid-group">O+</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Blood Group</p>
+        </div>
+        <div class="bid-vital bid-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-droplets"></i></span>
+                <span class="bid-chip">Units</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="bid-units">2</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Units Issued</p>
+        </div>
+        <div class="bid-vital bid-c-emerald" id="bid-crossmatch-card">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-shield-check"></i></span>
+                <span class="bid-chip">Crossmatch</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="bid-crossmatch">Compatible</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Crossmatch Result</p>
+        </div>
+        <div class="bid-vital bid-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-calendar"></i></span>
+                <span class="bid-chip">Issued</span>
+            </div>
+            <p class="mt-3 text-base lg:text-lg font-extrabold text-gray-900 dark:text-white" id="bid-issue-date">2024-12-06 09:20</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Issue Date</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="bid-layout">
+        <div class="space-y-5">
+
+            <!-- Incompatible crossmatch alert (hidden unless applicable) -->
+            <div class="bid-alert [display:none]" id="bid-alert-banner">
+                <span class="aico"><i class="icon-alert-triangle"></i></span>
+                <div>
+                    <p class="text-sm font-extrabold">Incompatible Crossmatch</p>
+                    <p class="text-xs mt-0.5">Incompatible crossmatch — unit should not have been issued; flagged for review.</p>
+                </div>
+            </div>
+
+            <!-- Issue summary -->
+            <div class="bid-surface">
+                <div class="bid-head">
+                    <span class="ico"><i class="icon-clipboard-check"></i></span>
+                    <h2 class="bid-title">Issue Summary</h2>
+                </div>
+                <div class="p-5">
+                    <div class="bid-receipt">
+                        <div class="bid-kv"><span class="k"><i class="icon-droplet text-[13px]"></i>Blood Group</span><span class="v" id="bid-r-group">O+</span></div>
+                        <div class="bid-kv"><span class="k"><i class="icon-droplets text-[13px]"></i>Units Issued</span><span class="v" id="bid-r-units">2</span></div>
+                        <div class="bid-kv"><span class="k"><i class="icon-user text-[13px]"></i>Issued To</span><span class="v" id="bid-r-issuedto">Ravi Kumar — ICU Bed 4</span></div>
+                        <div class="bid-kv"><span class="k"><i class="icon-user text-[13px]"></i>Issued By</span><span class="v" id="bid-r-issuedby">Nurse Fatima Ali</span></div>
+                        <div class="bid-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date / Time</span><span class="v" id="bid-r-date">2024-12-06 09:20</span></div>
+                        <div class="bid-kv"><span class="k"><i class="icon-shield-check text-[13px]"></i>Crossmatch Result</span><span class="v" id="bid-r-crossmatch">Compatible</span></div>
+                        <p class="bid-receipt-foot" id="bid-r-recordid">System-generated blood issue record · #BI-00001</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post-issue checklist -->
+            <div class="bid-surface">
+                <div class="bid-head">
+                    <span class="ico"><i class="icon-clipboard-check"></i></span>
+                    <h2 class="bid-title">Post-Issue Checklist</h2>
+                </div>
+                <div class="p-5">
+                    <div class="bid-check"><i class="icon-check-circle"></i>Unit inspected for clots, discoloration or damage before dispensing.</div>
+                    <div class="bid-check"><i class="icon-check-circle"></i>Patient identity verified against the unit tag and crossmatch report.</div>
+                    <div class="bid-check"><i class="icon-check-circle"></i>Vitals to be monitored for the first 15 minutes of transfusion.</div>
+                    <div class="bid-check"><i class="icon-check-circle"></i>Transfusion reaction protocol kept on standby at the bedside.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 bid-sidebar">
+            <!-- Issuing staff -->
+            <div class="bid-surface bid-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Issued By</p>
+                <h3 class="mt-1 text-lg font-extrabold" id="bid-side-issuedby">Nurse Fatima Ali</h3>
+                <p class="text-sm text-white/80 mt-0.5" id="bid-side-location">ICU Bed 4</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="bid-hbadge"><i class="icon-mail text-[12px]"></i>Contact Staff</span>
+                </div>
+            </div>
+
+            <!-- Key details -->
+            <div class="bid-surface p-5">
+                <h3 class="bid-title mb-3">Issue Details</h3>
+                <div class="bid-kv"><span class="k"><i class="icon-user text-[13px]"></i>Issued To</span><span class="v" id="bid-kv-issuedto">Ravi Kumar — ICU Bed 4</span></div>
+                <div class="bid-kv"><span class="k"><i class="icon-user text-[13px]"></i>Issued By</span><span class="v" id="bid-kv-issuedby">Nurse Fatima Ali</span></div>
+                <div class="bid-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date</span><span class="v" id="bid-kv-date">2024-12-06 09:20</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="bid-surface p-5 space-y-2.5">
+                <h3 class="bid-title mb-1">Quick Actions</h3>
+                <button type="button" id="bid-print-2" class="bid-btn bid-btn-solid w-full justify-start"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/blood-issue" class="bid-btn bid-btn-solid w-full justify-start"><i class="icon-list"></i>All Issue Records</a>
+            </div>
+        </div>
+    </div>
+</div>

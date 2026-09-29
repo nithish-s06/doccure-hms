@@ -1,0 +1,157 @@
+<div id="obd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb"><ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"><li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li><a routerLink="/ot-booking" class="hover:text-primary transition-colors">OT Booking</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">OT Booking Details</li></ol></nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="obd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="obd-hero-ico"><i class="icon-clipboard-check"></i></div>
+                <div class="min-w-0">
+                    <p class="obd-kicker">Operation Theater Booking</p>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Rahul Sharma</h1>
+                        <span class="obd-hbadge"><span class="obd-dot"></span><span>Scheduled</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="obd-hmeta"><i class="icon-hash text-[13px] text-teal-300"></i>BKG-4300</span>
+                        <span class="obd-hmeta"><i class="icon-scissors text-[13px] text-sky-300"></i>CABG</span>
+                        <span class="obd-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i>Dr. A. Mehta</span>
+                        <span class="obd-hmeta"><i class="icon-calendar text-[13px] text-amber-300"></i>Jul 20 · 08:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 obd-actions-print-hide">
+                <button type="button" class="obd-btn obd-btn-glass" id="obd-print"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/ot-booking" class="obd-btn obd-btn-primary"><i class="icon-arrow-left"></i>Back to OT Booking</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="obd-grid">
+        <div class="obd-vital obd-c-teal">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-layout-grid"></i></span>
+                <span class="obd-chip">OT Room</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Cardiac OT</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Assigned Theater</p>
+        </div>
+        <div class="obd-vital obd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-clock"></i></span>
+                <span class="obd-chip">Duration</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">~3h</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Estimated</p>
+        </div>
+        <div class="obd-vital obd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-alert-triangle"></i></span>
+                <span class="obd-chip">Priority</span>
+            </div>
+            <p class="mt-3 text-lg font-extrabold text-gray-900 dark:text-white">Medium</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Booking Priority</p>
+        </div>
+        <div class="obd-vital obd-c-rose">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-activity"></i></span>
+                <span class="obd-chip">Status</span>
+            </div>
+            <span class="mt-3 inline-flex w-fit items-center px-3 py-1.5 rounded-lg text-sm font-extrabold text-primary bg-primary/10">Scheduled</span>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Booking Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="obd-layout">
+        <div class="space-y-5">
+
+            <!-- Booking workflow -->
+            <div class="obd-surface">
+                <div class="obd-head">
+                    <span class="ico"><i class="icon-git-branch"></i></span>
+                    <h2 class="obd-title">Booking Workflow</h2>
+                </div>
+                <div class="obd-tl p-5">
+                    <div class="obd-tl-item done"><span class="obd-tl-node"><i class="icon-file-text"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Draft Created</p><p class="text-xs text-gray-500 dark:text-gray-400">Jul 17, 10:15 AM</p></div>
+                    <div class="obd-tl-item done"><span class="obd-tl-node"><i class="icon-clock"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Pending Approval</p><p class="text-xs text-gray-500 dark:text-gray-400">Jul 17, 11:00 AM</p></div>
+                    <div class="obd-tl-item done"><span class="obd-tl-node"><i class="icon-check"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Approved</p><p class="text-xs text-gray-500 dark:text-gray-400">Jul 17, 02:30 PM</p></div>
+                    <div class="obd-tl-item current"><span class="obd-tl-node"><i class="icon-calendar-check"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Scheduled · Cardiac OT</p><p class="text-xs text-gray-500 dark:text-gray-400">Jul 20, 08:00 AM</p></div>
+                    <div class="obd-tl-item"><span class="obd-tl-node"><i class="icon-flag"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Completed</p><p class="text-xs text-gray-500 dark:text-gray-400">Pending</p></div>
+                </div>
+            </div>
+
+            <!-- Booking information -->
+            <div class="obd-surface">
+                <div class="obd-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="obd-title">Booking Information</h2>
+                </div>
+                <div class="p-5">
+                    <div class="obd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">Rahul Sharma · MRN-80500</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Booking Code</span><span class="v">BKG-4300</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-scissors text-[13px]"></i>Procedure</span><span class="v">CABG</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Surgeon</span><span class="v">Dr. A. Mehta</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-syringe text-[13px]"></i>Anesthesiologist</span><span class="v">Dr. K. Menon</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-user-round text-[13px]"></i>OT Team</span><span class="v">N. Fernandes +2</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-layout-grid text-[13px]"></i>OT Room</span><span class="v">Cardiac OT</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date / Time</span><span class="v">Jul 20 · 08:00 AM</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Est. Duration</span><span class="v">3 hours</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-bed text-[13px]"></i>Recovery Bed</span><span class="v">RB-08</span></div>
+                </div>
+            </div>
+
+            <!-- Equipment & preparation -->
+            <div class="obd-surface">
+                <div class="obd-head">
+                    <span class="ico"><i class="icon-boxes"></i></span>
+                    <h2 class="obd-title">Equipment &amp; Preparation</h2>
+                </div>
+                <div class="p-5">
+                    <p class="text-xs font-bold uppercase tracking-wide text-gray-400 mb-2">Equipment Required</p>
+                    <div class="flex flex-wrap">
+                        <span class="obd-eqpill">Anesthesia Machine</span>
+                        <span class="obd-eqpill">Electrocautery</span>
+                        <span class="obd-eqpill">C-Arm</span>
+                        <span class="obd-eqpill">Suction</span>
+                    </div>
+                    <p class="text-xs font-bold uppercase tracking-wide text-gray-400 mt-4 mb-2">Preparation Checklist</p>
+                    <div class="obd-kv"><span class="k"><i class="icon-check text-[13px] text-success"></i>Consent signed</span><span class="v">Done</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-check text-[13px] text-success"></i>Fasting confirmed</span><span class="v">Done</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-check text-[13px] text-success"></i>Cross-matched</span><span class="v">Done</span></div>
+                    <div class="obd-kv"><span class="k"><i class="icon-check text-[13px] text-success"></i>OT booked</span><span class="v">Done</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 obd-sidebar">
+            <!-- Surgeon -->
+            <div class="obd-surface obd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Lead Surgeon</p>
+                <h3 class="mt-1 text-lg font-extrabold">Dr. A. Mehta</h3>
+                <p class="text-sm text-white/80 mt-0.5">Cardiothoracic Surgery</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="obd-hmeta"><i class="icon-phone-call text-[12px]"></i>Contact Surgeon</span>
+                </div>
+            </div>
+
+            <!-- Booking details -->
+            <div class="obd-surface p-5">
+                <h3 class="obd-title mb-3">Booking Details</h3>
+                <div class="obd-kv"><span class="k"><i class="icon-layout-grid text-[13px]"></i>OT Room</span><span class="v">Cardiac OT</span></div>
+                <div class="obd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date</span><span class="v">Jul 20</span></div>
+                <div class="obd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Time</span><span class="v">08:00 AM</span></div>
+                <div class="obd-kv"><span class="k"><i class="icon-alert-triangle text-[13px]"></i>Priority</span><span class="v">Medium</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="obd-surface p-5 space-y-2.5">
+                <h3 class="obd-title mb-1">Quick Actions</h3>
+                <button type="button" class="obd-btn obd-btn-solid w-full justify-start" id="obd-print-2"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/ot-booking" class="obd-btn obd-btn-solid w-full justify-start"><i class="icon-list"></i>All OT Bookings</a>
+            </div>
+        </div>
+    </div>
+</div>

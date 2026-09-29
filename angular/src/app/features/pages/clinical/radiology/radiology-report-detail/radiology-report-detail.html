@@ -1,0 +1,171 @@
+<div id="rrd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+            <li><a routerLink="/radiology-reports" class="hover:text-primary transition-colors">Radiology Reports</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Radiology Report Details</li>
+        </ol>
+    </nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="rrd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="rrd-hero-ico"><i class="icon-file-check"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="rrd-patient-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">David Torres</h1>
+                        <span class="rrd-hbadge"><span class="rrd-dot [background:#009966]"></span><span id="rrd-status-badge" class="text-success bg-success/10">Finalized</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="rrd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="rrd-report-id">#RPT-00001</span></span>
+                        <span class="rrd-hmeta"><i class="icon-scan-line text-[13px] text-sky-300"></i><span id="rrd-modality">X-Ray</span></span>
+                        <span class="rrd-hmeta"><i class="icon-user text-[13px] text-violet-300"></i><span id="rrd-radiologist-name">Dr. Nina Petrova</span></span>
+                        <span class="rrd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Reported <span id="rrd-date">2024-12-02</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 rrd-actions-print-hide">
+                <button type="button" id="rrd-print" class="rrd-btn rrd-btn-glass"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/radiology-reports" class="rrd-btn rrd-btn-primary"><i class="icon-arrow-left"></i>Back to Reports</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="rrd-grid">
+        <div class="rrd-vital rrd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-scan-line"></i></span>
+                <span class="rrd-chip">Imaging</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="rrd-modality-stat">X-Ray</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Modality</p>
+        </div>
+        <div class="rrd-vital rrd-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-user"></i></span>
+                <span class="rrd-chip">Reader</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="rrd-radiologist-stat">Dr. Nina Petrova</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Radiologist</p>
+        </div>
+        <div class="rrd-vital rrd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-calendar"></i></span>
+                <span class="rrd-chip">Reported</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="rrd-report-date">2024-12-02</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Report Date</p>
+        </div>
+        <div class="rrd-vital rrd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-file-check"></i></span>
+                <span class="rrd-chip">Stage</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="rrd-status-stat">Finalized</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="rrd-layout">
+        <div class="space-y-5">
+
+            <!-- Clinical History -->
+            <div class="rrd-surface rrd-c-violet">
+                <div class="rrd-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="rrd-title">Clinical History</h2>
+                </div>
+                <div class="p-5">
+                    <p class="rrd-report-text" id="rrd-history-text">Patient presents with persistent chest discomfort and shortness of breath. Rule out acute cardiopulmonary pathology.</p>
+                </div>
+            </div>
+
+            <!-- Technique -->
+            <div class="rrd-surface rrd-c-sky">
+                <div class="rrd-head">
+                    <span class="ico"><i class="icon-scan-line"></i></span>
+                    <h2 class="rrd-title">Technique</h2>
+                </div>
+                <div class="p-5">
+                    <p class="rrd-report-text" id="rrd-technique-text">Standard two-view radiographic series (PA and lateral) obtained using digital radiography. No prior comparison studies available. No contrast administered.</p>
+                </div>
+            </div>
+
+            <!-- Findings -->
+            <div class="rrd-surface">
+                <div class="rrd-head">
+                    <span class="ico"><i class="icon-file-check"></i></span>
+                    <h2 class="rrd-title">Findings</h2>
+                </div>
+                <div class="p-5">
+                    <div class="rrd-report">
+                        <p class="rrd-report-text" id="rrd-findings-text">No acute abnormality detected.</p>
+                        <div class="rrd-signature">
+                            <div>
+                                <p class="name" id="rrd-sig-radiologist">— Dr. Nina Petrova</p>
+                                <p class="role">Reporting Radiologist</p>
+                            </div>
+                            <p class="date" id="rrd-sig-date">2024-12-02</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impression -->
+            <div class="rrd-surface rrd-c-emerald">
+                <div class="rrd-head">
+                    <span class="ico"><i class="icon-stethoscope"></i></span>
+                    <h2 class="rrd-title">Impression</h2>
+                </div>
+                <div class="p-5">
+                    <div class="rrd-report">
+                        <p class="rrd-report-text" id="rrd-impression-text">1. No evidence of acute cardiopulmonary disease.
+2. No displaced fracture or focal osseous lesion.
+3. Recommend clinical correlation and follow-up imaging if symptoms persist.</p>
+                        <div class="rrd-signature">
+                            <div>
+                                <p class="name" id="rrd-sig-radiologist-2">— Dr. Nina Petrova</p>
+                                <p class="role">Reporting Radiologist</p>
+                            </div>
+                            <p class="date" id="rrd-sig-date-2">2024-12-02</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 rrd-sidebar">
+            <!-- Patient -->
+            <div class="rrd-surface rrd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Patient</p>
+                <h3 class="mt-1 text-lg font-extrabold" id="rrd-side-patient">David Torres</h3>
+                <p class="text-sm text-white/80 mt-0.5" id="rrd-side-modality">X-Ray Scan</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="rrd-hmeta"><i class="icon-mail text-[12px]"></i>Contact Patient</span>
+                </div>
+            </div>
+
+            <!-- Report details -->
+            <div class="rrd-surface p-5">
+                <h3 class="rrd-title mb-3">Report Details</h3>
+                <div class="rrd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v" id="rrd-kv-patient">David Torres</span></div>
+                <div class="rrd-kv"><span class="k"><i class="icon-scan-line text-[13px]"></i>Modality</span><span class="v" id="rrd-kv-modality">X-Ray</span></div>
+                <div class="rrd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Radiologist</span><span class="v" id="rrd-kv-radiologist">Dr. Nina Petrova</span></div>
+                <div class="rrd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Date</span><span class="v" id="rrd-kv-date">2024-12-02</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="rrd-surface p-5 space-y-2.5">
+                <h3 class="rrd-title mb-1">Quick Actions</h3>
+                <button type="button" id="rrd-print-2" class="rrd-btn rrd-btn-solid w-full justify-start"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/radiology-reports" class="rrd-btn rrd-btn-solid w-full justify-start"><i class="icon-list"></i>All Reports</a>
+            </div>
+        </div>
+    </div>
+</div>

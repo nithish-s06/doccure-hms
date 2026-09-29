@@ -137,23 +137,30 @@ export const Pages_Routes: Routes = [
             { path: 'operation-theater', loadComponent: () => import('./clinical/operation-theater/operation-theater/operation-theater').then((m) => m.OperationTheater)},
             { path: 'ot-calendar', loadComponent: () => import('./clinical/operation-theater/ot-calendar/ot-calendar').then((m) => m.OtCalendar)},
             { path: 'surgeons', loadComponent: () => import('./clinical/operation-theater/surgeons/surgeons').then((m) => m.Surgeons)},
+            { path: 'surgeon-profile', loadComponent: () => import('./clinical/wards-beds/surgeon-profile/surgeon-profile').then((m) => m.SurgeonProfile)},
             { path: 'ot-booking', loadComponent: () => import('./clinical/operation-theater/ot-booking/ot-booking').then((m) => m.OtBooking)},
+            { path: 'ot-booking-detail', loadComponent: () => import('./clinical/wards-beds/ot-booking-detail/ot-booking-detail').then((m) => m.OtBookingDetail)},
             { path: 'operation-reports', loadComponent: () => import('./clinical/operation-theater/operation-reports/operation-reports').then((m) => m.OperationReports)},
 
             // Clinical - Radiology
             { path: 'radiology', loadComponent: () => import('./clinical/radiology/radiology/radiology').then((m) => m.Radiology)},
+            { path: 'radiology-order-detail', loadComponent: () => import('./clinical/radiology/radiology-order-detail/radiology-order-detail').then((m) => m.RadiologyOrderDetail)},
             { path: 'x-ray', loadComponent: () => import('./clinical/radiology/x-ray/x-ray').then((m) => m.XRay)},
             { path: 'mri', loadComponent: () => import('./clinical/radiology/mri/mri').then((m) => m.Mri)},
             { path: 'ct-scan', loadComponent: () => import('./clinical/radiology/ct-scan/ct-scan').then((m) => m.CtScan)},
             { path: 'ultrasound', loadComponent: () => import('./clinical/radiology/ultrasound/ultrasound').then((m) => m.Ultrasound)},
             { path: 'scan-requests', loadComponent: () => import('./clinical/radiology/scan-requests/scan-requests').then((m) => m.ScanRequests)},
+            { path: 'scan-request-detail', loadComponent: () => import('./clinical/radiology/scan-request-detail/scan-request-detail').then((m) => m.ScanRequestDetail)},
             { path: 'radiology-reports', loadComponent: () => import('./clinical/radiology/radiology-reports/radiology-reports').then((m) => m.RadiologyReports)},
+            { path: 'radiology-report-detail', loadComponent: () => import('./clinical/radiology/radiology-report-detail/radiology-report-detail').then((m) => m.RadiologyReportDetail)},
 
             // Clinical - Blood Bank
             { path: 'blood-bank', loadComponent: () => import('./clinical/blood-bank/blood-bank/blood-bank').then((m) => m.BloodBank)},
             { path: 'blood-donors', loadComponent: () => import('./clinical/blood-bank/blood-donors/blood-donors').then((m) => m.BloodDonors)},
             { path: 'blood-requests', loadComponent: () => import('./clinical/blood-bank/blood-requests/blood-requests').then((m) => m.BloodRequests)},
+            { path: 'blood-request-detail', loadComponent: () => import('./clinical/blood-bank/blood-request-detail/blood-request-detail').then((m) => m.BloodRequestDetail)},
             { path: 'blood-issue', loadComponent: () => import('./clinical/blood-bank/blood-issue/blood-issue').then((m) => m.BloodIssue)},
+            { path: 'blood-issue-detail', loadComponent: () => import('./clinical/blood-bank/blood-issue-detail/blood-issue-detail').then((m) => m.BloodIssueDetail)},
             { path: 'blood-camps', loadComponent: () => import('./clinical/blood-bank/blood-camps/blood-camps').then((m) => m.BloodCamps)},
 
             // Clinical - Nursing

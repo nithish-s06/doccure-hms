@@ -211,7 +211,9 @@ export const All_Routes={
     operationTheater:'/operation-theater',
     otCalendar:'/ot-calendar',
     surgeons:'/surgeons',
+    surgeonProfile:'/surgeon-profile',
     otBooking:'/ot-booking',
+    otBookingDetail:'/ot-booking-detail',
     operationReports:'/operation-reports',
 
     // Clinical - Radiology
@@ -221,13 +223,18 @@ export const All_Routes={
     ctScan:'/ct-scan',
     ultrasound:'/ultrasound',
     scanRequests:'/scan-requests',
+    scanRequestDetail:'/scan-request-detail',
     radiologyReports:'/radiology-reports',
+    radiologyOrderDetail:'/radiology-order-detail',
+    radiologyReportDetail:'/radiology-report-detail',
 
     // Clinical - Blood Bank
     bloodBank:'/blood-bank',
     bloodDonors:'/blood-donors',
     bloodRequests:'/blood-requests',
+    bloodRequestDetail:'/blood-request-detail',
     bloodIssue:'/blood-issue',
+    bloodIssueDetail:'/blood-issue-detail',
     bloodCamps:'/blood-camps',
 
     // Clinical - Nursing
