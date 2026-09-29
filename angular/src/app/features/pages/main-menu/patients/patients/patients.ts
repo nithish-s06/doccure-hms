@@ -2,6 +2,7 @@ import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 import { All_Routes } from '../../../../../core/helpers/routes';
 import { RouterLink } from '@angular/router';
+import { Datepicker } from '../../../../../shared/datepicker/datepicker';
 
 interface StaticListView {
   container: HTMLElement;
@@ -16,7 +17,7 @@ interface StaticListInfo {
   pages: number;
 }
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink,Datepicker],
   selector: 'app-patients',
   styleUrl: './patients.css',
   templateUrl: './patients.html',
