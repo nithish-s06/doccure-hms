@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Renderer2, signal } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, Event as RouterEvent, RouterOutlet } from '@angular/router';
-import { HSStaticMethods } from 'preline';
+import { HSOverlay, HSStaticMethods } from 'preline';
 import { CommonService } from './core/services/common/common.service';
 import { TitleCasePipe } from '@angular/common';
 import { SettingsService } from './core/services/settings/settings.service';
@@ -21,6 +21,11 @@ export class App {
   tittle ='';
   constructor(private settings:SettingsService, private cdr: ChangeDetectorRef,private router: Router,private renderer:Renderer2)
    {
+      // The preline ESM build only puts HSStaticMethods on window, not
+      // HSOverlay — but many ported pages call window.HSOverlay.open/close
+      // directly to drive Preline modals, so expose it here.
+      (window as any).HSOverlay = HSOverlay;
+
       this.router.events.subscribe((event: RouterEvent) => {
       if (event instanceof NavigationStart) {
         const URL = event.url.split('/');
