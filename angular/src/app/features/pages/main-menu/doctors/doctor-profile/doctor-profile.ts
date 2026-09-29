@@ -1,24 +1,22 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface Slot {
   t: string;
   taken: boolean;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "doctor-profile".
- * KPIs/specs/education/awards/weekly-hours ship as static markup matching
- * this seed data; this wires the today's-slot booking grid and the
- * book-appointment / message modals (tabs are handled by Preline natively).
- */
+
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-doctor-profile',
   styleUrl: './doctor-profile.css',
   templateUrl: './doctor-profile.html',
 })
 export class DoctorProfile implements AfterViewInit {
+  AllRoutes = All_Routes;
   private SLOTS: Slot[] = [
     { t: '09:00', taken: true },
     { t: '09:30', taken: true },

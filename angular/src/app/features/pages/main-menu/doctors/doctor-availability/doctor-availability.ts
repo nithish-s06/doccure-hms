@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const flatpickr: any;
 
@@ -68,12 +70,13 @@ interface ModalDef {
  * bulk selection — all backed by in-memory seed data.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-doctor-availability',
   styleUrl: './doctor-availability.css',
   templateUrl: './doctor-availability.html',
 })
 export class DoctorAvailability implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STATUS: Record<string, { c: string }> = {
     Available: { c: '#10b981' },
     'In Consultation': { c: '#0ea5e9' },

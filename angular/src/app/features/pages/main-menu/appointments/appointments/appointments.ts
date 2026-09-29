@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface Appointment {
   id: number;
@@ -48,21 +50,14 @@ interface GridConfig<T> {
   rowKey?: (row: T) => number | string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "APPOINTMENTS" (appointments.html).
- * Reimplements the shared MC.grid / MC.badge / MC.actions / MC.apptStats /
- * MC.confirmDelete / MC.initDeleteModal helpers directly since there is no
- * global MC object in Angular. form/view/resched/cancel/remind/pay modals are
- * Preline hs-overlay markup, opened/closed via window.HSOverlay; del-modal
- * stays on the local delete-confirm implementation.
- */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-appointments',
   styleUrl: './appointments.css',
   templateUrl: './appointments.html',
 })
 export class Appointments implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STATUS: Record<string, string> = {
     Pending: 'badge-amber',
     Confirmed: 'badge-blue',

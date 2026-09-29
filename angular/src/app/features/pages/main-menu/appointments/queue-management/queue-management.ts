@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { RouterLink } from '@angular/router';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 interface QueueRow {
   id: number;
@@ -45,21 +47,14 @@ interface GridConfig<T> {
   rowKey?: (row: T) => number | string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "queue-management"
- * (queue-management.html). Reimplements MC.grid/MC.badge/MC.actions/
- * MC.apptStats locally since there is no global MC object in Angular.
- * del-modal here is page-owned Preline hs-overlay markup (not the shared
- * MC.deleteModalHTML template), so confirm/cancel wiring below drives it
- * directly instead of the MC.confirmDelete/MC.initDeleteModal pattern.
- */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-queue-management',
   styleUrl: './queue-management.css',
   templateUrl: './queue-management.html',
 })
 export class QueueManagement implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STATUS: Record<string, string> = {
     Waiting: 'badge-amber',
     Called: 'badge-blue',

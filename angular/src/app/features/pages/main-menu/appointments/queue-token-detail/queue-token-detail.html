@@ -1,0 +1,153 @@
+
+<div id="qtd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li><a [routerLink]="AllRoutes.queueManagement" class="hover:text-primary transition-colors">Queue Management</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Queue Token Details</li>
+        </ol>
+    </nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="qtd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="qtd-hero-ico"><i class="icon-ticket"></i></div>
+                <div class="min-w-0">
+                    <p class="qtd-kicker">Queue Token</p>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="qtd-patient" class="text-2xl lg:text-3xl font-extrabold tracking-tight">James Morrison</h1>
+                        <span class="qtd-hbadge"><span class="qtd-dot"></span><span id="qtd-status-badge">In Consultation</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="qtd-hmeta"><i class="icon-hash text-[13px] text-sky-300"></i><span id="qtd-token-id">#A-101</span></span>
+                        <span class="qtd-hmeta"><i class="icon-stethoscope text-[13px] text-indigo-300"></i><span id="qtd-hero-doctor">Dr. Sarah Chen</span></span>
+                        <span class="qtd-hmeta"><i class="icon-door-open text-[13px] text-violet-300"></i><span id="qtd-hero-room">Room 204</span></span>
+                        <span class="qtd-hmeta"><i class="icon-phone text-[13px] text-emerald-300"></i><span id="qtd-hero-phone">(212) 555-0147</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 qtd-actions-print-hide">
+                <button type="button" class="qtd-btn qtd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                <a [routerLink]="AllRoutes.queueManagement" class="qtd-btn qtd-btn-primary"><i class="icon-arrow-left"></i>Back to Queue</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="qtd-grid">
+        <div class="qtd-vital qtd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-stethoscope"></i></span>
+                <span class="qtd-chip">Doctor</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="qtd-stat-doctor">Dr. Sarah Chen</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Consulting Doctor</p>
+        </div>
+        <div class="qtd-vital qtd-c-indigo">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-door-open"></i></span>
+                <span class="qtd-chip">Room</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="qtd-stat-room">Room 204</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Consultation Room</p>
+        </div>
+        <div class="qtd-vital qtd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-hourglass"></i></span>
+                <span class="qtd-chip">Waiting</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="qtd-stat-wait">4 min</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Waiting Time</p>
+        </div>
+        <div class="qtd-vital qtd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-activity"></i></span>
+                <span class="qtd-chip">Status</span>
+            </div>
+            <span class="mt-3 inline-flex w-fit items-center px-3 py-1.5 rounded-lg text-sm font-extrabold" id="qtd-stat-status">In Consultation</span>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Queue Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="qtd-layout">
+        <div class="space-y-5">
+
+            <!-- Workflow timeline -->
+            <div class="qtd-surface">
+                <div class="qtd-head">
+                    <span class="ico"><i class="icon-list"></i></span>
+                    <h2 class="qtd-title">Token Workflow</h2>
+                </div>
+                <div class="qtd-tl p-5" id="qtd-timeline">
+                    <div class="qtd-tl-item done">
+                        <span class="qtd-tl-node"><i class="icon-check"></i></span>
+                        <p class="text-sm font-bold text-gray-900">Checked In</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Token A-101 issued at Room 204 reception</p>
+                    </div>
+                    <div class="qtd-tl-item done">
+                        <span class="qtd-tl-node"><i class="icon-check"></i></span>
+                        <p class="text-sm font-bold text-gray-900">Waiting</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Queued behind 2 patients ahead</p>
+                    </div>
+                    <div class="qtd-tl-item done">
+                        <span class="qtd-tl-node"><i class="icon-check"></i></span>
+                        <p class="text-sm font-bold text-gray-900">Called</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Announced on waiting-room display and audio call-out</p>
+                    </div>
+                    <div class="qtd-tl-item current">
+                        <span class="qtd-tl-node"><i class="icon-stethoscope"></i></span>
+                        <p class="text-sm font-bold text-gray-900">In Consultation</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Currently with Dr. Sarah Chen · Room 204</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Token details -->
+            <div class="qtd-surface">
+                <div class="qtd-head">
+                    <span class="ico"><i class="icon-info"></i></span>
+                    <h2 class="qtd-title">Visit Notes</h2>
+                </div>
+                <div class="p-5">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Normal priority walk-in. No prior alerts on file. Patient checked in on time for the scheduled 10:00 AM slot with Dr. Sarah Chen.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 qtd-sidebar">
+            <!-- Doctor -->
+            <div class="qtd-surface qtd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Consulting Doctor</p>
+                <h3 class="mt-1 text-lg font-extrabold" id="qtd-side-doctor">Dr. Sarah Chen</h3>
+                <p class="text-sm text-white/80 mt-0.5" id="qtd-side-room">Room 204</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="qtd-hmeta"><i class="icon-phone-call text-[12px]"></i>Contact Doctor</span>
+                </div>
+            </div>
+
+            <!-- Token details -->
+            <div class="qtd-surface p-5">
+                <h3 class="qtd-title mb-3">Token Details</h3>
+                <div class="qtd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v" id="qtd-kv-patient">James Morrison</span></div>
+                <div class="qtd-kv"><span class="k"><i class="icon-phone text-[13px]"></i>Phone</span><span class="v" id="qtd-kv-phone">(212) 555-0147</span></div>
+                <div class="qtd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Token</span><span class="v" id="qtd-kv-token">#A-101</span></div>
+                <div class="qtd-kv"><span class="k"><i class="icon-flag text-[13px]"></i>Priority</span><span class="v" id="qtd-kv-priority">Normal</span></div>
+                <div class="qtd-kv"><span class="k"><i class="icon-hourglass text-[13px]"></i>Waiting Time</span><span class="v" id="qtd-kv-wait">4 min</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="qtd-surface p-5 space-y-2.5">
+                <h3 class="qtd-title mb-1">Quick Actions</h3>
+                <button type="button" class="qtd-btn qtd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Token</button>
+                <a [routerLink]="AllRoutes.queueManagement" class="qtd-btn qtd-btn-solid w-full justify-start"><i class="icon-list"></i>All Queue Tokens</a>
+            </div>
+        </div>
+    </div>
+</div>
