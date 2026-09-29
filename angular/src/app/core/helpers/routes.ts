@@ -133,15 +133,21 @@ export const All_Routes={
     doctorAvailabilityDetail:'/doctor-availability-detail',
     doctorLeaveRequests:'/doctor-leave-requests',
     consultationFees:'/consultation-fees',
+    consultationFeeDetail:'/consultation-fee-detail',
 
     // Appointments
     appointments:'/appointments',
+    appointmentDetail:'/appointment-detail',
     appointmentCalendar:'/appointment-calendar',
     bookAppointment:'/book-appointment',
     queueManagement:'/queue-management',
+    queueTokenDetail:'/queue-token-detail',
     walkInPatients:'/walk-in-patients',
+    walkInPatientDetail:'/walk-in-patient-detail',
     followUpAppointments:'/follow-up-appointments',
+    followUpAppointmentDetail:'/follow-up-appointment-detail',
     appointmentRequests:'/appointment-requests',
+    appointmentRequestDetail:'/appointment-request-detail',
     cancelledAppointments:'/cancelled-appointments',
 
     // Clinical - Pharmacy

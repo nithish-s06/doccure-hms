@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface DoctorRow {
   id: number;
@@ -20,21 +22,14 @@ interface DoctorRow {
   reviews: number;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "doctors" (main list page).
- * KPIs, header badges, sidebar widget, page 1 of the grid view, page nav,
- * counts and pager info ship as static markup matching this seed data (page
- * size 12); this wires search/filters/sort/view/page changes, add/edit/
- * delete, the action menu, profile drawer, filter drawer, bulk actions and
- * the import/export modals.
- */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-doctors',
   styleUrl: './doctors.css',
   templateUrl: './doctors.html',
 })
 export class Doctors implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly DEPT_ACC: Record<string, string> = { Cardiology: 'rose', Neurology: 'violet', Orthopedics: 'amber', Pediatrics: 'sky', 'General Medicine': 'teal', Dermatology: 'emerald', ENT: 'indigo', Oncology: 'blue' };
   private readonly STATUS_RING: Record<string, string> = { Available: '#10b981', Busy: '#d97706', 'On Leave': '#8b5cf6', 'Off Duty': '#64748b' };
   private readonly DEPTS = ['Cardiology', 'Neurology', 'Orthopedics', 'Pediatrics', 'General Medicine', 'Dermatology', 'ENT', 'Oncology'];

@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface Patient {
   id: string;
@@ -39,20 +41,14 @@ interface BookDetails {
   payment: string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "BOOK-APPOINTMENT" (book-appointment.html).
- * Reimplements MC.apptStats/MC.toast locally since there is no global MC object
- * in Angular. Opening the confirm modal is gated behind validate(), so it is
- * triggered programmatically via window.HSOverlay; the modal's own
- * Cancel/Confirm buttons stay fully declarative (data-hs-overlay in the markup).
- */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-book-appointment',
   styleUrl: './book-appointment.css',
   templateUrl: './book-appointment.html',
 })
 export class BookAppointment implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly DOCTORS: Record<string, string[]> = {
     Cardiology: ['Dr. Sarah Chen', 'Dr. Isabelle Duncan'],
     Neurology: ['Dr. Michael Reyes', 'Dr. Camille Rousseau'],

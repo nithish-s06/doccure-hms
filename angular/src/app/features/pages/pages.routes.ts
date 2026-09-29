@@ -59,15 +59,21 @@ export const Pages_Routes: Routes = [
             { path: 'doctor-availability-detail', loadComponent: () => import('./main-menu/doctors/doctor-availability-detail/doctor-availability-detail').then((m) => m.DoctorAvailabilityDetail)},
             { path: 'doctor-leave-requests', loadComponent: () => import('./main-menu/doctors/doctor-leave-requests/doctor-leave-requests').then((m) => m.DoctorLeaveRequests)},
             { path: 'consultation-fees', loadComponent: () => import('./main-menu/doctors/consultation-fees/consultation-fees').then((m) => m.ConsultationFees)},
+            { path: 'consultation-fee-detail', loadComponent: () => import('./main-menu/doctors/consultation-fee-detail/consultation-fee-detail').then((m) => m.ConsultationFeeDetail)},
 
             // Appointments
             { path: 'appointments', loadComponent: () => import('./main-menu/appointments/appointments/appointments').then((m) => m.Appointments)},
+            { path: 'appointment-detail', loadComponent: () => import('./main-menu/appointments/appointment-detail/appointment-detail').then((m) => m.AppointmentDetail)},
             { path: 'appointment-calendar', loadComponent: () => import('./main-menu/appointments/appointment-calendar/appointment-calendar').then((m) => m.AppointmentCalendar)},
             { path: 'book-appointment', loadComponent: () => import('./main-menu/appointments/book-appointment/book-appointment').then((m) => m.BookAppointment)},
             { path: 'queue-management', loadComponent: () => import('./main-menu/appointments/queue-management/queue-management').then((m) => m.QueueManagement)},
+            { path: 'queue-token-detail', loadComponent: () => import('./main-menu/appointments/queue-token-detail/queue-token-detail').then((m) => m.QueueTokenDetail)},
             { path: 'walk-in-patients', loadComponent: () => import('./main-menu/appointments/walk-in-patients/walk-in-patients').then((m) => m.WalkInPatients)},
+            { path: 'walk-in-patient-detail', loadComponent: () => import('./main-menu/appointments/walk-in-patient-detail/walk-in-patient-detail').then((m) => m.WalkInPatientDetail)},
             { path: 'follow-up-appointments', loadComponent: () => import('./main-menu/appointments/follow-up-appointments/follow-up-appointments').then((m) => m.FollowUpAppointments)},
+            { path: 'follow-up-appointment-detail', loadComponent: () => import('./main-menu/appointments/follow-up-appointment-detail/follow-up-appointment-detail').then((m) => m.FollowUpAppointmentDetail)},
             { path: 'appointment-requests', loadComponent: () => import('./main-menu/appointments/appointment-requests/appointment-requests').then((m) => m.AppointmentRequests)},
+            { path: 'appointment-request-detail', loadComponent: () => import('./main-menu/appointments/appointment-request-detail/appointment-request-detail').then((m) => m.AppointmentRequestDetail)},
             { path: 'cancelled-appointments', loadComponent: () => import('./main-menu/appointments/cancelled-appointments/cancelled-appointments').then((m) => m.CancelledAppointments)},
 
             // Clinical - Pharmacy

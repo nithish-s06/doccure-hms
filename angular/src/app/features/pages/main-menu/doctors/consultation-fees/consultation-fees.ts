@@ -1,22 +1,17 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "CONSULTATION-FEES".
- * Every fee record ships as static markup in both the grid (#cf-grid) and
- * list (#cf-tbody) views; this reimplements MC.staticList's search/filter/
- * sort over those existing nodes (no data array, no innerHTML rebuilding of
- * rows), plus the toolbar toggles, selection/bulk bar, the sidebar and
- * modal fee calculators, the import dropzone, export format chips, and the
- * generic [data-toast] handler for the 10 static Preline confirm modals.
- */
+
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-consultation-fees',
   styleUrl: './consultation-fees.css',
   templateUrl: './consultation-fees.html',
 })
 export class ConsultationFees implements AfterViewInit {
+  AllRoutes = All_Routes;
   private view: 'grid' | 'list' = 'grid';
 
   constructor(@Inject(DOCUMENT) private document: Document, private toastService: ToastService) {}

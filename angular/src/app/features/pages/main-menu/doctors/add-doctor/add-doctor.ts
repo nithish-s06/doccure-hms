@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const flatpickr: any;
 
@@ -41,20 +43,14 @@ interface DocModel {
   docs: { name: string; size: string; tag: string }[];
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "ADD-DOCTOR".
- * A 7-step guided doctor registration wizard: stepper navigation, live-bound
- * in-memory model, working-days / services chip pickers, document
- * drag & drop with auto-tagging, a completion checklist/progress meter and a
- * review step — all client-side, no backend calls.
- */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-add-doctor',
   styleUrl: './add-doctor.css',
   templateUrl: './add-doctor.html',
 })
 export class AddDoctor implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STEPS: [string, string, string, string][] = [
     ['Personal', 'icon-user', 'Personal Information', 'Basic identity and contact details'],
     ['Professional', 'icon-stethoscope', 'Professional Details', 'Specialty, department and registration'],

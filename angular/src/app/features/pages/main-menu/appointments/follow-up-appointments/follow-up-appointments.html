@@ -17,7 +17,7 @@
                                     <i class="icon-printer"></i>
                                     <span class="max-sm:hidden">Print</span>
                                 </button>
-                                <a href="book-appointment.html" class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                <a [routerLink]="AllRoutes.bookAppointment" class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
                                     <i class="icon-plus"></i>
                                     Schedule Follow-up
                                 </a>
@@ -96,7 +96,7 @@
                                     <tbody id="tbody">
                                     <tr>
                                         <td><input type="checkbox" data-row-select value="1" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
-                                        <td><div><p class="font-medium"><a class="text-primary" href="follow-up-appointment-detail.html">James Morrison</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0147</p></div></td>
+                                        <td><div><p class="font-medium"><a class="text-primary" [routerLink]="AllRoutes.followUpAppointmentDetail">James Morrison</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0147</p></div></td>
                                         <td>Dr. Sarah Chen</td>
                                         <td>Cardiology</td>
                                         <td>19 Jun 2026</td>
@@ -107,7 +107,7 @@
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" data-row-select value="2" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
-                                        <td><div><p class="font-medium"><a class="text-primary" href="follow-up-appointment-detail.html">Linda Whitfield</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0182</p></div></td>
+                                        <td><div><p class="font-medium"><a class="text-primary" [routerLink]="AllRoutes.followUpAppointmentDetail">Linda Whitfield</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0182</p></div></td>
                                         <td>Dr. Michael Reyes</td>
                                         <td>Neurology</td>
                                         <td>17 Jun 2026</td>
@@ -118,7 +118,7 @@
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" data-row-select value="3" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
-                                        <td><div><p class="font-medium"><a class="text-primary" href="follow-up-appointment-detail.html">Robert Castillo</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(646) 555-0113</p></div></td>
+                                        <td><div><p class="font-medium"><a class="text-primary" [routerLink]="AllRoutes.followUpAppointmentDetail">Robert Castillo</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(646) 555-0113</p></div></td>
                                         <td>Dr. Emily Carter</td>
                                         <td>Orthopedics</td>
                                         <td>25 Jun 2026</td>
@@ -129,7 +129,7 @@
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" data-row-select value="4" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
-                                        <td><div><p class="font-medium"><a class="text-primary" href="follow-up-appointment-detail.html">Angela Brooks</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(718) 555-0164</p></div></td>
+                                        <td><div><p class="font-medium"><a class="text-primary" [routerLink]="AllRoutes.followUpAppointmentDetail">Angela Brooks</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(718) 555-0164</p></div></td>
                                         <td>Dr. David Okonkwo</td>
                                         <td>Pediatrics</td>
                                         <td>10 Jun 2026</td>
@@ -140,7 +140,7 @@
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" data-row-select value="5" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
-                                        <td><div><p class="font-medium"><a class="text-primary" href="follow-up-appointment-detail.html">Marcus Delgado</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(347) 555-0198</p></div></td>
+                                        <td><div><p class="font-medium"><a class="text-primary" [routerLink]="AllRoutes.followUpAppointmentDetail">Marcus Delgado</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(347) 555-0198</p></div></td>
                                         <td>Dr. Laura Bennett</td>
                                         <td>Oncology</td>
                                         <td>30 Jun 2026</td>
@@ -151,7 +151,7 @@
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" data-row-select value="6" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
-                                        <td><div><p class="font-medium"><a class="text-primary" href="follow-up-appointment-detail.html">Priya Raghavan</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0121</p></div></td>
+                                        <td><div><p class="font-medium"><a class="text-primary" [routerLink]="AllRoutes.followUpAppointmentDetail">Priya Raghavan</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0121</p></div></td>
                                         <td>Dr. Sarah Chen</td>
                                         <td>Cardiology</td>
                                         <td>28 May 2026</td>
@@ -162,7 +162,7 @@
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" data-row-select value="7" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
-                                        <td><div><p class="font-medium"><a class="text-primary" href="follow-up-appointment-detail.html">Daniel Kowalski</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(917) 555-0176</p></div></td>
+                                        <td><div><p class="font-medium"><a class="text-primary" [routerLink]="AllRoutes.followUpAppointmentDetail">Daniel Kowalski</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(917) 555-0176</p></div></td>
                                         <td>Dr. Michael Reyes</td>
                                         <td>Neurology</td>
                                         <td>12 Jun 2026</td>
@@ -173,7 +173,7 @@
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" data-row-select value="8" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
-                                        <td><div><p class="font-medium"><a class="text-primary" href="follow-up-appointment-detail.html">Sofia Alvarez</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(646) 555-0155</p></div></td>
+                                        <td><div><p class="font-medium"><a class="text-primary" [routerLink]="AllRoutes.followUpAppointmentDetail">Sofia Alvarez</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(646) 555-0155</p></div></td>
                                         <td>Dr. Emily Carter</td>
                                         <td>Orthopedics</td>
                                         <td>20 Jun 2026</td>
@@ -184,7 +184,7 @@
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" data-row-select value="9" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
-                                        <td><div><p class="font-medium"><a class="text-primary" href="follow-up-appointment-detail.html">Naomi Fitzgerald</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0190</p></div></td>
+                                        <td><div><p class="font-medium"><a class="text-primary" [routerLink]="AllRoutes.followUpAppointmentDetail">Naomi Fitzgerald</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(212) 555-0190</p></div></td>
                                         <td>Dr. Laura Bennett</td>
                                         <td>Oncology</td>
                                         <td>15 Jun 2026</td>
@@ -195,7 +195,7 @@
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" data-row-select value="10" aria-label="Select row" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"></td>
-                                        <td><div><p class="font-medium"><a class="text-primary" href="follow-up-appointment-detail.html">Ethan Caldwell</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(347) 555-0102</p></div></td>
+                                        <td><div><p class="font-medium"><a class="text-primary" [routerLink]="AllRoutes.followUpAppointmentDetail">Ethan Caldwell</a></p><p class="text-xs text-gray-500 dark:text-gray-400">(347) 555-0102</p></div></td>
                                         <td>Dr. Sarah Chen</td>
                                         <td>Cardiology</td>
                                         <td>27 Jun 2026</td>

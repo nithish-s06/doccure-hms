@@ -8,7 +8,7 @@
                                 <h1 class="text-2xl font-bold text-gray-900">Book Appointment</h1>
                                 <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Register a new appointment for an existing or new patient</p>
                             </div>
-                            <a href="appointments.html" class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-border-color text-gray-900 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                            <a [routerLink]="AllRoutes.appointments" class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-border-color text-gray-900 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
                                 <i class="icon-arrow-left"></i>
                                 Back to List
                             </a>
@@ -324,7 +324,7 @@
 
                             <!-- Actions -->
                             <div class="flex flex-col sm:flex-row items-center justify-end gap-3 pb-2" data-aos="fade-up">
-                                <a href="appointments.html" class="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-border-color text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors text-center">Cancel</a>
+                                <a [routerLink]="AllRoutes.appointments" class="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-border-color text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors text-center">Cancel</a>
                                 <button type="button" id="btn-save-print" class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-white dark:bg-slate-800 border border-border-color text-gray-900 text-sm font-semibold hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
                                     <i class="icon-printer"></i>
                                     Save &amp; Print

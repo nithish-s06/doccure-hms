@@ -4,10 +4,10 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   imports: [RouterLink],
-  selector: 'app-cancelled-appointments',
-  styleUrl: './cancelled-appointments.css',
-  templateUrl: './cancelled-appointments.html',
+  selector: 'app-walk-in-patient-detail',
+  styleUrl: './walk-in-patient-detail.css',
+  templateUrl: './walk-in-patient-detail.html',
 })
-export class CancelledAppointments {
+export class WalkInPatientDetail {
   AllRoutes = All_Routes;
 }

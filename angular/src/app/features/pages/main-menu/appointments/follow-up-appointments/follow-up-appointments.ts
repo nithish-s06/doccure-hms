@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const HSOverlay: any;
 declare const HSStaticMethods: any;
@@ -52,20 +54,15 @@ interface Grid<T> {
   setData: (d: T[]) => void;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "Follow-up Appointments
- * (follow-up-appointments.html)". Drives the appointment stat cards
- * (MC.apptStats), the data-driven table (MC.grid), and the history /
- * reschedule modals + bulk actions — all reimplemented as private methods
- * since there is no global MC object in Angular.
- */
+
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-follow-up-appointments',
   styleUrl: './follow-up-appointments.css',
   templateUrl: './follow-up-appointments.html',
 })
 export class FollowUpAppointments implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STATUS: Record<string, string> = {
     'Due Today': 'badge-amber',
     Upcoming: 'badge-blue',

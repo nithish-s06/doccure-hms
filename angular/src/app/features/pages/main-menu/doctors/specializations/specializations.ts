@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface Category {
   k: string;
@@ -35,12 +37,13 @@ interface Specialization {
  * add-specialization modal.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-specializations',
   styleUrl: './specializations.css',
   templateUrl: './specializations.html',
 })
 export class Specializations implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly CATS: Category[] = [
     { k: 'all', n: 'All', ic: 'ti-layout-grid', c: '#8b5cf6' },
     { k: 'Surgical', n: 'Surgical', ic: 'icon-scissors', c: '#ef4444' },

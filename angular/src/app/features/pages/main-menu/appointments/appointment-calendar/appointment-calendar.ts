@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const HSOverlay: any;
 
@@ -22,12 +24,13 @@ interface CalEvent {
  * drag-and-drop rescheduling — all against in-memory seed events.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-appointment-calendar',
   styleUrl: './appointment-calendar.css',
   templateUrl: './appointment-calendar.html',
 })
 export class AppointmentCalendar implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   private readonly DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   private readonly HOURS = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];

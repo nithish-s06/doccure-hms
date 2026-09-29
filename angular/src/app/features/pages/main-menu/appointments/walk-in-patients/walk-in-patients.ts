@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface StaticListView {
   container: HTMLElement;
@@ -14,21 +16,15 @@ interface StaticListInfo {
   pages: number;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "walk-in-patients"
- * (walk-in-patients.html). Every walk-in ships as a static <tr> in #tbody
- * (see the HTML), each carrying its record as data-* attributes — there is no
- * data array. This wires the shared MC.staticList behaviour (search/filter/
- * paginate the existing rows) plus row/bulk actions directly against the DOM,
- * reimplemented locally since there is no global MC object in Angular.
- */
+
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-walk-in-patients',
   styleUrl: './walk-in-patients.css',
   templateUrl: './walk-in-patients.html',
 })
 export class WalkInPatients implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STATUS: Record<string, string> = {
     Waiting: 'badge-amber',
     Registered: 'badge-blue',

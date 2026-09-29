@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const HSOverlay: any;
 declare const HSStaticMethods: any;
@@ -55,20 +57,14 @@ interface Grid<T> {
   setData: (d: T[]) => void;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "APPOINTMENT-REQUESTS".
- * Same MC.apptStats/MC.grid/MC.badge/MC.actions machinery as
- * follow-up-appointments, reimplemented here as private methods; the
- * approve/reject/suggest/view modals are Preline hs-overlay (open/close via
- * window.HSOverlay), no del-modal on this page.
- */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-appointment-requests',
   styleUrl: './appointment-requests.css',
   templateUrl: './appointment-requests.html',
 })
 export class AppointmentRequests implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STATUS: Record<string, string> = { New: 'badge-blue', Pending: 'badge-amber', Approved: 'badge-green', Rejected: 'badge-red' };
   private readonly CHANNEL: Record<string, string> = { 'Patient Portal': 'badge-purple', Phone: 'badge-gray', 'Walk-in Desk': 'badge-blue', Referral: 'badge-emerald' };
   private readonly MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

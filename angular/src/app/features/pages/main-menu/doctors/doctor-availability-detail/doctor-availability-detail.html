@@ -3,10 +3,10 @@
 
    <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
     <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-        <li><a href="index.html" class="hover:text-primary transition-colors">Dashboard</a></li>
+        <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
         <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
 
-        <li><a href="doctor-availability.html" class="hover:text-primary transition-colors">Doctor Availability</a></li>
+        <li><a [routerLink]="AllRoutes.doctorAvailability" class="hover:text-primary transition-colors">Doctor Availability</a></li>
         <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
 
         <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Availability Details</li>
@@ -34,7 +34,7 @@
             <div class="flex flex-wrap items-center gap-2 dad-actions-print-hide">
                 <button type="button" class="dad-btn dad-btn-glass" data-action="print"><i class="ti ti-printer"></i>Print</button>
                 <button type="button" class="dad-btn dad-btn-glass" id="dad-download-btn"><i class="ti ti-download"></i>Download PDF</button>
-                <a href="doctor-availability.html" class="dad-btn dad-btn-primary"><i class="ti ti-arrow-left"></i>Back to Schedule</a>
+                <a [routerLink]="AllRoutes.doctorAvailability" class="dad-btn dad-btn-primary"><i class="ti ti-arrow-left"></i>Back to Schedule</a>
             </div>
         </div>
     </section>
@@ -215,7 +215,7 @@
                 <h3 class="dad-title mb-1">Quick Actions</h3>
                 <button type="button" class="dad-btn dad-btn-solid w-full justify-start" data-action="print"><i class="ti ti-printer"></i>Print</button>
                 <button type="button" class="dad-btn dad-btn-solid w-full justify-start" id="dad-side-download"><i class="ti ti-download"></i>Download PDF</button>
-                <a href="doctor-availability.html" class="dad-btn dad-btn-solid w-full justify-start"><i class="ti ti-list"></i>All Schedules</a>
+                <a [routerLink]="AllRoutes.doctorAvailability" class="dad-btn dad-btn-solid w-full justify-start"><i class="ti ti-list"></i>All Schedules</a>
             </div>
         </div>
     </div>
