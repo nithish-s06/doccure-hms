@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 interface Script {
   id: string;
@@ -14,10 +15,6 @@ interface Script {
   holdReason?: string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "prescriptions" (prescriptions.html).
- * Dispensing queue: search/filter, advance/hold/release row actions, print.
- */
 @Component({
   imports: [RouterLink],
   selector: 'app-prescriptions',
@@ -25,6 +22,7 @@ interface Script {
   templateUrl: './prescriptions.html',
 })
 export class Prescriptions implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STATUS: Record<string, string> = {
     Pending: 'badge-amber',
     Verified: 'badge-blue',

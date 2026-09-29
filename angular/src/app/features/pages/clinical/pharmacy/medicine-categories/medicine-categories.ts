@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface Med {
   name: string;
@@ -30,19 +32,14 @@ interface Stats {
   health: number;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "medicine-categories" (medicine-categories.html).
- * Grid/list toggle, search/filter/sort, archive; category stats derive from
- * each category's medicine list. Add/Edit modal and drawer are omitted here
- * since this page's ported markup does not include that modal/drawer.
- */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-medicine-categories',
   styleUrl: './medicine-categories.css',
   templateUrl: './medicine-categories.html',
 })
 export class MedicineCategories implements AfterViewInit {
+  AllRoutes = All_Routes;
   private idSeq = 0;
   private mode: 'grid' | 'list' = 'grid';
 

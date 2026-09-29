@@ -19,7 +19,7 @@ import { All_Routes } from '../../../../../core/helpers/routes';
 declare var Modal: any;
 @Component({
   selector: 'app-calendar-page',
-  imports: [CommonModule,FormsModule,FormsModule],
+  imports: [CommonModule,FormsModule,FormsModule,RouterLink],
   templateUrl: './calendar-page.html',
   styleUrl: './calendar-page.css',
 })

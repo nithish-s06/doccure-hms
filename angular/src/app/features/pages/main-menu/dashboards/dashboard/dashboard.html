@@ -235,7 +235,7 @@
     <div class="dash-card bg-white p-5 rounded-xl dash-soft border border-border-color xl:col-span-5 flex flex-col justify-between">
         <div class="flex items-center justify-between gap-3 flex-wrap mb-5">
             <h2 class="text-lg max-lg:text-[17px] font-bold tracking-tight text-gray-900 mb-0">Department Performance</h2>
-            <a href="reports.html" class="dash-act size-9 rounded-full bg-light border border-border-color flex items-center justify-center text-gray-900 cursor-pointer">
+            <a [routerLink]="AllRoutes.reports" class="dash-act size-9 rounded-full bg-light border border-border-color flex items-center justify-center text-gray-900 cursor-pointer">
                 <i class="icon-arrow-up-right text-sm"></i>
             </a>
         </div>
@@ -305,7 +305,7 @@
     <div class="dash-card bg-white p-5 pb-2 rounded-xl dash-soft border border-border-color xl:col-span-7">
         <div class="flex items-center justify-between mb-2">
             <h2 class="text-lg max-lg:text-[17px] font-bold tracking-tight text-gray-900 mb-0">Recent Patients</h2>
-            <a href="patients.html" class="dash-act size-9 rounded-full bg-light border border-border-color flex items-center justify-center text-gray-900 cursor-pointer">
+            <a [routerLink]="AllRoutes.patients" class="dash-act size-9 rounded-full bg-light border border-border-color flex items-center justify-center text-gray-900 cursor-pointer">
                 <i class="icon-arrow-up-right text-sm"></i>
             </a>
         </div>
@@ -319,7 +319,7 @@
                         <div class="flex items-center gap-3 whitespace-nowrap pr-4">
                             <img class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-gray-50" src="assets/img/avatar/avatar-01.jpg" alt="James Morrison">
                             <div>
-                                <a href="patient-profile.html" class="inline-block text-sm font-medium text-info mb-0.5">#PAT-0001</a>
+                                <a [routerLink]="AllRoutes.patientProfile" class="inline-block text-sm font-medium text-info mb-0.5">#PAT-0001</a>
                                 <p class="text-sm font-semibold text-gray-900 leading-tight">James Morrison</p>
                             </div>
                         </div>
@@ -341,7 +341,7 @@
                         <div class="flex items-center gap-3 whitespace-nowrap pr-4">
                             <img class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-gray-50" src="assets/img/avatar/avatar-05.jpg" alt="Sarah Adams">
                             <div>
-                                <a href="patient-profile.html" class="inline-block text-sm font-medium text-info mb-0.5">#PAT-0002</a>
+                                <a [routerLink]="AllRoutes.patientProfile" class="inline-block text-sm font-medium text-info mb-0.5">#PAT-0002</a>
                                 <p class="text-sm font-semibold text-gray-900 leading-tight">Sarah Adams</p>
                             </div>
                         </div>
@@ -366,7 +366,7 @@
                                 RC
                                 </div>
                                 <div>
-                                    <a href="patient-profile.html" class="inline-block text-sm font-medium text-info mb-0.5">#PAT-0003</a>
+                                    <a [routerLink]="AllRoutes.patientProfile" class="inline-block text-sm font-medium text-info mb-0.5">#PAT-0003</a>
                                     <p class="text-sm font-semibold text-gray-900 leading-tight">Robert Clark</p>
                                 </div>
                             </div>
@@ -389,7 +389,7 @@
                             <div class="flex items-center gap-3 whitespace-nowrap pr-4">
                                 <img class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-gray-50" src="assets/img/avatar/avatar-03.jpg" alt="Emily Johnson">
                                 <div>
-                                <a href="patient-profile.html" class="inline-block text-sm font-medium text-info mb-0.5">#PAT-0004</a>
+                                <a [routerLink]="AllRoutes.patientProfile" class="inline-block text-sm font-medium text-info mb-0.5">#PAT-0004</a>
                                 <p class="text-sm font-semibold text-gray-900 leading-tight">Emily Johnson</p>
                                 </div>
                             </div>

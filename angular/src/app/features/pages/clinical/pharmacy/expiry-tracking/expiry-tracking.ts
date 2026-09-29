@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 interface Batch {
   id: string;
@@ -13,11 +14,7 @@ interface Batch {
   price: number;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "Expiry Tracking" (expiry-tracking.html).
- * Watches batches approaching expiry, banded by urgency, with value-at-risk
- * and a disposal flow. Bands derive from days remaining. No API.
- */
+
 @Component({
   imports: [RouterLink],
   selector: 'app-expiry-tracking',
@@ -25,6 +22,7 @@ interface Batch {
   templateUrl: './expiry-tracking.html',
 })
 export class ExpiryTracking implements AfterViewInit {
+  AllRoutes = All_Routes;
   // days < 0 means already expired (relative to today, 17 Jul 2026).
   private BATCHES: Batch[] = [
     { id: 'EX-01', med: 'Insulin Glargine', batch: 'GLA26A2', location: 'Cold Chain', qty: 60, days: -12, expiry: '05 Jul 2026', price: 8.4 },

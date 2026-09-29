@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 @Component({
   imports: [RouterLink],
@@ -7,4 +8,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './sample-tracking.css',
   templateUrl: './sample-tracking.html',
 })
-export class SampleTracking {}
+export class SampleTracking {
+  AllRoutes = All_Routes;
+}

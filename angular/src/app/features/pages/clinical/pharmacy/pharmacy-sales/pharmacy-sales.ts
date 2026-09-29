@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 interface Sale {
   id: string;
@@ -12,16 +13,6 @@ interface Sale {
   status: string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "pharmacy-sales" (pharmacy-sales.html).
- * Pharmacy point-of-sale till: transactions, refunds and insurance claims.
- * Static demo data — no API.
- *
- * The ported template has no sale-modal / del-modal markup (Preline modal
- * conversion note in script.js), so the openSale-equivalent code below finds
- * nothing to open — search/filter, claim-settle/refund status changes and the
- * toast-only buttons are the wired, visible behavior.
- */
 @Component({
   imports: [RouterLink],
   selector: 'app-pharmacy-sales',
@@ -29,6 +20,7 @@ interface Sale {
   templateUrl: './pharmacy-sales.html',
 })
 export class PharmacySales implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STATUS: Record<string, string> = { Paid: 'badge-green', 'Pending Claim': 'badge-amber', Refunded: 'badge-gray' };
   private readonly PAY_ICON: Record<string, string> = { Cash: 'icon-banknote', Card: 'icon-credit-card', Insurance: 'icon-shield' };
 

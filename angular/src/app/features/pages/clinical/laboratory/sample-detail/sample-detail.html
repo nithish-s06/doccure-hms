@@ -1,0 +1,325 @@
+<div id="smd-page" class="max-w-[1500px] mx-auto space-y-6">
+
+    <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li><a [routerLink]="AllRoutes.sampleCollection" class="hover:text-primary transition-colors">Samples</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Sample Details</li>
+        </ol>
+    </nav>
+
+    <!-- ---------- HERO BANNER ---------- -->
+    <section class="smd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="smd-hero-ico relative">
+                    <i class="icon-test-tube"></i>
+                    <span class="absolute -bottom-1 -right-1 smd-tube-cap smd-tube-lavender text-[10px]" title="Lavender Top (EDTA) Tube">K2</span>
+                </div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="smd-patient-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight text-white">Emily Johnson</h1>
+                        <span class="smd-hbadge text-success bg-success/10" id="smd-status-badge"><span class="smd-dot [background:#10b981]" id="smd-status-dot"></span><span id="smd-status-text">Received</span></span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1" id="smd-urgency-badge">
+                            <i class="icon-zap text-[12px]"></i>STAT Priority
+                        </span>
+                    </div>
+                    <div class="mt-2.5 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="smd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="smd-sample-id">#SMP-00001</span></span>
+                        <span class="smd-hmeta"><i class="icon-flask-conical text-[13px] text-sky-300"></i><span id="smd-test-name">Complete Blood Count (CBC w/ Diff)</span></span>
+                        <span class="smd-hmeta"><i class="icon-user text-[13px] text-purple-300"></i>MRN: <span id="smd-mrn-no">#PAT-99482</span></span>
+                        <span class="smd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Updated <span id="smd-updated">2024-12-02 09:45 AM</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2.5 smd-actions-print-hide">
+                <button type="button" class="smd-btn smd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Report</button>
+                <a [routerLink]="AllRoutes.sampleCollection" id="smd-back-btn" class="smd-btn smd-btn-primary"><i class="icon-arrow-left"></i>Back to Samples</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- PATIENT DEMOGRAPHICS & CLINICAL CONTEXT STRIP ---------- -->
+    <div class="smd-surface p-4 lg:p-5">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-xs">
+            <div class="space-y-1">
+                <span class="text-gray-400 font-medium">Age / Gender</span>
+                <p class="font-bold text-gray-900 dark:text-white text-sm" id="smd-patient-demo">34Y / Female</p>
+            </div>
+            <div class="space-y-1">
+                <span class="text-gray-400 font-medium">Blood Group</span>
+                <p class="font-bold text-rose-600 dark:text-rose-400 text-sm flex items-center gap-1">
+                    <i class="icon-droplet text-xs"></i>O Positive (O+)
+                </p>
+            </div>
+            <div class="space-y-1">
+                <span class="text-gray-400 font-medium">Ward / Location</span>
+                <p class="font-bold text-gray-900 dark:text-white text-sm" id="smd-location">ICU Bed 04 (North)</p>
+            </div>
+            <div class="space-y-1">
+                <span class="text-gray-400 font-medium">Attending Physician</span>
+                <p class="font-bold text-indigo-600 dark:text-indigo-400 text-sm" id="smd-physician">Dr. Robert Chen, MD</p>
+            </div>
+            <div class="space-y-1">
+                <span class="text-gray-400 font-medium">Requisition No.</span>
+                <p class="font-bold text-gray-900 dark:text-white text-sm" id="smd-requisition">#REQ-88402</p>
+            </div>
+            <div class="space-y-1">
+                <span class="text-gray-400 font-medium">Ordering Dept</span>
+                <p class="font-bold text-gray-900 dark:text-white text-sm">Critical Care Unit</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------- KEY STATS & VITAL METRICS ---------- -->
+    <section class="smd-grid">
+        <div class="smd-vital smd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-test-tube"></i></span>
+                <span class="smd-chip">Specimen</span>
+            </div>
+            <p class="mt-3 text-lg font-extrabold text-gray-900 dark:text-white" id="smd-sample-type">Whole Blood (EDTA)</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 flex items-center justify-between mt-1">
+                <span>Sample Type</span>
+                <span class="text-indigo-500 font-bold">4.5 mL</span>
+            </p>
+        </div>
+        <div class="smd-vital smd-c-indigo">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-flask-conical"></i></span>
+                <span class="smd-chip">Panel</span>
+            </div>
+            <p class="mt-3 text-lg font-extrabold text-gray-900 dark:text-white" id="smd-test-value">CBC w/ Differential</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">8 Parameters Tested</p>
+        </div>
+        <div class="smd-vital smd-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-user-check"></i></span>
+                <span class="smd-chip">Collector</span>
+            </div>
+            <p class="mt-3 text-lg font-extrabold text-gray-900 dark:text-white" id="smd-collected-by">Nurse Alicia Brown</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Phlebotomy Staff</p>
+        </div>
+        <div class="smd-vital smd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-clock"></i></span>
+                <span class="smd-chip">Time</span>
+            </div>
+            <p class="mt-3 text-lg font-extrabold text-gray-900 dark:text-white" id="smd-time">09:30 AM</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Collection Timestamp</p>
+        </div>
+    </section>
+
+    <!-- ---------- MAIN CONTENT LAYOUT ---------- -->
+    <div class="smd-layout">
+        <div class="space-y-6">
+
+            <!-- LAB TEST RESULTS PARAMETERS TABLE -->
+            <div class="smd-surface overflow-hidden">
+                <div class="smd-head flex items-center justify-between bg-gray-50/50 dark:bg-slate-900/50">
+                    <div class="flex items-center gap-2.5">
+                        <span class="ico"><i class="icon-activity"></i></span>
+                        <div>
+                            <h2 class="smd-title">Laboratory Test Parameters & Results</h2>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Complete Hematology Panel Analysis</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="smd-qc-badge"><i class="icon-check-circle text-xs"></i>QC Passed</span>
+                        <span class="text-xs text-gray-400 font-medium">Sysmex XN-9000</span>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="border-b border-gray-200 dark:border-slate-800 bg-gray-100/60 dark:bg-slate-900/80 text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider">
+                                <th class="py-3 px-4">Parameter Name</th>
+                                <th class="py-3 px-4">Result</th>
+                                <th class="py-3 px-4">Unit</th>
+                                <th class="py-3 px-4">Ref. Range</th>
+                                <th class="py-3 px-4 w-48">Visual Analysis</th>
+                                <th class="py-3 px-4 text-center">Flag</th>
+                            </tr>
+                        </thead>
+                        <tbody id="smd-cbc-results-table" class="divide-y divide-gray-100 dark:divide-slate-800/60 font-medium">
+                            <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 text-gray-900 dark:text-white font-semibold">Hemoglobin (HGB)</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white">14.2</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400">g/dL</td><td class="py-3 px-4 font-mono text-gray-600 dark:text-gray-400">12.0 - 16.0</td><td class="py-3 px-4"><div class="smd-range-track"><div class="smd-range-fill smd-range-fill-normal [width:55%]"></div><div class="smd-range-marker [left:55%]"></div></div></td><td class="py-3 px-4 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">NORMAL</span></td></tr>
+                            <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 text-gray-900 dark:text-white font-semibold">Red Blood Cells (RBC)</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white">4.85</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400">M/µL</td><td class="py-3 px-4 font-mono text-gray-600 dark:text-gray-400">4.20 - 5.40</td><td class="py-3 px-4"><div class="smd-range-track"><div class="smd-range-fill smd-range-fill-normal [width:54%]"></div><div class="smd-range-marker [left:54%]"></div></div></td><td class="py-3 px-4 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">NORMAL</span></td></tr>
+                            <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 text-gray-900 dark:text-white font-semibold">White Blood Cells (WBC)</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white">11.8</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400">K/µL</td><td class="py-3 px-4 font-mono text-gray-600 dark:text-gray-400">4.5 - 11.0</td><td class="py-3 px-4"><div class="smd-range-track"><div class="smd-range-fill smd-range-fill-high [width:88%]"></div><div class="smd-range-marker [left:88%]"></div></div></td><td class="py-3 px-4 text-center"><span class="px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-[10px] font-bold">ELEVATED</span></td></tr>
+                            <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 text-gray-900 dark:text-white font-semibold">Hematocrit (HCT)</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white">42.1</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400">%</td><td class="py-3 px-4 font-mono text-gray-600 dark:text-gray-400">37.0 - 47.0</td><td class="py-3 px-4"><div class="smd-range-track"><div class="smd-range-fill smd-range-fill-normal [width:51%]"></div><div class="smd-range-marker [left:51%]"></div></div></td><td class="py-3 px-4 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">NORMAL</span></td></tr>
+                            <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 text-gray-900 dark:text-white font-semibold">Platelet Count (PLT)</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white">245</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400">K/µL</td><td class="py-3 px-4 font-mono text-gray-600 dark:text-gray-400">150 - 450</td><td class="py-3 px-4"><div class="smd-range-track"><div class="smd-range-fill smd-range-fill-normal [width:32%]"></div><div class="smd-range-marker [left:32%]"></div></div></td><td class="py-3 px-4 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">NORMAL</span></td></tr>
+                            <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 text-gray-900 dark:text-white font-semibold">Mean Corpuscular Vol (MCV)</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white">86.8</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400">fL</td><td class="py-3 px-4 font-mono text-gray-600 dark:text-gray-400">80.0 - 100.0</td><td class="py-3 px-4"><div class="smd-range-track"><div class="smd-range-fill smd-range-fill-normal [width:34%]"></div><div class="smd-range-marker [left:34%]"></div></div></td><td class="py-3 px-4 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">NORMAL</span></td></tr>
+                            <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 text-gray-900 dark:text-white font-semibold">Neutrophils %</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white">68.5</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400">%</td><td class="py-3 px-4 font-mono text-gray-600 dark:text-gray-400">50.0 - 70.0</td><td class="py-3 px-4"><div class="smd-range-track"><div class="smd-range-fill smd-range-fill-normal [width:92%]"></div><div class="smd-range-marker [left:92%]"></div></div></td><td class="py-3 px-4 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">NORMAL</span></td></tr>
+                            <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60 transition-colors"><td class="py-3 px-4 text-gray-900 dark:text-white font-semibold">Lymphocytes %</td><td class="py-3 px-4 font-bold text-gray-900 dark:text-white">22.1</td><td class="py-3 px-4 text-gray-500 dark:text-gray-400">%</td><td class="py-3 px-4 font-mono text-gray-600 dark:text-gray-400">20.0 - 40.0</td><td class="py-3 px-4"><div class="smd-range-track"><div class="smd-range-fill smd-range-fill-normal [width:10%]"></div><div class="smd-range-marker [left:10%]"></div></div></td><td class="py-3 px-4 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">NORMAL</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PATHOLOGIST IMPRESSION & CLINICAL REMARKS -->
+            <div class="smd-surface p-5 border-l-4 border-l-indigo-500">
+                <div class="flex items-start justify-between gap-4 mb-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">
+                            <i class="icon-stethoscope"></i>
+                        </div>
+                        <div>
+                            <h3 class="smd-title">Pathologist Impression & Diagnostic Remarks</h3>
+                            <p class="text-xs text-gray-500">Reviewed by Senior Hematopathologist</p>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 font-bold text-[11px] border border-indigo-200 dark:border-indigo-800/50">
+                        Verified Stamp #HET-882
+                    </span>
+                </div>
+                <div class="bg-gray-50 dark:bg-slate-900/60 p-4 rounded-xl text-xs space-y-2 text-gray-700 dark:text-gray-300 leading-relaxed border border-gray-200/70 dark:border-slate-800">
+                    <p><strong class="text-gray-900 dark:text-white">Observations:</strong> Red blood cell indices and hemoglobin levels fall within normal physiological limits. Mild elevation in Total Leukocyte Count (WBC 11.8 K/µL) noted with neutrophil dominance, consistent with early acute phase inflammatory response or mild bacterial infection.</p>
+                    <p><strong class="text-gray-900 dark:text-white">Recommendations:</strong> Correlate with clinical symptoms (fever, ESR/CRP levels). Re-evaluate complete blood count in 48 hours if symptoms persist.</p>
+                </div>
+                <div class="mt-4 flex items-center justify-between text-xs pt-3 border-t border-gray-100 dark:border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-gray-700 dark:text-gray-200 text-xs">MV</div>
+                        <div>
+                            <p class="font-extrabold text-gray-900 dark:text-white">Dr. Marcus Vance, MD, FCAP</p>
+                            <p class="text-[11px] text-gray-500">Head of Clinical Pathology</p>
+                        </div>
+                    </div>
+                    <span class="text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1">
+                        <i class="icon-check-circle"></i> digitally Signed & Verified
+                    </span>
+                </div>
+            </div>
+
+            <!-- SPECIMEN CHAIN OF CUSTODY TIMELINE -->
+            <div class="smd-surface">
+                <div class="smd-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <div>
+                        <h2 class="smd-title">Specimen Chain of Custody & Audit Trail</h2>
+                        <p class="text-xs text-gray-500">Verifiable step-by-step custody and storage log</p>
+                    </div>
+                </div>
+                <div class="smd-tl p-5" id="smd-timeline">
+                    <div class="smd-tl-item done"><span class="smd-tl-node"><i class="icon-clipboard-list"></i></span>
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-bold text-gray-900 dark:text-white">Collection</p>
+                            <span class="text-[11px] font-mono text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-slate-800 px-2 py-0.5 rounded">2024-12-02 09:45 AM</span>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Collected by Nurse Alicia Brown (EDTA Tube)</p>
+                    </div>
+                    <div class="smd-tl-item done"><span class="smd-tl-node"><i class="icon-truck"></i></span>
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-bold text-gray-900 dark:text-white">Transit</p>
+                            <span class="text-[11px] font-mono text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-slate-800 px-2 py-0.5 rounded">2024-12-02 09:45 AM</span>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Transported via Temp-Controlled Biohazard Carrier (4°C)</p>
+                    </div>
+                    <div class="smd-tl-item done"><span class="smd-tl-node"><i class="icon-flask-conical"></i></span>
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-bold text-gray-900 dark:text-white">Lab Accessioning</p>
+                            <span class="text-[11px] font-mono text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-slate-800 px-2 py-0.5 rounded">2024-12-02 09:45 AM</span>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Received &amp; Scanned by Lab Tech (Accession Rack B-14)</p>
+                    </div>
+                    <div class="smd-tl-item done"><span class="smd-tl-node"><i class="icon-microscope"></i></span>
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-bold text-gray-900 dark:text-white">Automated Testing</p>
+                            <span class="text-[11px] font-mono text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-slate-800 px-2 py-0.5 rounded">2024-12-02 09:45 AM</span>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Processed on Sysmex XN-9000 Hematology Analyzer</p>
+                    </div>
+                    <div class="smd-tl-item current"><span class="smd-tl-node"><i class="icon-file-check"></i></span>
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-bold text-gray-900 dark:text-white">Pathologist Verified</p>
+                            <span class="text-[11px] font-mono text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-slate-800 px-2 py-0.5 rounded">2024-12-02 09:45 AM</span>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Verified &amp; Electronically Signed by Dr. Marcus Vance, MD</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAMPLE DETAILED SPECIFICATIONS -->
+            <div class="smd-surface p-5">
+                <h3 class="smd-title mb-4 flex items-center gap-2">
+                    <i class="icon-info text-indigo-500"></i>Sample Metadata & Storage Protocol
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
+                    <div class="smd-kv"><span class="k"><i class="icon-test-tube text-[13px]"></i>Sample Matrix</span><span class="v" id="smd-info-sample-type">Whole Blood (EDTA Lavender)</span></div>
+                    <div class="smd-kv"><span class="k"><i class="icon-user-check text-[13px]"></i>Phlebotomist</span><span class="v" id="smd-info-collected-by">Nurse Alicia Brown</span></div>
+                    <div class="smd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Collection Time</span><span class="v" id="smd-info-time">09:30 AM</span></div>
+                    <div class="smd-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Current State</span><span class="v" id="smd-info-state">Received & Processing</span></div>
+                    <div class="smd-kv"><span class="k"><i class="icon-thermometer text-[13px]"></i>Storage Temperature</span><span class="v text-sky-600">4°C (Refrigerated)</span></div>
+                    <div class="smd-kv"><span class="k"><i class="icon-box text-[13px]"></i>Storage Location</span><span class="v">Rack B-14 / Bay 03</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR CARDS -->
+        <div class="space-y-6 smd-sidebar">
+
+            <!-- BARCODE & SPECIMEN CARD -->
+            <div class="smd-surface smd-side-hero rounded-[1.25rem] p-5">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-white/70">Specimen Label</span>
+                    <span class="smd-tube-cap smd-tube-lavender" title="EDTA Lavender Top">EDTA</span>
+                </div>
+                <h3 class="text-xl font-extrabold text-white" id="smd-side-sample-id">#SMP-00001</h3>
+                <p class="text-xs text-white/80 mt-0.5" id="smd-side-test">Complete Blood Count</p>
+
+                <!-- Barcode Display -->
+                <div class="mt-4 p-3 bg-white/95 dark:bg-slate-900/90 rounded-xl text-center shadow-inner">
+                    <div class="smd-barcode-box mx-auto"></div>
+                    <p class="mt-1.5 text-[10px] font-mono font-bold tracking-widest text-gray-700 dark:text-gray-300">*SMP-00001-CBC*</p>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between text-xs text-white/90 pt-3 border-t border-white/15">
+                    <span class="flex items-center gap-1.5"><i class="icon-user text-xs"></i><span id="smd-side-patient">Emily Johnson</span></span>
+                    <span class="font-mono text-[11px] opacity-80">Vol: 4.5 mL</span>
+                </div>
+            </div>
+
+            <!-- EQUIPMENT QUALITY CONTROL CARD -->
+            <div class="smd-surface p-5 space-y-3">
+                <h3 class="smd-title mb-1 flex items-center gap-2">
+                    <i class="icon-cpu text-indigo-500"></i>Equipment & QC Status
+                </h3>
+                <div class="space-y-2 text-xs">
+                    <div class="flex items-center justify-between p-2.5 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                        <span class="text-gray-500 font-medium">Analyzer</span>
+                        <span class="font-bold text-gray-900 dark:text-white">Sysmex XN-9000</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2.5 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                        <span class="text-gray-500 font-medium">Calibration</span>
+                        <span class="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                            <i class="icon-check-circle text-xs"></i>Pass (08:15 AM)
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between p-2.5 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                        <span class="text-gray-500 font-medium">Reagent Lot</span>
+                        <span class="font-mono font-bold text-gray-700 dark:text-gray-300">#RGT-2026-X9</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAMPLE DETAILS KEY/VALUE -->
+            <div class="smd-surface p-5">
+                <h3 class="smd-title mb-3">Quick Reference</h3>
+                <div class="smd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v" id="smd-kv-patient">Emily Johnson</span></div>
+                <div class="smd-kv"><span class="k"><i class="icon-flask-conical text-[13px]"></i>Test</span><span class="v" id="smd-kv-test">Complete Blood Count</span></div>
+                <div class="smd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Sample ID</span><span class="v" id="smd-kv-sampleid">#SMP-00001</span></div>
+                <div class="smd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Last Updated</span><span class="v" id="smd-kv-updated">2024-12-02</span></div>
+            </div>
+
+            <!-- QUICK ACTIONS -->
+            <div class="smd-surface p-5 space-y-2.5">
+                <h3 class="smd-title mb-1">Quick Actions</h3>
+                <button type="button" class="smd-btn smd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Official Report</button>
+                <a [routerLink]="AllRoutes.sampleCollection" id="smd-all-samples-link" class="smd-btn smd-btn-solid w-full justify-start"><i class="icon-list"></i>All Samples List</a>
+            </div>
+        </div>
+    </div>
+</div>

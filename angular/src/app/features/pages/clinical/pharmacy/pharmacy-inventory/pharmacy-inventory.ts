@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 interface Batch {
   id: string;
@@ -14,18 +15,7 @@ interface Batch {
   price: number;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "pharmacy-inventory" (pharmacy-inventory.html).
- * Stock batches across locations, with adjust/move/write-off actions. Static
- * demo data — no API. Days-until-expiry are stored relative to a fixed "today"
- * (17 Jul 2026) so the demo needs no Date.now() while remaining internally
- * consistent.
- *
- * The ported template has no adj-modal / del-modal markup (Preline modal
- * conversion note in script.js), so openAdjust()/confirmDelete() below find
- * nothing to open — search/filter, move-location and the toast-only buttons
- * are the wired, visible behavior.
- */
+
 @Component({
   imports: [RouterLink],
   selector: 'app-pharmacy-inventory',
@@ -33,6 +23,7 @@ interface Batch {
   templateUrl: './pharmacy-inventory.html',
 })
 export class PharmacyInventory implements AfterViewInit {
+  AllRoutes = All_Routes;
   private BATCHES: Batch[] = [
     { id: 'BT-8801', med: 'Tylenol 500 mg', batch: 'TY26H114', location: 'Main Pharmacy', qty: 5200, reorder: 1500, days: 412, expiry: 'Sep 2027', price: 0.08 },
     { id: 'BT-8802', med: 'Tylenol 500 mg', batch: 'TY26D077', location: 'ED Satellite', qty: 900, reorder: 400, days: 168, expiry: 'Jan 2027', price: 0.08 },
