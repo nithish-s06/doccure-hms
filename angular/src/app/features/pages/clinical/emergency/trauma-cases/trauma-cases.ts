@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 declare const HSOverlay: any;
@@ -109,7 +110,7 @@ interface HourlyItem {
  * target elements are missing) — everything else is a faithful port.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-trauma-cases',
   styleUrl: './trauma-cases.css',
   templateUrl: './trauma-cases.html',

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface RenderInfo {
@@ -26,7 +27,7 @@ interface RenderInfo {
  *     change to the row + tile as the source does.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-bed-status',
   styleUrl: './bed-status.css',
   templateUrl: './bed-status.html',

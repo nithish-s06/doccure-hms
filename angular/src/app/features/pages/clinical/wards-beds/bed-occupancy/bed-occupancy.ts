@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 /**
@@ -12,7 +13,7 @@ import { ToastService } from '../../../../../core/services/toast/toast.service';
  *   - #btn-export / #btn-print confirm via toast / trigger print.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-bed-occupancy',
   styleUrl: './bed-occupancy.css',
   templateUrl: './bed-occupancy.html',

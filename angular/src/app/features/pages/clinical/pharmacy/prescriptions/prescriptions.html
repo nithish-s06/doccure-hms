@@ -1,6 +1,14 @@
-                < class="<div class="ph-scope hms-scope">">
+                <div class="ph-scope hms-scope">
                     <div class="max-w-7xl mx-auto space-y-6">
-                        <!-- Breadcrumb -->
+                        <nav aria-label="Breadcrumb">
+                            <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                                <li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li>
+                                <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+                                <li><a routerLink="/pharmacy" class="hover:text-primary transition-colors">Pharmacy</a></li>
+                                <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+                                <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Prescriptions</li>
+                            </ol>
+                        </nav>
 
                         <!-- Hero -->
                         <section class="ph-hero" aria-labelledby="hero-title" data-aos="fade-up">

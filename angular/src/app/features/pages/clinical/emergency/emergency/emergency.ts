@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 declare const HSOverlay: any;
@@ -21,7 +22,7 @@ interface EmergencyCase {
  * search/filter, add/edit modal, delete-confirm modal and live stat tiles.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-emergency',
   styleUrl: './emergency.css',
   templateUrl: './emergency.html',

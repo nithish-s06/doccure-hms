@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Vitals {
@@ -69,7 +70,7 @@ interface Patient {
  * Ported from tailwind/src/assets/js/script.js — "CRITICAL-CARE (critical-care.html)".
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-critical-care',
   styleUrl: './critical-care.css',
   templateUrl: './critical-care.html',

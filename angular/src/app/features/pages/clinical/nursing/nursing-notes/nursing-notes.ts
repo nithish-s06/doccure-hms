@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface NursingNote {
@@ -17,7 +18,7 @@ interface NursingNote {
  * CRUD blocks section).
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-nursing-notes',
   styleUrl: './nursing-notes.css',
   templateUrl: './nursing-notes.html',

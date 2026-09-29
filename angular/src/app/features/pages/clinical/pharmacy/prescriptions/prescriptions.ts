@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Script {
@@ -18,7 +19,7 @@ interface Script {
  * Dispensing queue: search/filter, advance/hold/release row actions, print.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-prescriptions',
   styleUrl: './prescriptions.css',
   templateUrl: './prescriptions.html',

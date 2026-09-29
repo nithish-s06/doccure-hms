@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Batch {
@@ -18,7 +19,7 @@ interface Batch {
  * and a disposal flow. Bands derive from days remaining. No API.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-expiry-tracking',
   styleUrl: './expiry-tracking.css',
   templateUrl: './expiry-tracking.html',

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface BloodCamp {
@@ -26,7 +27,7 @@ interface BloodCamp {
  * MC.crudList's behavior exactly.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-blood-camps',
   styleUrl: './blood-camps.css',
   templateUrl: './blood-camps.html',

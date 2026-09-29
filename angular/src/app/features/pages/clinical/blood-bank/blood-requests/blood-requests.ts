@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface BloodRequest {
@@ -26,7 +27,7 @@ interface BloodRequest {
  * MC.crudList's behavior exactly.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-blood-requests',
   styleUrl: './blood-requests.css',
   templateUrl: './blood-requests.html',

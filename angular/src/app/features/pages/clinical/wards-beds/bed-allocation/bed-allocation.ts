@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Priority {
@@ -36,7 +37,7 @@ interface WaitingPatient {
  * same way.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-bed-allocation',
   styleUrl: './bed-allocation.css',
   templateUrl: './bed-allocation.html',

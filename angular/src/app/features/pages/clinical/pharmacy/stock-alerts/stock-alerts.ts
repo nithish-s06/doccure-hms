@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Alert {
@@ -16,7 +17,7 @@ interface Alert {
  * Alert feed: filter by type/state, acknowledge/resolve/raise-PO row actions.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-stock-alerts',
   styleUrl: './stock-alerts.css',
   templateUrl: './stock-alerts.html',
