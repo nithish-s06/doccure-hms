@@ -1,0 +1,157 @@
+
+<div id="pvd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+   <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+    <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+        <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
+        <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+        <li><a [routerLink]="AllRoutes.patientVisits" class="hover:text-primary transition-colors">Patient Visits</a></li>
+        <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+        <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Visit Details</li>
+    </ol>
+</nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="pvd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="pvd-hero-ico"><i class="icon-stethoscope"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Ava Thompson</h1>
+                        <span class="pvd-hbadge"><span class="pvd-dot"></span>Ongoing</span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="pvd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i>#VIS-0001</span>
+                        <span class="pvd-hmeta"><i class="icon-building-2 text-[13px] text-sky-300"></i>Cardiology</span>
+                        <span class="pvd-hmeta"><i class="icon-user text-[13px] text-violet-300"></i>Dr. Chen</span>
+                        <span class="pvd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>2026-09-12 · 09:00 AM</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 pvd-actions-print-hide">
+                <button type="button" class="pvd-btn pvd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Report</button>
+                <a [routerLink]="AllRoutes.patientVisits" class="pvd-btn pvd-btn-primary"><i class="icon-arrow-left"></i>Back to Visits</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="pvd-grid">
+        <div class="pvd-vital pvd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-sparkles"></i></span>
+                <span class="pvd-chip">Type</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">New Visit</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Visit Type</p>
+        </div>
+        <div class="pvd-vital pvd-c-rose">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-flag"></i></span>
+                <span class="pvd-chip">Priority</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">High</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Priority Level</p>
+        </div>
+        <div class="pvd-vital pvd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-globe"></i></span>
+                <span class="pvd-chip">Source</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Online</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Appointment Source</p>
+        </div>
+        <div class="pvd-vital pvd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-calendar-clock"></i></span>
+                <span class="pvd-chip">Follow-up</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Not Required</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Follow-up Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="pvd-layout">
+        <div class="space-y-5">
+
+            <!-- Visit workflow -->
+            <div class="pvd-surface">
+                <div class="pvd-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="pvd-title">Visit Workflow</h2>
+                </div>
+                <div class="pvd-tl p-5">
+                    <div class="pvd-tl-item done"><span class="pvd-tl-node"><i class="icon-check"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Registration &amp; Check-in</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Checked in at front desk · 08:52 AM</p></div>
+                    <div class="pvd-tl-item done"><span class="pvd-tl-node"><i class="icon-check"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Vitals Recorded</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">BP 132/86, Pulse 80, Weight 68kg · Nurse Alba</p></div>
+                    <div class="pvd-tl-item current"><span class="pvd-tl-node"><i class="icon-loader"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Consultation — Dr. Chen</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">In progress · Started 09:00 AM</p></div>
+                    <div class="pvd-tl-item"><span class="pvd-tl-node"><i class="icon-flask-conical"></i></span>
+                        <p class="text-sm font-bold text-gray-500">Laboratory / Radiology</p>
+                        <p class="text-xs text-gray-400 mt-0.5">Pending orders, if any</p></div>
+                    <div class="pvd-tl-item"><span class="pvd-tl-node"><i class="icon-receipt"></i></span>
+                        <p class="text-sm font-bold text-gray-500">Pharmacy &amp; Billing</p>
+                        <p class="text-xs text-gray-400 mt-0.5">Not yet started</p></div>
+                </div>
+            </div>
+
+            <!-- Consultation summary -->
+            <div class="pvd-surface">
+                <div class="pvd-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="pvd-title">Consultation Summary</h2>
+                </div>
+                <div class="p-5 space-y-4">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Patient presents for routine hypertension review. Reports good adherence to medication with mild occasional headaches in the morning. Blood pressure trending slightly high; dosage adjustment under consideration.</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 text-center">
+                        <div class="rounded-xl border border-border-color p-2.5"><p class="text-base font-extrabold text-gray-900 dark:text-white">132/86</p><p class="text-[10px] text-gray-500">BP</p></div>
+                        <div class="rounded-xl border border-border-color p-2.5"><p class="text-base font-extrabold text-gray-900 dark:text-white">80</p><p class="text-[10px] text-gray-500">Pulse</p></div>
+                        <div class="rounded-xl border border-border-color p-2.5"><p class="text-base font-extrabold text-gray-900 dark:text-white">98.4°F</p><p class="text-[10px] text-gray-500">Temp</p></div>
+                        <div class="rounded-xl border border-border-color p-2.5"><p class="text-base font-extrabold text-gray-900 dark:text-white">68 kg</p><p class="text-[10px] text-gray-500">Weight</p></div>
+                    </div>
+                    <div class="rounded-xl border border-border-color p-3">
+                        <p class="text-[11px] font-bold uppercase tracking-wide text-gray-400 mb-1">Diagnosis</p>
+                        <p class="text-sm font-semibold text-gray-700 dark:text-gray-200">Hypertension review</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 pvd-sidebar">
+            <!-- Attending physician -->
+            <div class="pvd-surface pvd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Attending Physician</p>
+                <h3 class="mt-1 text-lg font-extrabold">Dr. Chen</h3>
+                <p class="text-sm text-white/80 mt-0.5">Cardiology</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="pvd-hmeta"><i class="icon-mail text-[12px]"></i>Contact Doctor</span>
+                </div>
+            </div>
+
+            <!-- Visit details -->
+            <div class="pvd-surface p-5">
+                <h3 class="pvd-title mb-3">Visit Details</h3>
+                <div class="pvd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">Ava Thompson</span></div>
+                <div class="pvd-kv"><span class="k"><i class="icon-user-round text-[13px]"></i>Age / Gender</span><span class="v">34 · Female</span></div>
+                <div class="pvd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Visit ID</span><span class="v">#VIS-0001</span></div>
+                <div class="pvd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Visit Date</span><span class="v">2026-09-12</span></div>
+                <div class="pvd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Department</span><span class="v">Cardiology</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="pvd-surface p-5 space-y-2.5">
+                <h3 class="pvd-title mb-1">Quick Actions</h3>
+                <button type="button" class="pvd-btn pvd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Report</button>
+                <a [routerLink]="AllRoutes.patientVisits" class="pvd-btn pvd-btn-solid w-full justify-start"><i class="icon-list"></i>All Visits</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const flatpickr: any;
 
@@ -39,12 +41,13 @@ interface ModalOptions {
  * is no backend.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-discharges',
   styleUrl: './discharges.css',
   templateUrl: './discharges.html',
 })
 export class Discharges implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly DEPT_ACC: Record<string, string> = {
     Cardiology: 'rose',
     Neurology: 'violet',

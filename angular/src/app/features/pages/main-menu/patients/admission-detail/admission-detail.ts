@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 /**
  * Ported from tailwind/src/assets/js/script.js — "ADMISSION-DETAIL".
@@ -7,12 +9,14 @@ import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
  * for whichever admission record was clicked.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-admission-detail',
   styleUrl: './admission-detail.css',
   templateUrl: './admission-detail.html',
 })
 export class AdmissionDetail implements AfterViewInit {
+  AllRoutes = All_Routes;
+
   private readonly BADGE: Record<string, string> = {
     Admitted: 'text-purple bg-purple/10',
     Pending: 'text-warning bg-warning/10',

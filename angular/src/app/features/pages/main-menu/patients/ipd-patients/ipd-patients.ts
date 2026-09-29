@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const flatpickr: any;
 
@@ -53,12 +55,13 @@ interface StaffEntry {
  * backend.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-ipd-patients',
   styleUrl: './ipd-patients.css',
   templateUrl: './ipd-patients.html',
 })
 export class IpdPatients implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly DEPT_ACC: Record<string, string> = {
     Cardiology: 'rose',
     Neurology: 'violet',

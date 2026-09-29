@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const flatpickr: any;
 
@@ -46,22 +48,15 @@ interface DocBoardEntry {
   photo: string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "opd-patients".
- * A full CRUD-list-style OPD (outpatient) management page: dashboard KPIs and
- * widgets, live queue board, doctor status board, search/filter (including an
- * advanced filter drawer), sort, pagination, row menu, bulk bar, a detail
- * drawer, and assorted per-row/bulk modals (register/book, assign doctor,
- * change token, lab/pharmacy, prescription, follow-up, sms/email, import/
- * export, etc.) — all backed by in-memory seed data since there is no backend.
- */
+
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-opd-patients',
   styleUrl: './opd-patients.css',
   templateUrl: './opd-patients.html',
 })
 export class OpdPatients implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly DEPT_ACC: Record<string, string> = {
     Cardiology: 'rose',
     Neurology: 'violet',

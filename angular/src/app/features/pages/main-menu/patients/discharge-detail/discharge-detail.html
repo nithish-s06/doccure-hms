@@ -1,0 +1,156 @@
+
+                    <div id="dcd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+                        <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+                            <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                                <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
+                                <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+                                <li><a [routerLink]="AllRoutes.discharges" class="hover:text-primary transition-colors">Discharges</a></li>
+                                <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+                                <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Discharge Details</li>
+                            </ol>
+                        </nav>
+
+                        <!-- ---------- HERO ---------- -->
+                        <section class="dcd-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="dcd-hero-ico"><i class="icon-user-check"></i></div>
+                                    <div class="min-w-0">
+                                        <p class="dcd-kicker">Patient Discharge</p>
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">James Morrison</h1>
+                                            <span class="dcd-hbadge"><span class="dcd-dot"></span><span>Completed</span></span>
+                                        </div>
+                                        <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="dcd-hmeta"><i class="icon-hash text-[13px] text-emerald-300"></i>DIS-0001</span>
+                                            <span class="dcd-hmeta"><i class="icon-building-2 text-[13px] text-sky-300"></i>Cardiology</span>
+                                            <span class="dcd-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i>Dr. Chen</span>
+                                            <span class="dcd-hmeta"><i class="icon-log-out text-[13px] text-amber-300"></i>Discharged today</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2 dcd-actions-print-hide">
+                                    <button type="button" class="dcd-btn dcd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a [routerLink]="AllRoutes.discharges" class="dcd-btn dcd-btn-primary"><i class="icon-arrow-left"></i>Back to Discharges</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- KEY STATS ---------- -->
+                        <section class="dcd-grid">
+                            <div class="dcd-vital dcd-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-log-in"></i></span>
+                                    <span class="dcd-chip">Admission</span>
+                                </div>
+                                <p class="mt-3 text-lg font-extrabold text-gray-900 dark:text-white">5 days ago</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">General 2F</p>
+                            </div>
+                            <div class="dcd-vital dcd-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-timer"></i></span>
+                                    <span class="dcd-chip">Stay</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">5 days</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Length of Stay</p>
+                            </div>
+                            <div class="dcd-vital dcd-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-calendar-clock"></i></span>
+                                    <span class="dcd-chip">Follow-up</span>
+                                </div>
+                                <p class="mt-3 text-lg font-extrabold text-gray-900 dark:text-white">In 7 days</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Required</p>
+                            </div>
+                            <div class="dcd-vital dcd-c-indigo">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-activity"></i></span>
+                                    <span class="dcd-chip">Status</span>
+                                </div>
+                                <span class="mt-3 inline-flex w-fit items-center px-3 py-1.5 rounded-lg text-sm font-extrabold text-success bg-success/10">Completed</span>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Discharge Status</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LAYOUT: main + sidebar ---------- -->
+                        <div class="dcd-layout">
+                            <div class="space-y-5">
+
+                                <!-- Discharge workflow -->
+                                <div class="dcd-surface">
+                                    <div class="dcd-head">
+                                        <span class="ico"><i class="icon-git-commit-horizontal"></i></span>
+                                        <h2 class="dcd-title">Discharge Workflow</h2>
+                                    </div>
+                                    <div class="dcd-tl p-5">
+                                        <div class="dcd-tl-item done"><span class="dcd-tl-node"><i class="icon-stethoscope"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Doctor Approval</p><p class="text-xs text-gray-500 dark:text-gray-400">Dr. Chen · signed off</p></div>
+                                        <div class="dcd-tl-item done"><span class="dcd-tl-node"><i class="icon-heart-pulse"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Nursing Clearance</p><p class="text-xs text-gray-500 dark:text-gray-400">Complete</p></div>
+                                        <div class="dcd-tl-item done"><span class="dcd-tl-node"><i class="icon-pill"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Pharmacy Clearance</p><p class="text-xs text-gray-500 dark:text-gray-400">Medications dispensed</p></div>
+                                        <div class="dcd-tl-item done"><span class="dcd-tl-node"><i class="icon-receipt"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Billing Cleared</p><p class="text-xs text-gray-500 dark:text-gray-400">Invoice settled</p></div>
+                                        <div class="dcd-tl-item current"><span class="dcd-tl-node"><i class="icon-badge-check"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Discharge Completed</p><p class="text-xs text-gray-500 dark:text-gray-400">Bed released</p></div>
+                                    </div>
+                                </div>
+
+                                <!-- Discharge information -->
+                                <div class="dcd-surface">
+                                    <div class="dcd-head">
+                                        <span class="ico"><i class="icon-clipboard-list"></i></span>
+                                        <h2 class="dcd-title">Discharge Information</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="dcd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">James Morrison</span></div>
+                                        <div class="dcd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Discharge ID</span><span class="v">DIS-0001</span></div>
+                                        <div class="dcd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Department</span><span class="v">Cardiology</span></div>
+                                        <div class="dcd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Doctor</span><span class="v">Dr. Chen</span></div>
+                                        <div class="dcd-kv"><span class="k"><i class="icon-layout-grid text-[13px]"></i>Ward</span><span class="v">General 2F</span></div>
+                                        <div class="dcd-kv"><span class="k"><i class="icon-log-in text-[13px]"></i>Admission Date</span><span class="v">5 days ago</span></div>
+                                        <div class="dcd-kv"><span class="k"><i class="icon-log-out text-[13px]"></i>Discharge Date</span><span class="v">Today</span></div>
+                                        <div class="dcd-kv"><span class="k"><i class="icon-calendar-clock text-[13px]"></i>Follow-up</span><span class="v">In 7 days</span></div>
+                                        <div class="dcd-kv"><span class="k"><i class="icon-shield-check text-[13px]"></i>Insurance</span><span class="v">Verified</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- Discharge summary -->
+                                <div class="dcd-surface">
+                                    <div class="dcd-head">
+                                        <span class="ico"><i class="icon-file-text"></i></span>
+                                        <h2 class="dcd-title">Discharge Summary</h2>
+                                    </div>
+                                    <div class="p-5">
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Patient stabilised following cardiac decompensation, responded well to inotropic weaning and diuresis. Discharged on optimised oral heart failure therapy with clear instructions on fluid restriction, daily weight monitoring and medication adherence. Follow-up cardiology review scheduled in 7 days.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5 dcd-sidebar">
+                                <!-- Attending doctor -->
+                                <div class="dcd-surface dcd-side-hero rounded-[1.25rem]">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Attending Doctor</p>
+                                    <h3 class="mt-1 text-lg font-extrabold">Dr. Chen</h3>
+                                    <p class="text-sm text-white/80 mt-0.5">Cardiology</p>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <span class="dcd-hmeta"><i class="icon-phone-call text-[12px]"></i>Contact Doctor</span>
+                                    </div>
+                                </div>
+
+                                <!-- Clearance checklist -->
+                                <div class="dcd-surface p-5">
+                                    <h3 class="dcd-title mb-3">Patient Clearance</h3>
+                                    <div class="dcd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Doctor Approval</span><span class="v">Cleared</span></div>
+                                    <div class="dcd-kv"><span class="k"><i class="icon-heart-pulse text-[13px]"></i>Nursing</span><span class="v">Cleared</span></div>
+                                    <div class="dcd-kv"><span class="k"><i class="icon-pill text-[13px]"></i>Pharmacy</span><span class="v">Cleared</span></div>
+                                    <div class="dcd-kv"><span class="k"><i class="icon-receipt text-[13px]"></i>Billing</span><span class="v">Cleared</span></div>
+                                </div>
+
+                                <!-- Quick actions -->
+                                <div class="dcd-surface p-5 space-y-2.5">
+                                    <h3 class="dcd-title mb-1">Quick Actions</h3>
+                                    <button type="button" class="dcd-btn dcd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                                    <a [routerLink]="AllRoutes.discharges" class="dcd-btn dcd-btn-solid w-full justify-start"><i class="icon-list"></i>All Discharges</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>

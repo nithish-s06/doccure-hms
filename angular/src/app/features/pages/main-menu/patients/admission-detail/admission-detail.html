@@ -1,5 +1,17 @@
 <div id="amd-page" class="max-w-[1500px] mx-auto space-y-5">
 
+    <nav aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li><a [routerLink]="AllRoutes.admissions" class="hover:text-primary transition-colors">Admissions</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Admission Details</li>
+        </ol>
+    </nav>
+
     <!-- ---------- HERO ---------- -->
     <section class="amd-hero">
         <div class="flex flex-wrap items-start justify-between gap-6">
@@ -21,7 +33,7 @@
             </div>
             <div class="flex flex-wrap items-center gap-2 amd-actions-print-hide">
                 <button type="button" id="amd-print" class="amd-btn amd-btn-glass"><i class="icon-printer"></i>Print</button>
-                <a href="admissions" class="amd-btn amd-btn-primary"><i class="icon-arrow-left"></i>Back to Admissions</a>
+                <a [routerLink]="AllRoutes.admissions" class="amd-btn amd-btn-primary"><i class="icon-arrow-left"></i>Back to Admissions</a>
             </div>
         </div>
     </section>
@@ -135,7 +147,7 @@
             <div class="amd-surface p-5 space-y-2.5">
                 <h3 class="amd-title mb-1">Quick Actions</h3>
                 <button type="button" id="amd-print-2" class="amd-btn amd-btn-solid w-full justify-start"><i class="icon-printer"></i>Print</button>
-                <a href="admissions" class="amd-btn amd-btn-solid w-full justify-start"><i class="icon-list"></i>All Admissions</a>
+                <a [routerLink]="AllRoutes.admissions" class="amd-btn amd-btn-solid w-full justify-start"><i class="icon-list"></i>All Admissions</a>
             </div>
         </div>
     </div>

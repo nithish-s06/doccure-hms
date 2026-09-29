@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface Admission {
   id: number;
@@ -28,21 +30,14 @@ interface ModalOptions {
   onConfirm?: () => void | false;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "ADMISSIONS".
- * A custom modal + context-menu + drawer engine reused across ~15 different
- * CRUD actions with content built at runtime (kept as a hand-rolled
- * show/hide engine per the source's own comment), plus search/filter, sort,
- * pagination, bulk actions, KPIs/widgets, a bed grid and import/export
- * modals — all backed by in-memory seed data.
- */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-admissions',
   styleUrl: './admissions.css',
   templateUrl: './admissions.html',
 })
 export class Admissions implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly DEPT_ACC: Record<string, string> = {
     Cardiology: 'rose',
     Neurology: 'violet',

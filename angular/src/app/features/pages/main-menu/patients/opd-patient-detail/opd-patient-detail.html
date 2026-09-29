@@ -1,0 +1,308 @@
+
+                    <div id="opx-page" class="max-w-[1500px] mx-auto space-y-6">
+
+                        <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+                            <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                                <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
+                                <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+                                <li><a [routerLink]="AllRoutes.opdPatients" class="hover:text-primary transition-colors">OPD Management</a></li>
+                                <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+                                <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">OPD Patient Details</li>
+                            </ol>
+                        </nav>
+
+                        <!-- ---------- HERO BANNER ---------- -->
+                        <section class="opx-hero">
+                            <div class="flex flex-wrap items-start justify-between gap-6">
+                                <div class="flex items-start gap-4 min-w-0">
+                                    <div class="opx-hero-ico">
+                                        <i class="icon-user-round"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <p class="opx-kicker">Outpatient Consultation & Encounter</p>
+                                        <div class="flex flex-wrap items-center gap-2.5">
+                                            <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight text-white" id="opx-patient-name">Ava Thompson</h1>
+                                            <span class="opx-hbadge" id="opx-status-badge"><span class="opx-dot"></span><span id="opx-status-text">In Consultation</span></span>
+                                            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1">
+                                                <i class="icon-ticket text-[12px]"></i>Token #T-012
+                                            </span>
+                                        </div>
+                                        <div class="mt-2.5 flex flex-wrap items-center gap-2 text-white/85">
+                                            <span class="opx-hmeta"><i class="icon-hash text-[13px] text-sky-300"></i><span id="opx-visit-id">#OPD-0001</span></span>
+                                            <span class="opx-hmeta"><i class="icon-user text-[13px] text-purple-300"></i>MRN: <span id="opx-mrn-no">#PAT-30948</span></span>
+                                            <span class="opx-hmeta"><i class="icon-stethoscope text-[13px] text-emerald-300"></i><span id="opx-doctor-name">Dr. Robert Chen, MD</span></span>
+                                            <span class="opx-hmeta"><i class="icon-building-2 text-[13px] text-teal-300"></i><span id="opx-dept-name">Cardiology (Room 204)</span></span>
+                                            <span class="opx-hmeta"><i class="icon-clock text-[13px] text-amber-300"></i>Appt: 09:00 AM Today</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2.5 opx-actions-print-hide">
+                                    <button type="button" class="opx-btn opx-btn-glass" data-action="print"><i class="icon-printer"></i>Print Summary</button>
+                                    <a [routerLink]="AllRoutes.opdPatients" class="opx-btn opx-btn-primary"><i class="icon-arrow-left"></i>Back to OPD</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---------- LIVE TRIAGE VITALS STRIP ---------- -->
+                        <div class="opx-surface p-4 lg:p-5">
+                            <div class="flex items-center justify-between mb-3 border-b border-gray-100 dark:border-slate-800 pb-2">
+                                <span class="text-xs font-extrabold uppercase tracking-wider text-gray-500 dark:text-gray-400 flex items-center gap-2">
+                                    <i class="icon-heart-pulse text-rose-500"></i>Live OPD Triage Vitals
+                                </span>
+                                <span class="text-[11px] text-gray-400 font-mono">Captured: 08:52 AM by Nurse Alicia</span>
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">Heart Rate</span>
+                                    <p class="text-base font-extrabold text-rose-600 dark:text-rose-400 mt-0.5">76 <span class="text-xs font-medium text-gray-400">bpm</span></p>
+                                    <span class="text-[10px] text-emerald-500 font-bold">Normal Rhythm</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">Blood Pressure</span>
+                                    <p class="text-base font-extrabold text-gray-900 dark:text-white mt-0.5">124/82 <span class="text-xs font-medium text-gray-400">mmHg</span></p>
+                                    <span class="text-[10px] text-emerald-500 font-bold">Optimal Range</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">Body Temp</span>
+                                    <p class="text-base font-extrabold text-gray-900 dark:text-white mt-0.5">98.6 <span class="text-xs font-medium text-gray-400">°F</span></p>
+                                    <span class="text-[10px] text-emerald-500 font-bold">Afebrile</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">Oxygen Saturation</span>
+                                    <p class="text-base font-extrabold text-sky-600 dark:text-sky-400 mt-0.5">98% <span class="text-xs font-medium text-gray-400">SpO2</span></p>
+                                    <span class="text-[10px] text-emerald-500 font-bold">Room Air</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">Resp. Rate</span>
+                                    <p class="text-base font-extrabold text-gray-900 dark:text-white mt-0.5">16 <span class="text-xs font-medium text-gray-400">bpm</span></p>
+                                    <span class="text-[10px] text-emerald-500 font-bold">Eupnea</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800">
+                                    <span class="text-[11px] text-gray-400 font-medium">BMI & Weight</span>
+                                    <p class="text-base font-extrabold text-gray-900 dark:text-white mt-0.5">22.4 <span class="text-xs font-medium text-gray-400">kg/m²</span></p>
+                                    <span class="text-[10px] text-indigo-500 font-bold">62 kg / 166 cm</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ---------- KEY VITAL METRICS GRID ---------- -->
+                        <section class="opx-grid">
+                            <div class="opx-vital opx-c-sky">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-building-2"></i></span>
+                                    <span class="opx-chip">Dept</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="opx-stat-dept">Cardiology</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Outpatient Specialty</p>
+                            </div>
+                            <div class="opx-vital opx-c-violet">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-timer"></i></span>
+                                    <span class="opx-chip">Wait Time</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">12 min</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Check-in to Consultation</p>
+                            </div>
+                            <div class="opx-vital opx-c-amber">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-repeat"></i></span>
+                                    <span class="opx-chip">Visit Type</span>
+                                </div>
+                                <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Follow-up</p>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Hypertension Review</p>
+                            </div>
+                            <div class="opx-vital opx-c-emerald">
+                                <div class="flex items-start justify-between">
+                                    <span class="vico"><i class="icon-activity"></i></span>
+                                    <span class="opx-chip">Queue</span>
+                                </div>
+                                <span class="mt-3 inline-flex w-fit items-center px-3 py-1 rounded-lg text-xs font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20">
+                                    In Consultation
+                                </span>
+                                <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Active Encounter</p>
+                            </div>
+                        </section>
+
+                        <!-- ---------- MAIN CONTENT LAYOUT ---------- -->
+                        <div class="opx-layout">
+                            <div class="space-y-6">
+
+                                <!-- SOAP CONSULTATION NOTES -->
+                                <div class="opx-surface p-5 border-l-4 border-l-sky-500">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <div class="w-8 h-8 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-600 dark:text-sky-400 flex items-center justify-center font-bold text-sm">
+                                                <i class="icon-stethoscope"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="opx-title">Physician SOAP Consultation Notes</h3>
+                                                <p class="text-xs text-gray-500">Clinical Evaluation by Dr. Robert Chen, MD</p>
+                                            </div>
+                                        </div>
+                                        <span class="px-2.5 py-1 rounded-md bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 font-bold text-[11px] border border-sky-200 dark:border-sky-800/50">
+                                            Signed EHR Note #OPD-88402
+                                        </span>
+                                    </div>
+
+                                    <div class="space-y-3 text-xs leading-relaxed text-gray-700 dark:text-gray-300">
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800">
+                                            <p class="font-extrabold text-gray-900 dark:text-white text-xs mb-1">Subjective (S):</p>
+                                            <p>34-year-old female presents for routine 4-week follow-up regarding hypertension management. Patient reports good compliance with prescribed Amlodipine 5mg daily. Denies chest pain, shortness of breath, palpitations, visual disturbances, or peripheral edema. Energy levels good.</p>
+                                        </div>
+
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800">
+                                            <p class="font-extrabold text-gray-900 dark:text-white text-xs mb-1">Objective (O):</p>
+                                            <p>Vitals: BP 124/82 mmHg, HR 76 bpm, SpO2 98% on room air. Cardiovacular: S1 and S2 present, regular rate and rhythm, no murmurs, rubs, or gallops. Lungs clear to auscultation bilaterally. Recent ECG shows normal sinus rhythm without ischemic ST changes.</p>
+                                        </div>
+
+                                        <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200/70 dark:border-slate-800">
+                                            <p class="font-extrabold text-gray-900 dark:text-white text-xs mb-1">Assessment & Plan (A/P):</p>
+                                            <p>1. Essential Hypertension — Well controlled on current dosage.<br>
+                                            2. Continue Amlodipine 5mg PO daily for 90 days.<br>
+                                            3. Ordered routine lipid panel and serum electrolytes today.<br>
+                                            4. Return to OPD clinic in 3 months or sooner if blood pressure spikes above 140/90 mmHg.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ACTIVE PRESCRIPTIONS TABLE -->
+                                <div class="opx-surface overflow-hidden">
+                                    <div class="opx-head flex items-center justify-between">
+                                        <div class="flex items-center gap-2.5">
+                                            <span class="ico"><i class="icon-pill"></i></span>
+                                            <div>
+                                                <h2 class="opx-title">Active Outpatient Prescriptions (E-Rx)</h2>
+                                                <p class="text-xs text-gray-500">Prescribed medications for current encounter</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-left text-xs border-collapse">
+                                            <thead>
+                                                <tr class="bg-gray-100/60 dark:bg-slate-900/80 text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider border-b border-gray-200 dark:border-slate-800">
+                                                    <th class="py-3 px-4">Medication Name</th>
+                                                    <th class="py-3 px-4">Dosage</th>
+                                                    <th class="py-3 px-4">Frequency</th>
+                                                    <th class="py-3 px-4">Duration</th>
+                                                    <th class="py-3 px-4 text-center">Pharmacy Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="opx-rx-table-body" class="divide-y divide-gray-100 dark:divide-slate-800 font-medium">
+                                                <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60">
+                                                    <td class="py-3 px-4 font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                                        <i class="icon-capsule text-indigo-500"></i>Amlodipine Besylate
+                                                    </td>
+                                                    <td class="py-3 px-4">5 mg (Oral Tablet)</td>
+                                                    <td class="py-3 px-4 text-gray-600 dark:text-gray-400">Once Daily (Morning)</td>
+                                                    <td class="py-3 px-4 font-mono">90 Days (90 Tabs)</td>
+                                                    <td class="py-3 px-4 text-center">
+                                                        <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-[10px]">DISPENSED</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="hover:bg-gray-50/80 dark:hover:bg-slate-900/60">
+                                                    <td class="py-3 px-4 font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                                        <i class="icon-capsule text-indigo-500"></i>Atorvastatin Calcium
+                                                    </td>
+                                                    <td class="py-3 px-4">10 mg (Oral Tablet)</td>
+                                                    <td class="py-3 px-4 text-gray-600 dark:text-gray-400">Once Daily (Bedtime)</td>
+                                                    <td class="py-3 px-4 font-mono">30 Days (30 Tabs)</td>
+                                                    <td class="py-3 px-4 text-center">
+                                                        <span class="px-2.5 py-0.5 rounded-md bg-sky-500/15 text-sky-600 dark:text-sky-400 font-bold text-[10px]">PROCESSING</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- CONSULTATION WORKFLOW TIMELINE -->
+                                <div class="opx-surface">
+                                    <div class="opx-head">
+                                        <span class="ico"><i class="icon-git-commit-horizontal"></i></span>
+                                        <div>
+                                            <h2 class="opx-title">OPD Patient Journey & Encounter Timeline</h2>
+                                            <p class="text-xs text-gray-500">Real-time status tracking from check-in to discharge</p>
+                                        </div>
+                                    </div>
+                                    <div class="opx-tl p-5">
+                                        <div class="opx-tl-item done">
+                                            <span class="opx-tl-node"><i class="icon-user-plus"></i></span>
+                                            <div class="flex items-center justify-between">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white">Registered & Token Issued</p>
+                                                <span class="text-[11px] font-mono text-gray-500">08:45 AM</span>
+                                            </div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Token T-012 assigned at OPD Reception Desk 02</p>
+                                        </div>
+
+                                        <div class="opx-tl-item done">
+                                            <span class="opx-tl-node"><i class="icon-heart-pulse"></i></span>
+                                            <div class="flex items-center justify-between">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white">Triage & Vital Signs Recorded</p>
+                                                <span class="text-[11px] font-mono text-gray-500">08:52 AM</span>
+                                            </div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Vitals captured by Nurse Alicia (BP 124/82, HR 76)</p>
+                                        </div>
+
+                                        <div class="opx-tl-item current">
+                                            <span class="opx-tl-node"><i class="icon-stethoscope"></i></span>
+                                            <div class="flex items-center justify-between">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white">In Consultation</p>
+                                                <span class="text-[11px] font-mono text-amber-600 font-bold">Active Now</span>
+                                            </div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Dr. Robert Chen, MD · Cardiology Consultation Room 204</p>
+                                        </div>
+
+                                        <div class="opx-tl-item">
+                                            <span class="opx-tl-node"><i class="icon-flask-conical"></i></span>
+                                            <div class="flex items-center justify-between">
+                                                <p class="text-sm font-bold text-gray-900 dark:text-white">Diagnostics & E-Prescription</p>
+                                                <span class="text-[11px] font-mono text-gray-400">Pending</span>
+                                            </div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Lipid panel sample collection & Pharmacy order dispensation</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SIDEBAR PANELS -->
+                            <div class="space-y-6 opx-sidebar">
+
+                                <!-- ATTENDING DOCTOR CARD -->
+                                <div class="opx-surface opx-side-hero rounded-[1.25rem] p-5">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Attending Consultant</p>
+                                    <h3 class="mt-1 text-xl font-extrabold text-white" id="opx-side-doctor">Dr. Robert Chen, MD</h3>
+                                    <p class="text-xs text-white/80 mt-0.5">Senior Cardiologist • Room 204</p>
+
+                                    <div class="mt-4 p-3 bg-white/10 backdrop-blur-md rounded-xl space-y-2 text-xs text-white">
+                                        <div class="flex items-center gap-2">
+                                            <i class="icon-clock text-sky-300"></i>
+                                            <span>OPD Schedule: Mon-Fri (08:00 AM - 02:00 PM)</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <i class="icon-phone text-emerald-300"></i>
+                                            <span>Intercom: Ext. 2204</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- PATIENT QUICK REFERENCE -->
+                                <div class="opx-surface p-5">
+                                    <h3 class="opx-title mb-3">Patient Context</h3>
+                                    <div class="opx-kv"><span class="k"><i class="icon-user text-[13px]"></i>Full Name</span><span class="v" id="opx-kv-patient">Ava Thompson</span></div>
+                                    <div class="opx-kv"><span class="k"><i class="icon-user text-[13px]"></i>Age / Gender</span><span class="v">34Y / Female</span></div>
+                                    <div class="opx-kv"><span class="k"><i class="icon-droplet text-[13px]"></i>Blood Group</span><span class="v text-rose-600 font-bold">O Positive (O+)</span></div>
+                                    <div class="opx-kv"><span class="k"><i class="icon-shield-check text-[13px]"></i>Insurance</span><span class="v text-emerald-600 font-bold">Blue Cross (Verified)</span></div>
+                                    <div class="opx-kv"><span class="k"><i class="icon-phone text-[13px]"></i>Contact</span><span class="v">+1 (555) 234-5678</span></div>
+                                </div>
+
+                                <!-- QUICK ACTIONS -->
+                                <div class="opx-surface p-5 space-y-2.5">
+                                    <h3 class="opx-title mb-1">Encounter Actions</h3>
+                                    <button type="button" class="opx-btn opx-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print OPD Encounter Sheet</button>
+                                    <a [routerLink]="AllRoutes.opdPatients" class="opx-btn opx-btn-solid w-full justify-start"><i class="icon-list"></i>All OPD Patients Directory</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>

@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface StaticListView {
   container: HTMLElement;
@@ -13,22 +15,14 @@ interface StaticListInfo {
   shown: number;
   pages: number;
 }
-
-/**
- * Ported from tailwind/src/assets/js/script.js — "patients.js — patients.html"
- * (relies on the shared MC.staticList / MC.initDeleteModal helpers, reimplemented
- * here directly since there is no global MC object in Angular). The grid cards
- * and table rows are fully static (every patient record ships in the HTML for
- * both views); this wires search/filter/sort/pagination to those existing DOM
- * nodes — no data array, no innerHTML rendering of rows.
- */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-patients',
   styleUrl: './patients.css',
   templateUrl: './patients.html',
 })
 export class Patients implements AfterViewInit {
+  AllRoutes = All_Routes;
   private view: 'grid' | 'list' = 'grid';
   private state = { page: 1, perPage: 12 };
   private readonly advIds = [
