@@ -32,6 +32,7 @@ export class PatientProfile implements AfterViewInit {
   constructor(@Inject(DOCUMENT) private document: Document, private toastService: ToastService) {}
 
   ngAfterViewInit(): void {
+    this.personalize();
     this.wireSkeletonReveal();
     this.wireTabsScroll();
     this.wireAccordions();
@@ -40,6 +41,38 @@ export class PatientProfile implements AfterViewInit {
     this.wireAdmitToggle();
     this.wireDrawer();
     this.wireNotes();
+  }
+
+  /**
+   * Reads the query params written by patients.ts's static card links
+   * (id, name, dept, doctor, status) and personalizes the hero identity
+   * block for whichever patient was clicked, matching the pattern used
+   * by admission-detail.ts.
+   */
+  private personalize(): void {
+    const params = new URLSearchParams(this.document.defaultView?.location.search || '');
+    const pick = (key: string) => params.get(key) || '';
+
+    const name = pick('name');
+    const dept = pick('dept');
+    const doctor = pick('doctor');
+    const status = pick('status');
+    const id = pick('id');
+
+    if (name) this.setText('pp-patient-name', name);
+    if (id) this.setText('pp-patient-id', 'PID-' + id.padStart(6, '0'));
+    if (doctor) this.setText('pp-doctor-name', doctor);
+    if (dept) this.setText('pp-dept-name', dept);
+    if (status) {
+      this.admitted = status !== 'Discharged';
+      this.setText('pp-status-badge', status);
+      this.setText('pp-side-status', status);
+    }
+  }
+
+  private setText(id: string, value: string): void {
+    const el = this.byId(id);
+    if (el) el.textContent = value;
   }
 
   private byId(id: string): HTMLElement | null {

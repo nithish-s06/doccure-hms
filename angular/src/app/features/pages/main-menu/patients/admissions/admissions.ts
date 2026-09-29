@@ -322,7 +322,7 @@ export class Admissions implements AfterViewInit {
   }
 
   private detailUrl(r: Admission): string {
-    return `admission-detail.html?${new URLSearchParams({ id: String(r.id), name: r.name, dept: r.dept, doctor: r.doctor, status: r.status }).toString()}`;
+    return `admission-detail?${new URLSearchParams({ id: String(r.id), name: r.name, dept: r.dept, doctor: r.doctor, status: r.status }).toString()}`;
   }
 
   private photo(id: number): string {

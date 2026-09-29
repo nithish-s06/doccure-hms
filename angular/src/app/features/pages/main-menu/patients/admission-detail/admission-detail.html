@@ -1,6 +1,6 @@
 <div id="amd-page" class="max-w-[1500px] mx-auto space-y-5">
 
-    <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+    <nav aria-label="Breadcrumb">
         <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
             <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
             <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="flex flex-wrap items-center gap-2 amd-actions-print-hide">
-                <button type="button" class="amd-btn amd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                <button type="button" id="amd-print" class="amd-btn amd-btn-glass"><i class="icon-printer"></i>Print</button>
                 <a [routerLink]="AllRoutes.admissions" class="amd-btn amd-btn-primary"><i class="icon-arrow-left"></i>Back to Admissions</a>
             </div>
         </div>
@@ -146,7 +146,7 @@
             <!-- Quick actions -->
             <div class="amd-surface p-5 space-y-2.5">
                 <h3 class="amd-title mb-1">Quick Actions</h3>
-                <button type="button" class="amd-btn amd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                <button type="button" id="amd-print-2" class="amd-btn amd-btn-solid w-full justify-start"><i class="icon-printer"></i>Print</button>
                 <a [routerLink]="AllRoutes.admissions" class="amd-btn amd-btn-solid w-full justify-start"><i class="icon-list"></i>All Admissions</a>
             </div>
         </div>
