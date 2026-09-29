@@ -96,3 +96,100 @@
                         </div>
                     </div>
                 </main>
+
+        <div id="form-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none flex items-center justify-center p-4" role="dialog" tabindex="-1">
+            <div class="modal-panel">
+                <div class="flex items-center justify-between">
+                    <h2 id="m-title" class="text-xl font-bold text-gray-900">New Diet Plan</h2>
+                    <button type="button" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" aria-label="Close" data-hs-overlay="#form-modal">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <form id="m-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="f-patient" class="form-label">Patient Name <span class="text-danger">*</span></label>
+                            <input id="f-patient" class="form-input" placeholder="James Morrison" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-type" class="form-label">Plan Type <span class="text-danger">*</span></label>
+                            <select id="f-type" class="form-select">
+                                <option>Diabetic</option>
+                                <option>Cardiac</option>
+                                <option>Weight Loss</option>
+                                <option>Renal</option>
+                                <option>High Protein</option>
+                                <option>Liquid</option>
+                                <option>General</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-ward" class="form-label">Ward / Room</label>
+                            <input id="f-ward" class="form-input" placeholder="General Ward A - A101" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-dietitian" class="form-label">Dietitian</label>
+                            <input id="f-dietitian" class="form-input" placeholder="Dr. Nadia Ahmed" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-cal" class="form-label">Calories/Day</label>
+                            <input id="f-cal" type="number" min="0" class="form-input" placeholder="1800" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-date" class="form-label">Start Date</label>
+                            <div class="relative">
+                                <input type="text" id="f-date" placeholder="dd/mm/yyyy" class="form-input pr-10" data-provider="flatpickr" data-date-format="d-m-Y">
+                                <i class="icon-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-900"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-status" class="form-label">Status</label>
+                            <select id="f-status" class="form-select">
+                                <option>Active</option>
+                                <option>On Hold</option>
+                                <option>Completed</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-meals" class="form-label">Meals/Day</label>
+                            <select id="f-meals" class="form-select">
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+                        <div class="form-group span-2">
+                            <label for="f-notes" class="form-label">Restrictions &amp; Notes</label>
+                            <textarea id="f-notes" class="form-textarea" placeholder="No salt, lactose-free, gluten-free, allergies..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#form-modal">Cancel</button>
+                        <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold">Save Plan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="del-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none flex items-center justify-center p-4" role="dialog" tabindex="-1">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Remove Plan</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Remove diet plan for
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    ?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#del-modal">Cancel</button>
+                    <button id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Remove</button>
+                </div>
+            </div>
+        </div>

@@ -148,3 +148,75 @@
                         </div>
                     </div>
                 </main>
+
+<div class="tm-menu" id="tm-menu"></div>
+
+<div class="tm-bulk" id="tm-bulk">
+    <span class="text-sm font-bold"><span id="tm-bulk-n">0</span> selected</span>
+    <span class="w-px h-5 bg-white/20"></span>
+    <button class="tm-btn tm-btn-glass btn-compact" data-bulk="assign"><i class="ti ti-user-plus"></i> Assign</button>
+    <button class="tm-btn tm-btn-glass btn-compact" data-bulk="status"><i class="ti ti-toggle-left"></i> Status</button>
+    <button class="tm-btn tm-btn-glass btn-compact" data-bulk="reschedule"><i class="ti ti-calendar"></i> Reschedule</button>
+    <button class="tm-btn tm-btn-glass btn-compact" data-bulk="notify"><i class="ti ti-bell"></i> Notify</button>
+    <button class="tm-btn tm-btn-glass btn-compact" data-bulk="export"><i class="ti ti-download"></i> Export</button>
+    <button class="tm-btn tm-btn-glass btn-compact !text-rose-300" data-bulk="delete"><i class="ti ti-trash"></i></button>
+    <button class="tm-btn tm-btn-glass btn-icon-sq" id="tm-bulk-x"><i class="ti ti-x"></i></button>
+</div>
+
+<div class="tm-drawer" id="tm-drawer"><div class="tm-mask" data-close></div><div class="tm-panel" id="tm-drawer-body"></div></div>
+<div class="tm-modal" id="tm-modal"><div class="tm-mask" data-close></div><div class="tm-dialog" id="tm-dialog"></div></div>
+
+<!-- ==================== VIDEO CONSULTATION WORKSPACE ==================== -->
+<div class="tm-vc" id="tm-vc">
+    <div class="flex items-center justify-between px-4 py-3 text-white bg-[rgba(15,23,42,.6)]">
+        <div class="flex items-center gap-3 min-w-0">
+            <span class="tm-tag tm-glass"><span class="tm-live"></span> LIVE</span>
+            <div class="min-w-0"><div class="font-bold truncate" id="tm-vc-title">Virtual Consultation</div><div class="text-xs text-white/60 truncate" id="tm-vc-sub">—</div></div>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+            <span class="tm-tag tm-glass"><i class="ti ti-clock"></i> <span id="tm-vc-timer">00:00</span></span>
+            <span class="tm-tag tm-glass hidden sm:inline-flex"><span class="tm-net" id="tm-vc-net"></span> <span id="tm-vc-netlabel">Excellent</span></span>
+            <button class="tm-ctrl !w-9 !h-9 !text-base" id="tm-vc-min" title="Minimize"><i class="ti ti-minimize"></i></button>
+        </div>
+    </div>
+    <div class="tm-vc-main with-side" id="tm-vc-mainwrap">
+        <div class="tm-stage" id="tm-vc-stage">
+            <div class="tm-vc-badge"><span class="tm-tag tm-glass" id="tm-vc-doctorname"><i class="ti ti-stethoscope"></i> Doctor</span><span class="tm-tag tm-glass [display:none]" id="tm-vc-sharing"><i class="ti ti-screen-share"></i> Screen sharing</span></div>
+            <div class="tm-bigav [background:linear-gradient(135deg,#6366f1,#0ea5e9)]" id="tm-vc-bigav">PT</div>
+            <div class="absolute bottom-4 left-4 z-10"><span class="tm-tag tm-glass" id="tm-vc-patientlabel"><i class="ti ti-user"></i> Patient</span></div>
+            <div class="tm-pip" id="tm-vc-pip"><div class="text-center text-white/70"><i class="ti ti-video text-2xl"></i><div class="text-[10px] mt-1 font-semibold">You (Dr.)</div></div></div>
+            <div class="tm-pip [display:none] [background:#1e293b]" id="tm-vc-camoff"><div class="text-center text-white/70"><i class="ti ti-video-off text-2xl"></i><div class="text-[10px] mt-1 font-semibold">Camera off</div></div></div>
+        </div>
+        <div class="tm-vc-side show" id="tm-vc-side">
+            <div class="flex border-b border-white/10">
+                <button class="flex-1 py-2.5 text-sm font-bold text-white tm-vc-tab [border-bottom:2px_solid_#6366f1]" data-vctab="chat"><i class="ti ti-message"></i> Chat</button>
+                <button class="flex-1 py-2.5 text-sm font-bold tm-vc-tab [color:rgba(255,255,255,.5)]" data-vctab="notes"><i class="ti ti-notes"></i> Notes</button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-3 min-h-[120px]" id="tm-vc-chatpanel">
+                <div class="tm-chatmsg tm-glass tm-chatmsg-in">Hello Doctor, I've been having a persistent cough.</div>
+                <div class="tm-chatmsg bg-[#6366f1] text-white ml-auto">Hi, thanks for joining. How many days now?</div>
+                <div class="tm-chatmsg tm-glass tm-chatmsg-in">About 5 days, worse at night.</div>
+            </div>
+            <div class="flex-1 overflow-y-auto p-3 hidden min-h-[120px]" id="tm-vc-notespanel">
+                <textarea aria-label="Clinical notes..." class="w-full bg-transparent text-white text-sm resize-none border border-white/10 rounded-lg p-2.5" rows="6" placeholder="Clinical notes...">Chief complaint: persistent nocturnal cough x5 days.
+Vitals: within normal limits.
+Plan: prescribe cough suppressant, review in 3 days.</textarea>
+            </div>
+            <div class="p-3 border-t border-white/10" id="tm-vc-chatinput">
+                <div class="flex items-center gap-2"><input aria-label="Type a message..." class="flex-1 bg-white/10 border border-white/15 rounded-lg px-3 py-2 text-sm text-white" placeholder="Type a message..." id="tm-vc-msgin"><button class="tm-ctrl !w-9 !h-9 !text-base" id="tm-vc-send"><i class="ti ti-send"></i></button></div>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center justify-center gap-2.5 px-4 py-4 flex-wrap bg-[rgba(15,23,42,.6)]">
+        <button class="tm-ctrl" data-vcctrl="cam" title="Toggle Camera"><i class="ti ti-video"></i></button>
+        <button class="tm-ctrl" data-vcctrl="mic" title="Toggle Microphone"><i class="ti ti-microphone"></i></button>
+        <button class="tm-ctrl" data-vcctrl="speaker" title="Speaker"><i class="ti ti-volume"></i></button>
+        <button class="tm-ctrl" data-vcctrl="share" title="Screen Share"><i class="ti ti-screen-share"></i></button>
+        <button class="tm-ctrl" data-vcctrl="record" title="Record"><i class="ti ti-circle"></i></button>
+        <button class="tm-ctrl" data-vcctrl="chat" title="Chat / Notes"><i class="ti ti-message"></i></button>
+        <button class="tm-ctrl" data-vcctrl="invite" title="Invite Participant"><i class="ti ti-user-plus"></i></button>
+        <button class="tm-ctrl end" data-vcctrl="end"><i class="ti ti-phone-off"></i> End</button>
+    </div>
+</div>
+
+<div id="tm-toast"></div>

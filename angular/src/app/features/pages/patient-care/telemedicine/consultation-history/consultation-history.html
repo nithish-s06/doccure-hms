@@ -155,3 +155,124 @@
                         </div>
                     </div>
                 </main>
+
+<div class="ch-bulk" id="ch-bulk">
+    <span class="text-sm font-bold"><span id="ch-bulk-n">0</span> selected</span>
+    <span class="w-px h-5 bg-white/20"></span>
+    <button class="ch-btn ch-btn-glass btn-compact" data-bulk="followup"><i class="ti ti-repeat"></i> Follow-up</button>
+    <button class="ch-btn ch-btn-glass btn-compact" data-bulk="notify"><i class="ti ti-bell"></i> Notify</button>
+    <button class="ch-btn ch-btn-glass btn-compact" data-bulk="export"><i class="ti ti-download"></i> Export</button>
+    <button class="ch-btn ch-btn-glass btn-compact" data-bulk="print"><i class="ti ti-printer"></i> Print</button>
+    <button class="ch-btn ch-btn-glass btn-compact" data-bulk="archive"><i class="ti ti-archive"></i> Archive</button>
+    <button class="ch-btn ch-btn-glass btn-compact !text-rose-300" data-bulk="delete"><i class="ti ti-trash"></i></button>
+    <button class="ch-btn ch-btn-glass btn-icon-sq" id="ch-bulk-x"><i class="ti ti-x"></i></button>
+</div>
+
+<div id="ch-modal-new" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="sm:max-w-2xl sm:w-full m-3 sm:mx-auto pointer-events-auto">
+        <div class="bg-white dark:bg-slate-800 border border-[var(--color-border-color)] rounded-[1.25rem] max-h-[90vh] overflow-y-auto">
+            <div class="p-5">
+                <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-file-plus [color:var(--color-primary)]"></i> Consultation Record</h3><button type="button" class="ch-btn ch-btn-soft !p-2" data-hs-overlay="#ch-modal-new"><i class="ti ti-x"></i></button></div>
+                <div class="space-y-3"><div><label class="ch-lbl">Patient</label><input class="ch-inp" placeholder="Patient name"></div><div><label class="ch-lbl">Doctor</label><select class="ch-inp"><option>Dr. Sarah Roberts</option><option>Dr. Vikram Nair</option><option>Dr. Meera Iyer</option><option>Dr. Rajesh Menon</option><option>Dr. Fatima Sheikh</option><option>Dr. Arjun Menon</option></select></div><div class="grid grid-cols-2 gap-3"><div><label class="ch-lbl">Type</label><select class="ch-inp"><option>In-person</option><option>Telemedicine</option><option>Follow-up</option><option>Emergency</option></select></div><div><label class="ch-lbl">Date</label><input type="text" placeholder="dd-mm-yyyy" class="ch-inp" data-provider="flatpickr" data-date-format="d-m-Y"></div></div><div><label class="ch-lbl">Diagnosis</label><input class="ch-inp" placeholder="Diagnosis"></div><div><label class="ch-lbl">Clinical Notes</label><textarea class="ch-inp" rows="3"></textarea></div></div>
+                <div class="flex justify-end gap-2 mt-5"><button type="button" class="ch-btn ch-btn-soft" data-hs-overlay="#ch-modal-new">Cancel</button><button type="button" class="ch-btn ch-btn-primary" data-hs-overlay="#ch-modal-new" data-toast="Consultation saved"><i class="ti ti-check"></i> Save Consultation</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ch-modal-rx" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="sm:max-w-2xl sm:w-full m-3 sm:mx-auto pointer-events-auto">
+        <div class="bg-white dark:bg-slate-800 border border-[var(--color-border-color)] rounded-[1.25rem] max-h-[90vh] overflow-y-auto">
+            <div class="p-5">
+                <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-prescription [color:var(--color-primary)]"></i> Generate Prescription</h3><button type="button" class="ch-btn ch-btn-soft !p-2" data-hs-overlay="#ch-modal-rx"><i class="ti ti-x"></i></button></div>
+                <div class="space-y-3"><div><label class="ch-lbl">Patient</label><input class="ch-inp" readonly></div><div class="grid grid-cols-3 gap-2"><input class="ch-inp col-span-2" placeholder="Medicine"><input class="ch-inp" placeholder="1-0-1"></div><div class="grid grid-cols-3 gap-2"><input class="ch-inp col-span-2" placeholder="Medicine"><input class="ch-inp" placeholder="0-0-1"></div><div><label class="ch-lbl">Instructions</label><textarea class="ch-inp" rows="2" placeholder="Take after meals..."></textarea></div></div>
+                <div class="flex justify-end gap-2 mt-5"><button type="button" class="ch-btn ch-btn-soft" data-hs-overlay="#ch-modal-rx">Cancel</button><button type="button" class="ch-btn ch-btn-primary" data-hs-overlay="#ch-modal-rx" data-toast="Prescription generated"><i class="ti ti-check"></i> Generate &amp; Print</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ch-modal-followup" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="sm:max-w-2xl sm:w-full m-3 sm:mx-auto pointer-events-auto">
+        <div class="bg-white dark:bg-slate-800 border border-[var(--color-border-color)] rounded-[1.25rem] max-h-[90vh] overflow-y-auto">
+            <div class="p-5">
+                <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-repeat [color:var(--color-primary)]"></i> Schedule Follow-up</h3><button type="button" class="ch-btn ch-btn-soft !p-2" data-hs-overlay="#ch-modal-followup"><i class="ti ti-x"></i></button></div>
+                <div class="space-y-3"><div><label class="ch-lbl">Patient</label><input class="ch-inp" readonly></div><div class="grid grid-cols-2 gap-3"><div><label class="ch-lbl">Date</label><input type="text" placeholder="dd-mm-yyyy" class="ch-inp" data-provider="flatpickr" data-date-format="d-m-Y"></div><div><label class="ch-lbl">Time</label><input type="text" placeholder="--:-- --" class="ch-inp" data-provider="timepickr" data-default-time="10:00"></div></div><div><label class="ch-lbl">Doctor</label><select class="ch-inp"><option>Dr. Sarah Roberts</option><option>Dr. Vikram Nair</option><option>Dr. Meera Iyer</option><option>Dr. Rajesh Menon</option><option>Dr. Fatima Sheikh</option><option>Dr. Arjun Menon</option></select></div><div><label class="ch-lbl">Reason</label><input class="ch-inp" placeholder="Reason for follow-up"></div></div>
+                <div class="flex justify-end gap-2 mt-5"><button type="button" class="ch-btn ch-btn-soft" data-hs-overlay="#ch-modal-followup">Cancel</button><button type="button" class="ch-btn ch-btn-primary" data-hs-overlay="#ch-modal-followup" data-toast="Follow-up scheduled"><i class="ti ti-check"></i> Schedule Follow-up</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ch-modal-share" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="sm:max-w-2xl sm:w-full m-3 sm:mx-auto pointer-events-auto">
+        <div class="bg-white dark:bg-slate-800 border border-[var(--color-border-color)] rounded-[1.25rem] max-h-[90vh] overflow-y-auto">
+            <div class="p-5">
+                <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-share [color:var(--color-primary)]"></i> Share Consultation</h3><button type="button" class="ch-btn ch-btn-soft !p-2" data-hs-overlay="#ch-modal-share"><i class="ti ti-x"></i></button></div>
+                <div class="space-y-3"><div><label class="ch-lbl">Consultation</label><input class="ch-inp" readonly></div><div><label class="ch-lbl">Share Link</label><div class="flex gap-2"><input class="ch-inp" value="https://dreamshms.care/cn/7001" readonly><button type="button" class="ch-btn ch-btn-soft" data-toast="Link copied"><i class="ti ti-copy"></i></button></div></div><div><label class="ch-lbl">Share With</label><select class="ch-inp"><option>Patient</option><option>Referring doctor</option><option>Specialist</option></select></div><div><label class="ch-lbl">Via</label><select class="ch-inp"><option>Email</option><option>SMS</option><option>Patient portal</option></select></div></div>
+                <div class="flex justify-end gap-2 mt-5"><button type="button" class="ch-btn ch-btn-soft" data-hs-overlay="#ch-modal-share">Cancel</button><button type="button" class="ch-btn ch-btn-primary" data-hs-overlay="#ch-modal-share" data-toast="Consultation shared"><i class="ti ti-check"></i> Share Report</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ch-modal-upload" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="sm:max-w-2xl sm:w-full m-3 sm:mx-auto pointer-events-auto">
+        <div class="bg-white dark:bg-slate-800 border border-[var(--color-border-color)] rounded-[1.25rem] max-h-[90vh] overflow-y-auto">
+            <div class="p-5">
+                <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-upload [color:var(--color-primary)]"></i> Upload Documents</h3><button type="button" class="ch-btn ch-btn-soft !p-2" data-hs-overlay="#ch-modal-upload"><i class="ti ti-x"></i></button></div>
+                <div class="space-y-3"><div class="ch-drop" id="ch-dropzone-upload"><i class="ti ti-cloud-upload text-3xl ch-muted"></i><p class="text-sm font-bold text-[var(--color-gray-900)] mt-2">Drag & drop reports or PDFs</p><input type="file" class="hidden" id="ch-file-upload"></div><div class="text-xs ch-muted" id="ch-upload-sum"></div></div>
+                <div class="flex justify-end gap-2 mt-5"><button type="button" class="ch-btn ch-btn-soft" data-hs-overlay="#ch-modal-upload">Cancel</button><button type="button" class="ch-btn ch-btn-primary" data-hs-overlay="#ch-modal-upload" data-toast="Documents uploaded"><i class="ti ti-check"></i> Upload</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ch-modal-import" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="sm:max-w-2xl sm:w-full m-3 sm:mx-auto pointer-events-auto">
+        <div class="bg-white dark:bg-slate-800 border border-[var(--color-border-color)] rounded-[1.25rem] max-h-[90vh] overflow-y-auto">
+            <div class="p-5">
+                <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-upload [color:var(--color-primary)]"></i> Import Consultation Records</h3><button type="button" class="ch-btn ch-btn-soft !p-2" data-hs-overlay="#ch-modal-import"><i class="ti ti-x"></i></button></div>
+                <div class="space-y-3"><div class="ch-drop" id="ch-dropzone-import"><i class="ti ti-cloud-upload text-3xl ch-muted"></i><p class="text-sm font-bold text-[var(--color-gray-900)] mt-2">Drag & drop CSV / Excel / Consultation Records</p><p class="text-xs ch-muted">or click to browse files</p><input type="file" class="hidden" id="ch-file-import"></div><button type="button" class="ch-btn ch-btn-soft w-full" data-toast="Sample template downloaded"><i class="ti ti-file-download"></i> Download Sample Template</button><div class="p-3 rounded-lg [background:color-mix(in_srgb,#0ea5e9_8%,transparent)]"><div class="text-xs font-bold text-[var(--color-gray-900)] mb-1">Import Summary</div><div class="text-xs ch-muted" id="ch-import-sum">No file selected yet.</div></div></div>
+                <div class="flex justify-end gap-2 mt-5"><button type="button" class="ch-btn ch-btn-soft" data-hs-overlay="#ch-modal-import">Cancel</button><button type="button" class="ch-btn ch-btn-primary" data-hs-overlay="#ch-modal-import" data-toast="Consultation records imported"><i class="ti ti-check"></i> Start Import</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ch-modal-export" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="sm:max-w-2xl sm:w-full m-3 sm:mx-auto pointer-events-auto">
+        <div class="bg-white dark:bg-slate-800 border border-[var(--color-border-color)] rounded-[1.25rem] max-h-[90vh] overflow-y-auto">
+            <div class="p-5">
+                <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-download [color:var(--color-primary)]"></i> Export History</h3><button type="button" class="ch-btn ch-btn-soft !p-2" data-hs-overlay="#ch-modal-export"><i class="ti ti-x"></i></button></div>
+                <div class="space-y-4"><div><div class="ch-lbl">Format</div><div class="grid grid-cols-2 gap-2"><button type="button" class="ch-btn ch-btn-soft justify-start ch-expfmt !border-[var(--color-primary)]" data-fmt="CSV"><i class="ti ti-file-text"></i> CSV</button><button type="button" class="ch-btn ch-btn-soft justify-start ch-expfmt" data-fmt="Excel"><i class="ti ti-file-spreadsheet"></i> Excel</button><button type="button" class="ch-btn ch-btn-soft justify-start ch-expfmt" data-fmt="PDF"><i class="ti ti-file-typography"></i> PDF</button><button type="button" class="ch-btn ch-btn-soft justify-start ch-expfmt" data-fmt="Print"><i class="ti ti-printer"></i> Print</button></div></div><div><div class="ch-lbl">Scope</div><select class="ch-inp"><option>Timeline Report</option><option>Department Report</option><option>Doctor Report</option><option>Selected Records</option><option>All Records</option></select></div></div>
+                <div class="flex justify-end gap-2 mt-5"><button type="button" class="ch-btn ch-btn-soft" data-hs-overlay="#ch-modal-export">Cancel</button><button type="button" class="ch-btn ch-btn-primary" data-hs-overlay="#ch-modal-export" data-toast="History exported"><i class="ti ti-check"></i> Export Now</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ch-modal-print" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="sm:max-w-2xl sm:w-full m-3 sm:mx-auto pointer-events-auto">
+        <div class="bg-white dark:bg-slate-800 border border-[var(--color-border-color)] rounded-[1.25rem] max-h-[90vh] overflow-y-auto">
+            <div class="p-5">
+                <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-printer [color:var(--color-primary)]"></i> Print Report</h3><button type="button" class="ch-btn ch-btn-soft !p-2" data-hs-overlay="#ch-modal-print"><i class="ti ti-x"></i></button></div>
+                <div class="space-y-3"><div><label class="ch-lbl">Report</label><select class="ch-inp"><option>Consultation history</option><option>By doctor</option><option>By department</option><option>Timeline view</option></select></div><div><label class="ch-lbl">Range</label><select class="ch-inp"><option>This week</option><option>This month</option><option>All time</option></select></div></div>
+                <div class="flex justify-end gap-2 mt-5"><button type="button" class="ch-btn ch-btn-soft" data-hs-overlay="#ch-modal-print">Cancel</button><button type="button" class="ch-btn ch-btn-primary" data-hs-overlay="#ch-modal-print" data-toast="Report sent to printer"><i class="ti ti-check"></i> Print</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ch-modal-delete" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="sm:max-w-2xl sm:w-full m-3 sm:mx-auto pointer-events-auto">
+        <div class="bg-white dark:bg-slate-800 border border-[var(--color-border-color)] rounded-[1.25rem] max-h-[90vh] overflow-y-auto">
+            <div class="p-5">
+                <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-lg text-[var(--color-gray-900)] flex items-center gap-2"><i class="ti ti-trash [color:#ef4444]"></i> Delete Confirmation</h3><button type="button" class="ch-btn ch-btn-soft !p-2" data-hs-overlay="#ch-modal-delete"><i class="ti ti-x"></i></button></div>
+                <div class="text-center py-2"><div class="w-14 h-14 rounded-2xl mx-auto flex items-center justify-center mb-3 [background:color-mix(in_srgb,#ef4444_15%,transparent)] [color:#ef4444]"><i class="ti ti-alert-triangle text-2xl"></i></div><p class="font-bold text-[var(--color-gray-900)]">Delete selected records?</p><p class="text-sm ch-muted mt-1">This consultation record will be permanently removed from history.</p></div>
+                <div class="flex justify-end gap-2 mt-5"><button type="button" class="ch-btn ch-btn-soft" data-hs-overlay="#ch-modal-delete">Cancel</button><button type="button" class="ch-btn ch-btn-soft !bg-rose-500 !text-white" data-hs-overlay="#ch-modal-delete" data-toast="Consultation deleted"><i class="ti ti-trash"></i> Delete</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ch-toast"></div>
