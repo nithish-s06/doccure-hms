@@ -2,17 +2,10 @@ import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 import { All_Routes } from '../../../../../core/helpers/routes';
 import { RouterLink } from '@angular/router';
+import { Datepicker } from '../../../../../shared/datepicker/datepicker';
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "ADD-PATIENT".
- * A single-page multi-section patient registration form: live clock,
- * animated completion rings, a stepper that scrolls to sections, a
- * completion-percentage meter mirrored into an overview sidebar, avatar
- * upload preview, document drag & drop zones, and a set of toast-only
- * action buttons (save / admit / print / reset / cancel) — all client-side.
- */
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink,Datepicker],
   selector: 'app-add-patient',
   styleUrl: './add-patient.css',
   templateUrl: './add-patient.html',
