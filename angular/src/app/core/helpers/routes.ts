@@ -160,6 +160,7 @@ export const All_Routes={
     prescriptions:'/prescriptions',
     pharmacySales:'/pharmacy-sales',
     expiryTracking:'/expiry-tracking',
+    expiryItemDetail:'/expiry-item-detail',
     stockAlerts:'/stock-alerts',
 
     // Clinical - Laboratory

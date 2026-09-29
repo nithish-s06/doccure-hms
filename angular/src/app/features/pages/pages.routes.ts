@@ -86,6 +86,7 @@ export const Pages_Routes: Routes = [
             { path: 'prescriptions', loadComponent: () => import('./clinical/pharmacy/prescriptions/prescriptions').then((m) => m.Prescriptions)},
             { path: 'pharmacy-sales', loadComponent: () => import('./clinical/pharmacy/pharmacy-sales/pharmacy-sales').then((m) => m.PharmacySales)},
             { path: 'expiry-tracking', loadComponent: () => import('./clinical/pharmacy/expiry-tracking/expiry-tracking').then((m) => m.ExpiryTracking)},
+            { path: 'expiry-item-detail', loadComponent: () => import('./clinical/pharmacy/expiry-item-detail/expiry-item-detail').then((m) => m.ExpiryItemDetail)},
             { path: 'stock-alerts', loadComponent: () => import('./clinical/pharmacy/stock-alerts/stock-alerts').then((m) => m.StockAlerts)},
 
             // Clinical - Laboratory
