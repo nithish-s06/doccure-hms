@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 interface Order {
   id: string;
@@ -14,16 +15,6 @@ interface Order {
   placed: string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "pharmacy-purchase-orders"
- * (pharmacy-purchase-orders.html). Purchase-order tracking with send/receive/
- * cancel actions. Static demo data — no API.
- *
- * The ported template has no po-modal / rc-modal / del-modal markup (Preline
- * modal conversion note in script.js), so the open*()/confirmDelete() calls
- * below find nothing to open — search/filter, send/receive/cancel status
- * changes and the toast-only buttons are the wired, visible behavior.
- */
 @Component({
   imports: [RouterLink],
   selector: 'app-pharmacy-purchase-orders',
@@ -31,6 +22,7 @@ interface Order {
   templateUrl: './pharmacy-purchase-orders.html',
 })
 export class PharmacyPurchaseOrders implements AfterViewInit {
+  AllRoutes = All_Routes;
   private seq = 4170;
   private mk(o: Partial<Order>): Order {
     this.seq++;

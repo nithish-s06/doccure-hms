@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const HSOverlay: any;
 
@@ -28,11 +30,12 @@ interface FmFile {
  */
 @Component({
   selector: 'app-file-manager',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './file-manager.html',
   styleUrl: './file-manager.css',
 })
 export class FileManager implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly EXT_META: Record<string, [string, string]> = {
     pdf: ['rose', 'icon-file-text'],
     doc: ['sky', 'icon-file'],

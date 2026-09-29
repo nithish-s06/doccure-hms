@@ -1,0 +1,155 @@
+<div id="ltd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li><a [routerLink]="AllRoutes.laboratory" class="hover:text-primary transition-colors">Laboratory</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Lab Test Details</li>
+        </ol>
+    </nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="ltd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="ltd-hero-ico"><i class="icon-flask-conical"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="ltd-test-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Complete Blood Count</h1>
+                        <span class="ltd-hbadge"><span class="ltd-dot"></span><span id="ltd-status-badge">Completed</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="ltd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="ltd-lab-id">#LAB-0001</span></span>
+                        <span class="ltd-hmeta"><i class="icon-user text-[13px] text-sky-300"></i><span id="ltd-patient-name">James Morrison</span></span>
+                        <span class="ltd-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i><span id="ltd-doctor-name">Dr. Sarah Chen</span></span>
+                        <span class="ltd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Ordered <span id="ltd-date">2024-12-10</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 ltd-actions-print-hide">
+                <button type="button" class="ltd-btn ltd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Report</button>
+                <a [routerLink]="AllRoutes.laboratory" class="ltd-btn ltd-btn-primary"><i class="icon-arrow-left"></i>Back to Orders</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="ltd-grid">
+        <div class="ltd-vital ltd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-test-tube"></i></span>
+                <span class="ltd-chip">Sample</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ltd-sample-type">Blood</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Sample Type</p>
+        </div>
+        <div class="ltd-vital ltd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-siren"></i></span>
+                <span class="ltd-chip">Priority</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ltd-priority">Routine</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Priority Level</p>
+        </div>
+        <div class="ltd-vital ltd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-timer"></i></span>
+                <span class="ltd-chip">TAT</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ltd-tat">4 hrs</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Turnaround Time</p>
+        </div>
+        <div class="ltd-vital ltd-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-flask-round"></i></span>
+                <span class="ltd-chip">Category</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ltd-category">Hematology</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Test Category</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="ltd-layout">
+        <div class="space-y-5">
+
+            <!-- Workflow timeline -->
+            <div class="ltd-surface">
+                <div class="ltd-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="ltd-title">Test Workflow</h2>
+                </div>
+                <div class="ltd-tl p-5">
+                    <div class="ltd-tl-item done"><span class="ltd-tl-node"><i class="icon-clipboard-list"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Ordered</p><p class="text-xs text-gray-500 dark:text-gray-400">2024-12-10</p></div>
+                    <div class="ltd-tl-item done"><span class="ltd-tl-node"><i class="icon-test-tube"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Sample Collected</p><p class="text-xs text-gray-500 dark:text-gray-400">2024-12-10</p></div>
+                    <div class="ltd-tl-item done"><span class="ltd-tl-node"><i class="icon-loader"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Processing</p><p class="text-xs text-gray-500 dark:text-gray-400">2024-12-10</p></div>
+                    <div class="ltd-tl-item done"><span class="ltd-tl-node"><i class="icon-shield-check"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Result Verified</p><p class="text-xs text-gray-500 dark:text-gray-400">2024-12-10</p></div>
+                    <div class="ltd-tl-item current"><span class="ltd-tl-node"><i class="icon-file-check"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Report Released</p><p class="text-xs text-gray-500 dark:text-gray-400">2024-12-10</p></div>
+                </div>
+            </div>
+
+            <!-- Result panel -->
+            <div class="ltd-surface">
+                <div class="ltd-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="ltd-title">Result Summary</h2>
+                </div>
+                <div class="p-5">
+                    <div class="overflow-x-auto">
+                        <table class="data-table w-full">
+                            <thead><tr><th>Parameter</th><th>Result</th><th>Reference Range</th><th>Flag</th></tr></thead>
+                            <tbody>
+                                <tr><td class="font-medium text-gray-900">Hemoglobin</td><td class="text-gray-700 dark:text-gray-300">14.2 g/dL</td><td class="text-gray-500 dark:text-gray-400 text-sm">13.5 - 17.5 g/dL</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Normal</span></td></tr>
+                                <tr><td class="font-medium text-gray-900">WBC Count</td><td class="text-gray-700 dark:text-gray-300">7.8 x10³/µL</td><td class="text-gray-500 dark:text-gray-400 text-sm">4.5 - 11.0 x10³/µL</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Normal</span></td></tr>
+                                <tr><td class="font-medium text-gray-900">Platelet Count</td><td class="text-gray-700 dark:text-gray-300">245 x10³/µL</td><td class="text-gray-500 dark:text-gray-400 text-sm">150 - 450 x10³/µL</td><td><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10">Normal</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-3">Verified and released. Values shown are for demonstration purposes.</p>
+                </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="ltd-surface hidden" id="ltd-notes-card">
+                <div class="ltd-head">
+                    <span class="ico"><i class="icon-sticky-note"></i></span>
+                    <h2 class="ltd-title">Clinical Notes</h2>
+                </div>
+                <div class="p-5">
+                    <p class="text-sm text-gray-600 dark:text-gray-300" id="ltd-notes-text"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 ltd-sidebar">
+            <!-- Ordering doctor -->
+            <div class="ltd-surface ltd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Ordering Physician</p>
+                <h3 class="mt-1 text-lg font-extrabold" id="ltd-side-doctor">Dr. Sarah Chen</h3>
+                <p class="text-sm text-white/80 mt-0.5" id="ltd-side-dept">General Medicine</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="ltd-hmeta"><i class="icon-mail text-[12px]"></i>Contact Doctor</span>
+                </div>
+            </div>
+
+            <!-- Patient card -->
+            <div class="ltd-surface p-5">
+                <h3 class="ltd-title mb-3">Patient</h3>
+                <div class="ltd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Name</span><span class="v" id="ltd-kv-patient">James Morrison</span></div>
+                <div class="ltd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Lab ID</span><span class="v" id="ltd-kv-labid">#LAB-0001</span></div>
+                <div class="ltd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Ordered</span><span class="v" id="ltd-kv-date">2024-12-10</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="ltd-surface p-5 space-y-2.5">
+                <h3 class="ltd-title mb-1">Quick Actions</h3>
+                <button type="button" class="ltd-btn ltd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Report</button>
+                <a [routerLink]="AllRoutes.laboratory" class="ltd-btn ltd-btn-solid w-full justify-start"><i class="icon-list"></i>All Lab Orders</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 interface Medicine {
   code: string;
@@ -20,11 +21,7 @@ interface Medicine {
   warnings: string[];
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "medicines" (medicines.html).
- * Dreams HMS Medicine Formulary: dosage forms, controlled-substance schedules,
- * stock status, pricing and a detail drawer. Static demo data — no API.
- */
+
 @Component({
   imports: [RouterLink],
   selector: 'app-medicines',
@@ -32,6 +29,7 @@ interface Medicine {
   templateUrl: './medicines.html',
 })
 export class Medicines implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly FORM: Record<string, { icon: string; cls: string }> = {
     Tablet: { icon: 'icon-pill', cls: 'form-tablet' },
     Capsule: { icon: 'icon-tablets', cls: 'form-capsule' },

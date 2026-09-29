@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface ScheduleSlot {
   time: string;
@@ -40,21 +42,14 @@ interface TaskItem {
   done: boolean;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "doctor-dashboard".
- * The hero, schedule rail, waiting room, census, analytics and activity
- * panels ship as static markup matching this seed data; this only wires
- * the mutation handlers (sign lab, dismiss/clear alerts, toggle tasks,
- * start next consult, and the quick-action buttons). The page has no
- * labs panel, so that part of the original script is skipped.
- */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-doctor-dashboard',
   styleUrl: './doctor-dashboard.css',
   templateUrl: './doctor-dashboard.html',
 })
 export class DoctorDashboard implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly now = 9 * 60 + 42;
 
   private schedule: ScheduleSlot[] = [

@@ -1,0 +1,197 @@
+<div id="lrd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li><a [routerLink]="AllRoutes.labTestResults" class="hover:text-primary transition-colors">Lab Test Results</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Lab Test Result Details</li>
+        </ol>
+    </nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="lrd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="lrd-hero-ico"><i class="icon-microscope"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="lrd-test-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Complete Blood Count</h1>
+                        <span class="lrd-hbadge" id="lrd-flag-badge"><span class="lrd-dot" id="lrd-flag-dot"></span><span id="lrd-flag-text">Normal</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="lrd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="lrd-result-id">#RES-00001</span></span>
+                        <span class="lrd-hmeta"><i class="icon-user text-[13px] text-sky-300"></i><span id="lrd-patient-name">Anna Peterson</span></span>
+                        <span class="lrd-hmeta"><i class="icon-shield-check text-[13px] text-violet-300"></i><span id="lrd-verified-by">Dr. Rachel Kim</span></span>
+                        <span class="lrd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Reported <span id="lrd-date">2024-12-02</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 lrd-actions-print-hide">
+                <button type="button" class="lrd-btn lrd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                <button type="button" class="lrd-btn lrd-btn-glass" id="lrd-download-btn"><i class="icon-download"></i>Download PDF</button>
+                <a [routerLink]="AllRoutes.labTestResults" class="lrd-btn lrd-btn-primary"><i class="icon-arrow-left"></i>Back to Results</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="lrd-grid">
+        <div class="lrd-vital lrd-c-indigo">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-flask-conical"></i></span>
+                <span class="lrd-chip">Test</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="lrd-stat-test">Complete Blood Count</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Test</p>
+        </div>
+        <div class="lrd-vital lrd-c-rose">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-alert-triangle"></i></span>
+                <span class="lrd-chip">Flag</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="lrd-stat-flag">Normal</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Result Flag</p>
+        </div>
+        <div class="lrd-vital lrd-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-shield-check"></i></span>
+                <span class="lrd-chip">Verified</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="lrd-stat-verified">Dr. Rachel Kim</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Verified By</p>
+        </div>
+        <div class="lrd-vital lrd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-calendar"></i></span>
+                <span class="lrd-chip">Date</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="lrd-stat-date">2024-12-02</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Report Date</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="lrd-layout">
+        <div class="space-y-5">
+
+            <!-- Critical alert banner -->
+            <div class="lrd-alert [display:none]" id="lrd-critical-banner">
+                <span class="ico"><i class="icon-alert-triangle"></i></span>
+                <div>
+                    <p class="text-sm font-extrabold text-gray-900 dark:text-white">Critical result — clinician has been notified</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">This result requires immediate clinical attention.</p>
+                </div>
+            </div>
+
+            <!-- Result panel -->
+            <div class="lrd-surface">
+                <div class="lrd-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="lrd-title">Result</h2>
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <p class="lrd-result-value" id="lrd-result-value">13.2 g/dL (12-16)</p>
+                        <span id="lrd-result-flag-pill">Normal</span>
+                    </div>
+                    <div id="lrd-result-range"></div>
+                    <p class="mt-4 text-sm text-gray-500 dark:text-gray-400" id="lrd-verified-note">Verified by Dr. Rachel Kim on 2024-12-02</p>
+                </div>
+            </div>
+
+            <!-- Panel breakdown (multi-analyte tests only) -->
+            <div class="lrd-surface [display:none]" id="lrd-panel-section">
+                <div class="lrd-head">
+                    <span class="ico"><i class="icon-table"></i></span>
+                    <h2 class="lrd-title mr-auto">Panel Breakdown</h2>
+                    <span class="text-[11px] font-semibold text-gray-400" id="lrd-panel-count"></span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr>
+                                <th class="hms-th">Parameter</th>
+                                <th class="hms-th">Result</th>
+                                <th class="hms-th">Reference Range</th>
+                                <th class="hms-th text-right">Flag</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lrd-panel-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Trend -->
+            <div class="lrd-surface [display:none]" id="lrd-trend-section">
+                <div class="lrd-head">
+                    <span class="ico"><i class="icon-trending-up"></i></span>
+                    <h2 class="lrd-title">Result Trend</h2>
+                </div>
+                <div class="p-5">
+                    <div class="flex items-start justify-between gap-4 flex-wrap">
+                        <div>
+                            <p class="text-2xl font-extrabold text-gray-900 dark:text-white tabular-nums" id="lrd-trend-current">—</p>
+                            <p id="lrd-trend-delta" class="text-[11px] font-bold text-gray-400 mt-0.5">—</p>
+                        </div>
+                        <div class="lrd-spark-wrap"><div id="lrd-trend-chart"></div></div>
+                    </div>
+                    <div class="mt-4 grid grid-cols-5 gap-2 text-center" id="lrd-trend-points"></div>
+                </div>
+            </div>
+
+            <!-- Clinical interpretation -->
+            <div class="lrd-surface p-5 flex items-start gap-3.5">
+                <span class="lrd-icobox bg-success" id="lrd-interp-icon"><i class="icon-check"></i></span>
+                <div class="min-w-0">
+                    <h3 class="lrd-title mb-1">Clinical Interpretation</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" id="lrd-interp-text">—</p>
+                </div>
+            </div>
+
+            <!-- Specimen & collection -->
+            <div class="lrd-surface p-5">
+                <h3 class="lrd-title mb-3">Specimen &amp; Collection</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+                    <div class="lrd-kv"><span class="k"><i class="icon-test-tube text-[13px]"></i>Specimen Type</span><span class="v" id="lrd-spec-type">—</span></div>
+                    <div class="lrd-kv"><span class="k"><i class="icon-settings-2 text-[13px]"></i>Method</span><span class="v" id="lrd-spec-method">—</span></div>
+                    <div class="lrd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Collected</span><span class="v" id="lrd-spec-collected">—</span></div>
+                    <div class="lrd-kv"><span class="k"><i class="icon-inbox text-[13px]"></i>Received in Lab</span><span class="v" id="lrd-spec-received">—</span></div>
+                    <div class="lrd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Department</span><span class="v" id="lrd-spec-dept">—</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 lrd-sidebar">
+            <!-- Side hero -->
+            <div class="lrd-surface lrd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Verified By</p>
+                <h3 class="mt-1 text-lg font-extrabold" id="lrd-side-verified">Dr. Rachel Kim</h3>
+                <p class="text-sm text-white/80 mt-0.5" id="lrd-side-date">Reported 2024-12-02</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="lrd-hmeta"><i class="icon-mail text-[12px]"></i>Contact Lab</span>
+                </div>
+            </div>
+
+            <!-- Patient card -->
+            <div class="lrd-surface p-5">
+                <h3 class="lrd-title mb-3">Patient</h3>
+                <div class="lrd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v" id="lrd-kv-patient">Anna Peterson</span></div>
+                <div class="lrd-kv"><span class="k"><i class="icon-id-card text-[13px]"></i>MRN</span><span class="v" id="lrd-kv-mrn">—</span></div>
+                <div class="lrd-kv"><span class="k"><i class="icon-flask-conical text-[13px]"></i>Test</span><span class="v" id="lrd-kv-test">Complete Blood Count</span></div>
+                <div class="lrd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Report Date</span><span class="v" id="lrd-kv-date">2024-12-02</span></div>
+            </div>
+
+            <!-- Order info -->
+            <div class="lrd-surface p-5">
+                <h3 class="lrd-title mb-3">Order Information</h3>
+                <div class="lrd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Ordering Physician</span><span class="v" id="lrd-order-physician">—</span></div>
+                <div class="lrd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Lab Department</span><span class="v" id="lrd-order-dept">—</span></div>
+                <div class="lrd-kv"><span class="k"><i class="icon-zap text-[13px]"></i>Priority</span><span class="v" id="lrd-order-priority">—</span></div>
+            </div>
+        </div>
+    </div>
+</div>

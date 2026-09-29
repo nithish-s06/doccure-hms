@@ -1,0 +1,172 @@
+<div id="ppod-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li><a [routerLink]="AllRoutes.pharmacyPurchaseOrders" class="hover:text-primary transition-colors">Purchase Orders</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Purchase Order Details</li>
+        </ol>
+    </nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="ppod-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="ppod-hero-ico"><i class="icon-package"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight" id="ppod-supplier">AmerisourceBergen</h1>
+                        <span class="ppod-hbadge"><span class="ppod-dot"></span><span id="ppod-status-text">Partially Received</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="ppod-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="ppod-id">#PO-4173</span></span>
+                        <span class="ppod-hmeta"><i class="icon-package text-[13px] text-sky-300"></i><span id="ppod-items">6 items</span></span>
+                        <span class="ppod-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i><span id="ppod-placed">Ordered 09 Jul 2026</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 ppod-actions-print-hide">
+                <button type="button" class="ppod-btn ppod-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                <a [routerLink]="AllRoutes.pharmacyPurchaseOrders" class="ppod-btn ppod-btn-primary"><i class="icon-arrow-left"></i>Back to Orders</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="ppod-grid">
+        <div class="ppod-vital ppod-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-truck"></i></span>
+                <span class="ppod-chip">Vendor</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ppod-vendor">AmerisourceBergen</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Supplier</p>
+        </div>
+        <div class="ppod-vital ppod-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-dollar-sign"></i></span>
+                <span class="ppod-chip">Total</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ppod-value">$12,750.00</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Order Value</p>
+        </div>
+        <div class="ppod-vital ppod-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-package-check"></i></span>
+                <span class="ppod-chip" id="ppod-pct-chip">67%</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ppod-fraction">4 / 6</p>
+            <div class="ppod-progress-track mt-2"><div class="ppod-progress-fill w-[67%]" id="ppod-progress-fill-1"></div></div>
+            <p class="mt-1.5 text-[11px] font-semibold text-gray-500 dark:text-gray-400">Items Received</p>
+        </div>
+        <div class="ppod-vital ppod-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-list-checks"></i></span>
+                <span class="ppod-chip">Stage</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ppod-stage">Partially Received</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="ppod-layout">
+        <div class="space-y-5">
+
+            <!-- Workflow timeline -->
+            <div class="ppod-surface">
+                <div class="ppod-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="ppod-title">Order Workflow</h2>
+                </div>
+                <div class="ppod-tl p-5">
+                    <div class="ppod-tl-item done">
+                        <span class="ppod-tl-node"><i class="icon-check"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Draft Created</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400" id="ppod-tl-draft">PO-4173 raised for AmerisourceBergen · 09 Jul 2026</p>
+                    </div>
+                    <div class="ppod-tl-item done" id="ppod-tl-sent-item">
+                        <span class="ppod-tl-node"><i class="icon-send"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Sent to Supplier</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400" id="ppod-tl-sent">Order transmitted, delivery expected 17 Jul 2026</p>
+                    </div>
+                    <div class="ppod-tl-item current" id="ppod-tl-partial-item">
+                        <span class="ppod-tl-node"><i class="icon-package"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white" id="ppod-tl-partial-title">Partially Received</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400" id="ppod-tl-partial">4 of 6 line items booked in so far · 2 outstanding</p>
+                    </div>
+                    <div class="ppod-tl-item" id="ppod-tl-full-item">
+                        <span class="ppod-tl-node"><i class="icon-package-check"></i></span>
+                        <p class="text-sm font-bold text-gray-500 dark:text-gray-400">Fully Received</p>
+                        <p class="text-xs text-gray-400 dark:text-gray-500" id="ppod-tl-full">Awaiting remaining delivery</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delivery progress -->
+            <div class="ppod-surface">
+                <div class="ppod-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="ppod-title">Delivery Progress</h2>
+                </div>
+                <div class="p-5 space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">
+                            <span id="ppod-progress-label">4 of 6 line items received</span>
+                            <span id="ppod-pct-2">67%</span>
+                        </div>
+                        <div class="ppod-progress-track"><div class="ppod-progress-fill w-[67%]" id="ppod-progress-fill-2"></div></div>
+                    </div>
+                    <ul class="ppod-breakdown">
+                        <li>
+                            <span class="ico"><i class="icon-package-check"></i></span>
+                            <span id="ppod-received-line">4 items received<span class="sub block" id="ppod-received-sub">Booked in against this order so far</span></span>
+                        </li>
+                        <li>
+                            <span class="ico"><i class="icon-clock"></i></span>
+                            <span id="ppod-outstanding-line">2 items outstanding<span class="sub block" id="ppod-outstanding-sub">Remaining line items yet to arrive</span></span>
+                        </li>
+                        <li>
+                            <span class="ico"><i class="icon-calendar"></i></span>
+                            <span id="ppod-expected-line">Expected delivery 17 Jul 2026<span class="sub block" id="ppod-expected-sub">Next delivery window from AmerisourceBergen</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 ppod-sidebar">
+            <!-- Supplier card -->
+            <div class="ppod-surface ppod-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Supplier</p>
+                <h3 class="mt-1 text-lg font-extrabold" id="ppod-side-supplier">AmerisourceBergen</h3>
+                <p class="text-sm text-white/80 mt-0.5">Procurement Partner</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="ppod-hmeta"><i class="icon-mail text-[12px]"></i>Contact Supplier</span>
+                </div>
+            </div>
+
+            <!-- Order details -->
+            <div class="ppod-surface p-5">
+                <h3 class="ppod-title mb-3">Order Details</h3>
+                <div class="ppod-kv"><span class="k"><i class="icon-truck text-[13px]"></i>Supplier</span><span class="v" id="ppod-kv-supplier">AmerisourceBergen</span></div>
+                <div class="ppod-kv"><span class="k"><i class="icon-hash text-[13px]"></i>PO #</span><span class="v" id="ppod-kv-id">#PO-4173</span></div>
+                <div class="ppod-kv"><span class="k"><i class="icon-dollar-sign text-[13px]"></i>Value</span><span class="v" id="ppod-kv-value">$12,750.00</span></div>
+                <div class="ppod-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Order Date</span><span class="v" id="ppod-kv-placed">09 Jul 2026</span></div>
+                <div class="ppod-kv"><span class="k"><i class="icon-truck text-[13px]"></i>Expected Delivery</span><span class="v" id="ppod-kv-expected">17 Jul 2026</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="ppod-surface p-5 space-y-2.5">
+                <h3 class="ppod-title mb-1">Quick Actions</h3>
+                <button type="button" class="ppod-btn ppod-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                <a [routerLink]="AllRoutes.pharmacyPurchaseOrders" class="ppod-btn ppod-btn-solid w-full justify-start"><i class="icon-arrow-left"></i>Back to Purchase Orders</a>
+                <a [routerLink]="AllRoutes.pharmacyPurchaseOrders" class="ppod-btn ppod-btn-solid w-full justify-start"><i class="icon-list"></i>All Purchase Orders</a>
+            </div>
+        </div>
+    </div>
+</div>

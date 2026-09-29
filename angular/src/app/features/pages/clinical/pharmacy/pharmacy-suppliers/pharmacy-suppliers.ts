@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 interface Supplier {
   id: string;
@@ -16,15 +17,6 @@ interface Supplier {
   status: string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "pharmacy-suppliers" (pharmacy-suppliers.html).
- * Vendor directory for pharmacy procurement. Static demo data — no API.
- *
- * The ported template has no sup-modal / del-modal markup (Preline modal
- * conversion note in script.js), so openSup()/confirmDelete() below are
- * faithful ports that simply find nothing to open — search/filter and the
- * export toast are the only wired, visible behavior.
- */
 @Component({
   imports: [RouterLink],
   selector: 'app-pharmacy-suppliers',
@@ -32,6 +24,7 @@ interface Supplier {
   templateUrl: './pharmacy-suppliers.html',
 })
 export class PharmacySuppliers implements AfterViewInit {
+  AllRoutes = All_Routes;
   private seq = 0;
   private mk(o: Partial<Supplier>): Supplier {
     this.seq++;

@@ -1,20 +1,17 @@
 import { AfterViewInit, Component, DOCUMENT, Inject, OnDestroy } from '@angular/core';
 import ApexCharts from 'apexcharts';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
-/**
- * Ported from tailwind/src/assets/js/ui-kit-demo-module.js —
- * "apex-chart-data.js" (lines 1-525), the chart configs that back the
- * main dashboard's Patient Growth / Quarterly / Revenue bar charts, the
- * three KPI sparklines, the three department-mix donut charts and the
- * appointment-density heatmap.
- */
+
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-dashboard',
   styleUrl: './dashboard.css',
   templateUrl: './dashboard.html',
 })
 export class Dashboard implements AfterViewInit, OnDestroy {
+  AllRoutes = All_Routes;
   private readonly bluePrimary = '#0070f3';
   private readonly blueLight = '#3b82f6';
 

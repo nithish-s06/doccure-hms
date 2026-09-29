@@ -1,0 +1,146 @@
+<div id="psd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li><a [routerLink]="AllRoutes.pharmacySales" class="hover:text-primary transition-colors">Sales</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Sale Receipt Details</li>
+        </ol>
+    </nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="psd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="psd-hero-ico"><i class="icon-receipt"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight" id="psd-customer">Grant Sutherland</h1>
+                        <span class="psd-hbadge"><span class="psd-dot"></span><span id="psd-status-text">Paid</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="psd-hmeta"><i class="icon-hash text-[13px] text-teal-300"></i><span id="psd-id">#INV-90212</span></span>
+                        <span class="psd-hmeta"><i class="icon-credit-card text-[13px] text-sky-300"></i><span id="psd-pay">Card Payment</span></span>
+                        <span class="psd-hmeta"><i class="icon-user-round text-[13px] text-violet-300"></i>Noel Baptiste, till operator</span>
+                        <span class="psd-hmeta"><i class="icon-clock text-[13px] text-emerald-300"></i><span id="psd-time">07:48 AM</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 psd-actions-print-hide">
+                <button type="button" class="psd-btn psd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Receipt</button>
+                <a [routerLink]="AllRoutes.pharmacySales" class="psd-btn psd-btn-primary"><i class="icon-arrow-left"></i>Back to Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="psd-grid">
+        <div class="psd-vital psd-c-teal">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-dollar-sign"></i></span>
+                <span class="psd-chip">Total</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="psd-amount">$32.40</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Amount Charged</p>
+        </div>
+        <div class="psd-vital psd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-package"></i></span>
+                <span class="psd-chip">Items</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="psd-items">3</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Line Items</p>
+        </div>
+        <div class="psd-vital psd-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-credit-card"></i></span>
+                <span class="psd-chip">Payment</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="psd-pay-method">Card</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Payment Method</p>
+        </div>
+        <div class="psd-vital psd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-circle-check"></i></span>
+                <span class="psd-chip">Status</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="psd-status-2">Paid</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Transaction Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="psd-layout">
+        <div class="space-y-5">
+
+            <!-- Line items -->
+            <div class="psd-surface">
+                <div class="psd-head">
+                    <span class="ico"><i class="icon-package"></i></span>
+                    <h2 class="psd-title">Items Sold</h2>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="psd-items">
+                        <thead><tr><th>Item</th><th>Qty</th><th>Unit Price</th><th>Line Total</th></tr></thead>
+                        <tbody id="psd-items-body">
+                            <tr><td class="font-semibold text-gray-900 dark:text-white">Amoxicillin 500mg (strip of 10)</td><td>1</td><td>$14.50</td><td class="font-bold">$14.50</td></tr>
+                            <tr><td class="font-semibold text-gray-900 dark:text-white">Paracetamol 650mg (strip of 15)</td><td>1</td><td>$6.90</td><td class="font-bold">$6.90</td></tr>
+                            <tr><td class="font-semibold text-gray-900 dark:text-white">Multivitamin Syrup 200ml</td><td>1</td><td>$11.00</td><td class="font-bold">$11.00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="px-5 py-4 border-t border-[var(--color-border-color)] flex justify-end">
+                    <div class="w-full sm:w-64 space-y-1.5 text-sm">
+                        <div class="flex justify-between text-gray-500 dark:text-gray-400"><span>Subtotal</span><span id="psd-subtotal">$32.40</span></div>
+                        <div class="flex justify-between text-gray-500 dark:text-gray-400"><span>Tax</span><span>$0.00</span></div>
+                        <div class="flex justify-between text-base font-extrabold text-gray-900 dark:text-white pt-1.5 border-t border-[var(--color-border-color)]"><span>Total</span><span id="psd-total">$32.40</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transaction notes -->
+            <div class="psd-surface">
+                <div class="psd-head">
+                    <span class="ico"><i class="icon-notebook-pen"></i></span>
+                    <h2 class="psd-title">Transaction Notes</h2>
+                </div>
+                <div class="p-5">
+                    <p class="text-sm text-gray-600 dark:text-gray-300" id="psd-notes">Card payment settled instantly at the pharmacy till. No refund or claim activity recorded against this sale.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 psd-sidebar">
+            <!-- Till operator -->
+            <div class="psd-surface psd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Till Operator</p>
+                <h3 class="mt-1 text-lg font-extrabold">Noel Baptiste</h3>
+                <p class="text-sm text-white/80 mt-0.5">Main Pharmacy Till</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="psd-hmeta"><i class="icon-clock text-[12px]"></i>Shift opened 07:00 AM</span>
+                </div>
+            </div>
+
+            <!-- Receipt details -->
+            <div class="psd-surface p-5">
+                <h3 class="psd-title mb-3">Receipt Details</h3>
+                <div class="psd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Customer</span><span class="v" id="psd-kv-customer">Grant Sutherland</span></div>
+                <div class="psd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Invoice #</span><span class="v" id="psd-kv-id">INV-90212</span></div>
+                <div class="psd-kv"><span class="k"><i class="icon-package text-[13px]"></i>Items</span><span class="v" id="psd-kv-items">3</span></div>
+                <div class="psd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Time</span><span class="v" id="psd-kv-time">07:48 AM</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="psd-surface p-5 space-y-2.5">
+                <h3 class="psd-title mb-1">Quick Actions</h3>
+                <button type="button" class="psd-btn psd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Receipt</button>
+                <button type="button" class="psd-btn psd-btn-solid w-full justify-start"><i class="icon-undo-2"></i>Process Refund</button>
+                <a [routerLink]="AllRoutes.pharmacySales" class="psd-btn psd-btn-solid w-full justify-start"><i class="icon-list"></i>All Sales</a>
+            </div>
+        </div>
+    </div>
+</div>
