@@ -29,6 +29,7 @@ export const Pages_Routes: Routes = [
             { path: 'add-patient', loadComponent: () => import('./main-menu/patients/add-patient/add-patient').then((m) => m.AddPatient)},
             { path: 'patient-profile', loadComponent: () => import('./main-menu/patients/patient-profile/patient-profile').then((m) => m.PatientProfile)},
             { path: 'admissions', loadComponent: () => import('./main-menu/patients/admissions/admissions').then((m) => m.Admissions)},
+            { path: 'admission-detail', loadComponent: () => import('./main-menu/patients/admission-detail/admission-detail').then((m) => m.AdmissionDetail)},
             { path: 'discharges', loadComponent: () => import('./main-menu/patients/discharges/discharges').then((m) => m.Discharges)},
             { path: 'opd-patients', loadComponent: () => import('./main-menu/patients/opd-patients/opd-patients').then((m) => m.OpdPatients)},
             { path: 'ipd-patients', loadComponent: () => import('./main-menu/patients/ipd-patients/ipd-patients').then((m) => m.IpdPatients)},
