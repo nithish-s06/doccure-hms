@@ -109,4 +109,142 @@
                             </section>
                         </div>
                     </div>
-                
+
+        <!-- Triage Assessment Modal -->
+        <div id="assess-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="as-title">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white border p-6 border-border-color rounded-lg pointer-events-auto max-h-[88vh] overflow-y-auto">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                    <div class="flex items-center gap-3">
+                        <img id="as-avatar" class="avatar object-cover ring-2 ring-warning/30" src="assets/img/avatar/avatar-01.jpg" alt="">
+                        <div>
+                            <h2 id="as-title" class="text-lg font-bold text-gray-900">Triage Assessment</h2>
+                            <p id="as-sub" class="text-xs text-gray-500 dark:text-gray-400"></p>
+                        </div>
+                    </div>
+                    <button type="button" id="as-close" aria-label="Close assessment" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" data-hs-overlay="#assess-modal">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+
+                <form id="as-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group col-span-2">
+                            <label for="as-complaint" class="form-label">Chief Complaint</label>
+                            <input id="as-complaint" type="text" class="form-input" placeholder="Chest pain radiating to left arm">
+                        </div>
+
+                        <div class="form-group col-span-2">
+                            <p class="form-label">Vital Signs</p>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                <div>
+                                    <label for="as-hr" class="text-[11px] font-medium text-gray-400">Heart Rate (bpm)</label>
+                                    <input id="as-hr" type="number" min="0" max="300" class="form-input mt-1" placeholder="84">
+                                </div>
+                                <div>
+                                    <label for="as-spo2" class="text-[11px] font-medium text-gray-400">SpO2 (%)</label>
+                                    <input id="as-spo2" type="number" min="0" max="100" class="form-input mt-1" placeholder="98">
+                                </div>
+                                <div>
+                                    <label for="as-rr" class="text-[11px] font-medium text-gray-400">Resp. Rate (/min)</label>
+                                    <input id="as-rr" type="number" min="0" max="80" class="form-input mt-1" placeholder="16">
+                                </div>
+                                <div>
+                                    <label for="as-bp" class="text-[11px] font-medium text-gray-400">Blood Pressure</label>
+                                    <input id="as-bp" type="text" class="form-input mt-1" placeholder="120/80">
+                                </div>
+                                <div>
+                                    <label for="as-temp" class="text-[11px] font-medium text-gray-400">Temp (°F)</label>
+                                    <input id="as-temp" type="number" step="0.1" class="form-input mt-1" placeholder="98.6">
+                                </div>
+                                <div>
+                                    <label for="as-pain" class="text-[11px] font-medium text-gray-400">Pain (0–10)</label>
+                                    <input id="as-pain" type="number" min="0" max="10" class="form-input mt-1" placeholder="4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decision support: suggests an ESI level from the vitals entered above. -->
+                        <div class="form-group col-span-2">
+                            <div id="as-suggest" class="rounded-lg border border-border-color bg-gray-50 dark:bg-slate-800 p-3 flex items-center gap-2.5">
+                                <i id="as-suggest-icon" class="icon-info text-info shrink-0"></i>
+                                <p id="as-suggest-text" class="text-xs text-gray-500 dark:text-gray-400">
+                                    Enter vitals for a suggested ESI level. The nurse's assessment always overrides the suggestion.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-span-2">
+                            <label for="as-esi" class="form-label">Assigned ESI Level</label>
+                            <select id="as-esi" class="form-select">
+                                <option value="">Select a level</option>
+                                <option value="1">ESI 1 — Resuscitation (immediate, life-saving intervention)</option>
+                                <option value="2">ESI 2 — Emergent (high risk, cannot wait)</option>
+                                <option value="3">ESI 3 — Urgent (multiple resources expected)</option>
+                                <option value="4">ESI 4 — Less Urgent (one resource expected)</option>
+                                <option value="5">ESI 5 — Non Urgent (no resources expected)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="as-nurse" class="form-label">Triage Nurse</label>
+                            <select id="as-nurse" class="form-select"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="as-disposition" class="form-label">Disposition</label>
+                            <select id="as-disposition" class="form-select">
+                                <option>Resuscitation</option>
+                                <option>Acute Care</option>
+                                <option>Observation</option>
+                                <option>Fast Track</option>
+                                <option>Waiting Room</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-span-2">
+                            <label for="as-allergies" class="form-label">Allergies</label>
+                            <input id="as-allergies" type="text" class="form-input" placeholder="Penicillin, latex — or 'None known'">
+                        </div>
+
+                        <div class="form-group col-span-2">
+                            <label for="as-notes" class="form-label">Assessment Notes</label>
+                            <textarea id="as-notes" class="form-textarea" placeholder="Onset 30 min ago, diaphoretic, denies shortness of breath..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-border-color flex gap-2 justify-end">
+                        <button type="button" id="as-cancel" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#assess-modal">Cancel</button>
+                        <button type="button" id="as-save" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Complete Triage</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ESI Guide Modal -->
+        <div id="guide-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="gm-title">
+            <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+                <div class="flex flex-col bg-white border p-6 border-border-color rounded-lg pointer-events-auto max-h-[88vh] overflow-y-auto">
+                <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <span class="size-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                            <i class="icon-book-open text-xl"></i>
+                        </span>
+                        <div>
+                            <h2 id="gm-title" class="text-lg font-bold text-gray-900">ESI Reference Guide</h2>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Emergency Severity Index, 5-level triage scale</p>
+                        </div>
+                    </div>
+                    <button type="button" id="gm-close" aria-label="Close guide" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" data-hs-overlay="#guide-modal">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <ul id="gm-body" class="space-y-2.5"><li class="rounded-lg border border-border-color p-3 flex gap-3"><span class="badge badge-red shrink-0 h-fit">ESI 1</span><div><p class="font-semibold text-sm text-gray-900">Resuscitation</p><p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Requires immediate life-saving intervention. Unresponsive, intubated, apneic, or pulseless.</p></div></li><li class="rounded-lg border border-border-color p-3 flex gap-3"><span class="badge badge-red shrink-0 h-fit">ESI 2</span><div><p class="font-semibold text-sm text-gray-900">Emergent</p><p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">High-risk situation, severe pain or distress, or confused / lethargic / disoriented. Cannot wait.</p></div></li><li class="rounded-lg border border-border-color p-3 flex gap-3"><span class="badge badge-amber shrink-0 h-fit">ESI 3</span><div><p class="font-semibold text-sm text-gray-900">Urgent</p><p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Stable, but two or more resources expected (labs, imaging, IV fluids, specialty consult).</p></div></li><li class="rounded-lg border border-border-color p-3 flex gap-3"><span class="badge badge-blue shrink-0 h-fit">ESI 4</span><div><p class="font-semibold text-sm text-gray-900">Less Urgent</p><p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Stable, one resource expected (a single X-ray, simple laceration repair, or prescription).</p></div></li><li class="rounded-lg border border-border-color p-3 flex gap-3"><span class="badge badge-green shrink-0 h-fit">ESI 5</span><div><p class="font-semibold text-sm text-gray-900">Non Urgent</p><p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Stable, no resources expected beyond a focused exam. Prescription refill, suture removal.</p></div></li></ul>
+                <div class="mt-5 pt-4 border-t border-border-color flex justify-end">
+                    <button type="button" id="gm-done" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold" data-hs-overlay="#guide-modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+

@@ -89,3 +89,36 @@
         </section>
     </div>
 </div>
+
+        <!-- New sale modal -->
+        <div id="sale-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none ph-scope" role="dialog" aria-modal="true" aria-labelledby="sl-title" tabindex="-1">
+            <div class="md:max-w-xl m-3 md:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center justify-between gap-3 pb-5 border-b border-border-color dark:border-neutral-700">
+                        <div class="flex items-center gap-3">
+                            <span class="size-11 rounded-2xl bg-teal-500/10 text-teal-500 flex items-center justify-center shrink-0"><i class="icon-receipt text-xl" aria-hidden="true"></i></span>
+                            <div>
+                                <h2 id="sl-title" class="text-lg font-bold text-gray-900">New Sale</h2>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Rings up an over-the-counter or script sale.</p>
+                            </div>
+                        </div>
+                        <button type="button" id="sl-close" aria-label="Close" data-hs-overlay="#sale-modal" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x" aria-hidden="true"></i></button>
+                    </div>
+                    <form id="sl-form" onsubmit="return false;" class="py-5 overflow-y-auto">
+                        <div class="form-grid">
+                            <div class="form-group"><label for="sl-customer" class="form-label">Customer</label><input id="sl-customer" type="text" class="form-input" placeholder="Walk-in / patient name"></div>
+                            <div class="form-group"><label for="sl-items" class="form-label">Items</label><input id="sl-items" type="number" min="1" class="form-input" placeholder="3"></div>
+                            <div class="form-group"><label for="sl-amount" class="form-label">Amount (USD)</label><input id="sl-amount" type="number" min="0" step="0.01" class="form-input" placeholder="24.80"></div>
+                            <div class="form-group">
+                                <label for="sl-pay" class="form-label">Payment Method</label>
+                                <select id="sl-pay" class="form-select"><option>Cash</option><option>Card</option><option>Insurance</option></select>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-border-color flex gap-2 justify-end">
+                            <button type="button" id="sl-cancel" data-hs-overlay="#sale-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                            <button type="button" id="sl-save" class="px-5 py-2 rounded-lg bg-teal-500 hover:bg-teal-600 text-white text-sm font-semibold">Complete Sale</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>

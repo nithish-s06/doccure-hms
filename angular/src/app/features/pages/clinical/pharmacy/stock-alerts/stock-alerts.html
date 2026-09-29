@@ -80,3 +80,26 @@
         </section>
     </div>
 </div>
+        <!-- Rules modal -->
+        <div id="rules-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none ph-scope" role="dialog" tabindex="-1" aria-labelledby="rl-title">
+          <div class="flex min-h-full items-center justify-center p-4">
+            <div class="modal-panel sm pointer-events-auto">
+                <div class="flex items-center gap-3">
+                    <span class="size-11 rounded-2xl bg-teal-500/10 text-teal-500 flex items-center justify-center shrink-0"><i class="icon-settings text-xl" aria-hidden="true"></i></span>
+                    <div>
+                        <h2 id="rl-title" class="text-lg font-bold text-gray-900">Alert Rules</h2>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Thresholds that raise automatic alerts.</p>
+                    </div>
+                </div>
+                <form id="rl-form" onsubmit="return false;">
+                    <div class="form-group"><label for="rl-low" class="form-label">Low-stock trigger (% of reorder level)</label><input id="rl-low" type="number" min="50" max="200" class="form-input" value="100"></div>
+                    <div class="form-group"><label for="rl-expiry" class="form-label">Expiry warning window (days)</label><input id="rl-expiry" type="number" min="7" max="365" class="form-input" value="90"></div>
+                    <div class="form-group"><label for="rl-cold" class="form-label">Cold-chain excursion tolerance (minutes)</label><input id="rl-cold" type="number" min="0" max="120" class="form-input" value="15"></div>
+                    <div class="pt-4 border-t border-border-color flex gap-2 justify-end">
+                        <button type="button" id="rl-cancel" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#rules-modal">Cancel</button>
+                        <button type="button" id="rl-save" class="px-5 py-2 rounded-lg bg-teal-500 hover:bg-teal-600 text-white text-sm font-semibold">Save Rules</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>

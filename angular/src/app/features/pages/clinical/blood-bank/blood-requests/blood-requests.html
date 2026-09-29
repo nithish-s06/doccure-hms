@@ -96,4 +96,97 @@
                             </div>
                         </div>
                     </div>
-                
+
+<div id="form-modal" class="modal-overlay hidden">
+    <div class="modal-panel">
+        <div class="flex items-center justify-between">
+            <h2 id="m-title" class="text-xl font-bold text-gray-900">New Request</h2>
+            <button id="m-close" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500">
+                <i class="icon-x"></i>
+            </button>
+        </div>
+        <form id="m-form" onsubmit="return false;">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="f-patient" class="form-label">Patient Name <span class="text-danger">*</span></label>
+                    <input id="f-patient" type="text" class="form-input" placeholder="Ravi Kumar" >
+                </div>
+                <div class="form-group">
+                    <label for="f-group" class="form-label">Blood Group</label>
+                    <select id="f-group" class="form-select">
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="f-units" class="form-label">Units Requested</label>
+                    <input id="f-units" type="number" class="form-input" placeholder="2" >
+                </div>
+                <div class="form-group">
+                    <label for="f-requestedby" class="form-label">Requesting Doctor / Ward</label>
+                    <input id="f-requestedby" type="text" class="form-input" placeholder="Dr. Mehta — ICU" >
+                </div>
+                <div class="form-group">
+                    <label for="f-urgency" class="form-label">Urgency</label>
+                    <select id="f-urgency" class="form-select">
+                        <option>Routine</option>
+                        <option>Urgent</option>
+                        <option>Emergency</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="f-date" class="form-label">Request Date</label>
+                    <div class="relative">
+                        <input type="text" id="f-date" placeholder="dd/mm/yyyy" class="form-input pr-10" data-provider="flatpickr" data-date-format="d-m-Y">
+                        <i class="icon-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-900"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="f-status" class="form-label">Status</label>
+                    <select id="f-status" class="form-select">
+                        <option>Pending</option>
+                        <option>Approved</option>
+                        <option>Fulfilled</option>
+                    </select>
+                </div>
+                <div class="form-group span-2">
+                    <label for="f-notes" class="form-label">Notes</label>
+                    <textarea id="f-notes" class="form-textarea" placeholder="Additional notes..."></textarea>
+                </div>
+            </div>
+            <div class="flex gap-3 justify-end">
+                <button id="m-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Save Request</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="del-modal" class="modal-overlay hidden">
+    <div class="modal-panel sm">
+        <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                <i class="icon-trash-2 text-red-600"></i>
+            </div>
+            <div>
+                <h3 class="font-bold text-gray-900 text-lg">Delete Request</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+            </div>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+            Delete request for
+            <strong id="del-name" class="text-gray-900"></strong>
+            ?
+        </p>
+        <div class="flex gap-3 justify-end">
+            <button id="del-cancel-btn" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+            <button id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Delete</button>
+        </div>
+    </div>
+</div>
+

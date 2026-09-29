@@ -120,4 +120,67 @@
                             </section>
                         </div>
                     </div>
-                
+
+        <!-- Alert Detail Modal -->
+        <div id="alert-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="am-title" tabindex="-1">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <span class="size-11 rounded-full bg-danger/10 text-danger flex items-center justify-center shrink-0">
+                        <i class="icon-triangle-alert text-xl"></i>
+                    </span>
+                    <div>
+                        <h2 id="am-title" class="text-lg font-bold text-gray-900">Critical Alert</h2>
+                        <p id="am-time" class="text-xs text-gray-500 dark:text-gray-400"></p>
+                    </div>
+                </div>
+                <p id="am-body" class="text-sm text-gray-600 dark:text-gray-300 mb-4"></p>
+                <div class="form-group">
+                    <label for="am-note" class="form-label">Acknowledgement Note</label>
+                    <textarea id="am-note" class="form-textarea" placeholder="Responding now, paging cardiology..."></textarea>
+                </div>
+                <div class="pt-4 border-t border-border-color flex gap-2 justify-end">
+                    <button type="button" data-hs-overlay="#alert-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Dismiss</button>
+                    <button type="button" id="am-ack" class="px-5 py-2 rounded-lg bg-danger hover:bg-red-700 text-white text-sm font-semibold">Acknowledge</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Code Blue Modal -->
+        <div id="code-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="cb-title" tabindex="-1">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <span class="size-11 rounded-full bg-danger/10 text-danger flex items-center justify-center shrink-0">
+                        <i class="icon-siren text-xl"></i>
+                    </span>
+                    <div>
+                        <h2 id="cb-title" class="text-lg font-bold text-gray-900">Activate Code Blue</h2>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Pages the resuscitation team hospital-wide.</p>
+                    </div>
+                </div>
+                <form id="cb-form" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="cb-location" class="form-label">Location</label>
+                        <select id="cb-location" class="form-select">
+                            <option>ER — Resuscitation Bay 1</option>
+                            <option>ER — Resuscitation Bay 2</option>
+                            <option>ER — Acute Care A3</option>
+                            <option>ER — Triage Desk</option>
+                            <option>ER — Waiting Area</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cb-patient" class="form-label">Patient</label>
+                        <select id="cb-patient" class="form-select"><option value="">Not identified / unknown</option><option value="ER-4821">Marcus Holloway (ER-4821)</option><option value="ER-4822">Denise Okafor (ER-4822)</option><option value="ER-4823">Arthur Delgado (ER-4823)</option><option value="ER-4824">Kaitlyn Brewer (ER-4824)</option><option value="ER-4825">Terrence Whitfield (ER-4825)</option><option value="ER-4826">Rosalind Pierce (ER-4826)</option><option value="ER-4827">Julian Alvarez (ER-4827)</option><option value="ER-4828">Bernadette Cho (ER-4828)</option><option value="ER-4829">Grant Sutherland (ER-4829)</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cb-details" class="form-label">Details</label>
+                        <textarea id="cb-details" class="form-textarea" placeholder="Witnessed arrest, CPR in progress..."></textarea>
+                    </div>
+                    <div class="pt-4 border-t border-border-color flex gap-2 justify-end">
+                        <button type="button" data-hs-overlay="#code-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button type="button" id="cb-activate" class="px-5 py-2 rounded-lg bg-danger hover:bg-red-700 text-white text-sm font-semibold">Activate Code Blue</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+

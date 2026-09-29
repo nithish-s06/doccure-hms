@@ -79,3 +79,39 @@
         </section>
     </div>
 </div>
+
+        <!-- Supplier modal -->
+        <div id="sup-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none ph-scope" role="dialog" aria-modal="true" aria-labelledby="sm-title" tabindex="-1">
+            <div class="md:max-w-xl m-3 md:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center justify-between gap-3 pb-5 border-b border-border-color dark:border-neutral-700">
+                        <div class="flex items-center gap-3">
+                            <span class="size-11 rounded-2xl bg-teal-500/10 text-teal-500 flex items-center justify-center shrink-0"><i class="icon-truck text-xl" aria-hidden="true"></i></span>
+                            <div>
+                                <h2 id="sm-title" class="text-lg font-bold text-gray-900">Add Supplier</h2>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Registers a vendor for pharmacy procurement.</p>
+                            </div>
+                        </div>
+                        <button type="button" id="sm-close" aria-label="Close" data-hs-overlay="#sup-modal" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500"><i class="icon-x" aria-hidden="true"></i></button>
+                    </div>
+                    <form id="sm-form" onsubmit="return false;" class="py-5 overflow-y-auto">
+                        <div class="form-grid">
+                            <div class="form-group"><label for="sm-name" class="form-label">Company Name</label><input id="sm-name" type="text" class="form-input" placeholder="McKesson"></div>
+                            <div class="form-group"><label for="sm-contact" class="form-label">Contact Person</label><input id="sm-contact" type="text" class="form-input" placeholder="Dana Whitcomb"></div>
+                            <div class="form-group"><label for="sm-email" class="form-label">Email</label><input id="sm-email" type="email" class="form-input" placeholder="orders@mckesson.com"></div>
+                            <div class="form-group"><label for="sm-phone" class="form-label">Phone</label><input id="sm-phone" type="tel" class="form-input" placeholder="(415) 983-8300"></div>
+                            <div class="form-group"><label for="sm-city" class="form-label">City</label><input id="sm-city" type="text" class="form-input" placeholder="Irving, TX"></div>
+                            <div class="form-group">
+                                <label for="sm-status" class="form-label">Status</label>
+                                <select id="sm-status" class="form-select"><option>Approved</option><option>Preferred</option><option>On Hold</option></select>
+                            </div>
+                            <div class="form-group col-span-2"><label for="sm-cats" class="form-label">Supply Categories</label><input id="sm-cats" type="text" class="form-input" placeholder="Antibiotics, Analgesics"></div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-border-color flex gap-2 justify-end">
+                            <button type="button" id="sm-cancel" data-hs-overlay="#sup-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                            <button type="button" id="sm-save" class="px-5 py-2 rounded-lg bg-teal-500 hover:bg-teal-600 text-white text-sm font-semibold">Save Supplier</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>

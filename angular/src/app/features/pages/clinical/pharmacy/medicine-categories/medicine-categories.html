@@ -135,3 +135,123 @@
     </div>
     </div>
 
+        <!-- ====================== CATEGORY DRAWER ======================== -->
+        <div id="drawer" class="hms-drawer ph-scope hms-scope" role="dialog" aria-modal="true" aria-labelledby="dw-title">
+            <div id="dw-backdrop" class="hms-drawer-backdrop"></div>
+
+            <div class="hms-drawer-panel">
+                <div class="hms-drawer-head">
+                    <span class="hms-hero-grid" aria-hidden="true"></span>
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span id="dw-icon" class="grid size-12 shrink-0 place-items-center rounded-2xl bg-white/10 text-white backdrop-blur-md">
+                                <i class="icon-layers text-xl" aria-hidden="true"></i>
+                            </span>
+                            <div class="min-w-0">
+                                <h2 id="dw-title" class="text-lg font-bold text-white truncate">Category</h2>
+                                <p id="dw-sub" class="text-xs text-white/60 truncate"></p>
+                            </div>
+                        </div>
+                        <button type="button" id="dw-close" aria-label="Close category details" class="grid size-9 shrink-0 place-items-center rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors">
+                            <i class="icon-x" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div id="dw-chips" class="mt-4 flex flex-wrap gap-2"></div>
+                </div>
+
+                <div class="hms-drawer-body">
+                    <!-- Description -->
+                    <section aria-labelledby="dw-desc-title">
+                        <h3 id="dw-desc-title" class="text-xs font-extrabold uppercase tracking-wider text-gray-400 mb-2.5">Description</h3>
+                        <p id="dw-description" class="text-xs text-gray-600 dark:text-gray-300"></p>
+                    </section>
+
+                    <!-- Stat tiles -->
+                    <section aria-labelledby="dw-stats-title">
+                        <h3 id="dw-stats-title" class="text-xs font-extrabold uppercase tracking-wider text-gray-400 mb-2.5">Category Metrics</h3>
+                        <div id="dw-stats" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"></div>
+                    </section>
+
+                    <!-- Stock health breakdown -->
+                    <section aria-labelledby="dw-health-title">
+                        <h3 id="dw-health-title" class="text-xs font-extrabold uppercase tracking-wider text-gray-400 mb-2.5">Stock Health</h3>
+                        <div id="dw-health" class="rounded-xl border border-border-color dark:border-white/10 p-3"></div>
+                    </section>
+
+                    <!-- Medicines in category -->
+                    <section aria-labelledby="dw-meds-title">
+                        <div class="flex items-center justify-between mb-2.5">
+                            <h3 id="dw-meds-title" class="text-xs font-extrabold uppercase tracking-wider text-gray-400">Medicines</h3>
+                            <a href="medicines.html" class="text-[11px] font-semibold text-primary hover:underline">Open in Medicines</a>
+                        </div>
+                        <ul id="dw-meds" class="space-y-1.5"></ul>
+                    </section>
+                </div>
+
+                <div class="hms-drawer-foot">
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" id="dw-act-edit" class="flex items-center justify-center gap-1.5 rounded-xl bg-primary/10 text-primary px-3 py-2.5 text-[11px] font-bold hover:bg-primary/20 transition-colors">
+                            <i class="icon-pencil" aria-hidden="true"></i>
+                            Edit
+                        </button>
+                        <button type="button" id="dw-act-add" class="flex items-center justify-center gap-1.5 rounded-xl bg-teal-500/10 text-teal-500 px-3 py-2.5 text-[11px] font-bold hover:bg-teal-500/20 transition-colors">
+                            <i class="icon-plus" aria-hidden="true"></i>
+                            Add Medicine
+                        </button>
+                        <button type="button" id="dw-act-archive" class="flex items-center justify-center gap-1.5 rounded-xl bg-slate-500/10 text-slate-500 px-3 py-2.5 text-[11px] font-bold hover:bg-slate-500/20 transition-colors">
+                            <i class="icon-archive" aria-hidden="true"></i>
+                            Archive
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ADD / EDIT MODAL ========================= -->
+        <div id="cat-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none ph-scope" role="dialog" aria-modal="true" aria-labelledby="cm-title" tabindex="-1">
+            <div class="md:max-w-xl m-3 md:mx-auto">
+                <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color dark:border-slate-700 rounded-lg pointer-events-auto">
+                    <div class="flex items-center justify-between gap-3 pb-5 border-b border-border-color dark:border-neutral-700">
+                        <div class="flex items-center gap-3">
+                            <span class="size-11 rounded-2xl bg-teal-500/10 text-teal-500 flex items-center justify-center shrink-0">
+                                <i class="icon-layers text-xl" aria-hidden="true"></i>
+                            </span>
+                            <div>
+                                <h2 id="cm-title" class="text-lg font-bold text-gray-900">Add Category</h2>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Groups related medicines in the formulary.</p>
+                            </div>
+                        </div>
+                        <button type="button" id="cm-close" aria-label="Close" data-hs-overlay="#cat-modal" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500">
+                            <i class="icon-x" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <form id="cm-form" onsubmit="return false;" class="py-5 overflow-y-auto">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="cm-name" class="form-label">Category Name</label>
+                                <input id="cm-name" type="text" class="form-input" placeholder="Antivirals">
+                            </div>
+                            <div class="form-group">
+                                <label for="cm-code" class="form-label">Code</label>
+                                <input id="cm-code" type="text" class="form-input" placeholder="AV">
+                            </div>
+                            <div class="form-group col-span-2">
+                                <p class="form-label">Icon &amp; Colour</p>
+                                <div id="cm-swatches" class="flex flex-wrap gap-2"></div>
+                            </div>
+                            <div class="form-group col-span-2">
+                                <label for="cm-desc" class="form-label">Description</label>
+                                <textarea id="cm-desc" class="form-textarea" placeholder="Medicines that inhibit viral replication..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-border-color flex gap-2 justify-end">
+                            <button type="button" id="cm-cancel" data-hs-overlay="#cat-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                            <button type="button" id="cm-save" class="px-5 py-2 rounded-lg bg-teal-500 hover:bg-teal-600 text-white text-sm font-semibold">Save Category</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+

@@ -95,3 +95,111 @@
                         </div>
                     </div>
                 
+        <div id="form-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="m-title">
+          <div class="flex min-h-full items-center justify-center p-4">
+            <div class="modal-panel pointer-events-auto">
+                <div class="flex items-center justify-between">
+                    <h2 id="m-title" class="text-xl font-bold text-gray-900">Add Medicine</h2>
+                    <button id="m-close" type="button" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500" data-hs-overlay="#form-modal" aria-label="Close">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <form id="m-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="f-name" class="form-label">Brand Name <span class="text-danger">*</span></label>
+                            <input id="f-name" class="form-input" placeholder="Amoxicillin 500mg">
+                        </div>
+                        <div class="form-group">
+                            <label for="f-generic" class="form-label">Generic Name</label>
+                            <input id="f-generic" class="form-input" placeholder="Amoxicillin">
+                        </div>
+                        <div class="form-group">
+                            <label for="f-cat" class="form-label">Category</label>
+                            <select id="f-cat" class="form-select">
+                                <option>Antibiotics</option>
+                                <option>Analgesics</option>
+                                <option>Antihypertensives</option>
+                                <option>Vitamins</option>
+                                <option>Antidiabetics</option>
+                                <option>Antihistamines</option>
+                                <option>Antacids</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-unit" class="form-label">Unit</label>
+                            <select id="f-unit" class="form-select">
+                                <option>Tablet</option>
+                                <option>Capsule</option>
+                                <option>Syrup (ml)</option>
+                                <option>Injection (vial)</option>
+                                <option>Cream (g)</option>
+                                <option>Drop</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-stock" class="form-label">Stock Qty <span class="text-danger">*</span></label>
+                            <input id="f-stock" type="number" min="0" class="form-input" placeholder="500" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-reorder" class="form-label">Reorder Level</label>
+                            <input id="f-reorder" type="number" min="0" class="form-input" placeholder="50" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-price" class="form-label">Unit Price ($)</label>
+                            <input id="f-price" type="number" step="0.01" min="0" class="form-input" placeholder="2.50" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-supplier" class="form-label">Supplier</label>
+                            <input id="f-supplier" class="form-input" placeholder="MedSupply Co." >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-expiry" class="form-label">Expiry Date</label>
+                            <div class="relative">
+                                <input type="text" id="f-expiry" placeholder="dd/mm/yyyy" class="form-input pr-10" data-provider="flatpickr" data-date-format="d-m-Y">
+                                <i class="icon-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-900"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-status" class="form-label">Status</label>
+                            <select id="f-status" class="form-select">
+                                <option>In Stock</option>
+                                <option>Low Stock</option>
+                                <option>Out of Stock</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button id="m-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#form-modal">Cancel</button>
+                        <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Save</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+        <div id="del-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="del-name">
+          <div class="flex min-h-full items-center justify-center p-4">
+            <div class="modal-panel sm pointer-events-auto">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Remove Medicine</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Remove
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    from inventory?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700" data-hs-overlay="#del-modal">Cancel</button>
+                    <button id="del-confirm-btn" type="button" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold" data-hs-overlay="#del-modal">Remove</button>
+                </div>
+            </div>
+          </div>
+        </div>
+

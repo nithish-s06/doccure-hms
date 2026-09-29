@@ -171,4 +171,237 @@
                         </section>
                     </div>
                     </div>
-                
+
+<!-- ======================= BED DETAIL DRAWER ====================== -->
+<div id="drawer" class="hms-drawer wb-scope hms-scope" role="dialog" aria-modal="true" aria-labelledby="dw-title">
+    <div id="dw-backdrop" class="hms-drawer-backdrop"></div>
+
+    <div class="hms-drawer-panel">
+        <div class="hms-drawer-head">
+            <span class="hms-hero-grid" aria-hidden="true"></span>
+            <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3 min-w-0">
+                    <span id="dw-icon" class="grid size-12 shrink-0 place-items-center rounded-2xl bg-white/10 text-white backdrop-blur-md">
+                        <i class="icon-bed text-xl" aria-hidden="true"></i>
+                    </span>
+                    <div class="min-w-0">
+                        <h2 id="dw-title" class="text-lg font-bold text-white truncate">Bed</h2>
+                        <p id="dw-sub" class="text-xs text-white/60 truncate"></p>
+                    </div>
+                </div>
+                <button type="button" id="dw-close" aria-label="Close bed details" class="grid size-9 shrink-0 place-items-center rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors">
+                    <i class="icon-x" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div id="dw-chips" class="mt-4 flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="hms-drawer-body">
+            <!-- Bed summary -->
+            <section aria-labelledby="dw-sum-title">
+                <h3 id="dw-sum-title" class="text-xs font-extrabold uppercase tracking-wider text-gray-400 mb-2.5">Bed Details</h3>
+                <dl id="dw-summary" class="grid grid-cols-2 gap-3"></dl>
+            </section>
+
+            <!-- Occupant -->
+            <section aria-labelledby="dw-occ-title">
+                <h3 id="dw-occ-title" class="text-xs font-extrabold uppercase tracking-wider text-gray-400 mb-2.5">Occupant</h3>
+                <div id="dw-occupant"></div>
+            </section>
+
+            <!-- Equipment -->
+            <section aria-labelledby="dw-eq-title">
+                <h3 id="dw-eq-title" class="text-xs font-extrabold uppercase tracking-wider text-gray-400 mb-2.5">Equipment &amp; Features</h3>
+                <ul id="dw-equipment" class="flex flex-wrap gap-2"></ul>
+            </section>
+
+            <!-- Cleaning log -->
+            <section aria-labelledby="dw-clean-title">
+                <h3 id="dw-clean-title" class="text-xs font-extrabold uppercase tracking-wider text-gray-400 mb-2.5">Cleaning &amp; Readiness</h3>
+                <div id="dw-cleaning" class="rounded-xl border border-border-color dark:border-white/10 p-3"></div>
+            </section>
+
+            <!-- History -->
+            <section aria-labelledby="dw-hist-title">
+                <h3 id="dw-hist-title" class="text-xs font-extrabold uppercase tracking-wider text-gray-400 mb-2.5">Bed History</h3>
+                <ul id="dw-history" class="hms-tl"><li class="hms-tl-item is-done"><span class="hms-tl-node"><i class="icon-check" aria-hidden="true"></i></span><div class="min-w-0 flex-1 -mt-0.5"><span class="text-[10px] font-bold text-gray-400 tabular-nums">09:12 AM</span><p class="text-xs text-gray-600 dark:text-gray-300">Discharge confirmed, bed released</p></div></li><li class="hms-tl-item is-done"><span class="hms-tl-node"><i class="icon-check" aria-hidden="true"></i></span><div class="min-w-0 flex-1 -mt-0.5"><span class="text-[10px] font-bold text-gray-400 tabular-nums">09:20 AM</span><p class="text-xs text-gray-600 dark:text-gray-300">Housekeeping task raised — terminal clean</p></div></li><li class="hms-tl-item is-current"><span class="hms-tl-node"><i class="icon-clock" aria-hidden="true"></i></span><div class="min-w-0 flex-1 -mt-0.5"><span class="text-[10px] font-bold text-gray-400 tabular-nums">09:34 AM</span><p class="text-xs text-gray-600 dark:text-gray-300">Cleaning in progress</p></div></li><li class="hms-tl-item "><span class="hms-tl-node"><i class="icon-clock" aria-hidden="true"></i></span><div class="min-w-0 flex-1 -mt-0.5"><span class="text-[10px] font-bold text-gray-400 tabular-nums">—</span><p class="text-xs text-gray-300 dark:text-slate-600">Awaiting readiness sign-off</p></div></li></ul>
+            </section>
+        </div>
+
+        <div class="hms-drawer-foot">
+            <p class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 mb-2">Quick Actions</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button type="button" id="dw-act-clean" class="flex items-center justify-center gap-1.5 rounded-xl bg-warning/10 text-warning px-3 py-2.5 text-[11px] font-bold hover:bg-warning/20 transition-colors">
+                    <i class="icon-spray-can" aria-hidden="true"></i>
+                    Clean
+                </button>
+                <button type="button" id="dw-act-ready" class="flex items-center justify-center gap-1.5 rounded-xl bg-success/10 text-success px-3 py-2.5 text-[11px] font-bold hover:bg-success/20 transition-colors">
+                    <i class="icon-check" aria-hidden="true"></i>
+                    Mark Ready
+                </button>
+                <button type="button" id="dw-act-block" class="flex items-center justify-center gap-1.5 rounded-xl bg-slate-500/10 text-slate-500 px-3 py-2.5 text-[11px] font-bold hover:bg-slate-500/20 transition-colors">
+                    <i class="icon-ban" aria-hidden="true"></i>
+                    Block
+                </button>
+                <button type="button" id="dw-act-assign" class="flex items-center justify-center gap-1.5 rounded-xl bg-primary/10 text-primary px-3 py-2.5 text-[11px] font-bold hover:bg-primary/20 transition-colors">
+                    <i class="icon-user-plus" aria-hidden="true"></i>
+                    Reserve
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== HOUSEKEEPING MODAL ======================= -->
+<div id="hk-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hk-modal-title">
+    <div class="sm:max-w-xl sm:w-full m-3 sm:mx-auto">
+        <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color rounded-lg pointer-events-auto max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between gap-3 mb-5">
+            <div class="flex items-center gap-3">
+                <span class="size-11 rounded-2xl bg-warning/10 text-warning flex items-center justify-center shrink-0">
+                    <i class="icon-spray-can text-xl" aria-hidden="true"></i>
+                </span>
+                <div>
+                    <h2 id="hk-modal-title" class="text-lg font-bold text-gray-900">Request Housekeeping</h2>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Raises a turnaround task for the cleaning team.</p>
+                </div>
+            </div>
+            <button type="button" id="hk-close" data-hs-overlay="#hk-modal" aria-label="Close housekeeping request" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500">
+                <i class="icon-x" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <form id="hk-form" onsubmit="return false;">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="hk-bed" class="form-label">Bed</label>
+                    <select id="hk-bed" class="form-select"><option value="MA-01" data-state="Occupied">MA-01 — Medical A (Occupied)</option><option value="MA-02" data-state="Occupied">MA-02 — Medical A (Occupied)</option><option value="MA-03" data-state="Cleaning">MA-03 — Medical A (Cleaning)</option><option value="MA-04" data-state="Available">MA-04 — Medical A (Available)</option><option value="MA-05" data-state="Blocked">MA-05 — Medical A (Blocked)</option><option value="MA-06" data-state="Occupied">MA-06 — Medical A (Occupied)</option><option value="MA-07" data-state="Available">MA-07 — Medical A (Available)</option><option value="MA-08" data-state="Cleaning">MA-08 — Medical A (Cleaning)</option><option value="SB-01" data-state="Occupied">SB-01 — Surgical B (Occupied)</option><option value="SB-02" data-state="Occupied">SB-02 — Surgical B (Occupied)</option><option value="SB-03" data-state="Reserved">SB-03 — Surgical B (Reserved)</option><option value="SB-04" data-state="Cleaning">SB-04 — Surgical B (Cleaning)</option><option value="SB-05" data-state="Available">SB-05 — Surgical B (Available)</option><option value="SB-06" data-state="Maintenance">SB-06 — Surgical B (Maintenance)</option><option value="SB-07" data-state="Occupied">SB-07 — Surgical B (Occupied)</option><option value="SB-08" data-state="Occupied">SB-08 — Surgical B (Occupied)</option><option value="SB-09" data-state="Available">SB-09 — Surgical B (Available)</option><option value="SB-10" data-state="Cleaning">SB-10 — Surgical B (Cleaning)</option><option value="MT-01" data-state="Occupied">MT-01 — Maternity (Occupied)</option><option value="MT-02" data-state="Available">MT-02 — Maternity (Available)</option><option value="MT-03" data-state="Occupied">MT-03 — Maternity (Occupied)</option><option value="MT-04" data-state="Cleaning">MT-04 — Maternity (Cleaning)</option><option value="MT-05" data-state="Available">MT-05 — Maternity (Available)</option><option value="MT-06" data-state="Blocked">MT-06 — Maternity (Blocked)</option><option value="PD-01" data-state="Occupied">PD-01 — Pediatrics (Occupied)</option><option value="PD-02" data-state="Available">PD-02 — Pediatrics (Available)</option><option value="PD-03" data-state="Reserved">PD-03 — Pediatrics (Reserved)</option><option value="PD-04" data-state="Cleaning">PD-04 — Pediatrics (Cleaning)</option><option value="PD-05" data-state="Available">PD-05 — Pediatrics (Available)</option><option value="PD-06" data-state="Maintenance">PD-06 — Pediatrics (Maintenance)</option><option value="IC-01" data-state="Occupied">IC-01 — ICU (Occupied)</option><option value="IC-02" data-state="Occupied">IC-02 — ICU (Occupied)</option><option value="IC-03" data-state="Cleaning">IC-03 — ICU (Cleaning)</option><option value="IC-04" data-state="Available">IC-04 — ICU (Available)</option><option value="IC-05" data-state="Blocked">IC-05 — ICU (Blocked)</option><option value="IC-06" data-state="Occupied">IC-06 — ICU (Occupied)</option><option value="OR-01" data-state="Occupied">OR-01 — Orthopedics (Occupied)</option><option value="OR-02" data-state="Available">OR-02 — Orthopedics (Available)</option><option value="OR-03" data-state="Cleaning">OR-03 — Orthopedics (Cleaning)</option><option value="OR-04" data-state="Occupied">OR-04 — Orthopedics (Occupied)</option><option value="OR-05" data-state="Reserved">OR-05 — Orthopedics (Reserved)</option><option value="OR-06" data-state="Available">OR-06 — Orthopedics (Available)</option><option value="ON-01" data-state="Occupied">ON-01 — Oncology (Occupied)</option><option value="ON-02" data-state="Occupied">ON-02 — Oncology (Occupied)</option><option value="ON-03" data-state="Occupied">ON-03 — Oncology (Occupied)</option><option value="ON-04" data-state="Cleaning">ON-04 — Oncology (Cleaning)</option><option value="ON-05" data-state="Available">ON-05 — Oncology (Available)</option><option value="CD-01" data-state="Occupied">CD-01 — Cardiology (Occupied)</option><option value="CD-02" data-state="Available">CD-02 — Cardiology (Available)</option><option value="CD-03" data-state="Occupied">CD-03 — Cardiology (Occupied)</option><option value="CD-04" data-state="Cleaning">CD-04 — Cardiology (Cleaning)</option><option value="CD-05" data-state="Maintenance">CD-05 — Cardiology (Maintenance)</option><option value="CD-06" data-state="Available">CD-06 — Cardiology (Available)</option></select>
+                </div>
+                <div class="form-group">
+                    <label for="hk-type" class="form-label">Clean Type</label>
+                    <select id="hk-type" class="form-select">
+                        <option value="45">Standard turnaround — 45 min</option>
+                        <option value="90">Terminal clean — 90 min</option>
+                        <option value="120">Isolation deep clean — 120 min</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="hk-priority" class="form-label">Priority</label>
+                    <select id="hk-priority" class="form-select">
+                        <option>Routine</option>
+                        <option>Urgent — patient waiting</option>
+                        <option>Immediate — ED holding</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="hk-assignee" class="form-label">Assign To</label>
+                    <select id="hk-assignee" class="form-select"><option>Rosa Villalobos</option><option>Dwayne Pickering</option><option>Anneke Brouwer</option><option>Tyrell Osei</option></select>
+                </div>
+                <div class="form-group col-span-2">
+                    <div id="hk-advice" class="rounded-xl border border-border-color bg-gray-50 dark:bg-slate-800 p-3 flex items-center gap-2.5">
+                        <i id="hk-advice-icon" class="icon-info text-info shrink-0" aria-hidden="true"></i>
+                        <p id="hk-advice-text" class="text-xs text-gray-500 dark:text-gray-400"></p>
+                    </div>
+                </div>
+                <div class="form-group col-span-2">
+                    <label for="hk-notes" class="form-label">Notes</label>
+                    <textarea id="hk-notes" class="form-textarea" placeholder="Patient discharged, linen change and terminal wipe-down required..."></textarea>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-border-color flex gap-2 justify-end">
+                <button type="button" id="hk-cancel" data-hs-overlay="#hk-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                <button type="button" id="hk-save" class="px-5 py-2 rounded-lg bg-warning hover:bg-amber-600 text-white text-sm font-semibold">Raise Task</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+<!-- ======================== BLOCK BED MODAL ====================== -->
+<div id="block-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="bk-title">
+    <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+        <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color rounded-lg pointer-events-auto max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center gap-3 mb-5">
+            <span class="size-11 rounded-2xl bg-slate-500/10 text-slate-500 flex items-center justify-center shrink-0">
+                <i class="icon-ban text-xl" aria-hidden="true"></i>
+            </span>
+            <div>
+                <h2 id="bk-title" class="text-lg font-bold text-gray-900">Block Bed</h2>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Removes a bed from the available pool.</p>
+            </div>
+        </div>
+        <div id="bk-warning" class="hidden rounded-xl border border-warning bg-warning/5 p-3 flex items-start gap-2.5 mb-4">
+            <i class="icon-triangle-alert text-warning shrink-0 mt-0.5" aria-hidden="true"></i>
+            <p id="bk-warning-text" class="text-xs text-gray-600 dark:text-gray-300"></p>
+        </div>
+        <form id="bk-form" onsubmit="return false;">
+            <div class="form-group">
+                <label for="bk-bed" class="form-label">Bed</label>
+                <select id="bk-bed" class="form-select"><option value="MA-01" data-state="Occupied">MA-01 — Medical A (Occupied)</option><option value="MA-02" data-state="Occupied">MA-02 — Medical A (Occupied)</option><option value="MA-03" data-state="Cleaning">MA-03 — Medical A (Cleaning)</option><option value="MA-04" data-state="Available">MA-04 — Medical A (Available)</option><option value="MA-05" data-state="Blocked">MA-05 — Medical A (Blocked)</option><option value="MA-06" data-state="Occupied">MA-06 — Medical A (Occupied)</option><option value="MA-07" data-state="Available">MA-07 — Medical A (Available)</option><option value="MA-08" data-state="Cleaning">MA-08 — Medical A (Cleaning)</option><option value="SB-01" data-state="Occupied">SB-01 — Surgical B (Occupied)</option><option value="SB-02" data-state="Occupied">SB-02 — Surgical B (Occupied)</option><option value="SB-03" data-state="Reserved">SB-03 — Surgical B (Reserved)</option><option value="SB-04" data-state="Cleaning">SB-04 — Surgical B (Cleaning)</option><option value="SB-05" data-state="Available">SB-05 — Surgical B (Available)</option><option value="SB-06" data-state="Maintenance">SB-06 — Surgical B (Maintenance)</option><option value="SB-07" data-state="Occupied">SB-07 — Surgical B (Occupied)</option><option value="SB-08" data-state="Occupied">SB-08 — Surgical B (Occupied)</option><option value="SB-09" data-state="Available">SB-09 — Surgical B (Available)</option><option value="SB-10" data-state="Cleaning">SB-10 — Surgical B (Cleaning)</option><option value="MT-01" data-state="Occupied">MT-01 — Maternity (Occupied)</option><option value="MT-02" data-state="Available">MT-02 — Maternity (Available)</option><option value="MT-03" data-state="Occupied">MT-03 — Maternity (Occupied)</option><option value="MT-04" data-state="Cleaning">MT-04 — Maternity (Cleaning)</option><option value="MT-05" data-state="Available">MT-05 — Maternity (Available)</option><option value="MT-06" data-state="Blocked">MT-06 — Maternity (Blocked)</option><option value="PD-01" data-state="Occupied">PD-01 — Pediatrics (Occupied)</option><option value="PD-02" data-state="Available">PD-02 — Pediatrics (Available)</option><option value="PD-03" data-state="Reserved">PD-03 — Pediatrics (Reserved)</option><option value="PD-04" data-state="Cleaning">PD-04 — Pediatrics (Cleaning)</option><option value="PD-05" data-state="Available">PD-05 — Pediatrics (Available)</option><option value="PD-06" data-state="Maintenance">PD-06 — Pediatrics (Maintenance)</option><option value="IC-01" data-state="Occupied">IC-01 — ICU (Occupied)</option><option value="IC-02" data-state="Occupied">IC-02 — ICU (Occupied)</option><option value="IC-03" data-state="Cleaning">IC-03 — ICU (Cleaning)</option><option value="IC-04" data-state="Available">IC-04 — ICU (Available)</option><option value="IC-05" data-state="Blocked">IC-05 — ICU (Blocked)</option><option value="IC-06" data-state="Occupied">IC-06 — ICU (Occupied)</option><option value="OR-01" data-state="Occupied">OR-01 — Orthopedics (Occupied)</option><option value="OR-02" data-state="Available">OR-02 — Orthopedics (Available)</option><option value="OR-03" data-state="Cleaning">OR-03 — Orthopedics (Cleaning)</option><option value="OR-04" data-state="Occupied">OR-04 — Orthopedics (Occupied)</option><option value="OR-05" data-state="Reserved">OR-05 — Orthopedics (Reserved)</option><option value="OR-06" data-state="Available">OR-06 — Orthopedics (Available)</option><option value="ON-01" data-state="Occupied">ON-01 — Oncology (Occupied)</option><option value="ON-02" data-state="Occupied">ON-02 — Oncology (Occupied)</option><option value="ON-03" data-state="Occupied">ON-03 — Oncology (Occupied)</option><option value="ON-04" data-state="Cleaning">ON-04 — Oncology (Cleaning)</option><option value="ON-05" data-state="Available">ON-05 — Oncology (Available)</option><option value="CD-01" data-state="Occupied">CD-01 — Cardiology (Occupied)</option><option value="CD-02" data-state="Available">CD-02 — Cardiology (Available)</option><option value="CD-03" data-state="Occupied">CD-03 — Cardiology (Occupied)</option><option value="CD-04" data-state="Cleaning">CD-04 — Cardiology (Cleaning)</option><option value="CD-05" data-state="Maintenance">CD-05 — Cardiology (Maintenance)</option><option value="CD-06" data-state="Available">CD-06 — Cardiology (Available)</option></select>
+            </div>
+            <div class="form-group">
+                <label for="bk-reason" class="form-label">Reason</label>
+                <select id="bk-reason" class="form-select">
+                    <option value="Blocked">Infection control — closed bay</option>
+                    <option value="Maintenance">Equipment fault</option>
+                    <option value="Maintenance">Scheduled maintenance</option>
+                    <option value="Blocked">Staffing shortfall</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bk-until" class="form-label">Expected Release</label>
+                <input id="bk-until" type="text" class="form-input" data-provider="flatpickr" data-date-format="d M Y" data-enable-time="true" placeholder="18 Jul, 14:00">
+            </div>
+            <div class="form-group">
+                <label for="bk-notes" class="form-label">Notes</label>
+                <textarea id="bk-notes" class="form-textarea" placeholder="Bay closed pending deep clean after norovirus case..."></textarea>
+            </div>
+            <div class="pt-4 border-t border-border-color flex gap-2 justify-end">
+                <button type="button" id="bk-cancel" data-hs-overlay="#block-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                <button type="button" id="bk-save" class="px-5 py-2 rounded-lg bg-slate-600 hover:bg-slate-700 text-white text-sm font-semibold">Block Bed</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+<!-- ======================== RESERVE MODAL ======================== -->
+<div id="reserve-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-80 opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="rs-title">
+    <div class="sm:max-w-md sm:w-full m-3 sm:mx-auto">
+        <div class="flex flex-col bg-white dark:bg-slate-800 border p-6 border-border-color rounded-lg pointer-events-auto max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center gap-3 mb-5">
+            <span class="size-11 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                <i class="icon-user-plus text-xl" aria-hidden="true"></i>
+            </span>
+            <div>
+                <h2 id="rs-title" class="text-lg font-bold text-gray-900">Reserve Bed</h2>
+                <p id="rs-sub" class="text-xs text-gray-500 dark:text-gray-400"></p>
+            </div>
+        </div>
+        <form id="rs-form" onsubmit="return false;">
+            <div class="form-group">
+                <label for="rs-patient" class="form-label">Reserve For</label>
+                <select id="rs-patient" class="form-select"><option>Harold Nakamura — ED, awaiting medical bed</option><option>Simone Ferraro — ED, post-op recovery</option><option>Cedric Lawson — transfer from Surgical ICU</option><option>Bernadette Cho — direct admission, Dr. Chen</option></select>
+            </div>
+            <div class="form-group">
+                <label for="rs-window" class="form-label">Hold Until</label>
+                <select id="rs-window" class="form-select">
+                    <option>1 hour</option>
+                    <option>2 hours</option>
+                    <option>4 hours</option>
+                    <option>End of shift</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rs-notes" class="form-label">Notes</label>
+                <textarea id="rs-notes" class="form-textarea" placeholder="Awaiting transfer from ED, expected within the hour..."></textarea>
+            </div>
+            <div class="pt-4 border-t border-border-color flex gap-2 justify-end">
+                <button type="button" id="rs-cancel" data-hs-overlay="#reserve-modal" class="px-4 py-2 rounded-lg border border-border-color text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                <button type="button" id="rs-save" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Reserve Bed</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

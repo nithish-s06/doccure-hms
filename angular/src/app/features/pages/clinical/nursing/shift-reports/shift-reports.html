@@ -86,3 +86,83 @@
                         </div>
                     </div>
                 
+
+        <div id="form-modal" class="modal-overlay hidden">
+            <div class="modal-panel">
+                <div class="flex items-center justify-between">
+                    <h2 id="m-title" class="text-xl font-bold text-gray-900">New Shift Report</h2>
+                    <button id="m-close" class="p-2 size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-500">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <form id="m-form" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="f-shift" class="form-label">Shift</label>
+                            <select id="f-shift" class="form-select">
+                                <option>Morning</option>
+                                <option>Evening</option>
+                                <option>Night</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-ward" class="form-label">Ward <span class="text-danger">*</span></label>
+                            <input id="f-ward" type="text" class="form-input" placeholder="ICU" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-nurse" class="form-label">Nurse <span class="text-danger">*</span></label>
+                            <input id="f-nurse" type="text" class="form-input" placeholder="Fatima Ali" >
+                        </div>
+                        <div class="form-group">
+                            <label for="f-count" class="form-label">Patient Count</label>
+                            <input id="f-count" type="number" class="form-input" placeholder="12" >
+                        </div>
+                        <div class="form-group span-2">
+                            <label for="f-notes" class="form-label">Key Incidents / Notes</label>
+                            <textarea id="f-notes" class="form-textarea" placeholder="All patients stable, one fall risk flagged in bed 4..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-incident" class="form-label">Incident Flagged</label>
+                            <select id="f-incident" class="form-select">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-date" class="form-label">Date</label>
+                            <div class="relative">
+                                <input type="text" id="f-date" placeholder="dd/mm/yyyy" class="form-input pr-10" data-provider="flatpickr" data-date-format="d-m-Y">
+                                <i class="icon-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-900"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button id="m-cancel" type="button" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                        <button id="btn-save" type="button" class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-semibold">Save Shift Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="del-modal" class="modal-overlay hidden">
+            <div class="modal-panel sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                        <i class="icon-trash-2 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg">Delete Shift Report</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-4 mb-6">
+                    Delete shift report for
+                    <strong id="del-name" class="text-gray-900"></strong>
+                    ?
+                </p>
+                <div class="flex gap-3 justify-end">
+                    <button id="del-cancel-btn" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700">Cancel</button>
+                    <button id="del-confirm-btn" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold">Delete</button>
+                </div>
+            </div>
+        </div>
+
