@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface CarePlan {
@@ -18,7 +19,7 @@ interface CarePlan {
  * search/filter/stats/delete are wired; delete uses a browser confirm().
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-care-plans',
   styleUrl: './care-plans.css',
   templateUrl: './care-plans.html',

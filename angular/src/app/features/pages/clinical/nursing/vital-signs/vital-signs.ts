@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface VitalReading {
@@ -21,7 +22,7 @@ interface VitalReading {
  * search/filter/stats/delete are wired; delete uses a browser confirm().
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-vital-signs',
   styleUrl: './vital-signs.css',
   templateUrl: './vital-signs.html',

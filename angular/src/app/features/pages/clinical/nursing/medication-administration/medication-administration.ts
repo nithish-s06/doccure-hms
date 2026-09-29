@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface MarEntry {
@@ -21,7 +22,7 @@ interface MarEntry {
  * search/filter/stats/delete are wired; delete uses a browser confirm().
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-medication-administration',
   styleUrl: './medication-administration.css',
   templateUrl: './medication-administration.html',

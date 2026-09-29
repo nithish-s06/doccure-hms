@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Medicine {
@@ -25,7 +26,7 @@ interface Medicine {
  * stock status, pricing and a detail drawer. Static demo data — no API.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-medicines',
   styleUrl: './medicines.css',
   templateUrl: './medicines.html',

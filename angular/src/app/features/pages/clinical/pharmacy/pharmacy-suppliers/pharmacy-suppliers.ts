@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Supplier {
@@ -25,7 +26,7 @@ interface Supplier {
  * export toast are the only wired, visible behavior.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-pharmacy-suppliers',
   styleUrl: './pharmacy-suppliers.css',
   templateUrl: './pharmacy-suppliers.html',

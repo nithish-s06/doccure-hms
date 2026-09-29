@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 /**
@@ -10,7 +11,7 @@ import { ToastService } from '../../../../../core/services/toast/toast.service';
  * (handled entirely by Preline's own hs-dropdown JS, so nothing to wire here).
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-patient-profile',
   styleUrl: './patient-profile.css',
   templateUrl: './patient-profile.html',

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface EsiLevel {
@@ -22,7 +23,7 @@ interface DoneRow {
  * Ported from tailwind/src/assets/js/script.js — "triage" (triage.html).
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-triage',
   styleUrl: './triage.css',
   templateUrl: './triage.html',

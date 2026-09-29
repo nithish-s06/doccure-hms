@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface FamilyMember {
@@ -11,7 +12,7 @@ interface FamilyMember {
 }
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-patient-family-members',
   styleUrl: './patient-family-members.css',
   templateUrl: './patient-family-members.html',

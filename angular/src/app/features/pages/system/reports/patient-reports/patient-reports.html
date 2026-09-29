@@ -1,6 +1,16 @@
 <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
                     <div class="max-w-7xl mx-auto space-y-5">
 
+    <nav aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+        <li><a routerLink="/reports" class="hover:text-primary transition-colors">Reports</a></li>
+        <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Patient Reports</li>
+        </ol>
+    </nav>
+
                         <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
                             <div>
                                 <h1 class="text-2xl font-bold text-gray-900">Patient Reports</h1>

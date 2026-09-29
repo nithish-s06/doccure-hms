@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 declare const HSOverlay: any;
@@ -22,7 +23,7 @@ interface AlertItem {
  * actually change (renderAlerts).
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-emergency-dashboard',
   styleUrl: './emergency-dashboard.css',
   templateUrl: './emergency-dashboard.html',

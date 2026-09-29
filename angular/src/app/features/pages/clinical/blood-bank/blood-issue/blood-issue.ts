@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface BloodIssueRecord {
@@ -21,7 +22,7 @@ interface BloodIssueRecord {
  * no-op, matching the source's MC.openModal behavior on a missing id).
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-blood-issue',
   styleUrl: './blood-issue.css',
   templateUrl: './blood-issue.html',

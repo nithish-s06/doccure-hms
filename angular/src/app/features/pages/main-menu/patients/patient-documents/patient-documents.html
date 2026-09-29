@@ -1,6 +1,16 @@
                 
                     <div id="doc-page" class="max-w-[1500px] mx-auto">
 
+    <nav aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+            <li><a routerLink="/patients" class="hover:text-primary transition-colors">Patients</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Documents</li>
+        </ol>
+    </nav>
+
                         <!-- ==================== SKELETON ==================== -->
                         <div id="doc-skeleton" class="space-y-5">
                             <div class="doc-sk h-[170px] radius-override-150"></div>

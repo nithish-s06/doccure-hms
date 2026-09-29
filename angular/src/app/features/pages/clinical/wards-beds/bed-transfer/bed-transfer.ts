@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 /**
@@ -13,7 +14,7 @@ import { ToastService } from '../../../../../core/services/toast/toast.service';
  * via a toast instead of a modal, and "New Transfer" confirms with a toast.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-bed-transfer',
   styleUrl: './bed-transfer.css',
   templateUrl: './bed-transfer.html',

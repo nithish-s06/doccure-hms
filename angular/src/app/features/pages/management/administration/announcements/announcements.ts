@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-announcements',
   styleUrl: './announcements.css',
   templateUrl: './announcements.html',

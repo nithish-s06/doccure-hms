@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 interface Sale {
@@ -22,7 +23,7 @@ interface Sale {
  * toast-only buttons are the wired, visible behavior.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-pharmacy-sales',
   styleUrl: './pharmacy-sales.css',
   templateUrl: './pharmacy-sales.html',
