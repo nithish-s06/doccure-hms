@@ -1,5 +1,5 @@
-                <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
-                    <div class="max-w-5xl mx-auto space-y-5">
+
+<div class="max-w-5xl mx-auto space-y-5">
 
     <nav aria-label="Breadcrumb">
         <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
@@ -11,111 +11,110 @@
         </ol>
     </nav>
 
-                        <div data-aos="fade-up">
-                            <h1 class="text-2xl font-bold text-gray-900">Account Settings</h1>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage your personal information, security and notification preferences</p>
-                        </div>
+    <div data-aos="fade-up">
+        <h1 class="text-2xl font-bold text-gray-900">Account Settings</h1>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage your personal information, security and notification preferences</p>
+    </div>
 
-                        <!-- Personal Info -->
-                        <div class="card p-5" data-aos="fade-up" data-aos-delay="50">
-                            <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="icon-user text-primary"></i> Personal Information</h2>
-                            <div class="flex items-center gap-4 mb-5">
-                                <img src="assets/img/avatar/avatar-01.jpg" alt="avatar" class="w-16 h-16 rounded-xl object-cover border border-border-color">
-                            </div>
-                            <form id="account-form">
-                                <div class="form-grid">
-                                    <div class="form-group">
-                                        <label for="fld-first-name" class="form-label">First Name</label>
-                                        <input id="fld-first-name" class="form-input" value="Angela">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fld-last-name" class="form-label">Last Name</label>
-                                        <input id="fld-last-name" class="form-input" value="Reyes">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fld-email-address" class="form-label">Email Address</label>
-                                        <input id="fld-email-address" type="email" class="form-input" value="angela.reyes@dreamshms.health">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fld-phone-number" class="form-label">Phone Number</label>
-                                        <input id="fld-phone-number" class="form-input" value="+1 (415) 555-0148">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fld-department" class="form-label">Department</label>
-                                        <select id="fld-department" class="form-select">
-                                            <option>Cardiology</option>
-                                            <option>Neurology</option>
-                                            <option>Orthopedics</option>
-                                            <option>Emergency</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fld-designation" class="form-label">Designation</label>
-                                        <input id="fld-designation" class="form-input" value="Senior Consultant">
-                                    </div>
-                                    <div class="form-group span-2">
-                                        <label for="fld-address" class="form-label">Address</label>
-                                        <textarea id="fld-address" class="form-textarea">221 Harbor View Lane, San Francisco, CA 94107</textarea>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+    <!-- Personal Info -->
+    <div class="card p-5" data-aos="fade-up" data-aos-delay="50">
+        <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="icon-user text-primary"></i> Personal Information</h2>
+        <div class="flex items-center gap-4 mb-5">
+            <img src="assets/img/avatar/avatar-01.jpg" alt="avatar" class="w-16 h-16 rounded-xl object-cover border border-border-color">
+        </div>
+        <form id="account-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="fld-first-name" class="form-label">First Name</label>
+                    <input id="fld-first-name" class="form-input" value="Angela">
+                </div>
+                <div class="form-group">
+                    <label for="fld-last-name" class="form-label">Last Name</label>
+                    <input id="fld-last-name" class="form-input" value="Reyes">
+                </div>
+                <div class="form-group">
+                    <label for="fld-email-address" class="form-label">Email Address</label>
+                    <input id="fld-email-address" type="email" class="form-input" value="angela.reyes@dreamshms.health">
+                </div>
+                <div class="form-group">
+                    <label for="fld-phone-number" class="form-label">Phone Number</label>
+                    <input id="fld-phone-number" class="form-input" value="+1 (415) 555-0148">
+                </div>
+                <div class="form-group">
+                    <label for="fld-department" class="form-label">Department</label>
+                    <select id="fld-department" class="form-select">
+                        <option>Cardiology</option>
+                        <option>Neurology</option>
+                        <option>Orthopedics</option>
+                        <option>Emergency</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fld-designation" class="form-label">Designation</label>
+                    <input id="fld-designation" class="form-input" value="Senior Consultant">
+                </div>
+                <div class="form-group span-2">
+                    <label for="fld-address" class="form-label">Address</label>
+                    <textarea id="fld-address" class="form-textarea">221 Harbor View Lane, San Francisco, CA 94107</textarea>
+                </div>
+            </div>
+        </form>
+    </div>
 
-                        <!-- Change Password -->
-                        <div class="card p-5" data-aos="fade-up" data-aos-delay="100">
-                            <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="icon-lock text-primary"></i> Change Password</h2>
-                            <form id="password-form">
-                                <div class="form-grid">
-                                    <div class="form-group span-2">
-                                        <label for="fld-current-password" class="form-label">Current Password</label>
-                                        <input id="fld-current-password" type="password" class="form-input" placeholder="Enter current password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fld-new-password" class="form-label">New Password</label>
-                                        <input id="fld-new-password" type="password" class="form-input" placeholder="Enter new password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fld-confirm-new-password" class="form-label">Confirm New Password</label>
-                                        <input id="fld-confirm-new-password" type="password" class="form-input" placeholder="Re-enter new password">
-                                    </div>
-                                </div>
-                                <p class="text-xs text-gray-400 mt-2">Password must be at least 8 characters and include a number and a symbol.</p>
-                            </form>
-                        </div>
+    <!-- Change Password -->
+    <div class="card p-5" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="icon-lock text-primary"></i> Change Password</h2>
+        <form id="password-form">
+            <div class="form-grid">
+                <div class="form-group span-2">
+                    <label for="fld-current-password" class="form-label">Current Password</label>
+                    <input id="fld-current-password" type="password" class="form-input" placeholder="Enter current password">
+                </div>
+                <div class="form-group">
+                    <label for="fld-new-password" class="form-label">New Password</label>
+                    <input id="fld-new-password" type="password" class="form-input" placeholder="Enter new password">
+                </div>
+                <div class="form-group">
+                    <label for="fld-confirm-new-password" class="form-label">Confirm New Password</label>
+                    <input id="fld-confirm-new-password" type="password" class="form-input" placeholder="Re-enter new password">
+                </div>
+            </div>
+            <p class="text-xs text-gray-400 mt-2">Password must be at least 8 characters and include a number and a symbol.</p>
+        </form>
+    </div>
 
-                        <!-- Notification Preferences -->
-                        <div class="card p-5" data-aos="fade-up" data-aos-delay="150">
-                            <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="icon-bell text-primary"></i> Notification Preferences</h2>
-                            <div class="divide-y divide-border-color">
-                                <div class="flex items-center justify-between py-3">
-                                    <div><p class="text-sm font-semibold text-gray-900">Email Notifications</p><p class="text-xs text-gray-500 dark:text-gray-400">Appointment updates and important alerts</p></div>
-                                    <label class="inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" class="sr-only peer" checked>
-                                        <div class="w-10 h-5.5 bg-gray-200 peer-checked:bg-primary rounded-full relative transition-colors after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-4.5 after:w-4.5 after:transition-transform peer-checked:after:translate-x-4.5"></div>
-                                    </label>
-                                </div>
-                                <div class="flex items-center justify-between py-3">
-                                    <div><p class="text-sm font-semibold text-gray-900">SMS Alerts</p><p class="text-xs text-gray-500 dark:text-gray-400">Critical alerts sent via text message</p></div>
-                                    <label class="inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" class="sr-only peer">
-                                        <div class="w-10 h-5.5 bg-gray-200 peer-checked:bg-primary rounded-full relative transition-colors after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-4.5 after:w-4.5 after:transition-transform peer-checked:after:translate-x-4.5"></div>
-                                    </label>
-                                </div>
-                                <div class="flex items-center justify-between py-3">
-                                    <div><p class="text-sm font-semibold text-gray-900">Push Notifications</p><p class="text-xs text-gray-500 dark:text-gray-400">Real-time browser and mobile push alerts</p></div>
-                                    <label class="inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" class="sr-only peer" checked>
-                                        <div class="w-10 h-5.5 bg-gray-200 peer-checked:bg-primary rounded-full relative transition-colors after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-4.5 after:w-4.5 after:transition-transform peer-checked:after:translate-x-4.5"></div>
-                                    </label>
-                                </div>
-                                <div class="flex items-center justify-between py-3">
-                                    <div><p class="text-sm font-semibold text-gray-900">Weekly Summary Email</p><p class="text-xs text-gray-500 dark:text-gray-400">Digest of appointments and tasks every Monday</p></div>
-                                    <label class="inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" class="sr-only peer" checked>
-                                        <div class="w-10 h-5.5 bg-gray-200 peer-checked:bg-primary rounded-full relative transition-colors after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-4.5 after:w-4.5 after:transition-transform peer-checked:after:translate-x-4.5"></div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
+    <!-- Notification Preferences -->
+    <div class="card p-5" data-aos="fade-up" data-aos-delay="150">
+        <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="icon-bell text-primary"></i> Notification Preferences</h2>
+        <div class="divide-y divide-border-color">
+            <div class="flex items-center justify-between py-3">
+                <div><p class="text-sm font-semibold text-gray-900">Email Notifications</p><p class="text-xs text-gray-500 dark:text-gray-400">Appointment updates and important alerts</p></div>
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer" checked>
+                    <div class="w-10 h-5.5 bg-gray-200 peer-checked:bg-primary rounded-full relative transition-colors after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-4.5 after:w-4.5 after:transition-transform peer-checked:after:translate-x-4.5"></div>
+                </label>
+            </div>
+            <div class="flex items-center justify-between py-3">
+                <div><p class="text-sm font-semibold text-gray-900">SMS Alerts</p><p class="text-xs text-gray-500 dark:text-gray-400">Critical alerts sent via text message</p></div>
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer">
+                    <div class="w-10 h-5.5 bg-gray-200 peer-checked:bg-primary rounded-full relative transition-colors after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-4.5 after:w-4.5 after:transition-transform peer-checked:after:translate-x-4.5"></div>
+                </label>
+            </div>
+            <div class="flex items-center justify-between py-3">
+                <div><p class="text-sm font-semibold text-gray-900">Push Notifications</p><p class="text-xs text-gray-500 dark:text-gray-400">Real-time browser and mobile push alerts</p></div>
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer" checked>
+                    <div class="w-10 h-5.5 bg-gray-200 peer-checked:bg-primary rounded-full relative transition-colors after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-4.5 after:w-4.5 after:transition-transform peer-checked:after:translate-x-4.5"></div>
+                </label>
+            </div>
+            <div class="flex items-center justify-between py-3">
+                <div><p class="text-sm font-semibold text-gray-900">Weekly Summary Email</p><p class="text-xs text-gray-500 dark:text-gray-400">Digest of appointments and tasks every Monday</p></div>
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer" checked>
+                    <div class="w-10 h-5.5 bg-gray-200 peer-checked:bg-primary rounded-full relative transition-colors after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-4.5 after:w-4.5 after:transition-transform peer-checked:after:translate-x-4.5"></div>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

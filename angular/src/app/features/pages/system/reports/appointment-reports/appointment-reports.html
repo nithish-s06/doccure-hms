@@ -1,5 +1,5 @@
-<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
-                    <div class="max-w-7xl mx-auto space-y-5">
+
+<div class="max-w-7xl mx-auto space-y-5">
 
     <nav aria-label="Breadcrumb">
         <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
@@ -11,81 +11,80 @@
         </ol>
     </nav>
 
-                        <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
-                            <div>
-                                <h1 class="text-2xl font-bold text-gray-900">Appointment Reports</h1>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Scheduling, completion and no-show summary for the selected period</p>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
-                            <div class="card p-4 flex items-center gap-4">
-                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                                    <i class="icon-calendar text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold text-gray-900" id="stat-scheduled">12</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Scheduled</p>
-                                </div>
-                            </div>
-                            <div class="card p-4 flex items-center gap-4">
-                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
-                                    <i class="icon-check-circle text-emerald-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold text-gray-900" id="stat-completed">7</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">Completed</p>
-                                </div>
-                            </div>
-                            <div class="card p-4 flex items-center gap-4">
-                                <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
-                                    <i class="icon-x-circle text-red-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold text-gray-900" id="stat-cancelled">2</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">Cancelled</p>
-                                </div>
-                            </div>
-                            <div class="card p-4 flex items-center gap-4">
-                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
-                                    <i class="icon-percent text-amber-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold text-gray-900" id="stat-noshow">16.7%</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">No-Show Rate</p>
-                                </div>
-                            </div>
-                        </div>
+    <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-900">Appointment Reports</h1>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Scheduling, completion and no-show summary for the selected period</p>
+        </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="card p-4 flex items-center gap-4">
+            <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                <i class="icon-calendar text-blue-600"></i>
+            </div>
+            <div>
+                <p class="text-xl font-bold text-gray-900" id="stat-scheduled">12</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Total Scheduled</p>
+            </div>
+        </div>
+        <div class="card p-4 flex items-center gap-4">
+            <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                <i class="icon-check-circle text-emerald-600"></i>
+            </div>
+            <div>
+                <p class="text-xl font-bold text-gray-900" id="stat-completed">7</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Completed</p>
+            </div>
+        </div>
+        <div class="card p-4 flex items-center gap-4">
+            <div class="p-3 size-11 flex items-center justify-center bg-red-50 dark:bg-red-900/20 rounded-xl">
+                <i class="icon-x-circle text-red-600"></i>
+            </div>
+            <div>
+                <p class="text-xl font-bold text-gray-900" id="stat-cancelled">2</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Cancelled</p>
+            </div>
+        </div>
+        <div class="card p-4 flex items-center gap-4">
+            <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                <i class="icon-percent text-amber-600"></i>
+            </div>
+            <div>
+                <p class="text-xl font-bold text-gray-900" id="stat-noshow">16.7%</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">No-Show Rate</p>
+            </div>
+        </div>
+    </div>
 
-                        <div class="card" data-aos="fade-up" data-aos-delay="100">
-                            <div class="p-4 border-b border-border-color">
-                                <h3 class="font-semibold text-gray-900">By Department</h3>
-                            </div>
-                            <div class="overflow-x-auto">
-                                <table class="data-table">
-                                    <thead><tr><th>Department</th><th>Scheduled</th><th>Completed</th><th>Cancelled</th><th>No-Show</th></tr></thead>
-                                    <tbody id="tbody-dept"><tr><td class="font-medium text-gray-900">Cardiology</td><td>3</td><td>2</td><td>0</td><td>0</td></tr><tr><td class="font-medium text-gray-900">Orthopedics</td><td>2</td><td>1</td><td>0</td><td>1</td></tr><tr><td class="font-medium text-gray-900">Pediatrics</td><td>2</td><td>1</td><td>1</td><td>0</td></tr><tr><td class="font-medium text-gray-900">Neurology</td><td>2</td><td>0</td><td>1</td><td>1</td></tr><tr><td class="font-medium text-gray-900">Dermatology</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td class="font-medium text-gray-900">General Medicine</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td class="font-medium text-gray-900">Oncology</td><td>1</td><td>1</td><td>0</td><td>0</td></tr></tbody>
-                                </table>
-                            </div>
-                        </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="p-4 border-b border-border-color">
+            <h3 class="font-semibold text-gray-900">By Department</h3>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="data-table">
+                <thead><tr><th>Department</th><th>Scheduled</th><th>Completed</th><th>Cancelled</th><th>No-Show</th></tr></thead>
+                <tbody id="tbody-dept"><tr><td class="font-medium text-gray-900">Cardiology</td><td>3</td><td>2</td><td>0</td><td>0</td></tr><tr><td class="font-medium text-gray-900">Orthopedics</td><td>2</td><td>1</td><td>0</td><td>1</td></tr><tr><td class="font-medium text-gray-900">Pediatrics</td><td>2</td><td>1</td><td>1</td><td>0</td></tr><tr><td class="font-medium text-gray-900">Neurology</td><td>2</td><td>0</td><td>1</td><td>1</td></tr><tr><td class="font-medium text-gray-900">Dermatology</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td class="font-medium text-gray-900">General Medicine</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td class="font-medium text-gray-900">Oncology</td><td>1</td><td>1</td><td>0</td><td>0</td></tr></tbody>
+            </table>
+        </div>
+    </div>
 
-                        <div class="card" data-aos="fade-up" data-aos-delay="150">
-                            <div class="p-4 border-b border-border-color flex items-center justify-between">
-                                <h3 class="font-semibold text-gray-900">Monthly Trend</h3>
-                                <span class="text-xs text-gray-400" id="count">12 records</span>
-                            </div>
-                            <div class="overflow-x-auto">
-                                <table class="data-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Month</th>
-                                            <th>Scheduled</th>
-                                            <th>Completed</th>
-                                            <th>Cancelled</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbody"><tr><td class="font-medium text-gray-900">December 2024</td><td>12</td><td>7</td><td>2</td></tr></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </main>
+    <div class="card" data-aos="fade-up" data-aos-delay="150">
+        <div class="p-4 border-b border-border-color flex items-center justify-between">
+            <h3 class="font-semibold text-gray-900">Monthly Trend</h3>
+            <span class="text-xs text-gray-400" id="count">12 records</span>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Scheduled</th>
+                        <th>Completed</th>
+                        <th>Cancelled</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"><tr><td class="font-medium text-gray-900">December 2024</td><td>12</td><td>7</td><td>2</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+</div>

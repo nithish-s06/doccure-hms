@@ -1,5 +1,5 @@
-<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-slate-900">
-                    <div class="max-w-7xl mx-auto space-y-5">
+
+<div class="max-w-7xl mx-auto space-y-5">
 
     <nav aria-label="Breadcrumb">
         <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
@@ -11,80 +11,79 @@
         </ol>
     </nav>
 
-                        <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
-                            <div>
-                                <h1 class="text-2xl font-bold text-gray-900">Pharmacy Reports</h1>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Medicine sales and stock value summary for the selected period</p>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
-                            <div class="card p-4 flex items-center gap-4">
-                                <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                                    <i class="icon-dollar-sign text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold text-gray-900" id="stat-sales">$806.00</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Sales</p>
-                                </div>
-                            </div>
-                            <div class="card p-4 flex items-center gap-4">
-                                <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
-                                    <i class="icon-pill text-emerald-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold text-gray-900" id="stat-items">955</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">Items Sold</p>
-                                </div>
-                            </div>
-                            <div class="card p-4 flex items-center gap-4">
-                                <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
-                                    <i class="icon-package text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold text-gray-900" id="stat-stockvalue">$48,250.00</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">Stock Value</p>
-                                </div>
-                            </div>
-                            <div class="card p-4 flex items-center gap-4">
-                                <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
-                                    <i class="icon-activity text-amber-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold text-gray-900" id="stat-avgsale">$67.17</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">Avg Sale Value</p>
-                                </div>
-                            </div>
-                        </div>
+    <div class="flex items-center justify-between flex-wrap gap-3" data-aos="fade-up">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-900">Pharmacy Reports</h1>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Medicine sales and stock value summary for the selected period</p>
+        </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="card p-4 flex items-center gap-4">
+            <div class="p-3 size-11 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                <i class="icon-dollar-sign text-blue-600"></i>
+            </div>
+            <div>
+                <p class="text-xl font-bold text-gray-900" id="stat-sales">$806.00</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Total Sales</p>
+            </div>
+        </div>
+        <div class="card p-4 flex items-center gap-4">
+            <div class="p-3 size-11 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                <i class="icon-pill text-emerald-600"></i>
+            </div>
+            <div>
+                <p class="text-xl font-bold text-gray-900" id="stat-items">955</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Items Sold</p>
+            </div>
+        </div>
+        <div class="card p-4 flex items-center gap-4">
+            <div class="p-3 size-11 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                <i class="icon-package text-purple-600"></i>
+            </div>
+            <div>
+                <p class="text-xl font-bold text-gray-900" id="stat-stockvalue">$48,250.00</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Stock Value</p>
+            </div>
+        </div>
+        <div class="card p-4 flex items-center gap-4">
+            <div class="p-3 size-11 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                <i class="icon-activity text-amber-600"></i>
+            </div>
+            <div>
+                <p class="text-xl font-bold text-gray-900" id="stat-avgsale">$67.17</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Avg Sale Value</p>
+            </div>
+        </div>
+    </div>
 
-                        <div class="card" data-aos="fade-up" data-aos-delay="100">
-                            <div class="p-4 border-b border-border-color">
-                                <h3 class="font-semibold text-gray-900">Top Selling Medicines</h3>
-                            </div>
-                            <div class="overflow-x-auto">
-                                <table class="data-table">
-                                    <thead><tr><th>Medicine</th><th>Category</th><th>Units Sold</th><th>Revenue</th></tr></thead>
-                                    <tbody id="tbody-top"><tr><td class="font-medium text-gray-900">Paracetamol</td><td class="text-gray-700 dark:text-gray-300">Analgesic</td><td>250</td><td>$125.00</td></tr><tr><td class="font-medium text-gray-900">Vitamin C</td><td class="text-gray-700 dark:text-gray-300">Vitamin</td><td>150</td><td>$45.00</td></tr><tr><td class="font-medium text-gray-900">Ibuprofen</td><td class="text-gray-700 dark:text-gray-300">Analgesic</td><td>100</td><td>$60.00</td></tr><tr><td class="font-medium text-gray-900">Vitamin D3</td><td class="text-gray-700 dark:text-gray-300">Vitamin</td><td>90</td><td>$36.00</td></tr><tr><td class="font-medium text-gray-900">Amoxicillin</td><td class="text-gray-700 dark:text-gray-300">Antibiotic</td><td>80</td><td>$96.00</td></tr><tr><td class="font-medium text-gray-900">Cetirizine</td><td class="text-gray-700 dark:text-gray-300">Antihistamine</td><td>60</td><td>$48.00</td></tr><tr><td class="font-medium text-gray-900">Azithromycin</td><td class="text-gray-700 dark:text-gray-300">Antibiotic</td><td>55</td><td>$99.00</td></tr><tr><td class="font-medium text-gray-900">Ciprofloxacin</td><td class="text-gray-700 dark:text-gray-300">Antibiotic</td><td>50</td><td>$75.00</td></tr></tbody>
-                                </table>
-                            </div>
-                        </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="p-4 border-b border-border-color">
+            <h3 class="font-semibold text-gray-900">Top Selling Medicines</h3>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="data-table">
+                <thead><tr><th>Medicine</th><th>Category</th><th>Units Sold</th><th>Revenue</th></tr></thead>
+                <tbody id="tbody-top"><tr><td class="font-medium text-gray-900">Paracetamol</td><td class="text-gray-700 dark:text-gray-300">Analgesic</td><td>250</td><td>$125.00</td></tr><tr><td class="font-medium text-gray-900">Vitamin C</td><td class="text-gray-700 dark:text-gray-300">Vitamin</td><td>150</td><td>$45.00</td></tr><tr><td class="font-medium text-gray-900">Ibuprofen</td><td class="text-gray-700 dark:text-gray-300">Analgesic</td><td>100</td><td>$60.00</td></tr><tr><td class="font-medium text-gray-900">Vitamin D3</td><td class="text-gray-700 dark:text-gray-300">Vitamin</td><td>90</td><td>$36.00</td></tr><tr><td class="font-medium text-gray-900">Amoxicillin</td><td class="text-gray-700 dark:text-gray-300">Antibiotic</td><td>80</td><td>$96.00</td></tr><tr><td class="font-medium text-gray-900">Cetirizine</td><td class="text-gray-700 dark:text-gray-300">Antihistamine</td><td>60</td><td>$48.00</td></tr><tr><td class="font-medium text-gray-900">Azithromycin</td><td class="text-gray-700 dark:text-gray-300">Antibiotic</td><td>55</td><td>$99.00</td></tr><tr><td class="font-medium text-gray-900">Ciprofloxacin</td><td class="text-gray-700 dark:text-gray-300">Antibiotic</td><td>50</td><td>$75.00</td></tr></tbody>
+            </table>
+        </div>
+    </div>
 
-                        <div class="card" data-aos="fade-up" data-aos-delay="150">
-                            <div class="p-4 border-b border-border-color flex items-center justify-between">
-                                <h3 class="font-semibold text-gray-900">By Category</h3>
-                                <span class="text-xs text-gray-400" id="count">12 records</span>
-                            </div>
-                            <div class="overflow-x-auto">
-                                <table class="data-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Category</th>
-                                            <th>Units Sold</th>
-                                            <th>Revenue</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbody-category"><tr><td class="font-medium text-gray-900">Analgesic</td><td>350</td><td>$185.00</td></tr><tr><td class="font-medium text-gray-900">Antibiotic</td><td>185</td><td>$270.00</td></tr><tr><td class="font-medium text-gray-900">Antihistamine</td><td>100</td><td>$84.00</td></tr><tr><td class="font-medium text-gray-900">Vitamin</td><td>240</td><td>$81.00</td></tr><tr><td class="font-medium text-gray-900">Cardiac</td><td>80</td><td>$186.00</td></tr></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </main>
+    <div class="card" data-aos="fade-up" data-aos-delay="150">
+        <div class="p-4 border-b border-border-color flex items-center justify-between">
+            <h3 class="font-semibold text-gray-900">By Category</h3>
+            <span class="text-xs text-gray-400" id="count">12 records</span>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Units Sold</th>
+                        <th>Revenue</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-category"><tr><td class="font-medium text-gray-900">Analgesic</td><td>350</td><td>$185.00</td></tr><tr><td class="font-medium text-gray-900">Antibiotic</td><td>185</td><td>$270.00</td></tr><tr><td class="font-medium text-gray-900">Antihistamine</td><td>100</td><td>$84.00</td></tr><tr><td class="font-medium text-gray-900">Vitamin</td><td>240</td><td>$81.00</td></tr><tr><td class="font-medium text-gray-900">Cardiac</td><td>80</td><td>$186.00</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+</div>
