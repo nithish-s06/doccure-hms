@@ -178,6 +178,10 @@ export const All_Routes={
     emergency:'/emergency',
     traumaCases:'/trauma-cases',
     criticalCare:'/critical-care',
+    criticalCareDetail:'/critical-care-detail',
+    emergencyDetail:'/emergency-detail',
+    traumaCaseDetail:'/trauma-case-detail',
+    triageDetail:'/triage-detail',
 
     // Clinical - Wards & Beds
     wards:'/wards',

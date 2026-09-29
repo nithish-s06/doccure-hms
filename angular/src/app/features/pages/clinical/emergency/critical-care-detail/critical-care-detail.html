@@ -1,0 +1,174 @@
+<div id="ccd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+            <li><a routerLink="/critical-care" class="hover:text-primary transition-colors">Critical Care</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Critical Care Patient</li>
+        </ol>
+    </nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="ccd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="ccd-hero-ico"><i class="icon-heart-pulse"></i></div>
+                <div class="min-w-0">
+                    <p class="ccd-kicker">Critical Care Patient</p>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Marcus Holloway</h1>
+                        <span class="ccd-hbadge"><span class="ccd-dot"></span><span>Critical</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="ccd-hmeta"><i class="icon-bed text-[13px] text-rose-300"></i>Bed ICU-01</span>
+                        <span class="ccd-hmeta"><i class="icon-stethoscope text-[13px] text-sky-300"></i>Dr. Naomi Adeyemi</span>
+                        <span class="ccd-hmeta"><i class="icon-trending-up text-[13px] text-amber-300"></i>NEWS2 17</span>
+                        <span class="ccd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Day 2 in ICU</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 ccd-actions-print-hide">
+                <button type="button" id="ccd-print" class="ccd-btn ccd-btn-glass"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/critical-care" class="ccd-btn ccd-btn-primary"><i class="icon-arrow-left"></i>Back to Critical Care</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="ccd-grid">
+        <div class="ccd-vital ccd-c-rose">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-activity"></i></span>
+                <span class="ccd-chip">Heart Rate</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">122 bpm</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Tachycardic</p>
+        </div>
+        <div class="ccd-vital ccd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-gauge"></i></span>
+                <span class="ccd-chip">Blood Pressure</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">88/54</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">On noradrenaline</p>
+        </div>
+        <div class="ccd-vital ccd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-wind"></i></span>
+                <span class="ccd-chip">SpO2</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">91%</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Ventilated · FiO2 60%</p>
+        </div>
+        <div class="ccd-vital ccd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-brain"></i></span>
+                <span class="ccd-chip">SOFA Score</span>
+            </div>
+            <span class="mt-3 inline-flex w-fit items-center px-3 py-1.5 rounded-lg text-sm font-extrabold text-danger bg-danger/10">12</span>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">High severity</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="ccd-layout">
+        <div class="space-y-5">
+
+            <!-- Care timeline -->
+            <div class="ccd-surface">
+                <div class="ccd-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="ccd-title">ICU Care Timeline</h2>
+                </div>
+                <div class="ccd-tl p-5">
+                    <div class="ccd-tl-item done"><span class="ccd-tl-node"><i class="icon-log-in"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Admitted from OR 3 post-splenectomy</p><p class="text-xs text-gray-500 dark:text-gray-400">15 Jul, 11:40 AM</p></div>
+                    <div class="ccd-tl-item done"><span class="ccd-tl-node"><i class="icon-syringe"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Noradrenaline started, MAP target 65</p><p class="text-xs text-gray-500 dark:text-gray-400">15 Jul, 2:20 PM</p></div>
+                    <div class="ccd-tl-item done"><span class="ccd-tl-node"><i class="icon-alert-triangle"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Failed sedation hold — agitated, resedated</p><p class="text-xs text-gray-500 dark:text-gray-400">16 Jul, 8:00 AM</p></div>
+                    <div class="ccd-tl-item current"><span class="ccd-tl-node"><i class="icon-scan"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Repeat CT abdomen ordered</p><p class="text-xs text-gray-500 dark:text-gray-400">17 Jul, 9:10 AM</p></div>
+                </div>
+            </div>
+
+            <!-- Case information -->
+            <div class="ccd-surface">
+                <div class="ccd-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="ccd-title">Case Information</h2>
+                </div>
+                <div class="p-5">
+                    <div class="ccd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">Marcus Holloway · 58 / Male</span></div>
+                    <div class="ccd-kv"><span class="k"><i class="icon-bed text-[13px]"></i>Bed</span><span class="v">ICU-01</span></div>
+                    <div class="ccd-kv"><span class="k"><i class="icon-file-text text-[13px]"></i>Diagnosis</span><span class="v">Post-op haemorrhagic shock, splenectomy</span></div>
+                    <div class="ccd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Intensivist</span><span class="v">Dr. Naomi Adeyemi</span></div>
+                    <div class="ccd-kv"><span class="k"><i class="icon-wind text-[13px]"></i>Ventilation</span><span class="v">PRVC · FiO2 60% · PEEP 10</span></div>
+                    <div class="ccd-kv"><span class="k"><i class="icon-droplets text-[13px]"></i>Organ Support</span><span class="v">Ventilator, Vasopressors, Sedation</span></div>
+                    <div class="ccd-kv"><span class="k"><i class="icon-moon text-[13px]"></i>RASS</span><span class="v">-4 (Deeply sedated)</span></div>
+                    <div class="ccd-kv"><span class="k"><i class="icon-log-in text-[13px]"></i>Admitted</span><span class="v">From OR 3 · 11:40 AM, 15 Jul</span></div>
+                </div>
+            </div>
+
+            <!-- Active infusions -->
+            <div class="ccd-surface">
+                <div class="ccd-head">
+                    <span class="ico"><i class="icon-syringe"></i></span>
+                    <h2 class="ccd-title">Active Infusions</h2>
+                </div>
+                <div class="p-5">
+                    <div class="ccd-kv"><span class="k"><i class="icon-droplet text-[13px]"></i>Noradrenaline</span><span class="v">0.28 mcg/kg/min</span></div>
+                    <div class="ccd-kv"><span class="k"><i class="icon-droplet text-[13px]"></i>Propofol</span><span class="v">180 mg/hr</span></div>
+                    <div class="ccd-kv"><span class="k"><i class="icon-droplet text-[13px]"></i>Fentanyl</span><span class="v">120 mcg/hr</span></div>
+                </div>
+            </div>
+
+            <!-- Intensivist notes -->
+            <div class="ccd-surface">
+                <div class="ccd-head">
+                    <span class="ico"><i class="icon-pen-line"></i></span>
+                    <h2 class="ccd-title">Intensivist Notes</h2>
+                </div>
+                <div class="p-5">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Remains vasopressor-dependent 36 hours post-splenectomy. Lactate not clearing (4.1 mmol/L). Repeat CT abdomen ordered to exclude ongoing bleeding. Continue lung-protective ventilation and daily sedation review.</p>
+                    <p class="mt-2 text-xs font-semibold text-gray-400">— Dr. Naomi Adeyemi, Intensivist · 09:10 AM</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 ccd-sidebar">
+            <!-- Intensivist -->
+            <div class="ccd-surface ccd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Intensivist</p>
+                <h3 class="mt-1 text-lg font-extrabold">Dr. Naomi Adeyemi</h3>
+                <p class="text-sm text-white/80 mt-0.5">Critical Care Medicine</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="ccd-hmeta"><i class="icon-phone-call text-[12px]"></i>Contact Intensivist</span>
+                </div>
+            </div>
+
+            <!-- Lines & tubes -->
+            <div class="ccd-surface p-5">
+                <h3 class="ccd-title mb-3">Lines &amp; Tubes</h3>
+                <div class="ccd-kv"><span class="k"><i class="icon-syringe text-[13px]"></i>Right IJ central line</span><span class="v">Day 2</span></div>
+                <div class="ccd-kv"><span class="k"><i class="icon-syringe text-[13px]"></i>Left radial arterial line</span><span class="v">Day 2</span></div>
+                <div class="ccd-kv"><span class="k"><i class="icon-wind text-[13px]"></i>Endotracheal tube 8.0</span><span class="v">Day 2</span></div>
+                <div class="ccd-kv"><span class="k"><i class="icon-droplet text-[13px]"></i>Urinary catheter</span><span class="v">Day 2</span></div>
+            </div>
+
+            <!-- Latest labs -->
+            <div class="ccd-surface p-5">
+                <h3 class="ccd-title mb-3">Latest Labs</h3>
+                <div class="ccd-kv"><span class="k"><i class="icon-flask-conical text-[13px]"></i>Lactate</span><span class="v">4.1 mmol/L <span class="ccd-pill">High</span></span></div>
+                <div class="ccd-kv"><span class="k"><i class="icon-flask-conical text-[13px]"></i>Hemoglobin</span><span class="v">7.8 g/dL <span class="ccd-pill">Low</span></span></div>
+                <div class="ccd-kv"><span class="k"><i class="icon-flask-conical text-[13px]"></i>Creatinine</span><span class="v">1.9 mg/dL <span class="ccd-pill">High</span></span></div>
+                <div class="ccd-kv"><span class="k"><i class="icon-flask-conical text-[13px]"></i>Platelets</span><span class="v">88 K/µL <span class="ccd-pill">Low</span></span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="ccd-surface p-5 space-y-2.5">
+                <h3 class="ccd-title mb-1">Quick Actions</h3>
+                <button type="button" id="ccd-print-2" class="ccd-btn ccd-btn-solid w-full justify-start"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/critical-care" class="ccd-btn ccd-btn-solid w-full justify-start"><i class="icon-list"></i>All Critical Care Patients</a>
+            </div>
+        </div>
+    </div>
+</div>

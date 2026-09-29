@@ -104,6 +104,10 @@ export const Pages_Routes: Routes = [
             { path: 'emergency', loadComponent: () => import('./clinical/emergency/emergency/emergency').then((m) => m.Emergency)},
             { path: 'trauma-cases', loadComponent: () => import('./clinical/emergency/trauma-cases/trauma-cases').then((m) => m.TraumaCases)},
             { path: 'critical-care', loadComponent: () => import('./clinical/emergency/critical-care/critical-care').then((m) => m.CriticalCare)},
+            { path: 'critical-care-detail', loadComponent: () => import('./clinical/emergency/critical-care-detail/critical-care-detail').then((m) => m.CriticalCareDetail)},
+            { path: 'emergency-detail', loadComponent: () => import('./clinical/emergency/emergency-detail/emergency-detail').then((m) => m.EmergencyDetail)},
+            { path: 'trauma-case-detail', loadComponent: () => import('./clinical/emergency/trauma-case-detail/trauma-case-detail').then((m) => m.TraumaCaseDetail)},
+            { path: 'triage-detail', loadComponent: () => import('./clinical/emergency/triage-detail/triage-detail').then((m) => m.TriageDetail)},
 
             // Clinical - Wards & Beds
             { path: 'wards', loadComponent: () => import('./clinical/wards-beds/wards/wards').then((m) => m.Wards)},

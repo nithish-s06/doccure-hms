@@ -1,0 +1,149 @@
+<div id="erd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+            <li><a routerLink="/emergency" class="hover:text-primary transition-colors">Emergency</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Emergency Case Details</li>
+        </ol>
+    </nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="erd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="erd-hero-ico"><i class="icon-siren"></i></div>
+                <div class="min-w-0">
+                    <p class="erd-kicker">Emergency Case</p>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Carlos Vega</h1>
+                        <span class="erd-hbadge"><span class="erd-dot"></span><span>In Treatment</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="erd-hmeta"><i class="icon-hash text-[13px] text-rose-300"></i>#ER-0001</span>
+                        <span class="erd-hmeta"><i class="icon-alert-triangle text-[13px] text-orange-300"></i>Red (Critical)</span>
+                        <span class="erd-hmeta"><i class="icon-stethoscope text-[13px] text-sky-300"></i>Dr. Tom Rivas</span>
+                        <span class="erd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Arrived <span>2024-12-10 08:15</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 erd-actions-print-hide">
+                <button type="button" id="erd-print" class="erd-btn erd-btn-glass"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/emergency" class="erd-btn erd-btn-primary"><i class="icon-arrow-left"></i>Back to Emergency</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="erd-grid">
+        <div class="erd-vital erd-c-rose">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-alert-triangle"></i></span>
+                <span class="erd-chip">Triage</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Red</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Critical Priority</p>
+        </div>
+        <div class="erd-vital erd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-user"></i></span>
+                <span class="erd-chip">Age / Sex</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">52 / M</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Patient</p>
+        </div>
+        <div class="erd-vital erd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-stethoscope"></i></span>
+                <span class="erd-chip">Doctor</span>
+            </div>
+            <p class="mt-3 text-lg font-extrabold text-gray-900 dark:text-white">Dr. Tom Rivas</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Assigned Doctor</p>
+        </div>
+        <div class="erd-vital erd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-activity"></i></span>
+                <span class="erd-chip">Status</span>
+            </div>
+            <span class="mt-3 inline-flex w-fit items-center px-3 py-1.5 rounded-lg text-sm font-extrabold text-primary bg-primary/10">In Treatment</span>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Case Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="erd-layout">
+        <div class="space-y-5">
+
+            <!-- Triage / treatment workflow -->
+            <div class="erd-surface">
+                <div class="erd-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="erd-title">Case Workflow</h2>
+                </div>
+                <div class="erd-tl p-5">
+                    <div class="erd-tl-item done"><span class="erd-tl-node"><i class="icon-log-in"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Arrived &amp; Triaged</p><p class="text-xs text-gray-500 dark:text-gray-400">2024-12-10 · 08:15</p></div>
+                    <div class="erd-tl-item current"><span class="erd-tl-node"><i class="icon-stethoscope"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">In Treatment</p><p class="text-xs text-gray-500 dark:text-gray-400">Dr. Tom Rivas</p></div>
+                    <div class="erd-tl-item"><span class="erd-tl-node"><i class="icon-log-out"></i></span><p class="text-sm font-bold text-gray-900 dark:text-white">Admitted / Discharged</p><p class="text-xs text-gray-500 dark:text-gray-400">Pending</p></div>
+                </div>
+            </div>
+
+            <!-- Case information -->
+            <div class="erd-surface">
+                <div class="erd-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="erd-title">Case Information</h2>
+                </div>
+                <div class="p-5">
+                    <div class="erd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">Carlos Vega</span></div>
+                    <div class="erd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Case ID</span><span class="v">#ER-0001</span></div>
+                    <div class="erd-kv"><span class="k"><i class="icon-alert-triangle text-[13px]"></i>Chief Complaint</span><span class="v">Severe chest pain, sweating</span></div>
+                    <div class="erd-kv"><span class="k"><i class="icon-flag text-[13px]"></i>Triage Level</span><span class="v">Red (Critical)</span></div>
+                    <div class="erd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Doctor</span><span class="v">Dr. Tom Rivas</span></div>
+                    <div class="erd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Arrival Time</span><span class="v">2024-12-10 08:15</span></div>
+                    <div class="erd-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Status</span><span class="v">In Treatment</span></div>
+                </div>
+            </div>
+
+            <!-- Clinical notes -->
+            <div class="erd-surface">
+                <div class="erd-head">
+                    <span class="ico"><i class="icon-file-text"></i></span>
+                    <h2 class="erd-title">Clinical Notes</h2>
+                </div>
+                <div class="p-5">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Suspected MI. ECG and cardiac enzymes ordered on arrival, aspirin given, cardiology on standby. Continuous cardiac monitoring in the resuscitation bay.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 erd-sidebar">
+            <!-- Assigned doctor -->
+            <div class="erd-surface erd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Assigned Doctor</p>
+                <h3 class="mt-1 text-lg font-extrabold">Dr. Tom Rivas</h3>
+                <p class="text-sm text-white/80 mt-0.5">Emergency Medicine</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="erd-hmeta"><i class="icon-phone-call text-[12px]"></i>Contact Doctor</span>
+                </div>
+            </div>
+
+            <!-- Case details -->
+            <div class="erd-surface p-5">
+                <h3 class="erd-title mb-3">Case Details</h3>
+                <div class="erd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v">Carlos Vega</span></div>
+                <div class="erd-kv"><span class="k"><i class="icon-alert-triangle text-[13px]"></i>Triage</span><span class="v">Red (Critical)</span></div>
+                <div class="erd-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Doctor</span><span class="v">Dr. Tom Rivas</span></div>
+                <div class="erd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Arrival</span><span class="v">2024-12-10 08:15</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="erd-surface p-5 space-y-2.5">
+                <h3 class="erd-title mb-1">Quick Actions</h3>
+                <button type="button" id="erd-print-2" class="erd-btn erd-btn-solid w-full justify-start"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/emergency" class="erd-btn erd-btn-solid w-full justify-start"><i class="icon-list"></i>All Emergency Cases</a>
+            </div>
+        </div>
+    </div>
+</div>
