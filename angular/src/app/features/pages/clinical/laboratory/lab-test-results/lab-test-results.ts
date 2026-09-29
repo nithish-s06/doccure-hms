@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 @Component({
   imports: [RouterLink],
@@ -7,4 +8,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './lab-test-results.css',
   templateUrl: './lab-test-results.html',
 })
-export class LabTestResults {}
+export class LabTestResults {
+  AllRoutes = All_Routes;
+}
