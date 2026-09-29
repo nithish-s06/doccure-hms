@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 type ViewMode = 'grid' | 'list';
 
@@ -26,12 +28,13 @@ interface StaticListInfo {
  * handler.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-patient-documents',
   styleUrl: './patient-documents.css',
   templateUrl: './patient-documents.html',
 })
 export class PatientDocuments implements AfterViewInit {
+  AllRoutes = All_Routes;
   private view: ViewMode = 'grid';
   private page = 1;
   private perPage = 12;

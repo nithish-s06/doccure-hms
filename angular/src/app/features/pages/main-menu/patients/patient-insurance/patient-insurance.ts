@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const HSStaticMethods: { autoInit: () => void } | undefined;
 
@@ -17,12 +19,13 @@ declare const HSStaticMethods: { autoInit: () => void } | undefined;
  * flow for "Delete Claim").
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-patient-insurance',
   styleUrl: './patient-insurance.css',
   templateUrl: './patient-insurance.html',
 })
 export class PatientInsurance implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STATUS_ORDER: Record<string, number> = { Submitted: 0, Pending: 1, Processing: 2, Approved: 3, Rejected: 4 };
 
   private page = 1;

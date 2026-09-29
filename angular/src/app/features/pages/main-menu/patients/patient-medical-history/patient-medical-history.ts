@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const HSStaticMethods: { autoInit: () => void } | undefined;
 
@@ -17,12 +19,13 @@ declare const HSStaticMethods: { autoInit: () => void } | undefined;
  * no JS here.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-patient-medical-history',
   styleUrl: './patient-medical-history.css',
   templateUrl: './patient-medical-history.html',
 })
 export class PatientMedicalHistory implements AfterViewInit {
+  AllRoutes = All_Routes;
   private page = 1;
   private perPage = 8;
   private view: 'tl' | 'list' = 'tl';

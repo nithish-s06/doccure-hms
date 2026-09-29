@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 /**
  * Ported from tailwind/src/assets/js/script.js — "ADD-PATIENT".
@@ -10,12 +12,13 @@ import { ToastService } from '../../../../../core/services/toast/toast.service';
  * action buttons (save / admit / print / reset / cancel) — all client-side.
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-add-patient',
   styleUrl: './add-patient.css',
   templateUrl: './add-patient.html',
 })
 export class AddPatient implements AfterViewInit {
+  AllRoutes = All_Routes;
   constructor(@Inject(DOCUMENT) private document: Document, private toastService: ToastService) {}
 
   ngAfterViewInit(): void {

@@ -1,322 +1,321 @@
-<main class="flex-1 overflow-y-auto p-4 lg:p-6 bg-gray-50 dark:bg-slate-900">
-                    <div id="bb-page" class="max-w-[1500px] mx-auto">
 
-                        <div id="bb-content" class="space-y-4">
+<div id="bb-page" class="max-w-[1500px] mx-auto">
 
-                            <!-- ============ 1. HEADER ============ -->
-                            <section class="bb-hero p-5 lg:p-6">
-                                <div class="bb-hgrid"></div>
-                                <div class="relative flex flex-wrap items-start justify-between gap-4">
-                                    <div>
-                                        <div class="flex items-center gap-2 mb-2">
-                                            <span class="bb-chip bg-[rgba(220,38,38,.22)] text-[#fca5a5]"><span class="bb-dot bb-live bg-[#f87171]"></span> BLOOD BANK LIVE</span>
-                                            <span class="bb-chip bg-[rgba(245,158,11,.2)] text-[#fcd34d]"><i class="icon-alert-triangle text-[11px]"></i> 2 Critical</span>
-                                        </div>
-                                        <h1 class="text-2xl lg:text-[26px] font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-droplet text-rose-300"></i> Blood Inventory Management</h1>
-                                        <p class="text-sm text-rose-200/70 mt-1">Stock, components, expiry &amp; emergency blood requests</p>
-                                    </div>
-                                </div>
-                                <div class="relative grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
-                                    <div class="bb-hbadge"><p class="text-[11px] text-rose-200/70">Total Blood Units</p><p class="text-xl font-bold text-white">202</p></div>
-                                    <div class="bb-hbadge"><p class="text-[11px] text-rose-200/70">Critical Stock Alerts</p><p class="text-xl font-bold text-amber-300">2</p></div>
-                                    <div class="bb-hbadge"><p class="text-[11px] text-rose-200/70">Expiring Units</p><p class="text-xl font-bold text-orange-300">28</p></div>
-                                    <div class="bb-hbadge"><p class="text-[11px] text-rose-200/70">Emergency Requests</p><p class="text-xl font-bold text-rose-300">6</p></div>
-                                </div>
-                            </section>
+    <div id="bb-content" class="space-y-4">
 
-                            <!-- ============ 2. BLOOD INVENTORY BOARD ============ -->
-                            <section class="bb-card p-5">
-                                <h2 class="text-base font-bold bb-head flex items-center gap-2 mb-4"><i class="icon-droplet bb-hicon"></i> Blood Group Inventory</h2>
-                                <div id="bb-inventory" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                                    <div class="bb-bg sk-ok">
-                                        <div class="p-4">
-                                            <div class="flex items-center gap-3">
-                                                <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#dc2626"/></svg><span class="lbl">O+</span></div>
-                                                <div><p class="text-2xl font-bold bb-head leading-none">52<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]"><span class="bb-dot [background:#15803d]"></span> In Stock</span></div>
-                                            </div>
-                                            <div class="bb-stab mt-3"><span class="[width:52%] [background:#15803d]"></span></div>
-                                            <div class="grid grid-cols-3 gap-2 mt-3 text-center">
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">8</p><p class="text-[9px] bb-mut">Reserved</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">3</p><p class="text-[9px] bb-mut">Expiring</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">44</p><p class="text-[9px] bb-mut">Available</p></div>
-                                            </div>
-                                            <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation 2h ago</p>
-                                        </div>
-                                    </div>
-                                    <div class="bb-bg sk-crit">
-                                        <div class="p-4">
-                                            <div class="flex items-center gap-3">
-                                                <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#b91c1c"/></svg><span class="lbl">O-</span></div>
-                                                <div><p class="text-2xl font-bold bb-head leading-none">9<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="bb-dot [background:#dc2626]"></span> Critical</span></div>
-                                            </div>
-                                            <span class="bb-npill mt-2 inline-flex"><i class="icon-star text-[10px] [color:#f59e0b]"></i> Universal</span>
-                                            <div class="bb-stab mt-3"><span class="[width:9%] [background:#dc2626]"></span></div>
-                                            <div class="grid grid-cols-3 gap-2 mt-3 text-center">
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">3</p><p class="text-[9px] bb-mut">Reserved</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">5</p><p class="text-[9px] bb-mut">Expiring</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">6</p><p class="text-[9px] bb-mut">Available</p></div>
-                                            </div>
-                                            <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation Today</p>
-                                        </div>
-                                    </div>
-                                    <div class="bb-bg sk-ok">
-                                        <div class="p-4">
-                                            <div class="flex items-center gap-3">
-                                                <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#e06c1f"/></svg><span class="lbl">A+</span></div>
-                                                <div><p class="text-2xl font-bold bb-head leading-none">44<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]"><span class="bb-dot [background:#15803d]"></span> In Stock</span></div>
-                                            </div>
-                                            <div class="bb-stab mt-3"><span class="[width:44%] [background:#15803d]"></span></div>
-                                            <div class="grid grid-cols-3 gap-2 mt-3 text-center">
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">7</p><p class="text-[9px] bb-mut">Reserved</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">2</p><p class="text-[9px] bb-mut">Expiring</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">37</p><p class="text-[9px] bb-mut">Available</p></div>
-                                            </div>
-                                            <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation Yesterday</p>
-                                        </div>
-                                    </div>
-                                    <div class="bb-bg sk-low">
-                                        <div class="p-4">
-                                            <div class="flex items-center gap-3">
-                                                <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#c2560e"/></svg><span class="lbl">A-</span></div>
-                                                <div><p class="text-2xl font-bold bb-head leading-none">18<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#b7791f_13%,transparent)] [color:#b7791f]"><span class="bb-dot [background:#b7791f]"></span> Low Stock</span></div>
-                                            </div>
-                                            <div class="bb-stab mt-3"><span class="[width:18%] [background:#b7791f]"></span></div>
-                                            <div class="grid grid-cols-3 gap-2 mt-3 text-center">
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">5</p><p class="text-[9px] bb-mut">Reserved</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">6</p><p class="text-[9px] bb-mut">Expiring</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">13</p><p class="text-[9px] bb-mut">Available</p></div>
-                                            </div>
-                                            <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation 2 days ago</p>
-                                        </div>
-                                    </div>
-                                    <div class="bb-bg sk-ok">
-                                        <div class="p-4">
-                                            <div class="flex items-center gap-3">
-                                                <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#7c3aed"/></svg><span class="lbl">B+</span></div>
-                                                <div><p class="text-2xl font-bold bb-head leading-none">36<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]"><span class="bb-dot [background:#15803d]"></span> In Stock</span></div>
-                                            </div>
-                                            <div class="bb-stab mt-3"><span class="[width:36%] [background:#15803d]"></span></div>
-                                            <div class="grid grid-cols-3 gap-2 mt-3 text-center">
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">9</p><p class="text-[9px] bb-mut">Reserved</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">4</p><p class="text-[9px] bb-mut">Expiring</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">27</p><p class="text-[9px] bb-mut">Available</p></div>
-                                            </div>
-                                            <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation 2h ago</p>
-                                        </div>
-                                    </div>
-                                    <div class="bb-bg sk-low">
-                                        <div class="p-4">
-                                            <div class="flex items-center gap-3">
-                                                <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#6d28d9"/></svg><span class="lbl">B-</span></div>
-                                                <div><p class="text-2xl font-bold bb-head leading-none">14<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#b7791f_13%,transparent)] [color:#b7791f]"><span class="bb-dot [background:#b7791f]"></span> Low Stock</span></div>
-                                            </div>
-                                            <div class="bb-stab mt-3"><span class="[width:14%] [background:#b7791f]"></span></div>
-                                            <div class="grid grid-cols-3 gap-2 mt-3 text-center">
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">4</p><p class="text-[9px] bb-mut">Reserved</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">1</p><p class="text-[9px] bb-mut">Expiring</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">10</p><p class="text-[9px] bb-mut">Available</p></div>
-                                            </div>
-                                            <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation Today</p>
-                                        </div>
-                                    </div>
-                                    <div class="bb-bg sk-low">
-                                        <div class="p-4">
-                                            <div class="flex items-center gap-3">
-                                                <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#1d4ed8"/></svg><span class="lbl">AB+</span></div>
-                                                <div><p class="text-2xl font-bold bb-head leading-none">22<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#b7791f_13%,transparent)] [color:#b7791f]"><span class="bb-dot [background:#b7791f]"></span> Low Stock</span></div>
-                                            </div>
-                                            <span class="bb-npill mt-2 inline-flex"><i class="icon-star text-[10px] [color:#f59e0b]"></i> Universal</span>
-                                            <div class="bb-stab mt-3"><span class="[width:22%] [background:#b7791f]"></span></div>
-                                            <div class="grid grid-cols-3 gap-2 mt-3 text-center">
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">6</p><p class="text-[9px] bb-mut">Reserved</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">7</p><p class="text-[9px] bb-mut">Expiring</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">16</p><p class="text-[9px] bb-mut">Available</p></div>
-                                            </div>
-                                            <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation Yesterday</p>
-                                        </div>
-                                    </div>
-                                    <div class="bb-bg sk-crit">
-                                        <div class="p-4">
-                                            <div class="flex items-center gap-3">
-                                                <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#1e40af"/></svg><span class="lbl">AB-</span></div>
-                                                <div><p class="text-2xl font-bold bb-head leading-none">7<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="bb-dot [background:#dc2626]"></span> Critical</span></div>
-                                            </div>
-                                            <div class="bb-stab mt-3"><span class="[width:7%] [background:#dc2626]"></span></div>
-                                            <div class="grid grid-cols-3 gap-2 mt-3 text-center">
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">2</p><p class="text-[9px] bb-mut">Reserved</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#15803d]">0</p><p class="text-[9px] bb-mut">Expiring</p></div>
-                                                <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">5</p><p class="text-[9px] bb-mut">Available</p></div>
-                                            </div>
-                                            <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation 2 days ago</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- ============ 3+4. COMPONENTS + ALERTS ============ -->
-                            <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-4">
-                                <section class="bb-card p-5">
-                                    <h2 class="text-base font-bold bb-head flex items-center gap-2 mb-4"><i class="icon-flask-conical bb-hicon"></i> Blood Components</h2>
-                                    <div id="bb-components" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                                        <div class="bb-panel p-3">
-                                            <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#dc2626]"><i class="icon-droplet"></i></span> Whole Blood</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">3 exp</span></div>
-                                            <p class="text-xl font-bold bb-head">86<span class="text-xs bb-mut font-medium"> units</span></p>
-                                            <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>74%</span></div>
-                                            <div class="bb-stab"><span class="[width:74%] [background:#dc2626]"></span></div>
-                                        </div>
-                                        <div class="bb-panel p-3">
-                                            <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#b91c1c]"><i class="icon-droplets"></i></span> Packed RBC</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">5 exp</span></div>
-                                            <p class="text-xl font-bold bb-head">142<span class="text-xs bb-mut font-medium"> units</span></p>
-                                            <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>88%</span></div>
-                                            <div class="bb-stab"><span class="[width:88%] [background:#b91c1c]"></span></div>
-                                        </div>
-                                        <div class="bb-panel p-3">
-                                            <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#e06c1f]"><i class="icon-hexagon"></i></span> Platelets</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">9 exp</span></div>
-                                            <p class="text-xl font-bold bb-head">48<span class="text-xs bb-mut font-medium"> units</span></p>
-                                            <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>62%</span></div>
-                                            <div class="bb-stab"><span class="[width:62%] [background:#e06c1f]"></span></div>
-                                        </div>
-                                        <div class="bb-panel p-3">
-                                            <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#eab308]"><i class="icon-flask-conical"></i></span> Plasma</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">2 exp</span></div>
-                                            <p class="text-xl font-bold bb-head">96<span class="text-xs bb-mut font-medium"> units</span></p>
-                                            <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>70%</span></div>
-                                            <div class="bb-stab"><span class="[width:70%] [background:#eab308]"></span></div>
-                                        </div>
-                                        <div class="bb-panel p-3">
-                                            <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#1d4ed8]"><i class="icon-snowflake"></i></span> Cryoprecipitate</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">4 exp</span></div>
-                                            <p class="text-xl font-bold bb-head">34<span class="text-xs bb-mut font-medium"> units</span></p>
-                                            <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>54%</span></div>
-                                            <div class="bb-stab"><span class="[width:54%] [background:#1d4ed8]"></span></div>
-                                        </div>
-                                        <div class="bb-panel p-3">
-                                            <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#7c3aed]"><i class="icon-syringe"></i></span> Albumin</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">1 exp</span></div>
-                                            <p class="text-xl font-bold bb-head">60<span class="text-xs bb-mut font-medium"> units</span></p>
-                                            <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>45%</span></div>
-                                            <div class="bb-stab"><span class="[width:45%] [background:#7c3aed]"></span></div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="bb-card p-5">
-                                    <h2 class="text-base font-bold bb-head flex items-center gap-2 mb-4"><i class="icon-alert-triangle bb-hicon"></i> Expiry &amp; Stock Alerts</h2>
-                                    <div id="bb-alerts" class="space-y-2">
-                                        <div class="bb-panel p-2.5 flex items-center gap-2.5 [border-left:3px_solid_#e06c1f]">
-                                            <span class="bb-iconbadge w-8 h-8 flex-none [color:#e06c1f]"><i class="icon-clock"></i></span>
-                                            <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head">Near Expiry</p><p class="text-[11px] bb-mut truncate">Within 5 days</p></div>
-                                            <span class="text-sm font-bold whitespace-nowrap [color:#e06c1f]">28 units</span>
-                                        </div>
-                                        <div class="bb-panel p-2.5 flex items-center gap-2.5 [border-left:3px_solid_#dc2626]">
-                                            <span class="bb-iconbadge w-8 h-8 flex-none [color:#dc2626]"><i class="icon-x-circle"></i></span>
-                                            <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head">Expired Units</p><p class="text-[11px] bb-mut truncate">Pending disposal</p></div>
-                                            <span class="text-sm font-bold whitespace-nowrap [color:#dc2626]">6 units</span>
-                                        </div>
-                                        <div class="bb-panel p-2.5 flex items-center gap-2.5 [border-left:3px_solid_#b7791f]">
-                                            <span class="bb-iconbadge w-8 h-8 flex-none [color:#b7791f]"><i class="icon-trending-down"></i></span>
-                                            <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head">Low Stock</p><p class="text-[11px] bb-mut truncate">3 groups</p></div>
-                                            <span class="text-sm font-bold whitespace-nowrap [color:#b7791f]">A-, B-, AB+</span>
-                                        </div>
-                                        <div class="bb-panel p-2.5 flex items-center gap-2.5 [border-left:3px_solid_#64748b]">
-                                            <span class="bb-iconbadge w-8 h-8 flex-none [color:#64748b]"><i class="icon-package-x"></i></span>
-                                            <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head">Out of Stock</p><p class="text-[11px] bb-mut truncate">0 groups</p></div>
-                                            <span class="text-sm font-bold whitespace-nowrap [color:#64748b]">None</span>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <!-- ============ 5. EMERGENCY REQUESTS ============ -->
-                            <section class="bb-card p-5">
-                                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold bb-head flex items-center gap-2"><i class="icon-siren bb-hicon"></i> Emergency Blood Requests</h2></div>
-                                <div id="bb-requests" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                                    <div class="bb-panel p-3 [border-left:3px_solid_#dc2626]">
-                                        <div class="flex items-center gap-2.5 mb-2">
-                                            <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#b91c1c]">O-</span>
-                                            <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Rahul Sharma</p><p class="text-[11px] bb-mut">4 units · Central Bank</p></div>
-                                            <span class="bb-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="bb-dot bb-live [background:#dc2626]"></span> Critical</span>
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Awaiting</span>
-                                        </div>
-                                    </div>
-                                    <div class="bb-panel p-3 [border-left:3px_solid_#e06c1f]">
-                                        <div class="flex items-center gap-2.5 mb-2">
-                                            <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#7c3aed]">B+</span>
-                                            <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Anita Reddy</p><p class="text-[11px] bb-mut">2 units · Central Bank</p></div>
-                                            <span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">High</span>
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <span class="bb-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]">Cross-matching</span>
-                                        </div>
-                                    </div>
-                                    <div class="bb-panel p-3 [border-left:3px_solid_#dc2626]">
-                                        <div class="flex items-center gap-2.5 mb-2">
-                                            <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#1e40af]">AB-</span>
-                                            <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Vikram Nair</p><p class="text-[11px] bb-mut">3 units · Partner Bank</p></div>
-                                            <span class="bb-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="bb-dot bb-live [background:#dc2626]"></span> Critical</span>
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Awaiting</span>
-                                        </div>
-                                    </div>
-                                    <div class="bb-panel p-3 [border-left:3px_solid_#b7791f]">
-                                        <div class="flex items-center gap-2.5 mb-2">
-                                            <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#e06c1f]">A+</span>
-                                            <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Priya Patel</p><p class="text-[11px] bb-mut">1 units · Central Bank</p></div>
-                                            <span class="bb-chip [background:color-mix(in_srgb,#b7791f_13%,transparent)] [color:#b7791f]">Medium</span>
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <span class="bb-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Fulfilled</span>
-                                            <span class="text-[11px] [color:#15803d]"><i class="icon-circle-check text-[11px]"></i> Done</span>
-                                        </div>
-                                    </div>
-                                    <div class="bb-panel p-3 [border-left:3px_solid_#e06c1f]">
-                                        <div class="flex items-center gap-2.5 mb-2">
-                                            <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#6d28d9]">B-</span>
-                                            <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Meera Singh</p><p class="text-[11px] bb-mut">2 units · Partner Bank</p></div>
-                                            <span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">High</span>
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <span class="bb-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]">Cross-matching</span>
-                                        </div>
-                                    </div>
-                                    <div class="bb-panel p-3 [border-left:3px_solid_#dc2626]">
-                                        <div class="flex items-center gap-2.5 mb-2">
-                                            <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#1d4ed8]">AB+</span>
-                                            <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Arjun Menon</p><p class="text-[11px] bb-mut">5 units · Central Bank</p></div>
-                                            <span class="bb-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="bb-dot bb-live [background:#dc2626]"></span> Critical</span>
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Awaiting</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- ============ 6+7. DONATION SUMMARY + ACTIVITY ============ -->
-                            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                                <section class="bb-card p-5">
-                                    <h2 class="text-base font-bold bb-head flex items-center gap-2 mb-4"><i class="icon-heart-handshake bb-hicon"></i> Donation &amp; Usage Summary</h2>
-                                    <div id="bb-summary" class="grid grid-cols-2 gap-3 mb-4">
-                                        <div class="bb-panel p-3"><div class="flex items-center gap-2 mb-1"><span class="bb-iconbadge w-8 h-8 [color:#dc2626]"><i class="icon-heart-handshake"></i></span></div><p class="text-xl font-bold bb-head">48</p><p class="text-[11px] bb-mut">Recent Donations · +12 today</p></div>
-                                        <div class="bb-panel p-3"><div class="flex items-center gap-2 mb-1"><span class="bb-iconbadge w-8 h-8 [color:#e06c1f]"><i class="icon-hand-heart"></i></span></div><p class="text-xl font-bold bb-head">36</p><p class="text-[11px] bb-mut">Blood Issued · units today</p></div>
-                                        <div class="bb-panel p-3"><div class="flex items-center gap-2 mb-1"><span class="bb-iconbadge w-8 h-8 [color:#1d4ed8]"><i class="icon-droplet"></i></span></div><p class="text-xl font-bold bb-head">52</p><p class="text-[11px] bb-mut">Daily Collection · units</p></div>
-                                        <div class="bb-panel p-3"><div class="flex items-center gap-2 mb-1"><span class="bb-iconbadge w-8 h-8 [color:#7c3aed]"><i class="icon-calendar"></i></span></div><p class="text-xl font-bold bb-head">1,284</p><p class="text-[11px] bb-mut">Monthly Usage · units</p></div>
-                                    </div>
-                                    <p class="text-[11px] font-bold bb-mut uppercase tracking-wide mb-2">Top Requested Groups</p>
-                                    <div id="bb-topgroups" class="space-y-2">
-                                        <div><div class="flex justify-between text-xs mb-1"><span class="font-medium bb-head flex items-center gap-1.5"><span class="w-4 h-4 rounded flex items-center justify-center text-white text-[8px] font-bold [background:#dc2626]">O+</span> O+</span><span class="bb-mut">86 req</span></div><div class="bb-stab"><span class="[width:100%] [background:#dc2626]"></span></div></div>
-                                        <div><div class="flex justify-between text-xs mb-1"><span class="font-medium bb-head flex items-center gap-1.5"><span class="w-4 h-4 rounded flex items-center justify-center text-white text-[8px] font-bold [background:#e06c1f]">A+</span> A+</span><span class="bb-mut">64 req</span></div><div class="bb-stab"><span class="[width:74%] [background:#e06c1f]"></span></div></div>
-                                    </div>
-                                </section>
-                                <section class="bb-card p-5">
-                                    <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold bb-head flex items-center gap-2"><i class="icon-radar bb-hicon"></i> Inventory Activity</h2><span class="bb-chip [background:color-mix(in_srgb,#15803d_14%,transparent)] text-[#15803d]"><span class="bb-dot bb-live bg-[#22c55e]"></span> Live</span></div>
-                                    <div id="bb-activity" class="space-y-2.5">
-                                        <div class="bb-panel p-3 flex items-start gap-2.5"><span class="bb-iconbadge w-8 h-8 flex-none [color:#15803d]"><i class="icon-plus"></i></span><div class="min-w-0"><p class="text-sm font-semibold bb-head">Blood Added</p><p class="text-[11px] bb-mut truncate">O+ · 12 units · Donor drive</p><p class="text-[10px] bb-mut mt-0.5">4m ago</p></div></div>
-                                        <div class="bb-panel p-3 flex items-start gap-2.5"><span class="bb-iconbadge w-8 h-8 flex-none [color:#e06c1f]"><i class="icon-hand-heart"></i></span><div class="min-w-0"><p class="text-sm font-semibold bb-head">Blood Issued</p><p class="text-[11px] bb-mut truncate">B+ · 2 units → Ward 4</p><p class="text-[10px] bb-mut mt-0.5">11m ago</p></div></div>
-                                        <div class="bb-panel p-3 flex items-start gap-2.5"><span class="bb-iconbadge w-8 h-8 flex-none [color:#1d4ed8]"><i class="icon-refresh-cw"></i></span><div class="min-w-0"><p class="text-sm font-semibold bb-head">Stock Updated</p><p class="text-[11px] bb-mut truncate">A- reserved for surgery</p><p class="text-[10px] bb-mut mt-0.5">19m ago</p></div></div>
-                                        <div class="bb-panel p-3 flex items-start gap-2.5"><span class="bb-iconbadge w-8 h-8 flex-none [color:#dc2626]"><i class="icon-trash-2"></i></span><div class="min-w-0"><p class="text-sm font-semibold bb-head">Expired Units Removed</p><p class="text-[11px] bb-mut truncate">AB- · 3 units disposed</p><p class="text-[10px] bb-mut mt-0.5">27m ago</p></div></div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
+        <!-- ============ 1. HEADER ============ -->
+        <section class="bb-hero p-5 lg:p-6">
+            <div class="bb-hgrid"></div>
+            <div class="relative flex flex-wrap items-start justify-between gap-4">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="bb-chip bg-[rgba(220,38,38,.22)] text-[#fca5a5]"><span class="bb-dot bb-live bg-[#f87171]"></span> BLOOD BANK LIVE</span>
+                        <span class="bb-chip bg-[rgba(245,158,11,.2)] text-[#fcd34d]"><i class="icon-alert-triangle text-[11px]"></i> 2 Critical</span>
                     </div>
-                </main>
+                    <h1 class="text-2xl lg:text-[26px] font-bold tracking-tight text-white flex items-center gap-2"><i class="icon-droplet text-rose-300"></i> Blood Inventory Management</h1>
+                    <p class="text-sm text-rose-200/70 mt-1">Stock, components, expiry &amp; emergency blood requests</p>
+                </div>
+            </div>
+            <div class="relative grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
+                <div class="bb-hbadge"><p class="text-[11px] text-rose-200/70">Total Blood Units</p><p class="text-xl font-bold text-white">202</p></div>
+                <div class="bb-hbadge"><p class="text-[11px] text-rose-200/70">Critical Stock Alerts</p><p class="text-xl font-bold text-amber-300">2</p></div>
+                <div class="bb-hbadge"><p class="text-[11px] text-rose-200/70">Expiring Units</p><p class="text-xl font-bold text-orange-300">28</p></div>
+                <div class="bb-hbadge"><p class="text-[11px] text-rose-200/70">Emergency Requests</p><p class="text-xl font-bold text-rose-300">6</p></div>
+            </div>
+        </section>
+
+        <!-- ============ 2. BLOOD INVENTORY BOARD ============ -->
+        <section class="bb-card p-5">
+            <h2 class="text-base font-bold bb-head flex items-center gap-2 mb-4"><i class="icon-droplet bb-hicon"></i> Blood Group Inventory</h2>
+            <div id="bb-inventory" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                <div class="bb-bg sk-ok">
+                    <div class="p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#dc2626"/></svg><span class="lbl">O+</span></div>
+                            <div><p class="text-2xl font-bold bb-head leading-none">52<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]"><span class="bb-dot [background:#15803d]"></span> In Stock</span></div>
+                        </div>
+                        <div class="bb-stab mt-3"><span class="[width:52%] [background:#15803d]"></span></div>
+                        <div class="grid grid-cols-3 gap-2 mt-3 text-center">
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">8</p><p class="text-[9px] bb-mut">Reserved</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">3</p><p class="text-[9px] bb-mut">Expiring</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">44</p><p class="text-[9px] bb-mut">Available</p></div>
+                        </div>
+                        <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation 2h ago</p>
+                    </div>
+                </div>
+                <div class="bb-bg sk-crit">
+                    <div class="p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#b91c1c"/></svg><span class="lbl">O-</span></div>
+                            <div><p class="text-2xl font-bold bb-head leading-none">9<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="bb-dot [background:#dc2626]"></span> Critical</span></div>
+                        </div>
+                        <span class="bb-npill mt-2 inline-flex"><i class="icon-star text-[10px] [color:#f59e0b]"></i> Universal</span>
+                        <div class="bb-stab mt-3"><span class="[width:9%] [background:#dc2626]"></span></div>
+                        <div class="grid grid-cols-3 gap-2 mt-3 text-center">
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">3</p><p class="text-[9px] bb-mut">Reserved</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">5</p><p class="text-[9px] bb-mut">Expiring</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">6</p><p class="text-[9px] bb-mut">Available</p></div>
+                        </div>
+                        <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation Today</p>
+                    </div>
+                </div>
+                <div class="bb-bg sk-ok">
+                    <div class="p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#e06c1f"/></svg><span class="lbl">A+</span></div>
+                            <div><p class="text-2xl font-bold bb-head leading-none">44<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]"><span class="bb-dot [background:#15803d]"></span> In Stock</span></div>
+                        </div>
+                        <div class="bb-stab mt-3"><span class="[width:44%] [background:#15803d]"></span></div>
+                        <div class="grid grid-cols-3 gap-2 mt-3 text-center">
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">7</p><p class="text-[9px] bb-mut">Reserved</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">2</p><p class="text-[9px] bb-mut">Expiring</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">37</p><p class="text-[9px] bb-mut">Available</p></div>
+                        </div>
+                        <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation Yesterday</p>
+                    </div>
+                </div>
+                <div class="bb-bg sk-low">
+                    <div class="p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#c2560e"/></svg><span class="lbl">A-</span></div>
+                            <div><p class="text-2xl font-bold bb-head leading-none">18<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#b7791f_13%,transparent)] [color:#b7791f]"><span class="bb-dot [background:#b7791f]"></span> Low Stock</span></div>
+                        </div>
+                        <div class="bb-stab mt-3"><span class="[width:18%] [background:#b7791f]"></span></div>
+                        <div class="grid grid-cols-3 gap-2 mt-3 text-center">
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">5</p><p class="text-[9px] bb-mut">Reserved</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">6</p><p class="text-[9px] bb-mut">Expiring</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">13</p><p class="text-[9px] bb-mut">Available</p></div>
+                        </div>
+                        <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation 2 days ago</p>
+                    </div>
+                </div>
+                <div class="bb-bg sk-ok">
+                    <div class="p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#7c3aed"/></svg><span class="lbl">B+</span></div>
+                            <div><p class="text-2xl font-bold bb-head leading-none">36<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]"><span class="bb-dot [background:#15803d]"></span> In Stock</span></div>
+                        </div>
+                        <div class="bb-stab mt-3"><span class="[width:36%] [background:#15803d]"></span></div>
+                        <div class="grid grid-cols-3 gap-2 mt-3 text-center">
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">9</p><p class="text-[9px] bb-mut">Reserved</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">4</p><p class="text-[9px] bb-mut">Expiring</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">27</p><p class="text-[9px] bb-mut">Available</p></div>
+                        </div>
+                        <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation 2h ago</p>
+                    </div>
+                </div>
+                <div class="bb-bg sk-low">
+                    <div class="p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#6d28d9"/></svg><span class="lbl">B-</span></div>
+                            <div><p class="text-2xl font-bold bb-head leading-none">14<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#b7791f_13%,transparent)] [color:#b7791f]"><span class="bb-dot [background:#b7791f]"></span> Low Stock</span></div>
+                        </div>
+                        <div class="bb-stab mt-3"><span class="[width:14%] [background:#b7791f]"></span></div>
+                        <div class="grid grid-cols-3 gap-2 mt-3 text-center">
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">4</p><p class="text-[9px] bb-mut">Reserved</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">1</p><p class="text-[9px] bb-mut">Expiring</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">10</p><p class="text-[9px] bb-mut">Available</p></div>
+                        </div>
+                        <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation Today</p>
+                    </div>
+                </div>
+                <div class="bb-bg sk-low">
+                    <div class="p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#1d4ed8"/></svg><span class="lbl">AB+</span></div>
+                            <div><p class="text-2xl font-bold bb-head leading-none">22<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#b7791f_13%,transparent)] [color:#b7791f]"><span class="bb-dot [background:#b7791f]"></span> Low Stock</span></div>
+                        </div>
+                        <span class="bb-npill mt-2 inline-flex"><i class="icon-star text-[10px] [color:#f59e0b]"></i> Universal</span>
+                        <div class="bb-stab mt-3"><span class="[width:22%] [background:#b7791f]"></span></div>
+                        <div class="grid grid-cols-3 gap-2 mt-3 text-center">
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">6</p><p class="text-[9px] bb-mut">Reserved</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#e06c1f]">7</p><p class="text-[9px] bb-mut">Expiring</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">16</p><p class="text-[9px] bb-mut">Available</p></div>
+                        </div>
+                        <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation Yesterday</p>
+                    </div>
+                </div>
+                <div class="bb-bg sk-crit">
+                    <div class="p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bb-drop"><svg viewBox="0 0 24 30"><path d="M12 1 C12 1 3 12 3 19 a9 9 0 0 0 18 0 C21 12 12 1 12 1 Z" fill="#1e40af"/></svg><span class="lbl">AB-</span></div>
+                            <div><p class="text-2xl font-bold bb-head leading-none">7<span class="text-sm bb-mut font-medium"> units</span></p><span class="bb-chip mt-1 [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="bb-dot [background:#dc2626]"></span> Critical</span></div>
+                        </div>
+                        <div class="bb-stab mt-3"><span class="[width:7%] [background:#dc2626]"></span></div>
+                        <div class="grid grid-cols-3 gap-2 mt-3 text-center">
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">2</p><p class="text-[9px] bb-mut">Reserved</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold [color:#15803d]">0</p><p class="text-[9px] bb-mut">Expiring</p></div>
+                            <div class="bb-panel py-1.5"><p class="text-sm font-bold bb-head">5</p><p class="text-[9px] bb-mut">Available</p></div>
+                        </div>
+                        <p class="text-[10px] bb-mut mt-2"><i class="icon-clock text-[10px]"></i> Last donation 2 days ago</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 3+4. COMPONENTS + ALERTS ============ -->
+        <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-4">
+            <section class="bb-card p-5">
+                <h2 class="text-base font-bold bb-head flex items-center gap-2 mb-4"><i class="icon-flask-conical bb-hicon"></i> Blood Components</h2>
+                <div id="bb-components" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div class="bb-panel p-3">
+                        <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#dc2626]"><i class="icon-droplet"></i></span> Whole Blood</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">3 exp</span></div>
+                        <p class="text-xl font-bold bb-head">86<span class="text-xs bb-mut font-medium"> units</span></p>
+                        <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>74%</span></div>
+                        <div class="bb-stab"><span class="[width:74%] [background:#dc2626]"></span></div>
+                    </div>
+                    <div class="bb-panel p-3">
+                        <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#b91c1c]"><i class="icon-droplets"></i></span> Packed RBC</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">5 exp</span></div>
+                        <p class="text-xl font-bold bb-head">142<span class="text-xs bb-mut font-medium"> units</span></p>
+                        <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>88%</span></div>
+                        <div class="bb-stab"><span class="[width:88%] [background:#b91c1c]"></span></div>
+                    </div>
+                    <div class="bb-panel p-3">
+                        <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#e06c1f]"><i class="icon-hexagon"></i></span> Platelets</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">9 exp</span></div>
+                        <p class="text-xl font-bold bb-head">48<span class="text-xs bb-mut font-medium"> units</span></p>
+                        <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>62%</span></div>
+                        <div class="bb-stab"><span class="[width:62%] [background:#e06c1f]"></span></div>
+                    </div>
+                    <div class="bb-panel p-3">
+                        <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#eab308]"><i class="icon-flask-conical"></i></span> Plasma</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">2 exp</span></div>
+                        <p class="text-xl font-bold bb-head">96<span class="text-xs bb-mut font-medium"> units</span></p>
+                        <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>70%</span></div>
+                        <div class="bb-stab"><span class="[width:70%] [background:#eab308]"></span></div>
+                    </div>
+                    <div class="bb-panel p-3">
+                        <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#1d4ed8]"><i class="icon-snowflake"></i></span> Cryoprecipitate</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">4 exp</span></div>
+                        <p class="text-xl font-bold bb-head">34<span class="text-xs bb-mut font-medium"> units</span></p>
+                        <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>54%</span></div>
+                        <div class="bb-stab"><span class="[width:54%] [background:#1d4ed8]"></span></div>
+                    </div>
+                    <div class="bb-panel p-3">
+                        <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-bold bb-head flex items-center gap-1.5"><span class="bb-iconbadge w-8 h-8 [color:#7c3aed]"><i class="icon-syringe"></i></span> Albumin</span><span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">1 exp</span></div>
+                        <p class="text-xl font-bold bb-head">60<span class="text-xs bb-mut font-medium"> units</span></p>
+                        <div class="flex items-center justify-between text-[11px] bb-mut mt-1.5 mb-1"><span>Utilization</span><span>45%</span></div>
+                        <div class="bb-stab"><span class="[width:45%] [background:#7c3aed]"></span></div>
+                    </div>
+                </div>
+            </section>
+            <section class="bb-card p-5">
+                <h2 class="text-base font-bold bb-head flex items-center gap-2 mb-4"><i class="icon-alert-triangle bb-hicon"></i> Expiry &amp; Stock Alerts</h2>
+                <div id="bb-alerts" class="space-y-2">
+                    <div class="bb-panel p-2.5 flex items-center gap-2.5 [border-left:3px_solid_#e06c1f]">
+                        <span class="bb-iconbadge w-8 h-8 flex-none [color:#e06c1f]"><i class="icon-clock"></i></span>
+                        <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head">Near Expiry</p><p class="text-[11px] bb-mut truncate">Within 5 days</p></div>
+                        <span class="text-sm font-bold whitespace-nowrap [color:#e06c1f]">28 units</span>
+                    </div>
+                    <div class="bb-panel p-2.5 flex items-center gap-2.5 [border-left:3px_solid_#dc2626]">
+                        <span class="bb-iconbadge w-8 h-8 flex-none [color:#dc2626]"><i class="icon-x-circle"></i></span>
+                        <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head">Expired Units</p><p class="text-[11px] bb-mut truncate">Pending disposal</p></div>
+                        <span class="text-sm font-bold whitespace-nowrap [color:#dc2626]">6 units</span>
+                    </div>
+                    <div class="bb-panel p-2.5 flex items-center gap-2.5 [border-left:3px_solid_#b7791f]">
+                        <span class="bb-iconbadge w-8 h-8 flex-none [color:#b7791f]"><i class="icon-trending-down"></i></span>
+                        <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head">Low Stock</p><p class="text-[11px] bb-mut truncate">3 groups</p></div>
+                        <span class="text-sm font-bold whitespace-nowrap [color:#b7791f]">A-, B-, AB+</span>
+                    </div>
+                    <div class="bb-panel p-2.5 flex items-center gap-2.5 [border-left:3px_solid_#64748b]">
+                        <span class="bb-iconbadge w-8 h-8 flex-none [color:#64748b]"><i class="icon-package-x"></i></span>
+                        <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head">Out of Stock</p><p class="text-[11px] bb-mut truncate">0 groups</p></div>
+                        <span class="text-sm font-bold whitespace-nowrap [color:#64748b]">None</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============ 5. EMERGENCY REQUESTS ============ -->
+        <section class="bb-card p-5">
+            <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold bb-head flex items-center gap-2"><i class="icon-siren bb-hicon"></i> Emergency Blood Requests</h2></div>
+            <div id="bb-requests" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div class="bb-panel p-3 [border-left:3px_solid_#dc2626]">
+                    <div class="flex items-center gap-2.5 mb-2">
+                        <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#b91c1c]">O-</span>
+                        <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Rahul Sharma</p><p class="text-[11px] bb-mut">4 units · Central Bank</p></div>
+                        <span class="bb-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="bb-dot bb-live [background:#dc2626]"></span> Critical</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Awaiting</span>
+                    </div>
+                </div>
+                <div class="bb-panel p-3 [border-left:3px_solid_#e06c1f]">
+                    <div class="flex items-center gap-2.5 mb-2">
+                        <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#7c3aed]">B+</span>
+                        <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Anita Reddy</p><p class="text-[11px] bb-mut">2 units · Central Bank</p></div>
+                        <span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">High</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="bb-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]">Cross-matching</span>
+                    </div>
+                </div>
+                <div class="bb-panel p-3 [border-left:3px_solid_#dc2626]">
+                    <div class="flex items-center gap-2.5 mb-2">
+                        <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#1e40af]">AB-</span>
+                        <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Vikram Nair</p><p class="text-[11px] bb-mut">3 units · Partner Bank</p></div>
+                        <span class="bb-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="bb-dot bb-live [background:#dc2626]"></span> Critical</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Awaiting</span>
+                    </div>
+                </div>
+                <div class="bb-panel p-3 [border-left:3px_solid_#b7791f]">
+                    <div class="flex items-center gap-2.5 mb-2">
+                        <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#e06c1f]">A+</span>
+                        <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Priya Patel</p><p class="text-[11px] bb-mut">1 units · Central Bank</p></div>
+                        <span class="bb-chip [background:color-mix(in_srgb,#b7791f_13%,transparent)] [color:#b7791f]">Medium</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="bb-chip [background:color-mix(in_srgb,#15803d_13%,transparent)] [color:#15803d]">Fulfilled</span>
+                        <span class="text-[11px] [color:#15803d]"><i class="icon-circle-check text-[11px]"></i> Done</span>
+                    </div>
+                </div>
+                <div class="bb-panel p-3 [border-left:3px_solid_#e06c1f]">
+                    <div class="flex items-center gap-2.5 mb-2">
+                        <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#6d28d9]">B-</span>
+                        <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Meera Singh</p><p class="text-[11px] bb-mut">2 units · Partner Bank</p></div>
+                        <span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">High</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="bb-chip [background:color-mix(in_srgb,#1d4ed8_13%,transparent)] [color:#1d4ed8]">Cross-matching</span>
+                    </div>
+                </div>
+                <div class="bb-panel p-3 [border-left:3px_solid_#dc2626]">
+                    <div class="flex items-center gap-2.5 mb-2">
+                        <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold [background:#1d4ed8]">AB+</span>
+                        <div class="min-w-0 flex-1"><p class="text-sm font-semibold bb-head truncate">Arjun Menon</p><p class="text-[11px] bb-mut">5 units · Central Bank</p></div>
+                        <span class="bb-chip [background:color-mix(in_srgb,#dc2626_13%,transparent)] [color:#dc2626]"><span class="bb-dot bb-live [background:#dc2626]"></span> Critical</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="bb-chip [background:color-mix(in_srgb,#e06c1f_13%,transparent)] [color:#e06c1f]">Awaiting</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 6+7. DONATION SUMMARY + ACTIVITY ============ -->
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+            <section class="bb-card p-5">
+                <h2 class="text-base font-bold bb-head flex items-center gap-2 mb-4"><i class="icon-heart-handshake bb-hicon"></i> Donation &amp; Usage Summary</h2>
+                <div id="bb-summary" class="grid grid-cols-2 gap-3 mb-4">
+                    <div class="bb-panel p-3"><div class="flex items-center gap-2 mb-1"><span class="bb-iconbadge w-8 h-8 [color:#dc2626]"><i class="icon-heart-handshake"></i></span></div><p class="text-xl font-bold bb-head">48</p><p class="text-[11px] bb-mut">Recent Donations · +12 today</p></div>
+                    <div class="bb-panel p-3"><div class="flex items-center gap-2 mb-1"><span class="bb-iconbadge w-8 h-8 [color:#e06c1f]"><i class="icon-hand-heart"></i></span></div><p class="text-xl font-bold bb-head">36</p><p class="text-[11px] bb-mut">Blood Issued · units today</p></div>
+                    <div class="bb-panel p-3"><div class="flex items-center gap-2 mb-1"><span class="bb-iconbadge w-8 h-8 [color:#1d4ed8]"><i class="icon-droplet"></i></span></div><p class="text-xl font-bold bb-head">52</p><p class="text-[11px] bb-mut">Daily Collection · units</p></div>
+                    <div class="bb-panel p-3"><div class="flex items-center gap-2 mb-1"><span class="bb-iconbadge w-8 h-8 [color:#7c3aed]"><i class="icon-calendar"></i></span></div><p class="text-xl font-bold bb-head">1,284</p><p class="text-[11px] bb-mut">Monthly Usage · units</p></div>
+                </div>
+                <p class="text-[11px] font-bold bb-mut uppercase tracking-wide mb-2">Top Requested Groups</p>
+                <div id="bb-topgroups" class="space-y-2">
+                    <div><div class="flex justify-between text-xs mb-1"><span class="font-medium bb-head flex items-center gap-1.5"><span class="w-4 h-4 rounded flex items-center justify-center text-white text-[8px] font-bold [background:#dc2626]">O+</span> O+</span><span class="bb-mut">86 req</span></div><div class="bb-stab"><span class="[width:100%] [background:#dc2626]"></span></div></div>
+                    <div><div class="flex justify-between text-xs mb-1"><span class="font-medium bb-head flex items-center gap-1.5"><span class="w-4 h-4 rounded flex items-center justify-center text-white text-[8px] font-bold [background:#e06c1f]">A+</span> A+</span><span class="bb-mut">64 req</span></div><div class="bb-stab"><span class="[width:74%] [background:#e06c1f]"></span></div></div>
+                </div>
+            </section>
+            <section class="bb-card p-5">
+                <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold bb-head flex items-center gap-2"><i class="icon-radar bb-hicon"></i> Inventory Activity</h2><span class="bb-chip [background:color-mix(in_srgb,#15803d_14%,transparent)] text-[#15803d]"><span class="bb-dot bb-live bg-[#22c55e]"></span> Live</span></div>
+                <div id="bb-activity" class="space-y-2.5">
+                    <div class="bb-panel p-3 flex items-start gap-2.5"><span class="bb-iconbadge w-8 h-8 flex-none [color:#15803d]"><i class="icon-plus"></i></span><div class="min-w-0"><p class="text-sm font-semibold bb-head">Blood Added</p><p class="text-[11px] bb-mut truncate">O+ · 12 units · Donor drive</p><p class="text-[10px] bb-mut mt-0.5">4m ago</p></div></div>
+                    <div class="bb-panel p-3 flex items-start gap-2.5"><span class="bb-iconbadge w-8 h-8 flex-none [color:#e06c1f]"><i class="icon-hand-heart"></i></span><div class="min-w-0"><p class="text-sm font-semibold bb-head">Blood Issued</p><p class="text-[11px] bb-mut truncate">B+ · 2 units → Ward 4</p><p class="text-[10px] bb-mut mt-0.5">11m ago</p></div></div>
+                    <div class="bb-panel p-3 flex items-start gap-2.5"><span class="bb-iconbadge w-8 h-8 flex-none [color:#1d4ed8]"><i class="icon-refresh-cw"></i></span><div class="min-w-0"><p class="text-sm font-semibold bb-head">Stock Updated</p><p class="text-[11px] bb-mut truncate">A- reserved for surgery</p><p class="text-[10px] bb-mut mt-0.5">19m ago</p></div></div>
+                    <div class="bb-panel p-3 flex items-start gap-2.5"><span class="bb-iconbadge w-8 h-8 flex-none [color:#dc2626]"><i class="icon-trash-2"></i></span><div class="min-w-0"><p class="text-sm font-semibold bb-head">Expired Units Removed</p><p class="text-[11px] bb-mut truncate">AB- · 3 units disposed</p><p class="text-[10px] bb-mut mt-0.5">27m ago</p></div></div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
