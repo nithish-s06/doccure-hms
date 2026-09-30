@@ -326,9 +326,12 @@ export const All_Routes={
     // Management - Ambulance
     ambulance:'/ambulance',
     ambulanceVehicles:'/ambulance-vehicles',
+    ambulanceVehicleDetail:'/ambulance-vehicle-detail',
     ambulanceDrivers:'/ambulance-drivers',
     emergencyCalls:'/emergency-calls',
+    emergencyCallDetail:'/emergency-call-detail',
     ambulanceTrips:'/ambulance-trips',
+    ambulanceTripDetail:'/ambulance-trip-detail',
     ambulanceMaintenance:'/ambulance-maintenance',
 
     // Management - Finance
@@ -336,7 +339,9 @@ export const All_Routes={
     expenses:'/expenses',
     transactions:'/transactions',
     accounts:'/accounts',
+    accountDetail:'/account-detail',
     bankAccounts:'/bank-accounts',
+    bankAccountDetail:'/bank-account-detail',
     profitLoss:'/profit-loss',
 
     // Management - Administration
@@ -345,10 +350,13 @@ export const All_Routes={
     noticeBoard:'/notice-board',
     announcements:'/announcements',
     visitors:'/visitors',
+    visitorDetail:'/visitor-detail',
     complaints:'/complaints',
+    complaintDetail:'/complaint-detail',
 
     // Management - Assets
     equipment:'/equipment',
+    equipmentDetail:'/equipment-detail',
     assetMaintenance:'/asset-maintenance',
     repairs:'/repairs',
     vendors:'/vendors',

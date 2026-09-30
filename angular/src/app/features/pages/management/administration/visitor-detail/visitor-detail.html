@@ -1,0 +1,125 @@
+<div id="vtd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb"><ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"><li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li><a routerLink="/visitors" class="hover:text-primary transition-colors">Visitors</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Visitor Details</li></ol></nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="vtd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="vtd-hero-ico"><i class="icon-user"></i></div>
+                <div class="min-w-0">
+                    <p class="vtd-kicker">Visitor Log</p>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Karen Wallace</h1>
+                        <span class="vtd-hbadge"><span class="vtd-dot"></span>Checked Out</span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="vtd-hmeta"><i class="icon-hash text-[13px] text-sky-300"></i>V-1042</span>
+                        <span class="vtd-hmeta"><i class="icon-bed text-[13px] text-indigo-300"></i>Room 214 — Mark Wallace</span>
+                        <span class="vtd-hmeta"><i class="icon-clipboard-list text-[13px] text-violet-300"></i>Family visit</span>
+                        <span class="vtd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>09:15 AM – 10:30 AM</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 vtd-actions-print-hide">
+                <button type="button" id="vtd-print" class="vtd-btn vtd-btn-glass"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/visitors" class="vtd-btn vtd-btn-primary"><i class="icon-arrow-left"></i>Back to Visitors</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="vtd-grid">
+        <div class="vtd-vital vtd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-log-in"></i></span>
+                <span class="vtd-chip">Arrival</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">09:15 AM</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Check-In Time</p>
+        </div>
+        <div class="vtd-vital vtd-c-indigo">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-log-out"></i></span>
+                <span class="vtd-chip">Departure</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">10:30 AM</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Check-Out Time</p>
+        </div>
+        <div class="vtd-vital vtd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-clock"></i></span>
+                <span class="vtd-chip">Duration</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">75 min</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Visit Duration</p>
+        </div>
+        <div class="vtd-vital vtd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-badge-check"></i></span>
+                <span class="vtd-chip">Badge</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">V-1042</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Badge Number</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="vtd-layout">
+        <div class="space-y-5">
+
+            <!-- Visit workflow -->
+            <div class="vtd-surface">
+                <div class="vtd-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="vtd-title">Visit Log</h2>
+                </div>
+                <div class="vtd-tl p-5">
+                    <div class="vtd-tl-item done"><span class="vtd-tl-node"><i class="icon-log-in"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Checked In</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">09:15 AM · Badge V-1042 issued at front desk</p></div>
+                    <div class="vtd-tl-item done"><span class="vtd-tl-node"><i class="icon-log-out"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Checked Out</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">10:30 AM · Badge returned</p></div>
+                </div>
+            </div>
+
+            <!-- Visit information -->
+            <div class="vtd-surface p-5">
+                <h3 class="vtd-title mb-3">Visit Information</h3>
+                <div class="vtd-kv"><span class="k"><i class="icon-bed text-[13px]"></i>Visiting</span><span class="v">Room 214 — Mark Wallace</span></div>
+                <div class="vtd-kv"><span class="k"><i class="icon-clipboard-list text-[13px]"></i>Purpose</span><span class="v">Family visit</span></div>
+                <div class="vtd-kv"><span class="k"><i class="icon-clock text-[13px]"></i>Duration</span><span class="v">75 minutes</span></div>
+                <div class="vtd-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Current State</span><span class="v">Checked Out</span></div>
+            </div>
+        </div>
+
+        <div class="space-y-5 vtd-sidebar">
+            <!-- Side hero -->
+            <div class="vtd-surface vtd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Visitor</p>
+                <h3 class="mt-1 text-lg font-extrabold">Karen Wallace</h3>
+                <p class="text-sm text-white/80 mt-0.5">Family Member</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="vtd-hmeta"><i class="icon-user text-[12px]"></i>Room 214</span>
+                </div>
+            </div>
+
+            <!-- Key info card -->
+            <div class="vtd-surface p-5">
+                <h3 class="vtd-title mb-3">Visitor Details</h3>
+                <div class="vtd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Name</span><span class="v">Karen Wallace</span></div>
+                <div class="vtd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Badge #</span><span class="v">V-1042</span></div>
+                <div class="vtd-kv"><span class="k"><i class="icon-bed text-[13px]"></i>Visiting</span><span class="v">Mark Wallace</span></div>
+                <div class="vtd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Visit Date</span><span class="v">Today</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="vtd-surface p-5 space-y-2.5">
+                <h3 class="vtd-title mb-1">Quick Actions</h3>
+                <button type="button" id="vtd-print-2" class="vtd-btn vtd-btn-solid w-full justify-start"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/visitors" class="vtd-btn vtd-btn-solid w-full justify-start"><i class="icon-list"></i>All Visitors</a>
+            </div>
+        </div>
+    </div>
+</div>

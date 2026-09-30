@@ -1,0 +1,139 @@
+<div id="eqd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb"><ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"><li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li><a routerLink="/equipment" class="hover:text-primary transition-colors">Equipment Registry</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Equipment Details</li></ol></nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="eqd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="eqd-hero-ico"><i class="icon-wrench"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="eqd-hero-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">MRI Scanner</h1>
+                        <span class="eqd-hbadge"><span class="eqd-dot"></span><span id="eqd-hero-status">Operational</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="eqd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="eqd-hero-tag">EQ-1001</span></span>
+                        <span class="eqd-hmeta"><i class="icon-map-pin text-[13px] text-sky-300"></i><span id="eqd-hero-location">Radiology</span></span>
+                        <span class="eqd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Purchased <span id="eqd-hero-purchase">2021-03-10</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 eqd-actions-print-hide">
+                <button type="button" class="eqd-btn eqd-btn-glass" id="eqd-print"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/equipment" class="eqd-btn eqd-btn-primary"><i class="icon-arrow-left"></i>Back to Equipment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="eqd-grid">
+        <div class="eqd-vital eqd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-tag"></i></span>
+                <span class="eqd-chip">Category</span>
+            </div>
+            <p id="eqd-stat-category" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Diagnostic</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Equipment Category</p>
+        </div>
+        <div class="eqd-vital eqd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-map-pin"></i></span>
+                <span class="eqd-chip">Location</span>
+            </div>
+            <p id="eqd-stat-location" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Radiology</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Department</p>
+        </div>
+        <div class="eqd-vital eqd-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-shield"></i></span>
+                <span class="eqd-chip">Warranty</span>
+            </div>
+            <p id="eqd-stat-warranty" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">2025-03-10</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Warranty Expiry</p>
+        </div>
+        <div class="eqd-vital eqd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-check-circle"></i></span>
+                <span class="eqd-chip">Stage</span>
+            </div>
+            <p id="eqd-stat-status" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Operational</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="eqd-layout">
+        <div class="space-y-5">
+
+            <!-- Lifecycle timeline -->
+            <div class="eqd-surface">
+                <div class="eqd-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="eqd-title">Equipment Lifecycle</h2>
+                </div>
+                <div class="eqd-tl p-5">
+                    <div class="eqd-tl-item done">
+                        <span class="eqd-tl-node"><i class="icon-shopping-cart"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Purchased</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2021-03-10 — registered under tag EQ-1001</p>
+                    </div>
+                    <div class="eqd-tl-item done">
+                        <span class="eqd-tl-node"><i class="icon-map-pin"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Commissioned</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Installed and calibrated at Radiology</p>
+                    </div>
+                    <div class="eqd-tl-item current">
+                        <span class="eqd-tl-node"><i class="icon-check-circle"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Operational</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Warranty active through 2025-03-10</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Maintenance history -->
+            <div class="eqd-surface">
+                <div class="eqd-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="eqd-title">Maintenance History</h2>
+                </div>
+                <div class="p-5">
+                    <ul class="eqd-items-list">
+                        <li><span class="ico"><i class="icon-wrench"></i></span>Preventive maintenance — 2024-12-05 — Alan Foster</li>
+                        <li><span class="ico"><i class="icon-check-circle"></i></span>Calibration check — 2024-06-18 — Nora White</li>
+                        <li><span class="ico"><i class="icon-shield"></i></span>Warranty renewal review — 2024-01-10 — SurgiTech Supplies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 eqd-sidebar">
+            <!-- Department card -->
+            <div class="eqd-surface eqd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Deployed At</p>
+                <h3 class="mt-1 text-lg font-extrabold" id="eqd-side-location">Radiology</h3>
+                <p class="text-sm text-white/80 mt-0.5" id="eqd-side-category">Diagnostic Equipment</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="eqd-hmeta"><i class="icon-hash text-[12px]"></i><span id="eqd-side-tag">EQ-1001</span></span>
+                </div>
+            </div>
+
+            <!-- Equipment details -->
+            <div class="eqd-surface p-5">
+                <h3 class="eqd-title mb-3">Equipment Details</h3>
+                <div class="eqd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Asset Tag</span><span class="v" id="eqd-kv-tag">EQ-1001</span></div>
+                <div class="eqd-kv"><span class="k"><i class="icon-list-checks text-[13px]"></i>Category</span><span class="v" id="eqd-kv-category">Diagnostic</span></div>
+                <div class="eqd-kv"><span class="k"><i class="icon-map-pin text-[13px]"></i>Location</span><span class="v" id="eqd-kv-location">Radiology</span></div>
+                <div class="eqd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Purchase Date</span><span class="v" id="eqd-kv-purchase">2021-03-10</span></div>
+                <div class="eqd-kv"><span class="k"><i class="icon-shield text-[13px]"></i>Warranty Expiry</span><span class="v" id="eqd-kv-warranty">2025-03-10</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="eqd-surface p-5 space-y-2.5">
+                <h3 class="eqd-title mb-1">Quick Actions</h3>
+                <button type="button" class="eqd-btn eqd-btn-solid w-full justify-start" id="eqd-print-2"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/equipment" class="eqd-btn eqd-btn-solid w-full justify-start"><i class="icon-list"></i>All Equipment</a>
+            </div>
+        </div>
+    </div>
+</div>
