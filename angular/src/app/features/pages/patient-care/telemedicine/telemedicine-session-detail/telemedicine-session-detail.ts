@@ -4,10 +4,10 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   imports: [RouterLink],
-  selector: 'app-medical-records',
-  styleUrl: './medical-records.css',
-  templateUrl: './medical-records.html',
+  selector: 'app-telemedicine-session-detail',
+  styleUrl: './telemedicine-session-detail.css',
+  templateUrl: './telemedicine-session-detail.html',
 })
-export class MedicalRecords {
+export class TelemedicineSessionDetail {
   AllRoutes = All_Routes;
 }

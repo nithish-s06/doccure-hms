@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 declare const flatpickr: any;
 
@@ -25,16 +27,14 @@ interface Surgeon {
   photo: string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "surgeons".
- */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-surgeons',
   styleUrl: './surgeons.css',
   templateUrl: './surgeons.html',
 })
 export class Surgeons implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STL: Record<string, string> = { avail: 'Available', surgery: 'In Surgery', oncall: 'On Call', off: 'Off Duty', leave: 'On Leave', emerg: 'Emergency Duty' };
   private readonly STC: Record<string, string> = { avail: '#15803d', surgery: '#e06c1f', oncall: '#1d4ed8', off: '#64748b', leave: '#7c3aed', emerg: '#dc2626' };
   private readonly SPECS: [string, string, string][] = [

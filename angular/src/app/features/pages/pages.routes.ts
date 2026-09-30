@@ -125,6 +125,7 @@ export const Pages_Routes: Routes = [
             { path: 'bed-allocation', loadComponent: () => import('./clinical/wards-beds/bed-allocation/bed-allocation').then((m) => m.BedAllocation)},
             { path: 'bed-transfer', loadComponent: () => import('./clinical/wards-beds/bed-transfer/bed-transfer').then((m) => m.BedTransfer)},
             { path: 'bed-occupancy', loadComponent: () => import('./clinical/wards-beds/bed-occupancy/bed-occupancy').then((m) => m.BedOccupancy)},
+            { path: 'bed-detail', loadComponent: () => import('./clinical/wards-beds/bed-detail/bed-detail').then((m) => m.BedDetail)},
 
             // Clinical - ICU
             { path: 'icu', loadComponent: () => import('./clinical/icu/icu/icu').then((m) => m.Icu)},
@@ -179,12 +180,15 @@ export const Pages_Routes: Routes = [
             { path: 'allergies', loadComponent: () => import('./patient-care/medical-records/allergies/allergies').then((m) => m.Allergies)},
             { path: 'progress-notes', loadComponent: () => import('./patient-care/medical-records/progress-notes/progress-notes').then((m) => m.ProgressNotes)},
             { path: 'emr-documents', loadComponent: () => import('./patient-care/medical-records/emr-documents/emr-documents').then((m) => m.EmrDocuments)},
+            { path: 'medical-record-detail', loadComponent: () => import('./patient-care/medical-records/medical-record-detail/medical-record-detail').then((m) => m.MedicalRecordDetail)},
 
             // Patient Care - Telemedicine
             { path: 'telemedicine', loadComponent: () => import('./patient-care/telemedicine/telemedicine/telemedicine').then((m) => m.Telemedicine)},
             { path: 'consultation-history', loadComponent: () => import('./patient-care/telemedicine/consultation-history/consultation-history').then((m) => m.ConsultationHistory)},
             { path: 'waiting-room', loadComponent: () => import('./patient-care/telemedicine/waiting-room/waiting-room').then((m) => m.WaitingRoom)},
             { path: 'scheduled-sessions', loadComponent: () => import('./patient-care/telemedicine/scheduled-sessions/scheduled-sessions').then((m) => m.ScheduledSessions)},
+            { path: 'consultation-detail', loadComponent: () => import('./patient-care/telemedicine/consultation-detail/consultation-detail').then((m) => m.ConsultationDetail)},
+            { path: 'telemedicine-session-detail', loadComponent: () => import('./patient-care/telemedicine/telemedicine-session-detail/telemedicine-session-detail').then((m) => m.TelemedicineSessionDetail)},
 
             // Patient Care - Diet & Nutrition
             { path: 'diet', loadComponent: () => import('./patient-care/diet-nutrition/diet/diet').then((m) => m.Diet)},

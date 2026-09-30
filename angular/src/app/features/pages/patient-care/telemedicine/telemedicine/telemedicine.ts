@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface Consultation {
   id: string; pt: string; ptc: string; doc: string; docc: string; dept: string; time: string;
@@ -9,21 +11,15 @@ interface Doctor { name: string; dept: string; spec: string; c: string; online: 
 interface Activity { ic: string; c: string; t: string; s: string; tm: string; }
 interface Kpi { l: string; v: string; ic: string; c: string; p: number; ch: string; spark: number[]; }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "// telemedicine" IIFE.
- * Faithful port of search/filter/sort/view (grid/list/calendar), the row
- * action menu, the drawer, the video-consultation workspace (tm-vc, legacy
- * class-toggle overlay) and the schedule/edit/assign/invite/upload/import/
- * export/print/delete modals (legacy .tm-modal/.tm-drawer class-toggle
- * overlays, matching the source).
- */
+
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-telemedicine',
   styleUrl: './telemedicine.css',
   templateUrl: './telemedicine.html',
 })
 export class Telemedicine implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly CTYPE: Record<string, { c: string; ic: string }> = {
     Video: { c: '#6366f1', ic: 'ti-video' },
     Audio: { c: '#0ea5e9', ic: 'ti-phone' },

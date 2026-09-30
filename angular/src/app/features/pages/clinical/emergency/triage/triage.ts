@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 interface EsiLevel {
   label: string;
@@ -19,9 +20,7 @@ interface DoneRow {
   disposition: string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "triage" (triage.html).
- */
+
 @Component({
   imports: [RouterLink],
   selector: 'app-triage',
@@ -29,6 +28,7 @@ interface DoneRow {
   templateUrl: './triage.html',
 })
 export class Triage implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly ESI: Record<number, EsiLevel> = {
     1: { label: 'ESI 1', name: 'Resuscitation', badge: 'badge-red', bar: 'text-danger', desc: 'Requires immediate life-saving intervention. Unresponsive, intubated, apneic, or pulseless.' },
     2: { label: 'ESI 2', name: 'Emergent', badge: 'badge-red', bar: 'text-danger', desc: 'High-risk situation, severe pain or distress, or confused / lethargic / disoriented. Cannot wait.' },

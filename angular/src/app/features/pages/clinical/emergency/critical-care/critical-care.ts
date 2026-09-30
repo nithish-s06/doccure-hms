@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 interface Vitals {
   hr: number;
@@ -76,6 +77,7 @@ interface Patient {
   templateUrl: './critical-care.html',
 })
 export class CriticalCare implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly CONDITION: Record<string, { badge: string; dot: string; accent: string; tone: string }> = {
     Critical: { badge: 'badge-red', dot: 'bg-danger', accent: '#ef4444', tone: 'tone-critical' },
     Guarded: { badge: 'badge-amber', dot: 'bg-warning', accent: '#eab308', tone: 'tone-high' },
