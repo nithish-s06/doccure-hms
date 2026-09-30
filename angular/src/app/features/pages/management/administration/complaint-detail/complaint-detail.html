@@ -1,0 +1,123 @@
+<div id="cpd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb"><ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"><li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li><a routerLink="/complaints" class="hover:text-primary transition-colors">Complaints</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Complaint Details</li></ol></nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="cpd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="cpd-hero-ico"><i class="icon-message-square-warning"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="cpd-complainant-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Rachel Simmons</h1>
+                        <span class="cpd-hbadge"><span class="cpd-dot [background:#009966]"></span><span id="cpd-status-badge" class="text-success bg-success/10">Resolved</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="cpd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="cpd-complaint-id">#CMP-00001</span></span>
+                        <span class="cpd-hmeta"><i class="icon-list text-[13px] text-sky-300"></i><span id="cpd-category">Billing</span></span>
+                        <span class="cpd-hmeta"><i class="icon-user text-[13px] text-violet-300"></i><span id="cpd-assignedto">Billing Desk</span></span>
+                        <span class="cpd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Filed <span id="cpd-date">2024-12-01</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 cpd-actions-print-hide">
+                <button type="button" id="cpd-print" class="cpd-btn cpd-btn-glass"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/complaints" class="cpd-btn cpd-btn-primary"><i class="icon-arrow-left"></i>Back to Complaints</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="cpd-grid">
+        <div class="cpd-vital cpd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-list"></i></span>
+                <span class="cpd-chip">Type</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="cpd-category-stat">Billing</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Category</p>
+        </div>
+        <div class="cpd-vital cpd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-calendar"></i></span>
+                <span class="cpd-chip">Filed</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="cpd-filed-date">2024-12-01</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Filed Date</p>
+        </div>
+        <div class="cpd-vital cpd-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-user"></i></span>
+                <span class="cpd-chip">Owner</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="cpd-assigned-stat">Billing Desk</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Assigned To</p>
+        </div>
+        <div class="cpd-vital cpd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-check-circle"></i></span>
+                <span class="cpd-chip">Stage</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="cpd-status-stat">Resolved</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="cpd-layout">
+        <div class="space-y-5">
+
+            <!-- Workflow timeline -->
+            <div class="cpd-surface">
+                <div class="cpd-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="cpd-title">Complaint Workflow</h2>
+                </div>
+                <div class="cpd-tl p-5" id="cpd-timeline">
+                    <div class="cpd-tl-item done"><span class="cpd-tl-node"><i class="icon-message-square-warning"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Open</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-01</p></div>
+                    <div class="cpd-tl-item done"><span class="cpd-tl-node"><i class="icon-loader"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">In Progress</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-01</p></div>
+                    <div class="cpd-tl-item current"><span class="cpd-tl-node"><i class="icon-check-circle"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Resolved</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-01</p></div>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="cpd-surface">
+                <div class="cpd-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="cpd-title">Complaint Description</h2>
+                </div>
+                <div class="p-5">
+                    <div class="cpd-desc-block" id="cpd-desc-text">Discrepancy in the final invoice amount for inpatient stay.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 cpd-sidebar">
+            <!-- Complainant -->
+            <div class="cpd-surface cpd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Complainant</p>
+                <h3 class="mt-1 text-lg font-extrabold" id="cpd-side-complainant">Rachel Simmons</h3>
+                <p class="text-sm text-white/80 mt-0.5" id="cpd-side-category">Billing</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="cpd-hmeta"><i class="icon-mail text-[12px]"></i>Contact Complainant</span>
+                </div>
+            </div>
+
+            <!-- Complaint details -->
+            <div class="cpd-surface p-5">
+                <h3 class="cpd-title mb-3">Complaint Details</h3>
+                <div class="cpd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Complainant</span><span class="v" id="cpd-kv-complainant">Rachel Simmons</span></div>
+                <div class="cpd-kv"><span class="k"><i class="icon-list text-[13px]"></i>Category</span><span class="v" id="cpd-kv-category">Billing</span></div>
+                <div class="cpd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Filed Date</span><span class="v" id="cpd-kv-date">2024-12-01</span></div>
+                <div class="cpd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Assigned To</span><span class="v" id="cpd-kv-assigned">Billing Desk</span></div>
+            </div>
+
+        </div>
+    </div>
+</div>

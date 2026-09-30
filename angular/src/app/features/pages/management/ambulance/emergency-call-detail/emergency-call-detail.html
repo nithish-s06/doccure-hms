@@ -1,0 +1,125 @@
+<div id="ecd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb"><ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"><li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li><a routerLink="/emergency-calls" class="hover:text-primary transition-colors">Emergency Calls</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Emergency Call Details</li></ol></nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="ecd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="ecd-hero-ico"><i class="icon-siren"></i></div>
+                <div class="min-w-0">
+                    <p class="ecd-kicker">Emergency Call</p>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="ecd-caller" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Susan Blake</h1>
+                        <span class="ecd-hbadge"><span class="ecd-dot"></span><span id="ecd-status-badge">Completed</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="ecd-hmeta"><i class="icon-hash text-[13px] text-rose-300"></i><span id="ecd-call-id">#EC-00001</span></span>
+                        <span class="ecd-hmeta"><i class="icon-map-pin text-[13px] text-orange-300"></i><span id="ecd-hero-location">42 Elm Street</span></span>
+                        <span class="ecd-hmeta"><i class="icon-truck text-[13px] text-sky-300"></i><span id="ecd-hero-vehicle">AMB-101</span></span>
+                        <span class="ecd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Received <span id="ecd-hero-time">2024-12-06 14:32</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 ecd-actions-print-hide">
+                <button type="button" id="ecd-print" class="ecd-btn ecd-btn-glass"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/emergency-calls" class="ecd-btn ecd-btn-primary"><i class="icon-arrow-left"></i>Back to Calls</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="ecd-grid">
+        <div class="ecd-vital ecd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-truck"></i></span>
+                <span class="ecd-chip">Vehicle</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ecd-stat-vehicle">AMB-101</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Vehicle Assigned</p>
+        </div>
+        <div class="ecd-vital ecd-c-indigo">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-map-pin"></i></span>
+                <span class="ecd-chip">Location</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ecd-stat-location">42 Elm Street</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Pickup Location</p>
+        </div>
+        <div class="ecd-vital ecd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-calendar"></i></span>
+                <span class="ecd-chip">Time</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="ecd-stat-time">2024-12-06 14:32</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Call Time</p>
+        </div>
+        <div class="ecd-vital ecd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-activity"></i></span>
+                <span class="ecd-chip">Status</span>
+            </div>
+            <span class="mt-3 inline-flex w-fit items-center px-3 py-1.5 rounded-lg text-sm font-extrabold" id="ecd-stat-status">Completed</span>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1">Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="ecd-layout">
+        <div class="space-y-5">
+
+            <!-- Workflow timeline -->
+            <div class="ecd-surface">
+                <div class="ecd-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="ecd-title">Dispatch Workflow</h2>
+                </div>
+                <div class="ecd-tl p-5" id="ecd-timeline"></div>
+            </div>
+
+            <!-- Call information -->
+            <div class="ecd-surface">
+                <div class="ecd-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="ecd-title">Call Information</h2>
+                </div>
+                <div class="p-5">
+                    <div class="ecd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Caller</span><span class="v" id="ecd-info-caller">Susan Blake</span></div>
+                    <div class="ecd-kv"><span class="k"><i class="icon-map-pin text-[13px]"></i>Location</span><span class="v" id="ecd-info-location">42 Elm Street</span></div>
+                    <div class="ecd-kv"><span class="k"><i class="icon-truck text-[13px]"></i>Vehicle</span><span class="v" id="ecd-info-vehicle">AMB-101</span></div>
+                    <div class="ecd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Call Time</span><span class="v" id="ecd-info-time">2024-12-06 14:32</span></div>
+                    <div class="ecd-kv"><span class="k"><i class="icon-activity text-[13px]"></i>Status</span><span class="v" id="ecd-info-status">Completed</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 ecd-sidebar">
+            <!-- Assigned vehicle -->
+            <div class="ecd-surface ecd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Assigned Vehicle</p>
+                <h3 class="mt-1 text-lg font-extrabold" id="ecd-side-vehicle">AMB-101</h3>
+                <p class="text-sm text-white/80 mt-0.5">Ambulance Unit</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="ecd-hmeta"><i class="icon-navigation text-[12px]"></i>Track Vehicle</span>
+                </div>
+            </div>
+
+            <!-- Call details -->
+            <div class="ecd-surface p-5">
+                <h3 class="ecd-title mb-3">Call Details</h3>
+                <div class="ecd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Caller</span><span class="v" id="ecd-kv-caller">Susan Blake</span></div>
+                <div class="ecd-kv"><span class="k"><i class="icon-map-pin text-[13px]"></i>Location</span><span class="v" id="ecd-kv-location">42 Elm Street</span></div>
+                <div class="ecd-kv"><span class="k"><i class="icon-truck text-[13px]"></i>Vehicle</span><span class="v" id="ecd-kv-vehicle">AMB-101</span></div>
+                <div class="ecd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Call Time</span><span class="v" id="ecd-kv-time">2024-12-06 14:32</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="ecd-surface p-5 space-y-2.5">
+                <h3 class="ecd-title mb-1">Quick Actions</h3>
+                <button type="button" id="ecd-print-2" class="ecd-btn ecd-btn-solid w-full justify-start"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/emergency-calls" class="ecd-btn ecd-btn-solid w-full justify-start"><i class="icon-list"></i>All Emergency Calls</a>
+                <button type="button" class="ecd-btn ecd-btn-glass w-full justify-start" id="ecd-callback-btn"><i class="icon-phone-call"></i>Call Back</button>
+            </div>
+        </div>
+    </div>
+</div>

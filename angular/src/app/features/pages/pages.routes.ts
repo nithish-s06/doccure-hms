@@ -252,9 +252,12 @@ export const Pages_Routes: Routes = [
             // Management - Ambulance
             { path: 'ambulance', loadComponent: () => import('./management/ambulance/ambulance/ambulance').then((m) => m.Ambulance)},
             { path: 'ambulance-vehicles', loadComponent: () => import('./management/ambulance/ambulance-vehicles/ambulance-vehicles').then((m) => m.AmbulanceVehicles)},
+            { path: 'ambulance-vehicle-detail', loadComponent: () => import('./management/ambulance/ambulance-vehicle-detail/ambulance-vehicle-detail').then((m) => m.AmbulanceVehicleDetail)},
             { path: 'ambulance-drivers', loadComponent: () => import('./management/ambulance/ambulance-drivers/ambulance-drivers').then((m) => m.AmbulanceDrivers)},
             { path: 'emergency-calls', loadComponent: () => import('./management/ambulance/ambulance-calls/ambulance-calls').then((m) => m.AmbulanceCalls)},
+            { path: 'emergency-call-detail', loadComponent: () => import('./management/ambulance/emergency-call-detail/emergency-call-detail').then((m) => m.EmergencyCallDetail)},
             { path: 'ambulance-trips', loadComponent: () => import('./management/ambulance/ambulance-trips/ambulance-trips').then((m) => m.AmbulanceTrips)},
+            { path: 'ambulance-trip-detail', loadComponent: () => import('./management/ambulance/ambulance-trip-detail/ambulance-trip-detail').then((m) => m.AmbulanceTripDetail)},
             { path: 'ambulance-maintenance', loadComponent: () => import('./management/ambulance/ambulance-maintenance/ambulance-maintenance').then((m) => m.AmbulanceMaintenance)},
 
             // Management - Finance
@@ -262,7 +265,9 @@ export const Pages_Routes: Routes = [
             { path: 'expenses', loadComponent: () => import('./management/finance/expenses/expenses').then((m) => m.Expenses)},
             { path: 'transactions', loadComponent: () => import('./management/finance/transactions/transactions').then((m) => m.Transactions)},
             { path: 'accounts', loadComponent: () => import('./management/finance/accounts/accounts').then((m) => m.Accounts)},
+            { path: 'account-detail', loadComponent: () => import('./management/finance/account-detail/account-detail').then((m) => m.AccountDetail)},
             { path: 'bank-accounts', loadComponent: () => import('./management/finance/bank-accounts/bank-accounts').then((m) => m.BankAccounts)},
+            { path: 'bank-account-detail', loadComponent: () => import('./management/finance/bank-account-detail/bank-account-detail').then((m) => m.BankAccountDetail)},
             { path: 'profit-loss', loadComponent: () => import('./management/finance/profit-loss/profit-loss').then((m) => m.ProfitLoss)},
 
             // Management - Administration
@@ -271,10 +276,13 @@ export const Pages_Routes: Routes = [
             { path: 'notice-board', loadComponent: () => import('./management/administration/notice-board/notice-board').then((m) => m.NoticeBoard)},
             { path: 'announcements', loadComponent: () => import('./management/administration/announcements/announcements').then((m) => m.Announcements)},
             { path: 'visitors', loadComponent: () => import('./management/administration/visitors/visitors').then((m) => m.Visitors)},
+            { path: 'visitor-detail', loadComponent: () => import('./management/administration/visitor-detail/visitor-detail').then((m) => m.VisitorDetail)},
             { path: 'complaints', loadComponent: () => import('./management/administration/complaints/complaints').then((m) => m.Complaints)},
+            { path: 'complaint-detail', loadComponent: () => import('./management/administration/complaint-detail/complaint-detail').then((m) => m.ComplaintDetail)},
 
             // Management - Assets
             { path: 'equipment', loadComponent: () => import('./management/assets/equipment/equipment').then((m) => m.Equipment)},
+            { path: 'equipment-detail', loadComponent: () => import('./management/assets/equipment-detail/equipment-detail').then((m) => m.EquipmentDetail)},
             { path: 'asset-maintenance', loadComponent: () => import('./management/assets/asset-maintenance/asset-maintenance').then((m) => m.AssetMaintenance)},
             { path: 'repairs', loadComponent: () => import('./management/assets/repairs/repairs').then((m) => m.Repairs)},
             { path: 'vendors', loadComponent: () => import('./management/assets/vendors/vendors').then((m) => m.Vendors)},
