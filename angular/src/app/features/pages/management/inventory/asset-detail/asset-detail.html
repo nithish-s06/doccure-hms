@@ -1,0 +1,135 @@
+<div id="asd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb"><ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"><li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li><a routerLink="/asset-tracking" class="hover:text-primary transition-colors">Asset Tracking</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Asset Details</li></ol></nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="asd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="asd-hero-ico"><i class="icon-map-pin"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="asd-hero-title" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Ventilator - AST-2045</h1>
+                        <span class="asd-hbadge"><span class="asd-dot"></span><span id="asd-hero-status">Active</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="asd-hmeta"><i class="icon-tag text-[13px] text-indigo-300"></i><span id="asd-hero-category">Medical Equipment</span></span>
+                        <span class="asd-hmeta"><i class="icon-map-pin text-[13px] text-sky-300"></i><span id="asd-hero-location">ICU - Floor 2</span></span>
+                        <span class="asd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Purchased <span id="asd-hero-date">2022-03-14</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 asd-actions-print-hide">
+                <button type="button" id="asd-print" class="asd-btn asd-btn-glass"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/asset-tracking" class="asd-btn asd-btn-primary"><i class="icon-arrow-left"></i>Back to Assets</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="asd-grid">
+        <div class="asd-vital asd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-tag"></i></span>
+                <span class="asd-chip">Category</span>
+            </div>
+            <p id="asd-stat-category" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Medical Equipment</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Asset Category</p>
+        </div>
+        <div class="asd-vital asd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-map-pin"></i></span>
+                <span class="asd-chip">Location</span>
+            </div>
+            <p id="asd-stat-location" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">ICU - Floor 2</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Current Location</p>
+        </div>
+        <div class="asd-vital asd-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-user"></i></span>
+                <span class="asd-chip">Custodian</span>
+            </div>
+            <p id="asd-stat-assigned" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Dr. Susan Lee</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Assigned To</p>
+        </div>
+        <div class="asd-vital asd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-check-circle"></i></span>
+                <span class="asd-chip">Stage</span>
+            </div>
+            <p id="asd-stat-status" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Active</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="asd-layout">
+        <div class="space-y-5">
+
+            <!-- Lifecycle timeline -->
+            <div class="asd-surface">
+                <div class="asd-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="asd-title">Asset Lifecycle</h2>
+                </div>
+                <div class="asd-tl p-5">
+                    <div class="asd-tl-item done">
+                        <span class="asd-tl-node"><i class="icon-shopping-cart"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Procured</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2022-03-14 — added to fixed-asset register</p>
+                    </div>
+                    <div class="asd-tl-item done">
+                        <span class="asd-tl-node"><i class="icon-map-pin"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Deployed</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Installed at ICU - Floor 2, assigned to Dr. Susan Lee</p>
+                    </div>
+                    <div class="asd-tl-item current">
+                        <span class="asd-tl-node"><i class="icon-check-circle"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">In Active Use</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Last verified during quarterly asset audit</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Asset notes -->
+            <div class="asd-surface">
+                <div class="asd-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="asd-title">Asset Notes</h2>
+                </div>
+                <div class="p-5">
+                    <div class="asd-desc-block">ICU ventilator tagged AST-2045, currently deployed on Floor 2 and assigned to Dr. Susan Lee. Included in the biannual preventive maintenance schedule; no outstanding faults reported at last inspection.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 asd-sidebar">
+            <!-- Custodian card -->
+            <div class="asd-surface asd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Assigned To</p>
+                <h3 id="asd-side-name" class="mt-1 text-lg font-extrabold">Dr. Susan Lee</h3>
+                <p class="text-sm text-white/80 mt-0.5" id="asd-side-location">ICU - Floor 2</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="asd-hmeta"><i class="icon-hash text-[12px]"></i><span id="asd-side-tag">AST-2045</span></span>
+                </div>
+            </div>
+
+            <!-- Asset details -->
+            <div class="asd-surface p-5">
+                <h3 class="asd-title mb-3">Asset Details</h3>
+                <div class="asd-kv"><span class="k"><i class="icon-tag text-[13px]"></i>Asset Tag</span><span class="v" id="asd-kv-tag">AST-2045</span></div>
+                <div class="asd-kv"><span class="k"><i class="icon-list-checks text-[13px]"></i>Category</span><span class="v" id="asd-kv-category">Medical Equipment</span></div>
+                <div class="asd-kv"><span class="k"><i class="icon-map-pin text-[13px]"></i>Location</span><span class="v" id="asd-kv-location">ICU - Floor 2</span></div>
+                <div class="asd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Assigned To</span><span class="v" id="asd-kv-assigned">Dr. Susan Lee</span></div>
+                <div class="asd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Purchase Date</span><span class="v" id="asd-kv-date">2022-03-14</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="asd-surface p-5 space-y-2.5">
+                <h3 class="asd-title mb-1">Quick Actions</h3>
+                <button type="button" id="asd-print-2" class="asd-btn asd-btn-solid w-full justify-start"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/asset-tracking" class="asd-btn asd-btn-solid w-full justify-start"><i class="icon-list"></i>All Assets</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,143 @@
+<div id="prd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb"><ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"><li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li><a routerLink="/products" class="hover:text-primary transition-colors">Products</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Product Details</li></ol></nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="prd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="prd-hero-ico"><i class="icon-package"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Surgical Gloves (M)</h1>
+                        <span class="prd-hbadge low"><span class="prd-dot"></span><span>Low Stock</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="prd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i>#SKU-1002</span>
+                        <span class="prd-hmeta"><i class="icon-tag text-[13px] text-sky-300"></i>Surgical</span>
+                        <span class="prd-hmeta"><i class="icon-box text-[13px] text-violet-300"></i>Unit: Box</span>
+                        <span class="prd-hmeta"><i class="icon-dollar-sign text-[13px] text-emerald-300"></i>$8.20 / unit</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 prd-actions-print-hide">
+                <button type="button" id="prd-print" class="prd-btn prd-btn-glass"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/products" class="prd-btn prd-btn-primary"><i class="icon-arrow-left"></i>Back to Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="prd-grid">
+        <div class="prd-vital prd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-package"></i></span>
+                <span class="prd-chip">Stock</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">45</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Stock Qty (Box)</p>
+        </div>
+        <div class="prd-vital prd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-alert-triangle"></i></span>
+                <span class="prd-chip">Threshold</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">60</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Reorder Level</p>
+        </div>
+        <div class="prd-vital prd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-dollar-sign"></i></span>
+                <span class="prd-chip">Price</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">$8.20</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Unit Price</p>
+        </div>
+        <div class="prd-vital prd-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-wallet"></i></span>
+                <span class="prd-chip">Value</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">$369.00</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Stock Value</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="prd-layout">
+        <div class="space-y-5">
+
+            <!-- Stock level -->
+            <div class="prd-surface">
+                <div class="prd-head">
+                    <span class="ico"><i class="icon-bar-chart-2"></i></span>
+                    <h2 class="prd-title">Stock Level</h2>
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Current Stock</span>
+                        <span class="text-sm font-bold text-danger">45 / 60 Box (75%)</span>
+                    </div>
+                    <div class="prd-stockbar-track">
+                        <div class="prd-stockbar-fill w-[75%]"></div>
+                        <div class="prd-stockbar-marker left-[100%]"></div>
+                    </div>
+                    <div class="mt-2 flex items-center justify-between text-[11px] font-semibold text-gray-400">
+                        <span>0</span>
+                        <span>Reorder Level: 60</span>
+                    </div>
+                    <div class="mt-4 flex items-start gap-2.5 rounded-xl border border-red-100 dark:border-red-900/30 bg-red-50 dark:bg-red-900/10 p-3.5">
+                        <i class="icon-alert-triangle text-danger mt-0.5"></i>
+                        <p class="text-xs text-red-700 dark:text-red-300">
+                            Stock is below the reorder level. Only 45 Box remain against a threshold of 60 Box — raise a purchase order to avoid a stockout.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product information -->
+            <div class="prd-surface">
+                <div class="prd-head">
+                    <span class="ico"><i class="icon-info"></i></span>
+                    <h2 class="prd-title">Product Information</h2>
+                </div>
+                <div class="p-5">
+                    <div class="prd-kv"><span class="k"><i class="icon-tag text-[13px]"></i>Category</span><span class="v">Surgical</span></div>
+                    <div class="prd-kv"><span class="k"><i class="icon-box text-[13px]"></i>Unit</span><span class="v">Box</span></div>
+                    <div class="prd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>SKU</span><span class="v">SKU-1002</span></div>
+                    <div class="prd-kv"><span class="k"><i class="icon-dollar-sign text-[13px]"></i>Unit Price</span><span class="v">$8.20</span></div>
+                    <div class="prd-kv"><span class="k"><i class="icon-wallet text-[13px]"></i>Stock Value</span><span class="v">$369.00</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 prd-sidebar">
+            <!-- Side hero -->
+            <div class="prd-surface prd-side-hero rounded-[1.25rem]">
+                <div class="prd-hero-ico prd-hero-ico-sm"><i class="icon-scissors"></i></div>
+                <h3 class="mt-3 text-lg font-extrabold">Surgical Gloves (M)</h3>
+                <p class="text-sm text-white/80 mt-0.5">Surgical Category</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="prd-hmeta"><i class="icon-hash text-[12px]"></i>SKU-1002</span>
+                </div>
+            </div>
+
+            <!-- Product details -->
+            <div class="prd-surface p-5">
+                <h3 class="prd-title mb-3">Product Details</h3>
+                <div class="prd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>SKU</span><span class="v">SKU-1002</span></div>
+                <div class="prd-kv"><span class="k"><i class="icon-tag text-[13px]"></i>Category</span><span class="v">Surgical</span></div>
+                <div class="prd-kv"><span class="k"><i class="icon-box text-[13px]"></i>Unit</span><span class="v">Box</span></div>
+                <div class="prd-kv"><span class="k"><i class="icon-alert-triangle text-[13px]"></i>Reorder Level</span><span class="v">60</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="prd-surface p-5 space-y-2.5">
+                <h3 class="prd-title mb-1">Quick Actions</h3>
+                <button type="button" id="prd-print-2" class="prd-btn prd-btn-solid w-full justify-start"><i class="icon-printer"></i>Print</button>
+                <a routerLink="/products" class="prd-btn prd-btn-solid w-full justify-start"><i class="icon-arrow-left"></i>Back to Products</a>
+                <a routerLink="/products" class="prd-btn prd-btn-solid w-full justify-start"><i class="icon-list"></i>All Products</a>
+            </div>
+        </div>
+    </div>
+</div>

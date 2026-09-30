@@ -194,8 +194,11 @@ export const Pages_Routes: Routes = [
 
             // Management - Billing
             { path: 'billing', loadComponent: () => import('./management/billing/billing/billing').then((m) => m.Billing)},
+            { path: 'billing-detail', loadComponent: () => import('./management/billing/billing-detail/billing-detail').then((m) => m.BillingDetail)},
             { path: 'invoices', loadComponent: () => import('./management/billing/invoices/invoices').then((m) => m.Invoices)},
+            { path: 'invoice-detail', loadComponent: () => import('./management/billing/invoice-detail/invoice-detail').then((m) => m.InvoiceDetail)},
             { path: 'payments', loadComponent: () => import('./management/billing/payments/payments').then((m) => m.Payments)},
+            { path: 'payment-detail', loadComponent: () => import('./management/billing/payment-detail/payment-detail').then((m) => m.PaymentDetail)},
             { path: 'estimates', loadComponent: () => import('./management/billing/estimates/estimates').then((m) => m.Estimates)},
             { path: 'refunds', loadComponent: () => import('./management/billing/refunds/refunds').then((m) => m.Refunds)},
             { path: 'discounts', loadComponent: () => import('./management/billing/discounts/discounts').then((m) => m.Discounts)},
@@ -203,13 +206,19 @@ export const Pages_Routes: Routes = [
 
             // Management - Insurance
             { path: 'insurance', loadComponent: () => import('./management/insurance/insurance/insurance').then((m) => m.Insurance)},
+            { path: 'insurance-detail', loadComponent: () => import('./management/insurance/insurance-detail/insurance-detail').then((m) => m.InsuranceDetail)},
             { path: 'insurance-claims', loadComponent: () => import('./management/insurance/insurance-claims/insurance-claims').then((m) => m.InsuranceClaims)},
+            { path: 'insurance-claim-detail', loadComponent: () => import('./management/insurance/insurance-claim-detail/insurance-claim-detail').then((m) => m.InsuranceClaimDetail)},
             { path: 'pre-authorization', loadComponent: () => import('./management/insurance/pre-authorization/pre-authorization').then((m) => m.PreAuthorization)},
+            { path: 'pre-authorization-detail', loadComponent: () => import('./management/insurance/pre-authorization-detail/pre-authorization-detail').then((m) => m.PreAuthorizationDetail)},
             { path: 'insurance-approvals', loadComponent: () => import('./management/insurance/insurance-approvals/insurance-approvals').then((m) => m.InsuranceApprovals)},
+            { path: 'insurance-approval-detail', loadComponent: () => import('./management/insurance/insurance-approval-detail/insurance-approval-detail').then((m) => m.InsuranceApprovalDetail)},
             { path: 'reimbursements', loadComponent: () => import('./management/insurance/reimbursements/reimbursements').then((m) => m.Reimbursements)},
+            { path: 'reimbursement-detail', loadComponent: () => import('./management/insurance/reimbursement-detail/reimbursement-detail').then((m) => m.ReimbursementDetail)},
 
             // Management - HR & Staff
             { path: 'hr', loadComponent: () => import('./management/hr-staff/hr/hr').then((m) => m.Hr)},
+            { path: 'employee-profile', loadComponent: () => import('./management/hr-staff/employee-profile/employee-profile').then((m) => m.EmployeeProfile)},
             { path: 'attendance', loadComponent: () => import('./management/hr-staff/attendance/attendance').then((m) => m.Attendance)},
             { path: 'leave-management', loadComponent: () => import('./management/hr-staff/leave-management/leave-management').then((m) => m.LeaveManagement)},
             { path: 'payroll', loadComponent: () => import('./management/hr-staff/payroll/payroll').then((m) => m.Payroll)},
@@ -222,13 +231,18 @@ export const Pages_Routes: Routes = [
             // Management - Inventory
             { path: 'inventory', loadComponent: () => import('./management/inventory/inventory/inventory').then((m) => m.Inventory)},
             { path: 'products', loadComponent: () => import('./management/inventory/products/products').then((m) => m.Products)},
+            { path: 'product-detail', loadComponent: () => import('./management/inventory/product-detail/product-detail').then((m) => m.ProductDetail)},
             { path: 'inventory-categories', loadComponent: () => import('./management/inventory/inventory-categories/inventory-categories').then((m) => m.InventoryCategories)},
             { path: 'inventory-suppliers', loadComponent: () => import('./management/inventory/inventory-suppliers/inventory-suppliers').then((m) => m.InventorySuppliers)},
             { path: 'inventory-purchase-orders', loadComponent: () => import('./management/inventory/inventory-purchase-orders/inventory-purchase-orders').then((m) => m.InventoryPurchaseOrders)},
+            { path: 'purchase-order-detail', loadComponent: () => import('./management/inventory/purchase-order-detail/purchase-order-detail').then((m) => m.PurchaseOrderDetail)},
             { path: 'stock-in', loadComponent: () => import('./management/inventory/stock-in/stock-in').then((m) => m.StockIn)},
+            { path: 'stock-in-detail', loadComponent: () => import('./management/inventory/stock-in-detail/stock-in-detail').then((m) => m.StockInDetail)},
             { path: 'stock-out', loadComponent: () => import('./management/inventory/stock-out/stock-out').then((m) => m.StockOut)},
+            { path: 'stock-out-detail', loadComponent: () => import('./management/inventory/stock-out-detail/stock-out-detail').then((m) => m.StockOutDetail)},
             { path: 'stock-transfers', loadComponent: () => import('./management/inventory/stock-transfers/stock-transfers').then((m) => m.StockTransfers)},
             { path: 'asset-tracking', loadComponent: () => import('./management/inventory/stock-tracking/stock-tracking').then((m) => m.StockTracking)},
+            { path: 'asset-detail', loadComponent: () => import('./management/inventory/asset-detail/asset-detail').then((m) => m.AssetDetail)},
             { path: 'low-stock', loadComponent: () => import('./management/inventory/low-stock/low-stock').then((m) => m.LowStock)},
 
             // Management - Ambulance

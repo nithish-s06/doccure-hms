@@ -1,0 +1,400 @@
+<div id="ivd-page" class="max-w-[1500px] w-full mx-auto space-y-6 overflow-x-hidden">
+
+    <nav aria-label="Breadcrumb"><ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"><li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li><a routerLink="/invoices" class="hover:text-primary transition-colors">Invoices</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Invoice Details</li></ol></nav>
+
+    <!-- ---------- HERO BANNER ---------- -->
+    <section class="ivd-hero overflow-hidden">
+        <div class="flex flex-wrap items-start justify-between gap-6 min-w-0">
+            <div class="flex items-start gap-4 min-w-0 max-w-full">
+                <div class="ivd-hero-ico shrink-0">
+                    <i class="icon-file-text"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight text-white break-words" id="ivd-invoice-title">
+                            Invoice <span class="text-white/70 font-medium text-lg" id="ivd-invoice-id">#INV-2026-9041</span>
+                        </h1>
+                        <span class="ivd-hbadge shrink-0"><span class="ivd-dot"></span><span id="ivd-status-badge">Paid &amp; Settled</span></span>
+                    </div>
+                    <div class="mt-2.5 flex flex-wrap items-center gap-2 text-white/85 text-xs">
+                        <span class="apmd-hmeta"><i class="icon-user text-[13px] text-sky-300"></i><span id="ivd-patient-name">Anna Peterson</span> (MRN: #PAT-30948)</span>
+                        <span class="apmd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Issued: <span id="ivd-issue-date">15 Nov 2026</span></span>
+                        <span class="apmd-hmeta"><i class="icon-clock text-[13px] text-amber-300"></i>Due: <span id="ivd-due-date">30 Nov 2026</span></span>
+                        <span class="apmd-hmeta"><i class="icon-shield-check text-[13px] text-violet-300"></i>BlueCross BlueShield</span>
+                        <span class="apmd-hmeta"><i class="icon-check-circle text-[13px] text-teal-300"></i>CMS-1500 Compliant</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2.5 ivd-actions-print-hide shrink-0">
+                <button type="button" id="ivd-print" class="ivd-btn ivd-btn-glass" data-action="print"><i class="icon-printer"></i>Print Official Receipt</button>
+                <a routerLink="/invoices" class="ivd-btn ivd-btn-primary"><i class="icon-arrow-left"></i>Back to Invoices</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- FINANCIAL SUMMARY STRIP ---------- -->
+    <div class="ivd-surface p-4 lg:p-5 overflow-hidden">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-xs">
+            <div class="space-y-1 min-w-0">
+                <span class="text-gray-400 font-medium block truncate">Billed Department</span>
+                <p class="font-bold text-gray-900 dark:text-white text-sm truncate">Cardiology &amp; Lab</p>
+            </div>
+            <div class="space-y-1 min-w-0">
+                <span class="text-gray-400 font-medium block truncate">Encounter Type</span>
+                <p class="font-bold text-gray-900 dark:text-white text-sm truncate">Outpatient Visit</p>
+            </div>
+            <div class="space-y-1 min-w-0">
+                <span class="text-gray-400 font-medium block truncate">Tax Identifier</span>
+                <p class="font-bold text-teal-600 dark:text-teal-400 text-sm truncate">#EIN-94-882019</p>
+            </div>
+            <div class="space-y-1 min-w-0">
+                <span class="text-gray-400 font-medium block truncate">Payment Mode</span>
+                <p class="font-bold text-indigo-600 dark:text-indigo-400 text-sm truncate">Card + Insurance</p>
+            </div>
+            <div class="space-y-1 min-w-0">
+                <span class="text-gray-400 font-medium block truncate">Claim Status</span>
+                <p class="font-bold text-emerald-600 dark:text-emerald-400 text-sm truncate">100% Settled</p>
+            </div>
+            <div class="space-y-1 min-w-0">
+                <span class="text-gray-400 font-medium block truncate">Net Amount Due</span>
+                <p class="font-bold text-emerald-600 dark:text-emerald-400 text-sm truncate">$0.00 (Cleared)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------- KEY VITAL FINANCIAL METRICS ---------- -->
+    <section class="ivd-grid">
+        <div class="ivd-vital ivd-c-emerald min-w-0">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-dollar-sign"></i></span>
+                <span class="ivd-chip">Gross Billed</span>
+            </div>
+            <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white truncate" id="ivd-amount">$1,200.00</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1 truncate">Total Charges Before Insurance</p>
+        </div>
+        <div class="ivd-vital ivd-c-indigo min-w-0">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-shield-check"></i></span>
+                <span class="ivd-chip">Insurance Covered</span>
+            </div>
+            <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white truncate" id="ivd-stat-insurance">$960.00</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1 truncate">Primary Policy (80% Co-Pay)</p>
+        </div>
+        <div class="ivd-vital ivd-c-amber min-w-0">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-wallet"></i></span>
+                <span class="ivd-chip">Patient Portion</span>
+            </div>
+            <p class="mt-3 text-2xl font-extrabold text-gray-900 dark:text-white truncate" id="ivd-stat-patient-share">$240.00</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1 truncate">Copay &amp; Deductible</p>
+        </div>
+        <div class="ivd-vital ivd-c-violet min-w-0">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-circle-check"></i></span>
+                <span class="ivd-chip">Payment Status</span>
+            </div>
+            <p class="mt-3 text-2xl font-extrabold text-emerald-600 dark:text-emerald-400 truncate" id="ivd-stat-status">Paid &amp; Cleared</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1 truncate">Receipt #RCT-99201</p>
+        </div>
+    </section>
+
+    <!-- ---------- ICD-10 DIAGNOSTIC & CLINICAL BILLING CODING STRIP ---------- -->
+    <div class="ivd-surface p-5 overflow-hidden">
+        <div class="flex items-center gap-2 mb-3">
+            <span class="ico w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 grid place-items-center text-sm font-bold shrink-0"><i class="icon-file-code font-bold"></i></span>
+            <h3 class="ivd-title truncate">Diagnostic &amp; Billing Classification Codes (ICD-10 / CPT Mapping)</h3>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <div class="p-3 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 min-w-0">
+                <span class="text-gray-400 font-medium block mb-1 truncate">Primary ICD-10 Diagnosis</span>
+                <p class="font-bold text-gray-900 dark:text-white truncate">ICD-10-I10</p>
+                <p class="text-[11px] text-gray-500 mt-0.5 truncate">Essential (Primary) Hypertension</p>
+            </div>
+            <div class="p-3 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 min-w-0">
+                <span class="text-gray-400 font-medium block mb-1 truncate">Secondary ICD-10 Diagnosis</span>
+                <p class="font-bold text-gray-900 dark:text-white truncate">ICD-10-R00.2</p>
+                <p class="text-[11px] text-gray-500 mt-0.5 truncate">Palpitations &amp; Tachycardia</p>
+            </div>
+            <div class="p-3 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 min-w-0">
+                <span class="text-gray-400 font-medium block mb-1 truncate">Revenue Code (UB-04)</span>
+                <p class="font-bold text-indigo-600 dark:text-indigo-400 truncate">Rev Code 0510</p>
+                <p class="text-[11px] text-gray-500 mt-0.5 truncate">Outpatient Clinic Services</p>
+            </div>
+            <div class="p-3 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 min-w-0">
+                <span class="text-gray-400 font-medium block mb-1 truncate">Place of Service (POS)</span>
+                <p class="font-bold text-teal-600 dark:text-teal-400 truncate">POS-11 (Physician Office)</p>
+                <p class="text-[11px] text-gray-500 mt-0.5 truncate">Dreams Medical Center 4B</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------- LAYOUT: MAIN CONTENT + SIDEBAR ---------- -->
+    <div class="ivd-layout overflow-x-hidden max-w-full">
+
+        <div class="space-y-6 min-w-0 max-w-full">
+
+            <!-- Itemized Medical Services & Procedures Table -->
+            <div class="ivd-surface max-w-full overflow-hidden">
+                <div class="ivd-head flex items-center justify-between">
+                    <div class="flex items-center gap-2 min-w-0">
+                        <span class="ico shrink-0"><i class="icon-list-ordered"></i></span>
+                        <h2 class="ivd-title truncate">Itemized Medical Services &amp; Line Items</h2>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-500 shrink-0">4 Line Items</span>
+                </div>
+                <div class="overflow-x-auto max-w-full">
+                    <table class="w-full text-left text-xs min-w-[600px]">
+                        <thead class="bg-gray-50 dark:bg-slate-900/80 border-b border-gray-200 dark:border-slate-800 text-gray-500 font-bold uppercase tracking-wider">
+                            <tr>
+                                <th class="p-3.5 pl-5">Code</th>
+                                <th class="p-3.5">Service / Procedure Description</th>
+                                <th class="p-3.5">Dept</th>
+                                <th class="p-3.5 text-center">Qty</th>
+                                <th class="p-3.5 text-right">Unit Price</th>
+                                <th class="p-3.5 text-right pr-5">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 dark:divide-slate-800 font-medium text-gray-700 dark:text-gray-300">
+                            <tr class="hover:bg-gray-50/50 dark:hover:bg-slate-900/30">
+                                <td class="p-3.5 pl-5 font-mono font-bold text-gray-900 dark:text-white whitespace-nowrap">CPT-99214</td>
+                                <td class="p-3.5">
+                                    <div class="font-bold text-gray-900 dark:text-white">Detailed Outpatient Consultation</div>
+                                    <div class="text-[11px] text-gray-400">Dr. Sarah Chen, MD (NPI: #198200192) · Cardiology Evaluation</div>
+                                </td>
+                                <td class="p-3.5 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-semibold">Cardiology</span></td>
+                                <td class="p-3.5 text-center font-bold">1</td>
+                                <td class="p-3.5 text-right whitespace-nowrap">$250.00</td>
+                                <td class="p-3.5 text-right pr-5 font-bold text-gray-900 dark:text-white whitespace-nowrap">$250.00</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50/50 dark:hover:bg-slate-900/30">
+                                <td class="p-3.5 pl-5 font-mono font-bold text-gray-900 dark:text-white whitespace-nowrap">CPT-93000</td>
+                                <td class="p-3.5">
+                                    <div class="font-bold text-gray-900 dark:text-white">12-Lead Electrocardiogram (ECG)</div>
+                                    <div class="text-[11px] text-gray-400">Diagnostic tracing &amp; cardiologist report analysis</div>
+                                </td>
+                                <td class="p-3.5 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-semibold">Diagnostics</span></td>
+                                <td class="p-3.5 text-center font-bold">1</td>
+                                <td class="p-3.5 text-right whitespace-nowrap">$350.00</td>
+                                <td class="p-3.5 text-right pr-5 font-bold text-gray-900 dark:text-white whitespace-nowrap">$350.00</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50/50 dark:hover:bg-slate-900/30">
+                                <td class="p-3.5 pl-5 font-mono font-bold text-gray-900 dark:text-white whitespace-nowrap">CPT-80053</td>
+                                <td class="p-3.5">
+                                    <div class="font-bold text-gray-900 dark:text-white">Comprehensive Metabolic Panel (CMP)</div>
+                                    <div class="text-[11px] text-gray-400">Automated clinical lab analyzer blood panel</div>
+                                </td>
+                                <td class="p-3.5 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 font-semibold">Pathology Lab</span></td>
+                                <td class="p-3.5 text-center font-bold">1</td>
+                                <td class="p-3.5 text-right whitespace-nowrap">$400.00</td>
+                                <td class="p-3.5 text-right pr-5 font-bold text-gray-900 dark:text-white whitespace-nowrap">$400.00</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50/50 dark:hover:bg-slate-900/30">
+                                <td class="p-3.5 pl-5 font-mono font-bold text-gray-900 dark:text-white whitespace-nowrap">HCPCS-J3490</td>
+                                <td class="p-3.5">
+                                    <div class="font-bold text-gray-900 dark:text-white">Cardiovascular Formulary Dispensation</div>
+                                    <div class="text-[11px] text-gray-400">Atenolol 25mg Oral Tablets (90-day supply)</div>
+                                </td>
+                                <td class="p-3.5 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 font-semibold">Pharmacy</span></td>
+                                <td class="p-3.5 text-center font-bold">1</td>
+                                <td class="p-3.5 text-right whitespace-nowrap">$200.00</td>
+                                <td class="p-3.5 text-right pr-5 font-bold text-gray-900 dark:text-white whitespace-nowrap">$200.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-5 border-t border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/40">
+                    <div class="max-w-xs ms-auto space-y-2 text-xs">
+                        <div class="flex justify-between text-gray-600 dark:text-gray-400"><span>Subtotal Gross Charges:</span><span class="font-bold text-gray-900 dark:text-white">$1,200.00</span></div>
+                        <div class="flex justify-between text-indigo-600 dark:text-indigo-400"><span>Insurance Allowance (80%):</span><span class="font-bold">-$960.00</span></div>
+                        <div class="flex justify-between text-gray-600 dark:text-gray-400"><span>Patient Copay Portion:</span><span class="font-bold text-gray-900 dark:text-white">$240.00</span></div>
+                        <div class="flex justify-between text-emerald-600 dark:text-emerald-400"><span>Patient Copay Paid:</span><span class="font-bold">-$240.00</span></div>
+                        <div class="pt-2 border-t border-gray-200 dark:border-slate-800 flex justify-between text-sm font-extrabold text-gray-900 dark:text-white">
+                            <span>Balance Outstanding:</span>
+                            <span class="text-emerald-600 dark:text-emerald-400">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explanation of Benefits (EOB) & Payer Settlement Details -->
+            <div class="ivd-surface overflow-hidden">
+                <div class="ivd-head">
+                    <span class="ico shrink-0"><i class="icon-shield-check"></i></span>
+                    <h2 class="ivd-title truncate">Insurance Explanation of Benefits (EOB) &amp; Payer Adjudication</h2>
+                </div>
+                <div class="p-5 space-y-4 text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="p-3.5 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 min-w-0">
+                            <span class="text-gray-400 font-medium block mb-1 truncate">Primary Payer</span>
+                            <p class="font-bold text-gray-900 dark:text-white truncate">BlueCross BlueShield Premier</p>
+                            <p class="text-[11px] text-gray-500 mt-0.5 truncate">Group Policy #BCBS-99482-A</p>
+                        </div>
+                        <div class="p-3.5 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 min-w-0">
+                            <span class="text-gray-400 font-medium block mb-1 truncate">Claim Reference #</span>
+                            <p class="font-bold text-indigo-600 dark:text-indigo-400 truncate">#CLM-2026-5591</p>
+                            <p class="text-[11px] text-gray-500 mt-0.5 truncate">Approved on 16 Nov 2026</p>
+                        </div>
+                        <div class="p-3.5 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 min-w-0">
+                            <span class="text-gray-400 font-medium block mb-1 truncate">Payer Remittance</span>
+                            <p class="font-bold text-emerald-600 dark:text-emerald-400 truncate">$960.00 Settled</p>
+                            <p class="text-[11px] text-gray-500 mt-0.5 truncate">EFT Ref #EFT-884920</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-gray-100 dark:border-slate-800">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Detailed Co-Insurance Breakdown</h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 min-w-0">
+                                <span class="text-gray-400 block text-[11px] truncate">Plan Deductible</span>
+                                <p class="font-bold text-gray-900 dark:text-white truncate">$50.00</p>
+                            </div>
+                            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 min-w-0">
+                                <span class="text-gray-400 block text-[11px] truncate">Co-Insurance (20%)</span>
+                                <p class="font-bold text-gray-900 dark:text-white truncate">$190.00</p>
+                            </div>
+                            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 min-w-0">
+                                <span class="text-gray-400 block text-[11px] truncate">Payer Discount</span>
+                                <p class="font-bold text-teal-600 dark:text-teal-400 truncate">-$240.00</p>
+                            </div>
+                            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 min-w-0">
+                                <span class="text-gray-400 block text-[11px] truncate">HSA/FSA Eligible</span>
+                                <p class="font-bold text-indigo-600 dark:text-indigo-400 truncate">$240.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Transaction Receipt Log -->
+            <div class="ivd-surface overflow-hidden">
+                <div class="ivd-head">
+                    <span class="ico shrink-0"><i class="icon-receipt"></i></span>
+                    <h2 class="ivd-title truncate">Payment Transaction Log &amp; Digital Receipts</h2>
+                </div>
+                <div class="overflow-x-auto max-w-full">
+                    <table class="w-full text-left text-xs min-w-[550px]">
+                        <thead class="bg-gray-50 dark:bg-slate-900/80 border-b border-gray-200 dark:border-slate-800 text-gray-500 font-bold uppercase tracking-wider">
+                            <tr>
+                                <th class="p-3.5 pl-5">Receipt #</th>
+                                <th class="p-3.5">Transaction Date</th>
+                                <th class="p-3.5">Payment Method</th>
+                                <th class="p-3.5">Ref / Auth ID</th>
+                                <th class="p-3.5 text-right pr-5">Amount Paid</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 dark:divide-slate-800 font-medium text-gray-700 dark:text-gray-300">
+                            <tr>
+                                <td class="p-3.5 pl-5 font-mono font-bold text-gray-900 dark:text-white whitespace-nowrap">#RCT-99201</td>
+                                <td class="p-3.5 whitespace-nowrap">15 Nov 2026 · 10:45 AM</td>
+                                <td class="p-3.5 whitespace-nowrap"><span class="inline-flex items-center gap-1.5"><i class="icon-credit-card text-indigo-500"></i>Visa ending 4921</span></td>
+                                <td class="p-3.5 font-mono text-gray-500 whitespace-nowrap">#AUTH-773921</td>
+                                <td class="p-3.5 text-right pr-5 font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">$240.00</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3.5 pl-5 font-mono font-bold text-gray-900 dark:text-white whitespace-nowrap">#RCT-EFT884</td>
+                                <td class="p-3.5 whitespace-nowrap">16 Nov 2026 · 02:15 PM</td>
+                                <td class="p-3.5 whitespace-nowrap"><span class="inline-flex items-center gap-1.5"><i class="icon-building-2 text-teal-500"></i>Payer EFT Transfer</span></td>
+                                <td class="p-3.5 font-mono text-gray-500 whitespace-nowrap">#EFT-884920</td>
+                                <td class="p-3.5 text-right pr-5 font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">$960.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Hospital Billing Terms, Disclaimers & Sign-off -->
+            <div class="ivd-surface p-5 overflow-hidden">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="ico w-7 h-7 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 grid place-items-center text-sm font-bold shrink-0"><i class="icon-info"></i></span>
+                    <h3 class="ivd-title truncate">Hospital Billing Terms &amp; Financial Assistance Disclaimers</h3>
+                </div>
+                <div class="space-y-3 text-xs leading-relaxed text-gray-600 dark:text-gray-400">
+                    <p>
+                        <strong>Financial Assistance Policy (FAP):</strong> Dreams General Hospital provides compassionate financial assistance and sliding-scale fee discounts for eligible low-income patients. To apply for charity care, contact Patient Financial Services within 240 days of initial statement date.
+                    </p>
+                    <p>
+                        <strong>HSA/FSA Tax Qualification:</strong> All itemized medical services listed above qualify as medical expenses under IRS Code Section 213(d) and are 100% eligible for reimbursement via Health Savings Accounts (HSA) or Flexible Spending Accounts (FSA).
+                    </p>
+                    <div class="pt-3 border-t border-gray-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
+                        <div class="text-[11px] text-gray-400">
+                            Authorized by: <strong class="text-gray-800 dark:text-gray-200">Marcus Vance, CPA</strong> — VP Patient Financial Services
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 font-mono text-[10px] font-bold text-slate-600 dark:text-slate-300">DIGITAL SIGN-OFF: VERIFIED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDEBAR -->
+        <div class="space-y-6 min-w-0 max-w-full">
+
+            <!-- Patient Profile Card -->
+            <div class="ivd-surface ivd-side-hero rounded-[1.25rem] overflow-hidden">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-11 h-11 rounded-full bg-white/20 grid place-items-center font-bold text-white text-base shrink-0">
+                        AP
+                    </div>
+                    <div class="min-w-0">
+                        <h3 class="text-lg font-extrabold text-white truncate" id="ivd-side-patient">Anna Peterson</h3>
+                        <p class="text-xs text-white/80 truncate" id="ivd-side-mrn">MRN: #PAT-30948</p>
+                    </div>
+                </div>
+                <div class="text-xs space-y-1.5 text-white/90">
+                    <p class="truncate"><i class="icon-phone text-[12px] me-1.5"></i>(212) 555-0199</p>
+                    <p class="truncate"><i class="icon-mail text-[12px] me-1.5"></i>a.peterson@example.com</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-white/20 flex items-center justify-between">
+                    <a routerLink="/patient-profile" class="inline-flex items-center gap-1.5 text-xs font-bold text-white hover:underline">
+                        <i class="icon-external-link"></i>View Patient Chart
+                    </a>
+                </div>
+            </div>
+
+            <!-- Healthcare Provider Details -->
+            <div class="ivd-surface p-5 overflow-hidden">
+                <h3 class="ivd-title mb-3 truncate">Billing Healthcare Provider</h3>
+                <div class="text-xs space-y-2">
+                    <p class="font-extrabold text-sm text-gray-900 dark:text-white">Dreams General Hospital</p>
+                    <p class="text-gray-500 dark:text-gray-400">100 Medical Center Drive, Suite 400<br>New York, NY 10001</p>
+                    <div class="pt-2 border-t border-gray-100 dark:border-slate-800 space-y-1 text-gray-600 dark:text-gray-400">
+                        <div class="flex justify-between"><span>Federal Tax ID:</span><span class="font-mono font-bold text-gray-900 dark:text-white">12-3456789</span></div>
+                        <div class="flex justify-between"><span>NPI Number:</span><span class="font-mono font-bold text-gray-900 dark:text-white">1982736450</span></div>
+                        <div class="flex justify-between"><span>Billing Phone:</span><span class="font-bold text-gray-900 dark:text-white">(800) 555-BILL</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insurance Clearance & HSA/FSA Badge Card -->
+            <div class="ivd-surface p-5 bg-gradient-to-br from-teal-50/50 to-emerald-50/50 dark:from-teal-950/30 dark:to-emerald-950/30 border-teal-200/80 dark:border-teal-900/50 overflow-hidden">
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="icon-shield-check text-emerald-600 dark:text-emerald-400 text-lg shrink-0"></i>
+                    <h4 class="font-extrabold text-xs text-slate-900 dark:text-white truncate">100% HSA / FSA Qualified</h4>
+                </div>
+                <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                    This invoice includes official CPT coding compliant with IRS guidelines for Health Savings Account reimbursement.
+                </p>
+            </div>
+
+            <!-- Invoice Summary Sidebar Card -->
+            <div class="ivd-surface p-5 overflow-hidden">
+                <h3 class="ivd-title mb-3 truncate">Invoice Details</h3>
+                <div class="ivd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v truncate" id="ivd-kv-patient">Anna Peterson</span></div>
+                <div class="ivd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Invoice #</span><span class="v truncate" id="ivd-kv-invoiceid">#INV-2026-9041</span></div>
+                <div class="ivd-kv"><span class="k"><i class="icon-dollar-sign text-[13px]"></i>Total Billed</span><span class="v truncate" id="ivd-kv-amount">$1,200.00</span></div>
+                <div class="ivd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Issue Date</span><span class="v truncate" id="ivd-kv-issue">15 Nov 2026</span></div>
+                <div class="ivd-kv"><span class="k"><i class="icon-circle-check text-[13px]"></i>Status</span><span class="v text-emerald-600 dark:text-emerald-400 truncate">Paid</span></div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="ivd-surface p-5 space-y-2.5 overflow-hidden">
+                <h3 class="ivd-title mb-1 truncate">Quick Actions</h3>
+                <button type="button" id="ivd-print-2" class="ivd-btn ivd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer text-emerald-500"></i>Print Official Receipt</button>
+                <a routerLink="/invoices" class="ivd-btn ivd-btn-solid w-full justify-start"><i class="icon-list text-gray-500"></i>Back to All Invoices</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>

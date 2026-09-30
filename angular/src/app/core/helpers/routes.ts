@@ -268,8 +268,11 @@ export const All_Routes={
 
     // Management - Billing
     billing:'/billing',
+    billingDetail:'/billing-detail',
     invoices:'/invoices',
+    invoiceDetail:'/invoice-detail',
     payments:'/payments',
+    paymentDetail:'/payment-detail',
     estimates:'/estimates',
     refunds:'/refunds',
     discounts:'/discounts',
@@ -277,13 +280,19 @@ export const All_Routes={
 
     // Management - Insurance
     insurance:'/insurance',
+    insuranceDetail:'/insurance-detail',
     insuranceClaims:'/insurance-claims',
+    insuranceClaimDetail:'/insurance-claim-detail',
     preAuthorization:'/pre-authorization',
+    preAuthorizationDetail:'/pre-authorization-detail',
     insuranceApprovals:'/insurance-approvals',
+    insuranceApprovalDetail:'/insurance-approval-detail',
     reimbursements:'/reimbursements',
+    reimbursementDetail:'/reimbursement-detail',
 
     // Management - HR & Staff
     hr:'/hr',
+    employeeProfile:'/employee-profile',
     attendance:'/attendance',
     leaveManagement:'/leave-management',
     payroll:'/payroll',
@@ -296,13 +305,18 @@ export const All_Routes={
     // Management - Inventory
     inventory:'/inventory',
     products:'/products',
+    productDetail:'/product-detail',
     inventoryCategories:'/inventory-categories',
     inventorySuppliers:'/inventory-suppliers',
     inventoryPurchaseOrders:'/inventory-purchase-orders',
+    purchaseOrderDetail:'/purchase-order-detail',
     stockIn:'/stock-in',
+    stockInDetail:'/stock-in-detail',
     stockOut:'/stock-out',
+    stockOutDetail:'/stock-out-detail',
     stockTransfers:'/stock-transfers',
     assetTracking:'/asset-tracking',
+    assetDetail:'/asset-detail',
     lowStock:'/low-stock',
 
     // Management - Ambulance

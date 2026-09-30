@@ -1,0 +1,142 @@
+<div id="pad-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb"><ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"><li><a routerLink="/index" class="hover:text-primary transition-colors">Dashboard</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li><a routerLink="/pre-authorization" class="hover:text-primary transition-colors">Pre-Authorization</a></li><li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li><li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Pre-Authorization Details</li></ol></nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="pad-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="pad-hero-ico"><i class="icon-clipboard-check"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="pad-procedure-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">Elective knee arthroscopy</h1>
+                        <span class="pad-hbadge"><span class="pad-dot"></span><span id="pad-status-badge">Approved</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="pad-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="pad-pa-id">#PA-00001</span></span>
+                        <span class="pad-hmeta"><i class="icon-user text-[13px] text-sky-300"></i><span id="pad-patient-name">Priya Nair</span></span>
+                        <span class="pad-hmeta"><i class="icon-building-2 text-[13px] text-violet-300"></i><span id="pad-insurer-name">BlueCross Health</span></span>
+                        <span class="pad-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Requested <span id="pad-date">2024-12-01</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 pad-actions-print-hide">
+                <button type="button" id="pad-print" class="pad-btn pad-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                <button type="button" class="pad-btn pad-btn-glass" id="pad-download-btn"><i class="icon-download"></i>Download PDF</button>
+                <a routerLink="/pre-authorization" class="pad-btn pad-btn-primary"><i class="icon-arrow-left"></i>Back to Requests</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="pad-grid">
+        <div class="pad-vital pad-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-building-2"></i></span>
+                <span class="pad-chip">Insurer</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pad-insurer">BlueCross Health</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Insurance Provider</p>
+        </div>
+        <div class="pad-vital pad-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-dollar-sign"></i></span>
+                <span class="pad-chip">Cost</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pad-cost">$7,500.00</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Estimated Cost</p>
+        </div>
+        <div class="pad-vital pad-c-rose">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-siren"></i></span>
+                <span class="pad-chip">Urgency</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pad-urgency">Routine</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Urgency Level</p>
+        </div>
+        <div class="pad-vital pad-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-calendar"></i></span>
+                <span class="pad-chip">Requested</span>
+            </div>
+            <p class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white" id="pad-req-date">2024-12-01</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Requested Date</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="pad-layout">
+        <div class="space-y-5">
+
+            <!-- Authorization workflow timeline -->
+            <div class="pad-surface">
+                <div class="pad-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="pad-title">Authorization Workflow</h2>
+                </div>
+                <div class="pad-tl p-5" id="pad-timeline">
+                    <div class="pad-tl-item done"><span class="pad-tl-node"><i class="icon-file-text"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Requested</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-01</p>
+                    </div>
+                    <div class="pad-tl-item done"><span class="pad-tl-node"><i class="icon-search"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Under Review</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-01</p>
+                    </div>
+                    <div class="pad-tl-item current"><span class="pad-tl-node"><i class="icon-shield-check"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Decision</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-06</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decision summary -->
+            <div class="pad-surface">
+                <div class="pad-head">
+                    <span class="ico"><i class="icon-clipboard-list"></i></span>
+                    <h2 class="pad-title">Decision Summary</h2>
+                </div>
+                <div class="p-5" id="pad-summary-panel">
+                    <div class="pad-kv"><span class="k">Patient</span><span class="v" id="pad-summary-patient">Priya Nair</span></div>
+                    <div class="pad-kv"><span class="k">Insurer</span><span class="v" id="pad-summary-insurer">BlueCross Health</span></div>
+                    <div class="pad-kv"><span class="k">Procedure</span><span class="v" id="pad-summary-procedure">Elective knee arthroscopy</span></div>
+                    <div class="pad-kv"><span class="k">Urgency</span><span class="v" id="pad-summary-urgency">Routine</span></div>
+                    <div class="pad-kv"><span class="k">Estimated Cost</span><span class="v" id="pad-summary-cost">$7,500.00</span></div>
+                    <div class="pad-kv"><span class="k">Requested Date</span><span class="v" id="pad-summary-reqdate">2024-12-01</span></div>
+                    <div class="pad-kv"><span class="k">Decision Date</span><span class="v" id="pad-summary-decdate">2024-12-06</span></div>
+                    <div class="pad-kv"><span class="k">Status</span><span class="v"><span class="inline-block px-2 py-1 text-xs font-semibold rounded-lg whitespace-nowrap text-success bg-success/10" id="pad-summary-status">Approved</span></span></div>
+                    <p class="text-xs text-gray-400 mt-3" id="pad-summary-note">This procedure has been approved for coverage under the patient's policy.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 pad-sidebar">
+            <!-- Patient highlight -->
+            <div class="pad-surface pad-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Patient</p>
+                <h3 class="mt-1 text-lg font-extrabold" id="pad-side-patient">Priya Nair</h3>
+                <p class="text-sm text-white/80 mt-0.5" id="pad-side-urgency">Urgency: Routine</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="pad-hmeta"><i class="icon-file-text text-[12px]"></i>View Patient Chart</span>
+                </div>
+            </div>
+
+            <!-- Request key-value card -->
+            <div class="pad-surface p-5">
+                <h3 class="pad-title mb-3">Request Details</h3>
+                <div class="pad-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span class="v" id="pad-kv-patient">Priya Nair</span></div>
+                <div class="pad-kv"><span class="k"><i class="icon-stethoscope text-[13px]"></i>Procedure</span><span class="v" id="pad-kv-procedure">Elective knee arthroscopy</span></div>
+                <div class="pad-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Request Date</span><span class="v" id="pad-kv-reqdate">2024-12-01</span></div>
+                <div class="pad-kv"><span class="k"><i class="icon-calendar-check text-[13px]"></i>Decision Date</span><span class="v" id="pad-kv-decdate">2024-12-06</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="pad-surface p-5 space-y-2.5">
+                <h3 class="pad-title mb-1">Quick Actions</h3>
+                <button type="button" id="pad-print-2" class="pad-btn pad-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print</button>
+                <button type="button" class="pad-btn pad-btn-solid w-full justify-start" id="pad-side-download"><i class="icon-download"></i>Download PDF</button>
+                <a routerLink="/pre-authorization" class="pad-btn pad-btn-solid w-full justify-start"><i class="icon-list"></i>All Requests</a>
+            </div>
+        </div>
+    </div>
+</div>
