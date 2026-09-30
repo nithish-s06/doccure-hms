@@ -300,6 +300,7 @@ export const Pages_Routes: Routes = [
             { path: 'roles', loadComponent: () => import('./system/roles/roles').then((m) => m.Roles)},
             { path: 'permissions', loadComponent: () => import('./system/permissions/permissions').then((m) => m.Permissions)},
             { path: 'backup-restore', loadComponent: () => import('./system/backup-restore/backup-restore').then((m) => m.BackupRestore)},
+            { path: 'backup-detail', loadComponent: () => import('./system/backup-detail/backup-detail').then((m) => m.BackupDetail)},
             { path: 'email-templates', loadComponent: () => import('./system/email-templates/email-templates').then((m) => m.EmailTemplates)},
             { path: 'sms-templates', loadComponent: () => import('./system/sms-templates/sms-templates').then((m) => m.SmsTemplates)},
             { path: 'settings', loadComponent: () => import('./system/settings/settings').then((m) => m.Settings)},

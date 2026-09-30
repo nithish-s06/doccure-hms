@@ -373,6 +373,7 @@ export const All_Routes={
     roles:'/roles',
     permissions:'/permissions',
     backupRestore:'/backup-restore',
+    backupDetail:'/backup-detail',
     emailTemplates:'/email-templates',
     smsTemplates:'/sms-templates',
     settings:'/settings',
