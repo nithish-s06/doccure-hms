@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 declare const HSOverlay: any;
 
@@ -14,14 +15,7 @@ interface AlertItem {
   acked?: boolean;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "emergency-dashboard".
- * The KPI row, alert cards, bed zones, admissions table and doctor list
- * ship as static markup matching this same seed data; this wires the
- * mutation handlers (acknowledge alert / acknowledge all, refresh, print
- * handover, code blue) that re-run the small bits of rendering that
- * actually change (renderAlerts).
- */
+
 @Component({
   imports: [RouterLink],
   selector: 'app-emergency-dashboard',
@@ -29,6 +23,7 @@ interface AlertItem {
   templateUrl: './emergency-dashboard.html',
 })
 export class EmergencyDashboard implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly ALERTS: AlertItem[] = [
     {
       id: 'AL-01',

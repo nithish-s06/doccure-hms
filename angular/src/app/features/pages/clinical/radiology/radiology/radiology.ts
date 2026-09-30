@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
+import { RouterLink } from '@angular/router';
 
 interface RadiologyRecord {
   id: number;
@@ -15,12 +17,13 @@ interface RadiologyRecord {
 }
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-radiology',
   styleUrl: './radiology.css',
   templateUrl: './radiology.html',
 })
 export class Radiology implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly pad = (n: number) => '#RAD-' + String(n).padStart(4, '0');
 
   private readonly SBADGE: Record<string, string> = {

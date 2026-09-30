@@ -1,0 +1,157 @@
+<div id="mrd-page" class="max-w-[1500px] mx-auto space-y-5">
+
+    <nav aria-label="Breadcrumb" data-aos="fade-up" class="aos-init aos-animate">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <li><a [routerLink]="AllRoutes.index" class="hover:text-primary transition-colors">Dashboard</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li><a [routerLink]="AllRoutes.medicalRecords" class="hover:text-primary transition-colors">Medical Records</a></li>
+            <li aria-hidden="true"><i class="icon-chevron-right text-[10px]"></i></li>
+
+            <li class="font-medium text-gray-900 dark:text-gray-200" aria-current="page">Medical Record Details</li>
+        </ol>
+    </nav>
+
+    <!-- ---------- HERO ---------- -->
+    <section class="mrd-hero">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-start gap-4 min-w-0">
+                <div class="mrd-hero-ico"><i class="icon-file-text"></i></div>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 id="mrd-name" class="text-2xl lg:text-3xl font-extrabold tracking-tight">James Morrison</h1>
+                        <span id="mrd-status-badge" class="mrd-hbadge text-success bg-success/10"><span id="mrd-status-dot" class="mrd-dot [background:#10b981]"></span><span id="mrd-status-text">Complete</span></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap items-center gap-2 text-white/85">
+                        <span class="mrd-hmeta"><i class="icon-hash text-[13px] text-indigo-300"></i><span id="mrd-recordid-meta">#MR-00001</span></span>
+                        <span class="mrd-hmeta"><i class="icon-heart-pulse text-[13px] text-rose-300"></i><span id="mrd-diag-meta">Acute MI</span></span>
+                        <span class="mrd-hmeta"><i class="icon-stethoscope text-[13px] text-violet-300"></i><span id="mrd-doctor-meta">Dr. Sarah Chen</span></span>
+                        <span class="mrd-hmeta"><i class="icon-calendar text-[13px] text-emerald-300"></i>Visit <span id="mrd-date-meta">2024-12-01</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 mrd-actions-print-hide">
+                <button type="button" class="mrd-btn mrd-btn-glass" data-action="print"><i class="icon-printer"></i>Print</button>
+                <a [routerLink]="AllRoutes.medicalRecords" class="mrd-btn mrd-btn-primary"><i class="icon-arrow-left"></i>Back to Records</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- KEY STATS ---------- -->
+    <section class="mrd-grid">
+        <div class="mrd-vital mrd-c-amber">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-bed"></i></span>
+                <span class="mrd-chip">Type</span>
+            </div>
+            <p id="mrd-stat-type" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Admission</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Record Type</p>
+        </div>
+        <div class="mrd-vital mrd-c-sky">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-building-2"></i></span>
+                <span class="mrd-chip">Dept</span>
+            </div>
+            <p id="mrd-stat-dept" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Cardiology</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Department</p>
+        </div>
+        <div class="mrd-vital mrd-c-violet">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-stethoscope"></i></span>
+                <span class="mrd-chip">Doctor</span>
+            </div>
+            <p id="mrd-stat-doctor" class="mt-3 text-base lg:text-lg font-extrabold text-gray-900 dark:text-white truncate">Dr. Sarah Chen</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Attending Physician</p>
+        </div>
+        <div class="mrd-vital mrd-c-emerald">
+            <div class="flex items-start justify-between">
+                <span class="vico"><i class="icon-check-circle"></i></span>
+                <span class="mrd-chip">Stage</span>
+            </div>
+            <p id="mrd-stat-status" class="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">Complete</p>
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400">Status</p>
+        </div>
+    </section>
+
+    <!-- ---------- LAYOUT: main + sidebar ---------- -->
+    <div class="mrd-layout">
+        <div class="space-y-5">
+
+            <!-- Workflow timeline -->
+            <div class="mrd-surface">
+                <div class="mrd-head">
+                    <span class="ico"><i class="icon-route"></i></span>
+                    <h2 class="mrd-title">Record Workflow</h2>
+                </div>
+                <div class="mrd-tl p-5">
+                    <div class="mrd-tl-item done">
+                        <span class="mrd-tl-node"><i class="icon-clipboard-plus"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Admitted &amp; Record Opened</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-01 08:10 — chest pain, ECG changes noted on arrival</p>
+                    </div>
+                    <div class="mrd-tl-item done">
+                        <span class="mrd-tl-node"><i class="icon-flask-conical"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Diagnostics &amp; Labs Reviewed</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-01 09:45 — troponin elevated, angioplasty scheduled</p>
+                    </div>
+                    <div class="mrd-tl-item done">
+                        <span class="mrd-tl-node"><i class="icon-heart-pulse"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Treatment Administered</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-01 13:20 — PCI performed, patient stabilized in CCU</p>
+                    </div>
+                    <div class="mrd-tl-item done">
+                        <span class="mrd-tl-node"><i class="icon-shield-check"></i></span>
+                        <p class="text-sm font-bold text-gray-900 dark:text-white">Record Finalized &amp; Verified</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">2024-12-03 — discharge summary signed off by attending physician</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clinical notes -->
+            <div class="mrd-surface">
+                <div class="mrd-head">
+                    <span class="ico"><i class="icon-sticky-note"></i></span>
+                    <h2 class="mrd-title">Clinical Notes &amp; Treatment</h2>
+                </div>
+                <div class="p-5 space-y-3">
+                    <p class="mrd-note">Patient presented with acute chest pain radiating to the left arm, diaphoresis and shortness of breath. ECG showed ST-segment elevation consistent with acute myocardial infarction. Emergency PCI was performed with stent placement in the LAD. Post-procedure course was uneventful; patient placed on dual antiplatelet therapy, beta-blocker and high-intensity statin. Cardiac rehabilitation referral issued and follow-up echocardiogram scheduled in 6 weeks.</p>
+                    <div class="grid sm:grid-cols-2 gap-2.5 text-sm mt-2">
+                        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-pill text-primary"></i>Aspirin 75mg + Clopidogrel 75mg OD</div>
+                        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-pill text-primary"></i>Atorvastatin 80mg OD</div>
+                        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-pill text-primary"></i>Metoprolol 25mg BD</div>
+                        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="icon-calendar-check text-primary"></i>Follow-up echo in 6 weeks</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-5 mrd-sidebar">
+            <!-- Attending physician -->
+            <div class="mrd-surface mrd-side-hero rounded-[1.25rem]">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-white/70">Attending Physician</p>
+                <h3 id="mrd-side-doctor" class="mt-1 text-lg font-extrabold">Dr. Sarah Chen</h3>
+                <p id="mrd-side-dept" class="text-sm text-white/80 mt-0.5">Cardiology Department</p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="mrd-hmeta"><i class="icon-mail text-[12px]"></i>Contact Doctor</span>
+                </div>
+            </div>
+
+            <!-- Record details -->
+            <div class="mrd-surface p-5">
+                <h3 class="mrd-title mb-3">Record Details</h3>
+                <div class="mrd-kv"><span class="k"><i class="icon-user text-[13px]"></i>Patient</span><span id="mrd-rec-patient" class="v">James Morrison</span></div>
+                <div class="mrd-kv"><span class="k"><i class="icon-hash text-[13px]"></i>Record ID</span><span id="mrd-rec-id" class="v">#MR-00001</span></div>
+                <div class="mrd-kv"><span class="k"><i class="icon-bed text-[13px]"></i>Type</span><span id="mrd-rec-type" class="v">Admission</span></div>
+                <div class="mrd-kv"><span class="k"><i class="icon-building-2 text-[13px]"></i>Department</span><span id="mrd-rec-dept" class="v">Cardiology</span></div>
+                <div class="mrd-kv"><span class="k"><i class="icon-calendar text-[13px]"></i>Visit Date</span><span id="mrd-rec-date" class="v">2024-12-01</span></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="mrd-surface p-5 space-y-2.5">
+                <h3 class="mrd-title mb-1">Quick Actions</h3>
+                <button type="button" class="mrd-btn mrd-btn-solid w-full justify-start" data-action="print"><i class="icon-printer"></i>Print Record</button>
+                <a [routerLink]="AllRoutes.medicalRecords" class="mrd-btn mrd-btn-solid w-full justify-start"><i class="icon-list"></i>All Medical Records</a>
+            </div>
+        </div>
+    </div>
+</div>

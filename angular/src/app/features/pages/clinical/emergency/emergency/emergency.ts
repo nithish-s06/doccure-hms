@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 declare const HSOverlay: any;
 
@@ -16,11 +17,6 @@ interface EmergencyCase {
   notes: string;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "emergency".
- * A CRUD-list-style page (MC.crudList) for the emergency case register:
- * search/filter, add/edit modal, delete-confirm modal and live stat tiles.
- */
 @Component({
   imports: [RouterLink],
   selector: 'app-emergency',
@@ -28,6 +24,7 @@ interface EmergencyCase {
   templateUrl: './emergency.html',
 })
 export class Emergency implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly TBADGE: Record<string, string> = {
     'Red (Critical)': 'text-danger bg-danger/10',
     'Orange (Urgent)': 'text-warning bg-warning/10',

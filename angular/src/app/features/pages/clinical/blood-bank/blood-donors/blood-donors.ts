@@ -21,22 +21,7 @@ interface Donor {
   badge: 'Gold' | 'Silver' | 'Bronze' | 'New';
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — the // BLOOD-DONORS IIFE
- * (gated on `document.body.dataset.page === "blood-donors"`, around line
- * 8394). Reimplemented as component methods since there is no global MC/$
- * in Angular. The source module also drives a toast pill (#bd-toast), a
- * detail drawer (#bd-drawer) and several Preline overlay modals
- * (#bd-modal-add/edit/appointment/record/camp/import/export/delete), none
- * of which ship in this page's ported HTML (only their `data-hs-overlay`
- * trigger buttons do) — so those bits are reimplemented as guarded no-ops
- * (drawer/modal open calls fall through when their target id is missing,
- * matching the source's behavior when Preline can't find an overlay) with
- * plain text feedback routed through ToastService instead of the bespoke
- * #bd-toast pill. The Donation Drives (#bd-camps) and Donor Activity
- * (#bd-activity) sections are static demo content in the source (no
- * render function), so they are left as static markup here too.
- */
+
 @Component({
   imports: [],
   selector: 'app-blood-donors',

@@ -199,6 +199,7 @@ export const All_Routes={
     bedAllocation:'/bed-allocation',
     bedTransfer:'/bed-transfer',
     bedOccupancy:'/bed-occupancy',
+    bedDetail:'/bed-detail',
 
     // Clinical - ICU
     icu:'/icu',
@@ -253,12 +254,15 @@ export const All_Routes={
     allergies:'/allergies',
     progressNotes:'/progress-notes',
     emrDocuments:'/emr-documents',
+    medicalRecordDetail:'/medical-record-detail',
 
     // Patient Care - Telemedicine
     telemedicine:'/telemedicine',
     consultationHistory:'/consultation-history',
     waitingRoom:'/waiting-room',
     scheduledSessions:'/scheduled-sessions',
+    consultationDetail:'/consultation-detail',
+    telemedicineSessionDetail:'/telemedicine-session-detail',
 
     // Patient Care - Diet & Nutrition
     diet:'/diet',

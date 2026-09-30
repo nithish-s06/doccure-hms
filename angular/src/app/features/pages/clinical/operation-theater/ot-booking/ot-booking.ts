@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { RouterLink } from '@angular/router';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 declare const flatpickr: any;
 
@@ -28,12 +30,13 @@ interface Booking {
  * Ported from tailwind/src/assets/js/script.js — "ot-booking".
  */
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-ot-booking',
   styleUrl: './ot-booking.css',
   templateUrl: './ot-booking.html',
 })
 export class OtBooking implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly PRIOC: Record<string, string> = { emerg: '#dc2626', high: '#e06c1f', med: '#1d4ed8', routine: '#0f766e' };
   private readonly PRIOL: Record<string, string> = { emerg: 'Emergency', high: 'High', med: 'Medium', routine: 'Routine' };
   private readonly STAGES = ['Draft', 'Pending Approval', 'Approved', 'Scheduled', 'In Progress', 'Completed', 'Cancelled'];

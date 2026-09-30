@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 interface BloodIssueRecord {
   id: number;
@@ -28,6 +29,7 @@ interface BloodIssueRecord {
   templateUrl: './blood-issue.html',
 })
 export class BloodIssue implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly BADGE_C: Record<string, string> = {
     Compatible: 'text-success bg-success/10',
     Pending: 'text-warning bg-warning/10',

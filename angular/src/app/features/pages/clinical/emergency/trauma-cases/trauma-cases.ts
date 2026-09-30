@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DOCUMENT, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { All_Routes } from '../../../../../core/helpers/routes';
 
 declare const HSOverlay: any;
 declare const HSStaticMethods: any;
@@ -100,15 +101,7 @@ interface HourlyItem {
   n: number;
 }
 
-/**
- * Ported from tailwind/src/assets/js/script.js — "trauma-cases".
- * Flagship trauma operations board: hero status rail, ring-gauge KPI
- * widgets, overview analytics, kanban priority board (drag/drop) and the
- * enterprise case registry. The case drawer and activation/transfer/
- * status/surgery modals from the source page are not present in this
- * ported HTML, so their handlers are wired defensively (no-op when the
- * target elements are missing) — everything else is a faithful port.
- */
+
 @Component({
   imports: [RouterLink],
   selector: 'app-trauma-cases',
@@ -116,6 +109,7 @@ interface HourlyItem {
   templateUrl: './trauma-cases.html',
 })
 export class TraumaCases implements AfterViewInit {
+  AllRoutes = All_Routes;
   private readonly STAGES = [
     { key: 'arrival', label: 'Arrival', icon: 'icon-ambulance' },
     { key: 'assessment', label: 'Assessment', icon: 'icon-stethoscope' },
